@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer className="bg-blue-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12 divide-x-0 md:divide-x md:divide-blue-700">
           {/* Company Info */}
-          <div className="col-span-1">
+          <div className="col-span-1 md:pr-8">
             <div className="mb-4">
               <Logo size="md" />
             </div>
@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="md:pl-8">
             <h3 className="text-white font-bold text-base mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Contact & Legal */}
-          <div>
+          <div className="md:pl-8">
             <h3 className="text-white font-bold text-base mb-4">Contact & Legal</h3>
             <ul className="space-y-2 mb-4">
               <li className="flex items-start gap-2">

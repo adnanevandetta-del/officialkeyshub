@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { CartProvider } from "./components/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -79,6 +80,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#10b981" />
       </head>
       <body className={inter.className}>
+        <CartProvider>
         {/* Schema Markup for SEO */}
         <Script id="schema-organization" type="application/ld+json" strategy="beforeInteractive">
           {JSON.stringify({
@@ -124,6 +126,7 @@ export default function RootLayout({
         </Script>
 
         {children}
+        </CartProvider>
         
         {/* Google Analytics */}
         <Script

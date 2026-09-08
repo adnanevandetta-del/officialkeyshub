@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
+import CartButton from "./CartButton";
+import ProfileButton from "./ProfileButton";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,6 +59,13 @@ export default function Navbar() {
               Products
             </Link>
             <Link
+              href="/partner-program"
+              className="text-white hover:text-blue-200 font-semibold transition-colors text-sm flex items-center gap-1"
+            >
+              <i className="fas fa-handshake"></i>
+              Partner Program
+            </Link>
+            <Link
               href="/blog"
               className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
             >
@@ -83,6 +92,10 @@ export default function Navbar() {
               <i className="fab fa-whatsapp mr-1"></i>
               Contact
             </a>
+            
+            {/* Cart & Profile Buttons - Icon Only */}
+            <CartButton />
+            <ProfileButton />
           </div>
 
           {/* Mobile Menu Button */}
