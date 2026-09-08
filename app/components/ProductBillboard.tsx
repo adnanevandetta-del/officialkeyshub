@@ -72,11 +72,11 @@ export default function ProductBillboard() {
     }
   ];
 
-  // Auto-rotate every 5 seconds
+  // Auto-rotate every 4 seconds with smooth transition
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % products.length);
-    }, 5000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [products.length]);
 
@@ -152,8 +152,13 @@ export default function ProductBillboard() {
           </div>
 
           {/* Right - 3D Circular Carousel */}
-          <div className="lg:col-span-7 relative" style={{ perspective: '1200px' }}>
+          <div className="lg:col-span-7 relative" style={{ perspective: '1500px' }}>
             <div className="relative w-full h-[400px] md:h-[500px]">
+              {/* Glow Effect */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+              </div>
+
               {/* Carousel Container */}
               <div 
                 className="absolute inset-0 flex items-center justify-center"
@@ -165,37 +170,59 @@ export default function ProductBillboard() {
                   // Calculate rotation angle for each product
                   const angle = ((index - currentIndex) * 360) / products.length;
                   const isActive = index === currentIndex;
-                  const radius = 280;
+                  const radius = 320;
+                  
+                  // Calculate distance from active position for scaling
+                  const distanceFromActive = Math.abs(index - currentIndex);
+                  const normalizedDistance = Math.min(distanceFromActive, products.length - distanceFromActive);
+                  const scale = isActive ? 1.15 : Math.max(0.75, 1 - (normalizedDistance * 0.15));
+                  const opacity = isActive ? 1 : Math.max(0.3, 1 - (normalizedDistance * 0.25));
                   
                   return (
                     <div
                       key={index}
-                      className="absolute transition-all duration-700 ease-out"
+                      className="absolute"
                       style={{
                         transform: `
                           rotateY(${angle}deg) 
                           translateZ(${radius}px)
-                          ${isActive ? 'scale(1.1)' : 'scale(0.8)'}
+                          scale(${scale})
                         `,
-                        opacity: isActive ? 1 : 0.4,
-                        zIndex: isActive ? 10 : 1,
+                        opacity: opacity,
+                        zIndex: isActive ? 20 : Math.max(1, 10 - normalizedDistance),
                         transformStyle: 'preserve-3d',
+                        transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        filter: isActive ? 'brightness(1.1) saturate(1.1)' : 'brightness(0.8) saturate(0.8)',
                       }}
                     >
-                      <div className="relative rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl w-[300px] h-[350px] bg-slate-800">
+                      <div className={`relative rounded-2xl overflow-hidden shadow-2xl w-[280px] h-[360px] bg-slate-800 ${
+                        isActive ? 'ring-4 ring-emerald-500/50 shadow-emerald-500/30' : ''
+                      }`}>
                         <div className="relative h-full">
                           <Image
                             src={product.image}
                             alt={product.name}
                             fill
-                            className="object-cover"
+                            className="object-cover transition-transform duration-700"
+                            style={{
+                              transform: isActive ? 'scale(1.05)' : 'scale(1)',
+                            }}
                             priority={index === 0}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                          
+                          {/* Animated Border Glow for Active */}
+                          {isActive && (
+                            <div className="absolute inset-0 rounded-2xl animate-pulse" style={{
+                              boxShadow: '0 0 30px rgba(16, 185, 129, 0.6), inset 0 0 30px rgba(16, 185, 129, 0.3)'
+                            }}></div>
+                          )}
                         </div>
                         
-                        {/* Discount Badge */}
-                        <div className="absolute top-4 right-4 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center shadow-xl">
+                        {/* Discount Badge with Pulse */}
+                        <div className={`absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-500 ${
+                          isActive ? 'scale-110 animate-bounce' : 'scale-100'
+                        }`}>
                           <div className="text-center">
                             <p className="text-white text-xs font-bold">SAVE</p>
                             <p className="text-white text-xl font-black">
@@ -204,15 +231,24 @@ export default function ProductBillboard() {
                           </div>
                         </div>
 
-                        {/* Icon */}
-                        <div className="absolute bottom-4 left-4 w-12 h-12 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/20">
-                          <i className={`${product.icon} text-white text-xl`}></i>
+                        {/* Icon with Glow */}
+                        <div className={`absolute bottom-4 left-4 w-14 h-14 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 transition-all duration-500 ${
+                          isActive ? 'bg-white/20 scale-110' : ''
+                        }`}>
+                          <i className={`${product.icon} text-white text-2xl drop-shadow-lg`}></i>
                         </div>
 
-                        {/* Product Name Overlay */}
+                        {/* Product Name Overlay - Only Active */}
                         {isActive && (
-                          <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-2 rounded-lg">
-                            <p className="text-white text-sm font-bold">{product.name}</p>
+                          <div className="absolute bottom-4 right-4 bg-gradient-to-r from-emerald-600 to-emerald-500 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg animate-fade-in border border-emerald-400/30">
+                            <p className="text-white text-sm font-bold drop-shadow-md">{product.name}</p>
+                          </div>
+                        )}
+
+                        {/* Shimmer Effect on Active */}
+                        {isActive && (
+                          <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                            <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                           </div>
                         )}
                       </div>
@@ -431,3 +467,4 @@ export default function ProductBillboard() {
     </section>
   );
 }
+
