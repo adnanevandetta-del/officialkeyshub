@@ -176,7 +176,7 @@ export default function ProductBillboard() {
                   const distanceFromActive = Math.abs(index - currentIndex);
                   const normalizedDistance = Math.min(distanceFromActive, products.length - distanceFromActive);
                   const scale = isActive ? 1.15 : Math.max(0.75, 1 - (normalizedDistance * 0.15));
-                  const opacity = isActive ? 1 : Math.max(0.3, 1 - (normalizedDistance * 0.25));
+                  const opacity = isActive ? 1 : Math.max(0.6, 1 - (normalizedDistance * 0.2));
                   
                   return (
                     <div
@@ -192,7 +192,7 @@ export default function ProductBillboard() {
                         zIndex: isActive ? 20 : Math.max(1, 10 - normalizedDistance),
                         transformStyle: 'preserve-3d',
                         transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                        filter: isActive ? 'brightness(1.1) saturate(1.1)' : 'brightness(0.8) saturate(0.8)',
+                        filter: isActive ? 'brightness(1.1) saturate(1.1)' : 'brightness(0.9) saturate(0.9)',
                       }}
                     >
                       <div className={`relative rounded-2xl overflow-hidden shadow-2xl w-[280px] h-[360px] bg-slate-800 ${
