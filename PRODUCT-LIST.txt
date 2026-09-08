@@ -1,0 +1,85 @@
+COMPLETE PRODUCT LIST - Official Keys Hub
+==========================================
+
+WINDOWS PRODUCTS (11):
+1. Windows 11 Pro
+2. Windows 11 Pro - Online Key
+3. Windows 11 Pro - Phone Key
+4. Windows 11 Home
+5. Windows 10 Pro
+6. Windows 10 Pro - Online Key
+7. Windows 10 Pro - Phone Key
+8. Windows 10 Home
+9. Windows 8.1 Pro
+10. Windows 7 Professional
+11. Windows 365 Business (1 Month)
+
+OFFICE PRODUCTS (12):
+12. Office 2021 Professional Plus
+13. Office 2021 Pro Plus - Online Key
+14. Office 2021 Pro Plus - Bind Key
+15. Office 2021 Pro Plus - Phone Key
+16. Office 2021 Home & Business
+17. Office 2019 Professional Plus
+18. Office 2019 Pro Plus - Online Key
+19. Office 2019 Pro Plus - Bind Key
+20. Office 2019 Pro Plus - Phone Key
+21. Office 2016 Professional Plus
+22. Office 2013 Professional Plus
+23. Office 365 (1 Year)
+
+SERVER PRODUCTS (6):
+24. Windows Server 2022 Standard
+25. Windows Server 2022 Standard - Online Key
+26. Windows Server 2019 Standard
+27. Windows Server 2019 Standard - Online Key
+28. Windows Server 2022 Datacenter
+29. Windows Server 2016 Standard
+
+VISIO PRODUCTS (6):
+30. Visio Professional 2021
+31. Visio Professional 2021 - Online Key
+32. Visio Professional 2021 - Phone Key
+33. Visio Standard 2021
+34. Visio Professional 2019
+35. Visio Professional 2019 - Online Key
+
+PROJECT PRODUCTS (6):
+36. Project Professional 2021
+37. Project Professional 2021 - Online Key
+38. Project Professional 2021 - Phone Key
+39. Project Standard 2021
+40. Project Professional 2019
+41. Project Professional 2019 - Online Key
+
+SQL SERVER PRODUCTS (5):
+42. SQL Server 2022 Standard
+43. SQL Server 2022 Standard - Online Key
+44. SQL Server 2019 Standard
+45. SQL Server 2019 Standard - Online Key
+46. SQL Server 2017 Standard
+
+VISUAL STUDIO PRODUCTS (4):
+47. Visual Studio 2022 Professional
+48. Visual Studio 2022 Enterprise
+49. Visual Studio 2019 Professional
+50. Visual Studio Code Extensions Pack
+
+SECURITY/ANTIVIRUS PRODUCTS (7):
+51. Kaspersky Total Security
+52. Norton 360 Deluxe
+53. Bitdefender Total Security
+54. McAfee Total Protection
+55. ESET Internet Security
+56. Avast Premium Security
+57. Trend Micro Maximum Security
+
+==========================================
+TOTAL: 57 PRODUCTS
+==========================================
+
+PHOTO NAMING SUGGESTIONS:
+- Use lowercase with hyphens
+- Example: "windows-11-pro.jpg"
+- Example: "office-2021-professional-plus.jpg"
+- Example: "visual-studio-2022-professional.jpg"

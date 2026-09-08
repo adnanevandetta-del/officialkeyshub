@@ -1,0 +1,23 @@
+📱 MOBILE TEST LINKS FOR IPTV WEBSITE
+========================================
+
+LIVE WEBSITE (works anywhere):
+https://iptv-website-eosin.vercel.app
+
+LOCAL NETWORK (same WiFi only):
+http://192.168.11.115:3000
+
+QR CODE GENERATOR:
+Visit: https://www.qr-code-generator.com
+Paste: https://iptv-website-eosin.vercel.app
+Scan QR code with phone camera
+
+QUICK SHARE OPTIONS:
+1. Email yourself the live link
+2. Send via WhatsApp to yourself: https://iptv-website-eosin.vercel.app
+3. Text/SMS yourself the link
+4. Open browser on phone and type the URL
+
+========================================
+Recommended: Just type in mobile browser:
+iptv-website-eosin.vercel.app

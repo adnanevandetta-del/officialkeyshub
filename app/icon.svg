@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#006AA7"/>
+  
+  <!-- TV screen -->
+  <rect x="12" y="18" width="40" height="28" rx="2" fill="#ffffff"/>
+  <rect x="15" y="21" width="34" height="20" fill="#4ade80"/>
+  
+  <!-- TV stand -->
+  <rect x="28" y="46" width="8" height="3" rx="1" fill="#fbbf24"/>
+  <rect x="22" y="49" width="20" height="2" rx="1" fill="#fbbf24"/>
+  
+  <!-- Signal waves -->
+  <path d="M 32 10 Q 28 12 28 16" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 32 10 Q 36 12 36 16" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Play button on screen -->
+  <path d="M 28 27 L 28 35 L 35 31 Z" fill="#006AA7"/>
+</svg>
