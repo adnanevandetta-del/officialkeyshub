@@ -46,10 +46,9 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between">
-          {/* Left: Cart & Profile Icons */}
-          <div className="flex items-center gap-2">
+          {/* Left: Cart Icon */}
+          <div className="flex items-center">
             <CartButton />
-            <ProfileButton />
           </div>
 
           {/* Center: Logo */}
@@ -57,13 +56,16 @@ export default function Navbar() {
             <Logo size="sm" />
           </div>
 
-          {/* Right: Hamburger Menu */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-white focus:outline-none p-2"
-          >
-            <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
-          </button>
+          {/* Right: Profile & Hamburger Menu */}
+          <div className="flex items-center gap-2">
+            <ProfileButton />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white focus:outline-none p-2"
+            >
+              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
+            </button>
+          </div>
         </div>
 
         {/* Desktop Layout */}

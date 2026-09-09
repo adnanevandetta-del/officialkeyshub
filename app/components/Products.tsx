@@ -892,17 +892,32 @@ export default function Products() {
                   ))}
                 </ul>
 
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedProduct(product);
-                    setShowModal(true);
-                  }}
-                  className="w-full py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 shadow-md mt-auto"
-                >
-                  <i className="fas fa-shopping-cart mr-2"></i>
-                  Buy Now
-                </button>
+                <div className="space-y-2 mt-auto">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedProduct(product);
+                      setShowModal(true);
+                    }}
+                    className="w-full py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 shadow-md"
+                  >
+                    <i className="fas fa-shopping-cart mr-2"></i>
+                    Buy Now
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // Add to cart logic here
+                      alert(`Added ${product.name} to cart!`);
+                    }}
+                    className="w-full py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-emerald-50"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
           ))}
