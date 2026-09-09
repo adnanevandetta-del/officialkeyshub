@@ -166,3 +166,13 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+
+
+/* Hide scrollbar for mobile category bar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

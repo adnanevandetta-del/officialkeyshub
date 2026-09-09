@@ -150,8 +150,8 @@ export default function CategoryBar() {
       {/* Animated gradient line */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-shimmer"></div>
       
-      <div className="max-w-7xl mx-auto px-4 relative">
-        <div className="flex items-center justify-center gap-1.5 py-2 overflow-x-auto overflow-y-visible scrollbar-hide relative">
+      <div className="max-w-7xl mx-auto px-2 md:px-4 relative">
+        <div className="flex items-center justify-center gap-1.5 py-2 overflow-x-auto overflow-y-visible scrollbar-hide relative md:flex-wrap">
           {/* Category Pills */}
           {categories.map((category) => {
             const isActive = activeCategory === category.name;

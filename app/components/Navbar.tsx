@@ -44,9 +44,15 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 left-0 right-0 z-50 bg-blue-900/95 backdrop-blur-md shadow-md border-b border-blue-700">
       <div className="container mx-auto px-4 py-2">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="ml-2">
+        <div className="flex items-center justify-between md:justify-between">
+          {/* Mobile Cart & Profile - Left Side */}
+          <div className="flex md:hidden items-center gap-2">
+            <CartButton />
+            <ProfileButton />
+          </div>
+
+          {/* Logo - Centered on Mobile, Left on Desktop */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-0 md:transform-none md:ml-2">
             <Logo size="sm" />
           </div>
 
@@ -100,17 +106,14 @@ export default function Navbar() {
 
           {/* Mobile Cart & Profile - Always Visible */}
           <div className="flex md:hidden items-center gap-2">
-            <CartButton />
-            <ProfileButton />
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white focus:outline-none"
+            >
+              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white focus:outline-none ml-2"
-          >
-            <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
-          </button>
         </div>
 
         {/* Mobile Menu */}
