@@ -6,15 +6,15 @@ interface LogoProps {
 
 export default function Logo({ size = "md" }: LogoProps) {
   const sizes = {
-    sm: { container: "h-10", text: "text-sm", subText: "text-[10px]", icon: "w-8 h-8" },
-    md: { container: "h-14", text: "text-base", subText: "text-xs", icon: "w-11 h-11" },
-    lg: { container: "h-20", text: "text-xl", subText: "text-sm", icon: "w-16 h-16" },
+    sm: { container: "h-12", text: "text-base", subText: "text-xs", icon: "w-10 h-10" },
+    md: { container: "h-16", text: "text-lg", subText: "text-sm", icon: "w-13 h-13" },
+    lg: { container: "h-24", text: "text-2xl", subText: "text-base", icon: "w-20 h-20" },
   };
 
   const currentSize = sizes[size];
 
   return (
-    <Link href="/" className={`flex items-center gap-2 ${currentSize.container} group`}>
+    <Link href="/" className={`flex items-center gap-3 ${currentSize.container} group`}>
       {/* Futuristic Cyber Key Icon */}
       <div className={`relative ${currentSize.icon} flex-shrink-0`}>
         <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-2xl">
