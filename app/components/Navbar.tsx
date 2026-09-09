@@ -56,8 +56,8 @@ export default function Navbar() {
             <Logo size="sm" />
           </div>
 
-          {/* Right: Profile & Hamburger Menu */}
-          <div className="flex items-center gap-2">
+          {/* Right: Profile & Hamburger Menu - Increased gap to push profile far right */}
+          <div className="flex items-center gap-6">
             <ProfileButton />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
