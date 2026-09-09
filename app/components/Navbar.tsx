@@ -98,10 +98,16 @@ export default function Navbar() {
             <ProfileButton />
           </div>
 
+          {/* Mobile Cart & Profile - Always Visible */}
+          <div className="flex md:hidden items-center gap-2">
+            <CartButton />
+            <ProfileButton />
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-white focus:outline-none ml-2"
           >
             <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
           </button>
@@ -156,12 +162,6 @@ export default function Navbar() {
                 <i className="fab fa-whatsapp mr-1"></i>
                 Contact
               </a>
-              
-              {/* Mobile Cart & Profile */}
-              <div className="flex gap-3 pt-2 border-t border-blue-700">
-                <CartButton />
-                <ProfileButton />
-              </div>
             </div>
           </div>
         )}
