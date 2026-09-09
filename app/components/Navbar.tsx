@@ -123,33 +123,57 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden mt-3 pb-3 border-t border-slate-800 pt-3">
             <div className="flex flex-col gap-3">
+              {/* Product Categories Section */}
+              <div className="border-b border-slate-700 pb-3 mb-1">
+                <p className="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-2 px-1">Product Categories</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {productCategories.map((category) => (
+                    <button
+                      key={category.filter}
+                      onClick={() => {
+                        handleCategoryClick(category.filter);
+                        setIsMenuOpen(false);
+                      }}
+                      className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700 rounded-lg transition-all text-left"
+                    >
+                      <i className={`${category.icon} ${category.color} text-sm`}></i>
+                      <span className="text-white text-sm font-semibold">{category.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Main Menu Items */}
               <Link
                 href="/#products"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Products
+                <i className="fas fa-box text-emerald-400"></i>
+                All Products
               </Link>
               <Link
                 href="/partner-program"
                 className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-handshake"></i>
+                <i className="fas fa-handshake text-emerald-400"></i>
                 Partner Program
               </Link>
               <Link
                 href="/blog"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <i className="fas fa-blog text-emerald-400"></i>
                 Blog
               </Link>
               <Link
                 href="/faq"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <i className="fas fa-question-circle text-emerald-400"></i>
                 FAQ
               </Link>
               <a

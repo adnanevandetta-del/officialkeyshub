@@ -11,7 +11,7 @@ export default function ProfileButton() {
     <div className="relative">
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl z-50"
+        className="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl"
         title="Account"
         aria-label="Account Menu"
       >
@@ -24,10 +24,10 @@ export default function ProfileButton() {
       {showMenu && (
         <>
           <div
-            className="fixed inset-0 z-[150]"
+            className="fixed inset-0 z-[210]"
             onClick={() => setShowMenu(false)}
           ></div>
-          <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border-2 border-gray-200 overflow-hidden z-[160] animate-fade-in">
+          <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border-2 border-gray-200 overflow-hidden z-[220] animate-fade-in">
             {isLoggedIn ? (
               <>
                 {/* Logged In Menu */}

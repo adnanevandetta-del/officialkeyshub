@@ -146,7 +146,7 @@ export default function CategoryBar() {
   };
 
   return (
-    <div className="sticky top-0 z-[100] bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b-2 border-emerald-500/50 shadow-xl backdrop-blur-xl overflow-hidden">
+    <div className="hidden md:block sticky top-0 z-[100] bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b-2 border-emerald-500/50 shadow-xl backdrop-blur-xl overflow-hidden">
       {/* Animated gradient line */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-shimmer"></div>
       
