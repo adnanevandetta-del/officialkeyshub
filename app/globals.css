@@ -206,10 +206,7 @@ body {
 
 @media (max-width: 768px) {
   .animate-scroll-mobile {
-    animation: scroll-mobile 20s linear infinite;
-  }
-  
-  .animate-scroll-mobile:hover {
-    animation-play-state: paused;
+    animation: scroll-mobile 15s linear infinite;
+    will-change: transform;
   }
 }

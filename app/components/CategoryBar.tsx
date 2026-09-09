@@ -146,14 +146,14 @@ export default function CategoryBar() {
   };
 
   return (
-    <div className="sticky top-0 z-[100] bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b-2 border-emerald-500/50 shadow-xl backdrop-blur-xl">
+    <div className="sticky top-0 z-[100] bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b-2 border-emerald-500/50 shadow-xl backdrop-blur-xl overflow-hidden">
       {/* Animated gradient line */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-shimmer"></div>
       
       <div className="max-w-7xl mx-auto relative overflow-hidden">
         {/* Mobile: Infinite Scroll Container */}
-        <div className="md:hidden">
-          <div className="flex gap-1.5 py-2 animate-scroll-mobile">
+        <div className="md:hidden overflow-hidden">
+          <div className="flex gap-1.5 py-2 px-2 animate-scroll-mobile">
             {/* First set of categories */}
             {categories.map((category, index) => {
               const isActive = activeCategory === category.name;
