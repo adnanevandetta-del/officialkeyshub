@@ -57,7 +57,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: Profile & Hamburger Menu - Increased gap to push profile far right */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-8">
             <ProfileButton />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}

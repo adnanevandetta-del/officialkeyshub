@@ -899,10 +899,13 @@ export default function Products() {
                       setSelectedProduct(product);
                       setShowModal(true);
                     }}
-                    className="w-full py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 shadow-md"
+                    className="w-full py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-blue-500/50"
+                    style={{
+                      boxShadow: '0 0 20px rgba(59, 130, 246, 0.5), 0 4px 14px rgba(0, 0, 0, 0.25)'
+                    }}
                   >
-                    <i className="fas fa-shopping-cart mr-2"></i>
-                    Buy Now
+                    <i className="fab fa-paypal mr-2"></i>
+                    Buy Now with PayPal
                   </button>
                   <button
                     onClick={(e) => {
@@ -910,7 +913,7 @@ export default function Products() {
                       // Add to cart logic here
                       alert(`Added ${product.name} to cart!`);
                     }}
-                    className="w-full py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-emerald-50"
+                    className="w-full py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 shadow-md"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
