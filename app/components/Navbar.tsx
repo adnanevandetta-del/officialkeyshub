@@ -42,22 +42,39 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 left-0 right-0 z-50 bg-blue-900/95 backdrop-blur-md shadow-md border-b border-blue-700">
-      <div className="container mx-auto px-4 py-2">
-        <div className="flex items-center justify-between relative">
-          {/* Mobile Cart & Profile - Left Side (High Z-Index) */}
-          <div className="flex md:hidden items-center gap-2 z-50 relative">
+    <nav className="sticky top-0 left-0 right-0 z-[200] bg-blue-900/95 backdrop-blur-md shadow-md border-b border-blue-700">
+      <div className="container mx-auto px-4 py-3">
+        {/* Mobile Layout */}
+        <div className="flex md:hidden items-center justify-between">
+          {/* Left: Cart & Profile Icons */}
+          <div className="flex items-center gap-2">
             <CartButton />
             <ProfileButton />
           </div>
 
-          {/* Logo - Centered on Mobile, Left on Desktop */}
-          <div className="md:relative md:left-0 md:transform-none md:ml-2 mx-auto md:mx-0">
+          {/* Center: Logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
             <Logo size="sm" />
           </div>
 
-          {/* Spacer for mobile to balance layout */}
-          <div className="flex md:hidden items-center gap-2 z-50 relative">
+          {/* Right: Hamburger Menu */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white focus:outline-none p-2"
+          >
+            <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
+          </button>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden md:flex items-center justify-between">
+          {/* Logo */}
+          <div className="ml-2">
+            <Logo size="sm" />
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="flex items-center gap-3">
             <Link
               href="/#products"
               className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
@@ -103,19 +120,8 @@ export default function Navbar() {
             <CartButton />
             <ProfileButton />
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white focus:outline-none z-50 relative"
-          >
-            <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
-          </button>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-3">
         </div>
+
 
         {/* Mobile Menu */}
         {isMenuOpen && (
