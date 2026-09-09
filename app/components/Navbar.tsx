@@ -119,6 +119,14 @@ export default function Navbar() {
                 Products
               </Link>
               <Link
+                href="/partner-program"
+                className="text-white hover:text-blue-200 font-semibold transition-colors text-sm flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <i className="fas fa-handshake"></i>
+                Partner Program
+              </Link>
+              <Link
                 href="/blog"
                 className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
                 onClick={() => setIsMenuOpen(false)}
@@ -148,6 +156,12 @@ export default function Navbar() {
                 <i className="fab fa-whatsapp mr-1"></i>
                 Contact
               </a>
+              
+              {/* Mobile Cart & Profile */}
+              <div className="flex gap-3 pt-2 border-t border-blue-700">
+                <CartButton />
+                <ProfileButton />
+              </div>
             </div>
           </div>
         )}
