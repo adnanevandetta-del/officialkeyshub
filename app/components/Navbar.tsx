@@ -42,7 +42,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 left-0 right-0 z-[200] bg-blue-900/95 backdrop-blur-md shadow-md border-b border-blue-700">
+    <nav className="sticky top-0 left-0 right-0 z-[200] bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-md shadow-md border-b border-slate-800">
       <div className="container mx-auto px-4 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between">
@@ -77,32 +77,26 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/#products"
-              className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
+              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
             >
               Products
             </Link>
             <Link
               href="/partner-program"
-              className="text-white hover:text-blue-200 font-semibold transition-colors text-sm flex items-center gap-1"
+              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-1"
             >
               <i className="fas fa-handshake"></i>
               Partner Program
             </Link>
             <Link
               href="/blog"
-              className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
+              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
             >
               Blog
             </Link>
             <Link
-              href="/about"
-              className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
-            >
-              About
-            </Link>
-            <Link
               href="/faq"
-              className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
+              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
             >
               FAQ
             </Link>
@@ -125,18 +119,18 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-3 pb-3 border-t border-blue-700 pt-3">
+          <div className="md:hidden mt-3 pb-3 border-t border-slate-800 pt-3">
             <div className="flex flex-col gap-3">
               <Link
                 href="/#products"
-                className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </Link>
               <Link
                 href="/partner-program"
-                className="text-white hover:text-blue-200 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <i className="fas fa-handshake"></i>
@@ -144,21 +138,14 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/blog"
-                className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
               <Link
-                href="/about"
-                className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
                 href="/faq"
-                className="text-white hover:text-blue-200 font-semibold transition-colors text-sm"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
                 FAQ
