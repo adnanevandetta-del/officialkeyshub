@@ -176,3 +176,24 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+
+/* Infinite scroll animation for category bar on mobile */
+@keyframes scroll-mobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .animate-scroll-mobile {
+    animation: scroll-mobile 20s linear infinite;
+  }
+  
+  .animate-scroll-mobile:hover {
+    animation-play-state: paused;
+  }
+}

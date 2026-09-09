@@ -150,8 +150,91 @@ export default function CategoryBar() {
       {/* Animated gradient line */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-shimmer"></div>
       
-      <div className="max-w-7xl mx-auto px-2 md:px-4 relative">
-        <div className="flex items-center justify-center gap-1.5 py-2 overflow-x-auto overflow-y-visible scrollbar-hide relative md:flex-wrap">
+      <div className="max-w-7xl mx-auto relative overflow-hidden">
+        {/* Mobile: Infinite Scroll Container */}
+        <div className="md:hidden">
+          <div className="flex gap-1.5 py-2 animate-scroll-mobile">
+            {/* First set of categories */}
+            {categories.map((category, index) => {
+              const isActive = activeCategory === category.name;
+              return (
+                <button
+                  key={`first-${index}`}
+                  onClick={() => handleCategoryClick(category)}
+                  className={`group relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-sm transition-all duration-300 whitespace-nowrap overflow-hidden flex-shrink-0 ${
+                    isActive 
+                      ? "scale-105 shadow-2xl" 
+                      : "bg-slate-800/50 hover:bg-slate-700/70"
+                  }`}
+                  style={{
+                    boxShadow: isActive ? "0 8px 32px rgba(16, 185, 129, 0.6)" : undefined
+                  }}
+                >
+                  {isActive && (
+                    <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} animate-gradient`}></div>
+                  )}
+                  <div className="relative flex items-center gap-1.5">
+                    <i className={`${category.icon} text-sm ${isActive ? "text-white animate-pulse" : "text-slate-400"}`}></i>
+                    <span className={`text-sm ${isActive ? "text-white" : "text-slate-300"}`}>
+                      {category.name}
+                    </span>
+                    <span className={`px-1.5 py-0.5 rounded-full text-xs font-black ${
+                      isActive 
+                        ? "bg-white/30 text-white" 
+                        : "bg-emerald-500/20 text-emerald-400"
+                    }`}>
+                      {category.count}
+                    </span>
+                  </div>
+                  {isActive && (
+                    <div className="absolute inset-0 rounded-lg opacity-75 blur-xl bg-gradient-to-r from-emerald-400 to-blue-500"></div>
+                  )}
+                </button>
+              );
+            })}
+            {/* Duplicate set for seamless loop */}
+            {categories.map((category, index) => {
+              const isActive = activeCategory === category.name;
+              return (
+                <button
+                  key={`second-${index}`}
+                  onClick={() => handleCategoryClick(category)}
+                  className={`group relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-sm transition-all duration-300 whitespace-nowrap overflow-hidden flex-shrink-0 ${
+                    isActive 
+                      ? "scale-105 shadow-2xl" 
+                      : "bg-slate-800/50 hover:bg-slate-700/70"
+                  }`}
+                  style={{
+                    boxShadow: isActive ? "0 8px 32px rgba(16, 185, 129, 0.6)" : undefined
+                  }}
+                >
+                  {isActive && (
+                    <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} animate-gradient`}></div>
+                  )}
+                  <div className="relative flex items-center gap-1.5">
+                    <i className={`${category.icon} text-sm ${isActive ? "text-white animate-pulse" : "text-slate-400"}`}></i>
+                    <span className={`text-sm ${isActive ? "text-white" : "text-slate-300"}`}>
+                      {category.name}
+                    </span>
+                    <span className={`px-1.5 py-0.5 rounded-full text-xs font-black ${
+                      isActive 
+                        ? "bg-white/30 text-white" 
+                        : "bg-emerald-500/20 text-emerald-400"
+                    }`}>
+                      {category.count}
+                    </span>
+                  </div>
+                  {isActive && (
+                    <div className="absolute inset-0 rounded-lg opacity-75 blur-xl bg-gradient-to-r from-emerald-400 to-blue-500"></div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Desktop: Normal Flex Wrap with Hover Dropdowns */}
+        <div className="hidden md:flex items-center justify-center gap-1.5 py-2 flex-wrap px-2 md:px-4">
           {/* Category Pills */}
           {categories.map((category) => {
             const isActive = activeCategory === category.name;
@@ -298,6 +381,23 @@ export default function CategoryBar() {
         }
         .animate-fadeIn {
           animation: fadeIn 0.2s ease-out;
+        }
+        
+        /* Infinite scroll animation for mobile */
+        @keyframes scroll-mobile {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .animate-scroll-mobile {
+            animation: scroll-mobile 30s linear infinite;
+            will-change: transform;
+          }
         }
       `}</style>
     </div>
