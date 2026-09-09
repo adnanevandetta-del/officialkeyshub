@@ -2,9 +2,10 @@ import Link from "next/link";
 
 interface LogoProps {
   size?: "sm" | "md" | "lg";
+  animated?: boolean;
 }
 
-export default function Logo({ size = "md" }: LogoProps) {
+export default function Logo({ size = "md", animated = true }: LogoProps) {
   const sizes = {
     sm: { container: "h-12", text: "text-base", subText: "text-xs", icon: "w-10 h-10" },
     md: { container: "h-16", text: "text-lg", subText: "text-sm", icon: "w-13 h-13" },
@@ -12,6 +13,52 @@ export default function Logo({ size = "md" }: LogoProps) {
   };
 
   const currentSize = sizes[size];
+
+  // Simple static logo without animations for footer
+  if (!animated) {
+    return (
+      <Link href="/" className={`flex items-center gap-3 ${currentSize.container} group`}>
+        <div className={`relative ${currentSize.icon} flex-shrink-0`}>
+          <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
+            <defs>
+              <linearGradient id="simpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#06b6d4', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#0e7490', stopOpacity: 1 }} />
+              </linearGradient>
+            </defs>
+
+            {/* Simple Key Head - Hexagon */}
+            <path 
+              d="M 32 18 L 43 24 L 43 36 L 32 42 L 21 36 L 21 24 Z" 
+              fill="url(#simpleGradient)"
+              stroke="#67e8f9"
+              strokeWidth="2"
+            />
+            <circle cx="32" cy="30" r="4" fill="#67e8f9" />
+
+            {/* Simple Key Shaft */}
+            <rect x="43" y="27" width="45" height="6" rx="3" fill="url(#simpleGradient)" />
+            
+            {/* Simple Key Teeth */}
+            <rect x="74" y="33" width="4" height="9" fill="#0e7490" />
+            <rect x="80" y="33" width="4" height="6" fill="#0e7490" />
+            <rect x="86" y="33" width="4" height="14" fill="#0e7490" />
+          </svg>
+        </div>
+
+        <div className="flex flex-col leading-tight">
+          <span className={`font-black text-white ${currentSize.text} tracking-tight`}>
+            Official Keys
+          </span>
+          <span className={`font-black text-cyan-400 ${currentSize.subText} tracking-wider text-center -mt-0.5`}>
+            HUB
+          </span>
+        </div>
+      </Link>
+    );
+  }
+
+  // Animated version for navbar
 
   return (
     <Link href="/" className={`flex items-center gap-3 ${currentSize.container} group`}>

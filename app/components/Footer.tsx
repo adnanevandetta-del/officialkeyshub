@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-1 md:pr-8">
             <div className="mb-4">
-              <Logo size="md" />
+              <Logo size="md" animated={false} />
             </div>
             <p className="text-gray-400 text-sm mb-4">
               Your Official & trusted source for genuine Windows, Office, and software licenses. We provide authentic keys, instant delivery, lifetime support, and 100% money-back guarantee.
