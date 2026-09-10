@@ -45,7 +45,7 @@ export default function Navbar() {
     <nav className="sticky top-0 left-0 right-0 z-[200] bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-md shadow-md border-b border-slate-800">
       <div className="container mx-auto px-4 py-3">
         {/* Mobile Layout */}
-        <div className="flex md:hidden items-center justify-between w-full">
+        <div className="flex md:hidden items-center w-full relative">
           {/* Left: Cart Icon */}
           <div className="flex items-center">
             <CartButton />
@@ -56,11 +56,13 @@ export default function Navbar() {
             <Logo size="sm" />
           </div>
 
-          {/* Right: Profile at far right, then Hamburger Menu */}
-          <div className="flex items-center gap-2">
-            <div className="mr-4">
-              <ProfileButton />
-            </div>
+          {/* Far Right: Profile Icon */}
+          <div className="ml-auto mr-2">
+            <ProfileButton />
+          </div>
+
+          {/* Right Edge: Hamburger Menu */}
+          <div className="flex-shrink-0">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white focus:outline-none p-2"
