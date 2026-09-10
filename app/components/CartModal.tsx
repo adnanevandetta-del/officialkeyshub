@@ -12,9 +12,9 @@ export default function CartModal({ onClose }: CartModalProps) {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
 
   return (
-    <div className="fixed inset-0 z-[250] flex items-start justify-end bg-black/60 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[250] flex items-start md:justify-end justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="w-full max-w-md h-full bg-white shadow-2xl overflow-hidden flex flex-col animate-slide-in-right"
+        className="w-full md:max-w-md h-full bg-white shadow-2xl overflow-hidden flex flex-col animate-slide-in-right"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
