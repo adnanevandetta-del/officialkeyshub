@@ -27,7 +27,11 @@ export default function ProfileButton() {
             className="fixed inset-0 z-[210]"
             onClick={() => setShowMenu(false)}
           ></div>
-          <div className="fixed md:absolute right-0 md:right-0 top-14 md:top-auto md:mt-2 left-0 md:left-auto mx-4 md:mx-0 w-auto md:w-64 bg-white rounded-xl shadow-2xl border-2 border-gray-200 overflow-hidden z-[220] animate-fade-in">
+          <div className="absolute right-0 mt-2 w-72 md:w-80 bg-white rounded-xl shadow-2xl border-2 border-gray-200 overflow-hidden z-[220]"
+            style={{
+              animation: 'fadeIn 0.2s ease-out'
+            }}
+          >
             {isLoggedIn ? (
               <>
                 {/* Logged In Menu */}
@@ -127,6 +131,19 @@ export default function ProfileButton() {
           </div>
         </>
       )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }

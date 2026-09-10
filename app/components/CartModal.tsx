@@ -12,10 +12,13 @@ export default function CartModal({ onClose }: CartModalProps) {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
 
   return (
-    <div className="fixed inset-0 z-[250] flex items-start md:justify-end justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[250] flex items-center justify-center md:items-start md:justify-end bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="w-full md:max-w-md h-full bg-white shadow-2xl overflow-hidden flex flex-col animate-slide-in-right"
+        className="w-full max-w-md h-screen md:h-full bg-white shadow-2xl overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
+        style={{
+          animation: 'slideInRight 0.3s ease-out'
+        }}
       >
         {/* Header */}
         <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white p-6 flex items-center justify-between">
@@ -145,16 +148,13 @@ export default function CartModal({ onClose }: CartModalProps) {
       </div>
 
       <style jsx>{`
-        @keyframes slide-in-right {
+        @keyframes slideInRight {
           from {
             transform: translateX(100%);
           }
           to {
             transform: translateX(0);
           }
-        }
-        .animate-slide-in-right {
-          animation: slide-in-right 0.3s ease-out;
         }
       `}</style>
     </div>
