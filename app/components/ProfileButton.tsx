@@ -7,10 +7,17 @@ export default function ProfileButton() {
   const [showMenu, setShowMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // In real app, use auth context
 
+  const handleClick = () => {
+    console.log('Profile button clicked!');
+    setShowMenu(!showMenu);
+  };
+
+  console.log('ProfileButton render, showMenu:', showMenu);
+
   return (
     <div className="relative">
       <button
-        onClick={() => setShowMenu(!showMenu)}
+        onClick={handleClick}
         className="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl"
         title="Account"
         aria-label="Account Menu"

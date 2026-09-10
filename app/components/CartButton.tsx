@@ -8,10 +8,17 @@ export default function CartButton() {
   const { cartCount } = useCart();
   const [showCart, setShowCart] = useState(false);
 
+  const handleClick = () => {
+    console.log('Cart button clicked!');
+    setShowCart(true);
+  };
+
+  console.log('CartButton render, showCart:', showCart);
+
   return (
     <>
       <button
-        onClick={() => setShowCart(true)}
+        onClick={handleClick}
         className="relative w-10 h-10 flex items-center justify-center bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all shadow-lg hover:shadow-xl"
         title="Shopping Cart"
         aria-label="Shopping Cart"

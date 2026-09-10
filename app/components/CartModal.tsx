@@ -11,6 +11,8 @@ interface CartModalProps {
 export default function CartModal({ onClose }: CartModalProps) {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
 
+  console.log('CartModal is rendering! Cart items:', cart.length);
+
   return (
     <div className="fixed inset-0 z-[250] flex items-center justify-center md:items-start md:justify-end bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div
