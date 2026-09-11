@@ -902,12 +902,15 @@ export default function Products() {
                       setSelectedProduct(product);
                       setShowModal(true);
                     }}
-                    className="w-full py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-blue-500/50"
+                    className="w-full py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-blue-500/50"
                     style={{
-                      boxShadow: '0 0 20px rgba(59, 130, 246, 0.5), 0 4px 14px rgba(0, 0, 0, 0.25)'
+                      boxShadow: '0 0 20px rgba(37, 99, 235, 0.5), 0 4px 14px rgba(0, 0, 0, 0.25)'
                     }}
                   >
-                    Buy Now <i className="fab fa-paypal ml-2 text-xl"></i>
+                    <span className="flex items-center gap-2">
+                      Buy Now
+                      <i className="fab fa-paypal text-2xl"></i>
+                    </span>
                   </button>
                   <button
                     onClick={(e) => {
