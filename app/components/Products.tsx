@@ -904,8 +904,7 @@ export default function Products() {
                       boxShadow: '0 0 20px rgba(59, 130, 246, 0.5), 0 4px 14px rgba(0, 0, 0, 0.25)'
                     }}
                   >
-                    <i className="fab fa-paypal mr-2"></i>
-                    Buy Now with PayPal
+                    Buy Now <i className="fab fa-paypal ml-2 text-xl"></i>
                   </button>
                   <button
                     onClick={(e) => {
