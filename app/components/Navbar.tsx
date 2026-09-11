@@ -45,23 +45,8 @@ export default function Navbar() {
     <nav className="sticky top-0 left-0 right-0 z-[200] bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-md shadow-md border-b border-slate-800">
       <div className="container mx-auto px-4 py-3">
         {/* Mobile Layout */}
-        <div className="flex md:hidden items-center w-full relative">
-          {/* Left: Cart Icon */}
-          <div className="flex items-center">
-            <CartButton />
-          </div>
-
-          {/* Center: Logo */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <Logo size="sm" />
-          </div>
-
-          {/* Far Right: Profile Icon */}
-          <div className="ml-auto mr-2">
-            <ProfileButton />
-          </div>
-
-          {/* Right Edge: Hamburger Menu */}
+        <div className="flex md:hidden items-center justify-between w-full">
+          {/* Left: Hamburger Menu */}
           <div className="flex-shrink-0">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -69,6 +54,17 @@ export default function Navbar() {
             >
               <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
             </button>
+          </div>
+
+          {/* Center: Logo */}
+          <div className="flex-1 flex justify-center">
+            <Logo size="sm" />
+          </div>
+
+          {/* Right: Cart & Profile Icons */}
+          <div className="flex items-center gap-2">
+            <CartButton />
+            <ProfileButton />
           </div>
         </div>
 
