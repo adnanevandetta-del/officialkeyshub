@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function LoginPage() {
+  const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     email: '',
@@ -17,8 +19,13 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // In a real app, this would authenticate with a backend
-    alert(isLogin ? 'Login successful!' : 'Account created! Please login.');
-    if (!isLogin) setIsLogin(true);
+    if (isLogin) {
+      // Login - redirect to profile
+      router.push('/profile');
+    } else {
+      // Sign up - redirect to profile
+      router.push('/profile');
+    }
   };
 
   return (
