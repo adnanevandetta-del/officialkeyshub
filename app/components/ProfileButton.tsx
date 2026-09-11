@@ -4,20 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 export default function ProfileButton() {
-  const [showMenu, setShowMenu] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // In real app, use auth context
-
-  const handleClick = () => {
-    console.log('Profile button clicked!');
-    setShowMenu(!showMenu);
-  };
-
-  console.log('ProfileButton render, showMenu:', showMenu);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn] = useState(false);
 
   return (
-    <div className="relative">
+    <>
       <button
-        onClick={handleClick}
+        onClick={() => setIsOpen(!isOpen)}
         className="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl"
         title="Account"
         aria-label="Account Menu"
@@ -28,17 +21,16 @@ export default function ProfileButton() {
       </button>
 
       {/* Dropdown Menu */}
-      {showMenu && (
+      {isOpen && (
         <>
-          <div
-            className="fixed inset-0 z-[210]"
-            onClick={() => setShowMenu(false)}
-          ></div>
-          <div className="absolute right-0 mt-2 w-72 md:w-80 bg-white rounded-xl shadow-2xl border-2 border-gray-200 overflow-hidden z-[220]"
-            style={{
-              animation: 'fadeIn 0.2s ease-out'
-            }}
-          >
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 z-[400]"
+            onClick={() => setIsOpen(false)}
+          />
+          
+          {/* Dropdown */}
+          <div className="fixed md:absolute right-4 md:right-0 top-16 md:top-12 w-80 bg-white rounded-xl shadow-2xl border-2 border-gray-200 overflow-hidden z-[401]">
             {isLoggedIn ? (
               <>
                 {/* Logged In Menu */}
@@ -50,7 +42,7 @@ export default function ProfileButton() {
                   <Link
                     href="/profile"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                   >
                     <i className="fas fa-user text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">My Profile</span>
@@ -58,7 +50,7 @@ export default function ProfileButton() {
                   <Link
                     href="/orders"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                   >
                     <i className="fas fa-shopping-bag text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">My Orders</span>
@@ -66,7 +58,7 @@ export default function ProfileButton() {
                   <Link
                     href="/licenses"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                   >
                     <i className="fas fa-key text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">My Licenses</span>
@@ -74,17 +66,13 @@ export default function ProfileButton() {
                   <Link
                     href="/settings"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                   >
                     <i className="fas fa-cog text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">Settings</span>
                   </Link>
                   <div className="border-t border-gray-200 mt-2 pt-2">
                     <button
-                      onClick={() => {
-                        setIsLoggedIn(false);
-                        setShowMenu(false);
-                      }}
                       className="flex items-center gap-3 px-4 py-3 hover:bg-red-50 transition-colors w-full text-left"
                     >
                       <i className="fas fa-sign-out-alt text-red-600 w-5"></i>
@@ -100,7 +88,7 @@ export default function ProfileButton() {
                   <p className="text-gray-700 font-semibold mb-4">Welcome! Sign in to continue</p>
                   <Link
                     href="/login"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                     className="block w-full py-3 bg-blue-600 text-white text-center font-bold rounded-lg hover:bg-blue-700 transition-colors mb-2"
                   >
                     <i className="fas fa-sign-in-alt mr-2"></i>
@@ -108,7 +96,7 @@ export default function ProfileButton() {
                   </Link>
                   <Link
                     href="/register"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                     className="block w-full py-3 bg-gray-100 text-gray-700 text-center font-bold rounded-lg hover:bg-gray-200 transition-colors"
                   >
                     <i className="fas fa-user-plus mr-2"></i>
@@ -119,7 +107,7 @@ export default function ProfileButton() {
                   <Link
                     href="/orders"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                   >
                     <i className="fas fa-box text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">Track Order</span>
@@ -127,7 +115,7 @@ export default function ProfileButton() {
                   <Link
                     href="/faq"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setShowMenu(false)}
+                    onClick={() => setIsOpen(false)}
                   >
                     <i className="fas fa-question-circle text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">Help & FAQ</span>
@@ -138,19 +126,6 @@ export default function ProfileButton() {
           </div>
         </>
       )}
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-    </div>
+    </>
   );
 }

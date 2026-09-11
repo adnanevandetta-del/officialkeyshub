@@ -6,19 +6,12 @@ import CartModal from './CartModal';
 
 export default function CartButton() {
   const { cartCount } = useCart();
-  const [showCart, setShowCart] = useState(false);
-
-  const handleClick = () => {
-    console.log('Cart button clicked!');
-    setShowCart(true);
-  };
-
-  console.log('CartButton render, showCart:', showCart);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <button
-        onClick={handleClick}
+        onClick={() => setIsOpen(true)}
         className="relative w-10 h-10 flex items-center justify-center bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all shadow-lg hover:shadow-xl"
         title="Shopping Cart"
         aria-label="Shopping Cart"
@@ -27,13 +20,13 @@ export default function CartButton() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
         {cartCount > 0 && (
-          <span className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center animate-pulse">
+          <span className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
             {cartCount}
           </span>
         )}
       </button>
 
-      {showCart && <CartModal onClose={() => setShowCart(false)} />}
+      {isOpen && <CartModal onClose={() => setIsOpen(false)} />}
     </>
   );
 }
