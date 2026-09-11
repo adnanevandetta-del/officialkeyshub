@@ -84,9 +84,9 @@ export default function ProductBillboard() {
   const discount = Math.round((1 - parseFloat(currentProduct.price.replace("$", "")) / parseFloat(currentProduct.originalPrice.replace(/[$,]/g, ""))) * 100);
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 z-10">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-5">
+    <section className="relative w-full overflow-hidden bg-transparent md:bg-gradient-to-br md:from-slate-900 md:via-blue-950 md:to-slate-900 z-10">
+      {/* Background Effects - Hidden on Mobile */}
+      <div className="absolute inset-0 opacity-5 hidden md:block">
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
