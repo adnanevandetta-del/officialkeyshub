@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useCart } from './CartContext';
 
 type CategoryId = "all" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
 
@@ -17,9 +18,11 @@ interface Product {
 }
 
 export default function Products() {
+  const { addToCart } = useCart();
   const [activeCategory, setActiveCategory] = useState<CategoryId>("windows");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [showCartPreview, setShowCartPreview] = useState(false);
 
   // Check if URL has #products-all to show all products
   useEffect(() => {
@@ -909,8 +912,15 @@ export default function Products() {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      // Add to cart logic here
-                      alert(`Added ${product.name} to cart!`);
+                      addToCart({
+                        id: product.name.toLowerCase().replace(/\s+/g, '-'),
+                        name: product.name,
+                        price: product.price,
+                        originalPrice: product.originalPrice,
+                        image: product.image
+                      });
+                      setShowCartPreview(true);
+                      setTimeout(() => setShowCartPreview(false), 2000);
                     }}
                     className="w-full py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 shadow-md"
                   >
@@ -1092,6 +1102,23 @@ export default function Products() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Cart Added Notification */}
+      {showCartPreview && (
+        <div className="fixed top-20 right-4 z-[600] animate-slide-in-right">
+          <div className="bg-white rounded-xl shadow-2xl border-2 border-emerald-500 p-4 min-w-[300px]">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                <i className="fas fa-check text-white text-xl"></i>
+              </div>
+              <div className="flex-1">
+                <p className="font-bold text-gray-900">Added to Cart!</p>
+                <p className="text-sm text-gray-600">Item successfully added</p>
               </div>
             </div>
           </div>

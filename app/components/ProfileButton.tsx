@@ -89,18 +89,10 @@ export default function ProfileButton() {
                   <Link
                     href="/login"
                     onClick={() => setIsOpen(false)}
-                    className="block w-full py-3 bg-blue-600 text-white text-center font-bold rounded-lg hover:bg-blue-700 transition-colors mb-2"
+                    className="block w-full py-3 bg-blue-600 text-white text-center font-bold rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     <i className="fas fa-sign-in-alt mr-2"></i>
                     Sign In
-                  </Link>
-                  <Link
-                    href="/register"
-                    onClick={() => setIsOpen(false)}
-                    className="block w-full py-3 bg-gray-100 text-gray-700 text-center font-bold rounded-lg hover:bg-gray-200 transition-colors"
-                  >
-                    <i className="fas fa-user-plus mr-2"></i>
-                    Create Account
                   </Link>
                 </div>
                 <div className="border-t border-gray-200 py-2">
@@ -109,8 +101,8 @@ export default function ProfileButton() {
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    <i className="fas fa-box text-blue-600 w-5"></i>
-                    <span className="text-gray-700 font-semibold">Track Order</span>
+                    <i className="fas fa-history text-blue-600 w-5"></i>
+                    <span className="text-gray-700 font-semibold">Order History</span>
                   </Link>
                   <Link
                     href="/faq"
