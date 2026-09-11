@@ -77,12 +77,66 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="flex items-center gap-3">
-            <Link
-              href="/#products"
-              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
-            >
-              Products
-            </Link>
+            {/* Products Dropdown */}
+            <div className="relative">
+              <button
+                onMouseEnter={() => setIsProductsOpen(true)}
+                onMouseLeave={() => setIsProductsOpen(false)}
+                onClick={() => setIsProductsOpen(!isProductsOpen)}
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-1"
+              >
+                Products
+                <i className={`fas fa-chevron-down text-xs transition-transform ${isProductsOpen ? 'rotate-180' : ''}`}></i>
+              </button>
+
+              {/* Dropdown Menu */}
+              {isProductsOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[300]"
+                  onMouseEnter={() => setIsProductsOpen(true)}
+                  onMouseLeave={() => setIsProductsOpen(false)}
+                >
+                  <div className="bg-gradient-to-r from-slate-900 to-slate-800 p-4 border-b border-gray-200">
+                    <h3 className="text-white font-bold text-lg flex items-center gap-2">
+                      <i className="fas fa-box text-emerald-400"></i>
+                      Product Categories
+                    </h3>
+                    <p className="text-slate-300 text-xs mt-1">Browse our software collection</p>
+                  </div>
+                  <div className="p-3 max-h-96 overflow-y-auto">
+                    <div className="grid grid-cols-2 gap-2">
+                      {productCategories.map((category) => (
+                        <button
+                          key={category.filter}
+                          onClick={() => {
+                            handleCategoryClick(category.filter);
+                            setIsProductsOpen(false);
+                          }}
+                          className="flex items-center gap-2 px-3 py-2.5 bg-gray-50 hover:bg-emerald-50 hover:border-emerald-300 border border-gray-200 rounded-lg transition-all text-left group"
+                        >
+                          <i className={`${category.icon} ${category.color} text-lg group-hover:scale-110 transition-transform`}></i>
+                          <span className="text-gray-900 text-sm font-semibold group-hover:text-emerald-700">{category.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                    <Link
+                      href="/#products"
+                      onClick={() => {
+                        setIsProductsOpen(false);
+                        if (typeof window !== 'undefined') {
+                          sessionStorage.setItem('selectedCategory', 'all');
+                          window.dispatchEvent(new CustomEvent('categoryChanged', { detail: { category: 'all' } }));
+                        }
+                      }}
+                      className="mt-3 w-full py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-center font-bold rounded-lg hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-md flex items-center justify-center gap-2"
+                    >
+                      <i className="fas fa-th"></i>
+                      View All Products
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
             <Link
               href="/partner-program"
               className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-1"
