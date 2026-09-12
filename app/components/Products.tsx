@@ -46,8 +46,52 @@ export default function Products() {
 
       window.addEventListener('categoryChanged', handleCategoryChange as EventListener);
       
+      // Add Product Schema for SEO
+      const productSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "Product",
+            "name": "Windows 11 Pro",
+            "description": "Latest Windows OS with professional features",
+            "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97",
+            "brand": { "@type": "Brand", "name": "Microsoft" },
+            "offers": {
+              "@type": "Offer",
+              "price": "19.99",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": "2027-12-31"
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "Office 2021 Professional Plus",
+            "description": "Complete Office suite with all applications",
+            "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4",
+            "brand": { "@type": "Brand", "name": "Microsoft" },
+            "offers": {
+              "@type": "Offer",
+              "price": "29.99",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "priceValidUntil": "2027-12-31"
+            }
+          }
+        ]
+      };
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(productSchema);
+      document.head.appendChild(script);
+      
       return () => {
         window.removeEventListener('categoryChanged', handleCategoryChange as EventListener);
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
       };
     }
   }, []);

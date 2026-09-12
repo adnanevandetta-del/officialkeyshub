@@ -24,14 +24,14 @@ export default function CartModal({ onClose }: CartModalProps) {
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[500] transition-opacity duration-300"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] transition-opacity duration-300"
         onClick={onClose}
         style={{ animation: 'fadeIn 0.3s ease-out' }}
       />
       
       {/* Modal */}
       <div 
-        className="fixed right-0 top-0 h-full w-full md:w-[480px] bg-white shadow-2xl z-[501] overflow-hidden flex flex-col"
+        className="fixed right-0 top-0 h-full w-full md:w-[480px] bg-white shadow-2xl z-[9999] overflow-hidden flex flex-col"
         style={{ animation: 'slideInRight 0.3s ease-out' }}
       >
         {/* Header */}

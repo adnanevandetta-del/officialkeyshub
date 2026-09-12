@@ -226,3 +226,10 @@ body {
     will-change: transform;
   }
 }
+
+/* Billboard Carousel - Desktop radius adjustment */
+@media (min-width: 768px) {
+  .carousel-item {
+    transform: rotateY(var(--angle)) translateZ(320px) scale(var(--scale)) !important;
+  }
+}
