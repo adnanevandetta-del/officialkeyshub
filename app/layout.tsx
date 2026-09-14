@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Buy Cheap Windows 11 & Office 2021 Keys | Official Keys Hub - 90% Off",
   description: "Buy genuine Windows 11 Pro, Office 2021, and Microsoft software keys up to 90% off. Instant delivery, lifetime license, 30-day money-back guarantee. Trusted by 50,000+ customers. From $12.99.",
+  other: {
+    'version': 'v3.0.1-cache-bust',
+  },
   viewport: {
     width: "device-width",
     initialScale: 1,
