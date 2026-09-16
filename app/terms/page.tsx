@@ -20,22 +20,22 @@ export default function TermsOfService() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
               <p className="text-gray-700 mb-4">
-                By accessing and using Best IPTV SE ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these Terms of Service, please do not use our service.
+                By accessing and using Official Keys Hub ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these Terms of Service, please do not use our website or purchase our products.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Service Description</h2>
               <p className="text-gray-700 mb-4">
-                Best IPTV SE provides IPTV streaming services that allow subscribers to access television content via internet protocol. Our service includes:
+                Official Keys Hub is an independent reseller of genuine Microsoft software licenses. We provide product keys and digital downloads, including:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Access to 30,000+ live TV channels</li>
-                <li>190,000+ movies and TV shows on demand</li>
-                <li>4K, FHD, and HD streaming quality</li>
-                <li>Electronic Program Guide (EPG)</li>
-                <li>Catch-up TV service</li>
-                <li>Multi-device support</li>
+                <li>Windows 11 and Windows 10 product keys (Home, Pro, Enterprise)</li>
+                <li>Microsoft Office 2021, 2019, and Microsoft 365 licenses</li>
+                <li>Windows Server, SQL Server, Visio, and Project licenses</li>
+                <li>Visual Studio and third-party security software keys</li>
+                <li>Instant email delivery of your license key after purchase</li>
+                <li>Activation support for all products we sell</li>
               </ul>
             </section>
 
@@ -43,32 +43,32 @@ export default function TermsOfService() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">3. User Obligations</h2>
               <p className="text-gray-700 mb-4">By using our service, you agree to:</p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Use the service for personal, non-commercial purposes only</li>
-                <li>Not share your account credentials with third parties</li>
-                <li>Not resell or redistribute our service</li>
+                <li>Use each license key in accordance with Microsoft's applicable licensing terms</li>
+                <li>Provide accurate contact and payment information at checkout</li>
+                <li>Not attempt to fraudulently reproduce, duplicate, or resell purchased keys as your own</li>
                 <li>Comply with all applicable laws and regulations</li>
-                <li>Not use the service to engage in any illegal activities</li>
-                <li>Maintain the confidentiality of your login information</li>
+                <li>Not use our website to engage in any illegal or fraudulent activities</li>
+                <li>Keep the license keys delivered to you confidential</li>
               </ul>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Account Registration and Payment</h2>
               <p className="text-gray-700 mb-4">
-                To access our service, you must create an account and pay the applicable subscription fee. Payment terms:
+                To purchase from us, you provide your order and payment details at checkout. Payment terms:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>One-time payment for the selected subscription period</li>
+                <li>One-time payment per license purchased</li>
                 <li>No automatic renewal or recurring charges</li>
-                <li>All prices are in Swedish Krona (SEK)</li>
-                <li>Subscription activates immediately upon payment confirmation</li>
+                <li>All prices are in US Dollars (USD)</li>
+                <li>Your license key is delivered by email once payment is confirmed</li>
               </ul>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Service Availability</h2>
               <p className="text-gray-700 mb-4">
-                While we strive to maintain 99.9% uptime, we do not guarantee uninterrupted service. The service may be temporarily unavailable due to:
+                While we strive to keep our website and order delivery available at all times, we do not guarantee uninterrupted access. Our website may be temporarily unavailable due to:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li>Scheduled maintenance</li>
@@ -81,7 +81,7 @@ export default function TermsOfService() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Content Disclaimer</h2>
               <p className="text-gray-700 mb-4">
-                Best IPTV SE acts as a service provider and does not create, own, or control the content streamed through our platform. We are not responsible for the accuracy, quality, or legality of third-party content. Users are responsible for ensuring their use of the service complies with local laws and regulations.
+                Official Keys Hub is an independent reseller and is not affiliated with, endorsed by, or sponsored by Microsoft Corporation. Windows, Office, and other product names are trademarks of their respective owners and are used for identification purposes only. We source genuine keys through legitimate channels; customers are responsible for using each license in accordance with the software publisher's terms.
               </p>
             </section>
 
@@ -92,9 +92,9 @@ export default function TermsOfService() {
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li>You violate these Terms of Service</li>
-                <li>You engage in fraudulent activities</li>
-                <li>You share your account with unauthorized users</li>
-                <li>You attempt to resell our service</li>
+                <li>You engage in fraudulent activities or payment fraud</li>
+                <li>You initiate abusive or fraudulent chargebacks</li>
+                <li>You attempt to fraudulently duplicate or resell purchased keys</li>
                 <li>We are required to do so by law</li>
               </ul>
             </section>
@@ -102,14 +102,14 @@ export default function TermsOfService() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Refund Policy</h2>
               <p className="text-gray-700 mb-4">
-                We offer a 14-day money-back guarantee from the date of purchase. For full refund policy details, please see our <a href="/refund-policy" className="text-[#4ade80] hover:underline">Refund Policy</a> page.
+                We offer a 30-day money-back guarantee on eligible orders from the date of purchase. For full refund policy details, please see our <a href="/refund-policy" className="text-[#4ade80] hover:underline">Refund Policy</a> page.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Limitation of Liability</h2>
               <p className="text-gray-700 mb-4">
-                Best IPTV SE shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the service. Our total liability shall not exceed the amount you paid for the service.
+                Official Keys Hub shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our products or website. Our total liability shall not exceed the amount you paid for the product in question.
               </p>
             </section>
 
@@ -123,7 +123,7 @@ export default function TermsOfService() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Governing Law</h2>
               <p className="text-gray-700 mb-4">
-                These Terms of Service shall be governed by and construed in accordance with the laws of Sweden, without regard to its conflict of law provisions.
+                These Terms of Service shall be governed by and construed in accordance with the laws of the United States, without regard to its conflict of law provisions.
               </p>
             </section>
 

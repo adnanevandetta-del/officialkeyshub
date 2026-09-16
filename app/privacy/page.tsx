@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
               <p className="text-gray-700 mb-4">
-                Best IPTV SE ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our IPTV service.
+                Official Keys Hub ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and purchase Microsoft software licenses from us.
               </p>
               <p className="text-gray-700 mb-4">
                 By using our service, you agree to the collection and use of information in accordance with this policy.
@@ -44,8 +44,8 @@ export default function PrivacyPolicy() {
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li>Device information (type, operating system, unique device identifiers)</li>
                 <li>IP address and general location</li>
-                <li>Streaming activity and viewing preferences</li>
-                <li>Service usage patterns</li>
+                <li>Pages viewed and products browsed</li>
+                <li>Website usage patterns</li>
                 <li>Technical data for service optimization</li>
               </ul>
             </section>
@@ -54,10 +54,10 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">3. How We Use Your Information</h2>
               <p className="text-gray-700 mb-4">We use your information to:</p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Provide and maintain our IPTV service</li>
-                <li>Process payments and manage subscriptions</li>
-                <li>Communicate with you about service updates and support</li>
-                <li>Improve and optimize service performance</li>
+                <li>Process your orders and deliver your license keys</li>
+                <li>Process payments and manage your account</li>
+                <li>Communicate with you about your orders and provide support</li>
+                <li>Improve and optimize our website and services</li>
                 <li>Prevent fraud and unauthorized access</li>
                 <li>Comply with legal obligations</li>
                 <li>Send promotional communications (with your consent)</li>
@@ -65,15 +65,15 @@ export default function PrivacyPolicy() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. VPN and Privacy Protection</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Payment Information</h2>
               <p className="text-gray-700 mb-4">
-                Our service includes built-in VPN protection to enhance your privacy and security:
+                We take the security of your payment details seriously:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>We do not log your streaming activity when using our VPN</li>
-                <li>Your IP address is masked during streaming sessions</li>
-                <li>We do not track or store your browsing history</li>
-                <li>All connections are encrypted for maximum privacy</li>
+                <li>Payments are handled by trusted third-party processors (such as PayPal)</li>
+                <li>We do not store your full card number, CVV, or banking credentials on our servers</li>
+                <li>All transactions are encrypted using industry-standard SSL/TLS</li>
+                <li>We only retain the order details needed to deliver your keys and provide support</li>
               </ul>
             </section>
 
@@ -118,14 +118,14 @@ export default function PrivacyPolicy() {
                 <li>Resolve disputes and enforce agreements</li>
               </ul>
               <p className="text-gray-700 mb-4">
-                When your subscription ends, we may retain certain information for legal and business purposes, but will delete or anonymize it when no longer needed.
+                When you close your account, we may retain certain information for legal and business purposes, but will delete or anonymize it when no longer needed.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Your Privacy Rights</h2>
               <p className="text-gray-700 mb-4">
-                Under GDPR and Swedish data protection laws, you have the right to:
+                Under GDPR and other applicable data protection laws, you have the right to:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li><strong>Access:</strong> Request a copy of your personal data</li>
@@ -167,7 +167,7 @@ export default function PrivacyPolicy() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">11. International Data Transfers</h2>
               <p className="text-gray-700 mb-4">
-                Your information may be transferred to and maintained on servers located outside of Sweden. We ensure appropriate safeguards are in place to protect your data in accordance with GDPR requirements.
+                Your information may be transferred to and maintained on servers located outside of your country of residence. We ensure appropriate safeguards are in place to protect your data in accordance with applicable data protection requirements.
               </p>
             </section>
 

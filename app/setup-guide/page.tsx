@@ -1,16 +1,20 @@
 import Navbar from "../components/Navbar";
-import Features from "../components/Features";
+import SetupGuide from "../components/SetupGuide";
 import Footer from "../components/Footer";
+import WhatsAppButton from "../components/WhatsAppButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IPTV Setup Guide | Complete Installation Instructions for All Devices",
-  description: "Step-by-step IPTV setup guide for Firestick, Android TV, Smart TV, iPhone, Windows PC, and more. Easy 5-minute installation with 24/7 support.",
-  keywords: "iptv setup, iptv installation, firestick iptv, iptv smarters pro, iptv guide, how to install iptv",
+  title: "Product Key Activation Guide | Windows 11, Office 2021 & Server Setup",
+  description:
+    "Step-by-step activation guide for your Microsoft product keys. Activate Windows 11, Windows 10, Office 2021, and Windows Server in under 5 minutes with 24/7 support.",
+  keywords:
+    "windows 11 activation, office 2021 activation, how to activate windows key, product key setup, windows server activation, microsoft key activation guide",
   openGraph: {
-    title: "IPTV Setup Guide | Installation Instructions",
-    description: "Complete setup guide for IPTV on all devices. Easy 5-minute installation with step-by-step instructions.",
-    url: "https://iptvv.se/setup-guide",
+    title: "Microsoft Product Key Activation Guide | Official Keys Hub",
+    description:
+      "Complete activation guide for Windows and Office product keys. Easy 5-minute setup with step-by-step instructions.",
+    url: "https://officialkeyshub.com/setup-guide",
     type: "website",
   },
 };
@@ -19,8 +23,9 @@ export default function SetupGuidePage() {
   return (
     <>
       <Navbar />
-      <Features />
+      <SetupGuide />
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

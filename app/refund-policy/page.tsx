@@ -18,60 +18,60 @@ export default function RefundPolicy() {
           {/* Content */}
           <div className="prose prose-lg max-w-none">
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">14-Day Money-Back Guarantee</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">30-Day Money-Back Guarantee</h2>
               <p className="text-gray-700 mb-4">
-                At Best IPTV SE, we stand behind the quality of our service. We offer a 14-day money-back guarantee to ensure your complete satisfaction. If you're not happy with our service for any reason, you can request a full refund within 14 days of your purchase.
+                At Official Keys Hub, we stand behind the quality of every license we sell. We offer a
+                30-day money-back guarantee to ensure your complete satisfaction. If your product key
+                does not work and our support team cannot resolve the issue, you can request a full
+                refund within 30 days of your purchase.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Eligibility for Refunds</h2>
-              <p className="text-gray-700 mb-4">
-                You are eligible for a full refund if:
-              </p>
+              <p className="text-gray-700 mb-4">You are eligible for a full refund if:</p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>You request a refund within 14 days of your initial purchase date</li>
+                <li>You request a refund within 30 days of your purchase date</li>
+                <li>Your product key is faulty, invalid, or already used, and cannot be replaced</li>
                 <li>You have not violated our Terms of Service</li>
-                <li>You provide a valid reason for the refund request</li>
-                <li>Your account has not been suspended or terminated for policy violations</li>
+                <li>You allow our support team a reasonable opportunity to troubleshoot the activation</li>
               </ul>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Valid Reasons for Refunds</h2>
-              <p className="text-gray-700 mb-4">
-                We process refund requests for the following reasons:
-              </p>
+              <p className="text-gray-700 mb-4">We process refund requests for the following reasons:</p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li><strong>Technical Issues:</strong> Persistent streaming problems that our support team cannot resolve</li>
-                <li><strong>Service Quality:</strong> Significant quality issues with channels or content</li>
-                <li><strong>Compatibility Problems:</strong> Service doesn't work on your device despite meeting requirements</li>
-                <li><strong>Dissatisfaction:</strong> The service doesn't meet your expectations</li>
-                <li><strong>Accidental Purchase:</strong> You purchased the wrong subscription plan</li>
+                <li><strong>Invalid Key:</strong> The product key does not activate and cannot be replaced</li>
+                <li><strong>Wrong Product:</strong> You were sent a different product than the one ordered</li>
+                <li><strong>Activation Issues:</strong> Persistent activation problems our support team cannot resolve</li>
+                <li><strong>Non-Delivery:</strong> You did not receive your key and we are unable to deliver it</li>
+                <li><strong>Accidental Purchase:</strong> You purchased the wrong product and have not yet used the key</li>
               </ul>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Non-Refundable Situations</h2>
-              <p className="text-gray-700 mb-4">
-                Refunds will NOT be issued in the following cases:
-              </p>
+              <p className="text-gray-700 mb-4">Refunds will NOT be issued in the following cases:</p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Refund request made after 14 days from purchase date</li>
-                <li>Account suspension or termination due to Terms of Service violations</li>
-                <li>Account sharing or reselling detected</li>
-                <li>Fraudulent activity or chargeback abuse</li>
-                <li>Issues caused by your internet service provider or network</li>
-                <li>Lack of usage or "changed my mind" after 14 days</li>
-                <li>Content availability changes (third-party content)</li>
+                <li>Refund request made more than 30 days after the purchase date</li>
+                <li>The product key has been successfully activated and is working as described</li>
+                <li>"Changed my mind" after a working key has already been redeemed or activated</li>
+                <li>Buyer error, such as installing the wrong edition despite a valid, working key</li>
+                <li>Fraudulent activity, key duplication, or chargeback abuse</li>
+                <li>Failure to complete reasonable troubleshooting steps with our support team</li>
               </ul>
+              <p className="text-gray-700 mb-4">
+                Because product keys are digital goods, a key that has been revealed and successfully
+                activated is considered "used" and is generally non-refundable — the same way opened
+                software cannot be returned. This does not affect your right to a replacement or refund
+                if the key is faulty.
+              </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">4. How to Request a Refund</h2>
-              <p className="text-gray-700 mb-4">
-                To request a refund, follow these steps:
-              </p>
+              <p className="text-gray-700 mb-4">To request a refund, follow these steps:</p>
               <ol className="list-decimal pl-6 text-gray-700 mb-4">
                 <li className="mb-2">
                   <strong>Contact Support:</strong> Reach out to our support team via:
@@ -83,26 +83,26 @@ export default function RefundPolicy() {
                 <li className="mb-2">
                   <strong>Provide Information:</strong> Include the following details:
                   <ul className="list-disc pl-6 mt-2">
-                    <li>Your account email address</li>
+                    <li>Your order email address</li>
                     <li>Order/transaction ID</li>
-                    <li>Reason for refund request</li>
-                    <li>Any relevant screenshots or details</li>
+                    <li>The product purchased and the activation error you received</li>
+                    <li>Any relevant screenshots of the error</li>
                   </ul>
                 </li>
                 <li className="mb-2">
-                  <strong>Troubleshooting Attempt:</strong> Our team may ask you to try basic troubleshooting steps to resolve technical issues before processing the refund
+                  <strong>Troubleshooting Attempt:</strong> Our team will first help you activate the key
+                  or provide a replacement key before processing a refund
                 </li>
                 <li className="mb-2">
-                  <strong>Refund Processing:</strong> If approved, your refund will be processed within 3-5 business days
+                  <strong>Refund Processing:</strong> If a replacement is not possible and your request is
+                  approved, your refund will be processed within 3-5 business days
                 </li>
               </ol>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Refund Processing Time</h2>
-              <p className="text-gray-700 mb-4">
-                Once your refund request is approved:
-              </p>
+              <p className="text-gray-700 mb-4">Once your refund request is approved:</p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li><strong>Review Time:</strong> 1-2 business days to review your request</li>
                 <li><strong>Processing Time:</strong> 3-5 business days to process the refund</li>
@@ -119,9 +119,9 @@ export default function RefundPolicy() {
                 Refunds are issued using the same payment method used for the original purchase:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Credit/Debit Card refunds: Returned to the original card</li>
                 <li>PayPal: Returned to your PayPal account</li>
-                <li>Bank Transfer: Requires your bank account details</li>
+                <li>Credit/Debit Card (via PayPal): Returned to the original card</li>
+                <li>Cryptocurrency (USDT): Refunded in USDT to a wallet you provide</li>
               </ul>
               <p className="text-gray-700 mb-4">
                 We cannot process refunds to different payment methods or accounts than the original purchase.
@@ -129,89 +129,61 @@ export default function RefundPolicy() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Partial Refunds</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Replacement Keys</h2>
               <p className="text-gray-700 mb-4">
-                We do not offer partial refunds or pro-rated refunds for:
+                In most cases, a faulty key can be resolved instantly with a free replacement:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Unused portion of your subscription</li>
-                <li>Early cancellation after 14 days</li>
-                <li>Service downgrades or plan changes</li>
-              </ul>
-              <p className="text-gray-700 mb-4">
-                All refunds are for the full subscription amount paid, and are only available within the 14-day guarantee period.
-              </p>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Account Access After Refund</h2>
-              <p className="text-gray-700 mb-4">
-                Once a refund is issued:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Your account will be immediately deactivated</li>
-                <li>You will lose access to all service features</li>
-                <li>Your login credentials will no longer work</li>
-                <li>Any saved preferences or settings will be deleted</li>
+                <li>If a key fails to activate, we will issue a working replacement at no cost</li>
+                <li>Replacement is offered before a monetary refund whenever possible</li>
+                <li>You may accept a refund instead of a replacement if you prefer</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Chargebacks and Disputes</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Chargebacks and Disputes</h2>
               <p className="text-gray-700 mb-4">
                 We encourage you to contact us directly before filing a chargeback with your bank or payment provider:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Chargebacks may result in immediate account termination</li>
+                <li>Most issues can be resolved instantly with a replacement key</li>
                 <li>We will work with you to resolve any billing disputes</li>
-                <li>Fraudulent chargebacks may result in legal action</li>
-                <li>Future purchases may be restricted after a chargeback</li>
+                <li>Fraudulent chargebacks on delivered, working keys may result in legal action</li>
+                <li>Future purchases may be restricted after a fraudulent chargeback</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Free Trials and Refunds</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Repeat Purchases</h2>
               <p className="text-gray-700 mb-4">
-                If you used a free trial before purchasing:
+                Each order is treated independently:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Free trials are not eligible for refunds (no payment made)</li>
-                <li>Paid subscriptions after free trials follow the standard 14-day refund policy</li>
-                <li>Trial period is not included in the 14-day refund window</li>
+                <li>Every new purchase has its own 30-day money-back guarantee window</li>
+                <li>Repeat customers are eligible for support and refunds on each new order</li>
+                <li>Abuse of the refund policy may result in future refunds being denied</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Subscription Renewals</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Support Before Refund</h2>
               <p className="text-gray-700 mb-4">
-                Our subscriptions do not auto-renew, so there are no accidental renewals. However:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 mb-4">
-                <li>Each new subscription purchase has its own 14-day refund window</li>
-                <li>Repeat customers are eligible for refunds on each new purchase</li>
-                <li>Abuse of refund policy may result in future refunds being denied</li>
-              </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Technical Support Before Refund</h2>
-              <p className="text-gray-700 mb-4">
-                Before requesting a refund for technical issues, we recommend:
+                Before requesting a refund for an activation issue, we recommend:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li>Contacting our 24/7 support team</li>
-                <li>Following our setup guides for your device</li>
-                <li>Trying the recommended stream format (MPEGTS)</li>
-                <li>Checking your internet connection speed (minimum 10 Mbps)</li>
-                <li>Testing on different devices if available</li>
+                <li>Following the steps in our <a href="/setup-guide" className="text-[#4ade80] hover:underline">Setup Guide</a> for your product</li>
+                <li>Confirming your PC is connected to the internet during activation</li>
+                <li>Making sure you are activating the correct edition (e.g. Windows 11 Pro vs Home)</li>
+                <li>Trying phone activation (slui.exe 4) if online activation fails</li>
               </ul>
               <p className="text-gray-700 mb-4">
-                Many issues can be resolved quickly with proper setup and configuration.
+                Most activation issues are resolved in minutes with the right steps or a replacement key.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">13. Questions About Refunds</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Questions About Refunds</h2>
               <p className="text-gray-700 mb-4">
                 If you have questions about our refund policy or need assistance with a refund request:
               </p>
@@ -237,7 +209,9 @@ export default function RefundPolicy() {
                   Our Commitment
                 </h3>
                 <p className="text-gray-700 mb-0">
-                  We are committed to providing excellent service and customer satisfaction. Our 14-day money-back guarantee ensures you can try our service risk-free. We will always process legitimate refund requests fairly and promptly.
+                  We are committed to providing genuine licenses and excellent customer support. Our
+                  30-day money-back guarantee lets you buy with confidence. We will always process
+                  legitimate refund and replacement requests fairly and promptly.
                 </p>
               </div>
             </section>

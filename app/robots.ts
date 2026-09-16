@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://iptvv.se';
+  const baseUrl = 'https://officialkeyshub.com';
   
   return {
     rules: [
