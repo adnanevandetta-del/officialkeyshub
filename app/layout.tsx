@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
@@ -6,18 +6,17 @@ import { CartProvider } from "./components/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#05060b",
+};
+
 export const metadata: Metadata = {
   title: "Buy Cheap Windows 11 & Office 2021 Keys | Official Keys Hub - 90% Off",
   description: "Buy genuine Windows 11 Pro, Office 2021, and Microsoft software keys up to 90% off. Instant delivery, lifetime license, 30-day money-back guarantee. Trusted by 50,000+ customers. From $12.99.",
-  other: {
-    'version': 'v3.0.1-cache-bust',
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
   keywords: [
     "cheap windows 11 pro key",
     "buy windows 11 license",
@@ -68,9 +67,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
 };
 
