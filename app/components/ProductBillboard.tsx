@@ -27,7 +27,7 @@ export default function ProductBillboard() {
       tagline: "Professional Edition",
       price: "$19.99",
       originalPrice: "$199.99",
-      image: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&h=600&fit=crop&q=80",
+      image: "/products/windows.svg",
       badge: "Best Seller",
       icon: "fab fa-windows",
       features: ["Remote Desktop", "BitLocker", "Hyper-V"],
@@ -39,7 +39,7 @@ export default function ProductBillboard() {
       tagline: "Complete Productivity Suite",
       price: "$29.99",
       originalPrice: "$439.99",
-      image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=600&fit=crop&q=80",
+      image: "/products/office.svg",
       badge: "Most Popular",
       icon: "fas fa-file-word",
       features: ["Word", "Excel", "PowerPoint"],
@@ -51,7 +51,7 @@ export default function ProductBillboard() {
       tagline: "Cloud-Powered",
       price: "$39.99",
       originalPrice: "$99.99",
-      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80",
+      image: "/products/office365.svg",
       badge: "Featured",
       icon: "fas fa-cloud",
       features: ["1TB OneDrive", "5 Devices", "Always Updated"],
@@ -63,7 +63,7 @@ export default function ProductBillboard() {
       tagline: "Enterprise Platform",
       price: "$49.99",
       originalPrice: "$1,069.00",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&q=80",
+      image: "/products/server.svg",
       badge: "Enterprise",
       icon: "fas fa-server",
       features: ["Hyper-V", "Advanced Security", "Azure"],
@@ -84,11 +84,11 @@ export default function ProductBillboard() {
   const discount = Math.round((1 - parseFloat(currentProduct.price.replace("$", "")) / parseFloat(currentProduct.originalPrice.replace(/[$,]/g, ""))) * 100);
 
   return (
-    <section className="relative w-full overflow-hidden bg-transparent md:bg-gradient-to-br md:from-slate-900 md:via-blue-950 md:to-slate-900 z-10">
-      {/* Background Effects - Hidden on Mobile */}
-      <div className="absolute inset-0 opacity-5 hidden md:block">
+    <section className="relative w-full overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60 z-10">
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-[0.06] block">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(52, 211, 153, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(52, 211, 153, 0.3) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
         }}></div>
       </div>
@@ -207,7 +207,7 @@ export default function ProductBillboard() {
                             src={product.image}
                             alt={product.name}
                             fill
-                            className="object-cover transition-transform duration-700"
+                            className="object-cover object-top transition-transform duration-700"
                             style={{
                               transform: isActive ? 'scale(1.05)' : 'scale(1)',
                             }}
@@ -283,8 +283,8 @@ export default function ProductBillboard() {
 
       {/* Payment Modal */}
       {showModal && selectedProduct && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowModal(false)}>
-          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowModal(false)}>
+          <div className="glass-strong rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header with Image */}
             <div className="relative">
               {/* Product Image */}
@@ -334,20 +334,20 @@ export default function ProductBillboard() {
             <div className="p-6">
               {/* Product Description */}
               <div className="mb-6">
-                <p className="text-gray-700 text-lg">{selectedProduct.description}</p>
+                <p className="text-slate-300 text-lg">{selectedProduct.description}</p>
               </div>
 
               {/* Price */}
-              <div className="mb-6 bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl p-6 border-2 border-emerald-200">
+              <div className="mb-6 bg-emerald-500/10 rounded-xl p-6 border border-emerald-400/30">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div>
-                    <p className="text-gray-600 text-sm font-semibold mb-1">Special Price</p>
+                    <p className="text-slate-400 text-sm font-semibold mb-1">Special Price</p>
                     <div className="flex items-baseline gap-3">
-                      <span className="text-4xl md:text-5xl font-black text-emerald-600">{selectedProduct.price}</span>
-                      <span className="text-2xl text-gray-400 line-through">{selectedProduct.originalPrice}</span>
+                      <span className="text-4xl md:text-5xl font-black gradient-text">{selectedProduct.price}</span>
+                      <span className="text-2xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
                     </div>
-                    <p className="text-gray-600 text-sm mt-2">
-                      <i className="fas fa-check-circle text-emerald-600 mr-1"></i>
+                    <p className="text-slate-400 text-sm mt-2">
+                      <i className="fas fa-check-circle text-emerald-400 mr-1"></i>
                       One-time payment • Lifetime access
                     </p>
                   </div>
@@ -364,15 +364,15 @@ export default function ProductBillboard() {
 
               {/* Features Grid */}
               <div className="mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <i className="fas fa-star text-yellow-500"></i>
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <i className="fas fa-star text-yellow-400"></i>
                   What's Included
                 </h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   {selectedProduct.productFeatures.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-emerald-500 transition-colors">
-                      <i className="fas fa-check-circle text-emerald-600 text-xl mt-0.5"></i>
-                      <span className="text-gray-800 font-medium">{feature}</span>
+                    <div key={idx} className="flex items-start gap-3 bg-white/[0.04] p-4 rounded-lg border border-white/10 hover:border-emerald-400/40 transition-colors">
+                      <i className="fas fa-check-circle text-emerald-400 text-xl mt-0.5"></i>
+                      <span className="text-slate-200 font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -381,49 +381,49 @@ export default function ProductBillboard() {
               {/* Quick Features */}
               <div className="mb-6 grid grid-cols-2 md:grid-cols-3 gap-4">
                 {selectedProduct.features.map((feature, idx) => (
-                  <div key={idx} className="bg-blue-50 p-3 rounded-lg text-center border border-blue-200">
-                    <p className="text-blue-900 font-semibold text-sm">{feature}</p>
+                  <div key={idx} className="bg-blue-500/10 p-3 rounded-lg text-center border border-blue-400/30">
+                    <p className="text-blue-200 font-semibold text-sm">{feature}</p>
                   </div>
                 ))}
               </div>
 
               {/* Payment Methods */}
               <div className="space-y-3">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center flex items-center justify-center gap-2">
-                  <i className="fas fa-credit-card text-blue-600"></i>
+                <h3 className="text-xl font-bold text-white mb-4 text-center flex items-center justify-center gap-2">
+                  <i className="fas fa-credit-card text-cyan-400"></i>
                   Choose Your Payment Method
                 </h3>
                 
                 <a
                   href={`mailto:digitalkeyhubllc@gmail.com?subject=PayPal Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via PayPal.%0D%0A%0D%0AProduct: ${selectedProduct.name}%0D%0APrice: ${selectedProduct.price}`}
-                  className="flex items-center justify-between p-5 bg-white border-2 border-blue-500 rounded-xl hover:bg-blue-50 transition-all shadow-md hover:shadow-lg"
+                  className="flex items-center justify-between p-5 bg-white/[0.04] border border-blue-400/40 rounded-xl hover:bg-blue-500/10 transition-all"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <i className="fab fa-paypal text-blue-600 text-2xl"></i>
+                    <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                      <i className="fab fa-paypal text-blue-400 text-2xl"></i>
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900">PayPal</p>
-                      <p className="text-gray-600 text-sm">Secure & Fast Payment</p>
+                      <p className="font-bold text-white">PayPal</p>
+                      <p className="text-slate-400 text-sm">Secure & Fast Payment</p>
                     </div>
                   </div>
-                  <i className="fas fa-arrow-right text-blue-500 text-xl"></i>
+                  <i className="fas fa-arrow-right text-blue-400 text-xl"></i>
                 </a>
 
                 <a
                   href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via USDT.%0D%0A%0D%0AProduct: ${selectedProduct.name}%0D%0APrice: ${selectedProduct.price}`}
-                  className="flex items-center justify-between p-5 bg-white border-2 border-green-500 rounded-xl hover:bg-green-50 transition-all shadow-md hover:shadow-lg"
+                  className="flex items-center justify-between p-5 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                      <i className="fab fa-bitcoin text-green-600 text-2xl"></i>
+                    <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center">
+                      <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900">USDT (Crypto)</p>
-                      <p className="text-gray-600 text-sm">Cryptocurrency Payment</p>
+                      <p className="font-bold text-white">USDT (Crypto)</p>
+                      <p className="text-slate-400 text-sm">Cryptocurrency Payment</p>
                     </div>
                   </div>
-                  <i className="fas fa-arrow-right text-green-500 text-xl"></i>
+                  <i className="fas fa-arrow-right text-green-400 text-xl"></i>
                 </a>
 
                 <a
@@ -446,21 +446,21 @@ export default function ProductBillboard() {
               </div>
 
               {/* Trust Badges */}
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-6 py-4 border-t border-gray-200">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <i className="fas fa-shield-alt text-emerald-600 text-xl"></i>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-6 py-4 border-t border-white/10">
+                <div className="flex items-center gap-2 text-slate-300">
+                  <i className="fas fa-shield-alt text-emerald-400 text-xl"></i>
                   <span className="text-sm font-semibold">100% Secure</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <i className="fas fa-bolt text-yellow-500 text-xl"></i>
+                <div className="flex items-center gap-2 text-slate-300">
+                  <i className="fas fa-bolt text-yellow-400 text-xl"></i>
                   <span className="text-sm font-semibold">Instant Delivery</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <i className="fas fa-headset text-blue-600 text-xl"></i>
+                <div className="flex items-center gap-2 text-slate-300">
+                  <i className="fas fa-headset text-cyan-400 text-xl"></i>
                   <span className="text-sm font-semibold">24/7 Support</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <i className="fas fa-undo text-green-600 text-xl"></i>
+                <div className="flex items-center gap-2 text-slate-300">
+                  <i className="fas fa-undo text-green-400 text-xl"></i>
                   <span className="text-sm font-semibold">Money Back</span>
                 </div>
               </div>

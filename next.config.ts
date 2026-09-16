@@ -122,9 +122,6 @@ const nextConfig: NextConfig = {
 
   // React Strict Mode
   reactStrictMode: true,
-
-  // SWC Minification
-  swcMinify: true,
 };
 
 export default nextConfig;

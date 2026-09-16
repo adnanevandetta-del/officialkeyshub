@@ -42,37 +42,22 @@ html, body {
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-}
-
-/* Fixed futuristic background: deep space + aurora + grid */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(60rem 60rem at 15% -10%, rgba(52, 211, 153, 0.14), transparent 60%),
-    radial-gradient(50rem 50rem at 100% 0%, rgba(34, 211, 238, 0.12), transparent 55%),
-    radial-gradient(45rem 45rem at 50% 120%, rgba(59, 130, 246, 0.12), transparent 60%),
-    var(--bg);
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
+  /* Futuristic backdrop: deep space with aurora glow near the top,
+     plus a faint tech grid. Applied directly on <body> (not a fixed
+     pseudo-element) so it paints reliably across the whole page. */
+  background-color: var(--bg);
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 46px 46px;
-  mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
-  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+    radial-gradient(55rem 45rem at 12% 2%, rgba(52, 211, 153, 0.16), transparent 55%),
+    radial-gradient(50rem 40rem at 95% 0%, rgba(34, 211, 238, 0.14), transparent 55%),
+    radial-gradient(45rem 45rem at 50% 38%, rgba(59, 130, 246, 0.08), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 46px 46px, 46px 46px;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
 }
 
 h1, h2, h3, h4, .font-display {
@@ -99,17 +84,14 @@ h1, h2, h3, h4, .font-display {
     color: transparent;
   }
 
-  /* Glassmorphism surfaces */
+  /* Elevated surfaces — solid semi-opaque so they read on the dark
+     canvas and don't depend on backdrop-filter compositing. */
   .glass {
-    background: var(--surface);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: linear-gradient(180deg, rgba(30, 38, 56, 0.72), rgba(16, 21, 33, 0.72));
     border: 1px solid var(--border);
   }
   .glass-strong {
-    background: rgba(10, 13, 22, 0.82);
-    backdrop-filter: blur(18px) saturate(1.2);
-    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    background: linear-gradient(180deg, rgba(18, 23, 36, 0.96), rgba(10, 13, 21, 0.97));
     border: 1px solid var(--border);
   }
 

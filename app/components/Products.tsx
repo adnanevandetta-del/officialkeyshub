@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useCart } from './CartContext';
+import { getProductImage } from '../lib/productImage';
 
 type CategoryId = "all" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
 
@@ -849,22 +850,33 @@ export default function Products() {
   };
 
   return (
-    <section className="pt-8 pb-16 bg-white" id="products">
+    <section className="pt-16 pb-20 relative" id="products">
       <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="text-emerald-300 text-xs font-bold uppercase tracking-widest">Genuine Licenses</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black mb-3">
+            Explore Our <span className="gradient-text">Software Store</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Authentic Microsoft product keys with instant delivery, lifetime activation, and 24/7 support.
+          </p>
+        </div>
+
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 ${
+              className={`px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all transform hover:scale-105 ${
                 activeCategory === category.id
-                  ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg"
-                  : "bg-white text-gray-700 border-2 border-gray-200 hover:border-orange-500"
+                  ? "btn-primary"
+                  : "glass text-slate-300 hover:text-white glow-hover"
               }`}
-              style={activeCategory === category.id ? {
-                boxShadow: '0 0 20px rgba(249, 115, 22, 0.6), 0 0 40px rgba(249, 115, 22, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3)'
-              } : {}}
             >
               <i className={`${category.icon} mr-2`}></i>
               {category.name}
@@ -880,10 +892,10 @@ export default function Products() {
           ).map((product, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 flex flex-col ${
+              className={`glass rounded-2xl overflow-hidden transition-all duration-300 flex flex-col relative glow-hover ${
                 product.popular
-                  ? "border-emerald-500 relative transform hover:scale-105"
-                  : "border-gray-200 hover:border-emerald-300"
+                  ? "ring-1 ring-emerald-400/50 glow-emerald"
+                  : ""
               }`}
             >
               {product.popular && (
@@ -904,36 +916,36 @@ export default function Products() {
               )}
 
               {/* Product Image */}
-              <div className="relative h-56 w-full bg-gradient-to-br from-emerald-50 to-blue-50 overflow-hidden flex-shrink-0">
+              <div className="relative h-52 w-full overflow-hidden flex-shrink-0 border-b border-white/5">
                 <Image
-                  src={product.image}
+                  src={getProductImage(product.name)}
                   alt={product.name}
                   fill
-                  className="object-cover hover:scale-110 transition-transform duration-300"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
                 <div className="mb-4 flex-grow">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 h-14 line-clamp-2">{product.name}</h3>
-                  <p className="text-gray-600 text-sm h-10 line-clamp-2">{product.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-2 h-14 line-clamp-2">{product.name}</h3>
+                  <p className="text-slate-400 text-sm h-10 line-clamp-2">{product.description}</p>
                 </div>
 
                 <div className="mb-4">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-black text-emerald-600">{product.price}</span>
-                    <span className="text-sm text-gray-400 line-through">{product.originalPrice}</span>
+                    <span className="text-3xl font-black gradient-text">{product.price}</span>
+                    <span className="text-sm text-slate-500 line-through">{product.originalPrice}</span>
                   </div>
-                  <div className="text-sm text-emerald-600 font-semibold mt-1">
+                  <div className="text-sm text-emerald-400 font-semibold mt-1">
                     Save {Math.round((1 - parseFloat(product.price.replace("$", "")) / parseFloat(product.originalPrice.replace(/[$,]/g, ""))) * 100)}%
                   </div>
                 </div>
 
                 <ul className="space-y-2 mb-6 h-32 overflow-hidden">
                   {product.features.slice(0, 5).map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                      <i className="fas fa-check text-emerald-500 mt-1 flex-shrink-0"></i>
+                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
+                      <i className="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i>
                       <span className="line-clamp-1">{feature}</span>
                     </li>
                   ))}
@@ -964,7 +976,7 @@ export default function Products() {
                         name: product.name,
                         price: product.price,
                         originalPrice: product.originalPrice,
-                        image: product.image
+                        image: getProductImage(product.name)
                       });
                       setShowCartPreview(true);
                       setTimeout(() => setShowCartPreview(false), 2000);
@@ -985,8 +997,8 @@ export default function Products() {
 
       {/* Payment Modal */}
       {showModal && selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setShowModal(false)}>
-          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md" onClick={() => setShowModal(false)}>
+          <div className="glass-strong rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header */}
             <div className="sticky top-0 bg-gradient-to-r from-emerald-500 to-emerald-600 p-6 rounded-t-2xl">
               <div className="flex justify-between items-start">
@@ -1006,9 +1018,9 @@ export default function Products() {
             {/* Product Details */}
             <div className="p-6">
               {/* Product Image */}
-              <div className="mb-6 relative h-48 w-full bg-gradient-to-br from-emerald-50 to-blue-50 rounded-xl overflow-hidden">
+              <div className="mb-6 relative h-48 w-full rounded-xl overflow-hidden border border-white/10">
                 <Image
-                  src={selectedProduct.image}
+                  src={getProductImage(selectedProduct.name)}
                   alt={selectedProduct.name}
                   fill
                   className="object-cover"
@@ -1017,23 +1029,23 @@ export default function Products() {
               </div>
 
               {/* Price */}
-              <div className="mb-6 bg-emerald-50 rounded-xl p-4 border-2 border-emerald-200">
+              <div className="mb-6 bg-emerald-500/10 rounded-xl p-4 border border-emerald-400/30">
                 <div className="flex items-baseline gap-3 justify-center">
-                  <span className="text-4xl font-black text-emerald-600">{selectedProduct.price}</span>
-                  <span className="text-xl text-gray-400 line-through">{selectedProduct.originalPrice}</span>
+                  <span className="text-4xl font-black gradient-text">{selectedProduct.price}</span>
+                  <span className="text-xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
                 </div>
-                <div className="text-center text-emerald-600 font-semibold mt-2">
+                <div className="text-center text-emerald-400 font-semibold mt-2">
                   Save {Math.round((1 - parseFloat(selectedProduct.price.replace("$", "")) / parseFloat(selectedProduct.originalPrice.replace(/[$,]/g, ""))) * 100)}%
                 </div>
               </div>
 
               {/* Features */}
               <div className="mb-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-3">What's Included:</h3>
+                <h3 className="text-lg font-bold text-white mb-3">What's Included:</h3>
                 <ul className="space-y-2">
                   {selectedProduct.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-gray-700">
-                      <i className="fas fa-check-circle text-emerald-500 mt-1 flex-shrink-0"></i>
+                    <li key={idx} className="flex items-start gap-2 text-slate-300">
+                      <i className="fas fa-check-circle text-emerald-400 mt-1 flex-shrink-0"></i>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -1042,47 +1054,45 @@ export default function Products() {
 
               {/* Payment Methods */}
               <div className="mb-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">Choose Payment Method</h3>
+                <h3 className="text-lg font-bold text-white mb-4 text-center">Choose Payment Method</h3>
                 <div className="grid grid-cols-1 gap-3">
                   {/* PayPal Button */}
-                  <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-500 rounded-xl">
+                  <div className="p-4 bg-blue-500/10 border border-blue-400/40 rounded-xl">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
                         <i className="fab fa-paypal text-white text-2xl"></i>
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900">Pay with PayPal</p>
-                        <p className="text-sm text-gray-600">Secure checkout • Buyer protection</p>
+                        <p className="font-bold text-white">Pay with PayPal</p>
+                        <p className="text-sm text-slate-400">Secure checkout • Buyer protection</p>
                       </div>
                     </div>
                     <a
-                      href={`https://www.paypal.com/paypalme/yourusername/${selectedProduct.price.replace("$", "")}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`mailto:digitalkeyhubllc@gmail.com?subject=PayPal Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via PayPal.%0D%0A%0D%0AProduct: ${selectedProduct.name}%0D%0APrice: ${selectedProduct.price}`}
                       className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-bold hover:bg-blue-700 transition-all"
                     >
-                      Pay ${selectedProduct.price} with PayPal
+                      Pay {selectedProduct.price} with PayPal
                     </a>
-                    <p className="text-xs text-gray-500 mt-2 text-center">
-                      After payment, email your PayPal transaction ID to get your key
+                    <p className="text-xs text-slate-400 mt-2 text-center">
+                      We'll send secure PayPal payment details and your key by email
                     </p>
                   </div>
 
                   {/* USDT */}
                   <a
                     href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via USDT.`}
-                    className="flex items-center justify-between p-4 bg-white border-2 border-green-500 rounded-xl hover:bg-green-50 transition-all group"
+                    className="flex items-center justify-between p-4 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all group"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                        <i className="fab fa-bitcoin text-green-600 text-2xl"></i>
+                      <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center group-hover:bg-green-500/25 transition-colors">
+                        <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900">Pay with USDT</p>
-                        <p className="text-sm text-gray-600">Cryptocurrency payment</p>
+                        <p className="font-bold text-white">Pay with USDT</p>
+                        <p className="text-sm text-slate-400">Cryptocurrency payment</p>
                       </div>
                     </div>
-                    <i className="fas fa-arrow-right text-green-500 group-hover:translate-x-1 transition-transform"></i>
+                    <i className="fas fa-arrow-right text-green-400 group-hover:translate-x-1 transition-transform"></i>
                   </a>
 
                   {/* WhatsApp */}
@@ -1107,41 +1117,41 @@ export default function Products() {
               </div>
 
               {/* Trust Badges */}
-              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-gray-200">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <i className="fas fa-shield-check text-emerald-500"></i>
+              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/10">
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <i className="fas fa-shield-alt text-emerald-400"></i>
                   <span>100% Genuine</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <i className="fas fa-shipping-fast text-emerald-500"></i>
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <i className="fas fa-shipping-fast text-emerald-400"></i>
                   <span>Instant Delivery</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <i className="fas fa-headset text-emerald-500"></i>
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <i className="fas fa-headset text-emerald-400"></i>
                   <span>24/7 Support</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <i className="fas fa-undo text-emerald-500"></i>
+                <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <i className="fas fa-undo text-emerald-400"></i>
                   <span>Money Back</span>
                 </div>
               </div>
 
               {/* Product Description & Positivity */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl p-6">
-                  <h4 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <i className="fas fa-info-circle text-emerald-500"></i>
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <div className="bg-white/[0.04] border border-white/10 rounded-xl p-6">
+                  <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                    <i className="fas fa-info-circle text-emerald-400"></i>
                     About This Product
                   </h4>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    {selectedProduct.description}. This is a genuine Microsoft product that comes with full support and lifetime validity. 
+                  <p className="text-slate-300 mb-4 leading-relaxed">
+                    {selectedProduct.description}. This is a genuine Microsoft product that comes with full support and lifetime validity.
                     Perfect for professionals, students, and businesses looking for reliable software solutions.
                   </p>
-                  <div className="flex items-start gap-3 bg-white/70 rounded-lg p-4 border-l-4 border-emerald-500">
-                    <i className="fas fa-check-circle text-emerald-500 text-xl mt-1"></i>
+                  <div className="flex items-start gap-3 bg-black/20 rounded-lg p-4 border-l-4 border-emerald-400">
+                    <i className="fas fa-check-circle text-emerald-400 text-xl mt-1"></i>
                     <div>
-                      <p className="font-semibold text-gray-900 mb-1">Why Choose Us?</p>
-                      <p className="text-sm text-gray-600">
+                      <p className="font-semibold text-white mb-1">Why Choose Us?</p>
+                      <p className="text-sm text-slate-400">
                         Join thousands of satisfied customers who trust us for authentic Microsoft licenses. 
                         We provide instant delivery, genuine product keys, and dedicated 24/7 support to ensure your complete satisfaction. 
                         Every purchase is backed by our money-back guarantee!
@@ -1157,15 +1167,15 @@ export default function Products() {
 
       {/* Cart Added Notification */}
       {showCartPreview && (
-        <div className="fixed top-20 right-4 z-[600] animate-slide-in-right">
-          <div className="bg-white rounded-xl shadow-2xl border-2 border-emerald-500 p-4 min-w-[300px]">
+        <div className="fixed top-20 right-4 z-[10000] animate-slide-in-right">
+          <div className="glass-strong rounded-xl shadow-2xl border border-emerald-400/50 glow-emerald p-4 min-w-[300px]">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
                 <i className="fas fa-check text-white text-xl"></i>
               </div>
               <div className="flex-1">
-                <p className="font-bold text-gray-900">Added to Cart!</p>
-                <p className="text-sm text-gray-600">Item successfully added</p>
+                <p className="font-bold text-white">Added to Cart!</p>
+                <p className="text-sm text-slate-400">Item successfully added</p>
               </div>
             </div>
           </div>

@@ -151,92 +151,71 @@ export default function ActivationGuideSection() {
 
   const currentGuide = guides[activeTab];
 
+  const tabs = [
+    { id: 'windows' as const, icon: 'fab fa-windows', label: 'Windows', sub: '10 / 11 / Home / Pro' },
+    { id: 'office' as const, icon: 'fas fa-file-word', label: 'Office', sub: '2021 / 2019 / 365' },
+    { id: 'server' as const, icon: 'fas fa-server', label: 'Server', sub: '2022 / 2019 / 2016' },
+  ];
+
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 px-4 py-2 rounded-full mb-4">
-            <i className="fas fa-graduation-cap text-emerald-600"></i>
-            <span className="text-emerald-700 font-bold text-sm uppercase">Step-by-Step Guide</span>
+          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-4">
+            <i className="fas fa-graduation-cap text-emerald-400"></i>
+            <span className="text-emerald-300 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            How to Activate Your Software
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            How to <span className="gradient-text">Activate Your Software</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
             Complete activation guides for Windows, Office, and Server products. Follow these simple steps to activate your genuine Microsoft license key instantly.
           </p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <button
-            onClick={() => setActiveTab('windows')}
-            className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all ${
-              activeTab === 'windows'
-                ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-200'
-            }`}
-          >
-            <i className="fab fa-windows text-2xl"></i>
-            <div className="text-left">
-              <div className="text-sm font-semibold">Windows</div>
-              <div className="text-xs opacity-80">10 / 11 / Home / Pro</div>
-            </div>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('office')}
-            className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all ${
-              activeTab === 'office'
-                ? 'bg-orange-600 text-white shadow-lg scale-105'
-                : 'bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-200'
-            }`}
-          >
-            <i className="fas fa-file-word text-2xl"></i>
-            <div className="text-left">
-              <div className="text-sm font-semibold">Office</div>
-              <div className="text-xs opacity-80">2021 / 2019 / 365</div>
-            </div>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('server')}
-            className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all ${
-              activeTab === 'server'
-                ? 'bg-green-600 text-white shadow-lg scale-105'
-                : 'bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-200'
-            }`}
-          >
-            <i className="fas fa-server text-2xl"></i>
-            <div className="text-left">
-              <div className="text-sm font-semibold">Server</div>
-              <div className="text-xs opacity-80">2022 / 2019 / 2016</div>
-            </div>
-          </button>
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all ${
+                activeTab === tab.id
+                  ? 'btn-primary scale-105'
+                  : 'glass text-slate-300 hover:text-white glow-hover'
+              }`}
+            >
+              <i className={`${tab.icon} text-2xl`}></i>
+              <div className="text-left">
+                <div className="text-sm font-semibold">{tab.label}</div>
+                <div className="text-xs opacity-80">{tab.sub}</div>
+              </div>
+            </button>
+          ))}
         </div>
 
         {/* Guide Content */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div className="glass-strong rounded-2xl p-8 md:p-12">
           {/* Guide Title */}
           <div className="text-center mb-10">
-            <div className={`inline-flex items-center justify-center w-16 h-16 bg-${currentGuide.color}-100 rounded-full mb-4`}>
-              <i className={`${currentGuide.icon} text-3xl text-${currentGuide.color}-600`}></i>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-500/15 border border-emerald-400/30 rounded-full mb-4">
+              <i className={`${currentGuide.icon} text-3xl text-emerald-400`}></i>
             </div>
-            <h3 className="text-3xl font-black text-gray-900 mb-2">{currentGuide.title}</h3>
-            <p className="text-lg text-gray-600">{currentGuide.subtitle}</p>
+            <h3 className="text-3xl font-black text-white mb-2">{currentGuide.title}</h3>
+            <p className="text-lg text-slate-400">{currentGuide.subtitle}</p>
           </div>
 
           {/* Steps */}
-          <div className="space-y-6 mb-12">
+          <div className="space-y-5 mb-12">
             {currentGuide.steps.map((step, idx) => (
               <div
                 key={idx}
-                className="flex gap-6 items-start bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-2 border-gray-200 hover:border-emerald-500 transition-all"
+                className="flex gap-6 items-start bg-white/[0.03] p-6 rounded-xl border border-white/10 hover:border-emerald-400/40 transition-all"
               >
                 {/* Step Number */}
                 <div className="flex-shrink-0">
-                  <div className={`w-14 h-14 bg-gradient-to-br from-${currentGuide.color}-500 to-${currentGuide.color}-600 text-white rounded-full flex items-center justify-center font-black text-xl shadow-lg`}>
+                  <div className="w-14 h-14 btn-primary rounded-full flex items-center justify-center font-black text-xl">
                     {step.number}
                   </div>
                 </div>
@@ -244,48 +223,42 @@ export default function ActivationGuideSection() {
                 {/* Step Content */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <i className={`${step.icon} text-${currentGuide.color}-600 text-xl`}></i>
-                    <h4 className="text-xl font-bold text-gray-900">{step.title}</h4>
+                    <i className={`${step.icon} text-emerald-400 text-xl`}></i>
+                    <h4 className="text-xl font-bold text-white">{step.title}</h4>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{step.description}</p>
-                  <div className="mt-2 text-xs text-gray-500 italic">
-                    Keywords: {step.keywords}
-                  </div>
+                  <p className="text-slate-300 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Alternative Method */}
-          <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-8 border-2 border-yellow-300">
+          <div className="bg-amber-500/[0.07] rounded-xl p-8 border border-amber-400/30">
             <div className="flex items-center gap-3 mb-4">
-              <i className="fas fa-lightbulb text-yellow-600 text-2xl"></i>
-              <h4 className="text-xl font-bold text-gray-900">{currentGuide.alternativeMethod.title}</h4>
+              <i className="fas fa-lightbulb text-amber-400 text-2xl"></i>
+              <h4 className="text-xl font-bold text-white">{currentGuide.alternativeMethod.title}</h4>
             </div>
             <ol className="space-y-3">
               {currentGuide.alternativeMethod.steps.map((step, idx) => (
                 <li key={idx} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 bg-yellow-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-black rounded-full flex items-center justify-center text-sm font-bold">
                     {idx + 1}
                   </span>
-                  <span className="text-gray-800 font-mono text-sm bg-white px-3 py-2 rounded-lg flex-1 border border-yellow-200">
+                  <span className="text-slate-200 font-mono text-sm bg-black/30 px-3 py-2 rounded-lg flex-1 border border-white/10">
                     {step}
                   </span>
                 </li>
               ))}
             </ol>
-            <div className="mt-4 text-xs text-gray-600 italic">
-              Keywords: {currentGuide.alternativeMethod.keywords}
-            </div>
           </div>
 
           {/* Help Section */}
           <div className="mt-10 text-center">
-            <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl p-8">
+            <div className="relative overflow-hidden bg-gradient-to-r from-emerald-600 to-cyan-600 text-white rounded-xl p-8">
               <i className="fas fa-headset text-4xl mb-4"></i>
               <h4 className="text-2xl font-bold mb-2">Need Help with Activation?</h4>
-              <p className="text-emerald-100 mb-6">
-                Our expert support team is available 24/7 to help you activate your Microsoft product key. 
+              <p className="text-emerald-50/90 mb-6">
+                Our expert support team is available 24/7 to help you activate your Microsoft product key.
                 Get instant assistance via WhatsApp, email, or phone.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
@@ -293,34 +266,20 @@ export default function ActivationGuideSection() {
                   href="https://wa.me/16019756129?text=Hi! I need help with activation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white text-emerald-600 px-6 py-3 rounded-lg font-bold hover:bg-emerald-50 transition-all shadow-lg"
+                  className="inline-flex items-center gap-2 bg-white text-emerald-700 px-6 py-3 rounded-lg font-bold hover:bg-emerald-50 transition-all shadow-lg"
                 >
                   <i className="fab fa-whatsapp text-xl"></i>
                   WhatsApp Support
                 </a>
                 <a
                   href="mailto:digitalkeyhubllc@gmail.com"
-                  className="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-emerald-800 transition-all"
+                  className="inline-flex items-center gap-2 bg-black/25 border border-white/20 text-white px-6 py-3 rounded-lg font-bold hover:bg-black/40 transition-all"
                 >
                   <i className="fas fa-envelope text-xl"></i>
                   Email Support
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* SEO Keywords Section */}
-        <div className="mt-12 text-center">
-          <div className="bg-gray-100 rounded-xl p-6 border border-gray-300">
-            <p className="text-sm text-gray-600 leading-relaxed">
-              <strong className="text-gray-900">Popular Searches:</strong> how to activate windows 10, 
-              windows 11 activation, activate office 2021, microsoft office product key activation, 
-              windows server activation guide, activate windows without product key, office 365 activation steps, 
-              windows activation error fix, genuine microsoft license activation, slmgr activation command, 
-              activate windows 11 pro, office professional plus activation, windows server 2022 license key, 
-              activate microsoft products, digital license activation, OEM key activation, retail key vs OEM
-            </p>
           </div>
         </div>
       </div>

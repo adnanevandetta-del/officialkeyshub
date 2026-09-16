@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { getProductImage } from "../lib/productImage";
 
 interface Product {
   name: string;
@@ -22,9 +23,6 @@ interface Category {
 export default function CategoryBar() {
   const [activeCategory, setActiveCategory] = useState<string>("All Products");
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-
-  // Debug log
-  console.log('Hovered Category:', hoveredCategory);
 
   const categories: Category[] = [
     {
@@ -146,7 +144,7 @@ export default function CategoryBar() {
   };
 
   return (
-    <div className="hidden md:block sticky top-0 z-[100] bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b-2 border-emerald-500/50 shadow-xl backdrop-blur-xl overflow-hidden">
+    <div className="hidden md:block sticky top-0 z-[100] bg-[#0b1020] border-b border-emerald-500/40 shadow-xl overflow-hidden">
       {/* Animated gradient line */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-shimmer"></div>
       
@@ -203,8 +201,8 @@ export default function CategoryBar() {
 
                 {/* Dropdown Menu - Product Cards */}
                 {hoveredCategory === category.name && category.products && category.products.length > 0 && (
-                  <div 
-                    className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-[200] animate-fadeIn"
+                  <div
+                    className="absolute top-full left-0 mt-2 w-[600px] glass-strong rounded-xl shadow-2xl overflow-hidden z-[200] animate-fadeIn"
                     onMouseEnter={() => setHoveredCategory(category.name)}
                     onMouseLeave={() => setHoveredCategory(null)}
                   >
@@ -219,14 +217,14 @@ export default function CategoryBar() {
                         <button
                           key={idx}
                           onClick={() => handleCategoryClick(category)}
-                          className="group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-emerald-500 hover:shadow-lg transition-all duration-300 text-left"
+                          className="group bg-white/[0.04] border border-white/10 rounded-xl overflow-hidden hover:border-emerald-400/50 hover:bg-white/[0.07] transition-all duration-300 text-left"
                         >
                           <div className="relative h-32 overflow-hidden">
                             <Image
-                              src={product.image}
+                              src={getProductImage(product.name)}
                               alt={product.name}
                               fill
-                              className="object-cover group-hover:scale-110 transition-transform duration-300"
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                             {product.badge && (
                               <div className="absolute top-2 right-2 bg-emerald-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -235,21 +233,21 @@ export default function CategoryBar() {
                             )}
                           </div>
                           <div className="p-3">
-                            <h4 className="text-gray-800 font-bold text-sm mb-1 group-hover:text-emerald-600 transition-colors line-clamp-2">
+                            <h4 className="text-slate-200 font-bold text-sm mb-1 group-hover:text-emerald-300 transition-colors line-clamp-2">
                               {product.name}
                             </h4>
                             <div className="flex items-center justify-between mt-2">
-                              <span className="text-emerald-600 font-black text-lg">{product.price}</span>
-                              <i className="fas fa-shopping-cart text-gray-400 group-hover:text-emerald-600 transition-colors"></i>
+                              <span className="text-emerald-400 font-black text-lg">{product.price}</span>
+                              <i className="fas fa-shopping-cart text-slate-500 group-hover:text-emerald-400 transition-colors"></i>
                             </div>
                           </div>
                         </button>
                       ))}
                     </div>
-                    <div className="bg-gray-50 px-4 py-3 border-t border-gray-200">
+                    <div className="bg-white/[0.03] px-4 py-3 border-t border-white/10">
                       <button
                         onClick={() => handleCategoryClick(category)}
-                        className="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center gap-2 w-full justify-center"
+                        className="text-emerald-400 hover:text-emerald-300 font-semibold text-sm flex items-center gap-2 w-full justify-center"
                       >
                         View All {category.count} {category.name}
                         <i className="fas fa-arrow-right text-xs"></i>

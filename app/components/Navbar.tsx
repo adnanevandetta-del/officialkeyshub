@@ -42,7 +42,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 left-0 right-0 z-[200] bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-md shadow-md border-b border-slate-800">
+    <nav className="sticky top-0 left-0 right-0 z-[200] bg-[#0a0e1a] shadow-md border-b border-white/10">
       <div className="container mx-auto px-4 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between w-full">

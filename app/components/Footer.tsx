@@ -85,7 +85,7 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <i className="fas fa-map-marker-alt text-emerald-400 mt-1 text-sm"></i>
                 <span className="text-slate-400 text-sm">
-                  Storgatan 12, 111 51<br />Stockholm, Sweden
+                  Digital delivery worldwide<br />United States
                 </span>
               </li>
               <li className="flex items-start gap-2">

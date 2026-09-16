@@ -18,9 +18,9 @@ export default function Home() {
       <Products />
       <MovingProductShowcase />
       <TrustBadges />
-      <Footer />
       <CustomerReviews />
       <ActivationGuideSection />
+      <Footer />
       <WhatsAppButton />
     </>
   );
