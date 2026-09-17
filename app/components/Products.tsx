@@ -899,23 +899,6 @@ export default function Products() {
                   : ""
               }`}
             >
-              {product.popular && (
-                <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                  MOST POPULAR
-                </div>
-              )}
-
-              {product.badge && (
-                <div className={`absolute top-4 right-4 z-10 px-3 py-1 rounded-full text-xs font-bold shadow-md ${
-                  product.badge === "Online" ? "bg-blue-500 text-white" :
-                  product.badge === "Bind" ? "bg-purple-500 text-white" :
-                  product.badge === "Phone" ? "bg-orange-500 text-white" :
-                  "bg-gray-500 text-white"
-                }`}>
-                  {product.badge.toUpperCase()}
-                </div>
-              )}
-
               {/* Product Image */}
               <div className="relative h-52 w-full overflow-hidden flex-shrink-0 border-b border-white/5">
                 <Image

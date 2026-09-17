@@ -9,10 +9,96 @@ interface Meta {
   accent2: string;
   glyph: string; // inline SVG centered around (400,235), ~200px
   brand: string; // small brand label
+  tintable: boolean; // Microsoft families get per-product tints; vendors keep exact brand colours
 }
 
 function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// --- deterministic per-product colour tinting ---------------------------
+// Same input name always yields the same output, so every product gets a
+// stable, unique-looking image while staying within its brand colour family.
+function hash(str: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function hexToHsl(hex: string): [number, number, number] {
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0;
+  const l = (max + min) / 2;
+  const d = max - min;
+  const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+  if (d !== 0) {
+    if (max === r) h = ((g - b) / d) % 6;
+    else if (max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h *= 60;
+    if (h < 0) h += 360;
+  }
+  return [h, s, l];
+}
+
+function hslToHex(h: number, s: number, l: number): string {
+  h = ((h % 360) + 360) % 360;
+  s = Math.min(1, Math.max(0, s));
+  l = Math.min(1, Math.max(0, l));
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = l - c / 2;
+  let r = 0, g = 0, b = 0;
+  if (h < 60) [r, g, b] = [c, x, 0];
+  else if (h < 120) [r, g, b] = [x, c, 0];
+  else if (h < 180) [r, g, b] = [0, c, x];
+  else if (h < 240) [r, g, b] = [0, x, c];
+  else if (h < 300) [r, g, b] = [x, 0, c];
+  else [r, g, b] = [c, 0, x];
+  const to = (v: number) => Math.round((v + m) * 255).toString(16).padStart(2, "0");
+  return `#${to(r)}${to(g)}${to(b)}`;
+}
+
+// Shift a base colour by a bounded, name-seeded amount so products in the
+// same family (e.g. every Windows edition) each get a distinct on-brand tint.
+function tint(hex: string, seed: number, hueRange = 30): string {
+  const [h, s, l] = hexToHsl(hex);
+  const dh = ((seed % 1000) / 1000 - 0.5) * 2 * hueRange; // ±hueRange
+  const ds = (((seed >> 3) % 100) / 100 - 0.5) * 0.16; // ±0.08
+  const dl = (((seed >> 7) % 100) / 100 - 0.5) * 0.14; // ±0.07
+  return hslToHex(h + dh, s + ds, l + dl);
+}
+
+// Pull a human edition label out of the product name for the top chip.
+function editionOf(name: string): string {
+  const n = name.toLowerCase();
+  const tags: [RegExp, string][] = [
+    [/datacenter/, "Datacenter"],
+    [/enterprise/, "Enterprise"],
+    [/professional plus|pro plus|pro\b/, "Professional"],
+    [/home\s*&\s*business/, "Home & Business"],
+    [/home\s*&\s*student/, "Home & Student"],
+    [/business standard/, "Business Standard"],
+    [/business/, "Business"],
+    [/workstations/, "Workstations"],
+    [/standard/, "Standard"],
+    [/personal/, "Personal"],
+    [/deluxe/, "Deluxe"],
+    [/premium/, "Premium"],
+    [/maximum/, "Maximum"],
+    [/total (security|protection)/, "Total Security"],
+    [/internet security/, "Internet Security"],
+    [/home/, "Home"],
+  ];
+  for (const [re, label] of tags) if (re.test(n)) return label;
+  const kind = /online key/.test(n) ? "Online Key" : /phone key/.test(n) ? "Phone Key" : /bind key/.test(n) ? "Bind Key" : "";
+  return kind || "Genuine";
 }
 
 // --- category glyphs (drawn around cx=400, cy=235) ---
@@ -89,7 +175,7 @@ function metaFor(name: string): Meta {
   const n = name.toLowerCase();
 
   // Security vendors (brand colors)
-  const vendor = (label: string, c1: string, c2: string): Meta => ({ accent: c1, accent2: c2, glyph: shield("#ffffff", c1), brand: label });
+  const vendor = (label: string, c1: string, c2: string): Meta => ({ accent: c1, accent2: c2, glyph: shield("#ffffff", c1), brand: label, tintable: false });
   if (n.includes("kaspersky")) return vendor("Kaspersky", "#1a9b5e", "#0d6b3f");
   if (n.includes("norton")) return vendor("Norton", "#ffb200", "#b97e00");
   if (n.includes("mcafee")) return vendor("McAfee", "#c01818", "#7a0f0f");
@@ -99,36 +185,55 @@ function metaFor(name: string): Meta {
   if (n.includes("trend micro")) return vendor("Trend Micro", "#d71920", "#8f1116");
 
   if ((/office\s*365|microsoft\s*365/.test(n)) || (/\b365\b/.test(n) && !n.includes("windows")))
-    return { accent: "#0364b8", accent2: "#022f5c", glyph: cloud("#ffffff"), brand: "Microsoft 365" };
-  if (n.includes("visual studio")) return { accent: "#7c3aed", accent2: "#4c1d95", glyph: codeBrackets("#ffffff"), brand: "Visual Studio" };
-  if (n.includes("sql")) return { accent: "#b91c1c", accent2: "#7f1d1d", glyph: database("#ffffff"), brand: "SQL Server" };
-  if (n.includes("visio")) return { accent: "#0f9488", accent2: "#0b5c54", glyph: diagram("#ffffff"), brand: "Visio" };
-  if (n.includes("project")) return { accent: "#16a34a", accent2: "#166534", glyph: barChart("#ffffff"), brand: "Project" };
-  if (n.includes("server")) return { accent: "#3b6ea5", accent2: "#1e3a5f", glyph: serverRack("#ffffff"), brand: "Windows Server" };
-  if (n.includes("office")) return { accent: "#c43e1c", accent2: "#7a2610", glyph: officeTiles, brand: "Microsoft Office" };
-  if (n.includes("windows")) return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft Windows" };
+    return { accent: "#0364b8", accent2: "#022f5c", glyph: cloud("#ffffff"), brand: "Microsoft 365", tintable: true };
+  if (n.includes("visual studio")) return { accent: "#7c3aed", accent2: "#4c1d95", glyph: codeBrackets("#ffffff"), brand: "Visual Studio", tintable: true };
+  if (n.includes("sql")) return { accent: "#b91c1c", accent2: "#7f1d1d", glyph: database("#ffffff"), brand: "SQL Server", tintable: true };
+  if (n.includes("visio")) return { accent: "#0f9488", accent2: "#0b5c54", glyph: diagram("#ffffff"), brand: "Visio", tintable: true };
+  if (n.includes("project")) return { accent: "#16a34a", accent2: "#166534", glyph: barChart("#ffffff"), brand: "Project", tintable: true };
+  if (n.includes("server")) return { accent: "#3b6ea5", accent2: "#1e3a5f", glyph: serverRack("#ffffff"), brand: "Windows Server", tintable: true };
+  if (n.includes("office")) return { accent: "#c43e1c", accent2: "#7a2610", glyph: officeTiles, brand: "Microsoft Office", tintable: true };
+  if (n.includes("windows")) return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft Windows", tintable: true };
 
-  return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft" };
+  return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft", tintable: true };
+}
+
+// Big faint identifier drawn behind the glyph (version / year / brand initial).
+function watermarkOf(name: string): string {
+  const n = name.toLowerCase();
+  if (/\b365\b/.test(n)) return "365";
+  const ver = n.match(/\b(11|10|8\.1|7)\b/);
+  if (ver && n.includes("windows")) return ver[1];
+  const year = n.match(/\b(20\d\d)\b/);
+  if (year) return year[1];
+  return name.trim().charAt(0).toUpperCase();
 }
 
 export function GET(req: NextRequest) {
   const name = req.nextUrl.searchParams.get("name") || "Microsoft Product";
   const meta = metaFor(name);
+  const seed = hash(name);
+
+  // Per-product tint keeps same-family products visually distinct.
+  const accent = meta.tintable ? tint(meta.accent, seed, 26) : meta.accent;
+  const accent2 = meta.tintable ? tint(meta.accent2, seed, 26) : meta.accent2;
+  const edition = editionOf(name);
+  const watermark = esc(watermarkOf(name));
 
   // Split "Base - Variant" into title + variant subtitle.
   const [base, variant] = name.split(" - ");
   const title = esc(base.length > 26 ? base.slice(0, 25) + "…" : base);
   const subtitle = esc(variant || meta.brand);
+  const chipW = Math.max(120, edition.length * 12 + 44);
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="${esc(name)}">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0a0e1a"/>
-      <stop offset="1" stop-color="${meta.accent2}"/>
+      <stop offset="1" stop-color="${accent2}"/>
     </linearGradient>
     <radialGradient id="glow" cx="50%" cy="38%" r="55%">
-      <stop offset="0" stop-color="${meta.accent}" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="${meta.accent}" stop-opacity="0"/>
+      <stop offset="0" stop-color="${accent}" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="${accent}" stop-opacity="0"/>
     </radialGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M40 0 H0 V40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
@@ -140,10 +245,17 @@ export function GET(req: NextRequest) {
   <rect width="800" height="600" fill="url(#grid)"/>
   <rect width="800" height="600" fill="url(#glow)"/>
 
+  <text x="400" y="300" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="300" font-weight="900" fill="#ffffff" fill-opacity="0.05">${watermark}</text>
+
   <g filter="url(#soft)">${meta.glyph}</g>
 
+  <g transform="translate(400,92)">
+    <rect x="${-chipW / 2}" y="-20" width="${chipW}" height="40" rx="20" fill="${accent}" fill-opacity="0.9"/>
+    <text x="0" y="7" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="1">${esc(edition.toUpperCase())}</text>
+  </g>
+
   <text x="400" y="440" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="46" font-weight="800" fill="#ffffff">${title}</text>
-  <text x="400" y="482" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="26" font-weight="600" fill="${meta.accent}">${subtitle}</text>
+  <text x="400" y="482" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="26" font-weight="600" fill="${accent}">${subtitle}</text>
 
   <g transform="translate(400,528)">
     <rect x="-118" y="-20" width="236" height="40" rx="20" fill="#ffffff" fill-opacity="0.08" stroke="#34d399" stroke-opacity="0.5"/>

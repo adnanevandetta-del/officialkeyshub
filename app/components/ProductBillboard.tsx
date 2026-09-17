@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { getStoredPromo, PROMO_PERCENT, type StoredPromo } from "../lib/promo";
 import { paypalPaymentUrl } from "../lib/payment";
 import { getProductImage } from "../lib/productImage";
 
@@ -24,11 +22,6 @@ export default function ProductBillboard() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<BillboardProduct | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [promo, setPromo] = useState<StoredPromo | null>(null);
-
-  useEffect(() => {
-    setPromo(getStoredPromo());
-  }, []);
 
   const products: BillboardProduct[] = [
     {
@@ -90,7 +83,6 @@ export default function ProductBillboard() {
   }, [products.length]);
 
   const currentProduct = products[currentIndex];
-  const discount = Math.round((1 - parseFloat(currentProduct.price.replace("$", "")) / parseFloat(currentProduct.originalPrice.replace(/[$,]/g, ""))) * 100);
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60 z-10">
@@ -143,30 +135,7 @@ export default function ProductBillboard() {
                     {currentProduct.originalPrice}
                   </span>
                 </div>
-                <p className="text-white/60 text-xs md:text-sm mt-1">One-time payment • Lifetime access</p>
               </div>
-
-              {/* Promo callout — extra 30% off with the customer's code */}
-              <Link
-                href={promo ? "/checkout" : "/login"}
-                className="group flex items-center gap-2 md:gap-3 w-full rounded-xl border border-emerald-400/40 bg-gradient-to-r from-emerald-500/15 to-cyan-500/10 px-3 py-2.5 md:px-4 md:py-3 hover:border-emerald-400/70 transition-colors"
-              >
-                <span className="flex-shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                  <i className="fas fa-gift text-emerald-400 text-sm md:text-base"></i>
-                </span>
-                <span className="flex-1 min-w-0">
-                  <span className="block text-white font-bold text-xs md:text-sm leading-tight">
-                    Extra {PROMO_PERCENT}% OFF at checkout
-                    <span className="text-emerald-300">
-                      {" "}→ {promo ? `$${(parseFloat(currentProduct.price.replace("$", "")) * (1 - PROMO_PERCENT / 100)).toFixed(2)}` : "unlock your code"}
-                    </span>
-                  </span>
-                  <span className="block text-white/60 text-[10px] md:text-xs leading-tight truncate">
-                    {promo ? `Use code ${promo.code}` : "Log in with your email to get your code"}
-                  </span>
-                </span>
-                <i className="fas fa-arrow-right text-emerald-400 text-xs md:text-sm group-hover:translate-x-0.5 transition-transform"></i>
-              </Link>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
@@ -337,11 +306,7 @@ export default function ProductBillboard() {
                       <i className={`${selectedProduct.icon} text-white text-2xl`}></i>
                     </div>
                     <div className="flex-1">
-                      <div className="inline-block bg-emerald-500/90 backdrop-blur-sm px-3 py-1 rounded-full mb-2">
-                        <span className="text-white text-xs font-bold uppercase">{selectedProduct.badge}</span>
-                      </div>
                       <h2 className="text-2xl md:text-3xl font-black text-white">{selectedProduct.name}</h2>
-                      <p className="text-white/90 font-medium">{selectedProduct.tagline}</p>
                     </div>
                   </div>
                 </div>
@@ -350,59 +315,10 @@ export default function ProductBillboard() {
 
             {/* Content */}
             <div className="p-6">
-              {/* Product Description */}
-              <div className="mb-6">
-                <p className="text-slate-300 text-lg">{selectedProduct.description}</p>
-              </div>
-
               {/* Price */}
-              <div className="mb-6 bg-emerald-500/10 rounded-xl p-6 border border-emerald-400/30">
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div>
-                    <p className="text-slate-400 text-sm font-semibold mb-1">Special Price</p>
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-4xl md:text-5xl font-black gradient-text">{selectedProduct.price}</span>
-                      <span className="text-2xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
-                    </div>
-                    <p className="text-slate-400 text-sm mt-2">
-                      <i className="fas fa-check-circle text-emerald-400 mr-1"></i>
-                      One-time payment • Lifetime access
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <div className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg">
-                      <p className="text-xs font-bold">YOU SAVE</p>
-                      <p className="text-3xl font-black">
-                        ${(parseFloat(selectedProduct.originalPrice.replace(/[$,]/g, "")) - parseFloat(selectedProduct.price.replace("$", ""))).toFixed(2)}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Features Grid */}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                  <i className="fas fa-star text-yellow-400"></i>
-                  What's Included
-                </h3>
-                <div className="grid md:grid-cols-2 gap-3">
-                  {selectedProduct.productFeatures.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-3 bg-white/[0.04] p-4 rounded-lg border border-white/10 hover:border-emerald-400/40 transition-colors">
-                      <i className="fas fa-check-circle text-emerald-400 text-xl mt-0.5"></i>
-                      <span className="text-slate-200 font-medium">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quick Features */}
-              <div className="mb-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-                {selectedProduct.features.map((feature, idx) => (
-                  <div key={idx} className="bg-blue-500/10 p-3 rounded-lg text-center border border-blue-400/30">
-                    <p className="text-blue-200 font-semibold text-sm">{feature}</p>
-                  </div>
-                ))}
+              <div className="mb-6 flex items-baseline gap-3 flex-wrap">
+                <span className="text-4xl md:text-5xl font-black gradient-text">{selectedProduct.price}</span>
+                <span className="text-2xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
               </div>
 
               {/* Payment Methods */}
@@ -463,26 +379,6 @@ export default function ProductBillboard() {
                   </div>
                   <i className="fas fa-arrow-right text-white text-xl"></i>
                 </a>
-              </div>
-
-              {/* Trust Badges */}
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-6 py-4 border-t border-white/10">
-                <div className="flex items-center gap-2 text-slate-300">
-                  <i className="fas fa-shield-alt text-emerald-400 text-xl"></i>
-                  <span className="text-sm font-semibold">100% Secure</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <i className="fas fa-bolt text-yellow-400 text-xl"></i>
-                  <span className="text-sm font-semibold">Instant Delivery</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <i className="fas fa-headset text-cyan-400 text-xl"></i>
-                  <span className="text-sm font-semibold">24/7 Support</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <i className="fas fa-undo text-green-400 text-xl"></i>
-                  <span className="text-sm font-semibold">Money Back</span>
-                </div>
               </div>
             </div>
           </div>
