@@ -104,6 +104,8 @@ export default function RootLayout({
     <html lang="en" className={`scroll-smooth ${stixMath.variable}`}>
       <head>
         <meta name="theme-color" content="#10b981" />
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="sG23QnRZt0jwlqElmdDi6H0SfVOqBFkGJllZlzgBFtk" />
       </head>
       <body className={inter.className}>
         <CartProvider>
