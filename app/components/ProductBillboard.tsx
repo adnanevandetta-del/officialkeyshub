@@ -230,11 +230,6 @@ export default function ProductBillboard() {
                           )}
                         </div>
 
-                        {/* Small product icon — kept minimal for a clean card */}
-                        <div className="absolute bottom-2 md:bottom-3 left-2 md:left-3 w-7 h-7 md:w-9 md:h-9 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/20">
-                          <i className={`${product.icon} text-white text-sm md:text-base`}></i>
-                        </div>
-
                         {/* Shimmer sweep on active */}
                         {isActive && (
                           <div className="absolute inset-0 overflow-hidden rounded-xl md:rounded-2xl pointer-events-none">
