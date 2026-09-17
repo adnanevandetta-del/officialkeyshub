@@ -860,11 +860,8 @@ export default function Products() {
             <span className="text-emerald-300 text-xs font-bold uppercase tracking-widest">Genuine Licenses</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black mb-3">
-            Explore Our <span className="gradient-text">Software Store</span>
+            Welcome to <span className="gradient-text">Official Keys Hub</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            Authentic Microsoft product keys with instant delivery, lifetime activation, and 24/7 support.
-          </p>
         </div>
 
         {/* Category Tabs */}

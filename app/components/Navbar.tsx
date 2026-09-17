@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <nav className="font-math sticky top-0 left-0 right-0 z-[200] bg-[#0a0e1a] shadow-md border-b border-white/10">
-      <div className="container mx-auto px-4 py-3">
+      <div className="max-w-7xl mx-auto px-4 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between w-full">
           {/* Left: Hamburger Menu */}
@@ -69,8 +69,8 @@ export default function Navbar() {
 
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between relative">
-          {/* Logo */}
-          <div className="ml-2">
+          {/* Logo — left edge aligns with the billboard content below */}
+          <div>
             <Logo size="sm" />
           </div>
 
@@ -114,7 +114,11 @@ export default function Navbar() {
               Partner Program
             </Link>
 
-            {/* Menu icon — holds Products / FAQ / Blog */}
+            {/* Cart & Profile Buttons - Icon Only */}
+            <CartButton />
+            <ProfileButton />
+
+            {/* Menu icon — moved to the far right (profile's old spot), holds Products / FAQ / Blog */}
             <div className="relative">
               <button
                 onClick={() => setIsDeskMenuOpen((v) => !v)}
@@ -179,10 +183,6 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-
-            {/* Cart & Profile Buttons - Icon Only */}
-            <CartButton />
-            <ProfileButton />
           </div>
         </div>
 
