@@ -60,9 +60,12 @@ body {
   background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
 }
 
+/* Headings use the Mathematical Bold Italic display font (STIX Two Text). */
 h1, h2, h3, h4, .font-display {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
-  letter-spacing: -0.02em;
+  font-family: var(--font-math), 'Space Grotesk', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 /* Custom scrollbar */
@@ -76,12 +79,17 @@ h1, h2, h3, h4, .font-display {
 ::selection { background: rgba(52, 211, 153, 0.35); color: #fff; }
 
 @layer utilities {
+  /* Solid emerald for prices and headings (gradients removed per design). */
   .gradient-text {
-    background: linear-gradient(120deg, #34d399, #22d3ee 60%, #3b82f6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: #34d399;
+    -webkit-text-fill-color: #34d399;
+  }
+
+  /* Mathematical Bold Italic display font, usable on any element (navbar, logo, buttons). */
+  .font-math {
+    font-family: var(--font-math), 'Space Grotesk', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
   }
 
   /* Elevated surfaces — solid semi-opaque so they read on the dark
@@ -241,6 +249,10 @@ h1, h2, h3, h4, .font-display {
   33% { transform: translate(3%, -4%) scale(1.05); }
   66% { transform: translate(-3%, 3%) scale(0.97); }
 }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 40s linear infinite; }
+.animate-spin-slow-rev { animation: spin-slow 30s linear infinite reverse; }
 
 .animate-fade-in { animation: fade-in 0.5s ease-out; }
 .animate-pulse-slow { animation: pulse-slow 8s ease-in-out infinite; }

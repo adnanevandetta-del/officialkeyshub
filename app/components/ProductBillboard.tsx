@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { getStoredPromo, PROMO_PERCENT, type StoredPromo } from "../lib/promo";
+import { paypalPaymentUrl } from "../lib/payment";
+import { getProductImage } from "../lib/productImage";
 
 interface BillboardProduct {
   name: string;
@@ -20,6 +24,11 @@ export default function ProductBillboard() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<BillboardProduct | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [promo, setPromo] = useState<StoredPromo | null>(null);
+
+  useEffect(() => {
+    setPromo(getStoredPromo());
+  }, []);
 
   const products: BillboardProduct[] = [
     {
@@ -27,7 +36,7 @@ export default function ProductBillboard() {
       tagline: "Professional Edition",
       price: "$19.99",
       originalPrice: "$199.99",
-      image: "/products/windows.svg",
+      image: "/products/windows-11-pro.jpg",
       badge: "Best Seller",
       icon: "fab fa-windows",
       features: ["Remote Desktop", "BitLocker", "Hyper-V"],
@@ -39,7 +48,7 @@ export default function ProductBillboard() {
       tagline: "Complete Productivity Suite",
       price: "$29.99",
       originalPrice: "$439.99",
-      image: "/products/office.svg",
+      image: "/products/office-2021-professional-plus.jpg",
       badge: "Most Popular",
       icon: "fas fa-file-word",
       features: ["Word", "Excel", "PowerPoint"],
@@ -51,7 +60,7 @@ export default function ProductBillboard() {
       tagline: "Cloud-Powered",
       price: "$39.99",
       originalPrice: "$99.99",
-      image: "/products/office365.svg",
+      image: "/products/office-365-1-year.jpg",
       badge: "Featured",
       icon: "fas fa-cloud",
       features: ["1TB OneDrive", "5 Devices", "Always Updated"],
@@ -63,7 +72,7 @@ export default function ProductBillboard() {
       tagline: "Enterprise Platform",
       price: "$49.99",
       originalPrice: "$1,069.00",
-      image: "/products/server.svg",
+      image: "/products/windows-server-2022-standard.jpg",
       badge: "Enterprise",
       icon: "fas fa-server",
       features: ["Hyper-V", "Advanced Security", "Azure"],
@@ -137,6 +146,28 @@ export default function ProductBillboard() {
                 <p className="text-white/60 text-xs md:text-sm mt-1">One-time payment • Lifetime access</p>
               </div>
 
+              {/* Promo callout — extra 30% off with the customer's code */}
+              <Link
+                href={promo ? "/checkout" : "/login"}
+                className="group flex items-center gap-2 md:gap-3 w-full rounded-xl border border-emerald-400/40 bg-gradient-to-r from-emerald-500/15 to-cyan-500/10 px-3 py-2.5 md:px-4 md:py-3 hover:border-emerald-400/70 transition-colors"
+              >
+                <span className="flex-shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                  <i className="fas fa-gift text-emerald-400 text-sm md:text-base"></i>
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block text-white font-bold text-xs md:text-sm leading-tight">
+                    Extra {PROMO_PERCENT}% OFF at checkout
+                    <span className="text-emerald-300">
+                      {" "}→ {promo ? `$${(parseFloat(currentProduct.price.replace("$", "")) * (1 - PROMO_PERCENT / 100)).toFixed(2)}` : "unlock your code"}
+                    </span>
+                  </span>
+                  <span className="block text-white/60 text-[10px] md:text-xs leading-tight truncate">
+                    {promo ? `Use code ${promo.code}` : "Log in with your email to get your code"}
+                  </span>
+                </span>
+                <i className="fas fa-arrow-right text-emerald-400 text-xs md:text-sm group-hover:translate-x-0.5 transition-transform"></i>
+              </Link>
+
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   onClick={() => {
@@ -150,15 +181,15 @@ export default function ProductBillboard() {
                   <i className="fas fa-arrow-right text-sm md:text-base"></i>
                 </button>
 
-                {/* PayPal secure-checkout badge */}
-                <div className="flex items-center justify-center gap-2 px-4 py-2.5 md:py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
-                  <i className="fab fa-paypal text-[#00457C] text-xl md:text-2xl"></i>
-                  <div className="flex flex-col leading-tight">
-                    <span className="text-white/50 text-[10px] md:text-xs">Secure checkout with</span>
-                    <span className="font-bold text-sm md:text-base">
-                      <span className="text-[#003087]">Pay</span><span className="text-[#009CDE]">Pal</span>
+                {/* PayPal secure-checkout badge (compact, smaller than Buy Now) */}
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg self-center">
+                  <i className="fab fa-paypal text-[#009CDE] text-base md:text-lg"></i>
+                  <span className="text-white/55 text-[11px] leading-tight">
+                    Secure checkout with{" "}
+                    <span className="font-bold">
+                      <span className="text-[#3b82f6]">Pay</span><span className="text-[#009CDE]">Pal</span>
                     </span>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -166,105 +197,78 @@ export default function ProductBillboard() {
 
           {/* Right - 3D Circular Carousel */}
           <div className="lg:col-span-7 relative" style={{ perspective: '1200px' }}>
-            <div className="relative w-full h-[280px] md:h-[500px]">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-48 h-48 md:w-80 md:h-80 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="relative w-full h-[190px] md:h-[500px]">
+              {/* Ambient glow + orbit rings (futuristic backdrop) */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-36 h-36 md:w-80 md:h-80 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute w-[180px] h-[180px] md:w-[420px] md:h-[420px] rounded-full border border-emerald-400/10 animate-spin-slow"></div>
+                <div className="absolute w-[130px] h-[130px] md:w-[300px] md:h-[300px] rounded-full border border-cyan-400/10 animate-spin-slow-rev"></div>
               </div>
 
-              {/* Carousel Container */}
-              <div 
-                className="absolute inset-0 flex items-center justify-center md-carousel"
-                style={{
-                  transformStyle: 'preserve-3d',
-                }}
-              >
+              {/* Face-forward orbit — products stay visible and rotate around the ring */}
+              <div className="absolute inset-0" style={{ transformStyle: 'preserve-3d' }}>
                 {products.map((product, index) => {
-                  // Calculate rotation angle for each product
-                  const angle = ((index - currentIndex) * 360) / products.length;
-                  const isActive = index === currentIndex;
-                  // Use 180px for mobile via CSS, 320px for desktop
-                  const radiusMobile = 180;
-                  const radiusDesktop = 320;
-                  
-                  // Calculate distance from active position for scaling
-                  const distanceFromActive = Math.abs(index - currentIndex);
-                  const normalizedDistance = Math.min(distanceFromActive, products.length - distanceFromActive);
-                  const scale = isActive ? 1 : Math.max(0.7, 1 - (normalizedDistance * 0.15));
-                  const opacity = isActive ? 1 : Math.max(0.5, 1 - (normalizedDistance * 0.25));
-                  
+                  const n = products.length;
+                  const rel = (((index - currentIndex) % n) + n) % n; // 0 = front
+                  const theta = (rel / n) * Math.PI * 2;
+                  const sx = Math.sin(theta); // -1 (left) .. 1 (right)
+                  const dz = Math.cos(theta); // 1 (front) .. -1 (back)
+                  const isActive = rel === 0;
+                  const opacity = 0.4 + ((dz + 1) / 2) * 0.6;
+                  const zIndex = Math.round((dz + 1) * 50) + (isActive ? 100 : 0);
+
                   return (
                     <div
                       key={index}
-                      className="absolute carousel-item"
+                      onClick={() => (isActive ? (setSelectedProduct(product), setShowModal(true)) : setCurrentIndex(index))}
+                      className="absolute left-1/2 top-1/2 cursor-pointer transition-[transform,opacity,filter] duration-[900ms]"
                       style={{
-                        transform: `
-                          rotateY(${angle}deg) 
-                          translateZ(${radiusMobile}px)
-                          scale(${scale})
-                        `,
-                        opacity: opacity,
-                        zIndex: isActive ? 20 : Math.max(1, 10 - normalizedDistance),
-                        transformStyle: 'preserve-3d',
-                        transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                        filter: isActive ? 'brightness(1.1) saturate(1.1)' : 'brightness(0.85) saturate(0.85)',
+                        // unitless multipliers consumed by the calc() transform below
+                        ["--sx" as string]: sx.toFixed(4),
+                        ["--dz" as string]: dz.toFixed(4),
+                        transform:
+                          "translate(-50%, -50%) " +
+                          "translateX(calc(var(--sx) * clamp(68px, 20vw, 240px))) " +
+                          "translateY(calc((1 - var(--dz)) * clamp(-6px, -2vw, -28px))) " +
+                          "translateZ(calc(var(--dz) * clamp(30px, 8vw, 90px))) " +
+                          "scale(calc(0.62 + (var(--dz) + 1) * 0.24))",
+                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                        opacity,
+                        zIndex,
+                        filter: isActive ? "saturate(1.1)" : "brightness(0.8) saturate(0.85)",
                       }}
-                      data-angle={angle}
-                      data-radius-desktop={radiusDesktop}
                     >
-                      <div className={`relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl w-[180px] h-[240px] md:w-[280px] md:h-[360px] bg-slate-800 ${
-                        isActive ? 'ring-2 md:ring-4 ring-emerald-500/50 shadow-emerald-500/30' : ''
-                      }`}>
+                      <div
+                        className={`relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl w-[115px] h-[150px] md:w-[240px] md:h-[320px] bg-slate-800 ${
+                          isActive ? "ring-2 md:ring-4 ring-emerald-500/60 shadow-emerald-500/30" : "ring-1 ring-white/10"
+                        }`}
+                      >
                         <div className="relative h-full">
                           <Image
-                            src={product.image}
+                            src={getProductImage(product.name)}
                             alt={product.name}
                             fill
-                            className="object-cover object-top transition-transform duration-700"
-                            style={{
-                              transform: isActive ? 'scale(1.05)' : 'scale(1)',
-                            }}
+                            unoptimized
+                            className="object-cover"
                             priority={index === 0}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                          
-                          {/* Animated Border Glow for Active */}
                           {isActive && (
-                            <div className="absolute inset-0 rounded-xl md:rounded-2xl animate-pulse" style={{
-                              boxShadow: '0 0 20px rgba(16, 185, 129, 0.6), inset 0 0 20px rgba(16, 185, 129, 0.3)'
-                            }}></div>
+                            <div
+                              className="absolute inset-0 rounded-xl md:rounded-2xl"
+                              style={{ boxShadow: "0 0 24px rgba(16,185,129,0.55), inset 0 0 24px rgba(16,185,129,0.25)" }}
+                            ></div>
                           )}
                         </div>
-                        
-                        {/* Discount Badge with Pulse */}
-                        <div className={`absolute top-2 md:top-4 right-2 md:right-4 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-500 ${
-                          isActive ? 'scale-110 animate-bounce' : 'scale-100'
-                        }`}>
-                          <div className="text-center">
-                            <p className="text-white text-[8px] md:text-xs font-bold">SAVE</p>
-                            <p className="text-white text-base md:text-xl font-black">
-                              {Math.round((1 - parseFloat(product.price.replace("$", "")) / parseFloat(product.originalPrice.replace(/[$,]/g, ""))) * 100)}%
-                            </p>
-                          </div>
+
+                        {/* Small product icon — kept minimal for a clean card */}
+                        <div className="absolute bottom-2 md:bottom-3 left-2 md:left-3 w-7 h-7 md:w-9 md:h-9 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/20">
+                          <i className={`${product.icon} text-white text-sm md:text-base`}></i>
                         </div>
 
-                        {/* Icon with Glow */}
-                        <div className={`absolute bottom-2 md:bottom-4 left-2 md:left-4 w-10 h-10 md:w-14 md:h-14 bg-white/10 backdrop-blur-md rounded-lg md:rounded-xl flex items-center justify-center border border-white/20 transition-all duration-500 ${
-                          isActive ? 'bg-white/20 scale-110' : ''
-                        }`}>
-                          <i className={`${product.icon} text-white text-lg md:text-2xl drop-shadow-lg`}></i>
-                        </div>
-
-                        {/* Product Name Overlay - Only Active */}
+                        {/* Shimmer sweep on active */}
                         {isActive && (
-                          <div className="absolute bottom-2 md:bottom-4 right-2 md:right-4 bg-gradient-to-r from-emerald-600 to-emerald-500 backdrop-blur-md px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl shadow-lg animate-fade-in border border-emerald-400/30">
-                            <p className="text-white text-xs md:text-sm font-bold drop-shadow-md">{product.name}</p>
-                          </div>
-                        )}
-
-                        {/* Shimmer Effect on Active */}
-                        {isActive && (
-                          <div className="absolute inset-0 overflow-hidden rounded-xl md:rounded-2xl">
+                          <div className="absolute inset-0 overflow-hidden rounded-xl md:rounded-2xl pointer-events-none">
                             <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                           </div>
                         )}
@@ -303,9 +307,10 @@ export default function ProductBillboard() {
               {/* Product Image */}
               <div className="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
                 <Image
-                  src={selectedProduct.image}
+                  src={getProductImage(selectedProduct.name)}
                   alt={selectedProduct.name}
                   fill
+                  unoptimized
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
@@ -408,7 +413,9 @@ export default function ProductBillboard() {
                 </h3>
                 
                 <a
-                  href={`mailto:digitalkeyhubllc@gmail.com?subject=PayPal Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via PayPal.%0D%0A%0D%0AProduct: ${selectedProduct.name}%0D%0APrice: ${selectedProduct.price}`}
+                  href={paypalPaymentUrl(selectedProduct.name, selectedProduct.price)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-between p-5 bg-white/[0.04] border border-blue-400/40 rounded-xl hover:bg-blue-500/10 transition-all"
                 >
                   <div className="flex items-center gap-4">

@@ -28,7 +28,7 @@ export default function PromoBanner() {
       <div className="container mx-auto px-4 py-2.5">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-sm font-semibold">
           <i className="fas fa-gift text-white/90"></i>
-          <span className="font-black">{PROMO_PERCENT}% OFF your order</span>
+          <span className="font-black uppercase tracking-wide">{PROMO_PERCENT}% OFF Your First Order</span>
 
           {promo ? (
             <>
@@ -43,12 +43,12 @@ export default function PromoBanner() {
             </>
           ) : (
             <>
-              <span className="text-white/85">— log in with your email to generate your code</span>
+              <span className="text-white/85">— Log in to get your code</span>
               <Link
                 href="/login"
                 className="inline-flex items-center gap-1.5 bg-white text-emerald-700 px-3 py-0.5 rounded-md font-bold hover:bg-emerald-50 transition-colors"
               >
-                Get 20% Code
+                Get {PROMO_PERCENT}% Code
                 <i className="fas fa-arrow-right text-xs"></i>
               </Link>
             </>

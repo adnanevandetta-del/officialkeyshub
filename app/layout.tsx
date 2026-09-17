@@ -1,11 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, STIX_Two_Text } from "next/font/google";
 import "./globals.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Script from "next/script";
 import { CartProvider } from "./components/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// Mathematical Bold Italic display font (scientific/math typesetting serif),
+// self-hosted via next/font and applied to headings in globals.css.
+const stixMath = STIX_Two_Text({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["italic", "normal"],
+  variable: "--font-math",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -49,7 +59,21 @@ export const metadata: Metadata = {
     "authentic windows key",
     "verified microsoft reseller",
     "instant delivery windows key",
-    "lifetime windows license"
+    "lifetime windows license",
+    "windows 11 pro product key",
+    "buy windows 10 key",
+    "cheap windows 11 key",
+    "windows 11 home key",
+    "office 2021 product key",
+    "microsoft office 2021 professional plus",
+    "buy office 2021 key",
+    "office 365 product key",
+    "cheap office keys",
+    "how to activate office 2021",
+    "how to activate windows 11",
+    "transfer windows license to new pc",
+    "oem vs retail windows key",
+    "windows 11 pro key cheap"
   ],
   authors: [{ name: "Official Keys Hub" }],
   openGraph: {
@@ -77,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${stixMath.variable}`}>
       <head>
         <meta name="theme-color" content="#10b981" />
       </head>
@@ -98,7 +122,10 @@ export default function RootLayout({
             "email": "digitalkeyhubllc@gmail.com",
             "address": {
               "@type": "PostalAddress",
-              "addressCountry": "US"
+              "streetAddress": "Kungsgatan 8",
+              "addressLocality": "Stockholm",
+              "postalCode": "111 43",
+              "addressCountry": "SE"
             },
             "aggregateRating": {
               "@type": "AggregateRating",

@@ -8,6 +8,7 @@ import ProfileButton from "./ProfileButton";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDeskMenuOpen, setIsDeskMenuOpen] = useState(false);
 
   const productCategories = [
     { name: "Windows", icon: "fab fa-windows", href: "/#products", color: "text-blue-500", filter: "windows" },
@@ -20,7 +21,6 @@ export default function Navbar() {
   ];
 
   const handleCategoryClick = (filter: string) => {
-    setIsProductsOpen(false);
     // Store the selected category and dispatch event
     if (typeof window !== 'undefined') {
       sessionStorage.setItem('selectedCategory', filter);
@@ -41,7 +41,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 left-0 right-0 z-[200] bg-[#0a0e1a] shadow-md border-b border-white/10">
+    <nav className="font-math sticky top-0 left-0 right-0 z-[200] bg-[#0a0e1a] shadow-md border-b border-white/10">
       <div className="container mx-auto px-4 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between w-full">
@@ -68,27 +68,44 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden md:flex items-center justify-between">
+        <div className="hidden md:flex items-center justify-between relative">
           {/* Logo */}
           <div className="ml-2">
             <Logo size="sm" />
           </div>
 
-          {/* Desktop Menu */}
+          {/* Trustpilot rating badge — centered, synced to 4.3 review score */}
+          <a
+            href="https://www.trustpilot.com/review/officialkeyshub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontFamily: "Inter, system-ui, sans-serif", fontStyle: "normal" }}
+            className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-1.5 pl-2 pr-2.5 py-1 rounded-lg bg-white/5 border border-white/10 hover:border-[#00b67a]/50 transition-colors"
+            aria-label="Rated 4.3 out of 5 on Trustpilot"
+          >
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#00b67a" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+            </svg>
+            <span className="text-white text-xs font-semibold">Trustpilot</span>
+            <span className="flex items-center gap-px">
+              {[100, 100, 100, 100, 30].map((fill, i) => (
+                <span
+                  key={i}
+                  className="w-3.5 h-3.5 rounded-[2px] flex items-center justify-center"
+                  style={{ background: `linear-gradient(90deg, #00b67a ${fill}%, #cfd3d9 ${fill}%)` }}
+                >
+                  <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                  </svg>
+                </span>
+              ))}
+            </span>
+            <span className="text-white text-xs font-bold">4.3</span>
+          </a>
+
+          {/* Right controls */}
           <div className="flex items-center gap-3">
-            {/* Products Link (category dropdowns now live in the CategoryBar below) */}
-            <Link
-              href="/#products"
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  sessionStorage.setItem('selectedCategory', 'all');
-                  window.dispatchEvent(new CustomEvent('categoryChanged', { detail: { category: 'all' } }));
-                }
-              }}
-              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
-            >
-              Products
-            </Link>
+            {/* Partner Program stays visible */}
             <Link
               href="/partner-program"
               className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-1"
@@ -96,28 +113,73 @@ export default function Navbar() {
               <i className="fas fa-handshake"></i>
               Partner Program
             </Link>
-            <Link
-              href="/blog"
-              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/faq"
-              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm"
-            >
-              FAQ
-            </Link>
-            <a
-              href="https://wa.me/16019756129"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-md text-sm"
-            >
-              <i className="fab fa-whatsapp mr-1"></i>
-              Contact
-            </a>
-            
+
+            {/* Menu icon — holds Products / FAQ / Blog */}
+            <div className="relative">
+              <button
+                onClick={() => setIsDeskMenuOpen((v) => !v)}
+                onBlur={() => setTimeout(() => setIsDeskMenuOpen(false), 150)}
+                className="text-white hover:text-emerald-400 focus:outline-none p-2 flex items-center"
+                aria-label="Open menu"
+                aria-expanded={isDeskMenuOpen}
+              >
+                <i className={`fas ${isDeskMenuOpen ? "fa-times" : "fa-bars"} text-xl`}></i>
+              </button>
+
+              {isDeskMenuOpen && (
+                <div className="absolute top-full right-0 mt-2 w-48 max-w-none bg-[#0b1020] rounded-xl shadow-2xl border border-emerald-500/30 overflow-hidden z-[300] py-2">
+                  <Link
+                    href="/#products"
+                    onClick={() => {
+                      setIsDeskMenuOpen(false);
+                      if (typeof window !== 'undefined') {
+                        sessionStorage.setItem('selectedCategory', 'all');
+                        window.dispatchEvent(new CustomEvent('categoryChanged', { detail: { category: 'all' } }));
+                      }
+                    }}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-box text-emerald-400 w-4"></i>
+                    Products
+                  </Link>
+                  <Link
+                    href="/faq"
+                    onClick={() => setIsDeskMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-question-circle text-emerald-400 w-4"></i>
+                    FAQ
+                  </Link>
+                  <Link
+                    href="/blog"
+                    onClick={() => setIsDeskMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-blog text-emerald-400 w-4"></i>
+                    Blog
+                  </Link>
+                  <Link
+                    href="/activation-guide"
+                    onClick={() => setIsDeskMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-key text-emerald-400 w-4"></i>
+                    Activation Guide
+                  </Link>
+                  <a
+                    href="https://wa.me/16019756129"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsDeskMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                  >
+                    <i className="fab fa-whatsapp text-emerald-400 w-4"></i>
+                    Contact Us
+                  </a>
+                </div>
+              )}
+            </div>
+
             {/* Cart & Profile Buttons - Icon Only */}
             <CartButton />
             <ProfileButton />
@@ -182,14 +244,23 @@ export default function Navbar() {
                 <i className="fas fa-question-circle text-emerald-400"></i>
                 FAQ
               </Link>
+              <Link
+                href="/activation-guide"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <i className="fas fa-key text-emerald-400"></i>
+                Activation Guide
+              </Link>
               <a
                 href="https://wa.me/16019756129"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-md text-center text-sm"
+                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fab fa-whatsapp mr-1"></i>
-                Contact
+                <i className="fab fa-whatsapp text-emerald-400"></i>
+                Contact Us
               </a>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useCart } from './CartContext';
 import { getProductImage } from '../lib/productImage';
+import { paypalPaymentUrl } from '../lib/payment';
 
 type CategoryId = "all" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
 
@@ -921,6 +922,7 @@ export default function Products() {
                   src={getProductImage(product.name)}
                   alt={product.name}
                   fill
+                  unoptimized
                   className="object-cover hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
@@ -1023,6 +1025,7 @@ export default function Products() {
                   src={getProductImage(selectedProduct.name)}
                   alt={selectedProduct.name}
                   fill
+                  unoptimized
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
@@ -1068,7 +1071,9 @@ export default function Products() {
                       </div>
                     </div>
                     <a
-                      href={`mailto:digitalkeyhubllc@gmail.com?subject=PayPal Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via PayPal.%0D%0A%0D%0AProduct: ${selectedProduct.name}%0D%0APrice: ${selectedProduct.price}`}
+                      href={paypalPaymentUrl(selectedProduct.name, selectedProduct.price)}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-bold hover:bg-blue-700 transition-all"
                     >
                       Pay {selectedProduct.price} with PayPal

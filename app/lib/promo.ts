@@ -2,8 +2,8 @@
 // generates by logging in with their email. Everything is client-side
 // (this is a static/mock storefront), persisted in localStorage.
 
-export const PROMO_PERCENT = 20;
-export const PROMO_PREFIX = "KEYS20";
+export const PROMO_PERCENT = 30;
+export const PROMO_PREFIX = "KEYS30";
 
 const STORAGE_KEY = "okh_promo";
 

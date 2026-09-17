@@ -46,7 +46,7 @@ export default function LoginPage() {
             </p>
             <div className="mt-4 inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-full text-sm font-bold">
               <i className="fas fa-gift"></i>
-              Log in with your email to unlock your 20% OFF code
+              Log in with your email to unlock your 30% OFF code
             </div>
           </div>
 
@@ -221,7 +221,7 @@ export default function LoginPage() {
             </div>
             <div className="bg-white rounded-xl p-4 border-2 border-emerald-300 text-center ring-1 ring-emerald-200">
               <i className="fas fa-percent text-emerald-600 text-2xl mb-2"></i>
-              <p className="text-xs font-semibold text-gray-700">20% Off Promo Code</p>
+              <p className="text-xs font-semibold text-gray-700">30% Off Promo Code</p>
             </div>
           </div>
         </div>

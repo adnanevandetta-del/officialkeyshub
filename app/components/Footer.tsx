@@ -12,6 +12,23 @@ export default function Footer() {
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
               Your trusted source for genuine Windows, Office, and software licenses with instant delivery and lifetime support.
             </p>
+            {/* Accepted payment methods */}
+            <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">We Accept</p>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center justify-center h-7 w-11 bg-white rounded-md shadow-sm" title="Visa">
+                <i className="fab fa-cc-visa text-[#1a1f71] text-xl"></i>
+              </span>
+              <span className="inline-flex items-center justify-center h-7 w-11 bg-white rounded-md shadow-sm" title="PayPal">
+                <i className="fab fa-cc-paypal text-[#003087] text-xl"></i>
+              </span>
+              <span className="inline-flex items-center justify-center h-7 w-11 bg-white rounded-md shadow-sm" title="Stripe">
+                <i className="fab fa-cc-stripe text-[#635bff] text-xl"></i>
+              </span>
+              <span className="inline-flex items-center justify-center h-7 px-2 bg-white rounded-md shadow-sm gap-1" title="USDT">
+                <span className="w-4 h-4 rounded-full bg-[#26a17b] text-white flex items-center justify-center text-[10px] font-black">₮</span>
+                <span className="text-[#26a17b] text-xs font-black">USDT</span>
+              </span>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -84,9 +101,14 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <i className="fas fa-map-marker-alt text-emerald-400 mt-1 text-sm"></i>
-                <span className="text-slate-400 text-sm">
-                  Digital delivery worldwide<br />United States
-                </span>
+                <a
+                  href="https://www.google.com/maps/place/Kungsgatan+8,+111+43+Stockholm,+Sweden"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
+                >
+                  Kungsgatan 8, 111 43<br />Stockholm, Sweden
+                </a>
               </li>
               <li className="flex items-start gap-2">
                 <i className="fas fa-envelope text-emerald-400 mt-1 text-sm"></i>
@@ -119,6 +141,38 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Headquarters */}
+        <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-5 rounded-xl border border-slate-800 bg-slate-900/50 px-5 py-4 text-center md:text-left">
+          <div className="flex items-center gap-3">
+            <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/15 flex items-center justify-center">
+              <i className="fas fa-building text-emerald-400"></i>
+            </span>
+            <div>
+              <p className="text-white text-sm font-semibold">Official Keys Hub — Headquarters</p>
+              <a
+                href="https://www.google.com/maps/place/Kungsgatan+8,+111+43+Stockholm,+Sweden"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
+              >
+                Kungsgatan 8, 111 43 Stockholm, Sweden
+              </a>
+            </div>
+          </div>
+          <span className="hidden md:block h-8 w-px bg-slate-700"></span>
+          <p className="text-slate-500 text-xs max-w-xs">
+            Registered digital software reseller · Serving customers across the EU &amp; worldwide
+          </p>
+          <a
+            href="https://www.google.com/maps/place/Kungsgatan+8,+111+43+Stockholm,+Sweden"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-emerald-400 hover:text-emerald-300 text-sm font-semibold inline-flex items-center gap-1"
+          >
+            <i className="fas fa-map-marker-alt"></i> View on map
+          </a>
         </div>
 
         {/* Bottom Copyright */}

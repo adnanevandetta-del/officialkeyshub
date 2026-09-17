@@ -31,12 +31,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    // Blog Articles - Buying Guides (high-intent keywords)
+    {
+      url: `${baseUrl}/blog/cheap-windows-11-keys-2026`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog/buy-cheap-microsoft-office-keys-2026`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog/transfer-windows-license-new-pc`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     // Blog Articles - Windows Activation & Guides
     {
       url: `${baseUrl}/blog/how-to-activate-windows-11`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog/how-to-activate-office-2021`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95,
     },
     {
       url: `${baseUrl}/blog/windows-11-home-vs-pro`,

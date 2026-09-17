@@ -9,6 +9,42 @@ import Link from "next/link";
 const blogPosts = [
   // Latest Microsoft Software Articles - September 2026
   {
+    slug: "cheap-windows-11-keys-2026",
+    title: "Cheap Windows 11 Keys 2026: Buy Genuine Keys from $12.99",
+    excerpt: "Where to buy cheap, genuine Windows 11 Pro & Home keys in 2026. Prices compared, safety tips, and how activation works. Up to 90% off.",
+    category: "Buying",
+    readTime: "10 min",
+    date: "Sep 10, 2026",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+  },
+  {
+    slug: "buy-cheap-microsoft-office-keys-2026",
+    title: "Buy Cheap Microsoft Office Keys 2026: Genuine Licenses from $29.99",
+    excerpt: "Buy authentic Office 2021, 2019 & Office 365 product keys at up to 90% off. Genuine licenses, instant delivery, lifetime support.",
+    category: "Buying",
+    readTime: "8 min",
+    date: "Sep 8, 2026",
+    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+  },
+  {
+    slug: "how-to-activate-office-2021",
+    title: "How to Activate Office 2021: Step-by-Step Guide 2026",
+    excerpt: "Activate Microsoft Office 2021 in minutes with your product key. Online and account methods plus fixes for common activation errors.",
+    category: "Activation",
+    readTime: "7 min",
+    date: "Sep 12, 2026",
+    image: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&q=80",
+  },
+  {
+    slug: "transfer-windows-license-new-pc",
+    title: "How to Transfer a Windows License to a New PC (2026 Guide)",
+    excerpt: "Can you move your Windows key to a new computer? OEM vs retail transfer rules, deactivation steps, and reactivation on new hardware.",
+    category: "Guide",
+    readTime: "8 min",
+    date: "Sep 14, 2026",
+    image: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=800&q=80",
+  },
+  {
     slug: "how-to-activate-windows-11",
     title: "How to Activate Windows 11 Pro: Complete Step-by-Step Guide 2026",
     excerpt: "Learn how to activate Windows 11 Pro with product key. Complete guide with troubleshooting and phone activation method. Works 100%.",
@@ -76,7 +112,7 @@ const blogPosts = [
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   
-  const categories = ["All", "Activation", "Comparison", "Guide", "Legal", "Security"];
+  const categories = ["All", "Buying", "Activation", "Comparison", "Guide", "Legal", "Security"];
   
   const filteredPosts = selectedCategory === "All" 
     ? blogPosts 

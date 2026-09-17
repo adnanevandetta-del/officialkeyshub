@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { validatePromoCode, getStoredPromo } from '../lib/promo';
+import { paypalPaymentUrl } from '../lib/payment';
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
@@ -17,10 +18,6 @@ export default function CheckoutPage() {
   const [promoError, setPromoError] = useState('');
   const [formData, setFormData] = useState({
     email: '',
-    firstName: '',
-    lastName: '',
-    country: '',
-    message: '',
   });
 
   // Pre-fill with the customer's generated code if they have one.
@@ -41,7 +38,7 @@ export default function CheckoutPage() {
     } else {
       setAppliedPercent(0);
       setAppliedCode('');
-      setPromoError('Invalid promo code. Log in with your email to generate a valid 20% code.');
+      setPromoError('Invalid promo code. Log in with your email to get a valid 30% code.');
     }
   };
 
@@ -59,12 +56,17 @@ export default function CheckoutPage() {
     const total = discountedTotal.toFixed(2);
 
     if (paymentMethod === 'whatsapp') {
-      const whatsappMessage = `Hi! I want to complete my order:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ACustomer Info:%0D%0AName: ${formData.firstName} ${formData.lastName}%0D%0AEmail: ${formData.email}%0D%0ACountry: ${formData.country}`;
+      const whatsappMessage = `Hi! I want to complete my order:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ADelivery Email: ${formData.email}`;
       window.open(`https://wa.me/16019756129?text=${whatsappMessage}`, '_blank');
-    } else if (paymentMethod === 'paypal' || paymentMethod === 'usdt') {
-      const emailSubject = `Order Request - ${paymentMethod.toUpperCase()} Payment`;
-      const emailBody = `Hi, I want to complete my order via ${paymentMethod.toUpperCase()}:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ACustomer Information:%0D%0AName: ${formData.firstName} ${formData.lastName}%0D%0AEmail: ${formData.email}%0D%0ACountry: ${formData.country}%0D%0A%0D%0AMessage: ${formData.message}`;
-      window.location.href = `mailto:digitalkeyhubllc@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+    } else if (paymentMethod === 'paypal') {
+      // Pay the store's PayPal account (officialkeyshub@gmail.com) directly.
+      const itemName = cart.map((i) => `${i.quantity}x ${i.name}`).join(', ');
+      window.location.href = paypalPaymentUrl(`Official Keys Hub — ${itemName}`, discountedTotal, formData.email);
+    } else if (paymentMethod === 'usdt') {
+      const emailSubject = `Order Request - USDT Payment`;
+      const emailBody = `Hi, I want to complete my order via USDT:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ADelivery Email: ${formData.email}`;
+      window.location.href = `mailto:officialkeyshub@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+      // Note: order/support email standardized to officialkeyshub@gmail.com
     }
   };
 
@@ -105,78 +107,25 @@ export default function CheckoutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column - Form */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Contact Information */}
+              {/* Delivery Email */}
               <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-gray-200">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <i className="fas fa-user-circle text-emerald-600"></i>
-                  Contact Information
+                  <i className="fas fa-envelope text-emerald-600"></i>
+                  Delivery Email
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none"
-                      placeholder="John"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.lastName}
-                      onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none"
-                      placeholder="Doe"
-                    />
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none"
-                      placeholder="john.doe@example.com"
-                    />
-                    <p className="text-xs text-gray-500 mt-1">Your license keys will be sent to this email</p>
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Country *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.country}
-                      onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none"
-                      placeholder="United States"
-                    />
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Additional Message (Optional)
-                    </label>
-                    <textarea
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none"
-                      rows={3}
-                      placeholder="Any special instructions..."
-                    ></textarea>
-                  </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none"
+                    placeholder="john.doe@example.com"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Your license keys will be delivered to this email</p>
                 </div>
               </div>
 
@@ -263,7 +212,7 @@ export default function CheckoutPage() {
                   {cart.map((item) => (
                     <div key={item.id} className="flex gap-3 pb-4 border-b border-gray-200">
                       <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden">
-                        <Image src={item.image} alt={item.name} fill className="object-cover" />
+                        <Image src={item.image} alt={item.name} fill unoptimized className="object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-sm text-gray-900 truncate">{item.name}</p>
@@ -304,7 +253,7 @@ export default function CheckoutPage() {
                           type="text"
                           value={promoInput}
                           onChange={(e) => setPromoInput(e.target.value)}
-                          placeholder="KEYS20-XXXX"
+                          placeholder="KEYS30-XXXX"
                           className="flex-1 min-w-0 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none font-mono uppercase"
                         />
                         <button
@@ -322,7 +271,7 @@ export default function CheckoutPage() {
                           <Link href="/login" className="text-emerald-600 font-semibold hover:underline">
                             Log in with your email
                           </Link>{' '}
-                          to get 20% off.
+                          to get 30% off.
                         </p>
                       )}
                     </>
@@ -350,10 +299,10 @@ export default function CheckoutPage() {
                 {/* Checkout Button */}
                 <button
                   onClick={handleCheckout}
-                  disabled={!paymentMethod || !formData.email || !formData.firstName || !formData.lastName || !formData.country}
+                  disabled={!paymentMethod || !formData.email}
                   className={`w-full py-4 rounded-xl font-black text-lg transition-all ${
-                    paymentMethod && formData.email && formData.firstName && formData.lastName && formData.country
-                      ? 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white hover:from-emerald-700 hover:to-emerald-800 shadow-lg'
+                    paymentMethod && formData.email
+                      ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >

@@ -7,60 +7,67 @@ interface LogoProps {
 
 export default function Logo({ size = "md", animated = true }: LogoProps) {
   const sizes = {
-    sm: { container: "h-12", text: "text-base", subText: "text-xs", icon: "w-10 h-10" },
-    md: { container: "h-16", text: "text-lg", subText: "text-sm", icon: "w-12 h-12" },
-    lg: { container: "h-24", text: "text-2xl", subText: "text-base", icon: "w-16 h-16" },
+    sm: { container: "h-10", text: "text-base", tagline: "text-[8px]", icon: "w-8 h-8", showTag: false },
+    md: { container: "h-14", text: "text-xl", tagline: "text-[9px]", icon: "w-11 h-11", showTag: false },
+    lg: { container: "h-20", text: "text-2xl", tagline: "text-[11px]", icon: "w-16 h-16", showTag: true },
   };
 
   const currentSize = sizes[size];
 
-  // Clean, professional Windows-tile mark in the site's emerald/cyan theme
-  const WindowsMark = (
-    <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
+  // Microsoft-style four tiles (darkened) + a modern key with an orbit swoosh.
+  const Mark = (
+    <svg viewBox="0 0 120 120" className="w-full h-full drop-shadow-md">
       <defs>
-        <linearGradient id="keysBrandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{ stopColor: "#34d399" }} />
-          <stop offset="55%" style={{ stopColor: "#10b981" }} />
-          <stop offset="100%" style={{ stopColor: "#06b6d4" }} />
+        <linearGradient id="keyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2f6fd0" />
+          <stop offset="100%" stopColor="#173f82" />
         </linearGradient>
-        <linearGradient id="keysBrandSheen" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style={{ stopColor: "#ffffff", stopOpacity: 0.35 }} />
-          <stop offset="45%" style={{ stopColor: "#ffffff", stopOpacity: 0 }} />
+        <linearGradient id="swooshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#1f6fd0" />
+          <stop offset="100%" stopColor="#123f80" />
         </linearGradient>
       </defs>
 
-      {/* Rounded tile backdrop */}
-      <rect x="14" y="14" width="72" height="72" rx="18" fill="url(#keysBrandGradient)" />
-      <rect x="14" y="14" width="72" height="72" rx="18" fill="url(#keysBrandSheen)" />
-      {animated && (
-        <rect x="14" y="14" width="72" height="72" rx="18" fill="none" stroke="#67e8f9" strokeWidth="1.5" opacity="0.35">
-          <animate attributeName="opacity" values="0.15;0.5;0.15" dur="3s" repeatCount="indefinite" />
-        </rect>
-      )}
+      {/* Four tiles — darkened Microsoft palette */}
+      <g transform="rotate(-6 60 56)">
+        <rect x="30" y="26" width="27" height="27" rx="4" fill="#B23A1A" />
+        <rect x="63" y="26" width="27" height="27" rx="4" fill="#4F7A00" />
+        <rect x="30" y="59" width="27" height="27" rx="4" fill="#0B6BA6" />
+        <rect x="63" y="59" width="27" height="27" rx="4" fill="#C88A00" />
+      </g>
 
-      {/* Windows 4-pane logo, knocked out in white */}
-      <g fill="#ffffff">
-        <rect x="30" y="30" width="16" height="16" rx="2.5" />
-        <rect x="54" y="30" width="16" height="16" rx="2.5" />
-        <rect x="30" y="54" width="16" height="16" rx="2.5" />
-        <rect x="54" y="54" width="16" height="16" rx="2.5" />
+      {/* Orbit swoosh */}
+      <path d="M24 78 C 44 96, 86 92, 100 60" fill="none" stroke="url(#swooshGrad)" strokeWidth="6" strokeLinecap="round" />
+      <path d="M96 44 C 100 40, 104 44, 102 50" fill="none" stroke="url(#swooshGrad)" strokeWidth="6" strokeLinecap="round" />
+
+      {/* Modern key with a light outline so it reads over the tiles */}
+      <g>
+        <circle cx="60" cy="46" r="19" fill="#e8eefc" />
+        <circle cx="60" cy="46" r="15.5" fill="url(#keyGrad)" />
+        <circle cx="60" cy="41.5" r="5" fill="#e8eefc" />
+        <path d="M67 57 L96 86 L96 96 L90 96 L90 90 L84 90 L84 84 L78 84 L72 78 L68 82 L58 72 Z" fill="#e8eefc" />
+        <path d="M69 58 L94 83 L94 93 L91.5 93 L91.5 86.5 L85.5 86.5 L85.5 81 L79.5 81 L74 75.5 L69.5 79.5 L61 71 Z" fill="url(#keyGrad)" />
       </g>
     </svg>
   );
 
   return (
-    <Link href="/" className={`flex items-center gap-3 ${currentSize.container} group`}>
+    <Link href="/" className={`flex items-center gap-2 ${currentSize.container} group`}>
       <div className={`relative ${currentSize.icon} flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}>
-        {WindowsMark}
+        {Mark}
       </div>
 
-      <div className="flex flex-col leading-tight">
-        <span className={`font-black text-white ${currentSize.text} tracking-tight group-hover:text-emerald-300 transition-colors`}>
-          Official Keys
+      <div className="flex flex-col leading-none">
+        <span className={`font-math font-black tracking-tight ${currentSize.text}`}>
+          <span className="text-white">Official</span>
+          <span className="text-[#3b8fff]">Keys</span>
+          <span className="text-white">Hub</span>
         </span>
-        <span className={`font-bold text-emerald-400 ${currentSize.subText} tracking-[0.35em] uppercase -mt-0.5 group-hover:text-cyan-300 transition-colors`}>
-          Hub
-        </span>
+        {currentSize.showTag && (
+          <span className={`font-math text-slate-400 font-semibold tracking-wide mt-1 ${currentSize.tagline}`}>
+            Microsoft Keys • Fast • Safe • Trusted
+          </span>
+        )}
       </div>
     </Link>
   );

@@ -99,6 +99,7 @@ export default function CartModal({ onClose }: CartModalProps) {
                           src={item.image}
                           alt={item.name}
                           fill
+                          unoptimized
                           className="object-cover"
                         />
                       </div>
@@ -201,14 +202,6 @@ export default function CartModal({ onClose }: CartModalProps) {
               <i className="fas fa-lock mr-2"></i>
               Secure Checkout
             </Link>
-
-            <button
-              onClick={onClose}
-              className="w-full py-3 text-slate-400 hover:text-white hover:bg-white/5 font-semibold text-sm rounded-lg transition-colors"
-            >
-              <i className="fas fa-arrow-left mr-2"></i>
-              Continue Shopping
-            </button>
 
             {/* Trust Badge */}
             <div className="mt-4 pt-4 border-t border-white/10">
