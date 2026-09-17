@@ -137,17 +137,30 @@ export default function ProductBillboard() {
                 <p className="text-white/60 text-xs md:text-sm mt-1">One-time payment • Lifetime access</p>
               </div>
 
-              <button
-                onClick={() => {
-                  setSelectedProduct(currentProduct);
-                  setShowModal(true);
-                }}
-                className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-black text-sm md:text-lg rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all hover:scale-105 shadow-xl flex items-center justify-center gap-2"
-              >
-                <i className="fas fa-shopping-cart text-sm md:text-base"></i>
-                Buy Now
-                <i className="fas fa-arrow-right text-sm md:text-base"></i>
-              </button>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <button
+                  onClick={() => {
+                    setSelectedProduct(currentProduct);
+                    setShowModal(true);
+                  }}
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-black text-sm md:text-lg rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all hover:scale-105 shadow-xl flex items-center justify-center gap-2"
+                >
+                  <i className="fas fa-shopping-cart text-sm md:text-base"></i>
+                  Buy Now
+                  <i className="fas fa-arrow-right text-sm md:text-base"></i>
+                </button>
+
+                {/* PayPal secure-checkout badge */}
+                <div className="flex items-center justify-center gap-2 px-4 py-2.5 md:py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
+                  <i className="fab fa-paypal text-[#00457C] text-xl md:text-2xl"></i>
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-white/50 text-[10px] md:text-xs">Secure checkout with</span>
+                    <span className="font-bold text-sm md:text-base">
+                      <span className="text-[#003087]">Pay</span><span className="text-[#009CDE]">Pal</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

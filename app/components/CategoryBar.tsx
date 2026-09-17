@@ -202,7 +202,7 @@ export default function CategoryBar() {
                 {/* Dropdown Menu - Product Cards */}
                 {hoveredCategory === category.name && category.products && category.products.length > 0 && (
                   <div
-                    className="absolute top-full left-0 mt-2 w-[600px] glass-strong rounded-xl shadow-2xl overflow-hidden z-[200] animate-fadeIn"
+                    className="absolute top-full left-0 mt-2 w-[600px] max-w-none glass-strong rounded-xl shadow-2xl overflow-hidden z-[200] animate-fadeIn"
                     onMouseEnter={() => setHoveredCategory(category.name)}
                     onMouseLeave={() => setHoveredCategory(null)}
                   >

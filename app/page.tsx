@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import PromoBanner from "./components/PromoBanner";
 import CategoryBar from "./components/CategoryBar";
 import ProductBillboard from "./components/ProductBillboard";
 import Products from "./components/Products";
@@ -12,6 +13,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 export default function Home() {
   return (
     <>
+      <PromoBanner />
       <Navbar />
       <CategoryBar />
       <ProductBillboard />

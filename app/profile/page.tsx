@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { getStoredPromo, savePromoForEmail, PROMO_PERCENT, type StoredPromo } from '../lib/promo';
 
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<'profile' | 'orders' | 'licenses' | 'settings'>('profile');
   const [isEditing, setIsEditing] = useState(false);
+  const [promo, setPromo] = useState<StoredPromo | null>(null);
+  const [copied, setCopied] = useState(false);
   
   // Mock user data - replace with actual auth
   const [userData, setUserData] = useState({
@@ -18,6 +20,31 @@ export default function ProfilePage() {
     totalOrders: 12,
     totalSpent: 456.88
   });
+
+  // Load the customer's personal 20% promo code (generated at login).
+  useEffect(() => {
+    const stored = getStoredPromo();
+    if (stored) {
+      setPromo(stored);
+      setUserData((prev) => ({ ...prev, email: stored.email }));
+    } else {
+      // Fall back to generating one from the profile email so the card
+      // always has something to show in this demo.
+      setPromo(savePromoForEmail('john.doe@email.com'));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const copyPromo = () => {
+    if (!promo) return;
+    try {
+      navigator.clipboard.writeText(promo.code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard blocked — ignore
+    }
+  };
 
   // Mock orders data
   const orders = [
@@ -75,13 +102,14 @@ export default function ProfilePage() {
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Avatar */}
             <div className="relative">
-              <Image
-                src={userData.avatar}
-                alt={userData.name}
-                width={120}
-                height={120}
-                className="rounded-full border-4 border-emerald-500"
-              />
+              <div className="w-[120px] h-[120px] rounded-full border-4 border-emerald-500 bg-gradient-to-br from-emerald-500 to-cyan-600 flex items-center justify-center text-white text-4xl font-black select-none">
+                {userData.name
+                  .split(' ')
+                  .map((n) => n[0])
+                  .join('')
+                  .slice(0, 2)
+                  .toUpperCase()}
+              </div>
               <button className="absolute bottom-0 right-0 w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 shadow-lg">
                 <i className="fas fa-camera"></i>
               </button>
@@ -110,6 +138,39 @@ export default function ProfilePage() {
             </div>
           </div>
         </div>
+
+        {/* Promo Code Card */}
+        {promo && (
+          <div className="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gradient-to-r from-emerald-600 via-emerald-600 to-cyan-600 p-6 md:p-8">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"></div>
+            <div className="absolute -bottom-12 -left-6 w-40 h-40 bg-white/10 rounded-full"></div>
+            <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="text-white">
+                <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                  <i className="fas fa-gift"></i>
+                  YOUR EXCLUSIVE REWARD
+                </div>
+                <h2 className="text-2xl md:text-3xl font-black mb-1">{PROMO_PERCENT}% OFF Your Next Order</h2>
+                <p className="text-white/80 text-sm">
+                  Use this code at checkout. Tied to <span className="font-semibold">{promo.email}</span>.
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="bg-white rounded-xl px-5 py-3 border-2 border-dashed border-white/60 shadow-inner">
+                  <p className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Promo Code</p>
+                  <p className="text-2xl font-black text-emerald-700 font-mono tracking-wider">{promo.code}</p>
+                </div>
+                <button
+                  onClick={copyPromo}
+                  className="h-14 px-5 bg-white text-emerald-700 rounded-xl font-bold hover:bg-emerald-50 transition-colors flex items-center gap-2"
+                >
+                  <i className={`fas ${copied ? 'fa-check' : 'fa-copy'}`}></i>
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Tabs */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">

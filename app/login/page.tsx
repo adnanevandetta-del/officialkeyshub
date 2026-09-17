@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { savePromoForEmail } from '../lib/promo';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -18,14 +19,13 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would authenticate with a backend
-    if (isLogin) {
-      // Login - redirect to profile
-      router.push('/profile');
-    } else {
-      // Sign up - redirect to profile
-      router.push('/profile');
+    // In a real app, this would authenticate with a backend.
+    // Generate the customer's personal 20% promo code from their email.
+    if (formData.email) {
+      savePromoForEmail(formData.email);
     }
+    // Both login and sign up land on the profile, where the code is shown.
+    router.push('/profile');
   };
 
   return (
@@ -44,6 +44,10 @@ export default function LoginPage() {
             <p className="text-gray-600">
               {isLogin ? 'Sign in to access your orders and licenses' : 'Join us to get genuine Microsoft keys'}
             </p>
+            <div className="mt-4 inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-full text-sm font-bold">
+              <i className="fas fa-gift"></i>
+              Log in with your email to unlock your 20% OFF code
+            </div>
           </div>
 
           {/* Login/Register Form */}
@@ -215,9 +219,9 @@ export default function LoginPage() {
               <i className="fas fa-headset text-purple-600 text-2xl mb-2"></i>
               <p className="text-xs font-semibold text-gray-700">Priority Support</p>
             </div>
-            <div className="bg-white rounded-xl p-4 border-2 border-gray-200 text-center">
-              <i className="fas fa-percent text-orange-600 text-2xl mb-2"></i>
-              <p className="text-xs font-semibold text-gray-700">Exclusive Deals</p>
+            <div className="bg-white rounded-xl p-4 border-2 border-emerald-300 text-center ring-1 ring-emerald-200">
+              <i className="fas fa-percent text-emerald-600 text-2xl mb-2"></i>
+              <p className="text-xs font-semibold text-gray-700">20% Off Promo Code</p>
             </div>
           </div>
         </div>

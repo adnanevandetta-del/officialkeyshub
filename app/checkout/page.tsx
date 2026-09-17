@@ -3,13 +3,18 @@
 import { useCart } from '../components/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { validatePromoCode, getStoredPromo } from '../lib/promo';
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
   const [paymentMethod, setPaymentMethod] = useState<'paypal' | 'usdt' | 'whatsapp' | null>(null);
+  const [promoInput, setPromoInput] = useState('');
+  const [appliedPercent, setAppliedPercent] = useState(0);
+  const [appliedCode, setAppliedCode] = useState('');
+  const [promoError, setPromoError] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -18,16 +23,47 @@ export default function CheckoutPage() {
     message: '',
   });
 
+  // Pre-fill with the customer's generated code if they have one.
+  useEffect(() => {
+    const stored = getStoredPromo();
+    if (stored) setPromoInput(stored.code);
+  }, []);
+
+  const discountAmount = (cartTotal * appliedPercent) / 100;
+  const discountedTotal = cartTotal - discountAmount;
+
+  const applyPromo = () => {
+    const percent = validatePromoCode(promoInput);
+    if (percent > 0) {
+      setAppliedPercent(percent);
+      setAppliedCode(promoInput.trim().toUpperCase());
+      setPromoError('');
+    } else {
+      setAppliedPercent(0);
+      setAppliedCode('');
+      setPromoError('Invalid promo code. Log in with your email to generate a valid 20% code.');
+    }
+  };
+
+  const removePromo = () => {
+    setAppliedPercent(0);
+    setAppliedCode('');
+    setPromoError('');
+  };
+
   const handleCheckout = () => {
     const orderDetails = cart.map(item => `${item.quantity}x ${item.name} - ${item.price}`).join('%0D%0A');
-    const total = cartTotal.toFixed(2);
-    
+    const promoLine = appliedPercent > 0
+      ? `%0D%0APromo Code: ${appliedCode} (-${appliedPercent}%25, -$${discountAmount.toFixed(2)})`
+      : '';
+    const total = discountedTotal.toFixed(2);
+
     if (paymentMethod === 'whatsapp') {
-      const whatsappMessage = `Hi! I want to complete my order:%0D%0A%0D%0A${orderDetails}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ACustomer Info:%0D%0AName: ${formData.firstName} ${formData.lastName}%0D%0AEmail: ${formData.email}%0D%0ACountry: ${formData.country}`;
+      const whatsappMessage = `Hi! I want to complete my order:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ACustomer Info:%0D%0AName: ${formData.firstName} ${formData.lastName}%0D%0AEmail: ${formData.email}%0D%0ACountry: ${formData.country}`;
       window.open(`https://wa.me/16019756129?text=${whatsappMessage}`, '_blank');
     } else if (paymentMethod === 'paypal' || paymentMethod === 'usdt') {
       const emailSubject = `Order Request - ${paymentMethod.toUpperCase()} Payment`;
-      const emailBody = `Hi, I want to complete my order via ${paymentMethod.toUpperCase()}:%0D%0A%0D%0A${orderDetails}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ACustomer Information:%0D%0AName: ${formData.firstName} ${formData.lastName}%0D%0AEmail: ${formData.email}%0D%0ACountry: ${formData.country}%0D%0A%0D%0AMessage: ${formData.message}`;
+      const emailBody = `Hi, I want to complete my order via ${paymentMethod.toUpperCase()}:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ACustomer Information:%0D%0AName: ${formData.firstName} ${formData.lastName}%0D%0AEmail: ${formData.email}%0D%0ACountry: ${formData.country}%0D%0A%0D%0AMessage: ${formData.message}`;
       window.location.href = `mailto:digitalkeyhubllc@gmail.com?subject=${emailSubject}&body=${emailBody}`;
     }
   };
@@ -238,15 +274,76 @@ export default function CheckoutPage() {
                   ))}
                 </div>
 
+                {/* Promo Code */}
+                <div className="border-t-2 border-gray-200 pt-4 mb-4">
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    <i className="fas fa-gift text-emerald-600 mr-1"></i>
+                    Promo Code
+                  </label>
+                  {appliedPercent > 0 ? (
+                    <div className="flex items-center justify-between bg-emerald-50 border-2 border-emerald-200 rounded-lg px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        <i className="fas fa-check-circle text-emerald-600"></i>
+                        <div>
+                          <p className="font-bold text-emerald-700 font-mono text-sm">{appliedCode}</p>
+                          <p className="text-xs text-emerald-600">{appliedPercent}% discount applied</p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={removePromo}
+                        className="text-gray-400 hover:text-red-500 transition-colors"
+                        aria-label="Remove promo code"
+                      >
+                        <i className="fas fa-times"></i>
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          value={promoInput}
+                          onChange={(e) => setPromoInput(e.target.value)}
+                          placeholder="KEYS20-XXXX"
+                          className="flex-1 min-w-0 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald-500 focus:outline-none font-mono uppercase"
+                        />
+                        <button
+                          onClick={applyPromo}
+                          className="px-5 py-3 bg-emerald-600 text-white rounded-lg font-bold hover:bg-emerald-700 transition-colors"
+                        >
+                          Apply
+                        </button>
+                      </div>
+                      {promoError ? (
+                        <p className="text-xs text-red-500 mt-2">{promoError}</p>
+                      ) : (
+                        <p className="text-xs text-gray-500 mt-2">
+                          No code?{' '}
+                          <Link href="/login" className="text-emerald-600 font-semibold hover:underline">
+                            Log in with your email
+                          </Link>{' '}
+                          to get 20% off.
+                        </p>
+                      )}
+                    </>
+                  )}
+                </div>
+
                 {/* Total */}
                 <div className="border-t-2 border-gray-200 pt-4 mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-gray-600">Subtotal:</span>
                     <span className="font-semibold">${cartTotal.toFixed(2)}</span>
                   </div>
+                  {appliedPercent > 0 && (
+                    <div className="flex justify-between items-center mb-2 text-emerald-600">
+                      <span>Discount ({appliedPercent}%):</span>
+                      <span className="font-semibold">-${discountAmount.toFixed(2)}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between items-center text-xl font-black">
                     <span>Total:</span>
-                    <span className="text-emerald-600">${cartTotal.toFixed(2)}</span>
+                    <span className="text-emerald-600">${discountedTotal.toFixed(2)}</span>
                   </div>
                 </div>
 
