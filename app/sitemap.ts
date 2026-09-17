@@ -51,6 +51,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Blog Articles - Buying Guides (high-intent keywords)
     {
+      url: `${baseUrl}/blog/activate-windows-11-key`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog/buy-genuine-microsoft-office-key-cheap`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
       url: `${baseUrl}/blog/cheap-windows-11-keys-2026`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

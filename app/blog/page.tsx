@@ -9,6 +9,24 @@ import Link from "next/link";
 const blogPosts = [
   // Latest Microsoft Software Articles - September 2026
   {
+    slug: "activate-windows-11-key",
+    title: "How Do I Activate My Windows 11 Key? Quick Answer + All Methods (2026)",
+    excerpt: "The fast answer plus every activation method — Settings, Command Prompt (slmgr), phone activation and digital license — for Windows 11 Home, Pro and Enterprise.",
+    category: "Activation",
+    readTime: "6 min",
+    date: "Sep 17, 2026",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+  },
+  {
+    slug: "buy-genuine-microsoft-office-key-cheap",
+    title: "How to Buy a Genuine Microsoft Office Key Cheap (Without Getting Scammed) 2026",
+    excerpt: "Why cheap Office keys can still be genuine, how to verify a key is real, the scam red flags to avoid, and how to pay safely.",
+    category: "Buying",
+    readTime: "7 min",
+    date: "Sep 17, 2026",
+    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+  },
+  {
     slug: "cheap-windows-11-keys-2026",
     title: "Cheap Windows 11 Keys 2026: Buy Genuine Keys from $12.99",
     excerpt: "Where to buy cheap, genuine Windows 11 Pro & Home keys in 2026. Prices compared, safety tips, and how activation works. Up to 90% off.",
