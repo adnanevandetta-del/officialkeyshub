@@ -342,12 +342,6 @@ export default function ProductBillboard() {
                   <i className="fas fa-times text-white text-xl"></i>
                 </button>
 
-                {/* Discount Badge — soft, reassuring */}
-                <div className="absolute top-4 left-4 bg-emerald-500/90 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full shadow-lg">
-                  <p className="text-sm font-bold">
-                    Save {Math.round((1 - parseFloat(selectedProduct.price.replace("$", "")) / parseFloat(selectedProduct.originalPrice.replace(/[$,]/g, ""))) * 100)}%
-                  </p>
-                </div>
 
                 {/* Product Title Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">

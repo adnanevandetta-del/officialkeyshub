@@ -908,9 +908,6 @@ export default function Products() {
                     <span className="text-3xl font-black text-white">{product.price}</span>
                     <span className="text-sm text-slate-500 line-through">{product.originalPrice}</span>
                   </div>
-                  <div className="text-sm text-sky-500 font-semibold mt-1">
-                    Save {Math.round((1 - parseFloat(product.price.replace("$", "")) / parseFloat(product.originalPrice.replace(/[$,]/g, ""))) * 100)}%
-                  </div>
                 </div>
 
                 <ul className="space-y-2 mb-6 h-32 overflow-hidden">
@@ -1005,9 +1002,6 @@ export default function Products() {
                 <div className="flex items-baseline gap-3 justify-center">
                   <span className="text-4xl font-black text-white">{selectedProduct.price}</span>
                   <span className="text-xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
-                </div>
-                <div className="text-center text-sky-500 font-semibold mt-2">
-                  Save {Math.round((1 - parseFloat(selectedProduct.price.replace("$", "")) / parseFloat(selectedProduct.originalPrice.replace(/[$,]/g, ""))) * 100)}%
                 </div>
               </div>
 
