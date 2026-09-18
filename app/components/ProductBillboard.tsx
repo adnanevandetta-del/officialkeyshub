@@ -246,6 +246,24 @@ export default function ProductBillboard() {
               </div>
             </div>
 
+            {/* Swiping widget — mobile, futuristic glowing pills, directly under the product animation and above Buy Now */}
+            <div className="flex lg:hidden items-center justify-center mt-4">
+              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-sky-500/20 shadow-[0_0_18px_rgba(3,105,161,0.15)]">
+                {products.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    aria-label={`Go to product ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                      idx === currentIndex
+                        ? 'w-9 bg-gradient-to-r from-sky-500 to-cyan-400 shadow-[0_0_12px_rgba(3,105,161,0.9)]'
+                        : 'w-1.5 bg-white/25 hover:bg-white/45'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
             {/* Price + Buy Now + PayPal — mobile only, compact, below the product animation */}
             <div className="mt-4 flex lg:hidden flex-col items-center gap-2.5">
               <div className="flex items-baseline gap-2">
@@ -295,23 +313,6 @@ export default function ProductBillboard() {
               ))}
             </div>
 
-            {/* Navigation — mobile, futuristic glowing progress pills */}
-            <div className="flex lg:hidden items-center justify-center mt-4">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-sky-500/20 shadow-[0_0_18px_rgba(3,105,161,0.15)]">
-                {products.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    aria-label={`Go to product ${idx + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
-                      idx === currentIndex
-                        ? 'w-9 bg-gradient-to-r from-sky-500 to-cyan-400 shadow-[0_0_12px_rgba(3,105,161,0.9)]'
-                        : 'w-1.5 bg-white/25 hover:bg-white/45'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
