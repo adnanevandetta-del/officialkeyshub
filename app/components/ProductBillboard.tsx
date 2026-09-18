@@ -254,22 +254,22 @@ export default function ProductBillboard() {
                 </span>
               </div>
 
-              <div className="flex flex-row items-center justify-center gap-2">
+              <div className="flex flex-col items-center gap-2">
                 <button
                   onClick={() => {
                     setSelectedProduct(currentProduct);
                     setShowModal(true);
                   }}
-                  className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg flex items-center gap-1.5"
+                  className="px-7 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg flex items-center gap-1.5"
                 >
                   <i className="fas fa-shopping-cart text-xs"></i>
                   Buy Now
                 </button>
 
-                {/* PayPal secure-checkout badge — compact */}
-                <div className="flex items-center gap-1 px-2 py-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg">
-                  <i className="fab fa-paypal text-[#009CDE] text-sm"></i>
-                  <span className="text-white/55 text-[10px] leading-tight">
+                {/* PayPal secure-checkout badge — small, below the button */}
+                <div className="flex items-center gap-1 px-2 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-md">
+                  <i className="fab fa-paypal text-[#009CDE] text-xs"></i>
+                  <span className="text-white/50 text-[9px] leading-tight">
                     Secure with{" "}
                     <span className="font-bold">
                       <span className="text-[#3b82f6]">Pay</span><span className="text-[#009CDE]">Pal</span>
@@ -279,20 +279,38 @@ export default function ProductBillboard() {
               </div>
             </div>
 
-            {/* Navigation Dots */}
-            <div className="flex items-center justify-center gap-1.5 md:gap-2 mt-4 md:mt-6">
+            {/* Navigation Dots — desktop */}
+            <div className="hidden lg:flex items-center justify-center gap-2 mt-6">
               {products.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   className={`transition-all ${
                     idx === currentIndex
-                      ? 'w-8 md:w-10 h-2 md:h-2.5 bg-emerald-400'
-                      : 'w-2 md:w-2.5 h-2 md:h-2.5 bg-white/30 hover:bg-white/50'
+                      ? 'w-10 h-2.5 bg-emerald-400'
+                      : 'w-2.5 h-2.5 bg-white/30 hover:bg-white/50'
                   } rounded-full`}
                   aria-label={`Go to product ${idx + 1}`}
                 />
               ))}
+            </div>
+
+            {/* Navigation — mobile, futuristic glowing progress pills */}
+            <div className="flex lg:hidden items-center justify-center mt-4">
+              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-emerald-400/20 shadow-[0_0_18px_rgba(16,185,129,0.15)]">
+                {products.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    aria-label={`Go to product ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                      idx === currentIndex
+                        ? 'w-9 bg-gradient-to-r from-emerald-400 to-cyan-400 shadow-[0_0_12px_rgba(16,185,129,0.9)]'
+                        : 'w-1.5 bg-white/25 hover:bg-white/45'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
