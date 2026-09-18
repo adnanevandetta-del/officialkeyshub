@@ -53,6 +53,19 @@ export default function PromoBanner() {
               </Link>
             </>
           )}
+
+          {/* Trustpilot reviews badge */}
+          <span className="hidden md:inline text-white/40">•</span>
+          <Link
+            href="/reviews"
+            aria-label="Read and leave customer reviews"
+            className="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 transition-colors px-2.5 py-0.5 rounded-md"
+          >
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#00e6a0" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+            </svg>
+            <span className="text-white text-xs font-bold">Trustpilot Reviews</span>
+          </Link>
         </div>
       </div>
     </div>

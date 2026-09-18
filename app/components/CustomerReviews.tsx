@@ -24,14 +24,14 @@ export default function CustomerReviews() {
               <span className="text-yellow-500 font-bold text-lg">4.5</span>
             </div>
             <p className="text-slate-300 mb-6 text-base leading-relaxed">
-              "Bought a Windows 11 Pro key from officialkeyshub and it worked fine. Got it via email pretty quickly, maybe 10 minutes. Installation was straightforward with the guide they sent."
+              "ngl i was lowkey scared this was a scam 😭 but my windows 11 pro key hit my inbox in like 10 mins and activated first try. saved me a fat $100, no complaints"
             </p>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-sky-600 to-sky-700 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
                 JR
               </div>
               <div>
-                <p className="text-white font-semibold">James Rodriguez</p>
+                <p className="text-white font-semibold">Jordan R.</p>
                 <p className="text-slate-400 text-sm">Verified Purchase</p>
               </div>
             </div>
@@ -49,14 +49,14 @@ export default function CustomerReviews() {
               <span className="text-yellow-500 font-bold text-lg">4.0</span>
             </div>
             <p className="text-slate-300 mb-6 text-base leading-relaxed">
-              "Got Office 2021 from them. Price was reasonable compared to Microsoft's official price. Key activated without problems. Support answered my questions the same day via WhatsApp."
+              "needed office 2021 for uni and was NOT tryna pay full price lol. key worked instantly, got word excel powerpoint all of it. asked a question on whatsapp and they replied same day fr"
             </p>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
                 SC
               </div>
               <div>
-                <p className="text-white font-semibold">Sarah Chen</p>
+                <p className="text-white font-semibold">Sofia C.</p>
                 <p className="text-slate-400 text-sm">Verified Purchase</p>
               </div>
             </div>
@@ -74,28 +74,39 @@ export default function CustomerReviews() {
               <span className="text-yellow-500 font-bold text-lg">4.5</span>
             </div>
             <p className="text-slate-300 mb-6 text-base leading-relaxed">
-              "Used officialkeyshub for Windows Server 2022 license. Delivery was fast and the key worked on first try. Good prices for genuine Microsoft products. Would buy again."
+              "was skeptical bc the price felt too good to be true but grabbed a windows server 2022 key anyway. activated no problem, delivery was quick. would def cop again"
             </p>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
                 DM
               </div>
               <div>
-                <p className="text-white font-semibold">David Martinez</p>
+                <p className="text-white font-semibold">Dylan M.</p>
                 <p className="text-slate-400 text-sm">Verified Purchase</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Trust Score Badge */}
+        {/* Review us badge */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-4 glass px-8 py-4 rounded-xl">
-            <i className="fas fa-star text-yellow-400 text-3xl"></i>
-            <div className="text-left">
-              <p className="text-white font-bold text-lg">Great 4.3 out of 5</p>
-              <p className="text-slate-400">Based on 847 customer reviews</p>
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 glass px-8 py-5 rounded-2xl">
+            <div className="flex items-center gap-2">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#00b67a" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+              </svg>
+              <span className="text-white font-bold text-lg">Trustpilot</span>
             </div>
+            <p className="text-slate-300 text-sm sm:text-base">
+              Bought from us? We&rsquo;d love your honest review.
+            </p>
+            <a
+              href="/reviews"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg whitespace-nowrap"
+            >
+              <i className="fas fa-star"></i>
+              Review us
+            </a>
           </div>
         </div>
       </div>

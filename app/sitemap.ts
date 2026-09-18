@@ -50,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/reviews`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
     // Blog Articles - Buying Guides (high-intent keywords)
     {
       url: `${baseUrl}/blog/buy-microsoft-retail-keys-safe`,
