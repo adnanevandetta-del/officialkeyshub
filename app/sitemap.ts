@@ -51,6 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Blog Articles - Buying Guides (high-intent keywords)
     {
+      url: `${baseUrl}/blog/buy-microsoft-retail-keys-safe`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
       url: `${baseUrl}/blog/activate-windows-11-key`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
