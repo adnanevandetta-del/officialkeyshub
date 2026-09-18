@@ -985,14 +985,14 @@ export default function Products() {
 
             {/* Product Details */}
             <div className="p-6">
-              {/* Product Image */}
-              <div className="mb-6 relative h-32 w-full rounded-xl overflow-hidden border border-white/10">
+              {/* Product Image — clean, centered tile */}
+              <div className="mb-6 relative h-32 w-full rounded-xl overflow-hidden border border-white/10 bg-gradient-to-b from-slate-800/80 to-slate-900 flex items-center justify-center">
                 <Image
                   src={getProductImage(selectedProduct.name)}
                   alt={selectedProduct.name}
                   fill
                   unoptimized
-                  className="object-cover"
+                  className="object-contain p-2"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>

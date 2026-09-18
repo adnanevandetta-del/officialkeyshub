@@ -321,44 +321,34 @@ export default function ProductBillboard() {
       {showModal && selectedProduct && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in" onClick={() => setShowModal(false)}>
           <div className="glass-strong rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-slide-up" onClick={(e) => e.stopPropagation()}>
-            {/* Header with Image */}
-            <div className="relative">
-              {/* Product Image */}
-              <div className="relative h-40 md:h-52 overflow-hidden rounded-t-2xl">
-                <Image
-                  src={getProductImage(selectedProduct.name)}
-                  alt={selectedProduct.name}
-                  fill
-                  unoptimized
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                
-                {/* Close Button */}
-                <button 
-                  onClick={() => setShowModal(false)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md hover:bg-white/30 rounded-full flex items-center justify-center transition-colors z-10"
-                >
-                  <i className="fas fa-times text-white text-xl"></i>
-                </button>
-
-
-                {/* Product Title Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center">
-                      <i className={`${selectedProduct.icon} text-white text-2xl`}></i>
-                    </div>
-                    <div className="flex-1">
-                      <h2 className="text-2xl md:text-3xl font-black text-white">{selectedProduct.name}</h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Header with Image — clean, centered product tile */}
+            <div className="relative h-36 md:h-44 rounded-t-2xl bg-gradient-to-b from-slate-800/80 to-slate-900 flex items-center justify-center overflow-hidden">
+              <Image
+                src={getProductImage(selectedProduct.name)}
+                alt={selectedProduct.name}
+                fill
+                unoptimized
+                className="object-contain p-3"
+              />
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-3 right-3 w-9 h-9 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center transition-colors z-10"
+                aria-label="Close"
+              >
+                <i className="fas fa-times text-white text-lg"></i>
+              </button>
             </div>
 
             {/* Content */}
             <div className="p-6">
+              {/* Title */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 bg-sky-600/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i className={`${selectedProduct.icon} text-sky-400 text-xl`}></i>
+                </div>
+                <h2 className="text-xl md:text-2xl font-black text-white">{selectedProduct.name}</h2>
+              </div>
+
               {/* Price */}
               <div className="flex items-baseline gap-3 flex-wrap">
                 <span className="text-4xl md:text-5xl font-black text-white">{selectedProduct.price}</span>
