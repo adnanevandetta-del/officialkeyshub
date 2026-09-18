@@ -139,6 +139,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Legal Pages
     {
+      url: `${baseUrl}/licensing`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/terms`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

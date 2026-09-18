@@ -119,6 +119,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/licensing" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  Licensing &amp; Authenticity
+                </Link>
+              </li>
+              <li>
                 <Link href="/terms" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   Terms of Service
                 </Link>
