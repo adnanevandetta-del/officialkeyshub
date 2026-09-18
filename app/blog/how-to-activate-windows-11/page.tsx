@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Activate Windows 11 Pro - Complete Guide 2026",
     description: "Step-by-step guide to activate Windows 11 with product key. Includes troubleshooting and phone activation.",
-    url: "https://officialkeyshub.com/blog/how-to-activate-windows-11",
+    url: "https://www.officialkeyshub.com/blog/how-to-activate-windows-11",
     type: "article",
   },
 };

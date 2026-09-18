@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FAQ - 100+ Questions About Windows & Office Keys | Official Keys Hub",
     description: "Complete FAQ guide for Microsoft software licensing. Activation, purchase, delivery, troubleshooting, and support.",
-    url: "https://officialkeyshub.com/faq",
+    url: "https://www.officialkeyshub.com/faq",
     type: "website",
   },
 };

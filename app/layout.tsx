@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Official Keys Hub",
-    url: "https://officialkeyshub.com",
+    url: "https://www.officialkeyshub.com",
   },
   twitter: {
     card: "summary_large_image",
@@ -116,9 +116,9 @@ export default function RootLayout({
             "@type": "Store",
             "name": "Official Keys Hub",
             "description": "Trusted Microsoft software license provider offering genuine Windows, Office, Server, and security software keys at discounted prices",
-            "url": "https://officialkeyshub.com",
-            "logo": "https://officialkeyshub.com/logo.png",
-            "image": "https://officialkeyshub.com/og-image.png",
+            "url": "https://www.officialkeyshub.com",
+            "logo": "https://www.officialkeyshub.com/logo.png",
+            "image": "https://www.officialkeyshub.com/og-image.png",
             "priceRange": "$$",
             "telephone": "+1-601-975-6129",
             "email": "digitalkeyhubllc@gmail.com",
@@ -147,10 +147,10 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "Official Keys Hub",
-            "url": "https://officialkeyshub.com",
+            "url": "https://www.officialkeyshub.com",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://officialkeyshub.com/#products",
+              "target": "https://www.officialkeyshub.com/#products",
               "query-input": "required name=search_term_string"
             }
           })}

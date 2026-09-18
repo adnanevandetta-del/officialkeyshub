@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Production domain
-  const baseUrl = 'https://officialkeyshub.com';
+  // Production domain — must match the host that serves 200 (www), so sitemap
+  // URLs don't 307-redirect to www and get flagged as "incorrect pages".
+  const baseUrl = 'https://www.officialkeyshub.com';
   
   return [
     // Homepage

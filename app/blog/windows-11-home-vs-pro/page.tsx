@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Windows 11 Home vs Pro: Complete Comparison Guide 2026",
     description: "Detailed comparison of Windows 11 Home and Pro editions. Features, prices, and which one you should buy.",
-    url: "https://officialkeyshub.com/blog/windows-11-home-vs-pro",
+    url: "https://www.officialkeyshub.com/blog/windows-11-home-vs-pro",
     type: "article",
   },
 };

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Microsoft Product Key Activation Guide | Official Keys Hub",
     description:
       "Complete activation guide for Windows and Office product keys. Easy 5-minute setup with step-by-step instructions.",
-    url: "https://officialkeyshub.com/setup-guide",
+    url: "https://www.officialkeyshub.com/setup-guide",
     type: "website",
   },
 };

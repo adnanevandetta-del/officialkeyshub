@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     "What a Microsoft retail key is, how and where to buy one, and whether it's safe. Retail vs OEM explained, how to verify a genuine key, scam red flags, and safe payment.",
   keywords:
     "buy microsoft retail key, are microsoft retail keys safe, retail windows key, microsoft retail license, retail vs oem key, is it safe to buy microsoft keys online",
-  alternates: { canonical: "https://officialkeyshub.com/blog/buy-microsoft-retail-keys-safe" },
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/buy-microsoft-retail-keys-safe" },
   openGraph: {
     title: "How to Buy Microsoft Retail Keys — And Are They Safe? (2026 Guide)",
     description:
       "Retail vs OEM explained, how to buy a genuine Microsoft retail key, how to verify it, and how to stay safe.",
-    url: "https://officialkeyshub.com/blog/buy-microsoft-retail-keys-safe",
+    url: "https://www.officialkeyshub.com/blog/buy-microsoft-retail-keys-safe",
     type: "article",
   },
 };
@@ -62,11 +62,11 @@ export default function BuyMicrosoftRetailKeysSafe() {
         publisher: {
           "@type": "Organization",
           name: "Official Keys Hub",
-          logo: { "@type": "ImageObject", url: "https://officialkeyshub.com/logo.png" },
+          logo: { "@type": "ImageObject", url: "https://www.officialkeyshub.com/logo.png" },
         },
         datePublished: "2026-09-18",
         dateModified: "2026-09-18",
-        mainEntityOfPage: "https://officialkeyshub.com/blog/buy-microsoft-retail-keys-safe",
+        mainEntityOfPage: "https://www.officialkeyshub.com/blog/buy-microsoft-retail-keys-safe",
       },
       {
         "@type": "FAQPage",

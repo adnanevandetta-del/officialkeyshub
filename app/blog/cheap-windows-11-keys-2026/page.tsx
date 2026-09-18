@@ -10,11 +10,11 @@ export const metadata: Metadata = {
     "Where to buy cheap Windows 11 keys in 2026. Genuine Windows 11 Pro & Home product keys up to 90% off, instant delivery, lifetime activation. Safe, legal, from $12.99.",
   keywords:
     "cheap windows 11 keys, buy windows 11 pro key, windows 11 key cheap, cheap windows 11 pro, windows 11 home key, genuine windows 11 key, windows 11 product key, buy windows 11 key online, discount windows 11 license, windows 11 activation key",
-  alternates: { canonical: "https://officialkeyshub.com/blog/cheap-windows-11-keys-2026" },
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026" },
   openGraph: {
     title: "Cheap Windows 11 Keys 2026 - Genuine Keys from $12.99",
     description: "Buy genuine Windows 11 Pro & Home keys up to 90% off. Instant delivery, lifetime activation, 30-day guarantee.",
-    url: "https://officialkeyshub.com/blog/cheap-windows-11-keys-2026",
+    url: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026",
     type: "article",
   },
 };
@@ -29,7 +29,7 @@ const articleSchema = {
   publisher: {
     "@type": "Organization",
     name: "Official Keys Hub",
-    logo: { "@type": "ImageObject", url: "https://officialkeyshub.com/logo.png" },
+    logo: { "@type": "ImageObject", url: "https://www.officialkeyshub.com/logo.png" },
   },
   datePublished: "2026-09-10",
   dateModified: "2026-09-17",

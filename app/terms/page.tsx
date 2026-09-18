@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+export const metadata: Metadata = {
+  title: "Terms of Service | Official Keys Hub",
+  description:
+    "The terms governing your use of Official Keys Hub and the purchase of genuine Microsoft software licenses — orders, delivery, refunds, and acceptable use.",
+  alternates: { canonical: "https://www.officialkeyshub.com/terms" },
+};
 
 export default function TermsOfService() {
   return (

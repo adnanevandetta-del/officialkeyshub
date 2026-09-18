@@ -10,11 +10,11 @@ export const metadata: Metadata = {
     "How to activate Microsoft Office 2021 with a product key. Complete 2026 guide covering online activation, the Office account method, and fixing common activation errors.",
   keywords:
     "how to activate office 2021, activate office 2021, office 2021 product key activation, office 2021 activation guide, activate microsoft office 2021, office 2021 professional plus activation, office 2021 not activating, enter office 2021 key",
-  alternates: { canonical: "https://officialkeyshub.com/blog/how-to-activate-office-2021" },
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/how-to-activate-office-2021" },
   openGraph: {
     title: "How to Activate Office 2021 - Step-by-Step Guide 2026",
     description: "Activate Office 2021 in minutes with your product key. Includes troubleshooting for common activation errors.",
-    url: "https://officialkeyshub.com/blog/how-to-activate-office-2021",
+    url: "https://www.officialkeyshub.com/blog/how-to-activate-office-2021",
     type: "article",
   },
 };

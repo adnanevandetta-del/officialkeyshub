@@ -56,7 +56,7 @@ export default function ProfileButton() {
                     <span className="text-gray-700 font-semibold">My Orders</span>
                   </Link>
                   <Link
-                    href="/licenses"
+                    href="/orders"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
@@ -64,7 +64,7 @@ export default function ProfileButton() {
                     <span className="text-gray-700 font-semibold">My Licenses</span>
                   </Link>
                   <Link
-                    href="/settings"
+                    href="/profile"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >

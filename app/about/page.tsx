@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us - Authorized Microsoft Partner | Official Keys Hub",
     description: "Certified Microsoft partner since 2018. Genuine licenses, instant delivery, lifetime support.",
-    url: "https://officialkeyshub.com/about",
+    url: "https://www.officialkeyshub.com/about",
     type: "website",
   },
 };

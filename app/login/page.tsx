@@ -156,9 +156,14 @@ export default function LoginPage() {
               {/* Forgot Password (Login only) */}
               {isLogin && (
                 <div className="flex justify-end">
-                  <Link href="/forgot-password" className="text-sm text-sky-700 hover:text-sky-800 font-semibold">
+                  <a
+                    href="https://wa.me/16019756129?text=Hi%2C%20I%20need%20help%20recovering%20my%20account%20password."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-sky-700 hover:text-sky-800 font-semibold"
+                  >
                     Forgot Password?
-                  </Link>
+                  </a>
                 </div>
               )}
 

@@ -1,14 +1,16 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://officialkeyshub.com';
-  
+  const baseUrl = 'https://www.officialkeyshub.com';
+
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/', '/private/', '/checkout/', '/orders/', '/profile/'],
+        // Note: /_next/ is intentionally NOT disallowed — blocking it stops
+        // crawlers from fetching the site's CSS/JS (flagged as blocked resources).
+        disallow: ['/api/', '/admin/', '/private/', '/checkout/', '/orders/', '/profile/'],
       },
       {
         userAgent: 'Googlebot',

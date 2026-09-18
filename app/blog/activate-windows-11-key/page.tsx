@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     "A short, clear answer to \"how do I activate my Windows 11 key\" plus every method: Settings, Command Prompt (slmgr), phone activation, and digital license. Works on Home, Pro and Enterprise.",
   keywords:
     "how do i activate my windows 11 key, activate windows 11 key, enter windows 11 product key, windows 11 activation command, slmgr activate windows 11, activate windows 11 home",
-  alternates: { canonical: "https://officialkeyshub.com/blog/activate-windows-11-key" },
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/activate-windows-11-key" },
   openGraph: {
     title: "How Do I Activate My Windows 11 Key? Quick Answer + All Methods (2026)",
     description:
       "The fast answer plus every activation method for Windows 11 Home, Pro and Enterprise — Settings, Command Prompt and phone activation.",
-    url: "https://officialkeyshub.com/blog/activate-windows-11-key",
+    url: "https://www.officialkeyshub.com/blog/activate-windows-11-key",
     type: "article",
   },
 };
@@ -62,11 +62,11 @@ export default function ActivateWindows11Key() {
         publisher: {
           "@type": "Organization",
           name: "Official Keys Hub",
-          logo: { "@type": "ImageObject", url: "https://officialkeyshub.com/logo.png" },
+          logo: { "@type": "ImageObject", url: "https://www.officialkeyshub.com/logo.png" },
         },
         datePublished: "2026-09-17",
         dateModified: "2026-09-17",
-        mainEntityOfPage: "https://officialkeyshub.com/blog/activate-windows-11-key",
+        mainEntityOfPage: "https://www.officialkeyshub.com/blog/activate-windows-11-key",
       },
       {
         "@type": "FAQPage",

@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Version Check | Official Keys Hub",
+  description: "Internal deployment version check.",
+  robots: { index: false, follow: false },
+};
+
 export default function VersionCheck() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-sky-50 flex items-center justify-center p-8">

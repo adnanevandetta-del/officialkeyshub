@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     "A practical buyer's guide to buying a genuine, cheap Microsoft Office key in 2026. Why low prices can still be legitimate, how to verify a key is genuine, scam red flags to avoid, and safe ways to pay.",
   keywords:
     "buy genuine microsoft office key cheap, cheap genuine office key, is cheap office key genuine, how to buy office cheap, genuine office 2021 key, avoid office key scam",
-  alternates: { canonical: "https://officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap" },
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap" },
   openGraph: {
     title: "How to Buy a Genuine Microsoft Office Key Cheap (Without Getting Scammed) 2026",
     description:
       "Why cheap Office keys can be genuine, how to verify one, the scam red flags to avoid, and how to pay safely.",
-    url: "https://officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap",
+    url: "https://www.officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap",
     type: "article",
   },
 };
@@ -62,11 +62,11 @@ export default function BuyGenuineOfficeCheap() {
         publisher: {
           "@type": "Organization",
           name: "Official Keys Hub",
-          logo: { "@type": "ImageObject", url: "https://officialkeyshub.com/logo.png" },
+          logo: { "@type": "ImageObject", url: "https://www.officialkeyshub.com/logo.png" },
         },
         datePublished: "2026-09-17",
         dateModified: "2026-09-17",
-        mainEntityOfPage: "https://officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap",
+        mainEntityOfPage: "https://www.officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap",
       },
       {
         "@type": "FAQPage",

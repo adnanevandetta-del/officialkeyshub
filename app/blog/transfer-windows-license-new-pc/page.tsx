@@ -10,11 +10,11 @@ export const metadata: Metadata = {
     "Can you move your Windows key to a new computer? Learn how to transfer a Windows 10 or 11 license to a new PC, OEM vs retail transfer rules, and step-by-step deactivation.",
   keywords:
     "transfer windows license to new pc, move windows key to new computer, transfer windows 11 license, transfer windows 10 license, can i transfer my windows key, deactivate windows key old pc, retail vs oem transfer, reactivate windows new hardware",
-  alternates: { canonical: "https://officialkeyshub.com/blog/transfer-windows-license-new-pc" },
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/transfer-windows-license-new-pc" },
   openGraph: {
     title: "How to Transfer a Windows License to a New PC (2026)",
     description: "Step-by-step guide to move your Windows 10/11 license to a new computer, including OEM vs retail rules.",
-    url: "https://officialkeyshub.com/blog/transfer-windows-license-new-pc",
+    url: "https://www.officialkeyshub.com/blog/transfer-windows-license-new-pc",
     type: "article",
   },
 };
@@ -28,7 +28,7 @@ const articleSchema = {
   publisher: {
     "@type": "Organization",
     name: "Official Keys Hub",
-    logo: { "@type": "ImageObject", url: "https://officialkeyshub.com/logo.png" },
+    logo: { "@type": "ImageObject", url: "https://www.officialkeyshub.com/logo.png" },
   },
   datePublished: "2026-09-14",
   dateModified: "2026-09-17",

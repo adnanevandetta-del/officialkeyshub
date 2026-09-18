@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Official Keys Hub",
+  description:
+    "How Official Keys Hub collects, uses, and protects your personal data when you buy Microsoft software keys — your rights, cookies, and data retention.",
+  alternates: { canonical: "https://www.officialkeyshub.com/privacy" },
+};
 
 export default function PrivacyPolicy() {
   return (
