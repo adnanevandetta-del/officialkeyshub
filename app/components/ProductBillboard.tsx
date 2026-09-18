@@ -323,7 +323,7 @@ export default function ProductBillboard() {
             {/* Header with Image */}
             <div className="relative">
               {/* Product Image */}
-              <div className="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+              <div className="relative h-40 md:h-52 overflow-hidden rounded-t-2xl">
                 <Image
                   src={getProductImage(selectedProduct.name)}
                   alt={selectedProduct.name}

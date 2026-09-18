@@ -851,15 +851,15 @@ export default function Products() {
   };
 
   return (
-    <section className="pt-16 pb-20 relative bg-white" id="products">
+    <section className="pt-16 pb-20 relative overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60" id="products">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 px-4 py-1.5 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
-            <span className="text-sky-700 text-xs font-bold uppercase tracking-widest">Genuine Licenses</span>
+            <span className="text-sky-400 text-xs font-bold uppercase tracking-widest">Genuine Licenses</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-3 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-black mb-3">
             Welcome to <span className="gradient-text">Official Keys Hub</span>
           </h2>
         </div>
@@ -873,7 +873,7 @@ export default function Products() {
               className={`px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all transform hover:scale-105 ${
                 activeCategory === category.id
                   ? "btn-primary"
-                  : "bg-gray-100 text-gray-700 hover:text-gray-900 hover:bg-gray-200 border border-gray-200"
+                  : "glass text-slate-300 hover:text-white glow-hover"
               }`}
             >
               <i className={`${category.icon} mr-2`}></i>
@@ -890,14 +890,14 @@ export default function Products() {
           ).map((product, index) => (
             <div
               key={index}
-              className={`bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col relative shadow-sm hover:shadow-xl hover:-translate-y-1 ${
+              className={`glass rounded-2xl overflow-hidden transition-all duration-300 flex flex-col relative glow-hover ${
                 product.popular
-                  ? "ring-2 ring-sky-500"
+                  ? "ring-1 ring-sky-500/50 glow-sky"
                   : ""
               }`}
             >
               {/* Product Image */}
-              <div className="relative h-52 w-full overflow-hidden flex-shrink-0 border-b border-gray-100">
+              <div className="relative h-52 w-full overflow-hidden flex-shrink-0 border-b border-white/5">
                 <Image
                   src={getProductImage(product.name)}
                   alt={product.name}
@@ -910,14 +910,14 @@ export default function Products() {
 
               <div className="p-6 flex flex-col flex-grow">
                 <div className="mb-4 flex-grow">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 h-14 line-clamp-2">{product.name}</h3>
-                  <p className="text-gray-600 text-sm h-10 line-clamp-2">{product.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-2 h-14 line-clamp-2">{product.name}</h3>
+                  <p className="text-slate-400 text-sm h-10 line-clamp-2">{product.description}</p>
                 </div>
 
                 <div className="mb-4">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-black text-gray-900">{product.price}</span>
-                    <span className="text-sm text-gray-400 line-through">{product.originalPrice}</span>
+                    <span className="text-3xl font-black text-white">{product.price}</span>
+                    <span className="text-sm text-slate-500 line-through">{product.originalPrice}</span>
                   </div>
                   <div className="text-sm text-sky-500 font-semibold mt-1">
                     Save {Math.round((1 - parseFloat(product.price.replace("$", "")) / parseFloat(product.originalPrice.replace(/[$,]/g, ""))) * 100)}%
@@ -926,8 +926,8 @@ export default function Products() {
 
                 <ul className="space-y-2 mb-6 h-32 overflow-hidden">
                   {product.features.slice(0, 5).map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                      <i className="fas fa-check text-sky-600 mt-1 flex-shrink-0"></i>
+                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
+                      <i className="fas fa-check text-sky-500 mt-1 flex-shrink-0"></i>
                       <span className="line-clamp-1">{feature}</span>
                     </li>
                   ))}
@@ -1000,7 +1000,7 @@ export default function Products() {
             {/* Product Details */}
             <div className="p-6">
               {/* Product Image */}
-              <div className="mb-6 relative h-48 w-full rounded-xl overflow-hidden border border-white/10">
+              <div className="mb-6 relative h-32 w-full rounded-xl overflow-hidden border border-white/10">
                 <Image
                   src={getProductImage(selectedProduct.name)}
                   alt={selectedProduct.name}
