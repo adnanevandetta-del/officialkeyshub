@@ -124,8 +124,8 @@ export default function ProductBillboard() {
               ))}
             </div>
 
-            {/* Price & CTA */}
-            <div className="space-y-3 md:space-y-4">
+            {/* Price & CTA — desktop only (kept in the left column) */}
+            <div className="hidden lg:block space-y-3 md:space-y-4">
               <div>
                 <div className="flex items-baseline gap-2 md:gap-3">
                   <span className="text-3xl md:text-5xl font-black text-emerald-400">
@@ -150,7 +150,6 @@ export default function ProductBillboard() {
                   <i className="fas fa-arrow-right text-sm md:text-base"></i>
                 </button>
 
-                {/* PayPal secure-checkout badge (compact, smaller than Buy Now) */}
                 <div className="flex items-center gap-1.5 px-3 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg self-center">
                   <i className="fab fa-paypal text-[#009CDE] text-base md:text-lg"></i>
                   <span className="text-white/55 text-[11px] leading-tight">
@@ -162,6 +161,7 @@ export default function ProductBillboard() {
                 </div>
               </div>
             </div>
+
           </div>
 
           {/* Right - 3D Circular Carousel */}
@@ -240,6 +240,43 @@ export default function ProductBillboard() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+
+            {/* Price + Buy Now + PayPal — mobile only, dropped below the product animation */}
+            <div className="mt-5 flex lg:hidden flex-col items-center gap-3">
+              <div className="flex items-baseline gap-2 md:gap-3">
+                <span className="text-3xl md:text-5xl font-black text-emerald-400">
+                  {currentProduct.price}
+                </span>
+                <span className="text-lg md:text-2xl text-white/40 line-through">
+                  {currentProduct.originalPrice}
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <button
+                  onClick={() => {
+                    setSelectedProduct(currentProduct);
+                    setShowModal(true);
+                  }}
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-black text-sm md:text-lg rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all hover:scale-105 shadow-xl flex items-center justify-center gap-2"
+                >
+                  <i className="fas fa-shopping-cart text-sm md:text-base"></i>
+                  Buy Now
+                  <i className="fas fa-arrow-right text-sm md:text-base"></i>
+                </button>
+
+                {/* PayPal secure-checkout badge (compact, smaller than Buy Now) */}
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg self-center">
+                  <i className="fab fa-paypal text-[#009CDE] text-base md:text-lg"></i>
+                  <span className="text-white/55 text-[11px] leading-tight">
+                    Secure checkout with{" "}
+                    <span className="font-bold">
+                      <span className="text-[#3b82f6]">Pay</span><span className="text-[#009CDE]">Pal</span>
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
 
