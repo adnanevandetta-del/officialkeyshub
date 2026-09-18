@@ -32,7 +32,7 @@ export default function OEMvsRetailPage() {
           </div>
 
           <img 
-            src="https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=1200&q=80" 
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80" 
             alt="Windows Product Keys Comparison"
             className="w-full h-96 object-cover rounded-xl mb-8"
           />

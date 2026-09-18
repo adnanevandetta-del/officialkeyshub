@@ -15,7 +15,7 @@ const blogPosts = [
     category: "Buying",
     readTime: "7 min",
     date: "Sep 18, 2026",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80",
   },
   {
     slug: "activate-windows-11-key",
@@ -24,7 +24,7 @@ const blogPosts = [
     category: "Activation",
     readTime: "6 min",
     date: "Sep 17, 2026",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&q=80",
   },
   {
     slug: "buy-genuine-microsoft-office-key-cheap",
@@ -33,7 +33,7 @@ const blogPosts = [
     category: "Buying",
     readTime: "7 min",
     date: "Sep 17, 2026",
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=800&q=80",
   },
   {
     slug: "cheap-windows-11-keys-2026",
@@ -42,7 +42,7 @@ const blogPosts = [
     category: "Buying",
     readTime: "10 min",
     date: "Sep 10, 2026",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1624571409108-e9a41746af53?w=800&q=80",
   },
   {
     slug: "buy-cheap-microsoft-office-keys-2026",
@@ -51,7 +51,7 @@ const blogPosts = [
     category: "Buying",
     readTime: "8 min",
     date: "Sep 8, 2026",
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80",
   },
   {
     slug: "how-to-activate-office-2021",
@@ -60,7 +60,7 @@ const blogPosts = [
     category: "Activation",
     readTime: "7 min",
     date: "Sep 12, 2026",
-    image: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1594006659-f0b21884ce1d?w=800&q=80",
   },
   {
     slug: "transfer-windows-license-new-pc",
@@ -69,7 +69,7 @@ const blogPosts = [
     category: "Guide",
     readTime: "8 min",
     date: "Sep 14, 2026",
-    image: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=800&q=80",
   },
   {
     slug: "how-to-activate-windows-11",
@@ -78,7 +78,7 @@ const blogPosts = [
     category: "Activation",
     readTime: "8 min",
     date: "Sep 2, 2026",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
   },
   {
     slug: "windows-11-home-vs-pro",
@@ -87,7 +87,7 @@ const blogPosts = [
     category: "Comparison",
     readTime: "12 min",
     date: "Sep 2, 2026",
-    image: "https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80",
   },
   {
     slug: "windows-11-vs-windows-10-comparison",
@@ -96,7 +96,7 @@ const blogPosts = [
     category: "Comparison",
     readTime: "15 min",
     date: "Sep 1, 2026",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80",
   },
   {
     slug: "oem-vs-retail-windows-keys",
@@ -105,7 +105,7 @@ const blogPosts = [
     category: "Guide",
     readTime: "12 min",
     date: "Aug 30, 2026",
-    image: "https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
   },
   {
     slug: "is-buying-windows-keys-legal",
@@ -114,7 +114,7 @@ const blogPosts = [
     category: "Legal",
     readTime: "14 min",
     date: "Aug 28, 2026",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
   },
   {
     slug: "cheap-windows-keys-safe",
@@ -123,7 +123,7 @@ const blogPosts = [
     category: "Security",
     readTime: "12 min",
     date: "Aug 25, 2026",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
   },
   {
     slug: "office-2021-vs-office-365",
@@ -132,7 +132,7 @@ const blogPosts = [
     category: "Comparison",
     readTime: "13 min",
     date: "Aug 22, 2026",
-    image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80",
   },
 ];
 

@@ -29,6 +29,47 @@ export default function Footer() {
                 <span className="text-[#26a17b] text-xs font-black">USDT</span>
               </span>
             </div>
+
+            {/* Social media */}
+            <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mt-5 mb-2">Follow Us</p>
+            <div className="flex items-center gap-2.5">
+              <a
+                href="https://twitter.com/officialkeyshub"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on X (Twitter)"
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-sky-500 flex items-center justify-center text-slate-300 hover:text-sky-400 transition-colors"
+              >
+                <i className="fab fa-x-twitter text-base"></i>
+              </a>
+              <a
+                href="https://instagram.com/officialkeyshub"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-sky-500 flex items-center justify-center text-slate-300 hover:text-[#E1306C] transition-colors"
+              >
+                <i className="fab fa-instagram text-base"></i>
+              </a>
+              <a
+                href="https://reddit.com/r/officialkeyshub"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Reddit"
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-sky-500 flex items-center justify-center text-slate-300 hover:text-[#FF4500] transition-colors"
+              >
+                <i className="fab fa-reddit-alien text-base"></i>
+              </a>
+              <a
+                href="https://facebook.com/officialkeyshub"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-sky-500 flex items-center justify-center text-slate-300 hover:text-[#1877F2] transition-colors"
+              >
+                <i className="fab fa-facebook-f text-base"></i>
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}

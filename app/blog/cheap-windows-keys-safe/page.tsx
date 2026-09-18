@@ -32,7 +32,7 @@ export default function CheapKeysSafePage() {
           </div>
 
           <img 
-            src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80" 
+            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80" 
             alt="Computer Security Concept"
             className="w-full h-96 object-cover rounded-xl mb-8"
           />

@@ -80,10 +80,9 @@ family. Light article pages (see below) use light tints like `bg-sky-50`,
   and available as the `.font-math` class for one-off elements (navbar, logo,
   buttons). Loaded via `next/font/google` in `app/layout.tsx` as `--font-math`.
 - **Body**: Inter (`next/font/google`), set on `<body>`.
-- **`.gradient-text`**: a **blue → green gradient**
-  (`linear-gradient(90deg,#0284c7,#0ea5e9,#10b981)`) — used to highlight one
-  phrase inside a heading (e.g. "Welcome to <span class=gradient-text>Official
-  Keys Hub</span>"). Do NOT use it for prices (prices stay solid white).
+- **`.gradient-text`**: despite the name it's a **solid** accent color
+  (`#0284c7`, no gradient) — used to highlight one phrase inside a heading. Do
+  NOT use it for prices (prices stay solid white).
 
 ## Reusable utilities (in `globals.css`)
 

@@ -30,7 +30,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
         {/* Featured Image */}
         <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
           <img
-            src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&h=600&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1200&h=600&fit=crop&q=80"
             alt="Microsoft Office 2021 Product Keys"
             className="w-full h-[400px] object-cover"
           />

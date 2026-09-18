@@ -79,13 +79,11 @@ h1, h2, h3, h4, .font-display {
 ::selection { background: rgba(2, 132, 199, 0.35); color: #fff; }
 
 @layer utilities {
-  /* Windows-style blue → green gradient for highlighted heading words. */
+  /* Solid accent for highlighted heading words (no gradient). */
   .gradient-text {
-    background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 45%, #10b981 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    background: none;
+    color: #0284c7;
+    -webkit-text-fill-color: #0284c7;
   }
 
   /* Mathematical Bold Italic display font, usable on any element (navbar, logo, buttons). */

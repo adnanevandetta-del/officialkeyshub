@@ -32,7 +32,7 @@ export default function Office2021Vs365Page() {
           </div>
 
           <img 
-            src="https://images.unsplash.com/photo-1631624208977-82b02f4f2f3d?w=1200&q=80" 
+            src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&q=80" 
             alt="Microsoft Office Comparison"
             className="w-full h-96 object-cover rounded-xl mb-8"
           />

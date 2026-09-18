@@ -32,7 +32,7 @@ export default function Windows11VsWindows10Page() {
           </div>
 
           <img 
-            src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&q=80" 
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80" 
             alt="Windows 11 vs Windows 10 Interface Comparison"
             className="w-full h-96 object-cover rounded-xl mb-8"
           />
