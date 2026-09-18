@@ -163,8 +163,8 @@ export default function ActivationGuideSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-4">
-            <i className="fas fa-graduation-cap text-sky-400"></i>
-            <span className="text-sky-300 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
+            <i className="fas fa-graduation-cap text-sky-500"></i>
+            <span className="text-sky-400 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             How to <span className="gradient-text">Activate Your Software</span>
@@ -199,8 +199,8 @@ export default function ActivationGuideSection() {
         <div className="glass-strong rounded-2xl p-8 md:p-12">
           {/* Guide Title */}
           <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-500/15 border border-sky-400/30 rounded-full mb-4">
-              <i className={`${currentGuide.icon} text-3xl text-sky-400`}></i>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-600/15 border border-sky-500/30 rounded-full mb-4">
+              <i className={`${currentGuide.icon} text-3xl text-sky-500`}></i>
             </div>
             <h3 className="text-3xl font-black text-white mb-2">{currentGuide.title}</h3>
             <p className="text-lg text-slate-400">{currentGuide.subtitle}</p>
@@ -211,7 +211,7 @@ export default function ActivationGuideSection() {
             {currentGuide.steps.map((step, idx) => (
               <div
                 key={idx}
-                className="flex gap-6 items-start bg-white/[0.03] p-6 rounded-xl border border-white/10 hover:border-sky-400/40 transition-all"
+                className="flex gap-6 items-start bg-white/[0.03] p-6 rounded-xl border border-white/10 hover:border-sky-500/40 transition-all"
               >
                 {/* Step Number */}
                 <div className="flex-shrink-0">
@@ -223,7 +223,7 @@ export default function ActivationGuideSection() {
                 {/* Step Content */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <i className={`${step.icon} text-sky-400 text-xl`}></i>
+                    <i className={`${step.icon} text-sky-500 text-xl`}></i>
                     <h4 className="text-xl font-bold text-white">{step.title}</h4>
                   </div>
                   <p className="text-slate-300 leading-relaxed">{step.description}</p>
@@ -254,7 +254,7 @@ export default function ActivationGuideSection() {
 
           {/* Help Section */}
           <div className="mt-10 text-center">
-            <div className="relative overflow-hidden bg-gradient-to-r from-sky-600 to-cyan-600 text-white rounded-xl p-8">
+            <div className="relative overflow-hidden bg-gradient-to-r from-sky-700 to-cyan-600 text-white rounded-xl p-8">
               <i className="fas fa-headset text-4xl mb-4"></i>
               <h4 className="text-2xl font-bold mb-2">Need Help with Activation?</h4>
               <p className="text-sky-50/90 mb-6">
@@ -266,7 +266,7 @@ export default function ActivationGuideSection() {
                   href="https://wa.me/16019756129?text=Hi! I need help with activation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white text-sky-700 px-6 py-3 rounded-lg font-bold hover:bg-sky-50 transition-all shadow-lg"
+                  className="inline-flex items-center gap-2 bg-white text-sky-800 px-6 py-3 rounded-lg font-bold hover:bg-sky-50 transition-all shadow-lg"
                 >
                   <i className="fab fa-whatsapp text-xl"></i>
                   WhatsApp Support

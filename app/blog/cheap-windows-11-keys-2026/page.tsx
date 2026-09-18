@@ -83,7 +83,7 @@ export default function CheapWindows11Keys2026() {
           <div className="container mx-auto px-6">
             <article className="max-w-4xl mx-auto prose prose-lg max-w-none">
               {/* Quick answer */}
-              <div className="bg-sky-50 border-l-4 border-sky-500 p-6 mb-10 rounded-r-lg">
+              <div className="bg-sky-50 border-l-4 border-sky-600 p-6 mb-10 rounded-r-lg">
                 <p className="text-gray-800 m-0">
                   <strong>Quick answer:</strong> You can buy genuine <strong>Windows 11 Pro keys from $19.99</strong> and
                   Windows 11 Home from $12.99 at authorized resellers like Official Keys Hub — around
@@ -98,19 +98,19 @@ export default function CheapWindows11Keys2026() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex gap-3 text-gray-700">
-                  <i className="fas fa-check-circle text-sky-600 mt-1"></i>
+                  <i className="fas fa-check-circle text-sky-700 mt-1"></i>
                   <span><strong>Volume &amp; OEM licensing:</strong> resellers buy in bulk from Microsoft partners at 70–90% off.</span>
                 </li>
                 <li className="flex gap-3 text-gray-700">
-                  <i className="fas fa-check-circle text-sky-600 mt-1"></i>
+                  <i className="fas fa-check-circle text-sky-700 mt-1"></i>
                   <span><strong>Regional pricing:</strong> licenses sourced from lower-cost regions cost less but work worldwide.</span>
                 </li>
                 <li className="flex gap-3 text-gray-700">
-                  <i className="fas fa-check-circle text-sky-600 mt-1"></i>
+                  <i className="fas fa-check-circle text-sky-700 mt-1"></i>
                   <span><strong>Surplus &amp; unused licenses:</strong> businesses resell keys they never deployed.</span>
                 </li>
                 <li className="flex gap-3 text-gray-700">
-                  <i className="fas fa-check-circle text-sky-600 mt-1"></i>
+                  <i className="fas fa-check-circle text-sky-700 mt-1"></i>
                   <span><strong>Online-only overhead:</strong> no physical stores means the savings reach you.</span>
                 </li>
               </ul>
@@ -130,19 +130,19 @@ export default function CheapWindows11Keys2026() {
                     <tr className="border-t border-gray-200">
                       <td className="p-3 font-semibold">Windows 11 Pro</td>
                       <td className="p-3">$199.99</td>
-                      <td className="p-3 text-sky-600 font-bold">$19.99</td>
+                      <td className="p-3 text-sky-700 font-bold">$19.99</td>
                       <td className="p-3">90%</td>
                     </tr>
                     <tr className="border-t border-gray-200 bg-gray-50">
                       <td className="p-3 font-semibold">Windows 11 Home</td>
                       <td className="p-3">$139.99</td>
-                      <td className="p-3 text-sky-600 font-bold">$12.99</td>
+                      <td className="p-3 text-sky-700 font-bold">$12.99</td>
                       <td className="p-3">91%</td>
                     </tr>
                     <tr className="border-t border-gray-200">
                       <td className="p-3 font-semibold">Windows 11 Pro (Online Key)</td>
                       <td className="p-3">$199.99</td>
-                      <td className="p-3 text-sky-600 font-bold">$17.99</td>
+                      <td className="p-3 text-sky-700 font-bold">$17.99</td>
                       <td className="p-3">91%</td>
                     </tr>
                   </tbody>
@@ -209,11 +209,11 @@ export default function CheapWindows11Keys2026() {
               </div>
 
               {/* CTA */}
-              <div className="not-prose bg-gradient-to-br from-sky-600 to-sky-700 rounded-2xl p-8 text-center text-white mb-6">
+              <div className="not-prose bg-gradient-to-br from-sky-700 to-sky-800 rounded-2xl p-8 text-center text-white mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">Get Your Genuine Windows 11 Key from $12.99</h2>
                 <p className="text-sky-100 mb-6 max-w-2xl mx-auto">Instant email delivery, lifetime activation, and a 30-day money-back guarantee.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  <Link href="/#products" className="px-8 py-4 bg-white text-sky-700 font-bold rounded-lg hover:bg-sky-50 transition-all shadow-lg">
+                  <Link href="/#products" className="px-8 py-4 bg-white text-sky-800 font-bold rounded-lg hover:bg-sky-50 transition-all shadow-lg">
                     Browse Windows 11 Keys →
                   </Link>
                   <Link href="/blog" className="px-8 py-4 bg-sky-800/40 text-white font-bold rounded-lg hover:bg-sky-800/60 transition-all border border-white/30">

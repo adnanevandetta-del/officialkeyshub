@@ -103,7 +103,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${stixMath.variable}`}>
       <head>
-        <meta name="theme-color" content="#0ea5e9" />
+        <meta name="theme-color" content="#0369a1" />
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="sG23QnRZt0jwlqElmdDi6H0SfVOqBFkGJllZlzgBFtk" />
       </head>

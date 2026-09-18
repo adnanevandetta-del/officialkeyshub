@@ -74,7 +74,7 @@ export default function CategoryBar() {
       name: "Visio & Project",
       icon: "fas fa-chart-line",
       count: 12,
-      gradient: "from-teal-500 via-sky-500 to-green-600",
+      gradient: "from-teal-500 via-sky-600 to-green-600",
       filterId: "visio",
       products: [
         { name: "Visio Professional 2021", price: "$34.99", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80" },
@@ -144,9 +144,9 @@ export default function CategoryBar() {
   };
 
   return (
-    <div className="hidden md:block sticky top-0 z-[100] bg-[#0b1020] border-b border-sky-500/40 shadow-xl overflow-hidden">
+    <div className="hidden md:block sticky top-0 z-[100] bg-[#0b1020] border-b border-sky-600/40 shadow-xl overflow-hidden">
       {/* Animated gradient line */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-sky-400 to-transparent animate-shimmer"></div>
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-sky-500 to-transparent animate-shimmer"></div>
       
       <div className="max-w-7xl mx-auto relative overflow-hidden">
         {/* Desktop: Normal Flex Wrap with Hover Dropdowns */}
@@ -170,7 +170,7 @@ export default function CategoryBar() {
                       : "hover:scale-105 bg-slate-800/50 hover:bg-slate-700/70"
                   }`}
                   style={{
-                    boxShadow: isActive ? "0 8px 32px rgba(14, 165, 233, 0.6)" : undefined
+                    boxShadow: isActive ? "0 8px 32px rgba(3, 105, 161, 0.6)" : undefined
                   }}
                 >
                   {/* Animated gradient background for active */}
@@ -187,7 +187,7 @@ export default function CategoryBar() {
                     <span className={`px-1.5 py-0.5 rounded-full text-xs font-black ${
                       isActive 
                         ? "bg-white/30 text-white" 
-                        : "bg-sky-500/20 text-sky-400 group-hover:bg-sky-500 group-hover:text-white"
+                        : "bg-sky-600/20 text-sky-500 group-hover:bg-sky-600 group-hover:text-white"
                     }`}>
                       {category.count}
                     </span>
@@ -195,7 +195,7 @@ export default function CategoryBar() {
 
                   {/* Glow effect */}
                   {isActive && (
-                    <div className="absolute inset-0 rounded-lg opacity-75 blur-xl bg-gradient-to-r from-sky-400 to-blue-500"></div>
+                    <div className="absolute inset-0 rounded-lg opacity-75 blur-xl bg-gradient-to-r from-sky-500 to-blue-500"></div>
                   )}
                 </button>
 
@@ -217,7 +217,7 @@ export default function CategoryBar() {
                         <button
                           key={idx}
                           onClick={() => handleCategoryClick(category)}
-                          className="group bg-white/[0.04] border border-white/10 rounded-xl overflow-hidden hover:border-sky-400/50 hover:bg-white/[0.07] transition-all duration-300 text-left"
+                          className="group bg-white/[0.04] border border-white/10 rounded-xl overflow-hidden hover:border-sky-500/50 hover:bg-white/[0.07] transition-all duration-300 text-left"
                         >
                           <div className="relative h-32 overflow-hidden">
                             <Image
@@ -228,18 +228,18 @@ export default function CategoryBar() {
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                             {product.badge && (
-                              <div className="absolute top-2 right-2 bg-sky-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                              <div className="absolute top-2 right-2 bg-sky-600 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 {product.badge}
                               </div>
                             )}
                           </div>
                           <div className="p-3">
-                            <h4 className="text-slate-200 font-bold text-sm mb-1 group-hover:text-sky-300 transition-colors line-clamp-2">
+                            <h4 className="text-slate-200 font-bold text-sm mb-1 group-hover:text-sky-400 transition-colors line-clamp-2">
                               {product.name}
                             </h4>
                             <div className="flex items-center justify-between mt-2">
-                              <span className="text-sky-400 font-black text-lg">{product.price}</span>
-                              <i className="fas fa-shopping-cart text-slate-500 group-hover:text-sky-400 transition-colors"></i>
+                              <span className="text-sky-500 font-black text-lg">{product.price}</span>
+                              <i className="fas fa-shopping-cart text-slate-500 group-hover:text-sky-500 transition-colors"></i>
                             </div>
                           </div>
                         </button>
@@ -248,7 +248,7 @@ export default function CategoryBar() {
                     <div className="bg-white/[0.03] px-4 py-3 border-t border-white/10">
                       <button
                         onClick={() => handleCategoryClick(category)}
-                        className="text-sky-400 hover:text-sky-300 font-semibold text-sm flex items-center gap-2 w-full justify-center"
+                        className="text-sky-500 hover:text-sky-400 font-semibold text-sm flex items-center gap-2 w-full justify-center"
                       >
                         View All {category.count} {category.name}
                         <i className="fas fa-arrow-right text-xs"></i>

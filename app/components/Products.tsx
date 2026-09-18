@@ -856,8 +856,8 @@ export default function Products() {
         {/* Section Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-            <span className="text-sky-300 text-xs font-bold uppercase tracking-widest">Genuine Licenses</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
+            <span className="text-sky-400 text-xs font-bold uppercase tracking-widest">Genuine Licenses</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black mb-3">
             Welcome to <span className="gradient-text">Official Keys Hub</span>
@@ -892,7 +892,7 @@ export default function Products() {
               key={index}
               className={`glass rounded-2xl overflow-hidden transition-all duration-300 flex flex-col relative glow-hover ${
                 product.popular
-                  ? "ring-1 ring-sky-400/50 glow-sky"
+                  ? "ring-1 ring-sky-500/50 glow-sky"
                   : ""
               }`}
             >
@@ -919,7 +919,7 @@ export default function Products() {
                     <span className="text-3xl font-black text-white">{product.price}</span>
                     <span className="text-sm text-slate-500 line-through">{product.originalPrice}</span>
                   </div>
-                  <div className="text-sm text-sky-400 font-semibold mt-1">
+                  <div className="text-sm text-sky-500 font-semibold mt-1">
                     Save {Math.round((1 - parseFloat(product.price.replace("$", "")) / parseFloat(product.originalPrice.replace(/[$,]/g, ""))) * 100)}%
                   </div>
                 </div>
@@ -927,7 +927,7 @@ export default function Products() {
                 <ul className="space-y-2 mb-6 h-32 overflow-hidden">
                   {product.features.slice(0, 5).map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
-                      <i className="fas fa-check text-sky-400 mt-1 flex-shrink-0"></i>
+                      <i className="fas fa-check text-sky-500 mt-1 flex-shrink-0"></i>
                       <span className="line-clamp-1">{feature}</span>
                     </li>
                   ))}
@@ -982,7 +982,7 @@ export default function Products() {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md" onClick={() => setShowModal(false)}>
           <div className="glass-strong rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-sky-500 to-sky-600 p-6 rounded-t-2xl">
+            <div className="sticky top-0 bg-gradient-to-r from-sky-600 to-sky-700 p-6 rounded-t-2xl">
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <h2 className="text-2xl font-black text-white mb-2">{selectedProduct.name}</h2>
@@ -1012,12 +1012,12 @@ export default function Products() {
               </div>
 
               {/* Price */}
-              <div className="mb-6 bg-sky-500/10 rounded-xl p-4 border border-sky-400/30">
+              <div className="mb-6 bg-sky-600/10 rounded-xl p-4 border border-sky-500/30">
                 <div className="flex items-baseline gap-3 justify-center">
                   <span className="text-4xl font-black text-white">{selectedProduct.price}</span>
                   <span className="text-xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
                 </div>
-                <div className="text-center text-sky-400 font-semibold mt-2">
+                <div className="text-center text-sky-500 font-semibold mt-2">
                   Save {Math.round((1 - parseFloat(selectedProduct.price.replace("$", "")) / parseFloat(selectedProduct.originalPrice.replace(/[$,]/g, ""))) * 100)}%
                 </div>
               </div>
@@ -1028,7 +1028,7 @@ export default function Products() {
                 <ul className="space-y-2">
                   {selectedProduct.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-slate-300">
-                      <i className="fas fa-check-circle text-sky-400 mt-1 flex-shrink-0"></i>
+                      <i className="fas fa-check-circle text-sky-500 mt-1 flex-shrink-0"></i>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -1104,19 +1104,19 @@ export default function Products() {
               {/* Trust Badges */}
               <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/10">
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-shield-alt text-sky-400"></i>
+                  <i className="fas fa-shield-alt text-sky-500"></i>
                   <span>100% Genuine</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-shipping-fast text-sky-400"></i>
+                  <i className="fas fa-shipping-fast text-sky-500"></i>
                   <span>Instant Delivery</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-headset text-sky-400"></i>
+                  <i className="fas fa-headset text-sky-500"></i>
                   <span>24/7 Support</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-undo text-sky-400"></i>
+                  <i className="fas fa-undo text-sky-500"></i>
                   <span>Money Back</span>
                 </div>
               </div>
@@ -1125,15 +1125,15 @@ export default function Products() {
               <div className="mt-6 pt-6 border-t border-white/10">
                 <div className="bg-white/[0.04] border border-white/10 rounded-xl p-6">
                   <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                    <i className="fas fa-info-circle text-sky-400"></i>
+                    <i className="fas fa-info-circle text-sky-500"></i>
                     About This Product
                   </h4>
                   <p className="text-slate-300 mb-4 leading-relaxed">
                     {selectedProduct.description}. This is a genuine Microsoft product that comes with full support and lifetime validity.
                     Perfect for professionals, students, and businesses looking for reliable software solutions.
                   </p>
-                  <div className="flex items-start gap-3 bg-black/20 rounded-lg p-4 border-l-4 border-sky-400">
-                    <i className="fas fa-check-circle text-sky-400 text-xl mt-1"></i>
+                  <div className="flex items-start gap-3 bg-black/20 rounded-lg p-4 border-l-4 border-sky-500">
+                    <i className="fas fa-check-circle text-sky-500 text-xl mt-1"></i>
                     <div>
                       <p className="font-semibold text-white mb-1">Why Choose Us?</p>
                       <p className="text-sm text-slate-400">
@@ -1153,9 +1153,9 @@ export default function Products() {
       {/* Cart Added Notification */}
       {showCartPreview && (
         <div className="fixed top-20 right-4 z-[10000] animate-slide-in-right">
-          <div className="glass-strong rounded-xl shadow-2xl border border-sky-400/50 glow-sky p-4 min-w-[300px]">
+          <div className="glass-strong rounded-xl shadow-2xl border border-sky-500/50 glow-sky p-4 min-w-[300px]">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-sky-500 rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-sky-600 rounded-full flex items-center justify-center">
                 <i className="fas fa-check text-white text-xl"></i>
               </div>
               <div className="flex-1">

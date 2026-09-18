@@ -91,7 +91,7 @@ export default function BuyGenuineOfficeCheap() {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
-                <span className="bg-sky-100 text-sky-700 px-4 py-1 rounded-full text-sm font-bold">
+                <span className="bg-sky-100 text-sky-800 px-4 py-1 rounded-full text-sm font-bold">
                   Buying Guide
                 </span>
                 <span className="text-gray-500">📅 Sep 17, 2026 • ⏱️ 7 min read</span>
@@ -100,7 +100,7 @@ export default function BuyGenuineOfficeCheap() {
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 How to Buy a Genuine Microsoft Office Key Cheap
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-teal-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-700 to-teal-600">
                   Without Getting Scammed (2026)
                 </span>
               </h1>
@@ -157,7 +157,7 @@ export default function BuyGenuineOfficeCheap() {
                   ["The seller stands behind it", "A real seller offers a money-back guarantee and replaces a key if there's ever an issue."],
                 ].map(([t, d], i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center">
                       <i className="fas fa-check"></i>
                     </div>
                     <div>
@@ -213,7 +213,7 @@ export default function BuyGenuineOfficeCheap() {
                     <tr className="bg-gray-100">
                       <th className="p-4 font-bold text-gray-900">Product</th>
                       <th className="p-4 font-bold text-gray-900">Microsoft retail</th>
-                      <th className="p-4 font-bold text-sky-700">Genuine digital key</th>
+                      <th className="p-4 font-bold text-sky-800">Genuine digital key</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -225,7 +225,7 @@ export default function BuyGenuineOfficeCheap() {
                       <tr key={i} className="border-b border-gray-200">
                         <td className="p-4 text-gray-800">{row[0]}</td>
                         <td className="p-4 text-gray-500 line-through">{row[1]}</td>
-                        <td className="p-4 text-sky-700 font-bold">{row[2]}</td>
+                        <td className="p-4 text-sky-800 font-bold">{row[2]}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -244,7 +244,7 @@ export default function BuyGenuineOfficeCheap() {
                   ["Activate and verify", "Enter the key, activate online, and confirm it shows as activated under Account."],
                 ].map(([t, d], i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="flex-shrink-0 w-11 h-11 bg-sky-500 text-white rounded-full flex items-center justify-center font-bold">
+                    <div className="flex-shrink-0 w-11 h-11 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold">
                       {i + 1}
                     </div>
                     <div>
@@ -261,7 +261,7 @@ export default function BuyGenuineOfficeCheap() {
                   <details key={idx} className="bg-sky-50 rounded-xl p-6 hover:bg-sky-100 transition-colors group">
                     <summary className="font-bold text-sky-900 cursor-pointer flex items-center justify-between">
                       {faq.q}
-                      <i className="fas fa-chevron-down group-open:rotate-180 transition-transform text-sky-600"></i>
+                      <i className="fas fa-chevron-down group-open:rotate-180 transition-transform text-sky-700"></i>
                     </summary>
                     <p className="text-gray-700 mt-4 leading-relaxed border-t border-sky-200 pt-4">{faq.a}</p>
                   </details>
@@ -271,10 +271,10 @@ export default function BuyGenuineOfficeCheap() {
               <div className="not-prose bg-sky-50 border border-sky-200 rounded-xl p-6">
                 <h3 className="font-bold text-gray-900 mb-2">Related reading</h3>
                 <ul className="space-y-1">
-                  <li><Link href="/blog/buy-cheap-microsoft-office-keys-2026" className="text-sky-700 underline">Cheap Microsoft Office keys 2026: prices &amp; editions</Link></li>
-                  <li><Link href="/blog/is-buying-windows-keys-legal" className="text-sky-700 underline">Is buying cheap keys legal?</Link></li>
-                  <li><Link href="/blog/office-2021-vs-office-365" className="text-sky-700 underline">Office 2021 vs Office 365: which to buy</Link></li>
-                  <li><Link href="/blog/how-to-activate-office-2021" className="text-sky-700 underline">How to activate Office 2021</Link></li>
+                  <li><Link href="/blog/buy-cheap-microsoft-office-keys-2026" className="text-sky-800 underline">Cheap Microsoft Office keys 2026: prices &amp; editions</Link></li>
+                  <li><Link href="/blog/is-buying-windows-keys-legal" className="text-sky-800 underline">Is buying cheap keys legal?</Link></li>
+                  <li><Link href="/blog/office-2021-vs-office-365" className="text-sky-800 underline">Office 2021 vs Office 365: which to buy</Link></li>
+                  <li><Link href="/blog/how-to-activate-office-2021" className="text-sky-800 underline">How to activate Office 2021</Link></li>
                 </ul>
               </div>
 
@@ -283,7 +283,7 @@ export default function BuyGenuineOfficeCheap() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-br from-sky-600 to-teal-600">
+        <section className="py-16 bg-gradient-to-br from-sky-700 to-teal-600">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">Shop genuine Microsoft Office keys</h2>
             <p className="text-xl text-sky-100 mb-8 max-w-3xl mx-auto">
@@ -295,7 +295,7 @@ export default function BuyGenuineOfficeCheap() {
                 <i className="fas fa-file-word mr-3"></i>
                 Shop Office Keys
               </a>
-              <a href="https://wa.me/16019756129" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-white text-sky-600 font-bold text-lg rounded-xl hover:bg-gray-100 transition-all shadow-xl inline-flex items-center justify-center">
+              <a href="https://wa.me/16019756129" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-white text-sky-700 font-bold text-lg rounded-xl hover:bg-gray-100 transition-all shadow-xl inline-flex items-center justify-center">
                 <i className="fab fa-whatsapp mr-3"></i>
                 Ask a Question
               </a>

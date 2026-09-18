@@ -17,10 +17,10 @@
   --border-strong: rgba(255, 255, 255, 0.16);
   --text: #e7ecf5;
   --text-muted: #94a3b8;
-  --accent: #38bdf8;      /* sky */
+  --accent: #0284c7;      /* sky */
   --accent-2: #22d3ee;    /* cyan */
   --accent-3: #3b82f6;    /* blue */
-  --glow: rgba(56, 189, 248, 0.45);
+  --glow: rgba(2, 132, 199, 0.45);
 }
 
 * {
@@ -51,7 +51,7 @@ body {
      pseudo-element) so it paints reliably across the whole page. */
   background-color: var(--bg);
   background-image:
-    radial-gradient(55rem 45rem at 12% 2%, rgba(56, 189, 248, 0.16), transparent 55%),
+    radial-gradient(55rem 45rem at 12% 2%, rgba(2, 132, 199, 0.16), transparent 55%),
     radial-gradient(50rem 40rem at 95% 0%, rgba(34, 211, 238, 0.14), transparent 55%),
     radial-gradient(45rem 45rem at 50% 38%, rgba(59, 130, 246, 0.08), transparent 60%),
     linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
@@ -72,17 +72,17 @@ h1, h2, h3, h4, .font-display {
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: #05060b; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #38bdf8, #22d3ee);
+  background: linear-gradient(180deg, #0284c7, #22d3ee);
   border-radius: 8px;
   border: 2px solid #05060b;
 }
-::selection { background: rgba(56, 189, 248, 0.35); color: #fff; }
+::selection { background: rgba(2, 132, 199, 0.35); color: #fff; }
 
 @layer utilities {
   /* Solid sky for prices and headings (gradients removed per design). */
   .gradient-text {
-    color: #38bdf8;
-    -webkit-text-fill-color: #38bdf8;
+    color: #0284c7;
+    -webkit-text-fill-color: #0284c7;
   }
 
   /* Mathematical Bold Italic display font, usable on any element (navbar, logo, buttons). */
@@ -103,10 +103,10 @@ h1, h2, h3, h4, .font-display {
     border: 1px solid var(--border);
   }
 
-  .glow-sky { box-shadow: 0 0 0 1px rgba(56,189,248,0.25), 0 0 40px -8px var(--glow); }
+  .glow-sky { box-shadow: 0 0 0 1px rgba(2,132,199,0.25), 0 0 40px -8px var(--glow); }
   .glow-hover { transition: box-shadow .35s ease, transform .35s ease, border-color .35s ease; }
   .glow-hover:hover {
-    box-shadow: 0 0 0 1px rgba(56,189,248,0.4), 0 0 55px -10px var(--glow);
+    box-shadow: 0 0 0 1px rgba(2,132,199,0.4), 0 0 55px -10px var(--glow);
     transform: translateY(-4px);
   }
 
@@ -120,7 +120,7 @@ h1, h2, h3, h4, .font-display {
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(120deg, rgba(56,189,248,0.7), rgba(34,211,238,0.5), rgba(59,130,246,0.6));
+    background: linear-gradient(120deg, rgba(2,132,199,0.7), rgba(34,211,238,0.5), rgba(59,130,246,0.6));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -128,7 +128,7 @@ h1, h2, h3, h4, .font-display {
   }
 
   .btn-primary {
-    background: linear-gradient(120deg, #0ea5e9, #22d3ee);
+    background: linear-gradient(120deg, #0369a1, #22d3ee);
     color: #04120c;
     font-weight: 800;
     box-shadow: 0 0 30px -6px var(--glow);
@@ -201,8 +201,8 @@ h1, h2, h3, h4, .font-display {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.5); }
-  50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.8); }
+  0%, 100% { box-shadow: 0 0 20px rgba(3, 105, 161, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(3, 105, 161, 0.8); }
 }
 
 @keyframes drift {
@@ -212,10 +212,10 @@ h1, h2, h3, h4, .font-display {
 
 @keyframes mega-glow {
   0%, 100% {
-    box-shadow: 0 0 60px rgba(14, 165, 233, 1), 0 0 120px rgba(14, 165, 233, 0.8), 0 30px 60px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 60px rgba(3, 105, 161, 1), 0 0 120px rgba(3, 105, 161, 0.8), 0 30px 60px rgba(0, 0, 0, 0.6);
   }
   50% {
-    box-shadow: 0 0 80px rgba(14, 165, 233, 1), 0 0 160px rgba(14, 165, 233, 1), 0 40px 80px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 80px rgba(3, 105, 161, 1), 0 0 160px rgba(3, 105, 161, 1), 0 40px 80px rgba(0, 0, 0, 0.6);
   }
 }
 

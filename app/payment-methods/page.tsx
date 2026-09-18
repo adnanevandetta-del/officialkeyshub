@@ -117,10 +117,10 @@ export default function PaymentMethodsPage() {
       },
       sky: {
         bg: "from-sky-50 to-sky-100",
-        border: "border-sky-300",
-        text: "text-sky-700",
-        badge: "bg-sky-500",
-        glow: "shadow-sky-500/50"
+        border: "border-sky-400",
+        text: "text-sky-800",
+        badge: "bg-sky-600",
+        glow: "shadow-sky-600/50"
       },
       orange: {
         bg: "from-orange-50 to-orange-100",
@@ -163,7 +163,7 @@ export default function PaymentMethodsPage() {
 
           {/* Security Banner */}
           <div className="max-w-5xl mx-auto mb-16">
-            <div className="bg-gradient-to-r from-sky-500 to-sky-600 rounded-2xl shadow-2xl p-8 text-white">
+            <div className="bg-gradient-to-r from-sky-600 to-sky-700 rounded-2xl shadow-2xl p-8 text-white">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <i className="fas fa-shield-alt text-5xl"></i>
                 <div className="text-left">

@@ -24,7 +24,7 @@ export default function PromoBanner() {
   };
 
   return (
-    <div className="relative z-[150] bg-gradient-to-r from-sky-600 via-sky-500 to-cyan-600 text-white">
+    <div className="relative z-[150] bg-gradient-to-r from-sky-700 via-sky-600 to-cyan-600 text-white">
       <div className="container mx-auto px-4 py-2.5">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-sm font-semibold">
           <i className="fas fa-gift text-white/90"></i>
@@ -46,7 +46,7 @@ export default function PromoBanner() {
               <span className="text-white/85">— Log in to get your code</span>
               <Link
                 href="/login"
-                className="inline-flex items-center gap-1.5 bg-white text-sky-700 px-3 py-0.5 rounded-md font-bold hover:bg-sky-50 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white text-sky-800 px-3 py-0.5 rounded-md font-bold hover:bg-sky-50 transition-colors"
               >
                 Get {PROMO_PERCENT}% Code
                 <i className="fas fa-arrow-right text-xs"></i>

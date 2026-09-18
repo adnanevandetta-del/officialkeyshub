@@ -89,7 +89,7 @@ export default function ProductBillboard() {
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-[0.06] block">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(56, 189, 248, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.3) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(2, 132, 199, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.3) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
         }}></div>
       </div>
@@ -99,9 +99,9 @@ export default function ProductBillboard() {
           {/* Left - Product Info (static) — centered on mobile, left-aligned on desktop */}
           <div className="lg:col-span-5 space-y-3 md:space-y-4 z-20 text-center lg:text-left">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-sky-500/20 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-sky-500/30">
-              <i className="fas fa-fire text-sky-400 text-sm"></i>
-              <span className="text-sky-400 text-xs md:text-sm font-bold uppercase">{currentProduct.badge}</span>
+            <div className="inline-flex items-center gap-2 bg-sky-600/20 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-sky-600/30">
+              <i className="fas fa-fire text-sky-500 text-sm"></i>
+              <span className="text-sky-500 text-xs md:text-sm font-bold uppercase">{currentProduct.badge}</span>
             </div>
 
             {/* Title */}
@@ -118,7 +118,7 @@ export default function ProductBillboard() {
             <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 md:gap-2">
               {currentProduct.features.map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-1 md:gap-1.5 bg-white/5 backdrop-blur-sm px-2 py-1 md:px-3 md:py-1.5 rounded-lg border border-white/10">
-                  <i className="fas fa-check text-sky-400 text-xs"></i>
+                  <i className="fas fa-check text-sky-500 text-xs"></i>
                   <span className="text-white text-xs md:text-sm font-medium">{feature}</span>
                 </div>
               ))}
@@ -169,8 +169,8 @@ export default function ProductBillboard() {
             <div className="relative w-full h-[190px] md:h-[500px]">
               {/* Ambient glow + orbit rings (futuristic backdrop) */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-36 h-36 md:w-80 md:h-80 bg-sky-500/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute w-[180px] h-[180px] md:w-[420px] md:h-[420px] rounded-full border border-sky-400/10 animate-spin-slow"></div>
+                <div className="w-36 h-36 md:w-80 md:h-80 bg-sky-600/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute w-[180px] h-[180px] md:w-[420px] md:h-[420px] rounded-full border border-sky-500/10 animate-spin-slow"></div>
                 <div className="absolute w-[130px] h-[130px] md:w-[300px] md:h-[300px] rounded-full border border-cyan-400/10 animate-spin-slow-rev"></div>
               </div>
 
@@ -209,7 +209,7 @@ export default function ProductBillboard() {
                     >
                       <div
                         className={`relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl w-[115px] h-[150px] md:w-[240px] md:h-[320px] bg-slate-800 ${
-                          isActive ? "ring-2 md:ring-4 ring-sky-500/60 shadow-sky-500/30" : "ring-1 ring-white/10"
+                          isActive ? "ring-2 md:ring-4 ring-sky-600/60 shadow-sky-600/30" : "ring-1 ring-white/10"
                         }`}
                       >
                         <div className="relative h-full">
@@ -225,7 +225,7 @@ export default function ProductBillboard() {
                           {isActive && (
                             <div
                               className="absolute inset-0 rounded-xl md:rounded-2xl"
-                              style={{ boxShadow: "0 0 24px rgba(14,165,233,0.55), inset 0 0 24px rgba(14,165,233,0.25)" }}
+                              style={{ boxShadow: "0 0 24px rgba(3,105,161,0.55), inset 0 0 24px rgba(3,105,161,0.25)" }}
                             ></div>
                           )}
                         </div>
@@ -287,7 +287,7 @@ export default function ProductBillboard() {
                   onClick={() => setCurrentIndex(idx)}
                   className={`transition-all ${
                     idx === currentIndex
-                      ? 'w-10 h-2.5 bg-sky-400'
+                      ? 'w-10 h-2.5 bg-sky-500'
                       : 'w-2.5 h-2.5 bg-white/30 hover:bg-white/50'
                   } rounded-full`}
                   aria-label={`Go to product ${idx + 1}`}
@@ -297,7 +297,7 @@ export default function ProductBillboard() {
 
             {/* Navigation — mobile, futuristic glowing progress pills */}
             <div className="flex lg:hidden items-center justify-center mt-4">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-sky-400/20 shadow-[0_0_18px_rgba(14,165,233,0.15)]">
+              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-sky-500/20 shadow-[0_0_18px_rgba(3,105,161,0.15)]">
                 {products.map((_, idx) => (
                   <button
                     key={idx}
@@ -305,7 +305,7 @@ export default function ProductBillboard() {
                     aria-label={`Go to product ${idx + 1}`}
                     className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
                       idx === currentIndex
-                        ? 'w-9 bg-gradient-to-r from-sky-400 to-cyan-400 shadow-[0_0_12px_rgba(14,165,233,0.9)]'
+                        ? 'w-9 bg-gradient-to-r from-sky-500 to-cyan-400 shadow-[0_0_12px_rgba(3,105,161,0.9)]'
                         : 'w-1.5 bg-white/25 hover:bg-white/45'
                     }`}
                   />

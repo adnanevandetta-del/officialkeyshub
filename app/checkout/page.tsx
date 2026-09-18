@@ -81,7 +81,7 @@ export default function CheckoutPage() {
             <p className="text-gray-600 mb-8">Add some products to get started!</p>
             <Link
               href="/"
-              className="inline-block px-8 py-4 bg-sky-600 text-white font-bold rounded-lg hover:bg-sky-700 transition-colors"
+              className="inline-block px-8 py-4 bg-sky-700 text-white font-bold rounded-lg hover:bg-sky-800 transition-colors"
             >
               <i className="fas fa-arrow-left mr-2"></i>
               Continue Shopping
@@ -110,7 +110,7 @@ export default function CheckoutPage() {
               {/* Delivery Email */}
               <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-gray-200">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <i className="fas fa-envelope text-sky-600"></i>
+                  <i className="fas fa-envelope text-sky-700"></i>
                   Delivery Email
                 </h2>
                 <div>
@@ -122,7 +122,7 @@ export default function CheckoutPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-sky-500 focus:outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-sky-600 focus:outline-none"
                     placeholder="john.doe@example.com"
                   />
                   <p className="text-xs text-gray-500 mt-1">Your license keys will be delivered to this email</p>
@@ -132,7 +132,7 @@ export default function CheckoutPage() {
               {/* Payment Method */}
               <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-gray-200">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <i className="fas fa-credit-card text-sky-600"></i>
+                  <i className="fas fa-credit-card text-sky-700"></i>
                   Payment Method
                 </h2>
                 <div className="space-y-4">
@@ -183,19 +183,19 @@ export default function CheckoutPage() {
                     onClick={() => setPaymentMethod('whatsapp')}
                     className={`w-full p-5 rounded-xl border-2 transition-all flex items-center justify-between ${
                       paymentMethod === 'whatsapp'
-                        ? 'border-sky-500 bg-sky-50'
-                        : 'border-gray-200 hover:border-sky-300'
+                        ? 'border-sky-600 bg-sky-50'
+                        : 'border-gray-200 hover:border-sky-400'
                     }`}
                   >
                     <div className="flex items-center gap-4">
-                      <i className="fab fa-whatsapp text-sky-600 text-3xl"></i>
+                      <i className="fab fa-whatsapp text-sky-700 text-3xl"></i>
                       <div className="text-left">
                         <p className="font-bold text-gray-900">WhatsApp</p>
                         <p className="text-sm text-gray-600">Chat & pay via WhatsApp</p>
                       </div>
                     </div>
                     {paymentMethod === 'whatsapp' && (
-                      <i className="fas fa-check-circle text-sky-600 text-2xl"></i>
+                      <i className="fas fa-check-circle text-sky-700 text-2xl"></i>
                     )}
                   </button>
                 </div>
@@ -217,7 +217,7 @@ export default function CheckoutPage() {
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-sm text-gray-900 truncate">{item.name}</p>
                         <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
-                        <p className="text-sky-600 font-bold">{item.price}</p>
+                        <p className="text-sky-700 font-bold">{item.price}</p>
                       </div>
                     </div>
                   ))}
@@ -226,16 +226,16 @@ export default function CheckoutPage() {
                 {/* Promo Code */}
                 <div className="border-t-2 border-gray-200 pt-4 mb-4">
                   <label className="block text-sm font-bold text-gray-700 mb-2">
-                    <i className="fas fa-gift text-sky-600 mr-1"></i>
+                    <i className="fas fa-gift text-sky-700 mr-1"></i>
                     Promo Code
                   </label>
                   {appliedPercent > 0 ? (
                     <div className="flex items-center justify-between bg-sky-50 border-2 border-sky-200 rounded-lg px-4 py-3">
                       <div className="flex items-center gap-2">
-                        <i className="fas fa-check-circle text-sky-600"></i>
+                        <i className="fas fa-check-circle text-sky-700"></i>
                         <div>
-                          <p className="font-bold text-sky-700 font-mono text-sm">{appliedCode}</p>
-                          <p className="text-xs text-sky-600">{appliedPercent}% discount applied</p>
+                          <p className="font-bold text-sky-800 font-mono text-sm">{appliedCode}</p>
+                          <p className="text-xs text-sky-700">{appliedPercent}% discount applied</p>
                         </div>
                       </div>
                       <button
@@ -254,11 +254,11 @@ export default function CheckoutPage() {
                           value={promoInput}
                           onChange={(e) => setPromoInput(e.target.value)}
                           placeholder="KEYS30-XXXX"
-                          className="flex-1 min-w-0 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-sky-500 focus:outline-none font-mono uppercase"
+                          className="flex-1 min-w-0 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-sky-600 focus:outline-none font-mono uppercase"
                         />
                         <button
                           onClick={applyPromo}
-                          className="px-5 py-3 bg-sky-600 text-white rounded-lg font-bold hover:bg-sky-700 transition-colors"
+                          className="px-5 py-3 bg-sky-700 text-white rounded-lg font-bold hover:bg-sky-800 transition-colors"
                         >
                           Apply
                         </button>
@@ -268,7 +268,7 @@ export default function CheckoutPage() {
                       ) : (
                         <p className="text-xs text-gray-500 mt-2">
                           No code?{' '}
-                          <Link href="/login" className="text-sky-600 font-semibold hover:underline">
+                          <Link href="/login" className="text-sky-700 font-semibold hover:underline">
                             Log in with your email
                           </Link>{' '}
                           to get 30% off.
@@ -285,14 +285,14 @@ export default function CheckoutPage() {
                     <span className="font-semibold">${cartTotal.toFixed(2)}</span>
                   </div>
                   {appliedPercent > 0 && (
-                    <div className="flex justify-between items-center mb-2 text-sky-600">
+                    <div className="flex justify-between items-center mb-2 text-sky-700">
                       <span>Discount ({appliedPercent}%):</span>
                       <span className="font-semibold">-${discountAmount.toFixed(2)}</span>
                     </div>
                   )}
                   <div className="flex justify-between items-center text-xl font-black">
                     <span>Total:</span>
-                    <span className="text-sky-600">${discountedTotal.toFixed(2)}</span>
+                    <span className="text-sky-700">${discountedTotal.toFixed(2)}</span>
                   </div>
                 </div>
 
@@ -314,7 +314,7 @@ export default function CheckoutPage() {
                 <div className="mt-6 pt-6 border-t border-gray-200">
                   <div className="flex items-center justify-center gap-6 text-xs text-gray-600">
                     <div className="flex flex-col items-center">
-                      <i className="fas fa-shield-alt text-sky-600 text-xl mb-1"></i>
+                      <i className="fas fa-shield-alt text-sky-700 text-xl mb-1"></i>
                       <span>Secure</span>
                     </div>
                     <div className="flex flex-col items-center">

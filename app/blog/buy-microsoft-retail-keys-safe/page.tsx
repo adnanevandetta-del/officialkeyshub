@@ -120,7 +120,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
             <div className="max-w-4xl mx-auto prose prose-lg">
 
               {/* Quick answer */}
-              <div className="not-prose bg-sky-50 border-l-4 border-sky-500 p-6 rounded-r-xl mb-10">
+              <div className="not-prose bg-sky-50 border-l-4 border-sky-600 p-6 rounded-r-xl mb-10">
                 <h2 className="font-bold text-sky-900 text-xl mb-3">⚡ Short Answer</h2>
                 <p className="text-sky-900 mb-0">
                   Yes, it&apos;s safe to buy a Microsoft retail key online — <strong>as long as the key is genuine and
@@ -196,7 +196,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
                   ["Backed by a guarantee", "A trustworthy seller offers a money-back or replacement guarantee and answers before and after the sale."],
                 ].map(([t, d], i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center">
                       <i className="fas fa-shield-alt"></i>
                     </div>
                     <div>

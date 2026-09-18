@@ -237,11 +237,11 @@ export default function FAQPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <div className="bg-white px-6 py-3 rounded-full shadow-md border border-sky-200">
-                  <i className="fas fa-bolt text-sky-500 mr-2"></i>
+                  <i className="fas fa-bolt text-sky-600 mr-2"></i>
                   <span className="font-semibold text-gray-800">Instant Answers</span>
                 </div>
                 <div className="bg-white px-6 py-3 rounded-full shadow-md border border-sky-200">
-                  <i className="fas fa-headset text-sky-500 mr-2"></i>
+                  <i className="fas fa-headset text-sky-600 mr-2"></i>
                   <span className="font-semibold text-gray-800">24/7 Support</span>
                 </div>
               </div>
@@ -254,10 +254,10 @@ export default function FAQPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto space-y-12">
               {faqCategories.map((category, idx) => (
-                <div key={idx} className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:border-sky-300 transition-colors">
+                <div key={idx} className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:border-sky-400 transition-colors">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                      <i className={`${category.icon} text-sky-600 text-xl`}></i>
+                      <i className={`${category.icon} text-sky-700 text-xl`}></i>
                     </div>
                     <h2 className="text-3xl font-bold text-gray-900">{category.category}</h2>
                   </div>
@@ -266,7 +266,7 @@ export default function FAQPage() {
                     {category.questions.map((faq, qIdx) => (
                       <details key={qIdx} className="group">
                         <summary className="flex items-start gap-3 cursor-pointer list-none p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                          <i className="fas fa-chevron-right text-sky-500 mt-1 group-open:rotate-90 transition-transform"></i>
+                          <i className="fas fa-chevron-right text-sky-600 mt-1 group-open:rotate-90 transition-transform"></i>
                           <span className="font-semibold text-lg text-gray-900 flex-1">{faq.q}</span>
                         </summary>
                         <div className="mt-4 ml-10 text-gray-700 leading-relaxed">
@@ -294,14 +294,14 @@ export default function FAQPage() {
                   href="https://wa.me/16019756129"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 bg-gradient-to-r from-sky-500 to-sky-600 text-white font-bold rounded-lg hover:from-sky-600 hover:to-sky-700 transition-all shadow-lg inline-flex items-center justify-center"
+                  className="px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-bold rounded-lg hover:from-sky-700 hover:to-sky-800 transition-all shadow-lg inline-flex items-center justify-center"
                 >
                   <i className="fab fa-whatsapp mr-2 text-xl"></i>
                   Chat on WhatsApp
                 </a>
                 <a
                   href="mailto:digitalkeyhubllc@gmail.com"
-                  className="px-8 py-4 bg-white text-sky-600 font-bold rounded-lg border-2 border-sky-500 hover:bg-sky-50 transition-all shadow-lg inline-flex items-center justify-center"
+                  className="px-8 py-4 bg-white text-sky-700 font-bold rounded-lg border-2 border-sky-600 hover:bg-sky-50 transition-all shadow-lg inline-flex items-center justify-center"
                 >
                   <i className="fas fa-envelope mr-2"></i>
                   Email Us

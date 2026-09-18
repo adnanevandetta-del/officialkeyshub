@@ -81,7 +81,7 @@ export default function TransferWindowsLicense() {
         <section className="py-14">
           <div className="container mx-auto px-6">
             <article className="max-w-4xl mx-auto prose prose-lg max-w-none">
-              <div className="bg-sky-50 border-l-4 border-sky-500 p-6 mb-10 rounded-r-lg">
+              <div className="bg-sky-50 border-l-4 border-sky-600 p-6 mb-10 rounded-r-lg">
                 <p className="text-gray-800 m-0">
                   <strong>Quick answer:</strong> <strong>Retail</strong> Windows licenses <em>can</em> be transferred to a
                   new PC after you deactivate them on the old one. <strong>OEM</strong> licenses are tied to the original
@@ -102,7 +102,7 @@ export default function TransferWindowsLicense() {
                   <tbody className="text-gray-700">
                     <tr className="border-t border-gray-200">
                       <td className="p-3 font-semibold">Retail</td>
-                      <td className="p-3 text-sky-600 font-bold">Yes</td>
+                      <td className="p-3 text-sky-700 font-bold">Yes</td>
                       <td className="p-3">Move to a new PC unlimited times after deactivating the old one.</td>
                     </tr>
                     <tr className="border-t border-gray-200 bg-gray-50">
@@ -164,11 +164,11 @@ export default function TransferWindowsLicense() {
               </p>
 
               {/* CTA */}
-              <div className="not-prose bg-gradient-to-br from-sky-600 to-sky-700 rounded-2xl p-8 text-center text-white mb-6">
+              <div className="not-prose bg-gradient-to-br from-sky-700 to-sky-800 rounded-2xl p-8 text-center text-white mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">Need a Fresh Windows License?</h2>
                 <p className="text-sky-100 mb-6 max-w-2xl mx-auto">Genuine Windows 10 &amp; 11 keys from $12.99 — instant delivery and lifetime activation.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  <Link href="/#products" className="px-8 py-4 bg-white text-sky-700 font-bold rounded-lg hover:bg-sky-50 transition-all shadow-lg">
+                  <Link href="/#products" className="px-8 py-4 bg-white text-sky-800 font-bold rounded-lg hover:bg-sky-50 transition-all shadow-lg">
                     Browse Windows Keys →
                   </Link>
                   <Link href="/blog" className="px-8 py-4 bg-sky-800/40 text-white font-bold rounded-lg hover:bg-sky-800/60 transition-all border border-white/30">

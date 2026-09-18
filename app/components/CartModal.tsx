@@ -45,8 +45,8 @@ export default function CartModal({ onClose }: CartModalProps) {
         <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-5 flex-shrink-0 border-b border-slate-700">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-sky-500/20 rounded-lg flex items-center justify-center">
-                <i className="fas fa-shopping-cart text-sky-400 text-lg"></i>
+              <div className="w-10 h-10 bg-sky-600/20 rounded-lg flex items-center justify-center">
+                <i className="fas fa-shopping-cart text-sky-500 text-lg"></i>
               </div>
               <div>
                 <h2 className="text-xl font-bold">Shopping Cart</h2>
@@ -78,7 +78,7 @@ export default function CartModal({ onClose }: CartModalProps) {
               </p>
               <button
                 onClick={onClose}
-                className="px-6 py-3 bg-gradient-to-r from-sky-600 to-sky-700 text-white rounded-lg font-semibold hover:from-sky-700 hover:to-sky-800 transition-all shadow-md"
+                className="px-6 py-3 bg-gradient-to-r from-sky-700 to-sky-800 text-white rounded-lg font-semibold hover:from-sky-800 hover:to-sky-800 transition-all shadow-md"
               >
                 Browse Products
               </button>
@@ -90,7 +90,7 @@ export default function CartModal({ onClose }: CartModalProps) {
                 {cart.map((item) => (
                   <div
                     key={item.id}
-                    className="group bg-white/[0.04] border border-white/10 rounded-xl p-4 hover:border-sky-400/40 hover:bg-white/[0.06] transition-all duration-200"
+                    className="group bg-white/[0.04] border border-white/10 rounded-xl p-4 hover:border-sky-500/40 hover:bg-white/[0.06] transition-all duration-200"
                   >
                     <div className="flex gap-4">
                       {/* Product Image */}
@@ -120,7 +120,7 @@ export default function CartModal({ onClose }: CartModalProps) {
                         </div>
 
                         <div className="flex items-center gap-2 mb-3">
-                          <span className="text-sky-400 font-bold text-lg">{item.price}</span>
+                          <span className="text-sky-500 font-bold text-lg">{item.price}</span>
                           {item.originalPrice && (
                             <span className="text-slate-500 text-xs line-through">{item.originalPrice}</span>
                           )}
@@ -142,10 +142,10 @@ export default function CartModal({ onClose }: CartModalProps) {
                             </span>
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="w-8 h-8 bg-sky-500/20 hover:bg-sky-500/30 flex items-center justify-center transition-colors"
+                              className="w-8 h-8 bg-sky-600/20 hover:bg-sky-600/30 flex items-center justify-center transition-colors"
                               aria-label="Increase quantity"
                             >
-                              <i className="fas fa-plus text-xs text-sky-400"></i>
+                              <i className="fas fa-plus text-xs text-sky-500"></i>
                             </button>
                           </div>
                           <span className="text-xs text-slate-400 ml-1">
@@ -197,7 +197,7 @@ export default function CartModal({ onClose }: CartModalProps) {
             <Link
               href="/checkout"
               onClick={onClose}
-              className="block w-full py-3.5 bg-gradient-to-r from-sky-600 to-sky-700 text-white text-center font-bold text-base rounded-lg hover:from-sky-700 hover:to-sky-800 transition-all shadow-lg hover:shadow-xl mb-2"
+              className="block w-full py-3.5 bg-gradient-to-r from-sky-700 to-sky-800 text-white text-center font-bold text-base rounded-lg hover:from-sky-800 hover:to-sky-800 transition-all shadow-lg hover:shadow-xl mb-2"
             >
               <i className="fas fa-lock mr-2"></i>
               Secure Checkout
@@ -206,7 +206,7 @@ export default function CartModal({ onClose }: CartModalProps) {
             {/* Trust Badge */}
             <div className="mt-4 pt-4 border-t border-white/10">
               <div className="flex items-center justify-center gap-2 text-slate-400 text-xs">
-                <i className="fas fa-shield-alt text-sky-600"></i>
+                <i className="fas fa-shield-alt text-sky-700"></i>
                 <span>Secure payment & instant delivery</span>
               </div>
             </div>

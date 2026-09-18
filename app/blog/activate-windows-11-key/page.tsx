@@ -120,7 +120,7 @@ export default function ActivateWindows11Key() {
             <div className="max-w-4xl mx-auto prose prose-lg">
 
               {/* Quick answer box */}
-              <div className="not-prose bg-sky-50 border-l-4 border-sky-500 p-6 rounded-r-xl mb-10">
+              <div className="not-prose bg-sky-50 border-l-4 border-sky-600 p-6 rounded-r-xl mb-10">
                 <h2 className="font-bold text-sky-900 text-xl mb-3">⚡ Quick Answer</h2>
                 <p className="text-sky-900 mb-0">
                   Press <kbd className="px-2 py-1 bg-white rounded border border-gray-300 font-mono">Windows + I</kbd> →{" "}
