@@ -851,19 +851,8 @@ export default function Products() {
   };
 
   return (
-    <section className="pt-16 pb-20 relative overflow-hidden bg-white" id="products">
+    <section className="pt-16 pb-20 relative overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60" id="products">
       <div className="container mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 px-4 py-1.5 rounded-full mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
-            <span className="text-sky-600 text-xs font-bold uppercase tracking-widest">Genuine Licenses</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-3 text-slate-900">
-            Welcome to <span className="gradient-text">Official Keys Hub</span>
-          </h2>
-        </div>
-
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
@@ -873,7 +862,7 @@ export default function Products() {
               className={`px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all transform hover:scale-105 ${
                 activeCategory === category.id
                   ? "btn-primary"
-                  : "bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200 border border-slate-200"
+                  : "glass text-slate-300 hover:text-white glow-hover"
               }`}
             >
               <i className={`${category.icon} mr-2`}></i>
