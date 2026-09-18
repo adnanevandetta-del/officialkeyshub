@@ -143,22 +143,12 @@ export default function ProductBillboard() {
                     setSelectedProduct(currentProduct);
                     setShowModal(true);
                   }}
-                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-black text-sm md:text-lg rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all hover:scale-105 shadow-xl flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black text-sm md:text-lg rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all hover:scale-105 shadow-lg hover:shadow-blue-500/50 flex items-center justify-center gap-2"
                 >
                   <i className="fas fa-shopping-cart text-sm md:text-base"></i>
                   Buy Now
                   <i className="fas fa-arrow-right text-sm md:text-base"></i>
                 </button>
-
-                <div className="flex items-center gap-1.5 px-3 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg self-center">
-                  <i className="fab fa-paypal text-[#009CDE] text-base md:text-lg"></i>
-                  <span className="text-white/55 text-[11px] leading-tight">
-                    Secure checkout with{" "}
-                    <span className="font-bold">
-                      <span className="text-[#3b82f6]">Pay</span><span className="text-[#009CDE]">Pal</span>
-                    </span>
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -260,22 +250,11 @@ export default function ProductBillboard() {
                     setSelectedProduct(currentProduct);
                     setShowModal(true);
                   }}
-                  className="px-7 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-sm rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg flex items-center gap-1.5"
+                  className="px-7 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-sm rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg flex items-center gap-1.5"
                 >
                   <i className="fas fa-shopping-cart text-xs"></i>
                   Buy Now
                 </button>
-
-                {/* PayPal secure-checkout badge — small, below the button */}
-                <div className="flex items-center gap-1 px-2 py-1 bg-white/5 backdrop-blur-sm border border-white/10 rounded-md">
-                  <i className="fab fa-paypal text-[#009CDE] text-xs"></i>
-                  <span className="text-white/50 text-[9px] leading-tight">
-                    Secure with{" "}
-                    <span className="font-bold">
-                      <span className="text-[#3b82f6]">Pay</span><span className="text-[#009CDE]">Pal</span>
-                    </span>
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -318,8 +297,8 @@ export default function ProductBillboard() {
 
       {/* Payment Modal */}
       {showModal && selectedProduct && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowModal(false)}>
-          <div className="glass-strong rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in" onClick={() => setShowModal(false)}>
+          <div className="glass-strong rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-slide-up" onClick={(e) => e.stopPropagation()}>
             {/* Header with Image */}
             <div className="relative">
               {/* Product Image */}
@@ -341,10 +320,10 @@ export default function ProductBillboard() {
                   <i className="fas fa-times text-white text-xl"></i>
                 </button>
 
-                {/* Discount Badge */}
-                <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full shadow-lg">
+                {/* Discount Badge — soft, reassuring */}
+                <div className="absolute top-4 left-4 bg-emerald-500/90 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full shadow-lg">
                   <p className="text-sm font-bold">
-                    SAVE {Math.round((1 - parseFloat(selectedProduct.price.replace("$", "")) / parseFloat(selectedProduct.originalPrice.replace(/[$,]/g, ""))) * 100)}%
+                    Save {Math.round((1 - parseFloat(selectedProduct.price.replace("$", "")) / parseFloat(selectedProduct.originalPrice.replace(/[$,]/g, ""))) * 100)}%
                   </p>
                 </div>
 
@@ -365,18 +344,22 @@ export default function ProductBillboard() {
             {/* Content */}
             <div className="p-6">
               {/* Price */}
-              <div className="mb-6 flex items-baseline gap-3 flex-wrap">
+              <div className="flex items-baseline gap-3 flex-wrap">
                 <span className="text-4xl md:text-5xl font-black text-white">{selectedProduct.price}</span>
                 <span className="text-2xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
               </div>
 
+              {/* Reassurance strip — keeps the buyer at ease */}
+              <div className="mt-4 mb-6 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-300">
+                <span className="flex items-center gap-1.5"><i className="fas fa-bolt text-sky-400"></i> Instant delivery</span>
+                <span className="flex items-center gap-1.5"><i className="fas fa-shield-halved text-sky-400"></i> Genuine license</span>
+                <span className="flex items-center gap-1.5"><i className="fas fa-rotate-left text-sky-400"></i> Money-back guarantee</span>
+              </div>
+
               {/* Payment Methods */}
               <div className="space-y-3">
-                <h3 className="text-xl font-bold text-white mb-4 text-center flex items-center justify-center gap-2">
-                  <i className="fas fa-credit-card text-cyan-400"></i>
-                  Choose Your Payment Method
-                </h3>
-                
+                <h3 className="text-base font-semibold text-slate-300 mb-3">Choose how to pay</h3>
+
                 <a
                   href={paypalPaymentUrl(selectedProduct.name, selectedProduct.price)}
                   target="_blank"
