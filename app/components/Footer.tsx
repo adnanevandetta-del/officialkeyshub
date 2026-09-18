@@ -52,7 +52,7 @@ export default function Footer() {
                 <i className="fab fa-instagram text-base"></i>
               </a>
               <a
-                href="https://reddit.com/r/officialkeyshub"
+                href="https://reddit.com/user/officialkeyshub"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Reddit"
