@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Licensing & Authenticity — Genuine Keys, Legally Sold | Official Keys Hub",
+  title: "Licensing & Authenticity | Official Keys Hub",
   description:
     "How Official Keys Hub sells genuine Microsoft product keys legally: the EU resale rights that make it lawful, how to verify a key's authenticity yourself through Microsoft, and our genuine-or-your-money-back guarantee.",
   alternates: { canonical: "https://www.officialkeyshub.com/licensing" },

@@ -5,12 +5,15 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us - Authorized Microsoft Partner | Official Keys Hub",
-  description: "Official Keys Hub is a certified Microsoft partner providing genuine Windows, Office, and Server licenses since 2018. Licensed, authorized, and trusted by 50,000+ customers worldwide.",
-  keywords: "microsoft authorized partner, genuine windows keys, licensed software reseller, certified microsoft distributor, official microsoft keys, authorized windows license seller, legitimate software keys, verified microsoft partner, certified key reseller",
+  title: "About Official Keys Hub — Genuine Software Resale",
+  description:
+    "Official Keys Hub is an independent reseller of genuine Windows, Office, and Server licenses, sold legally under EU resale rights with instant delivery and a 30-day money-back guarantee.",
+  keywords:
+    "genuine windows keys, independent software reseller, legitimate microsoft keys, cheap office keys, EU software resale, genuine license reseller",
   openGraph: {
-    title: "About Us - Authorized Microsoft Partner | Official Keys Hub",
-    description: "Certified Microsoft partner since 2018. Genuine licenses, instant delivery, lifetime support.",
+    title: "About Official Keys Hub",
+    description:
+      "Independent reseller of genuine Microsoft licenses. Sold legally, delivered instantly, backed by a 30-day money-back guarantee.",
     url: "https://www.officialkeyshub.com/about",
     type: "website",
   },
@@ -27,7 +30,7 @@ export default function AboutPage() {
       <Navbar />
       <div className="pt-20 bg-white min-h-screen">
         <Breadcrumb items={breadcrumbItems} />
-        
+
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-sky-50">
           <div className="container mx-auto px-6">
@@ -35,7 +38,7 @@ export default function AboutPage() {
               <div className="text-center mb-12">
                 <div className="inline-block mb-4">
                   <span className="bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide">
-                    Certified Microsoft Partner Since 2018
+                    Independent Reseller · Genuine Licenses
                   </span>
                 </div>
                 <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
@@ -46,7 +49,7 @@ export default function AboutPage() {
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                  Official Keys Hub is an authorized Microsoft software distributor providing genuine Windows, Office, and Server licenses to individuals and businesses worldwide.
+                  Official Keys Hub is an independent reseller of genuine Windows, Office, and Server product keys — sold legally, delivered instantly, and backed by a 30-day money-back guarantee.
                 </p>
               </div>
 
@@ -80,77 +83,80 @@ export default function AboutPage() {
               <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">Our Story</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Founded in <strong>2022</strong>, Official Keys Hub started as a small indie retail operation with a straightforward mission: to make genuine Microsoft software accessible and affordable for everyone. We're not a large corporation or mega-retailer - we're a focused, customer-first team dedicated to providing authentic software licenses at honest prices.
+                  Founded in <strong>2022</strong>, Official Keys Hub started as a small indie retail operation with a straightforward mission: to make genuine Microsoft software accessible and affordable for everyone. We&rsquo;re not a large corporation or mega-retailer — we&rsquo;re a focused, customer-first team dedicated to providing authentic software licenses at honest prices.
                 </p>
                 <p>
-                  As an <strong>independent authorized retailer</strong>, we've built strong relationships with Microsoft's authorized OEM distribution channels and volume licensing programs. This allows us to source genuine product keys at competitive rates and pass those savings directly to our customers - offering discounts of up to <strong>90% off Microsoft's retail prices</strong>.
+                  As an <strong>independent reseller</strong>, we source genuine product keys through legitimate channels — including surplus and previously-sold licenses that can be lawfully resold within the EU. This lets us offer authentic keys at competitive rates and pass those savings directly to our customers, with discounts of up to <strong>90% off Microsoft&rsquo;s retail prices</strong>.
                 </p>
                 <p>
-                  What makes us different? <strong>We're real people who genuinely care about your experience.</strong> Over the past 4+ years, we've personally helped over 10,000 customers across 120+ countries activate their Windows and Office installations legally and affordably. Every customer inquiry gets our direct attention, and we take pride in solving problems quickly and professionally.
+                  What makes us different? <strong>We&rsquo;re real people who genuinely care about your experience.</strong> Over the past 4+ years, we&rsquo;ve personally helped thousands of customers across 120+ countries activate their Windows and Office installations affordably. Every customer inquiry gets our direct attention, and we take pride in solving problems quickly and professionally.
                 </p>
                 <p>
-                  As a <strong>registered independent business</strong>, we operate with full transparency and legal compliance. We source every product key through legitimate channels - either through Microsoft's OEM programs, volume licensing agreements, or authorized distributors. Every key we sell is <strong>100% genuine, legally obtained, and backed by our personal commitment and lifetime guarantee</strong>.
+                  As a <strong>registered independent business</strong>, we operate with full transparency and legal compliance. Every key we sell is <strong>100% genuine, legally sourced, and backed by our personal commitment and 30-day money-back guarantee</strong>. Each one activates directly through Microsoft&rsquo;s own servers — the ultimate proof of authenticity.
                 </p>
                 <p>
-                  <strong>Customer satisfaction is our top priority.</strong> Unlike large companies where you're just a number, we treat every customer as a valued partner. We respond within minutes (not days), we provide clear instructions, and we stand behind every sale. If something goes wrong, we make it right - immediately. That's our promise as an independent retailer who depends on your trust and repeat business.
+                  <strong>Customer satisfaction is our top priority.</strong> Unlike large companies where you&rsquo;re just a number, we treat every customer as a valued partner. We respond within minutes (not days), we provide clear instructions, and we stand behind every sale. If something goes wrong, we make it right — immediately. That&rsquo;s our promise as an independent retailer who depends on your trust and repeat business.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Authorization & Certifications */}
+        {/* How We Operate */}
         <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-4xl font-bold mb-12 text-gray-900 text-center">
-                Our Authorization & Certifications
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 text-center">
+                How We Operate
               </h2>
+              <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                We&rsquo;re an independent business — not a Microsoft partner or an official Microsoft store. Here is exactly how we keep every sale genuine and legitimate.
+              </p>
 
               <div className="grid md:grid-cols-2 gap-8">
-                {/* Microsoft Partner */}
+                {/* Genuine Licenses */}
                 <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-blue-200">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
                       <i className="fas fa-certificate text-blue-600 text-2xl"></i>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">Microsoft Partner</h3>
-                      <p className="text-blue-600 font-semibold">Certified Since 2018</p>
+                      <h3 className="text-2xl font-bold text-gray-900">Genuine Licenses</h3>
+                      <p className="text-blue-600 font-semibold">Activate with Microsoft</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    We're an <strong>independent authorized retailer</strong> working directly with Microsoft's OEM licensing programs and authorized distribution channels. While we're not a massive corporation, our legitimate business status and partnerships give us the authorization to provide genuine Windows, Office, Server, and other Microsoft products to customers worldwide.
+                    Every key we sell is a genuine Microsoft license that activates on Microsoft&rsquo;s own servers and receives official updates. We describe each product honestly — including its edition and license type — so you always know exactly what you&rsquo;re buying.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-blue-600 mt-1"></i>
-                      <span>Authorized access to OEM licensing programs</span>
+                      <span>Activates directly through Microsoft</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-blue-600 mt-1"></i>
-                      <span>Direct relationships with authorized distributors</span>
+                      <span>Receives genuine updates like any license</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-blue-600 mt-1"></i>
-                      <span>Compliance with Microsoft licensing terms</span>
+                      <span>No cracks, no pirated software — ever</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Authorized Distributor */}
+                {/* Registered EU Business */}
                 <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-sky-200">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center">
-                      <i className="fas fa-shield-alt text-sky-700 text-2xl"></i>
+                      <i className="fas fa-building text-sky-700 text-2xl"></i>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">Authorized Distributor</h3>
-                      <p className="text-sky-700 font-semibold">Licensed & Regulated</p>
+                      <h3 className="text-2xl font-bold text-gray-900">Registered EU Business</h3>
+                      <p className="text-sky-700 font-semibold">Based in Sweden</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Our business is <strong>fully licensed and registered</strong> to distribute Microsoft software products. We maintain all required legal documentation, business licenses, and distribution agreements.
+                    We&rsquo;re a registered business operating from Stockholm, Sweden, under European Union law. We keep proper business records and comply with EU consumer-protection and data-protection rules.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
@@ -159,41 +165,41 @@ export default function AboutPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
-                      <span>Software distribution license valid</span>
+                      <span>Operates under EU consumer law</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
-                      <span>EU compliance certified</span>
+                      <span>GDPR-compliant data handling</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* OEM Partner Network */}
+                {/* Legitimately Sourced */}
                 <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-purple-200">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
-                      <i className="fas fa-handshake text-purple-600 text-2xl"></i>
+                      <i className="fas fa-box-open text-purple-600 text-2xl"></i>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">OEM Partner Network</h3>
-                      <p className="text-purple-600 font-semibold">Direct Relationships</p>
+                      <h3 className="text-2xl font-bold text-gray-900">Legitimately Sourced</h3>
+                      <p className="text-purple-600 font-semibold">Legal Supply Only</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    We maintain <strong>direct relationships with authorized OEM partners</strong> including major PC manufacturers and Microsoft authorized distributors. This ensures authentic sourcing and competitive pricing.
+                    We source keys only through legitimate channels — including genuine, previously-sold licenses that can be lawfully resold within the EU. This keeps prices low without ever compromising on authenticity.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-purple-600 mt-1"></i>
-                      <span>Partnerships with Dell, HP, Lenovo channels</span>
+                      <span>Genuine, legally-sourced licenses</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-purple-600 mt-1"></i>
-                      <span>Access to volume licensing programs</span>
+                      <span>Lawful EU resale (exhaustion of rights)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-purple-600 mt-1"></i>
-                      <span>Verified supply chain integrity</span>
+                      <span>Each key verified to activate</span>
                     </li>
                   </ul>
                 </div>
@@ -206,11 +212,11 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900">Legal Compliance</h3>
-                      <p className="text-orange-600 font-semibold">EU Court Validated</p>
+                      <p className="text-orange-600 font-semibold">EU Resale Rights</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Our business model is <strong>validated by EU law</strong> (UsedSoft v. Oracle ruling) which confirms the legality of software license resale. We operate in full compliance with international software licensing regulations.
+                    Reselling genuine licenses is lawful under EU law — confirmed by the Court of Justice of the EU in <strong>UsedSoft v. Oracle (Case C-128/11)</strong>. We operate in full compliance with those rules.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
@@ -219,43 +225,44 @@ export default function AboutPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-orange-600 mt-1"></i>
-                      <span>International trade regulations followed</span>
+                      <span>Honest, transparent product descriptions</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-orange-600 mt-1"></i>
-                      <span>GDPR data protection certified</span>
+                      <span>GDPR data protection</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              {/* Legal Documentation Notice */}
+              {/* Independence Notice */}
               <div className="mt-12 bg-gradient-to-r from-blue-50 to-sky-50 border-2 border-blue-200 rounded-2xl p-8">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-file-contract text-white text-xl"></i>
+                    <i className="fas fa-circle-info text-white text-xl"></i>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Official Documentation & Verification</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Independent &amp; Transparent</h3>
                     <p className="text-gray-700 leading-relaxed mb-4">
-                      We maintain <strong>complete legal documentation</strong> including Microsoft partnership agreements, software distribution licenses, OEM partnership contracts, and business registration certificates. Our authorization to sell Microsoft products is verifiable through official channels.
+                      Official Keys Hub is an independent reseller and is <strong>not affiliated with, authorized by, sponsored by, or endorsed by Microsoft Corporation</strong>. Microsoft, Windows, and Office are trademarks of Microsoft Corporation, referenced only to describe the genuine products we resell. Read more on our{" "}
+                      <Link href="/licensing" className="text-blue-600 font-semibold hover:underline">Licensing &amp; Authenticity</Link>{" "}page.
                     </p>
                     <div className="flex flex-wrap gap-3">
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
-                        <span className="text-sm font-semibold text-gray-800">Microsoft Partner Agreement</span>
+                        <span className="text-sm font-semibold text-gray-800">Registered EU Business</span>
                       </div>
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
-                        <span className="text-sm font-semibold text-gray-800">Distribution License</span>
+                        <span className="text-sm font-semibold text-gray-800">Genuine Licenses</span>
                       </div>
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
-                        <span className="text-sm font-semibold text-gray-800">Business Registration</span>
+                        <span className="text-sm font-semibold text-gray-800">Lawful EU Resale</span>
                       </div>
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
-                        <span className="text-sm font-semibold text-gray-800">OEM Partnerships</span>
+                        <span className="text-sm font-semibold text-gray-800">30-Day Money Back</span>
                       </div>
                     </div>
                   </div>
@@ -280,7 +287,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">100% Genuine Keys</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Every key is authentic, sourced directly from Microsoft and authorized partners. No pirated or illegal software - ever.
+                    Every key is authentic and activates through Microsoft&rsquo;s own servers. No pirated or illegal software — ever.
                   </p>
                 </div>
 
@@ -298,9 +305,9 @@ export default function AboutPage() {
                   <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i className="fas fa-shield-check text-purple-600 text-3xl"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Lifetime Guarantee</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Genuine Guarantee</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Your license works forever. If any issues arise, we provide free replacement keys and lifetime support.
+                    If a key doesn&rsquo;t activate, we provide a free replacement or a full refund. Your purchase is always protected.
                   </p>
                 </div>
 
@@ -308,9 +315,9 @@ export default function AboutPage() {
                   <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i className="fas fa-tags text-orange-600 text-3xl"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">90% Savings</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Up to 90% Savings</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Volume purchasing power means we pay less and pass savings to you. Same genuine software, fraction of the price.
+                    Legitimate sourcing means we pay less and pass the savings to you. Same genuine software, a fraction of the price.
                   </p>
                 </div>
 
@@ -320,7 +327,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Expert support team available around the clock via WhatsApp and email. We're here whenever you need help.
+                    Expert support team available around the clock via WhatsApp and email. We&rsquo;re here whenever you need help.
                   </p>
                 </div>
 
@@ -330,7 +337,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">30-Day Refunds</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Not satisfied? Get a full refund within 30 days, no questions asked. Your satisfaction is guaranteed.
+                    Not satisfied? Get a full refund within 30 days if we can&rsquo;t get your key working. Your satisfaction is guaranteed.
                   </p>
                 </div>
               </div>
@@ -343,7 +350,7 @@ export default function AboutPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">Our Commitment to You</h2>
-              
+
               <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-sky-200">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -353,7 +360,7 @@ export default function AboutPage() {
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">Transparency</h3>
                       <p className="text-gray-700">
-                        We're upfront about what you're buying. All keys are clearly labeled (OEM, Retail, etc.) and we explain exactly what you get.
+                        We&rsquo;re upfront about what you&rsquo;re buying. All keys are clearly labeled (OEM, Retail, etc.) and we explain exactly what you get.
                       </p>
                     </div>
                   </div>
@@ -365,7 +372,7 @@ export default function AboutPage() {
                     <div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">Authenticity</h3>
                       <p className="text-gray-700">
-                        Every single product key comes from legitimate sources with proper authorization. We never compromise on authenticity.
+                        Every single product key comes from legitimate sources and activates with Microsoft. We never compromise on authenticity.
                       </p>
                     </div>
                   </div>
@@ -375,9 +382,9 @@ export default function AboutPage() {
                       <i className="fas fa-check text-white"></i>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Independent & Personal Service</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Independent &amp; Personal Service</h3>
                       <p className="text-gray-700">
-                        As an indie retailer, we provide direct, personal attention to every customer. You're not just a transaction number - we genuinely care about your satisfaction and stand behind every sale personally.
+                        As an indie retailer, we provide direct, personal attention to every customer. You&rsquo;re not just a transaction number — we genuinely care about your satisfaction and stand behind every sale personally.
                       </p>
                     </div>
                   </div>
@@ -387,9 +394,9 @@ export default function AboutPage() {
                       <i className="fas fa-check text-white"></i>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Privacy & Security</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Privacy &amp; Security</h3>
                       <p className="text-gray-700">
-                        We protect your personal information with bank-grade encryption. Your data is never shared or sold to third parties.
+                        We protect your personal information with strong encryption. Your data is never shared or sold to third parties.
                       </p>
                     </div>
                   </div>
@@ -416,7 +423,7 @@ export default function AboutPage() {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">Company Information</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -426,9 +433,9 @@ export default function AboutPage() {
                   <div className="space-y-3 text-gray-700">
                     <p><strong>Company Name:</strong> Digital Key Hub LLC</p>
                     <p><strong>Founded:</strong> 2022</p>
-                    <p><strong>Registration:</strong> Sweden</p>
-                    <p><strong>Business Type:</strong> Authorized Software Distributor</p>
-                    <p><strong>Microsoft Partner ID:</strong> Verified & Active</p>
+                    <p><strong>Registration:</strong> Sweden (EU)</p>
+                    <p><strong>Business Type:</strong> Independent Software Reseller</p>
+                    <p><strong>Affiliation:</strong> Independent — not a Microsoft partner</p>
                   </div>
                 </div>
 
@@ -480,7 +487,7 @@ export default function AboutPage() {
                 Ready to Get Started?
               </h2>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
-                Join 10,000+ satisfied customers who trust us for genuine Microsoft software licenses
+                Join thousands of satisfied customers who trust us for genuine Microsoft software licenses
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

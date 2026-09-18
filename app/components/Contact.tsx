@@ -45,7 +45,7 @@ export default function Contact() {
               <div>
                 <h4 className="text-sm font-bold uppercase tracking-wider text-gray-600 mb-1">WhatsApp</h4>
                 <a
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/16019756129"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-900 text-[0.95rem] hover:text-[#25D366]"

@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cheap Windows 11 Keys 2026: Buy Genuine Windows 11 Pro Key from $12.99 | Official Keys Hub",
+  title: "Cheap Windows 11 Keys 2026 from $12.99 | Official Keys Hub",
   description:
     "Where to buy cheap Windows 11 keys in 2026. Genuine Windows 11 Pro & Home product keys up to 90% off, instant delivery, lifetime activation. Safe, legal, from $12.99.",
   keywords:
@@ -86,7 +86,7 @@ export default function CheapWindows11Keys2026() {
               <div className="bg-sky-50 border-l-4 border-sky-600 p-6 mb-10 rounded-r-lg">
                 <p className="text-gray-800 m-0">
                   <strong>Quick answer:</strong> You can buy genuine <strong>Windows 11 Pro keys from $19.99</strong> and
-                  Windows 11 Home from $12.99 at authorized resellers like Official Keys Hub — around
+                  Windows 11 Home from $12.99 at trusted resellers like Official Keys Hub — around
                   90% cheaper than Microsoft&apos;s $199 retail price. Keys are delivered instantly by email and
                   activate for the lifetime of your device.
                 </p>

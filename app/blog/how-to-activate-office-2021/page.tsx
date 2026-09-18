@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How to Activate Office 2021: Step-by-Step Guide 2026 | Official Keys Hub",
+  title: "How to Activate Office 2021 (2026 Guide) | Official Keys Hub",
   description:
     "How to activate Microsoft Office 2021 with a product key. Complete 2026 guide covering online activation, the Office account method, and fixing common activation errors.",
   keywords:

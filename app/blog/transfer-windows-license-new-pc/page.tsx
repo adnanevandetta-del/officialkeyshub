@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How to Transfer a Windows License to a New PC (2026 Guide) | Official Keys Hub",
+  title: "Transfer a Windows License to a New PC | Official Keys Hub",
   description:
     "Can you move your Windows key to a new computer? Learn how to transfer a Windows 10 or 11 license to a new PC, OEM vs retail transfer rules, and step-by-step deactivation.",
   keywords:

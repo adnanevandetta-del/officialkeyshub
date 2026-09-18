@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Refund Policy & 30-Day Money-Back Guarantee | Official Keys Hub",
+  title: "Refund Policy & Money-Back Guarantee | Official Keys Hub",
   description:
     "Our 30-day money-back guarantee: refund eligibility, how to request one, free replacement keys, and processing times for genuine Microsoft license purchases.",
   alternates: { canonical: "https://www.officialkeyshub.com/refund-policy" },

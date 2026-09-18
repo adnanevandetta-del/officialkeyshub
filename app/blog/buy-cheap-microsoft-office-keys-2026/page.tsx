@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Buy Cheap Microsoft Office Keys 2026 - Genuine Licenses from $29.99 | Official Keys Hub",
+  title: "Buy Cheap Microsoft Office Keys 2026 | Official Keys Hub",
   description: "Buy authentic Microsoft Office 2021, 2019, and Office 365 product keys at up to 90% discount. Genuine licenses, instant delivery, lifetime support. Best prices for Office Professional Plus, Home & Business.",
   keywords: "cheap Microsoft Office keys, buy Office 2021 key, Office 365 product key, genuine Office license, Microsoft Office discount, Office 2019 cheap, Office Professional Plus key, buy Office activation key, legitimate Office keys, Office home and business license",
   openGraph: {

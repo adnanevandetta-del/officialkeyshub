@@ -5,14 +5,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How Do I Activate My Windows 11 Key? Quick Answer + All Methods (2026)",
+  title: "How to Activate My Windows 11 Key (2026) | Official Keys Hub",
   description:
     "A short, clear answer to \"how do I activate my Windows 11 key\" plus every method: Settings, Command Prompt (slmgr), phone activation, and digital license. Works on Home, Pro and Enterprise.",
   keywords:
     "how do i activate my windows 11 key, activate windows 11 key, enter windows 11 product key, windows 11 activation command, slmgr activate windows 11, activate windows 11 home",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/activate-windows-11-key" },
   openGraph: {
-    title: "How Do I Activate My Windows 11 Key? Quick Answer + All Methods (2026)",
+    title: "How to Activate My Windows 11 Key (2026) | Official Keys Hub",
     description:
       "The fast answer plus every activation method for Windows 11 Home, Pro and Enterprise — Settings, Command Prompt and phone activation.",
     url: "https://www.officialkeyshub.com/blog/activate-windows-11-key",

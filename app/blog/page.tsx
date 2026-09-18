@@ -60,7 +60,7 @@ const blogPosts = [
     category: "Activation",
     readTime: "7 min",
     date: "Sep 12, 2026",
-    image: "https://images.unsplash.com/photo-1594006659-f0b21884ce1d?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
   },
   {
     slug: "transfer-windows-license-new-pc",

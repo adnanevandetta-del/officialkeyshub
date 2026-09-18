@@ -5,7 +5,7 @@ import WhatsAppButton from "../components/WhatsAppButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Product Key Activation Guide | Windows 11, Office 2021 & Server Setup",
+  title: "Product Key Activation Guide | Official Keys Hub",
   description:
     "Step-by-step activation guide for your Microsoft product keys. Activate Windows 11, Windows 10, Office 2021, and Windows Server in under 5 minutes with 24/7 support.",
   keywords:

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
 
 export const metadata = {
-  title: "Windows 11 vs Windows 10: Complete Comparison 2026 | Official Keys Hub",
+  title: "Windows 11 vs Windows 10 (2026) | Official Keys Hub",
   description: "Windows 11 vs Windows 10 comparison - performance, features, system requirements, gaming, and security. Should you upgrade? Complete guide with benchmarks.",
   keywords: "windows 11 vs windows 10, windows 11 comparison, should i upgrade to windows 11, windows 10 vs 11 performance, windows 11 gaming performance",
 };

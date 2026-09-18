@@ -4,11 +4,11 @@ import Breadcrumb from "../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ - 100+ Questions About Windows & Office Keys | Official Keys Hub",
+  title: "FAQ — Windows & Office Key Questions | Official Keys Hub",
   description: "Complete FAQ guide for buying, activating, and using Windows 11, Office 2021, and Microsoft software licenses. Instant answers to licensing, activation errors, purchase, and support questions.",
   keywords: "windows 11 activation help, office 2021 key activation, how to buy windows key, windows key not working, activate windows 11 pro, oem vs retail license, cheap windows keys safe, microsoft product key help, windows activation error fix, office activation guide, buy genuine windows key, windows 11 pro key purchase, office 2021 professional plus, windows server license, microsoft key delivery time, windows key refund policy, activate office without internet, windows 10 to 11 upgrade key, bulk windows licenses, microsoft volume licensing",
   openGraph: {
-    title: "FAQ - 100+ Questions About Windows & Office Keys | Official Keys Hub",
+    title: "FAQ — Windows & Office Key Questions | Official Keys Hub",
     description: "Complete FAQ guide for Microsoft software licensing. Activation, purchase, delivery, troubleshooting, and support.",
     url: "https://www.officialkeyshub.com/faq",
     type: "website",
@@ -32,7 +32,7 @@ export default function FAQPage() {
         },
         {
           q: "Are your product keys genuine?",
-          a: "Yes, 100% genuine! All our product keys are sourced from authorized Microsoft distributors and partners. Every key is authentic, legal, and comes with a lifetime guarantee. We never sell pirated or illegal software."
+          a: "Yes, 100% genuine! All our product keys are sourced through legitimate, legal channels and activate directly on Microsoft's own servers. Every key is authentic and legal, and comes with our money-back guarantee. We never sell pirated or illegal software."
         },
         {
           q: "How quickly will I receive my product key?",

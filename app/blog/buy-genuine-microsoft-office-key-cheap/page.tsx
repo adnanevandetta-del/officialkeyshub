@@ -5,14 +5,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How to Buy a Genuine Microsoft Office Key Cheap (Without Getting Scammed) 2026",
+  title: "Buy a Genuine Office Key Cheap (2026) | Official Keys Hub",
   description:
     "A practical buyer's guide to buying a genuine, cheap Microsoft Office key in 2026. Why low prices can still be legitimate, how to verify a key is genuine, scam red flags to avoid, and safe ways to pay.",
   keywords:
     "buy genuine microsoft office key cheap, cheap genuine office key, is cheap office key genuine, how to buy office cheap, genuine office 2021 key, avoid office key scam",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap" },
   openGraph: {
-    title: "How to Buy a Genuine Microsoft Office Key Cheap (Without Getting Scammed) 2026",
+    title: "Buy a Genuine Office Key Cheap (2026) | Official Keys Hub",
     description:
       "Why cheap Office keys can be genuine, how to verify one, the scam red flags to avoid, and how to pay safely.",
     url: "https://www.officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap",

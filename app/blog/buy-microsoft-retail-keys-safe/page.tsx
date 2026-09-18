@@ -5,14 +5,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How to Buy Microsoft Retail Keys — And Are They Safe? (2026 Guide)",
+  title: "Buy Microsoft Retail Keys — Are They Safe? (2026)",
   description:
     "What a Microsoft retail key is, how and where to buy one, and whether it's safe. Retail vs OEM explained, how to verify a genuine key, scam red flags, and safe payment.",
   keywords:
     "buy microsoft retail key, are microsoft retail keys safe, retail windows key, microsoft retail license, retail vs oem key, is it safe to buy microsoft keys online",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/buy-microsoft-retail-keys-safe" },
   openGraph: {
-    title: "How to Buy Microsoft Retail Keys — And Are They Safe? (2026 Guide)",
+    title: "Buy Microsoft Retail Keys — Are They Safe? (2026)",
     description:
       "Retail vs OEM explained, how to buy a genuine Microsoft retail key, how to verify it, and how to stay safe.",
     url: "https://www.officialkeyshub.com/blog/buy-microsoft-retail-keys-safe",

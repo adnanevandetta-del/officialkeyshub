@@ -4,7 +4,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How to Activate Windows 11 Pro: Complete Step-by-Step Guide 2026",
+  title: "Activate Windows 11 Pro — 2026 Guide | Official Keys Hub",
   description: "Learn how to activate Windows 11 Pro with product key. Complete guide with screenshots, troubleshooting, and phone activation method. Works 100%.",
   keywords: "activate windows 11, windows 11 activation, how to activate windows 11 pro, windows 11 product key activation, windows 11 activation guide",
   openGraph: {
