@@ -61,7 +61,7 @@ export default function Footer() {
                 <i className="fab fa-reddit-alien text-base"></i>
               </a>
               <a
-                href="https://facebook.com/officialkeyshub"
+                href="https://facebook.com/moderndayaccessories"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Facebook"
