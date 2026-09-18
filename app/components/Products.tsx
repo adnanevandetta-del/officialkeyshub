@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { catalog, slugify } from '../lib/catalog';
 import { paypalPaymentUrl } from '../lib/payment';
 
-type CategoryId = "all" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
+type CategoryId = "all" | "bundles" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
 
 interface Product {
   name: string;
@@ -63,7 +63,7 @@ export default function Products() {
             "brand": { "@type": "Brand", "name": "Microsoft" },
             "offers": {
               "@type": "Offer",
-              "price": "19.99",
+              "price": "38.99",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock",
               "priceValidUntil": "2027-12-31"
@@ -77,7 +77,7 @@ export default function Products() {
             "brand": { "@type": "Brand", "name": "Microsoft" },
             "offers": {
               "@type": "Offer",
-              "price": "29.99",
+              "price": "48.99",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock",
               "priceValidUntil": "2027-12-31"
@@ -101,6 +101,7 @@ export default function Products() {
   }, []);
 
   const categories: { id: CategoryId; name: string; icon: string }[] = [
+    { id: "bundles", name: "Bundles", icon: "fas fa-box-open" },
     { id: "windows", name: "Windows", icon: "fab fa-windows" },
     { id: "office", name: "Office", icon: "fas fa-file-word" },
     { id: "server", name: "Server", icon: "fas fa-server" },

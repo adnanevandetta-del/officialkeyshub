@@ -53,7 +53,6 @@ export default function ProductBuySection({
           className="w-full py-3 rounded-lg font-black text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg inline-flex items-center justify-center gap-2"
         >
           Buy Now
-          <i className="fab fa-paypal text-xl"></i>
         </a>
 
         <button
