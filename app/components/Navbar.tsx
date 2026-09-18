@@ -74,34 +74,6 @@ export default function Navbar() {
             <Logo size="sm" />
           </div>
 
-          {/* Trustpilot rating badge — centered, synced to 4.3 review score */}
-          <a
-            href="https://www.trustpilot.com/review/officialkeyshub.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontFamily: "Inter, system-ui, sans-serif", fontStyle: "normal" }}
-            className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-1.5 pl-2 pr-2.5 py-1 rounded-lg bg-white/5 border border-white/10 hover:border-[#00b67a]/50 transition-colors"
-            aria-label="Rated 4.3 out of 5 on Trustpilot"
-          >
-            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#00b67a" aria-hidden="true">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-            </svg>
-            <span className="text-white text-xs font-semibold">Trustpilot</span>
-            <span className="flex items-center gap-px">
-              {[100, 100, 100, 100, 30].map((fill, i) => (
-                <span
-                  key={i}
-                  className="w-3.5 h-3.5 rounded-[2px] flex items-center justify-center"
-                  style={{ background: `linear-gradient(90deg, #00b67a ${fill}%, #cfd3d9 ${fill}%)` }}
-                >
-                  <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-                  </svg>
-                </span>
-              ))}
-            </span>
-            <span className="text-white text-xs font-bold">4.3</span>
-          </a>
 
           {/* Right controls */}
           <div className="flex items-center gap-3">
