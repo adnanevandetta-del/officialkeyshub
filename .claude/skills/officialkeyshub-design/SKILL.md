@@ -29,7 +29,11 @@ Two colors carry meaning, and mixing them up breaks the design:
 - **Prices are white.** Not blue, not green. The struck-through original price
   is `text-white/40`.
 
-If you remember nothing else: blue brand, green buy, white prices.
+If you remember nothing else: blue brand, green buy, white prices. The theme
+deliberately **pairs Windows blue with emerald green** — the ambient accents
+(the `.gradient-text` heading highlight, `.btn-primary`, the body aurora, the
+scrollbar, `.neon-border`) blend blue → green, so green is now part of the
+brand mood, not only the buy CTAs.
 
 ## Color palette
 
@@ -76,9 +80,10 @@ family. Light article pages (see below) use light tints like `bg-sky-50`,
   and available as the `.font-math` class for one-off elements (navbar, logo,
   buttons). Loaded via `next/font/google` in `app/layout.tsx` as `--font-math`.
 - **Body**: Inter (`next/font/google`), set on `<body>`.
-- **`.gradient-text`**: despite the name it's now a **solid** accent color
-  (`#0284c7`) — used to highlight one phrase inside a heading (e.g. "Welcome to
-  <span class=gradient-text>Official Keys Hub</span>"). Do NOT use it for prices.
+- **`.gradient-text`**: a **blue → green gradient**
+  (`linear-gradient(90deg,#0284c7,#0ea5e9,#10b981)`) — used to highlight one
+  phrase inside a heading (e.g. "Welcome to <span class=gradient-text>Official
+  Keys Hub</span>"). Do NOT use it for prices (prices stay solid white).
 
 ## Reusable utilities (in `globals.css`)
 

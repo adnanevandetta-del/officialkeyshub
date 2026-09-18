@@ -149,6 +149,27 @@ export default function ProductBillboard() {
                   Buy Now
                   <i className="fas fa-arrow-right text-sm md:text-base"></i>
                 </button>
+
+                {/* Secure payments we accept */}
+                <div className="flex flex-col items-center sm:items-start gap-1.5 self-center">
+                  <span className="text-white/45 text-[11px] font-medium flex items-center gap-1">
+                    <i className="fas fa-lock text-[10px]"></i> Secure payments
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-8 h-[22px] rounded bg-white flex items-center justify-center shadow-sm" title="PayPal">
+                      <i className="fab fa-cc-paypal text-[#003087] text-base"></i>
+                    </span>
+                    <span className="w-8 h-[22px] rounded bg-white flex items-center justify-center shadow-sm" title="Visa">
+                      <i className="fab fa-cc-visa text-[#1a1f71] text-base"></i>
+                    </span>
+                    <span className="w-8 h-[22px] rounded bg-white flex items-center justify-center shadow-sm" title="Mastercard">
+                      <i className="fab fa-cc-mastercard text-[#eb001b] text-base"></i>
+                    </span>
+                    <span className="w-8 h-[22px] rounded bg-white flex items-center justify-center shadow-sm" title="USDT / Crypto">
+                      <i className="fab fa-bitcoin text-[#26a17b] text-base"></i>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -255,6 +276,22 @@ export default function ProductBillboard() {
                   <i className="fas fa-shopping-cart text-xs"></i>
                   Buy Now
                 </button>
+
+                {/* Secure payments we accept */}
+                <div className="flex items-center gap-1.5">
+                  <span className="w-7 h-5 rounded bg-white flex items-center justify-center" title="PayPal">
+                    <i className="fab fa-cc-paypal text-[#003087] text-sm"></i>
+                  </span>
+                  <span className="w-7 h-5 rounded bg-white flex items-center justify-center" title="Visa">
+                    <i className="fab fa-cc-visa text-[#1a1f71] text-sm"></i>
+                  </span>
+                  <span className="w-7 h-5 rounded bg-white flex items-center justify-center" title="Mastercard">
+                    <i className="fab fa-cc-mastercard text-[#eb001b] text-sm"></i>
+                  </span>
+                  <span className="w-7 h-5 rounded bg-white flex items-center justify-center" title="USDT / Crypto">
+                    <i className="fab fa-bitcoin text-[#26a17b] text-sm"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
