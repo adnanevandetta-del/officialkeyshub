@@ -59,7 +59,7 @@ export default function PaymentMethodsPage() {
       name: "Credit & Debit Cards",
       description: "Visa, Mastercard, and other major cards accepted",
       icon: "fas fa-credit-card",
-      color: "emerald",
+      color: "sky",
       features: [
         "Visa and Mastercard accepted",
         "Secure SSL encryption",
@@ -115,12 +115,12 @@ export default function PaymentMethodsPage() {
         badge: "bg-purple-500",
         glow: "shadow-purple-500/50"
       },
-      emerald: {
-        bg: "from-emerald-50 to-emerald-100",
-        border: "border-emerald-300",
-        text: "text-emerald-700",
-        badge: "bg-emerald-500",
-        glow: "shadow-emerald-500/50"
+      sky: {
+        bg: "from-sky-50 to-sky-100",
+        border: "border-sky-300",
+        text: "text-sky-700",
+        badge: "bg-sky-500",
+        glow: "shadow-sky-500/50"
       },
       orange: {
         bg: "from-orange-50 to-orange-100",
@@ -163,12 +163,12 @@ export default function PaymentMethodsPage() {
 
           {/* Security Banner */}
           <div className="max-w-5xl mx-auto mb-16">
-            <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl shadow-2xl p-8 text-white">
+            <div className="bg-gradient-to-r from-sky-500 to-sky-600 rounded-2xl shadow-2xl p-8 text-white">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <i className="fas fa-shield-alt text-5xl"></i>
                 <div className="text-left">
                   <h2 className="text-3xl font-black">100% Secure Payments</h2>
-                  <p className="text-emerald-100 text-lg">SSL Encrypted | PCI Compliant | Verified Transactions</p>
+                  <p className="text-sky-100 text-lg">SSL Encrypted | PCI Compliant | Verified Transactions</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">

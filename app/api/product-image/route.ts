@@ -129,9 +129,9 @@ const serverRack = (c: string) => `
     <rect x="-80" y="-90" width="160" height="52" rx="8" fill="${c}"/>
     <rect x="-80" y="-26" width="160" height="52" rx="8" fill="${c}"/>
     <rect x="-80" y="38" width="160" height="52" rx="8" fill="${c}"/>
-    <circle cx="-58" cy="-64" r="8" fill="#34d399"/><rect x="-40" y="-68" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
-    <circle cx="-58" cy="0" r="8" fill="#34d399"/><rect x="-40" y="-4" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
-    <circle cx="-58" cy="64" r="8" fill="#34d399"/><rect x="-40" y="60" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
+    <circle cx="-58" cy="-64" r="8" fill="#38bdf8"/><rect x="-40" y="-68" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
+    <circle cx="-58" cy="0" r="8" fill="#38bdf8"/><rect x="-40" y="-4" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
+    <circle cx="-58" cy="64" r="8" fill="#38bdf8"/><rect x="-40" y="60" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
   </g>`;
 
 const database = (c: string) => `
@@ -258,8 +258,8 @@ export function GET(req: NextRequest) {
   <text x="400" y="482" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="26" font-weight="600" fill="${accent}">${subtitle}</text>
 
   <g transform="translate(400,528)">
-    <rect x="-118" y="-20" width="236" height="40" rx="20" fill="#ffffff" fill-opacity="0.08" stroke="#34d399" stroke-opacity="0.5"/>
-    <text x="0" y="6" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="19" font-weight="700" fill="#34d399" letter-spacing="1">GENUINE LICENSE KEY</text>
+    <rect x="-118" y="-20" width="236" height="40" rx="20" fill="#ffffff" fill-opacity="0.08" stroke="#38bdf8" stroke-opacity="0.5"/>
+    <text x="0" y="6" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="19" font-weight="700" fill="#38bdf8" letter-spacing="1">GENUINE LICENSE KEY</text>
   </g>
 </svg>`;
 

@@ -64,19 +64,19 @@ export default function BuyCheapMicrosoftOfficeKeys() {
             </p>
             <ul className="space-y-3 mb-6">
               <li className="flex gap-3">
-                <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                 <span><strong>Volume Licensing:</strong> Retailers purchase Office licenses in bulk from Microsoft partners, receiving wholesale discounts of 70-90%</span>
               </li>
               <li className="flex gap-3">
-                <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                 <span><strong>OEM Licenses:</strong> Original Equipment Manufacturer keys bundled with hardware can be resold separately at lower prices</span>
               </li>
               <li className="flex gap-3">
-                <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                 <span><strong>Regional Pricing:</strong> Keys purchased in regions with lower pricing can be resold internationally</span>
               </li>
               <li className="flex gap-3">
-                <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                 <span><strong>Digital Distribution:</strong> No physical media or packaging costs, reducing overhead significantly</span>
               </li>
             </ul>
@@ -157,9 +157,9 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               When purchasing <strong>cheap Office keys</strong>, it's crucial to buy from trusted retailers to ensure you receive genuine, working licenses:
             </p>
 
-            <div className="bg-emerald-50 border-l-4 border-emerald-600 p-6 mb-6 rounded-r-lg">
+            <div className="bg-sky-50 border-l-4 border-sky-600 p-6 mb-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                <i className="fas fa-shield-alt text-emerald-600 mr-2"></i>
+                <i className="fas fa-shield-alt text-sky-600 mr-2"></i>
                 Official Keys Hub - Trusted Since 2022
               </h3>
               <ul className="space-y-2">
@@ -172,7 +172,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               </ul>
               <Link 
                 href="/#products" 
-                className="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-md"
+                className="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-sky-500 to-sky-600 text-white font-bold rounded-lg hover:from-sky-600 hover:to-sky-700 transition-all shadow-md"
               >
                 Browse Office Keys →
               </Link>
@@ -316,7 +316,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
           </section>
 
           {/* Conclusion */}
-          <section className="bg-gradient-to-r from-blue-50 to-emerald-50 p-8 rounded-xl border-2 border-blue-200">
+          <section className="bg-gradient-to-r from-blue-50 to-sky-50 p-8 rounded-xl border-2 border-blue-200">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Conclusion: Get Genuine Office Keys for Less</h2>
             <p className="text-gray-700 mb-4">
               Buying <strong>cheap Microsoft Office keys</strong> is a smart way to save money while getting genuine, fully-functional software. With discounts up to 93%, you can get Office 2021 Professional Plus for just $29.99 instead of $439.99.
@@ -327,7 +327,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
             <div className="flex flex-wrap gap-4">
               <Link 
                 href="/#products" 
-                className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg"
+                className="px-8 py-4 bg-gradient-to-r from-sky-500 to-sky-600 text-white font-bold rounded-lg hover:from-sky-600 hover:to-sky-700 transition-all shadow-lg"
               >
                 Browse Office Keys →
               </Link>

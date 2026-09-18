@@ -90,14 +90,14 @@ export default function WhatsAppButton() {
     <>
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-4 sm:right-6 z-[9999] w-[calc(100vw-2rem)] max-w-[380px] rounded-2xl overflow-hidden shadow-2xl border border-emerald-500/30 bg-[#0b1020] animate-agentIn">
+        <div className="fixed bottom-24 right-4 sm:right-6 z-[9999] w-[calc(100vw-2rem)] max-w-[380px] rounded-2xl overflow-hidden shadow-2xl border border-sky-500/30 bg-[#0b1020] animate-agentIn">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#25D366] to-[#10b981] text-white p-4 flex items-center gap-3">
+          <div className="bg-gradient-to-r from-[#25D366] to-[#0ea5e9] text-white p-4 flex items-center gap-3">
             <div className="relative">
               <div className="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center">
                 <i className="fas fa-robot text-xl"></i>
               </div>
-              <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-300 rounded-full border-2 border-[#10b981]"></span>
+              <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-300 rounded-full border-2 border-[#0ea5e9]"></span>
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-base leading-tight">Keyla · AI Assistant</h3>
@@ -120,7 +120,7 @@ export default function WhatsAppButton() {
                   <div
                     className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-sm whitespace-pre-line ${
                       m.from === "user"
-                        ? "bg-emerald-600 text-white rounded-br-sm"
+                        ? "bg-sky-600 text-white rounded-br-sm"
                         : "bg-[#141b2d] text-slate-100 rounded-bl-sm border border-white/5"
                     }`}
                   >
@@ -145,7 +145,7 @@ export default function WhatsAppButton() {
                         <button
                           key={j}
                           onClick={() => handleChip(c)}
-                          className="text-left text-xs text-slate-200 bg-white/[0.04] hover:bg-emerald-500/15 hover:text-emerald-200 border border-white/10 hover:border-emerald-400/40 rounded-full px-3 py-1.5 transition-colors"
+                          className="text-left text-xs text-slate-200 bg-white/[0.04] hover:bg-sky-500/15 hover:text-sky-200 border border-white/10 hover:border-sky-400/40 rounded-full px-3 py-1.5 transition-colors"
                         >
                           {c.label}
                         </button>
@@ -170,7 +170,7 @@ export default function WhatsAppButton() {
           {/* Footer CTA */}
           <button
             onClick={() => openWhatsApp("Hi! I have a question about your products.")}
-            className="w-full bg-gradient-to-r from-[#25D366] to-[#10b981] text-white py-3.5 font-bold text-sm flex items-center justify-center gap-2 hover:opacity-95 transition-opacity"
+            className="w-full bg-gradient-to-r from-[#25D366] to-[#0ea5e9] text-white py-3.5 font-bold text-sm flex items-center justify-center gap-2 hover:opacity-95 transition-opacity"
           >
             <i className="fab fa-whatsapp text-lg"></i>
             Chat with us on WhatsApp
@@ -181,14 +181,14 @@ export default function WhatsAppButton() {
       {/* Floating launcher */}
       <div className="fixed bottom-6 right-4 sm:right-6 z-[9998] flex items-center gap-3">
         {!open && (
-          <div className="hidden sm:flex bg-[#0b1020] text-white px-3.5 py-2 rounded-lg font-semibold text-sm shadow-lg border border-emerald-500/30 items-center gap-2 animate-pulse">
+          <div className="hidden sm:flex bg-[#0b1020] text-white px-3.5 py-2 rounded-lg font-semibold text-sm shadow-lg border border-sky-500/30 items-center gap-2 animate-pulse">
             <span className="w-2 h-2 bg-green-400 rounded-full"></span>
             Need help? Ask Keyla
           </div>
         )}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="bg-gradient-to-br from-[#25D366] to-[#10b981] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 relative"
+          className="bg-gradient-to-br from-[#25D366] to-[#0ea5e9] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 relative"
           aria-label="Open AI assistant"
         >
           <i className={`fas ${open ? "fa-times" : "fa-robot"} text-2xl`}></i>

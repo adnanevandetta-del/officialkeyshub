@@ -350,27 +350,27 @@ export default function HowToActivateWindows11() {
                 ✅ Summary: Windows 11 Activation Checklist
               </h2>
 
-              <div className="not-prose bg-gradient-to-r from-emerald-50 to-blue-50 p-8 rounded-xl border-2 border-emerald-300 mb-8">
+              <div className="not-prose bg-gradient-to-r from-sky-50 to-blue-50 p-8 rounded-xl border-2 border-sky-300 mb-8">
                 <h3 className="font-bold text-gray-900 text-xl mb-4">Quick Reference:</h3>
                 <div className="space-y-2 text-gray-700">
                   <div className="flex gap-3">
-                    <span className="font-bold text-emerald-600">1.</span>
+                    <span className="font-bold text-sky-600">1.</span>
                     <span>Press Windows key + I → System → Activation</span>
                   </div>
                   <div className="flex gap-3">
-                    <span className="font-bold text-emerald-600">2.</span>
+                    <span className="font-bold text-sky-600">2.</span>
                     <span>Click &quot;Change product key&quot;</span>
                   </div>
                   <div className="flex gap-3">
-                    <span className="font-bold text-emerald-600">3.</span>
+                    <span className="font-bold text-sky-600">3.</span>
                     <span>Enter your 25-character key</span>
                   </div>
                   <div className="flex gap-3">
-                    <span className="font-bold text-emerald-600">4.</span>
+                    <span className="font-bold text-sky-600">4.</span>
                     <span>Click Next → Activate</span>
                   </div>
                   <div className="flex gap-3">
-                    <span className="font-bold text-emerald-600">5.</span>
+                    <span className="font-bold text-sky-600">5.</span>
                     <span>Wait 30 seconds → Done! ✅</span>
                   </div>
                 </div>

@@ -12,7 +12,7 @@ export default function CartButton() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="relative w-10 h-10 flex items-center justify-center bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all shadow-lg hover:shadow-xl"
+        className="relative w-10 h-10 flex items-center justify-center bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-all shadow-lg hover:shadow-xl"
         title="Shopping Cart"
         aria-label="Shopping Cart"
       >

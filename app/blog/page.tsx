@@ -132,7 +132,7 @@ const blogPosts = [
     category: "Comparison",
     readTime: "13 min",
     date: "Aug 22, 2026",
-    image: "https://images.unsplash.com/photo-1631624208977-82b02f4f2f3d?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=80",
   },
 ];
 

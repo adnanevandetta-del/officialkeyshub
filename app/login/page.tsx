@@ -35,7 +35,7 @@ export default function LoginPage() {
         <div className="max-w-md mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full mb-4 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-500 to-sky-600 rounded-full mb-4 shadow-lg">
               <i className="fas fa-user-circle text-white text-3xl"></i>
             </div>
             <h1 className="text-3xl font-black text-gray-900 mb-2">
@@ -44,7 +44,7 @@ export default function LoginPage() {
             <p className="text-gray-600">
               {isLogin ? 'Sign in to access your orders and licenses' : 'Join us to get genuine Microsoft keys'}
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-full text-sm font-bold">
+            <div className="mt-4 inline-flex items-center gap-2 bg-sky-50 border border-sky-200 text-sky-700 px-4 py-2 rounded-full text-sm font-bold">
               <i className="fas fa-gift"></i>
               Log in with your email to unlock your 30% OFF code
             </div>
@@ -58,7 +58,7 @@ export default function LoginPage() {
                 onClick={() => setIsLogin(true)}
                 className={`flex-1 py-3 rounded-lg font-bold transition-all ${
                   isLogin
-                    ? 'bg-white text-emerald-600 shadow-md'
+                    ? 'bg-white text-sky-600 shadow-md'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -68,7 +68,7 @@ export default function LoginPage() {
                 onClick={() => setIsLogin(false)}
                 className={`flex-1 py-3 rounded-lg font-bold transition-all ${
                   !isLogin
-                    ? 'bg-white text-emerald-600 shadow-md'
+                    ? 'bg-white text-sky-600 shadow-md'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -90,7 +90,7 @@ export default function LoginPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-sky-500 focus:outline-none transition-colors"
                       placeholder="John Doe"
                     />
                   </div>
@@ -109,7 +109,7 @@ export default function LoginPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-colors"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-sky-500 focus:outline-none transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -127,7 +127,7 @@ export default function LoginPage() {
                     required
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-colors"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-sky-500 focus:outline-none transition-colors"
                     placeholder="••••••••"
                   />
                 </div>
@@ -146,7 +146,7 @@ export default function LoginPage() {
                       required
                       value={formData.confirmPassword}
                       onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:border-sky-500 focus:outline-none transition-colors"
                       placeholder="••••••••"
                     />
                   </div>
@@ -156,7 +156,7 @@ export default function LoginPage() {
               {/* Forgot Password (Login only) */}
               {isLogin && (
                 <div className="flex justify-end">
-                  <Link href="/forgot-password" className="text-sm text-emerald-600 hover:text-emerald-700 font-semibold">
+                  <Link href="/forgot-password" className="text-sm text-sky-600 hover:text-sky-700 font-semibold">
                     Forgot Password?
                   </Link>
                 </div>
@@ -165,7 +165,7 @@ export default function LoginPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-black text-lg rounded-xl hover:from-emerald-700 hover:to-emerald-800 transition-all shadow-lg hover:shadow-xl"
+                className="w-full py-4 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-black text-lg rounded-xl hover:from-sky-700 hover:to-sky-800 transition-all shadow-lg hover:shadow-xl"
               >
                 {isLogin ? 'Sign In' : 'Create Account'}
               </button>
@@ -198,7 +198,7 @@ export default function LoginPage() {
               <p className="text-gray-600 text-sm mb-3">Don't want to create an account?</p>
               <Link
                 href="/checkout"
-                className="inline-block text-emerald-600 hover:text-emerald-700 font-bold text-sm"
+                className="inline-block text-sky-600 hover:text-sky-700 font-bold text-sm"
               >
                 Continue as Guest →
               </Link>
@@ -208,7 +208,7 @@ export default function LoginPage() {
           {/* Benefits */}
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div className="bg-white rounded-xl p-4 border-2 border-gray-200 text-center">
-              <i className="fas fa-key text-emerald-600 text-2xl mb-2"></i>
+              <i className="fas fa-key text-sky-600 text-2xl mb-2"></i>
               <p className="text-xs font-semibold text-gray-700">Access Your Licenses</p>
             </div>
             <div className="bg-white rounded-xl p-4 border-2 border-gray-200 text-center">
@@ -219,8 +219,8 @@ export default function LoginPage() {
               <i className="fas fa-headset text-purple-600 text-2xl mb-2"></i>
               <p className="text-xs font-semibold text-gray-700">Priority Support</p>
             </div>
-            <div className="bg-white rounded-xl p-4 border-2 border-emerald-300 text-center ring-1 ring-emerald-200">
-              <i className="fas fa-percent text-emerald-600 text-2xl mb-2"></i>
+            <div className="bg-white rounded-xl p-4 border-2 border-sky-300 text-center ring-1 ring-sky-200">
+              <i className="fas fa-percent text-sky-600 text-2xl mb-2"></i>
               <p className="text-xs font-semibold text-gray-700">30% Off Promo Code</p>
             </div>
           </div>

@@ -481,7 +481,7 @@ export default function Windows11HomeVsPro() {
                 ✅ Final Recommendation
               </h2>
 
-              <div className="not-prose bg-gradient-to-r from-emerald-50 to-blue-50 p-8 rounded-xl border-2 border-emerald-300 mb-8">
+              <div className="not-prose bg-gradient-to-r from-sky-50 to-blue-50 p-8 rounded-xl border-2 border-sky-300 mb-8">
                 <h3 className="font-bold text-gray-900 text-xl mb-4">🎯 Our Advice:</h3>
                 <div className="space-y-4 text-gray-700">
                   <p>
@@ -495,7 +495,7 @@ export default function Windows11HomeVsPro() {
                     business data. Hyper-V is invaluable for developers.
                   </p>
                   <p>
-                    <strong className="text-emerald-600">Still unsure?</strong> Start with Home. You can 
+                    <strong className="text-sky-600">Still unsure?</strong> Start with Home. You can 
                     upgrade to Pro anytime for $19.99 if you discover you need Pro features.
                   </p>
                 </div>

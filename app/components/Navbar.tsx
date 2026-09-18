@@ -41,7 +41,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="font-math sticky top-0 left-0 right-0 z-[200] bg-[#0a0e1a] shadow-md border-b border-white/10">
+    <nav className="font-math sticky top-0 left-0 right-0 z-[200] bg-emerald-600 shadow-md border-b border-emerald-500/40">
       <div className="max-w-7xl mx-auto px-4 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between w-full">
@@ -108,7 +108,7 @@ export default function Navbar() {
             {/* Partner Program stays visible */}
             <Link
               href="/partner-program"
-              className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-1"
+              className="text-white hover:text-sky-400 font-semibold transition-colors text-sm flex items-center gap-1"
             >
               <i className="fas fa-handshake"></i>
               Partner Program
@@ -123,7 +123,7 @@ export default function Navbar() {
               <button
                 onClick={() => setIsDeskMenuOpen((v) => !v)}
                 onBlur={() => setTimeout(() => setIsDeskMenuOpen(false), 150)}
-                className="text-white hover:text-emerald-400 focus:outline-none p-2 flex items-center"
+                className="text-white hover:text-sky-400 focus:outline-none p-2 flex items-center"
                 aria-label="Open menu"
                 aria-expanded={isDeskMenuOpen}
               >
@@ -131,7 +131,7 @@ export default function Navbar() {
               </button>
 
               {isDeskMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 w-48 max-w-none bg-[#0b1020] rounded-xl shadow-2xl border border-emerald-500/30 overflow-hidden z-[300] py-2">
+                <div className="absolute top-full right-0 mt-2 w-48 max-w-none bg-[#0b1020] rounded-xl shadow-2xl border border-sky-500/30 overflow-hidden z-[300] py-2">
                   <Link
                     href="/#products"
                     onClick={() => {
@@ -141,33 +141,33 @@ export default function Navbar() {
                         window.dispatchEvent(new CustomEvent('categoryChanged', { detail: { category: 'all' } }));
                       }
                     }}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-500/10 hover:text-sky-300 transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-box text-emerald-400 w-4"></i>
+                    <i className="fas fa-box text-sky-400 w-4"></i>
                     Products
                   </Link>
                   <Link
                     href="/faq"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-500/10 hover:text-sky-300 transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-question-circle text-emerald-400 w-4"></i>
+                    <i className="fas fa-question-circle text-sky-400 w-4"></i>
                     FAQ
                   </Link>
                   <Link
                     href="/blog"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-500/10 hover:text-sky-300 transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-blog text-emerald-400 w-4"></i>
+                    <i className="fas fa-blog text-sky-400 w-4"></i>
                     Blog
                   </Link>
                   <Link
                     href="/activation-guide"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-500/10 hover:text-sky-300 transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-key text-emerald-400 w-4"></i>
+                    <i className="fas fa-key text-sky-400 w-4"></i>
                     Activation Guide
                   </Link>
                   <a
@@ -175,9 +175,9 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-300 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-500/10 hover:text-sky-300 transition-colors text-sm font-semibold"
                   >
-                    <i className="fab fa-whatsapp text-emerald-400 w-4"></i>
+                    <i className="fab fa-whatsapp text-sky-400 w-4"></i>
                     Contact Us
                   </a>
                 </div>
@@ -193,7 +193,7 @@ export default function Navbar() {
             <div className="flex flex-col gap-3">
               {/* Product Categories Section */}
               <div className="border-b border-slate-700 pb-3 mb-1">
-                <p className="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-2 px-1">Product Categories</p>
+                <p className="text-sky-400 font-bold text-xs uppercase tracking-wider mb-2 px-1">Product Categories</p>
                 <div className="grid grid-cols-2 gap-2">
                   {productCategories.map((category) => (
                     <button
@@ -214,52 +214,52 @@ export default function Navbar() {
               {/* Main Menu Items */}
               <Link
                 href="/#products"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-white hover:text-sky-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-box text-emerald-400"></i>
+                <i className="fas fa-box text-sky-400"></i>
                 All Products
               </Link>
               <Link
                 href="/partner-program"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-white hover:text-sky-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-handshake text-emerald-400"></i>
+                <i className="fas fa-handshake text-sky-400"></i>
                 Partner Program
               </Link>
               <Link
                 href="/blog"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-white hover:text-sky-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-blog text-emerald-400"></i>
+                <i className="fas fa-blog text-sky-400"></i>
                 Blog
               </Link>
               <Link
                 href="/faq"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-white hover:text-sky-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-question-circle text-emerald-400"></i>
+                <i className="fas fa-question-circle text-sky-400"></i>
                 FAQ
               </Link>
               <Link
                 href="/activation-guide"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-white hover:text-sky-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-key text-emerald-400"></i>
+                <i className="fas fa-key text-sky-400"></i>
                 Activation Guide
               </Link>
               <a
                 href="https://wa.me/16019756129"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-emerald-400 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-white hover:text-sky-400 font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fab fa-whatsapp text-emerald-400"></i>
+                <i className="fab fa-whatsapp text-sky-400"></i>
                 Contact Us
               </a>
             </div>

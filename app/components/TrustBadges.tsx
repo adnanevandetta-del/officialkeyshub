@@ -30,7 +30,7 @@ export default function TrustBadges() {
         {/* Trust Text */}
         <div className="text-center mt-6">
           <p className="text-slate-300 font-semibold text-base md:text-lg">
-            <i className="fas fa-shield-alt text-emerald-400 mr-2"></i>
+            <i className="fas fa-shield-alt text-sky-400 mr-2"></i>
             Secure Payment Methods • Instant Delivery • 24/7 Support
           </p>
         </div>

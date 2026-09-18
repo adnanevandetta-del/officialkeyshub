@@ -54,7 +54,7 @@ export default function ProfilePage() {
       product: 'Windows 11 Pro',
       price: '$19.99',
       status: 'Delivered',
-      statusColor: 'emerald'
+      statusColor: 'sky'
     },
     {
       id: 'ORD-2024-002',
@@ -62,7 +62,7 @@ export default function ProfilePage() {
       product: 'Office 2021 Professional Plus',
       price: '$29.99',
       status: 'Delivered',
-      statusColor: 'emerald'
+      statusColor: 'sky'
     },
     {
       id: 'ORD-2024-003',
@@ -70,7 +70,7 @@ export default function ProfilePage() {
       product: 'Windows 10 Pro',
       price: '$16.99',
       status: 'Delivered',
-      statusColor: 'emerald'
+      statusColor: 'sky'
     }
   ];
 
@@ -102,7 +102,7 @@ export default function ProfilePage() {
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Avatar */}
             <div className="relative">
-              <div className="w-[120px] h-[120px] rounded-full border-4 border-emerald-500 bg-gradient-to-br from-emerald-500 to-cyan-600 flex items-center justify-center text-white text-4xl font-black select-none">
+              <div className="w-[120px] h-[120px] rounded-full border-4 border-sky-500 bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center text-white text-4xl font-black select-none">
                 {userData.name
                   .split(' ')
                   .map((n) => n[0])
@@ -110,7 +110,7 @@ export default function ProfilePage() {
                   .slice(0, 2)
                   .toUpperCase()}
               </div>
-              <button className="absolute bottom-0 right-0 w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 shadow-lg">
+              <button className="absolute bottom-0 right-0 w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center hover:bg-sky-700 shadow-lg">
                 <i className="fas fa-camera"></i>
               </button>
             </div>
@@ -119,7 +119,7 @@ export default function ProfilePage() {
             <div className="flex-1 text-center md:text-left">
               <h1 className="text-3xl font-black text-gray-900 mb-2">{userData.name}</h1>
               <p className="text-gray-600 mb-2 flex items-center justify-center md:justify-start gap-2">
-                <i className="fas fa-envelope text-emerald-600"></i>
+                <i className="fas fa-envelope text-sky-600"></i>
                 {userData.email}
               </p>
               <p className="text-sm text-gray-500">Member since {userData.memberSince}</p>
@@ -127,8 +127,8 @@ export default function ProfilePage() {
 
             {/* Stats */}
             <div className="flex gap-4">
-              <div className="text-center bg-emerald-50 rounded-xl px-6 py-4">
-                <p className="text-3xl font-black text-emerald-600">{userData.totalOrders}</p>
+              <div className="text-center bg-sky-50 rounded-xl px-6 py-4">
+                <p className="text-3xl font-black text-sky-600">{userData.totalOrders}</p>
                 <p className="text-sm text-gray-600">Orders</p>
               </div>
               <div className="text-center bg-blue-50 rounded-xl px-6 py-4">
@@ -141,7 +141,7 @@ export default function ProfilePage() {
 
         {/* Promo Code Card */}
         {promo && (
-          <div className="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gradient-to-r from-emerald-600 via-emerald-600 to-cyan-600 p-6 md:p-8">
+          <div className="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gradient-to-r from-sky-600 via-sky-600 to-cyan-600 p-6 md:p-8">
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"></div>
             <div className="absolute -bottom-12 -left-6 w-40 h-40 bg-white/10 rounded-full"></div>
             <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -158,11 +158,11 @@ export default function ProfilePage() {
               <div className="flex items-center gap-3">
                 <div className="bg-white rounded-xl px-5 py-3 border-2 border-dashed border-white/60 shadow-inner">
                   <p className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Promo Code</p>
-                  <p className="text-2xl font-black text-emerald-700 font-mono tracking-wider">{promo.code}</p>
+                  <p className="text-2xl font-black text-sky-700 font-mono tracking-wider">{promo.code}</p>
                 </div>
                 <button
                   onClick={copyPromo}
-                  className="h-14 px-5 bg-white text-emerald-700 rounded-xl font-bold hover:bg-emerald-50 transition-colors flex items-center gap-2"
+                  className="h-14 px-5 bg-white text-sky-700 rounded-xl font-bold hover:bg-sky-50 transition-colors flex items-center gap-2"
                 >
                   <i className={`fas ${copied ? 'fa-check' : 'fa-copy'}`}></i>
                   {copied ? 'Copied!' : 'Copy'}
@@ -180,7 +180,7 @@ export default function ProfilePage() {
               onClick={() => setActiveTab('profile')}
               className={`flex-1 px-6 py-4 font-bold transition-colors ${
                 activeTab === 'profile'
-                  ? 'bg-emerald-500 text-white'
+                  ? 'bg-sky-500 text-white'
                   : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
@@ -191,7 +191,7 @@ export default function ProfilePage() {
               onClick={() => setActiveTab('orders')}
               className={`flex-1 px-6 py-4 font-bold transition-colors ${
                 activeTab === 'orders'
-                  ? 'bg-emerald-500 text-white'
+                  ? 'bg-sky-500 text-white'
                   : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
@@ -202,7 +202,7 @@ export default function ProfilePage() {
               onClick={() => setActiveTab('licenses')}
               className={`flex-1 px-6 py-4 font-bold transition-colors ${
                 activeTab === 'licenses'
-                  ? 'bg-emerald-500 text-white'
+                  ? 'bg-sky-500 text-white'
                   : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
@@ -213,7 +213,7 @@ export default function ProfilePage() {
               onClick={() => setActiveTab('settings')}
               className={`flex-1 px-6 py-4 font-bold transition-colors ${
                 activeTab === 'settings'
-                  ? 'bg-emerald-500 text-white'
+                  ? 'bg-sky-500 text-white'
                   : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
@@ -231,7 +231,7 @@ export default function ProfilePage() {
                   <h2 className="text-2xl font-black text-gray-900">Personal Information</h2>
                   <button
                     onClick={() => setIsEditing(!isEditing)}
-                    className="px-6 py-2 bg-emerald-600 text-white rounded-lg font-bold hover:bg-emerald-700 transition-colors"
+                    className="px-6 py-2 bg-sky-600 text-white rounded-lg font-bold hover:bg-sky-700 transition-colors"
                   >
                     <i className={`fas fa-${isEditing ? 'save' : 'edit'} mr-2`}></i>
                     {isEditing ? 'Save Changes' : 'Edit Profile'}
@@ -246,7 +246,7 @@ export default function ProfilePage() {
                       value={userData.name}
                       disabled={!isEditing}
                       onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-emerald-500 focus:outline-none disabled:bg-gray-50"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-sky-500 focus:outline-none disabled:bg-gray-50"
                     />
                   </div>
 
@@ -257,7 +257,7 @@ export default function ProfilePage() {
                       value={userData.email}
                       disabled={!isEditing}
                       onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-emerald-500 focus:outline-none disabled:bg-gray-50"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-sky-500 focus:outline-none disabled:bg-gray-50"
                     />
                   </div>
 
@@ -268,7 +268,7 @@ export default function ProfilePage() {
                       value={userData.phone}
                       disabled={!isEditing}
                       onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-emerald-500 focus:outline-none disabled:bg-gray-50"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-sky-500 focus:outline-none disabled:bg-gray-50"
                     />
                   </div>
 
@@ -292,7 +292,7 @@ export default function ProfilePage() {
                         <input
                           type="password"
                           placeholder="Enter current password"
-                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-emerald-500 focus:outline-none"
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-sky-500 focus:outline-none"
                         />
                       </div>
                       <div>
@@ -300,7 +300,7 @@ export default function ProfilePage() {
                         <input
                           type="password"
                           placeholder="Enter new password"
-                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-emerald-500 focus:outline-none"
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-sky-500 focus:outline-none"
                         />
                       </div>
                     </div>
@@ -315,7 +315,7 @@ export default function ProfilePage() {
                 <h2 className="text-2xl font-black text-gray-900 mb-6">Order History</h2>
                 <div className="space-y-4">
                   {orders.map((order) => (
-                    <div key={order.id} className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-emerald-500 transition-colors">
+                    <div key={order.id} className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-sky-500 transition-colors">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
@@ -328,10 +328,10 @@ export default function ProfilePage() {
                           <p className="text-sm text-gray-500">Ordered on {order.date}</p>
                         </div>
                         <div className="flex items-center gap-4">
-                          <span className="text-2xl font-black text-emerald-600">{order.price}</span>
+                          <span className="text-2xl font-black text-sky-600">{order.price}</span>
                           <Link
                             href={`/orders/${order.id}`}
-                            className="px-6 py-2 bg-emerald-600 text-white rounded-lg font-bold hover:bg-emerald-700 transition-colors"
+                            className="px-6 py-2 bg-sky-600 text-white rounded-lg font-bold hover:bg-sky-700 transition-colors"
                           >
                             View Details
                           </Link>
@@ -349,7 +349,7 @@ export default function ProfilePage() {
                 <h2 className="text-2xl font-black text-gray-900 mb-6">My Licenses</h2>
                 <div className="space-y-4">
                   {licenses.map((license) => (
-                    <div key={license.id} className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl p-6 border-2 border-emerald-200">
+                    <div key={license.id} className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 border-2 border-sky-200">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div className="flex-1">
                           <h3 className="text-xl font-black text-gray-900 mb-2">{license.product}</h3>
@@ -357,12 +357,12 @@ export default function ProfilePage() {
                             <code className="bg-white px-4 py-2 rounded-lg font-mono text-sm border-2 border-gray-200">
                               {license.key}
                             </code>
-                            <button className="px-4 py-2 bg-emerald-600 text-white rounded-lg font-bold hover:bg-emerald-700 transition-colors">
+                            <button className="px-4 py-2 bg-sky-600 text-white rounded-lg font-bold hover:bg-sky-700 transition-colors">
                               <i className="fas fa-copy"></i>
                             </button>
                           </div>
                           <div className="flex gap-4 text-sm text-gray-600">
-                            <span><i className="fas fa-calendar mr-2 text-emerald-600"></i>Purchased: {license.purchaseDate}</span>
+                            <span><i className="fas fa-calendar mr-2 text-sky-600"></i>Purchased: {license.purchaseDate}</span>
                             <span><i className="fas fa-infinity mr-2 text-blue-600"></i>{license.expiryDate}</span>
                           </div>
                         </div>
@@ -396,15 +396,15 @@ export default function ProfilePage() {
                   <h3 className="text-lg font-bold text-gray-900 mb-4">Email Notifications</h3>
                   <div className="space-y-3">
                     <label className="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" defaultChecked className="w-5 h-5 text-emerald-600" />
+                      <input type="checkbox" defaultChecked className="w-5 h-5 text-sky-600" />
                       <span className="text-gray-700">Order confirmations and updates</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" defaultChecked className="w-5 h-5 text-emerald-600" />
+                      <input type="checkbox" defaultChecked className="w-5 h-5 text-sky-600" />
                       <span className="text-gray-700">Promotional offers and deals</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" className="w-5 h-5 text-emerald-600" />
+                      <input type="checkbox" className="w-5 h-5 text-sky-600" />
                       <span className="text-gray-700">Newsletter and updates</span>
                     </label>
                   </div>

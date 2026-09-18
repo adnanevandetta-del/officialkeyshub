@@ -1,8 +1,8 @@
 export default function VersionCheck() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-emerald-50 flex items-center justify-center p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-sky-50 flex items-center justify-center p-8">
       <div className="bg-white rounded-2xl shadow-2xl p-12 max-w-2xl w-full">
-        <h1 className="text-4xl font-bold text-center mb-8 text-emerald-600">
+        <h1 className="text-4xl font-bold text-center mb-8 text-sky-600">
           Version Check - v3.0.1
         </h1>
         
@@ -15,9 +15,9 @@ export default function VersionCheck() {
             </button>
           </div>
 
-          <div className="border-l-4 border-emerald-500 pl-4">
+          <div className="border-l-4 border-sky-500 pl-4">
             <h2 className="font-bold text-xl mb-2">✅ Cart Z-Index</h2>
-            <p className="text-gray-700">Cart modal z-index: <span className="font-mono font-bold text-emerald-600">9999</span></p>
+            <p className="text-gray-700">Cart modal z-index: <span className="font-mono font-bold text-sky-600">9999</span></p>
           </div>
 
           <div className="border-l-4 border-purple-500 pl-4">

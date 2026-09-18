@@ -97,15 +97,15 @@ export default function HowToActivateOffice2021() {
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Before You Start</h2>
               <ul className="space-y-3 mb-8">
                 <li className="flex gap-3 text-gray-700">
-                  <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                  <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                   <span>A genuine <strong>Office 2021 product key</strong> (25 characters).</span>
                 </li>
                 <li className="flex gap-3 text-gray-700">
-                  <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                  <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                   <span>A stable internet connection.</span>
                 </li>
                 <li className="flex gap-3 text-gray-700">
-                  <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                  <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                   <span>Any older Office version uninstalled to avoid conflicts.</span>
                 </li>
               </ul>

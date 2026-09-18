@@ -53,11 +53,11 @@ export default function FAQ() {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-emerald-100 text-emerald-700 border border-emerald-300 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+          <span className="inline-block bg-sky-100 text-sky-700 border border-sky-300 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
             FAQ
           </span>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
-            Frequently Asked <span className="text-emerald-600">Questions</span>
+            Frequently Asked <span className="text-sky-600">Questions</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Got questions? We've got answers. Can't find what you're looking for? Contact us anytime!
@@ -69,7 +69,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md border-2 border-gray-200 hover:border-emerald-500 transition-all overflow-hidden"
+              className="bg-white rounded-xl shadow-md border-2 border-gray-200 hover:border-sky-500 transition-all overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -81,7 +81,7 @@ export default function FAQ() {
                 <i
                   className={`fas fa-chevron-${
                     openIndex === index ? "up" : "down"
-                  } text-emerald-600 text-xl flex-shrink-0 transition-transform`}
+                  } text-sky-600 text-xl flex-shrink-0 transition-transform`}
                 ></i>
               </button>
               {openIndex === index && (
@@ -102,7 +102,7 @@ export default function FAQ() {
             href="https://wa.me/16019756129"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-500 to-sky-600 text-white font-bold rounded-xl hover:from-sky-600 hover:to-sky-700 transition-all shadow-lg"
           >
             <i className="fab fa-whatsapp text-2xl"></i>
             <span>Chat with Us on WhatsApp</span>

@@ -84,7 +84,7 @@ export default function OrdersPage() {
               onClick={() => setActiveTab('all')}
               className={`flex-1 min-w-[100px] py-3 rounded-lg font-bold transition-all ${
                 activeTab === 'all'
-                  ? 'bg-emerald-600 text-white shadow-md'
+                  ? 'bg-sky-600 text-white shadow-md'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
@@ -94,7 +94,7 @@ export default function OrdersPage() {
               onClick={() => setActiveTab('completed')}
               className={`flex-1 min-w-[100px] py-3 rounded-lg font-bold transition-all ${
                 activeTab === 'completed'
-                  ? 'bg-emerald-600 text-white shadow-md'
+                  ? 'bg-sky-600 text-white shadow-md'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
@@ -104,7 +104,7 @@ export default function OrdersPage() {
               onClick={() => setActiveTab('processing')}
               className={`flex-1 min-w-[100px] py-3 rounded-lg font-bold transition-all ${
                 activeTab === 'processing'
-                  ? 'bg-emerald-600 text-white shadow-md'
+                  ? 'bg-sky-600 text-white shadow-md'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
@@ -120,7 +120,7 @@ export default function OrdersPage() {
               <p className="text-gray-600 mb-6">You haven't placed any orders yet</p>
               <Link
                 href="/"
-                className="inline-block px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors"
+                className="inline-block px-6 py-3 bg-sky-600 text-white font-bold rounded-lg hover:bg-sky-700 transition-colors"
               >
                 Start Shopping
               </Link>
@@ -128,7 +128,7 @@ export default function OrdersPage() {
           ) : (
             <div className="space-y-4">
               {filteredOrders.map((order) => (
-                <div key={order.id} className="bg-white rounded-2xl shadow-lg p-4 md:p-6 border-2 border-gray-200 hover:border-emerald-500 transition-all">
+                <div key={order.id} className="bg-white rounded-2xl shadow-lg p-4 md:p-6 border-2 border-gray-200 hover:border-sky-500 transition-all">
                   {/* Order Header */}
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-200">
                     <div className="flex flex-wrap items-center gap-4">
@@ -159,17 +159,17 @@ export default function OrdersPage() {
                           <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
                         </div>
                         <div className="text-right md:text-left md:w-32">
-                          <p className="font-bold text-emerald-600">{item.price}</p>
+                          <p className="font-bold text-sky-600">{item.price}</p>
                         </div>
                         {item.license && (
                           <div className="md:flex-1">
-                            <div className="bg-white border-2 border-emerald-500 rounded-lg p-3">
+                            <div className="bg-white border-2 border-sky-500 rounded-lg p-3">
                               <p className="text-xs text-gray-600 mb-1 flex items-center gap-1">
-                                <i className="fas fa-key text-emerald-600"></i>
+                                <i className="fas fa-key text-sky-600"></i>
                                 License Key:
                               </p>
                               <p className="font-mono text-sm font-bold text-gray-900 break-all">{item.license}</p>
-                              <button className="text-xs text-emerald-600 hover:text-emerald-700 font-semibold mt-2 flex items-center gap-1">
+                              <button className="text-xs text-sky-600 hover:text-sky-700 font-semibold mt-2 flex items-center gap-1">
                                 <i className="fas fa-copy"></i>
                                 Copy Key
                               </button>
@@ -195,7 +195,7 @@ export default function OrdersPage() {
                         href="https://wa.me/16019756129"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors text-sm"
+                        className="px-4 py-2 bg-sky-600 text-white rounded-lg font-semibold hover:bg-sky-700 transition-colors text-sm"
                       >
                         <i className="fab fa-whatsapp mr-2"></i>
                         Get Support

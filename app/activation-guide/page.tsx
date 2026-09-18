@@ -15,7 +15,7 @@ export default function ActivationGuidePage() {
       id: "windows-11",
       icon: "fab fa-windows",
       title: "Windows 11 Activation",
-      color: "emerald",
+      color: "sky",
       steps: [
         {
           title: "Open Settings",
@@ -243,11 +243,11 @@ export default function ActivationGuidePage() {
 
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-      emerald: {
-        bg: "from-emerald-50 to-emerald-100",
-        border: "border-emerald-300",
-        text: "text-emerald-700",
-        badge: "bg-emerald-500"
+      sky: {
+        bg: "from-sky-50 to-sky-100",
+        border: "border-sky-300",
+        text: "text-sky-700",
+        badge: "bg-sky-500"
       },
       blue: {
         bg: "from-blue-50 to-blue-100",
@@ -280,7 +280,7 @@ export default function ActivationGuidePage() {
         badge: "bg-red-500"
       }
     };
-    return colors[color] || colors.emerald;
+    return colors[color] || colors.sky;
   };
 
   return (
@@ -298,7 +298,7 @@ export default function ActivationGuidePage() {
 
           {/* Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 bg-emerald-100 text-emerald-700 border border-emerald-300 px-6 py-3 rounded-full mb-6">
+            <div className="inline-flex items-center gap-3 bg-sky-100 text-sky-700 border border-sky-300 px-6 py-3 rounded-full mb-6">
               <i className="fas fa-book-open text-xl"></i>
               <span className="font-bold uppercase tracking-wider">Activation Guides</span>
             </div>
@@ -315,7 +315,7 @@ export default function ActivationGuidePage() {
           <div className="max-w-5xl mx-auto mb-16">
             <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-gray-200">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <i className="fas fa-link text-emerald-500"></i>
+                <i className="fas fa-link text-sky-500"></i>
                 Quick Navigation
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -323,7 +323,7 @@ export default function ActivationGuidePage() {
                   <a
                     key={guide.id}
                     href={`#${guide.id}`}
-                    className="flex items-center gap-2 px-4 py-3 bg-gray-50 hover:bg-emerald-50 rounded-lg transition-all border border-gray-200 hover:border-emerald-300"
+                    className="flex items-center gap-2 px-4 py-3 bg-gray-50 hover:bg-sky-50 rounded-lg transition-all border border-gray-200 hover:border-sky-300"
                   >
                     <i className={`${guide.icon} text-lg ${getColorClasses(guide.color).text}`}></i>
                     <span className="font-semibold text-gray-900 text-sm">{guide.title}</span>
@@ -359,7 +359,7 @@ export default function ActivationGuidePage() {
                   {/* Main Steps */}
                   <div className="p-8">
                     <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                      <i className="fas fa-list-ol text-emerald-500"></i>
+                      <i className="fas fa-list-ol text-sky-500"></i>
                       Standard Activation Method
                     </h3>
                     <div className="space-y-6">
@@ -410,7 +410,7 @@ export default function ActivationGuidePage() {
 
           {/* Help Section */}
           <div className="max-w-5xl mx-auto mt-16">
-            <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl shadow-2xl p-10 text-white text-center">
+            <div className="bg-gradient-to-r from-sky-500 to-sky-600 rounded-2xl shadow-2xl p-10 text-white text-center">
               <i className="fas fa-life-ring text-6xl mb-6 opacity-90"></i>
               <h2 className="text-3xl font-black mb-4">Need Help with Activation?</h2>
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
@@ -421,7 +421,7 @@ export default function ActivationGuidePage() {
                 href="https://wa.me/16019756129"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-white text-emerald-600 font-bold rounded-xl text-lg hover:bg-gray-100 transition-all shadow-lg"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-white text-sky-600 font-bold rounded-xl text-lg hover:bg-gray-100 transition-all shadow-lg"
               >
                 <i className="fab fa-whatsapp text-2xl"></i>
                 Contact Support Now

@@ -27,7 +27,7 @@ export default function CustomerReviews() {
               "Bought a Windows 11 Pro key from officialkeyshub and it worked fine. Got it via email pretty quickly, maybe 10 minutes. Installation was straightforward with the guide they sent."
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-sky-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
                 JR
               </div>
               <div>

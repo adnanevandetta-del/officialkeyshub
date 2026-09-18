@@ -29,7 +29,7 @@ export default function AboutPage() {
         <Breadcrumb items={breadcrumbItems} />
         
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-emerald-50">
+        <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-sky-50">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
@@ -41,7 +41,7 @@ export default function AboutPage() {
                 <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
                   Your Trusted Source for
                   <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-600">
                     Genuine Microsoft Licenses
                   </span>
                 </h1>
@@ -56,8 +56,8 @@ export default function AboutPage() {
                   <div className="text-4xl font-extrabold text-blue-600 mb-2">10K+</div>
                   <div className="text-gray-700 font-semibold">Happy Customers</div>
                 </div>
-                <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-emerald-100 text-center">
-                  <div className="text-4xl font-extrabold text-emerald-600 mb-2">4+</div>
+                <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-sky-100 text-center">
+                  <div className="text-4xl font-extrabold text-sky-600 mb-2">4+</div>
                   <div className="text-gray-700 font-semibold">Years in Business</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-purple-100 text-center">
@@ -139,14 +139,14 @@ export default function AboutPage() {
                 </div>
 
                 {/* Authorized Distributor */}
-                <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-emerald-200">
+                <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-sky-200">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center">
-                      <i className="fas fa-shield-alt text-emerald-600 text-2xl"></i>
+                    <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center">
+                      <i className="fas fa-shield-alt text-sky-600 text-2xl"></i>
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900">Authorized Distributor</h3>
-                      <p className="text-emerald-600 font-semibold">Licensed & Regulated</p>
+                      <p className="text-sky-600 font-semibold">Licensed & Regulated</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
@@ -154,15 +154,15 @@ export default function AboutPage() {
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
-                      <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                      <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                       <span>Business entity registered in Sweden</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                      <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                       <span>Software distribution license valid</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <i className="fas fa-check-circle text-emerald-600 mt-1"></i>
+                      <i className="fas fa-check-circle text-sky-600 mt-1"></i>
                       <span>EU compliance certified</span>
                     </li>
                   </ul>
@@ -230,7 +230,7 @@ export default function AboutPage() {
               </div>
 
               {/* Legal Documentation Notice */}
-              <div className="mt-12 bg-gradient-to-r from-blue-50 to-emerald-50 border-2 border-blue-200 rounded-2xl p-8">
+              <div className="mt-12 bg-gradient-to-r from-blue-50 to-sky-50 border-2 border-blue-200 rounded-2xl p-8">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <i className="fas fa-file-contract text-white text-xl"></i>
@@ -285,8 +285,8 @@ export default function AboutPage() {
                 </div>
 
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i className="fas fa-bolt text-emerald-600 text-3xl"></i>
+                  <div className="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="fas fa-bolt text-sky-600 text-3xl"></i>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">Instant Delivery</h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -339,15 +339,15 @@ export default function AboutPage() {
         </section>
 
         {/* Our Commitment */}
-        <section className="py-16 bg-gradient-to-br from-emerald-50 to-white">
+        <section className="py-16 bg-gradient-to-br from-sky-50 to-white">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">Our Commitment to You</h2>
               
-              <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-emerald-200">
+              <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-sky-200">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-sky-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <i className="fas fa-check text-white"></i>
                     </div>
                     <div>
@@ -359,7 +359,7 @@ export default function AboutPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-sky-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <i className="fas fa-check text-white"></i>
                     </div>
                     <div>
@@ -371,7 +371,7 @@ export default function AboutPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-sky-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <i className="fas fa-check text-white"></i>
                     </div>
                     <div>
@@ -383,7 +383,7 @@ export default function AboutPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-sky-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <i className="fas fa-check text-white"></i>
                     </div>
                     <div>
@@ -395,7 +395,7 @@ export default function AboutPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-sky-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <i className="fas fa-check text-white"></i>
                     </div>
                     <div>
@@ -434,7 +434,7 @@ export default function AboutPage() {
 
                 <div className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <i className="fas fa-map-marker-alt text-emerald-600"></i>
+                    <i className="fas fa-map-marker-alt text-sky-600"></i>
                     Contact Information
                   </h3>
                   <div className="space-y-3 text-gray-700">
@@ -447,7 +447,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="mt-8 bg-gradient-to-r from-blue-50 to-emerald-50 rounded-xl p-8 border-2 border-blue-200">
+              <div className="mt-8 bg-gradient-to-r from-blue-50 to-sky-50 rounded-xl p-8 border-2 border-blue-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Our Global Reach</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                   <div>
@@ -455,7 +455,7 @@ export default function AboutPage() {
                     <div className="text-gray-700 text-sm">Countries Served</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-emerald-600">10K+</div>
+                    <div className="text-3xl font-bold text-sky-600">10K+</div>
                     <div className="text-gray-700 text-sm">Customers</div>
                   </div>
                   <div>
@@ -473,7 +473,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-600 to-emerald-600">
+        <section className="py-16 bg-gradient-to-br from-blue-600 to-sky-600">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
