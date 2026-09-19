@@ -132,9 +132,17 @@ export default function Products() {
             >
               <i className={`${category.icon} mr-2`}></i>
               {category.name}
+              {category.id === "bundles" && activeCategory !== "bundles" && (
+                <i className="fas fa-arrow-right ml-2 text-orange-400 okh-arrow-right" aria-hidden="true"></i>
+              )}
             </button>
           ))}
         </div>
+        <style>{`
+          @keyframes okh-arrow-right { 0%, 100% { transform: translateX(0); opacity: .6; } 50% { transform: translateX(6px); opacity: 1; } }
+          .okh-arrow-right { display: inline-block; animation: okh-arrow-right 1.1s ease-in-out infinite; }
+          @media (prefers-reduced-motion: reduce) { .okh-arrow-right { animation: none; } }
+        `}</style>
 
         {/* Build-your-own bundle */}
         {activeCategory === "bundles" && (
