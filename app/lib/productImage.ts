@@ -5,7 +5,7 @@
 //
 // Bump IMG_VERSION whenever the box design changes so browsers and the CDN
 // fetch the new images instead of a cached older version.
-const IMG_VERSION = "3";
+const IMG_VERSION = "4";
 
 export function getProductImage(name: string): string {
   return `/api/product-image?name=${encodeURIComponent(name)}&v=${IMG_VERSION}`;

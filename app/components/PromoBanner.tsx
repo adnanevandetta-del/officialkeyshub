@@ -25,8 +25,8 @@ export default function PromoBanner() {
 
   return (
     <div className="relative z-[150] bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 text-white">
-      <div className="container mx-auto px-4 py-2.5">
-        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-sm font-semibold">
+      <div className="container mx-auto px-3 sm:px-4 py-2">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-center text-xs sm:text-sm font-semibold">
           <i className="fas fa-gift text-white/90"></i>
           <span className="font-black uppercase tracking-wide">{PROMO_PERCENT}% OFF Your First Order</span>
 
@@ -35,7 +35,7 @@ export default function PromoBanner() {
               <span className="hidden sm:inline text-white/80">— your code:</span>
               <button
                 onClick={copyPromo}
-                className="inline-flex items-center gap-1.5 bg-white/20 hover:bg-white/30 transition-colors px-2.5 py-0.5 rounded-md font-mono font-bold tracking-wide"
+                className="inline-flex items-center gap-1.5 bg-white/20 hover:bg-white/30 transition-colors px-2.5 py-1.5 sm:py-0.5 rounded-md font-mono font-bold tracking-wide"
               >
                 {promo.code}
                 <i className={`fas ${copied ? "fa-check" : "fa-copy"} text-xs`}></i>
@@ -43,10 +43,10 @@ export default function PromoBanner() {
             </>
           ) : (
             <>
-              <span className="text-white/85">— Log in to get your code</span>
+              <span className="hidden sm:inline text-white/85">— Log in to get your code</span>
               <Link
                 href="/login"
-                className="inline-flex items-center gap-1.5 bg-white text-emerald-800 px-3 py-0.5 rounded-md font-bold hover:bg-emerald-50 transition-colors"
+                className="inline-flex items-center gap-1.5 bg-white text-emerald-800 px-3 py-1.5 sm:py-0.5 rounded-md font-bold hover:bg-emerald-50 transition-colors"
               >
                 Get {PROMO_PERCENT}% Code
                 <i className="fas fa-arrow-right text-xs"></i>

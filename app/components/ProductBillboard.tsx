@@ -242,7 +242,7 @@ export default function ProductBillboard() {
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
                     aria-label={`Go to product ${idx + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                    className={`relative h-1.5 rounded-full transition-all duration-500 ease-out after:absolute after:-inset-x-2 after:-inset-y-3 after:content-[''] ${
                       idx === currentIndex
                         ? 'w-9 bg-gradient-to-r from-sky-500 to-cyan-400 shadow-[0_0_12px_rgba(3,105,161,0.9)]'
                         : 'w-1.5 bg-white/25 hover:bg-white/45'

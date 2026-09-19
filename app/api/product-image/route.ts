@@ -254,6 +254,8 @@ export function GET(req: NextRequest) {
     ? `<text x="370" y="${variantY}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#ffffff" fill-opacity="0.85">${esc(variant)}</text>`
     : "";
   const chipW = Math.max(110, edition.length * 10 + 40);
+  // Spine text: same font as the front title, shrunk so long names fit the spine.
+  const spineSize = Math.max(13, Math.min(22, Math.floor(380 / (Math.max(base.length, 1) * 0.6))));
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${boxOnly ? "200 50 400 530" : "0 0 800 600"}" width="${boxOnly ? 400 : 800}" height="${boxOnly ? 530 : 600}" role="img" aria-label="${esc(name)} — Official Keys Hub">
   <defs>
@@ -292,7 +294,7 @@ export function GET(req: NextRequest) {
 
   <!-- Box spine (right side) -->
   <polygon points="520,70 580,92 580,508 520,530" fill="url(#spine)"/>
-  <text transform="translate(552,300) rotate(90)" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="20" font-weight="900" letter-spacing="1"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
+  <text transform="translate(552,300) rotate(90)" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="${spineSize}" font-weight="800" fill="#ffffff">${esc(base)}</text>
 
   <!-- Box front -->
   <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#front)"/>
@@ -302,12 +304,11 @@ export function GET(req: NextRequest) {
   <rect x="220" y="70" width="300" height="460" rx="4" fill="none" stroke="#fff" stroke-opacity="0.18"/>
 
   <!-- Store logo on the box -->
-  <rect x="220" y="86" width="300" height="58" fill="#000" fill-opacity="0.32"/>
-  <text x="370" y="118" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="27" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
-  <line x1="290" y1="132" x2="450" y2="132" stroke="#fff" stroke-opacity="0.35"/>
+  <rect x="220" y="70" width="300" height="42" rx="4" fill="#000" fill-opacity="0.32"/>
+  <text x="370" y="97" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="18" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
 
   <!-- Product glyph -->
-  <g filter="url(#soft)"><g transform="translate(370,240) scale(0.7) translate(-400,-235)">${meta.glyph}</g></g>
+  <g filter="url(#soft)"><g transform="translate(370,222) scale(0.72) translate(-400,-235)">${meta.glyph}</g></g>
 
   <!-- Edition chip -->
   <g transform="translate(370,335)">
