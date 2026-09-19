@@ -21,7 +21,7 @@ export function paypalPaymentUrl(
   const params = new URLSearchParams({
     cmd: "_xclick",
     business: PAYPAL_EMAIL,
-    item_name: itemName,
+    item_name: itemName.slice(0, 127), // PayPal caps item names at 127 chars
     amount: amt,
     currency_code: "USD",
     no_shipping: "1",

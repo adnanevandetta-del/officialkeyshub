@@ -39,7 +39,7 @@ export default function CheckoutPage() {
     } else {
       setAppliedPercent(0);
       setAppliedCode('');
-      setPromoError('Invalid promo code. Log in with your email to get a valid 30% code.');
+      setPromoError('Invalid promo code. Log in with your email to get a valid 20% code.');
     }
   };
 
@@ -254,7 +254,7 @@ export default function CheckoutPage() {
                           type="text"
                           value={promoInput}
                           onChange={(e) => setPromoInput(e.target.value)}
-                          placeholder="KEYS30-XXXX"
+                          placeholder="KEYS20-XXXX"
                           className="flex-1 min-w-0 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-sky-600 focus:outline-none font-mono uppercase"
                         />
                         <button
@@ -272,7 +272,7 @@ export default function CheckoutPage() {
                           <Link href="/login" className="text-sky-700 font-semibold hover:underline">
                             Log in with your email
                           </Link>{' '}
-                          to get 30% off.
+                          to get 20% off.
                         </p>
                       )}
                     </>

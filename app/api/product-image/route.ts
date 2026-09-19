@@ -80,6 +80,7 @@ function tint(hex: string, seed: number, hueRange = 30): string {
 function editionOf(name: string): string {
   const n = name.toLowerCase();
   const tags: [RegExp, string][] = [
+    [/custom bundle/, "Build Your Own"],
     [/datacenter/, "Datacenter"],
     [/enterprise/, "Enterprise"],
     [/professional plus|pro plus|pro\b/, "Professional"],
@@ -166,6 +167,17 @@ const codeBrackets = (c: string) => `
     <path d="M12 -78 L-12 78" stroke-width="14"/>
   </g>`;
 
+// Three stacked license boxes with a plus — used for "Custom Bundle" items.
+const bundleBoxes = `
+  <g transform="translate(400,235)">
+    <rect x="-98" y="-2" width="84" height="92" rx="9" fill="#ffffff" opacity="0.92"/>
+    <rect x="14" y="-2" width="84" height="92" rx="9" fill="#ffffff" opacity="0.92"/>
+    <rect x="-42" y="-96" width="84" height="92" rx="9" fill="#ffffff"/>
+    <path d="M-70 44 h28 M-56 30 v28" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
+    <path d="M42 44 h28 M56 30 v28" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
+    <path d="M-14 -50 h28 M0 -64 v28" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
+  </g>`;
+
 const shield = (fill: string, check: string) => `
   <g transform="translate(400,235)">
     <path d="M0 -95 L82 -60 V15 C82 65 45 95 0 108 C-45 95 -82 65 -82 15 V-60 Z" fill="${fill}"/>
@@ -174,6 +186,9 @@ const shield = (fill: string, check: string) => `
 
 function metaFor(name: string): Meta {
   const n = name.toLowerCase();
+
+  if (n.startsWith("custom bundle"))
+    return { accent: "#0d9488", accent2: "#115e59", glyph: bundleBoxes, brand: "Custom Bundle", tintable: false };
 
   // Security vendors (brand colors)
   const vendor = (label: string, c1: string, c2: string): Meta => ({ accent: c1, accent2: c2, glyph: shield("#ffffff", c1), brand: label, tintable: false });
@@ -201,6 +216,7 @@ function metaFor(name: string): Meta {
 // Big faint identifier drawn behind the glyph (version / year / brand initial).
 function watermarkOf(name: string): string {
   const n = name.toLowerCase();
+  if (n.startsWith("custom bundle")) return "$5";
   if (/\b365\b/.test(n)) return "365";
   const ver = n.match(/\b(11|10|8\.1|7)\b/);
   if (ver && n.includes("windows")) return ver[1];

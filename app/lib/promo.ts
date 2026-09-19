@@ -2,8 +2,10 @@
 // generates by logging in with their email. Everything is client-side
 // (this is a static/mock storefront), persisted in localStorage.
 
-export const PROMO_PERCENT = 30;
-export const PROMO_PREFIX = "KEYS30";
+export const PROMO_PERCENT = 20;
+export const PROMO_PREFIX = "KEYS20";
+// Codes issued while the offer was 30% (KEYS30-XXXX) keep working, at the current rate.
+const LEGACY_PREFIXES = ["KEYS30"];
 
 const STORAGE_KEY = "okh_promo";
 
@@ -69,6 +71,7 @@ export function validatePromoCode(code: string): number {
   if (!cleaned) return 0;
   const stored = getStoredPromo();
   if (stored && cleaned === stored.code.toUpperCase()) return PROMO_PERCENT;
-  if (new RegExp(`^${PROMO_PREFIX}-[A-Z0-9]{4}$`).test(cleaned)) return PROMO_PERCENT;
+  const prefixes = [PROMO_PREFIX, ...LEGACY_PREFIXES].join("|");
+  if (new RegExp(`^(${prefixes})-[A-Z0-9]{4}$`).test(cleaned)) return PROMO_PERCENT;
   return 0;
 }

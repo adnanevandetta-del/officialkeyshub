@@ -7,6 +7,7 @@ import { getProductImage } from '../lib/productImage';
 import Link from 'next/link';
 import { catalog, slugify } from '../lib/catalog';
 import { paypalPaymentUrl } from '../lib/payment';
+import BundleBuilder from './BundleBuilder';
 
 type CategoryId = "all" | "bundles" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
 
@@ -134,6 +135,20 @@ export default function Products() {
             </button>
           ))}
         </div>
+
+        {/* Build-your-own bundle */}
+        {activeCategory === "bundles" && (
+          <BundleBuilder
+            onBuyNow={(bundle) => {
+              setSelectedProduct(bundle);
+              setShowModal(true);
+            }}
+            onAdded={() => {
+              setShowCartPreview(true);
+              setTimeout(() => setShowCartPreview(false), 2000);
+            }}
+          />
+        )}
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">

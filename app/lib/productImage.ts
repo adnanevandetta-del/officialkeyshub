@@ -7,12 +7,15 @@
 // fetch the new images instead of a cached older version.
 const IMG_VERSION = "4";
 
+// Customer-built bundles ("Custom Bundle: A + B + C") share one generic image.
+const imageName = (name: string) => (name.startsWith("Custom Bundle") ? "Custom Bundle" : name);
+
 export function getProductImage(name: string): string {
-  return `/api/product-image?name=${encodeURIComponent(name)}&v=${IMG_VERSION}`;
+  return `/api/product-image?name=${encodeURIComponent(imageName(name))}&v=${IMG_VERSION}`;
 }
 
 // Box only, transparent background, tightly cropped — used by the homepage
 // billboard carousel so just the box floats in the animation.
 export function getProductBoxImage(name: string): string {
-  return `/api/product-image?name=${encodeURIComponent(name)}&box=1&v=${IMG_VERSION}`;
+  return `/api/product-image?name=${encodeURIComponent(imageName(name))}&box=1&v=${IMG_VERSION}`;
 }
