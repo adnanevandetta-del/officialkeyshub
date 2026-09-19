@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useCart } from './CartContext';
 import { getProductImage } from '../lib/productImage';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { catalog, slugify } from '../lib/catalog';
 import { paypalPaymentUrl } from '../lib/payment';
 import BundleBuilder from './BundleBuilder';
+import { recordQuickOrder } from '../lib/account';
 
 type CategoryId = "all" | "bundles" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
 
@@ -28,6 +29,43 @@ export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [showCartPreview, setShowCartPreview] = useState(false);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const [moreToRight, setMoreToRight] = useState(false);
+
+  // Category row (phones): show a shimmering edge while more categories are off
+  // screen, and gently "peek" the row to the right until the visitor touches it.
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const update = () => setMoreToRight(el.scrollWidth - el.clientWidth - el.scrollLeft > 8);
+    update();
+    el.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    let stopped = false;
+    const stop = () => { stopped = true; el.style.scrollSnapType = ''; };
+    ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => el.addEventListener(ev, stop, { passive: true }));
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const peek = () => {
+      if (stopped || reduce || el.scrollWidth <= el.clientWidth || el.scrollLeft > 40) return;
+      el.style.scrollSnapType = 'none'; // snapping would pull the row straight back
+      el.scrollTo({ left: 96, behavior: 'smooth' });
+      timers.push(setTimeout(() => { if (!stopped) el.scrollTo({ left: 0, behavior: 'smooth' }); }, 900));
+      timers.push(setTimeout(() => { el.style.scrollSnapType = ''; }, 1900));
+    };
+    const interval = setInterval(peek, 4500);
+    timers.push(setTimeout(peek, 1500));
+
+    return () => {
+      el.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+      ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => el.removeEventListener(ev, stop));
+      clearInterval(interval);
+      timers.forEach(clearTimeout);
+    };
+  }, []);
 
   // Check if URL has #products-all to show all products
   useEffect(() => {
@@ -119,12 +157,15 @@ export default function Products() {
     <section className="pt-16 pb-20 relative overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60" id="products">
       <div className="container mx-auto px-4 md:px-6">
         {/* Category Tabs — swipeable single row on phones, wrapped on larger screens */}
-        <div className="flex md:flex-wrap md:justify-center gap-2 md:gap-3 mb-8 md:mb-12 overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="relative -mx-4 md:mx-0 mb-8 md:mb-12">
+        <div ref={tabsRef} className="flex md:flex-wrap md:justify-center gap-2 md:gap-3 overflow-x-auto md:overflow-visible px-4 md:px-0 pb-2 md:pb-0 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={`flex-shrink-0 snap-start whitespace-nowrap min-h-[44px] px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all transform hover:scale-105 ${
+                category.id === "bundles" && activeCategory !== "bundles" ? "okh-bundle-tab" : ""
+              } ${
                 activeCategory === category.id
                   ? "btn-primary"
                   : "glass text-slate-300 hover:text-white glow-hover"
@@ -132,16 +173,44 @@ export default function Products() {
             >
               <i className={`${category.icon} mr-2`}></i>
               {category.name}
-              {category.id === "bundles" && activeCategory !== "bundles" && (
-                <i className="fas fa-arrow-right ml-2 text-orange-400 okh-arrow-right" aria-hidden="true"></i>
-              )}
             </button>
           ))}
         </div>
+        {/* Shimmering edge: more categories to the right (phones only) */}
+        <div
+          aria-hidden="true"
+          className={`md:hidden pointer-events-none absolute right-0 top-0 bottom-2 w-14 bg-gradient-to-l from-slate-950/90 via-slate-950/50 to-transparent transition-opacity duration-300 ${moreToRight ? "opacity-100" : "opacity-0"}`}
+        >
+          <span className="okh-edge-gleam absolute right-1.5 top-1/2 -translate-y-1/2 h-8 w-[3px] rounded-full bg-gradient-to-b from-transparent via-white to-transparent"></span>
+        </div>
+        </div>
         <style>{`
-          @keyframes okh-arrow-right { 0%, 100% { transform: translateX(0); opacity: .6; } 50% { transform: translateX(6px); opacity: 1; } }
-          .okh-arrow-right { display: inline-block; animation: okh-arrow-right 1.1s ease-in-out infinite; }
-          @media (prefers-reduced-motion: reduce) { .okh-arrow-right { animation: none; } }
+          @keyframes okh-slide-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+          @keyframes okh-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0), 0 0 10px rgba(249,115,22,.35); }
+            50% { box-shadow: 0 0 0 3px rgba(249,115,22,.25), 0 0 22px rgba(249,115,22,.8); }
+          }
+          @keyframes okh-sweep { 0% { left: -60%; } 60%, 100% { left: 130%; } }
+          @keyframes okh-edge-gleam {
+            0%, 100% { opacity: .5; box-shadow: 0 0 6px 1px rgba(251,146,60,.4); }
+            50% { opacity: 1; box-shadow: 0 0 14px 3px rgba(251,146,60,.95); }
+          }
+          @media (min-width: 768px) { @keyframes okh-slide-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } } }
+          .okh-bundle-tab {
+            position: relative; overflow: hidden;
+            animation: okh-slide-right 1.2s ease-in-out infinite, okh-glow 1.8s ease-in-out infinite;
+            border: 1px solid rgba(251,146,60,.7);
+          }
+          .okh-bundle-tab::after {
+            content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; pointer-events: none;
+            background: linear-gradient(105deg, transparent, rgba(255,255,255,.6), transparent);
+            transform: skewX(-20deg); animation: okh-sweep 2.4s ease-in-out infinite;
+          }
+          .okh-bundle-tab:hover { animation-play-state: paused; }
+          .okh-edge-gleam { animation: okh-edge-gleam 1.6s ease-in-out infinite; }
+          @media (prefers-reduced-motion: reduce) {
+            .okh-bundle-tab, .okh-bundle-tab::after, .okh-edge-gleam { animation: none; }
+          }
         `}</style>
 
         {/* Build-your-own bundle */}
@@ -338,6 +407,7 @@ export default function Products() {
                     </div>
                     <a
                       href={paypalPaymentUrl(selectedProduct.name, selectedProduct.price)}
+                      onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'paypal')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-bold hover:bg-blue-700 transition-all"
@@ -352,6 +422,7 @@ export default function Products() {
                   {/* USDT */}
                   <a
                     href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via USDT.`}
+                    onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'usdt')}
                     className="flex items-center justify-between p-4 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all group"
                   >
                     <div className="flex items-center gap-3">
@@ -369,6 +440,7 @@ export default function Products() {
                   {/* WhatsApp */}
                   <a
                     href={`https://wa.me/16019756129?text=Hi! I want to buy ${selectedProduct.name} for ${selectedProduct.price}`}
+                    onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'whatsapp')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between p-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all group shadow-lg"

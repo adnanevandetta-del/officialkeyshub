@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { paypalPaymentUrl } from "../lib/payment";
+import { recordQuickOrder } from "../lib/account";
 import { getProductImage, getProductBoxImage } from "../lib/productImage";
 
 interface BillboardProduct {
@@ -356,6 +357,7 @@ export default function ProductBillboard() {
 
                 <a
                   href={paypalPaymentUrl(selectedProduct.name, selectedProduct.price)}
+                  onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, "paypal")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-5 bg-white/[0.04] border border-blue-400/40 rounded-xl hover:bg-blue-500/10 transition-all"
@@ -374,6 +376,7 @@ export default function ProductBillboard() {
 
                 <a
                   href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via USDT.%0D%0A%0D%0AProduct: ${selectedProduct.name}%0D%0APrice: ${selectedProduct.price}`}
+                  onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, "usdt")}
                   className="flex items-center justify-between p-5 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all"
                 >
                   <div className="flex items-center gap-4">
@@ -390,6 +393,7 @@ export default function ProductBillboard() {
 
                 <a
                   href={`https://wa.me/16019756129?text=Hi! I want to buy ${encodeURIComponent(selectedProduct.name)} for ${selectedProduct.price}`}
+                  onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, "whatsapp")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl"

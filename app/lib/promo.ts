@@ -52,6 +52,14 @@ export function savePromoForEmail(email: string): StoredPromo {
   return promo;
 }
 
+export function clearStoredPromo(): void {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
 export function getStoredPromo(): StoredPromo | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);

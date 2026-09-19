@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCart } from "./CartContext";
 import { getProductImage } from "../lib/productImage";
 import { paypalPaymentUrl } from "../lib/payment";
+import { recordQuickOrder } from "../lib/account";
 
 export default function ProductBuySection({
   name,
@@ -48,6 +49,7 @@ export default function ProductBuySection({
       <div className="space-y-2.5">
         <a
           href={paypalPaymentUrl(name, price)}
+          onClick={() => recordQuickOrder(name, price, "paypal")}
           target="_blank"
           rel="noopener noreferrer"
           className="w-full py-3 rounded-lg font-black text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg inline-flex items-center justify-center gap-2"
@@ -66,6 +68,7 @@ export default function ProductBuySection({
         <div className="grid grid-cols-2 gap-2.5 pt-1">
           <a
             href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${encodeURIComponent(name)}&body=Hi, I want to purchase ${encodeURIComponent(name)} for ${price} via USDT.`}
+            onClick={() => recordQuickOrder(name, price, "usdt")}
             className="py-2.5 rounded-lg font-semibold text-slate-200 bg-white/5 border border-white/10 hover:bg-white/10 transition-all inline-flex items-center justify-center gap-2 text-sm"
           >
             <i className="fab fa-bitcoin text-[#26a17b]"></i> USDT
@@ -74,6 +77,7 @@ export default function ProductBuySection({
             href={`https://wa.me/16019756129?text=${waText}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => recordQuickOrder(name, price, "whatsapp")}
             className="py-2.5 rounded-lg font-semibold text-slate-200 bg-white/5 border border-white/10 hover:bg-white/10 transition-all inline-flex items-center justify-center gap-2 text-sm"
           >
             <i className="fab fa-whatsapp text-[#25D366]"></i> WhatsApp

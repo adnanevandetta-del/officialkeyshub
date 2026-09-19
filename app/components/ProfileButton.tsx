@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useAccountData, signOut, displayName } from '../lib/account';
 
 export default function ProfileButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn] = useState(false);
+  const { account } = useAccountData();
+  const isLoggedIn = !!account;
 
   return (
     <>
@@ -35,8 +37,8 @@ export default function ProfileButton() {
               <>
                 {/* Logged In Menu */}
                 <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4">
-                  <p className="font-bold text-lg">John Doe</p>
-                  <p className="text-blue-100 text-sm">john.doe@email.com</p>
+                  <p className="font-bold text-lg break-words">{displayName(account)}</p>
+                  <p className="text-blue-100 text-sm break-all">{account?.email}</p>
                 </div>
                 <div className="py-2">
                   <Link
@@ -56,27 +58,31 @@ export default function ProfileButton() {
                     <span className="text-gray-700 font-semibold">My Orders</span>
                   </Link>
                   <Link
-                    href="/orders"
+                    href="/profile#licenses"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => { setIsOpen(false); setTimeout(() => window.dispatchEvent(new Event("hashchange")), 50); }}
                   >
                     <i className="fas fa-key text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">My Licenses</span>
                   </Link>
                   <Link
-                    href="/profile"
+                    href="/profile#settings"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => { setIsOpen(false); setTimeout(() => window.dispatchEvent(new Event("hashchange")), 50); }}
                   >
                     <i className="fas fa-cog text-blue-600 w-5"></i>
                     <span className="text-gray-700 font-semibold">Settings</span>
                   </Link>
                   <div className="border-t border-gray-200 mt-2 pt-2">
                     <button
+                      onClick={() => {
+                        signOut();
+                        setIsOpen(false);
+                      }}
                       className="flex items-center gap-3 px-4 py-3 hover:bg-red-50 transition-colors w-full text-left"
                     >
                       <i className="fas fa-sign-out-alt text-red-600 w-5"></i>
-                      <span className="text-red-600 font-semibold">Logout</span>
+                      <span className="text-red-600 font-semibold">Sign Out</span>
                     </button>
                   </div>
                 </div>

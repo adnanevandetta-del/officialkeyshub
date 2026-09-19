@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import { validatePromoCode, getStoredPromo } from '../lib/promo';
 import { paypalPaymentUrl } from '../lib/payment';
 import { getProductImage } from '../lib/productImage';
+import { addOrder, getAccount } from '../lib/account';
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
@@ -25,6 +26,8 @@ export default function CheckoutPage() {
   useEffect(() => {
     const stored = getStoredPromo();
     if (stored) setPromoInput(stored.code);
+    const account = getAccount();
+    if (account) setFormData((prev) => (prev.email ? prev : { ...prev, email: account.email }));
   }, []);
 
   const discountAmount = (cartTotal * appliedPercent) / 100;
@@ -55,6 +58,17 @@ export default function CheckoutPage() {
       ? `%0D%0APromo Code: ${appliedCode} (-${appliedPercent}%25, -$${discountAmount.toFixed(2)})`
       : '';
     const total = discountedTotal.toFixed(2);
+
+    // Record the order in the customer's history (status: pending until delivered).
+    if (paymentMethod) {
+      addOrder({
+        items: cart.map((i) => ({ name: i.name, price: i.price, quantity: i.quantity })),
+        total: discountedTotal,
+        method: paymentMethod,
+        email: formData.email,
+        promoCode: appliedPercent > 0 ? appliedCode : undefined,
+      });
+    }
 
     if (paymentMethod === 'whatsapp') {
       const whatsappMessage = `Hi! I want to complete my order:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ADelivery Email: ${formData.email}`;
