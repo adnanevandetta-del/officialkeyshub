@@ -59,9 +59,8 @@ export default function Logo({ size = "md", animated = true }: LogoProps) {
 
       <div className="flex flex-col leading-none">
         <span className={`font-math font-black tracking-tight ${currentSize.text}`}>
-          <span className="text-white">Official</span>
-          <span className="text-[#3b8fff]">Keys</span>
-          <span className="text-white">Hub</span>
+          <span className="text-white">OfficialKeys</span>
+          <span className="text-orange-500">Hub</span>
         </span>
         {currentSize.showTag && (
           <span className={`font-math text-slate-400 font-semibold tracking-wide mt-1 ${currentSize.tagline}`}>

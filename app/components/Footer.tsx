@@ -15,16 +15,16 @@ export default function Footer() {
             {/* Accepted payment methods */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">We Accept</p>
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center justify-center h-7 w-11 bg-white rounded-md shadow-sm" title="Visa">
-                <i className="fab fa-cc-visa text-[#1a1f71] text-xl"></i>
+              <span className="inline-flex items-center justify-center h-7 w-11" title="Visa">
+                <i className="fab fa-cc-visa text-[#6d8dff] text-2xl"></i>
               </span>
-              <span className="inline-flex items-center justify-center h-7 w-11 bg-white rounded-md shadow-sm" title="PayPal">
-                <i className="fab fa-cc-paypal text-[#003087] text-xl"></i>
+              <span className="inline-flex items-center justify-center h-7 w-11" title="PayPal">
+                <i className="fab fa-cc-paypal text-[#009cde] text-2xl"></i>
               </span>
-              <span className="inline-flex items-center justify-center h-7 w-11 bg-white rounded-md shadow-sm" title="Stripe">
-                <i className="fab fa-cc-stripe text-[#635bff] text-xl"></i>
+              <span className="inline-flex items-center justify-center h-7 w-11" title="Stripe">
+                <i className="fab fa-cc-stripe text-[#8b85ff] text-2xl"></i>
               </span>
-              <span className="inline-flex items-center justify-center h-7 px-2 bg-white rounded-md shadow-sm gap-1" title="USDT">
+              <span className="inline-flex items-center justify-center h-7 px-2 gap-1" title="USDT">
                 <span className="w-4 h-4 rounded-full bg-[#26a17b] text-white flex items-center justify-center text-[10px] font-black">₮</span>
                 <span className="text-[#26a17b] text-xs font-black">USDT</span>
               </span>
@@ -109,6 +109,16 @@ export default function Footer() {
               <li>
                 <Link href="/partner-program" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   Partner Program
+                </Link>
+              </li>
+              <li>
+                <Link href="/profile" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  My Account
+                </Link>
+              </li>
+              <li>
+                <Link href="/orders" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  Order History
                 </Link>
               </li>
             </ul>
