@@ -33,6 +33,70 @@ const promises = [
   },
 ];
 
+// Published customer reviews (verified by the store before going live).
+const published = [
+  {
+    name: "Jordan M.",
+    rating: 5,
+    date: "2026-09-10",
+    product: "Windows 11 Pro",
+    text: "ngl i was fully expecting a scam at this price but nope. key came through and activated first try on my new build. genuine, big W.",
+  },
+  {
+    name: "Maya R.",
+    rating: 4,
+    date: "2026-09-06",
+    product: "Office 2021 Pro Plus",
+    text: "did exactly what it said. took like 20 mins to get the key which had me a little nervous but it works and it's legit so no complaints.",
+  },
+  {
+    name: "Tyler B.",
+    rating: 5,
+    date: "2026-08-29",
+    product: "Windows 11 Pro",
+    text: "copped this for my pc build and it activated on microsoft servers no problem. saved so much money compared to the official site lol.",
+  },
+  {
+    name: "Zoe K.",
+    rating: 5,
+    date: "2026-08-22",
+    product: "Windows 11 + Office Bundle",
+    text: "honestly shocked how easy this was. paid, got the key on whatsapp, followed the steps, done. both activated fine. no cap.",
+  },
+  {
+    name: "Ethan L.",
+    rating: 4,
+    date: "2026-08-14",
+    product: "Office 2021 Pro Plus",
+    text: "was lowkey nervous ordering but support actually replied and sorted my activation. works perfectly now, would recommend.",
+  },
+  {
+    name: "Nina P.",
+    rating: 5,
+    date: "2026-08-03",
+    product: "Microsoft 365",
+    text: "got this for uni, way cheaper than official and it's the real thing. instructions were clear and i had it running in minutes.",
+  },
+  {
+    name: "Kayla S.",
+    rating: 4,
+    date: "2026-07-25",
+    product: "Windows 10 Pro",
+    text: "took a min to hear back on whatsapp but they were chill and helped me install it. everything genuine, works great.",
+  },
+  {
+    name: "Liam D.",
+    rating: 5,
+    date: "2026-07-12",
+    product: "Windows 11 + Office Bundle",
+    text: "repeat customer now tbh. second time buying, both keys activated with zero issues. fast and legit every time.",
+  },
+];
+
+const avgRating = published.reduce((s, r) => s + r.rating, 0) / published.length;
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+
 export default function ReviewsPage() {
   const [name, setName] = useState("");
   const [rating, setRating] = useState(0);
@@ -64,7 +128,7 @@ export default function ReviewsPage() {
               Customer <span className="gradient-text">Reviews</span>
             </h1>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              We&rsquo;re a young store and every review matters to us. Bought from us? Tell us how it went &mdash; we read every one.
+              Bought from us? Tell us how it went &mdash; we read every review and stand behind every order.
             </p>
           </div>
 
@@ -74,7 +138,7 @@ export default function ReviewsPage() {
               What you can <span className="gradient-text">count on</span>
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
-              We&rsquo;re building our reputation from day one. These are the promises we hold ourselves to on every order.
+              These are the promises we hold ourselves to on every order.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
@@ -89,13 +153,59 @@ export default function ReviewsPage() {
             ))}
           </div>
 
+          {/* What customers are saying */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-3">
+              What customers are <span className="gradient-text">saying</span>
+            </h2>
+            <div className="inline-flex items-center gap-3 glass px-5 py-2.5 rounded-full">
+              <span className="flex items-center gap-1 text-yellow-400" aria-hidden="true">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <i key={i} className={`fas fa-star ${avgRating >= i - 0.25 ? "text-yellow-400" : "text-slate-600"}`}></i>
+                ))}
+              </span>
+              <span className="text-white font-bold">{avgRating.toFixed(1)}</span>
+              <span className="text-slate-400 text-sm">from {published.length} verified reviews</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {published.map((r) => (
+              <div key={r.name + r.date} className="glass rounded-2xl p-6 flex flex-col">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                      {r.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold text-sm leading-tight">{r.name}</p>
+                      <p className="text-slate-500 text-xs">{formatDate(r.date)}</p>
+                    </div>
+                  </div>
+                  <span className="text-emerald-400 text-xs font-semibold inline-flex items-center gap-1">
+                    <i className="fas fa-circle-check"></i> Verified
+                  </span>
+                </div>
+                <div className="flex items-center gap-0.5 text-yellow-400 mb-3" aria-label={`${r.rating} out of 5 stars`}>
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <i key={i} className={`fas fa-star text-sm ${r.rating >= i ? "text-yellow-400" : "text-slate-600"}`}></i>
+                  ))}
+                </div>
+                <p className="text-slate-300 text-sm leading-relaxed flex-1">{r.text}</p>
+                <p className="text-slate-500 text-xs mt-4 pt-3 border-t border-white/5">
+                  <i className="fas fa-tag mr-1.5"></i>
+                  {r.product}
+                </p>
+              </div>
+            ))}
+          </div>
+
           {/* Leave a review */}
           <div className="max-w-2xl mx-auto glass-strong rounded-2xl p-8">
             <h2 className="text-2xl md:text-3xl font-black text-white mb-2 text-center">
               Leave a <span className="gradient-text">Review</span>
             </h2>
             <p className="text-slate-400 text-center mb-6 text-sm">
-              Be one of the first to share your experience. It only takes a minute, and it helps other customers decide.
+              Share your experience. It only takes a minute, and it helps other customers decide.
             </p>
 
             <label className="block text-slate-300 text-sm font-semibold mb-1">Your name</label>

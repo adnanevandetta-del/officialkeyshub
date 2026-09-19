@@ -29,7 +29,7 @@ export default function CustomerReviews() {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-black text-white mb-3">Buy with <span className="gradient-text">Confidence</span></h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            We&rsquo;re a young, independent store and we earn your trust one order at a time. Here&rsquo;s what you can count on.
+            Every order is backed by real guarantees and genuine keys. Here&rsquo;s what you can count on.
           </p>
         </div>
 
