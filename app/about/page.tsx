@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,30 +39,30 @@ export default function AboutPage() {
               <div className="text-center mb-12">
                 <div className="inline-block mb-4">
                   <span className="bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide">
-                    Independent Reseller · Genuine Licenses
+                    Independent Startup · Genuine Licenses
                   </span>
                 </div>
                 <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
-                  Your Trusted Source for
+                  Genuine Microsoft Licenses
                   <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-700">
-                    Genuine Microsoft Licenses
+                    at Honest Prices
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                  Official Keys Hub is an independent reseller of genuine Windows, Office, and Server product keys — sold legally, delivered instantly, and backed by a 30-day money-back guarantee.
+                  Official Keys Hub is a young, independent startup selling genuine Windows, Office, and Server product keys — sold legally, delivered quickly, and backed by a 30-day money-back guarantee. We are new, and we are building our reputation one honest order at a time.
                 </p>
               </div>
 
               {/* Trust Badges */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
                 <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100 text-center">
-                  <div className="text-4xl font-extrabold text-blue-600 mb-2">10K+</div>
-                  <div className="text-gray-700 font-semibold">Happy Customers</div>
+                  <div className="text-3xl md:text-4xl font-extrabold text-blue-600 mb-2">Hundreds</div>
+                  <div className="text-gray-700 font-semibold">Satisfied Customers</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-sky-100 text-center">
-                  <div className="text-4xl font-extrabold text-sky-700 mb-2">4+</div>
-                  <div className="text-gray-700 font-semibold">Years in Business</div>
+                  <div className="text-4xl font-extrabold text-sky-700 mb-2">2025</div>
+                  <div className="text-gray-700 font-semibold">Year Founded</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-purple-100 text-center">
                   <div className="text-4xl font-extrabold text-purple-600 mb-2">100%</div>
@@ -83,19 +84,94 @@ export default function AboutPage() {
               <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">Our Story</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Founded in <strong>2022</strong>, Official Keys Hub started as a small indie retail operation with a straightforward mission: to make genuine Microsoft software accessible and affordable for everyone. We&rsquo;re not a large corporation or mega-retailer — we&rsquo;re a focused, customer-first team dedicated to providing authentic software licenses at honest prices.
+                  Official Keys Hub was founded in <strong>2025</strong> as a small startup with one straightforward aim: to provide <strong>genuine Microsoft software and genuine service at the best prices we can offer</strong>. We&rsquo;re not a large corporation or a mega-retailer &mdash; we&rsquo;re a small, focused team that is new to this market, and we&rsquo;d rather say so openly than pretend otherwise.
                 </p>
                 <p>
-                  As an <strong>independent reseller</strong>, we source genuine product keys through legitimate channels — including surplus and previously-sold licenses that can be lawfully resold within the EU. This lets us offer authentic keys at competitive rates and pass those savings directly to our customers, with discounts of up to <strong>90% off Microsoft&rsquo;s retail prices</strong>.
+                  As an <strong>independent reseller</strong>, we source genuine product keys through legitimate channels &mdash; including surplus and previously-sold licenses that can be lawfully resold within the EU. That lets us offer authentic keys at lower prices than Microsoft&rsquo;s retail price, and we pass those savings directly on to our customers.
                 </p>
                 <p>
-                  What makes us different? <strong>We&rsquo;re real people who genuinely care about your experience.</strong> Over the past 4+ years, we&rsquo;ve personally helped thousands of customers across 120+ countries activate their Windows and Office installations affordably. Every customer inquiry gets our direct attention, and we take pride in solving problems quickly and professionally.
+                  <strong>Where we are today:</strong> since launching we have served a few hundred satisfied customers. That is a modest number next to the big retailers, and we won&rsquo;t inflate it. What we can promise is that every order gets our direct attention, and that we treat each early customer as someone whose trust we still have to earn.
                 </p>
                 <p>
-                  As a <strong>registered independent business</strong>, we operate with full transparency and legal compliance. Every key we sell is <strong>100% genuine, legally sourced, and backed by our personal commitment and 30-day money-back guarantee</strong>. Each one activates directly through Microsoft&rsquo;s own servers — the ultimate proof of authenticity.
+                  We are an independent business based in Stockholm, Sweden, and we try to be fully transparent about how we work. Every key we sell is <strong>genuine, legally sourced, and backed by our 30-day money-back guarantee</strong>. Each one activates directly through Microsoft&rsquo;s own servers &mdash; the best proof of authenticity there is.
                 </p>
                 <p>
-                  <strong>Customer satisfaction is our top priority.</strong> Unlike large companies where you&rsquo;re just a number, we treat every customer as a valued partner. We respond within minutes (not days), we provide clear instructions, and we stand behind every sale. If something goes wrong, we make it right — immediately. That&rsquo;s our promise as an independent retailer who depends on your trust and repeat business.
+                  <strong>Customer satisfaction is our top priority.</strong> We provide clear activation instructions, we reply to messages as quickly as we can, and we stand behind every sale. If something goes wrong, we make it right. As a young business that depends on your trust and word of mouth, we have every reason to get it right.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How we do business */}
+        <section className="py-16 bg-gradient-to-br from-blue-50 to-white" id="how-we-work">
+          <div className="container mx-auto px-6">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900 text-center">How We Do Business</h2>
+              <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-10">
+                Trust is earned one order at a time. Here is how we work today, and where we are heading.
+              </p>
+
+              <div className="relative w-full overflow-hidden rounded-2xl shadow-xl border border-blue-100 mb-12 bg-slate-900">
+                <Image
+                  src="/og-image.jpg"
+                  alt="Official Keys Hub — genuine Windows and Office license boxes with instant delivery, activation support and a 30-day money-back guarantee"
+                  width={1200}
+                  height={630}
+                  unoptimized
+                  className="w-full h-auto"
+                />
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white rounded-2xl p-6 shadow-md border-2 border-blue-100">
+                  <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
+                    <i className="fas fa-route text-blue-600 text-xl"></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">How an order works</h3>
+                  <ol className="space-y-2 text-gray-700 list-decimal list-inside">
+                    <li>You choose your license and pay with PayPal or USDT.</li>
+                    <li>We confirm your payment. For USDT, you email us a screenshot of the transfer.</li>
+                    <li>Your key is sent to your email or WhatsApp with clear activation steps.</li>
+                    <li>You activate directly on Microsoft&rsquo;s own servers. If it fails, we fix it or refund you.</li>
+                  </ol>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-md border-2 border-sky-100">
+                  <div className="w-12 h-12 rounded-xl bg-sky-100 flex items-center justify-center mb-4">
+                    <i className="fas fa-handshake text-sky-700 text-xl"></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">How we earn your trust</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li><i className="fas fa-check text-emerald-600 mr-2"></i>A clear <Link href="/refund-policy" className="text-sky-700 font-semibold hover:underline">30-day money-back guarantee</Link></li>
+                    <li><i className="fas fa-check text-emerald-600 mr-2"></i>Real people on WhatsApp and email, not a ticket queue</li>
+                    <li><i className="fas fa-check text-emerald-600 mr-2"></i>We are independent and say so &mdash; not affiliated with Microsoft</li>
+                    <li><i className="fas fa-check text-emerald-600 mr-2"></i>We never ask for your card details on our site &mdash; PayPal handles card payments</li>
+                    <li><i className="fas fa-check text-emerald-600 mr-2"></i>Your order history only shows real order status, nothing invented</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-md border-2 border-orange-100">
+                  <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-4">
+                    <i className="fas fa-seedling text-orange-600 text-xl"></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">What we&rsquo;re working toward</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li><i className="fas fa-arrow-right text-orange-500 mr-2"></i>Collecting real, verified customer reviews on independent platforms</li>
+                    <li><i className="fas fa-arrow-right text-orange-500 mr-2"></i>Faster support and clearer step-by-step activation guides</li>
+                    <li><i className="fas fa-arrow-right text-orange-500 mr-2"></i>A wider range of genuine licenses at fair prices</li>
+                    <li><i className="fas fa-arrow-right text-orange-500 mr-2"></i>More ways to pay, with the same transparency</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
+                <p>
+                  Customer trust is our first priority. Have a question before you buy? Read our{" "}
+                  <Link href="/faq" className="text-sky-700 font-semibold hover:underline">FAQ</Link>
+                  {" "}and <Link href="/licensing" className="text-sky-700 font-semibold hover:underline">licensing information</Link>, or message us on{" "}
+                  <a href="https://wa.me/16019756129" target="_blank" rel="noopener noreferrer" className="text-sky-700 font-semibold hover:underline">WhatsApp</a>
+                  {" "}or at <a href="mailto:officialkeyshub@gmail.com" className="text-sky-700 font-semibold hover:underline">officialkeyshub@gmail.com</a>.
                 </p>
               </div>
             </div>
@@ -144,32 +220,32 @@ export default function AboutPage() {
                   </ul>
                 </div>
 
-                {/* Registered EU Business */}
+                {/* Based in Sweden */}
                 <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-sky-200">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center">
                       <i className="fas fa-building text-sky-700 text-2xl"></i>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">Registered EU Business</h3>
+                      <h3 className="text-2xl font-bold text-gray-900">Based in the EU</h3>
                       <p className="text-sky-700 font-semibold">Based in Sweden</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    We&rsquo;re a registered business operating from Stockholm, Sweden, under European Union law. We keep proper business records and comply with EU consumer-protection and data-protection rules.
+                    We&rsquo;re an independent startup operating from Stockholm, Sweden. We aim to follow EU consumer-protection and data-protection rules and to keep our records and policies clear and honest.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
-                      <span>Business entity registered in Sweden</span>
+                      <span>Based in Stockholm, Sweden</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
-                      <span>Operates under EU consumer law</span>
+                      <span>Follows EU consumer-protection rules</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
-                      <span>GDPR-compliant data handling</span>
+                      <span>Minimal, careful handling of your data</span>
                     </li>
                   </ul>
                 </div>
@@ -250,7 +326,7 @@ export default function AboutPage() {
                     <div className="flex flex-wrap gap-3">
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
-                        <span className="text-sm font-semibold text-gray-800">Registered EU Business</span>
+                        <span className="text-sm font-semibold text-gray-800">Based in Sweden (EU)</span>
                       </div>
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
@@ -432,8 +508,8 @@ export default function AboutPage() {
                   </h3>
                   <div className="space-y-3 text-gray-700">
                     <p><strong>Business Name:</strong> Official Keys Hub</p>
-                    <p><strong>Founded:</strong> 2022</p>
-                    <p><strong>Registration:</strong> Sweden (EU)</p>
+                    <p><strong>Founded:</strong> 2025</p>
+                    <p><strong>Stage:</strong> Independent startup</p>
                     <p><strong>Business Type:</strong> Independent Software Reseller</p>
                     <p><strong>Affiliation:</strong> Independent — not a Microsoft partner</p>
                   </div>
@@ -449,30 +525,30 @@ export default function AboutPage() {
                     <p><strong>Location:</strong> Stockholm, Sweden</p>
                     <p><strong>WhatsApp:</strong> +1 (601) 975-6129</p>
                     <p><strong>Support Hours:</strong> 24/7 Available</p>
-                    <p><strong>Response Time:</strong> Within 30 minutes</p>
+                    <p><strong>Response Time:</strong> As quickly as we can</p>
                     <p><strong>Website:</strong> officialkeyshub.com</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 bg-gradient-to-r from-blue-50 to-sky-50 rounded-xl p-8 border-2 border-blue-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Our Global Reach</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Where We Are Today</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-blue-600">120+</div>
-                    <div className="text-gray-700 text-sm">Countries Served</div>
+                    <div className="text-3xl font-bold text-blue-600">2025</div>
+                    <div className="text-gray-700 text-sm">Year Founded</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-sky-700">10K+</div>
-                    <div className="text-gray-700 text-sm">Customers</div>
+                    <div className="text-3xl font-bold text-sky-700">Hundreds</div>
+                    <div className="text-gray-700 text-sm">Satisfied Customers</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-purple-600">25K+</div>
-                    <div className="text-gray-700 text-sm">Licenses Sold</div>
+                    <div className="text-3xl font-bold text-purple-600">30 days</div>
+                    <div className="text-gray-700 text-sm">Money-Back Guarantee</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-orange-600">4.8★</div>
-                    <div className="text-gray-700 text-sm">Customer Rating</div>
+                    <div className="text-3xl font-bold text-orange-600">Sweden</div>
+                    <div className="text-gray-700 text-sm">Based in Stockholm</div>
                   </div>
                 </div>
               </div>
@@ -488,7 +564,7 @@ export default function AboutPage() {
                 Ready to Get Started?
               </h2>
               <p className="text-xl md:text-2xl mb-8 opacity-90">
-                Join thousands of satisfied customers who trust us for genuine Microsoft software licenses
+                Join our growing community of customers who chose genuine licenses at honest prices
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Official Keys Hub</h3>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
-              Your trusted source for genuine Windows, Office, and software licenses with instant delivery and lifetime support.
+              Genuine Windows, Office, and software licenses at honest prices, with fast delivery and friendly support.
             </p>
             {/* Accepted payment methods */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">We Accept</p>
@@ -224,7 +224,7 @@ export default function Footer() {
           </div>
           <span className="hidden md:block h-8 w-px bg-slate-700"></span>
           <p className="text-slate-500 text-xs max-w-xs">
-            Registered digital software reseller · Serving customers across the EU &amp; worldwide
+            Independent startup · Genuine software licenses · Founded 2025
           </p>
           <a
             href="https://www.google.com/maps/place/Stockholm,+Sweden"

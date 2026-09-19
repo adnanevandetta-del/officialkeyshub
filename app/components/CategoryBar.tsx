@@ -219,13 +219,13 @@ export default function CategoryBar() {
                           onClick={() => handleCategoryClick(category)}
                           className="group bg-white/[0.04] border border-white/10 rounded-xl overflow-hidden hover:border-sky-500/50 hover:bg-white/[0.07] transition-all duration-300 text-left"
                         >
-                          <div className="relative h-32 overflow-hidden">
+                          <div className="relative h-32 overflow-hidden bg-gradient-to-b from-slate-800/80 to-slate-900">
                             <Image
                               src={getProductImage(product.name)}
                               alt={product.name}
                               fill
                               unoptimized
-                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
                             />
                             {product.badge && (
                               <div className="absolute top-2 right-2 bg-sky-600 text-white px-2 py-1 rounded-full text-xs font-bold">

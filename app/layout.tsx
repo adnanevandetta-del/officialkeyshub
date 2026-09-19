@@ -112,6 +112,7 @@ export default function RootLayout({
             "url": "https://www.officialkeyshub.com",
             "logo": "https://www.officialkeyshub.com/logo.png",
             "image": "https://www.officialkeyshub.com/og-image.jpg",
+            "foundingDate": "2025",
             "priceRange": "$$",
             "telephone": "+1-601-975-6129",
             "email": "officialkeyshub@gmail.com",

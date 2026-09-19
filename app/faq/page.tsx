@@ -158,7 +158,7 @@ export default function FAQPage() {
       questions: [
         {
           q: "Is it safe to buy from you?",
-          a: "100% safe! We use encrypted payment processing (256-bit SSL), never store your payment information, and are a registered business in Sweden. Over 50,000 satisfied customers trust us."
+          a: "100% safe! We use encrypted payment processing (256-bit SSL), never store your payment information, and are an independent startup based in Stockholm, Sweden. We launched in 2025 and have served a few hundred satisfied customers so far."
         },
         {
           q: "Will you share my information?",

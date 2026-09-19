@@ -239,7 +239,7 @@ export default function CheapKeysSafePage() {
                   <ul className="list-disc pl-6 mt-2 space-y-1 text-sm">
                     <li>Read reviews on Trustpilot, Reddit, or independent sites</li>
                     <li>Look for business registration (company name, tax ID, address)</li>
-                    <li>Check how long they've been in business (2+ years preferred)</li>
+                    <li>Check how long they've been in business (a longer track record is better; for newer sellers, check the refund policy and support)</li>
                     <li>Avoid brand-new sellers with no history</li>
                   </ul>
                 </li>
@@ -341,10 +341,10 @@ export default function CheapKeysSafePage() {
               <div className="bg-green-50 border-2 border-green-500 rounded-xl p-6">
                 <h3 className="text-lg font-bold mb-3 text-green-900">1. Official Keys Hub (Recommended)</h3>
                 <p className="text-sm mb-3">
-                  <strong>Why it's safe:</strong> Registered business, instant delivery, 30-day refund, PayPal/card accepted, 24/7 support
+                  <strong>Why it's safe:</strong> Independent business, fast delivery, 30-day refund, PayPal/card accepted, 24/7 support
                 </p>
                 <ul className="text-sm space-y-1 mb-3">
-                  <li>✅ 5,000+ verified purchases</li>
+                  <li>✅ Hundreds of completed orders</li>
                   <li>✅ Genuine OEM keys from authorized partners</li>
                   <li>✅ Instant automated delivery (5 minutes)</li>
                   <li>✅ Money-back guarantee</li>

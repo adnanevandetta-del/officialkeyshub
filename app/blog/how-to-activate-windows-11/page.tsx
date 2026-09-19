@@ -402,7 +402,7 @@ export default function HowToActivateWindows11() {
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
               Get genuine Windows 11 Pro for only $19.99. Instant delivery, lifetime license, 
-              30-day money-back guarantee. Trusted by 50,000+ customers.
+              30-day money-back guarantee. Chosen by hundreds of customers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

@@ -161,14 +161,14 @@ export default function BuyCheapMicrosoftOfficeKeys() {
             <div className="bg-sky-50 border-l-4 border-sky-700 p-6 mb-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 <i className="fas fa-shield-alt text-sky-700 mr-2"></i>
-                Official Keys Hub - Trusted Since 2022
+                Official Keys Hub - Independent Startup, Founded 2025
               </h3>
               <ul className="space-y-2">
                 <li>✅ 100% genuine Microsoft licenses</li>
                 <li>✅ Instant digital delivery via email</li>
                 <li>✅ 24/7 customer support</li>
                 <li>✅ Money-back guarantee</li>
-                <li>✅ 10,000+ satisfied customers</li>
+                <li>✅ Hundreds of satisfied customers</li>
                 <li>✅ Secure payment (PayPal, USDT, WhatsApp)</li>
               </ul>
               <Link 

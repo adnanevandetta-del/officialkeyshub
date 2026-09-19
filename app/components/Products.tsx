@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useCart } from './CartContext';
 import { getProductImage, getProductBoxImage } from '../lib/productImage';
@@ -31,38 +31,11 @@ export default function Products() {
   const [showModal, setShowModal] = useState(false);
   const [showCartPreview, setShowCartPreview] = useState(false);
   const [usdtOrderId, setUsdtOrderId] = useState<string | null>(null);
-  const tabsRef = useRef<HTMLDivElement>(null);
 
   // Close the USDT instructions whenever the payment window changes.
   useEffect(() => {
     setUsdtOrderId(null);
   }, [selectedProduct, showModal]);
-
-  // Category row (phones): gently "peek" the row to the right, hinting there are
-  // more categories, until the visitor touches it.
-  useEffect(() => {
-    const el = tabsRef.current;
-    if (!el) return;
-    let stopped = false;
-    const stop = () => { stopped = true; el.style.scrollSnapType = ''; };
-    ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => el.addEventListener(ev, stop, { passive: true }));
-
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    const peek = () => {
-      if (stopped || reduce || el.scrollWidth <= el.clientWidth || el.scrollLeft > 40) return;
-      el.style.scrollSnapType = 'none'; // snapping would pull the row straight back
-      el.scrollTo({ left: 96, behavior: 'smooth' });
-      timers.push(setTimeout(() => { if (!stopped) el.scrollTo({ left: 0, behavior: 'smooth' }); }, 900));
-      timers.push(setTimeout(() => { el.style.scrollSnapType = ''; }, 1900));
-    };
-    timers.push(setTimeout(peek, 1500)); // one gentle hint on load, no repeating
-
-    return () => {
-      ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => el.removeEventListener(ev, stop));
-      timers.forEach(clearTimeout);
-    };
-  }, []);
 
   // Check if URL has #products-all to show all products
   useEffect(() => {
@@ -109,35 +82,55 @@ export default function Products() {
   return (
     <section className="pt-16 pb-20 relative overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60" id="products">
       <div className="container mx-auto px-4 md:px-6">
-        {/* Category Tabs — swipeable single row on phones, wrapped on larger screens */}
-        <div className="relative -mx-4 md:mx-0 mb-8 md:mb-12">
-        <div ref={tabsRef} className="flex md:flex-wrap md:justify-center gap-2 md:gap-3 overflow-x-auto md:overflow-visible px-4 md:px-0 pb-2 md:pb-0 snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`flex-shrink-0 snap-start whitespace-nowrap min-h-[44px] px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all transform hover:scale-105 ${
-                category.id === "bundles" && activeCategory !== "bundles" ? "okh-bundle-tab" : ""
-              } ${
-                activeCategory === category.id
-                  ? "btn-primary"
-                  : "glass text-slate-300 hover:text-white glow-hover"
-              }`}
-            >
-              <i className={`${category.icon} mr-2`}></i>
-              {category.name}
-            </button>
-          ))}
-        </div>
+        {/* Category Tabs — on phones the row glides slowly to the right in a seamless loop
+            (two identical sets), on larger screens it is a normal wrapped row. */}
+        <div className="okh-wrap relative -mx-4 md:mx-0 mb-8 md:mb-12 overflow-hidden md:overflow-visible">
+          <div className="okh-track flex w-max md:w-full md:flex-wrap md:justify-center md:gap-3">
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                aria-hidden={copy === 1 ? true : undefined}
+                className={`okh-set flex gap-2 pr-2 ${copy === 0 ? 'md:contents' : 'okh-dup md:hidden'}`}
+              >
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    tabIndex={copy === 1 ? -1 : undefined}
+                    onClick={() => setActiveCategory(category.id)}
+                    className={`flex-shrink-0 whitespace-nowrap min-h-[44px] px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all ${
+                      category.id === "bundles" && activeCategory !== "bundles" ? "okh-bundle-tab" : ""
+                    } ${
+                      activeCategory === category.id
+                        ? "btn-primary"
+                        : "glass text-slate-300 hover:text-white glow-hover md:hover:scale-105"
+                    }`}
+                  >
+                    <i className={`${category.icon} mr-2`}></i>
+                    {category.name}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
         <style>{`
-          .okh-bundle-tab {
-            border: 1px solid rgba(251,146,60,.75) !important;
-            background: linear-gradient(135deg, rgba(249,115,22,.28), rgba(251,146,60,.12)) !important;
-            color: #fed7aa !important;
-            box-shadow: 0 0 12px rgba(249,115,22,.25);
+          @keyframes okh-glide { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+          @media (max-width: 767px) {
+            .okh-track { animation: okh-glide 34s linear infinite; will-change: transform; }
+            .okh-track:active { animation-play-state: paused; }
           }
-          .okh-bundle-tab:hover { color: #fff !important; box-shadow: 0 0 16px rgba(249,115,22,.45); }
+          @media (prefers-reduced-motion: reduce) {
+            .okh-wrap { overflow-x: auto; }
+            .okh-track { animation: none; }
+            .okh-dup { display: none; }
+          }
+          .okh-bundle-tab {
+            background: linear-gradient(135deg, #f97316, #ea580c) !important;
+            border: 1px solid #fdba74 !important;
+            color: #fff !important;
+            box-shadow: 0 0 14px rgba(249,115,22,.45);
+          }
+          .okh-bundle-tab:hover { box-shadow: 0 0 20px rgba(249,115,22,.7); }
         `}</style>
 
         {/* Build-your-own bundle */}
@@ -232,7 +225,7 @@ export default function Products() {
                   >
                     <span className="flex items-center gap-2">
                       Buy Now
-                      <i className="fas fa-arrow-right text-sm"></i>
+                      <i className="fab fa-paypal text-2xl"></i>
                     </span>
                   </button>
                   <button
