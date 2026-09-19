@@ -125,7 +125,7 @@ export default function Products() {
                   category.id === "bundles" && activeCategory !== "bundles" ? "okh-bundle-tab" : ""
                 } ${
                   activeCategory === category.id
-                    ? "btn-primary"
+                    ? "okh-tab-active"
                     : "glass text-slate-300 hover:text-white glow-hover"
                 }`}
               >
@@ -143,13 +143,19 @@ export default function Products() {
           @media (prefers-reduced-motion: reduce) {
             .okh-tab { animation: none; }
           }
-          .okh-bundle-tab {
-            background: linear-gradient(135deg, #f97316, #ea580c) !important;
-            border: 1px solid #fdba74 !important;
+          .okh-tab-active {
+            background: linear-gradient(135deg, #10b981, #059669) !important;
+            border: 1px solid rgba(110,231,183,.6) !important;
             color: #fff !important;
-            box-shadow: 0 0 14px rgba(249,115,22,.45);
+            box-shadow: 0 0 16px rgba(16,185,129,.45);
           }
-          .okh-bundle-tab:hover { box-shadow: 0 0 20px rgba(249,115,22,.7); }
+          .okh-bundle-tab {
+            background: linear-gradient(135deg, rgba(249,115,22,.22), rgba(234,88,12,.12)) !important;
+            border: 1px solid rgba(251,146,60,.75) !important;
+            color: #fed7aa !important;
+            box-shadow: 0 0 12px rgba(249,115,22,.25);
+          }
+          .okh-bundle-tab:hover { color: #fff !important; background: linear-gradient(135deg, rgba(249,115,22,.35), rgba(234,88,12,.2)) !important; box-shadow: 0 0 18px rgba(249,115,22,.5); }
         `}</style>
 
         {/* Build-your-own bundle */}

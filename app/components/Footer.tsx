@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="bg-gradient-to-b from-slate-900 to-slate-950 text-white pt-12 pb-6">
       <div className="container mx-auto px-6">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-slate-800">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 mb-8 pb-8 border-b border-slate-800">
           {/* Company Info */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h3 className="text-xl font-bold text-white mb-4">Official Keys Hub</h3>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
               Genuine Windows, Office, and software licenses at honest prices, with fast delivery and friendly support.
@@ -101,16 +101,13 @@ export default function Footer() {
                   Blog
                 </Link>
               </li>
-              <li>
-                <Link href="/reviews" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
-                  Reviews
-                </Link>
-              </li>
-              <li>
-                <Link href="/partner-program" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
-                  Partner Program
-                </Link>
-              </li>
+            </ul>
+          </div>
+
+          {/* My Account */}
+          <div>
+            <h4 className="text-white font-semibold text-base mb-4">My Account</h4>
+            <ul className="space-y-2">
               <li>
                 <Link href="/profile" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   My Account
@@ -119,6 +116,21 @@ export default function Footer() {
               <li>
                 <Link href="/orders" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   Order History
+                </Link>
+              </li>
+              <li>
+                <Link href="/profile#reviews" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  My Reviews
+                </Link>
+              </li>
+              <li>
+                <Link href="/reviews" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  Reviews
+                </Link>
+              </li>
+              <li>
+                <Link href="/partner-program" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  Partner Program
                 </Link>
               </li>
             </ul>
@@ -157,7 +169,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h4 className="text-white font-semibold text-base mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">

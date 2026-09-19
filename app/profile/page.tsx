@@ -11,16 +11,17 @@ import {
   saveAccount,
   signOut,
   deleteAllData,
+  removeReview,
   exportData,
   displayName,
   money,
 } from '../lib/account';
 
-type Tab = 'profile' | 'orders' | 'licenses' | 'settings';
+type Tab = 'profile' | 'orders' | 'licenses' | 'reviews' | 'settings';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function ProfilePage() {
-  const { account, orders, ready } = useAccountData();
+  const { account, orders, reviews, ready } = useAccountData();
   const [activeTab, setActiveTab] = useState<Tab>('profile');
   const [isEditing, setIsEditing] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '' });
@@ -34,7 +35,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const applyHash = () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'orders' || hash === 'licenses' || hash === 'settings' || hash === 'profile') {
+      if (hash === 'orders' || hash === 'licenses' || hash === 'reviews' || hash === 'settings' || hash === 'profile') {
         setActiveTab(hash);
       }
     };
@@ -143,6 +144,7 @@ export default function ProfilePage() {
     { id: 'profile', label: 'Profile', icon: 'fa-user' },
     { id: 'orders', label: 'Orders', icon: 'fa-shopping-bag' },
     { id: 'licenses', label: 'Licenses', icon: 'fa-key' },
+    { id: 'reviews', label: 'Reviews', icon: 'fa-star' },
     { id: 'settings', label: 'Settings', icon: 'fa-cog' },
   ];
 
@@ -365,6 +367,64 @@ export default function ProfilePage() {
                           </div>
                         ))
                       )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Reviews */}
+              {activeTab === 'reviews' && (
+                <div>
+                  <h2 className="text-2xl font-black text-gray-900 mb-2">My Reviews</h2>
+                  <p className="text-gray-600 mb-6">
+                    Reviews you wrote about Official Keys Hub. They are saved on this device and sent to us on WhatsApp so
+                    we can verify them before they are published.
+                  </p>
+                  {reviews.length === 0 ? (
+                    <div className="bg-gray-50 rounded-xl p-8 text-center border-2 border-gray-200">
+                      <i className="fas fa-star text-gray-300 text-5xl mb-3"></i>
+                      <p className="text-gray-700 font-semibold mb-1">You haven&apos;t written a review yet</p>
+                      <p className="text-gray-500 text-sm mb-4">Bought from us? Tell us how it went &mdash; it helps other customers.</p>
+                      <Link
+                        href="/reviews"
+                        className="min-h-[44px] inline-flex items-center justify-center px-5 py-2 bg-emerald-600 text-white rounded-lg font-bold hover:bg-emerald-700 transition-colors text-sm"
+                      >
+                        <i className="fas fa-pen mr-2"></i>
+                        Write a review
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      {reviews.map((r) => (
+                        <div key={r.id} className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl p-4 md:p-5 border-2 border-amber-200">
+                          <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <div className="flex gap-0.5" aria-label={`${r.rating} out of 5 stars`}>
+                              {[1, 2, 3, 4, 5].map((i) => (
+                                <i key={i} className={`fas fa-star ${r.rating >= i ? 'text-yellow-400' : 'text-gray-300'}`}></i>
+                              ))}
+                            </div>
+                            <span className="text-xs font-bold text-amber-800 bg-amber-100 rounded-full px-3 py-1">
+                              Sent for verification
+                            </span>
+                          </div>
+                          <p className="text-gray-800 break-words">&ldquo;{r.text}&rdquo;</p>
+                          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm text-gray-500">
+                            <span>
+                              {r.name} · {new Date(r.date).toLocaleDateString()}
+                            </span>
+                            <button
+                              onClick={() => removeReview(r.id)}
+                              className="min-h-[44px] px-3 text-red-600 font-semibold hover:underline"
+                            >
+                              <i className="fas fa-trash mr-1"></i>
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                      <Link href="/reviews" className="inline-block text-sky-700 font-semibold hover:underline text-sm pt-1">
+                        <i className="fas fa-pen mr-1"></i> Write another review
+                      </Link>
                     </div>
                   )}
                 </div>

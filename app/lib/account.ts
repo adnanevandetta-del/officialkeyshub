@@ -34,8 +34,18 @@ export interface Order {
   status: OrderStatus;
 }
 
+export interface Review {
+  id: string;
+  date: string; // ISO date
+  name: string;
+  rating: number; // 1-5
+  text: string;
+  email?: string;
+}
+
 const ACCOUNT_KEY = "okh_account";
 const ORDERS_KEY = "okh_orders";
+const REVIEWS_KEY = "okh_reviews";
 const CHANGE_EVENT = "okh-data-changed";
 
 export const money = (n: number) => `$${n.toFixed(2)}`;
@@ -102,6 +112,7 @@ export function signOut() {
 export function deleteAllData() {
   try {
     localStorage.removeItem(ORDERS_KEY);
+    localStorage.removeItem(REVIEWS_KEY);
   } catch {
     // ignore
   }
@@ -178,21 +189,56 @@ export function removeOrder(id: string) {
   write(ORDERS_KEY, list.filter((o) => o.id !== id));
 }
 
+// ---------------------------------------------------------------- reviews
+// A review is saved in the customer's own browser so it shows on their profile.
+// It is also sent to the store (via WhatsApp) to be verified before it is
+// published on the site.
+
+export function getReviews(): Review[] {
+  const list = read<Review[]>(REVIEWS_KEY, []);
+  return [...list].sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export function addReview(input: { name?: string; rating: number; text: string }): Review {
+  const list = read<Review[]>(REVIEWS_KEY, []);
+  const account = getAccount();
+  const review: Review = {
+    id: `REV-${Date.now().toString(36).toUpperCase()}`,
+    date: new Date().toISOString(),
+    name: (input.name || "").trim() || displayName(account) || "Anonymous",
+    rating: Math.min(5, Math.max(1, Math.round(input.rating || 5))),
+    text: input.text.trim(),
+    email: account?.email,
+  };
+  write(REVIEWS_KEY, [review, ...list]);
+  return review;
+}
+
+export function removeReview(id: string) {
+  const list = read<Review[]>(REVIEWS_KEY, []);
+  write(REVIEWS_KEY, list.filter((r) => r.id !== id));
+}
+
 export function exportData(): string {
-  return JSON.stringify({ account: getAccount(), orders: getOrders(), exportedAt: new Date().toISOString() }, null, 2);
+  return JSON.stringify(
+    { account: getAccount(), orders: getOrders(), reviews: getReviews(), exportedAt: new Date().toISOString() },
+    null,
+    2
+  );
 }
 
 // ------------------------------------------------------------------- hook
 
 export function useAccountData() {
-  const [state, setState] = useState<{ account: Account | null; orders: Order[]; ready: boolean }>({
+  const [state, setState] = useState<{ account: Account | null; orders: Order[]; reviews: Review[]; ready: boolean }>({
     account: null,
     orders: [],
+    reviews: [],
     ready: false,
   });
 
   useEffect(() => {
-    const refresh = () => setState({ account: getAccount(), orders: getOrders(), ready: true });
+    const refresh = () => setState({ account: getAccount(), orders: getOrders(), reviews: getReviews(), ready: true });
     refresh();
     window.addEventListener(CHANGE_EVENT, refresh);
     window.addEventListener("storage", refresh);

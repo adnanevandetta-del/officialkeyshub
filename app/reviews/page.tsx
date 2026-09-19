@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Link from "next/link";
+import { addReview, useAccountData } from "../lib/account";
 
 const promises = [
   {
@@ -36,8 +38,12 @@ export default function ReviewsPage() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [text, setText] = useState("");
+  const [sent, setSent] = useState(false);
+  const { account } = useAccountData();
 
   const submit = () => {
+    addReview({ name: name || undefined, rating: rating || 5, text });
+    setSent(true);
     const stars = "★".repeat(rating || 5);
     const msg =
       `New review for Official Keys Hub\n` +
@@ -137,6 +143,20 @@ export default function ReviewsPage() {
             <p className="text-slate-500 text-xs text-center mt-3">
               Your review opens in WhatsApp so we can verify and publish it.
             </p>
+            {sent && (
+              <div className="mt-4 rounded-lg bg-emerald-500/10 border border-emerald-400/40 p-3 text-sm text-emerald-200 text-center">
+                <i className="fas fa-check-circle mr-2"></i>
+                Thank you! Your review is saved on your profile.{" "}
+                <Link href="/profile#reviews" className="font-bold underline">
+                  View my reviews
+                </Link>
+              </div>
+            )}
+            {!account && !sent && (
+              <p className="text-slate-500 text-xs text-center mt-2">
+                <Link href="/login" className="text-sky-400 underline">Sign in</Link> first if you want your reviews saved under your account.
+              </p>
+            )}
           </div>
         </div>
       </main>

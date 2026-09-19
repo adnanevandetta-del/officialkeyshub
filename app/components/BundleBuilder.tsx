@@ -98,9 +98,9 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto mb-8 md:mb-10">
-      <div className="glass rounded-2xl ring-1 ring-emerald-500/40 overflow-hidden">
+      <div className="rounded-2xl ring-1 ring-emerald-500/30 border border-white/10 bg-white/[0.025] backdrop-blur-sm overflow-hidden">
         {/* Header */}
-        <div className="px-4 md:px-6 py-4 md:py-5 bg-gradient-to-r from-emerald-700/40 via-emerald-600/20 to-transparent border-b border-white/10">
+        <div className="px-4 md:px-6 py-4 md:py-5 bg-gradient-to-r from-emerald-700/20 via-emerald-600/10 to-transparent border-b border-white/10">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-3 py-1 text-xs font-bold text-emerald-300">
               <i className="fas fa-wand-magic-sparkles"></i> BUILD YOUR OWN
@@ -127,7 +127,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
                   type="button"
                   onClick={() => setCategory(c.id)}
                   className={`flex-shrink-0 snap-start whitespace-nowrap min-h-[40px] px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                    category === c.id ? "btn-primary" : "glass text-slate-300 hover:text-white"
+                    category === c.id ? "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/30" : "glass text-slate-300 hover:text-white"
                   }`}
                 >
                   {c.label}
@@ -190,7 +190,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
 
           {/* Summary */}
           <div className="lg:col-span-1">
-            <div className="rounded-xl bg-slate-950/50 border border-white/10 p-4 lg:sticky lg:top-24">
+            <div className="rounded-xl bg-slate-950/25 border border-white/10 p-4 lg:sticky lg:top-24">
               <h3 className="text-lg font-bold text-white mb-3">Your Bundle</h3>
 
               <div className="space-y-2 mb-4">
