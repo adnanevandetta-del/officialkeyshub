@@ -84,7 +84,7 @@ export default function RefundPolicy() {
                 <li className="mb-2">
                   <strong>Contact Support:</strong> Reach out to our support team via:
                   <ul className="list-disc pl-6 mt-2">
-                    <li>Email: digitalkeyhubllc@gmail.com</li>
+                    <li>Email: officialkeyshub@gmail.com</li>
                     <li>WhatsApp: Click the floating WhatsApp button</li>
                   </ul>
                 </li>
@@ -198,7 +198,7 @@ export default function RefundPolicy() {
               <ul className="list-none pl-0 text-gray-700">
                 <li className="mb-2">
                   <i className="fas fa-envelope text-[#4ade80] mr-2"></i>
-                  Email: digitalkeyhubllc@gmail.com
+                  Email: officialkeyshub@gmail.com
                 </li>
                 <li>
                   <i className="fab fa-whatsapp text-[#4ade80] mr-2"></i>

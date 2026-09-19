@@ -431,7 +431,7 @@ export default function AboutPage() {
                     Business Details
                   </h3>
                   <div className="space-y-3 text-gray-700">
-                    <p><strong>Company Name:</strong> Digital Key Hub LLC</p>
+                    <p><strong>Business Name:</strong> Official Keys Hub</p>
                     <p><strong>Founded:</strong> 2022</p>
                     <p><strong>Registration:</strong> Sweden (EU)</p>
                     <p><strong>Business Type:</strong> Independent Software Reseller</p>
@@ -445,7 +445,8 @@ export default function AboutPage() {
                     Contact Information
                   </h3>
                   <div className="space-y-3 text-gray-700">
-                    <p><strong>Email:</strong> digitalkeyhubllc@gmail.com</p>
+                    <p><strong>Email:</strong> officialkeyshub@gmail.com</p>
+                    <p><strong>Location:</strong> Stockholm, Sweden</p>
                     <p><strong>WhatsApp:</strong> +1 (601) 975-6129</p>
                     <p><strong>Support Hours:</strong> 24/7 Available</p>
                     <p><strong>Response Time:</strong> Within 30 minutes</p>

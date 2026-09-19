@@ -32,8 +32,8 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="text-sm font-bold uppercase tracking-wider text-gray-600 mb-1">Email Support</h4>
-                <a href="mailto:digitalkeyhubllc@gmail.com" className="text-gray-900 text-[0.95rem] hover:text-[#4ade80] break-all">
-                  digitalkeyhubllc@gmail.com
+                <a href="mailto:officialkeyshub@gmail.com" className="text-gray-900 text-[0.95rem] hover:text-[#4ade80] break-all">
+                  officialkeyshub@gmail.com
                 </a>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="text-gray-900 text-[0.95rem] hover:text-[#25D366]"
                 >
-                  +1 (234) 567-890
+                  +1 (601) 975-6129
                 </a>
               </div>
             </div>

@@ -143,7 +143,7 @@ export default function TermsOfService() {
               <ul className="list-none pl-0 text-gray-700">
                 <li className="mb-2">
                   <i className="fas fa-envelope text-[#4ade80] mr-2"></i>
-                  Email: digitalkeyhubllc@gmail.com
+                  Email: officialkeyshub@gmail.com
                 </li>
                 <li>
                   <i className="fab fa-whatsapp text-[#4ade80] mr-2"></i>

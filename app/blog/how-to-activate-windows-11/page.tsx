@@ -423,7 +423,7 @@ export default function HowToActivateWindows11() {
               </a>
             </div>
             <p className="text-blue-100 mt-6 text-sm">
-              📞 Support 24/7: +1 (601) 975-6129 | 📧 Email: digitalkeyhubllc@gmail.com
+              📞 Support 24/7: +1 (601) 975-6129 | 📧 Email: officialkeyshub@gmail.com
             </p>
           </div>
         </section>

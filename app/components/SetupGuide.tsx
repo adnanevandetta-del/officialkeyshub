@@ -256,8 +256,8 @@ export default function SetupGuide() {
             <p className="text-gray-700">
               If you run into any activation error or need help finding your key, our support team is
               available 24/7. Reach us via the WhatsApp button on this page or email{' '}
-              <a href="mailto:digitalkeyhubllc@gmail.com" className="text-[#4ade80] hover:underline">
-                digitalkeyhubllc@gmail.com
+              <a href="mailto:officialkeyshub@gmail.com" className="text-[#4ade80] hover:underline">
+                officialkeyshub@gmail.com
               </a>{' '}
               and we&apos;ll get you activated fast.
             </p>

@@ -145,7 +145,7 @@ export default function PrivacyPolicy() {
                 <li><strong>Withdraw Consent:</strong> Withdraw consent at any time</li>
               </ul>
               <p className="text-gray-700 mb-4">
-                To exercise these rights, contact us at digitalkeyhubllc@gmail.com
+                To exercise these rights, contact us at officialkeyshub@gmail.com
               </p>
             </section>
 
@@ -194,7 +194,7 @@ export default function PrivacyPolicy() {
               <ul className="list-none pl-0 text-gray-700">
                 <li className="mb-2">
                   <i className="fas fa-envelope text-[#4ade80] mr-2"></i>
-                  Email: digitalkeyhubllc@gmail.com
+                  Email: officialkeyshub@gmail.com
                 </li>
                 <li>
                   <i className="fab fa-whatsapp text-[#4ade80] mr-2"></i>

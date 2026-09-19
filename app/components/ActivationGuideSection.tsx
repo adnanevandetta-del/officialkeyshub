@@ -272,7 +272,7 @@ export default function ActivationGuideSection() {
                   WhatsApp Support
                 </a>
                 <a
-                  href="mailto:digitalkeyhubllc@gmail.com"
+                  href="mailto:officialkeyshub@gmail.com"
                   className="inline-flex items-center gap-2 bg-black/25 border border-white/20 text-white px-6 py-3 rounded-lg font-bold hover:bg-black/40 transition-all"
                 >
                   <i className="fas fa-envelope text-xl"></i>

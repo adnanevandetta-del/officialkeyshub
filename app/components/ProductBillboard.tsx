@@ -164,7 +164,6 @@ export default function ProductBillboard() {
                     <i className="fas fa-lock text-[10px]"></i> Secure payments
                   </span>
                   <div className="flex items-center gap-2.5 text-white/75">
-                    <i className="fab fa-cc-paypal text-xl" title="PayPal"></i>
                     <i className="fab fa-cc-visa text-xl" title="Visa"></i>
                     <i className="fab fa-cc-mastercard text-xl" title="Mastercard"></i>
                     <i className="fab fa-bitcoin text-xl" title="USDT / Crypto"></i>
@@ -285,7 +284,6 @@ export default function ProductBillboard() {
 
                 {/* Secure payments we accept */}
                 <div className="flex items-center gap-2.5 text-white/75">
-                  <i className="fab fa-cc-paypal text-lg" title="PayPal"></i>
                   <i className="fab fa-cc-visa text-lg" title="Visa"></i>
                   <i className="fab fa-cc-mastercard text-lg" title="Mastercard"></i>
                   <i className="fab fa-bitcoin text-lg" title="USDT / Crypto"></i>

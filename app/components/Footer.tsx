@@ -163,21 +163,21 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <i className="fas fa-map-marker-alt text-sky-500 mt-1 text-sm"></i>
                 <a
-                  href="https://www.google.com/maps/place/Kungsgatan+8,+111+43+Stockholm,+Sweden"
+                  href="https://www.google.com/maps/place/Stockholm,+Sweden"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-400 hover:text-sky-500 transition-colors text-sm"
                 >
-                  Kungsgatan 8, 111 43<br />Stockholm, Sweden
+                  Stockholm, Sweden
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <i className="fas fa-envelope text-sky-500 mt-1 text-sm"></i>
                 <a
-                  href="mailto:digitalkeyhubllc@gmail.com"
+                  href="mailto:officialkeyshub@gmail.com"
                   className="text-slate-400 hover:text-sky-500 transition-colors text-sm break-all"
                 >
-                  digitalkeyhubllc@gmail.com
+                  officialkeyshub@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2">
@@ -213,12 +213,12 @@ export default function Footer() {
             <div>
               <p className="text-white text-sm font-semibold">Official Keys Hub — Headquarters</p>
               <a
-                href="https://www.google.com/maps/place/Kungsgatan+8,+111+43+Stockholm,+Sweden"
+                href="https://www.google.com/maps/place/Stockholm,+Sweden"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-sky-500 transition-colors text-sm"
               >
-                Kungsgatan 8, 111 43 Stockholm, Sweden
+                Stockholm, Sweden
               </a>
             </div>
           </div>
@@ -227,7 +227,7 @@ export default function Footer() {
             Registered digital software reseller · Serving customers across the EU &amp; worldwide
           </p>
           <a
-            href="https://www.google.com/maps/place/Kungsgatan+8,+111+43+Stockholm,+Sweden"
+            href="https://www.google.com/maps/place/Stockholm,+Sweden"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sky-500 hover:text-sky-400 text-sm font-semibold inline-flex items-center gap-1"

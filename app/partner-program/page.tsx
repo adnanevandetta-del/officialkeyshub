@@ -256,7 +256,7 @@ export default function PartnerProgramPage() {
               Contact Us on WhatsApp
             </a>
             <a
-              href="mailto:digitalkeyhubllc@gmail.com?subject=Partner Program Inquiry"
+              href="mailto:officialkeyshub@gmail.com?subject=Partner Program Inquiry"
               className="px-8 py-4 bg-sky-800 text-white font-black text-lg rounded-xl hover:bg-sky-900 transition-all shadow-xl"
             >
               <i className="fas fa-envelope mr-2"></i>

@@ -300,7 +300,7 @@ export default function FAQPage() {
                   Chat on WhatsApp
                 </a>
                 <a
-                  href="mailto:digitalkeyhubllc@gmail.com"
+                  href="mailto:officialkeyshub@gmail.com"
                   className="px-8 py-4 bg-white text-sky-700 font-bold rounded-lg border-2 border-sky-600 hover:bg-sky-50 transition-all shadow-lg inline-flex items-center justify-center"
                 >
                   <i className="fas fa-envelope mr-2"></i>

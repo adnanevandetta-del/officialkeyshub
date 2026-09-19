@@ -56,12 +56,10 @@ export default function Products() {
       timers.push(setTimeout(() => { if (!stopped) el.scrollTo({ left: 0, behavior: 'smooth' }); }, 900));
       timers.push(setTimeout(() => { el.style.scrollSnapType = ''; }, 1900));
     };
-    const interval = setInterval(peek, 4500);
-    timers.push(setTimeout(peek, 1500));
+    timers.push(setTimeout(peek, 1500)); // one gentle hint on load, no repeating
 
     return () => {
       ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => el.removeEventListener(ev, stop));
-      clearInterval(interval);
       timers.forEach(clearTimeout);
     };
   }, []);
@@ -133,27 +131,13 @@ export default function Products() {
         </div>
         </div>
         <style>{`
-          @keyframes okh-slide-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
-          @keyframes okh-glow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0), 0 0 10px rgba(249,115,22,.35); }
-            50% { box-shadow: 0 0 0 3px rgba(249,115,22,.25), 0 0 22px rgba(249,115,22,.8); }
-          }
-          @keyframes okh-sweep { 0% { left: -60%; } 60%, 100% { left: 130%; } }
-          @media (min-width: 768px) { @keyframes okh-slide-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } } }
           .okh-bundle-tab {
-            position: relative; overflow: hidden;
-            animation: okh-slide-right 1.2s ease-in-out infinite, okh-glow 1.8s ease-in-out infinite;
-            border: 1px solid rgba(251,146,60,.7);
+            border: 1px solid rgba(251,146,60,.75) !important;
+            background: linear-gradient(135deg, rgba(249,115,22,.28), rgba(251,146,60,.12)) !important;
+            color: #fed7aa !important;
+            box-shadow: 0 0 12px rgba(249,115,22,.25);
           }
-          .okh-bundle-tab::after {
-            content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; pointer-events: none;
-            background: linear-gradient(105deg, transparent, rgba(255,255,255,.6), transparent);
-            transform: skewX(-20deg); animation: okh-sweep 2.4s ease-in-out infinite;
-          }
-          .okh-bundle-tab:hover { animation-play-state: paused; }
-          @media (prefers-reduced-motion: reduce) {
-            .okh-bundle-tab, .okh-bundle-tab::after { animation: none; }
-          }
+          .okh-bundle-tab:hover { color: #fff !important; box-shadow: 0 0 16px rgba(249,115,22,.45); }
         `}</style>
 
         {/* Build-your-own bundle */}
@@ -248,7 +232,7 @@ export default function Products() {
                   >
                     <span className="flex items-center gap-2">
                       Buy Now
-                      <i className="fab fa-paypal text-2xl"></i>
+                      <i className="fas fa-arrow-right text-sm"></i>
                     </span>
                   </button>
                   <button

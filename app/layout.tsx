@@ -114,12 +114,10 @@ export default function RootLayout({
             "image": "https://www.officialkeyshub.com/og-image.jpg",
             "priceRange": "$$",
             "telephone": "+1-601-975-6129",
-            "email": "digitalkeyhubllc@gmail.com",
+            "email": "officialkeyshub@gmail.com",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Kungsgatan 8",
               "addressLocality": "Stockholm",
-              "postalCode": "111 43",
               "addressCountry": "SE"
             },
             "sameAs": [

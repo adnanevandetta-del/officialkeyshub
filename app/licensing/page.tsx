@@ -157,7 +157,7 @@ export default function LicensingPage() {
                 Your key is delivered instantly after payment, along with clear step-by-step activation
                 instructions. If you ever get stuck, our support team is available around the clock to walk
                 you through activation or issue a replacement — by email at{" "}
-                <a href="mailto:digitalkeyhubllc@gmail.com" className="text-[#16a34a] font-semibold hover:underline">digitalkeyhubllc@gmail.com</a>{" "}
+                <a href="mailto:officialkeyshub@gmail.com" className="text-[#16a34a] font-semibold hover:underline">officialkeyshub@gmail.com</a>{" "}
                 or on{" "}
                 <a href="https://wa.me/16019756129" target="_blank" rel="noopener noreferrer" className="text-[#16a34a] font-semibold hover:underline">WhatsApp</a>.
               </p>
