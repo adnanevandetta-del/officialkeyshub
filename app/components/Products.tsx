@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useCart } from './CartContext';
-import { getProductImage } from '../lib/productImage';
+import { getProductImage, getProductBoxImage } from '../lib/productImage';
 import Link from 'next/link';
 import { catalog, slugify } from '../lib/catalog';
 import { paypalPaymentUrl } from '../lib/payment';
@@ -88,52 +88,8 @@ export default function Products() {
 
       window.addEventListener('categoryChanged', handleCategoryChange as EventListener);
       
-      // Add Product Schema for SEO
-      const productSchema = {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "itemListElement": [
-          {
-            "@type": "Product",
-            "name": "Windows 11 Pro",
-            "description": "Latest Windows OS with professional features",
-            "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97",
-            "brand": { "@type": "Brand", "name": "Microsoft" },
-            "offers": {
-              "@type": "Offer",
-              "price": "38.99",
-              "priceCurrency": "USD",
-              "availability": "https://schema.org/InStock",
-              "priceValidUntil": "2027-12-31"
-            }
-          },
-          {
-            "@type": "Product",
-            "name": "Office 2021 Professional Plus",
-            "description": "Complete Office suite with all applications",
-            "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4",
-            "brand": { "@type": "Brand", "name": "Microsoft" },
-            "offers": {
-              "@type": "Offer",
-              "price": "48.99",
-              "priceCurrency": "USD",
-              "availability": "https://schema.org/InStock",
-              "priceValidUntil": "2027-12-31"
-            }
-          }
-        ]
-      };
-      
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.text = JSON.stringify(productSchema);
-      document.head.appendChild(script);
-      
       return () => {
         window.removeEventListener('categoryChanged', handleCategoryChange as EventListener);
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
       };
     }
   }, []);
@@ -322,89 +278,77 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Payment Modal */}
+      {/* Payment Modal — kept short: price, how to pay, link to the full product page */}
       {showModal && selectedProduct && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md" onClick={() => setShowModal(false)}>
-          <div className="glass-strong rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70 backdrop-blur-md" onClick={() => setShowModal(false)}>
+          <div className="glass-strong rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-md w-full max-h-[92vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-sky-600 to-sky-700 p-6 rounded-t-2xl">
-              <div className="flex justify-between items-start">
-                <div className="flex-1">
-                  <h2 className="text-2xl font-black text-white mb-2">{selectedProduct.name}</h2>
-                  <p className="text-sky-50">{selectedProduct.description}</p>
+            <div className="sticky top-0 z-10 bg-gradient-to-r from-sky-600 to-sky-700 px-5 py-4 rounded-t-2xl">
+              <div className="flex justify-between items-center gap-3">
+                <div className="relative w-11 h-14 flex-shrink-0">
+                  <Image
+                    src={getProductBoxImage(selectedProduct.name)}
+                    alt=""
+                    fill
+                    unoptimized
+                    className="object-contain drop-shadow-md"
+                    sizes="44px"
+                  />
                 </div>
-                <button 
+                <h2 className="flex-1 text-lg md:text-xl font-black text-white leading-snug">{selectedProduct.name}</h2>
+                <button
                   onClick={() => setShowModal(false)}
-                  className="ml-4 text-white hover:text-sky-100 transition-colors"
+                  aria-label="Close"
+                  className="flex-shrink-0 w-9 h-9 -mr-2 flex items-center justify-center text-white hover:text-sky-100 transition-colors"
                 >
-                  <i className="fas fa-times text-2xl"></i>
+                  <i className="fas fa-times text-xl"></i>
                 </button>
               </div>
             </div>
 
-            {/* Product Details */}
-            <div className="p-6">
-              {/* Product Image — clean, centered tile */}
-              <div className="mb-6 relative h-32 w-full rounded-xl overflow-hidden border border-white/10 bg-gradient-to-b from-slate-800/80 to-slate-900 flex items-center justify-center">
-                <Image
-                  src={getProductImage(selectedProduct.name)}
-                  alt={selectedProduct.name}
-                  fill
-                  unoptimized
-                  className="object-contain p-2"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-
+            <div className="p-5 space-y-4">
               {/* Price */}
-              <div className="mb-6 bg-sky-600/10 rounded-xl p-4 border border-sky-500/30">
-                <div className="flex items-baseline gap-3 justify-center">
+              <div>
+                <div className="flex items-baseline gap-3">
                   <span className="text-4xl font-black text-white">{selectedProduct.price}</span>
-                  <span className="text-xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
+                  <span className="text-lg text-slate-500 line-through">{selectedProduct.originalPrice}</span>
+                </div>
+                <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-300">
+                  <span className="flex items-center gap-1.5"><i className="fas fa-bolt text-sky-400"></i> Instant delivery</span>
+                  <span className="flex items-center gap-1.5"><i className="fas fa-shield-halved text-sky-400"></i> Genuine license</span>
+                  <span className="flex items-center gap-1.5"><i className="fas fa-rotate-left text-sky-400"></i> Money-back guarantee</span>
                 </div>
               </div>
 
-              {/* Features */}
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-white mb-3">What's Included:</h3>
-                <ul className="space-y-2">
-                  {selectedProduct.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-slate-300">
-                      <i className="fas fa-check-circle text-sky-500 mt-1 flex-shrink-0"></i>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
+              {/* Custom bundles have no product page, so list what is in them */}
+              {selectedProduct.name.startsWith('Custom Bundle') && (
+                <ul className="space-y-1.5 rounded-xl bg-white/[0.04] border border-white/10 p-3">
+                  {selectedProduct.features
+                    .filter((f) => f !== 'Instant Delivery')
+                    .map((f, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
+                        <i className="fas fa-check text-sky-500 mt-1 text-xs flex-shrink-0"></i>
+                        <span>{f}</span>
+                      </li>
+                    ))}
                 </ul>
-              </div>
+              )}
 
               {/* Payment Methods */}
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-white mb-4 text-center">Choose Payment Method</h3>
-                <div className="grid grid-cols-1 gap-3">
-                  {/* PayPal Button */}
-                  <div className="p-4 bg-blue-500/10 border border-blue-400/40 rounded-xl">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-                        <i className="fab fa-paypal text-white text-2xl"></i>
-                      </div>
-                      <div>
-                        <p className="font-bold text-white">Pay with PayPal</p>
-                        <p className="text-sm text-slate-400">Secure checkout • Buyer protection</p>
-                      </div>
-                    </div>
-                    <a
-                      href={paypalPaymentUrl(selectedProduct.name, selectedProduct.price)}
-                      onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'paypal')}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-bold hover:bg-blue-700 transition-all"
-                    >
-                      Pay {selectedProduct.price} with PayPal
-                    </a>
-                    <p className="text-xs text-slate-400 mt-2 text-center">
-                      We'll send secure PayPal payment details and your key by email
-                    </p>
-                  </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-300 mb-2">Choose how to pay</h3>
+                <div className="grid grid-cols-1 gap-2.5">
+                  {/* PayPal */}
+                  <a
+                    href={paypalPaymentUrl(selectedProduct.name, selectedProduct.price)}
+                    onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'paypal')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3 min-h-[56px] px-4 py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all shadow-lg"
+                  >
+                    <i className="fab fa-paypal text-2xl"></i>
+                    Pay {selectedProduct.price} with PayPal
+                  </a>
 
                   {/* USDT — send directly to the store wallet, then email proof */}
                   {usdtOrderId ? (
@@ -419,15 +363,13 @@ export default function Products() {
                       onClick={() =>
                         setUsdtOrderId(recordQuickOrder(selectedProduct.name, selectedProduct.price, 'usdt').id)
                       }
-                      className="flex items-center justify-between p-4 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all group text-left w-full"
+                      className="flex items-center justify-between min-h-[56px] px-4 py-3 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all group text-left w-full"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center group-hover:bg-green-500/25 transition-colors">
-                          <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
-                        </div>
+                        <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
                         <div>
-                          <p className="font-bold text-white">Pay with USDT</p>
-                          <p className="text-sm text-slate-400">Send crypto, then email the transaction screenshot</p>
+                          <p className="font-bold text-white leading-tight">Pay with USDT</p>
+                          <p className="text-xs text-slate-400">Send crypto, then email the screenshot</p>
                         </div>
                       </div>
                       <i className="fas fa-arrow-right text-green-400 group-hover:translate-x-1 transition-transform"></i>
@@ -440,66 +382,31 @@ export default function Products() {
                     onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'whatsapp')}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all group shadow-lg"
+                    className="flex items-center justify-between min-h-[56px] px-4 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all group shadow-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <i className="fab fa-whatsapp text-white text-2xl"></i>
-                      </div>
+                      <i className="fab fa-whatsapp text-2xl"></i>
                       <div>
-                        <p className="font-bold text-white">Chat on WhatsApp</p>
-                        <p className="text-sm text-sky-100">Get instant support</p>
+                        <p className="font-bold leading-tight">Chat on WhatsApp</p>
+                        <p className="text-xs text-white/90">Instant support &amp; payment</p>
                       </div>
                     </div>
-                    <i className="fas fa-arrow-right text-white group-hover:translate-x-1 transition-transform"></i>
+                    <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                   </a>
                 </div>
+                <p className="text-xs text-slate-400 mt-3 text-center">Your key is sent to your email after payment.</p>
               </div>
 
-              {/* Trust Badges */}
-              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/10">
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-shield-alt text-sky-500"></i>
-                  <span>100% Genuine</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-shipping-fast text-sky-500"></i>
-                  <span>Instant Delivery</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-headset text-sky-500"></i>
-                  <span>24/7 Support</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <i className="fas fa-undo text-sky-500"></i>
-                  <span>Money Back</span>
-                </div>
-              </div>
-
-              {/* Product Description & Positivity */}
-              <div className="mt-6 pt-6 border-t border-white/10">
-                <div className="bg-white/[0.04] border border-white/10 rounded-xl p-6">
-                  <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                    <i className="fas fa-info-circle text-sky-500"></i>
-                    About This Product
-                  </h4>
-                  <p className="text-slate-300 mb-4 leading-relaxed">
-                    {selectedProduct.description}. This is a genuine Microsoft product that comes with full support and lifetime validity.
-                    Perfect for professionals, students, and businesses looking for reliable software solutions.
-                  </p>
-                  <div className="flex items-start gap-3 bg-black/20 rounded-lg p-4 border-l-4 border-sky-500">
-                    <i className="fas fa-check-circle text-sky-500 text-xl mt-1"></i>
-                    <div>
-                      <p className="font-semibold text-white mb-1">Why Choose Us?</p>
-                      <p className="text-sm text-slate-400">
-                        Join thousands of satisfied customers who trust us for authentic Microsoft licenses. 
-                        We provide instant delivery, genuine product keys, and dedicated 24/7 support to ensure your complete satisfaction. 
-                        Every purchase is backed by our money-back guarantee!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Everything else lives on the product page */}
+              {!selectedProduct.name.startsWith('Custom Bundle') && (
+                <Link
+                  href={`/products/${slugify(selectedProduct.name)}`}
+                  onClick={() => setShowModal(false)}
+                  className="flex items-center justify-center gap-2 min-h-[44px] pt-3 border-t border-white/10 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-colors"
+                >
+                  See full details, features &amp; FAQ <i className="fas fa-arrow-right text-xs"></i>
+                </Link>
+              )}
             </div>
           </div>
         </div>

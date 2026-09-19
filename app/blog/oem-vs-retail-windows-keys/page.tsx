@@ -4,6 +4,7 @@ import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
 
 export const metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/oem-vs-retail-windows-keys" },
   title: "OEM vs Retail Windows Keys: Complete Difference Guide 2026",
   description: "What's the difference between OEM and Retail Windows keys? Compare pricing, transferability, support, and legality. Which should you buy?",
   keywords: "oem vs retail windows keys, windows key types, oem license vs retail, volume license windows, can i transfer windows oem key",

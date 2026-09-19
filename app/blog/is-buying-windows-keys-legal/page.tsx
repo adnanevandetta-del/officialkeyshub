@@ -4,6 +4,7 @@ import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
 
 export const metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/is-buying-windows-keys-legal" },
   title: "Is Buying Cheap Windows Keys Legal? | Official Keys Hub",
   description: "Are cheap Windows keys legal? Complete legal analysis of buying discounted Windows licenses, EU court ruling, and how to avoid scams. Truth revealed.",
   keywords: "are cheap windows keys legal, gray market keys, is buying windows keys legal, oem key legality, usedsoft ruling, microsoft key resale legal",

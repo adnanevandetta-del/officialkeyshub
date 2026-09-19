@@ -92,7 +92,13 @@ export async function generateMetadata({
       description: `${p.name} for ${p.price}. Instant delivery, genuine license, 30-day money-back guarantee.`,
       url,
       type: "website",
-      images: [`${SITE}${getProductImage(p.name)}`],
+      images: [{ url: `${SITE}/og/${p.slug}.jpg`, width: 1200, height: 630, alt: `${p.name} — Official Keys Hub` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${p.name} — Genuine Microsoft Key | Official Keys Hub`,
+      description: `${p.name} for ${p.price}. Instant delivery, genuine license, 30-day money-back guarantee.`,
+      images: [`${SITE}/og/${p.slug}.jpg`],
     },
   };
 }
@@ -107,7 +113,7 @@ export default async function ProductPage({
   if (!p) notFound();
 
   const url = `${SITE}/products/${p.slug}`;
-  const img = `${SITE}${getProductImage(p.name)}`;
+  const img = `${SITE}/og/${p.slug}.jpg`;
   const cat = categoryLabel[p.category];
   const faqs = faqsFor(p);
   const related = allProducts

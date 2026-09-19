@@ -4,6 +4,7 @@ import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
 
 export const metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/cheap-windows-keys-safe" },
   title: "Are Cheap Windows Keys Safe? Complete Safety Guide 2026",
   description: "Are cheap Windows keys safe? Security analysis, scam detection, and how to buy Windows keys safely. Complete 2026 buyer protection guide.",
   keywords: "are cheap windows keys safe, cheap windows keys security, buy windows keys safely, windows key scams, legitimate windows keys",

@@ -10,12 +10,12 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         // Note: /_next/ is intentionally NOT disallowed — blocking it stops
         // crawlers from fetching the site's CSS/JS (flagged as blocked resources).
-        disallow: ['/api/', '/admin/', '/private/', '/checkout/', '/orders/', '/profile/'],
+        disallow: ['/api/', '/admin/', '/private/', '/checkout/', '/orders/', '/profile/', '/login/'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/checkout/', '/orders/', '/profile/'],
+        disallow: ['/api/', '/admin/', '/checkout/', '/orders/', '/profile/', '/login/'],
       },
       {
         userAgent: 'Googlebot-Image',
@@ -24,7 +24,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Bingbot',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/checkout/', '/orders/', '/profile/'],
+        disallow: ['/api/', '/admin/', '/checkout/', '/orders/', '/profile/', '/login/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

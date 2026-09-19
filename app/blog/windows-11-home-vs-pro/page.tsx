@@ -4,6 +4,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/windows-11-home-vs-pro" },
   title: "Windows 11 Home vs Pro (2026) | Official Keys Hub",
   description: "Compare Windows 11 Home vs Pro. See all differences, features, prices. Which edition is right for you? Complete guide with comparison table.",
   keywords: "windows 11 home vs pro, windows 11 editions, windows 11 comparison, windows 11 pro features, which windows 11 to buy",

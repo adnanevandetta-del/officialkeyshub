@@ -26,6 +26,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.officialkeyshub.com"),
   title: "Official Keys Hub | Genuine Microsoft Windows & Office Licenses",
   description: "Official Keys Hub is a digital software reseller offering Windows, Microsoft Office, Windows Server and security software licenses. Instant delivery, activation support and a 30-day money-back guarantee.",
   keywords: [
@@ -73,9 +74,11 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Official Keys Hub",
     url: "https://www.officialkeyshub.com",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub - genuine Microsoft Windows & Office licenses" }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og-image.jpg"],
     title: "Official Keys Hub | Genuine Microsoft Windows & Office Licenses",
     description: "Genuine Windows, Office and Microsoft software licenses. Instant delivery, lifetime licensing and a 30-day money-back guarantee.",
   },
@@ -108,7 +111,7 @@ export default function RootLayout({
             "description": "Digital software reseller offering genuine Windows, Office, Server, and security software licenses with instant delivery and activation support",
             "url": "https://www.officialkeyshub.com",
             "logo": "https://www.officialkeyshub.com/logo.png",
-            "image": "https://www.officialkeyshub.com/og-image.png",
+            "image": "https://www.officialkeyshub.com/og-image.jpg",
             "priceRange": "$$",
             "telephone": "+1-601-975-6129",
             "email": "digitalkeyhubllc@gmail.com",
@@ -118,13 +121,6 @@ export default function RootLayout({
               "addressLocality": "Stockholm",
               "postalCode": "111 43",
               "addressCountry": "SE"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.8",
-              "reviewCount": "5000",
-              "bestRating": "5",
-              "worstRating": "1"
             },
             "sameAs": [
               "https://wa.me/16019756129"

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
 
 export const metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/office-2021-vs-office-365" },
   title: "Office 2021 vs Office 365: Which Should You Buy in 2026?",
   description: "Office 2021 vs Office 365 comparison - pricing, features, updates, and value. One-time purchase vs subscription. Complete guide for 2026.",
   keywords: "office 2021 vs 365, office 2021 vs microsoft 365, office one-time vs subscription, should i buy office 2021, office 365 worth it",
