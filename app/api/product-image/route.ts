@@ -1,8 +1,9 @@
 import { NextRequest } from "next/server";
 
-// Generates a clean, branded product "photo" as an SVG for each product —
-// consistent styling, correct logo + colors + product name. Keeps imagery
-// accurate and copyright-safe (no third-party box art).
+// Generates a branded retail-box product image as an SVG for each product —
+// Official Keys Hub logo on the front and spine, the product's glyph, edition
+// and name. Consistent styling, accurate to each product, and copyright-safe
+// (no third-party box art).
 
 interface Meta {
   accent: string;
@@ -208,6 +209,25 @@ function watermarkOf(name: string): string {
   return name.trim().charAt(0).toUpperCase();
 }
 
+// Split a product title into up to `maxLines` lines of ~`max` characters.
+function wrapTitle(s: string, max = 16, maxLines = 3): string[] {
+  const words = s.trim().split(/\s+/);
+  const lines: string[] = [];
+  let cur = "";
+  for (const w of words) {
+    if (!cur) cur = w;
+    else if ((cur + " " + w).length <= max) cur += " " + w;
+    else { lines.push(cur); cur = w; }
+  }
+  if (cur) lines.push(cur);
+  if (lines.length > maxLines) {
+    const kept = lines.slice(0, maxLines);
+    kept[maxLines - 1] = kept[maxLines - 1].slice(0, max - 1) + "…";
+    return kept;
+  }
+  return lines;
+}
+
 export function GET(req: NextRequest) {
   const name = req.nextUrl.searchParams.get("name") || "Microsoft Product";
   const meta = metaFor(name);
@@ -221,46 +241,86 @@ export function GET(req: NextRequest) {
 
   // Split "Base - Variant" into title + variant subtitle.
   const [base, variant] = name.split(" - ");
-  const title = esc(base.length > 26 ? base.slice(0, 25) + "…" : base);
-  const subtitle = esc(variant || meta.brand);
-  const chipW = Math.max(120, edition.length * 12 + 44);
+  const lines = wrapTitle(base);
+  const titleSize = Math.max(...lines.map((l) => l.length)) > 14 ? 25 : 28;
+  const titleY = 392;
+  const variantY = titleY + (lines.length - 1) * 30 + 28;
+  const titleSvg = lines
+    .map((l, i) => `<text x="370" y="${titleY + i * 30}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="${titleSize}" font-weight="800" fill="#ffffff">${esc(l)}</text>`)
+    .join("\n  ");
+  const variantSvg = variant
+    ? `<text x="370" y="${variantY}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#ffffff" fill-opacity="0.85">${esc(variant)}</text>`
+    : "";
+  const chipW = Math.max(110, edition.length * 10 + 40);
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="${esc(name)}">
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="${esc(name)} — Official Keys Hub">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0a0e1a"/>
-      <stop offset="1" stop-color="${accent2}"/>
+      <stop offset="1" stop-color="#111a2e"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="38%" r="55%">
-      <stop offset="0" stop-color="${accent}" stop-opacity="0.55"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="${accent}" stop-opacity="0.45"/>
       <stop offset="1" stop-color="${accent}" stop-opacity="0"/>
     </radialGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40 0 H0 V40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
-    </pattern>
-    <filter id="soft"><feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#000" flood-opacity="0.45"/></filter>
+    <linearGradient id="front" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${accent}"/>
+      <stop offset="1" stop-color="${accent2}"/>
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.45" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="spine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="${accent2}"/>
+      <stop offset="1" stop-color="#05070d"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.22"/>
+      <stop offset="0.5" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="boxclip"><rect x="220" y="70" width="300" height="460" rx="4"/></clipPath>
+    <filter id="soft"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/></filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
   </defs>
 
   <rect width="800" height="600" fill="url(#bg)"/>
-  <rect width="800" height="600" fill="url(#grid)"/>
-  <rect width="800" height="600" fill="url(#glow)"/>
+  <ellipse cx="400" cy="300" rx="330" ry="270" fill="url(#glow)"/>
+  <ellipse cx="410" cy="548" rx="215" ry="16" fill="#000" fill-opacity="0.55" filter="url(#blur)"/>
 
-  <text x="400" y="300" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="300" font-weight="900" fill="#ffffff" fill-opacity="0.05">${watermark}</text>
+  <!-- Box spine (right side) -->
+  <polygon points="520,70 580,92 580,508 520,530" fill="url(#spine)"/>
+  <text transform="translate(552,300) rotate(90)" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="20" font-weight="900" letter-spacing="1"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
 
-  <g filter="url(#soft)">${meta.glyph}</g>
+  <!-- Box front -->
+  <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#front)"/>
+  <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#shade)"/>
+  <text clip-path="url(#boxclip)" x="370" y="335" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="230" font-weight="900" fill="#ffffff" fill-opacity="0.07">${watermark}</text>
+  <polygon points="220,70 400,70 220,300" fill="url(#gloss)"/>
+  <rect x="220" y="70" width="300" height="460" rx="4" fill="none" stroke="#fff" stroke-opacity="0.18"/>
 
-  <g transform="translate(400,92)">
-    <rect x="${-chipW / 2}" y="-20" width="${chipW}" height="40" rx="20" fill="${accent}" fill-opacity="0.9"/>
-    <text x="0" y="7" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="1">${esc(edition.toUpperCase())}</text>
+  <!-- Store logo on the box -->
+  <rect x="220" y="86" width="300" height="76" fill="#000" fill-opacity="0.32"/>
+  <text x="370" y="118" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="27" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
+  <line x1="290" y1="132" x2="450" y2="132" stroke="#fff" stroke-opacity="0.35"/>
+  <text x="370" y="153" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" fill-opacity="0.8" letter-spacing="2">${esc(meta.brand.toUpperCase())}</text>
+
+  <!-- Product glyph -->
+  <g filter="url(#soft)"><g transform="translate(370,242) scale(0.62) translate(-400,-235)">${meta.glyph}</g></g>
+
+  <!-- Edition chip -->
+  <g transform="translate(370,335)">
+    <rect x="${-chipW / 2}" y="-15" width="${chipW}" height="30" rx="15" fill="#000" fill-opacity="0.35" stroke="#fff" stroke-opacity="0.5"/>
+    <text x="0" y="5" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="1.5">${esc(edition.toUpperCase())}</text>
   </g>
 
-  <text x="400" y="440" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="46" font-weight="800" fill="#ffffff">${title}</text>
-  <text x="400" y="482" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="26" font-weight="600" fill="${accent}">${subtitle}</text>
+  <!-- Product name -->
+  ${titleSvg}
+  ${variantSvg}
 
-  <g transform="translate(400,528)">
-    <rect x="-118" y="-20" width="236" height="40" rx="20" fill="#ffffff" fill-opacity="0.08" stroke="#38bdf8" stroke-opacity="0.5"/>
-    <text x="0" y="6" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="19" font-weight="700" fill="#38bdf8" letter-spacing="1">GENUINE LICENSE KEY</text>
-  </g>
+  <!-- Bottom band -->
+  <rect x="220" y="492" width="300" height="38" fill="#000" fill-opacity="0.45"/>
+  <text x="370" y="516" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="2">GENUINE LICENSE KEY</text>
 </svg>`;
 
   return new Response(svg, {

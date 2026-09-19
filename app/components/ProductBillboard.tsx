@@ -221,7 +221,7 @@ export default function ProductBillboard() {
                             alt={product.name}
                             fill
                             unoptimized
-                            className="object-cover"
+                            className="object-contain p-2"
                             priority={index === 0}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>

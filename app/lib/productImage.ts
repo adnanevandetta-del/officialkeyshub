@@ -26,6 +26,9 @@ const PRODUCT_PHOTOS: Record<string, string> = {
   "Office 2021 Pro Plus - Bind Key": "/products/office-2021-pro-plus-key.jpg",
   "Office 2021 Pro Plus - Phone Key": "/products/office-2021-pro-plus-key.jpg",
   "Office 2021 Home & Business": "/products/office-2021-home-and-business.jpg",
+
+  // Names used by the homepage billboard
+  "Office 2021 Pro Plus": "/products/office-2021-professional-plus.png",
 };
 
 export function getProductImage(name: string): string {
