@@ -160,13 +160,13 @@ export default function TransferWindowsLicense() {
                 <Link href="/blog/cheap-windows-11-keys-2026" className="text-blue-600 hover:underline">
                   cheap Windows 11 key
                 </Link>{" "}
-                starts at just $12.99 — often less than the time spent troubleshooting a transfer.
+                starts at just $29.99 — often less than the time spent troubleshooting a transfer.
               </p>
 
               {/* CTA */}
               <div className="not-prose bg-gradient-to-br from-sky-700 to-sky-800 rounded-2xl p-8 text-center text-white mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">Need a Fresh Windows License?</h2>
-                <p className="text-sky-100 mb-6 max-w-2xl mx-auto">Genuine Windows 10 &amp; 11 keys from $12.99 — instant delivery and lifetime activation.</p>
+                <p className="text-sky-100 mb-6 max-w-2xl mx-auto">Genuine Windows 10 &amp; 11 keys from $29.99 — instant delivery and lifetime activation.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <Link href="/#products" className="px-8 py-4 bg-white text-sky-800 font-bold rounded-lg hover:bg-sky-50 transition-all shadow-lg">
                     Browse Windows Keys →

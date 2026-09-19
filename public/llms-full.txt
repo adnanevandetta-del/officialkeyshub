@@ -12,9 +12,9 @@
 ## What the site sells
 
 - Microsoft Windows keys: Windows 11 Pro/Home, Windows 10 Pro/Home (online,
-  phone-activation, and OEM/retail variants). Typical price range: ~$12.99–$21.99.
+  phone-activation, and OEM/retail variants). Typical price range: ~$29.99–$49.99.
 - Microsoft Office keys: Office 2021 Professional Plus, Office 2019,
-  Office 365 / Microsoft 365. Typical price range: ~$29.99–$39.99.
+  Office 365 / Microsoft 365. Typical price range: ~$39.99–$59.99.
 - Windows Server: Server 2022 / 2019 (Standard, Datacenter). From ~$49.99.
 - Other Microsoft products: Visio, Project, Visual Studio, SQL Server, and
   security/antivirus software.

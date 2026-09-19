@@ -59,7 +59,7 @@ export default function Windows11HomeVsPro() {
                     <i className="fas fa-home text-2xl"></i>
                     Windows 11 Home
                   </h3>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">$14.99</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">$34.99</div>
                   <p className="text-gray-600 text-sm">Best for home users & students</p>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-purple-200">
@@ -67,7 +67,7 @@ export default function Windows11HomeVsPro() {
                     <i className="fas fa-briefcase text-2xl"></i>
                     Windows 11 Pro
                   </h3>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">$19.99</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">$39.99</div>
                   <p className="text-gray-600 text-sm">Best for professionals & businesses</p>
                 </div>
               </div>
@@ -111,8 +111,8 @@ export default function Windows11HomeVsPro() {
                     </tr>
                     <tr className="border-b border-gray-200">
                       <td className="p-4">Our Price</td>
-                      <td className="text-center p-4 font-bold text-blue-600">$14.99</td>
-                      <td className="text-center p-4 font-bold text-purple-600">$19.99</td>
+                      <td className="text-center p-4 font-bold text-blue-600">$34.99</td>
+                      <td className="text-center p-4 font-bold text-purple-600">$39.99</td>
                     </tr>
                     <tr className="border-b border-gray-200">
                       <td className="p-4">Microsoft Price</td>
@@ -357,7 +357,7 @@ export default function Windows11HomeVsPro() {
                     </li>
                   </ul>
                   <div className="mt-6 p-4 bg-white rounded-lg">
-                    <p className="font-bold text-blue-900">💰 Price: $14.99</p>
+                    <p className="font-bold text-blue-900">💰 Price: $34.99</p>
                     <a href="/#products" className="inline-block mt-3 px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors">
                       Buy Home →
                     </a>
@@ -396,7 +396,7 @@ export default function Windows11HomeVsPro() {
                     </li>
                   </ul>
                   <div className="mt-6 p-4 bg-white rounded-lg">
-                    <p className="font-bold text-purple-900">💰 Price: $19.99 (+$5)</p>
+                    <p className="font-bold text-purple-900">💰 Price: $39.99 (+$5)</p>
                     <a href="/#products" className="inline-block mt-3 px-6 py-2 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors">
                       Buy Pro →
                     </a>
@@ -459,7 +459,7 @@ export default function Windows11HomeVsPro() {
 
               <div className="not-prose space-y-4 mb-8">
                 {[
-                  { q: "Can I upgrade from Home to Pro later?", a: "Yes! You can upgrade anytime by purchasing a Windows 11 Pro upgrade key ($19.99). No reinstallation needed - just enter the Pro key and upgrade in minutes." },
+                  { q: "Can I upgrade from Home to Pro later?", a: "Yes! You can upgrade anytime by purchasing a Windows 11 Pro upgrade key ($39.99). No reinstallation needed - just enter the Pro key and upgrade in minutes." },
                   { q: "Is Windows 11 Pro faster than Home?", a: "No. Performance is identical for gaming and everyday tasks. Pro has more features but doesn't run faster." },
                   { q: "Can Home users use Remote Desktop?", a: "Home can CONNECT to other PCs using Remote Desktop, but can't HOST (let others connect to it). Pro can both host and connect." },
                   { q: "Is the $5 difference worth it?", a: "If you need ANY Pro feature (Remote Desktop, BitLocker, Hyper-V), yes. If you're unsure, start with Home and upgrade later if needed." },
@@ -497,19 +497,19 @@ export default function Windows11HomeVsPro() {
                   </p>
                   <p>
                     <strong className="text-sky-700">Still unsure?</strong> Start with Home. You can 
-                    upgrade to Pro anytime for $19.99 if you discover you need Pro features.
+                    upgrade to Pro anytime for $39.99 if you discover you need Pro features.
                   </p>
                 </div>
 
                 <div className="mt-6 grid md:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-lg">
-                    <p className="font-bold text-blue-900 mb-2">Windows 11 Home: $14.99</p>
+                    <p className="font-bold text-blue-900 mb-2">Windows 11 Home: $34.99</p>
                     <a href="/#products" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors text-center w-full">
                       Buy Home →
                     </a>
                   </div>
                   <div className="bg-white p-4 rounded-lg">
-                    <p className="font-bold text-purple-900 mb-2">Windows 11 Pro: $19.99</p>
+                    <p className="font-bold text-purple-900 mb-2">Windows 11 Pro: $39.99</p>
                     <a href="/#products" className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors text-center w-full">
                       Buy Pro →
                     </a>
@@ -528,7 +528,7 @@ export default function Windows11HomeVsPro() {
               Ready to Buy Windows 11?
             </h2>
             <p className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
-              Genuine Windows 11 keys from $14.99. Instant delivery, lifetime license, 
+              Genuine Windows 11 keys from $34.99. Instant delivery, lifetime license, 
               30-day money-back guarantee. Chosen by hundreds of customers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

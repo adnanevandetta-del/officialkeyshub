@@ -218,9 +218,9 @@ export default function BuyGenuineOfficeCheap() {
                   </thead>
                   <tbody>
                     {[
-                      ["Office 2021 Professional Plus", "$439.99", "from $29.99"],
-                      ["Office 2019 Professional Plus", "$439.99", "from $24.99"],
-                      ["Office Home & Business 2021", "$249.99", "from $39.99"],
+                      ["Office 2021 Professional Plus", "$439.99", "from $49.99"],
+                      ["Office 2019 Professional Plus", "$439.99", "from $44.99"],
+                      ["Office Home & Business 2021", "$249.99", "from $44.99"],
                     ].map((row, i) => (
                       <tr key={i} className="border-b border-gray-200">
                         <td className="p-4 text-gray-800">{row[0]}</td>

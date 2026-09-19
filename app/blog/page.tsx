@@ -37,7 +37,7 @@ const blogPosts = [
   },
   {
     slug: "cheap-windows-11-keys-2026",
-    title: "Cheap Windows 11 Keys 2026: Buy Genuine Keys from $12.99",
+    title: "Cheap Windows 11 Keys 2026: Buy Genuine Keys from $34.99",
     excerpt: "Where to buy cheap, genuine Windows 11 Pro & Home keys in 2026. Prices compared, safety tips, and how activation works. Up to 90% off.",
     category: "Buying",
     readTime: "10 min",
@@ -46,7 +46,7 @@ const blogPosts = [
   },
   {
     slug: "buy-cheap-microsoft-office-keys-2026",
-    title: "Buy Cheap Microsoft Office Keys 2026: Genuine Licenses from $29.99",
+    title: "Buy Cheap Microsoft Office Keys 2026: Genuine Licenses from $39.99",
     excerpt: "Buy authentic Office 2021, 2019 & Office 365 product keys at up to 90% off. Genuine licenses, instant delivery, lifetime support.",
     category: "Buying",
     readTime: "8 min",

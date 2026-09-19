@@ -96,7 +96,7 @@ export default function ProductsIndexPage() {
                     <p className="text-white text-sm font-semibold line-clamp-2 mb-2 flex-grow">{p.name}</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-lg font-black text-white">{p.price}</span>
-                      <span className="text-xs text-slate-500 line-through">{p.originalPrice}</span>
+                      {p.originalPrice && <span className="text-xs text-slate-500 line-through">{p.originalPrice}</span>}
                     </div>
                   </Link>
                 ))}

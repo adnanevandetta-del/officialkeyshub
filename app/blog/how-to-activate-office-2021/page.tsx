@@ -163,7 +163,7 @@ export default function HowToActivateOffice2021() {
               {/* CTA */}
               <div className="not-prose bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-8 text-center text-white mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">Need an Office 2021 Key?</h2>
-                <p className="text-orange-100 mb-6 max-w-2xl mx-auto">Genuine Office 2021 Professional Plus from $29.99 — instant delivery and lifetime activation.</p>
+                <p className="text-orange-100 mb-6 max-w-2xl mx-auto">Genuine Office 2021 Professional Plus from $49.99 — instant delivery and lifetime activation.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <Link href="/#products" className="px-8 py-4 bg-white text-orange-600 font-bold rounded-lg hover:bg-orange-50 transition-all shadow-lg">
                     Browse Office Keys →

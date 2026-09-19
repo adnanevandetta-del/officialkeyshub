@@ -40,7 +40,7 @@ export default function IsItLegalPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              You can buy Windows 11 Pro from Microsoft for <strong>$199</strong> or find "the same key" online for <strong>$20</strong>. That's 90% cheaper. But is it legal? Will Microsoft ban you? Is it a scam? This comprehensive guide answers every legal question about buying cheap Windows keys.
+              You can buy Windows 11 Pro from Microsoft for <strong>$199</strong> or find "the same key" online for <strong>under $40</strong>. That's about 80% cheaper. But is it legal? Will Microsoft ban you? Is it a scam? This comprehensive guide answers every legal question about buying cheap Windows keys.
             </p>
 
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
@@ -297,7 +297,7 @@ export default function IsItLegalPage() {
             <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6 mb-8">
               <h3 className="font-bold text-lg mb-4 text-green-900">✅ Green Flags (Trustworthy Sellers):</h3>
               <ul className="space-y-3">
-                <li>✅ <strong>Realistic pricing:</strong> $15-40 for OEM keys (90% off Microsoft, but not suspiciously cheap)</li>
+                <li>✅ <strong>Realistic pricing:</strong> $35-40 for OEM keys (about 80% off Microsoft, but not suspiciously cheap)</li>
                 <li>✅ <strong>Instant digital delivery:</strong> Automated system sends key within minutes</li>
                 <li>✅ <strong>Money-back guarantee:</strong> 30-day refund if key doesn't work</li>
                 <li>✅ <strong>Business registration:</strong> Company name, tax ID, physical address listed</li>
@@ -359,7 +359,7 @@ export default function IsItLegalPage() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">💡 Bottom Line:</p>
               <p className="text-green-800">
-                Buying cheap Windows keys from reputable sellers carries <strong>virtually zero legal risk</strong> for end-users. The worst case scenario is the key doesn't work and you request a refund. No one goes to jail for buying a $20 Windows key.
+                Buying cheap Windows keys from reputable sellers carries <strong>virtually zero legal risk</strong> for end-users. The worst case scenario is the key doesn't work and you request a refund. No one goes to jail for buying a $40 Windows key.
               </p>
             </div>
 
@@ -377,7 +377,7 @@ export default function IsItLegalPage() {
               <details className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
                 <summary className="font-bold cursor-pointer text-lg">Will my Windows receive updates if I use a cheap key?</summary>
                 <p className="mt-3 text-gray-700">
-                  Yes! Genuine OEM and Retail keys receive identical Windows updates - security patches, feature updates, driver updates. There's no difference between a $20 key and a $199 key in terms of functionality and updates.
+                  Yes! Genuine OEM and Retail keys receive identical Windows updates - security patches, feature updates, driver updates. There's no difference between a $40 key and a $199 key in terms of functionality and updates.
                 </p>
               </details>
 
@@ -454,7 +454,7 @@ export default function IsItLegalPage() {
                 <li>✅ Secure payment (PayPal, USDT, card)</li>
               </ul>
               <a href="/" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
-                🛒 Buy Windows 11 Pro - $19.99 →
+                🛒 Buy Windows 11 Pro - $39.99 →
               </a>
             </div>
 
@@ -462,9 +462,9 @@ export default function IsItLegalPage() {
             <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
               <h2 className="text-3xl font-bold text-black mb-4">Get Genuine Windows 11 Pro Legally</h2>
               <p className="text-black text-lg mb-6">
-                Save 90% with legal OEM keys. Instant delivery, money-back guarantee.
+                Save up to 80% with legal OEM keys. Instant delivery, money-back guarantee.
               </p>
-              <p className="text-black text-3xl font-bold mb-6">Only $19.99</p>
+              <p className="text-black text-3xl font-bold mb-6">Only $39.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/" 

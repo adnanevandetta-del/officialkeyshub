@@ -3,6 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { getProductImage } from "../lib/productImage";
+import { allProducts } from "../lib/catalog";
+
+// Dropdown prices always come from the catalog so they match the store and checkout.
+const catalogPrice = (name: string, fallback: string) => allProducts.find((p) => p.name === name)?.price ?? fallback;
 
 interface Product {
   name: string;
@@ -52,9 +56,9 @@ export default function CategoryBar() {
       gradient: "from-orange-500 via-orange-600 to-red-600",
       filterId: "office",
       products: [
-        { name: "Office 2021 Pro Plus", price: "$29.99", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&q=80", badge: "Popular" },
+        { name: "Office 2021 Professional Plus", price: "$29.99", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&q=80", badge: "Popular" },
         { name: "Office 2021 Home & Business", price: "$24.99", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&q=80" },
-        { name: "Office 2019 Pro Plus", price: "$25.99", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&q=80" },
+        { name: "Office 2019 Professional Plus", price: "$25.99", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&q=80" },
         { name: "Office 365 (1 Year)", price: "$39.99", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&q=80" },
       ]
     },
@@ -238,7 +242,7 @@ export default function CategoryBar() {
                               {product.name}
                             </h4>
                             <div className="flex items-center justify-between mt-2">
-                              <span className="text-sky-500 font-black text-lg">{product.price}</span>
+                              <span className="text-sky-500 font-black text-lg">{catalogPrice(product.name, product.price)}</span>
                               <i className="fas fa-shopping-cart text-slate-500 group-hover:text-sky-500 transition-colors"></i>
                             </div>
                           </div>

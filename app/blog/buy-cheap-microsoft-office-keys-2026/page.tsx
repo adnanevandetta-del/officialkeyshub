@@ -93,7 +93,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="bg-gradient-to-r from-orange-50 to-orange-100 p-6 rounded-xl border border-orange-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-star text-orange-600 mr-2"></i>
-                  Office 2021 Professional Plus - $29.99
+                  Office 2021 Professional Plus - $49.99
                 </h3>
                 <p className="mb-3">The most popular choice with all Office applications included.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -108,7 +108,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-briefcase text-blue-600 mr-2"></i>
-                  Office 2021 Home & Business - $24.99
+                  Office 2021 Home & Business - $44.99
                 </h3>
                 <p className="mb-3">Essential Office apps for home users and small businesses.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -136,7 +136,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-history text-green-600 mr-2"></i>
-                  Office 2019 Professional Plus - $25.99
+                  Office 2019 Professional Plus - $44.99
                 </h3>
                 <p className="mb-3">Reliable older version with full functionality.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -263,10 +263,10 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="bg-gradient-to-br from-orange-500 to-red-500 p-6 rounded-xl text-white shadow-xl">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-2xl font-black">Office 2021 Pro Plus</h3>
-                  <span className="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold">93% OFF</span>
+                  <span className="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold">89% OFF</span>
                 </div>
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-black">$29.99</span>
+                  <span className="text-4xl font-black">$49.99</span>
                   <span className="text-xl line-through opacity-75">$439.99</span>
                 </div>
                 <Link href="/#products" className="block w-full text-center bg-white text-orange-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">

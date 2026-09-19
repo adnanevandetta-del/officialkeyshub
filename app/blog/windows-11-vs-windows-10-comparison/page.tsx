@@ -497,12 +497,12 @@ export default function Windows11VsWindows10Page() {
             </div>
 
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
-              <p className="font-bold text-green-900 mb-2">💡 Pro Tip - Save 90%:</p>
+              <p className="font-bold text-green-900 mb-2">💡 Pro Tip - Save up to 80%:</p>
               <p className="text-green-800 mb-3">
-                Don't pay Microsoft's retail prices. Get genuine Windows 11 Pro keys from Official Keys Hub for just <strong>$19.99</strong> (instead of $199):
+                Don't pay Microsoft's retail prices. Get genuine Windows 11 Pro keys from Official Keys Hub for just <strong>$39.99</strong> (instead of $199):
               </p>
               <a href="/" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
-                🛒 Buy Windows 11 Pro for $19.99 →
+                🛒 Buy Windows 11 Pro for $39.99 →
               </a>
             </div>
 
@@ -615,14 +615,14 @@ export default function Windows11VsWindows10Page() {
             <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
               <h2 className="text-3xl font-bold text-black mb-4">Ready to Upgrade to Windows 11?</h2>
               <p className="text-black text-lg mb-6">
-                Get a genuine Windows 11 Pro license key for just <span className="font-bold text-2xl">$19.99</span> (instead of $199)
+                Get a genuine Windows 11 Pro license key for just <span className="font-bold text-2xl">$39.99</span> (instead of $199)
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/" 
                   className="px-8 py-4 bg-black text-white font-bold rounded-lg hover:bg-gray-800 transition"
                 >
-                  🛒 Buy Windows 11 Pro - $19.99
+                  🛒 Buy Windows 11 Pro - $39.99
                 </a>
                 <a 
                   href="/blog/how-to-activate-windows-11" 

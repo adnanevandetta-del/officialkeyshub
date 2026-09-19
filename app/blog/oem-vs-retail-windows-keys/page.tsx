@@ -41,7 +41,7 @@ export default function OEMvsRetailPage() {
           {/* Introduction */}
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              When buying a Windows license, you'll encounter different types: <strong>OEM</strong>, <strong>Retail</strong>, and <strong>Volume</strong>. The price difference can be massive - $20 for OEM vs $199 for Retail. But what's the catch? This complete guide explains every difference so you can make an informed decision.
+              When buying a Windows license, you'll encounter different types: <strong>OEM</strong>, <strong>Retail</strong>, and <strong>Volume</strong>. The price difference can be massive - about $35-40 for OEM vs $199 for Retail. But what's the catch? This complete guide explains every difference so you can make an informed decision.
             </p>
 
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
@@ -142,7 +142,7 @@ export default function OEMvsRetailPage() {
             <div className="bg-blue-50 border-2 border-blue-500 rounded-xl p-6 mb-8">
               <h4 className="font-bold text-blue-900 mb-3">✅ OEM Key Advantages:</h4>
               <ul className="space-y-2">
-                <li>✔️ <strong>90% cheaper</strong> than Retail ($20-40 vs $199)</li>
+                <li>✔️ <strong>About 80% cheaper</strong> than Retail ($35-40 vs $199)</li>
                 <li>✔️ <strong>Same Windows version</strong> - no feature limitations</li>
                 <li>✔️ <strong>Lifetime license</strong> - no subscription needed</li>
                 <li>✔️ <strong>Legal to buy and use</strong> (confirmed by EU courts)</li>
@@ -203,7 +203,7 @@ export default function OEMvsRetailPage() {
 
               <h4 className="font-bold text-green-900 mb-3 mt-6">❌ Retail Key Disadvantages:</h4>
               <ul className="space-y-2">
-                <li>✖️ <strong>5x more expensive</strong> - $199 vs $40 OEM</li>
+                <li>✖️ <strong>5x more expensive</strong> - $199 vs about $40 OEM</li>
                 <li>✖️ <strong>Same Windows features</strong> - no extra functionality for the price</li>
                 <li>✖️ <strong>Overkill for most users</strong> - who builds new PCs every year?</li>
               </ul>
@@ -411,10 +411,10 @@ export default function OEMvsRetailPage() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">💡 Best Value:</p>
               <p className="text-green-800 mb-3">
-                For home users and single PC builds, <strong>OEM keys offer 90% savings</strong> with identical Windows features. Get Windows 11 Pro OEM for just $19.99:
+                For home users and single PC builds, <strong>OEM keys offer around 80% savings</strong> with identical Windows features. Get Windows 11 Pro OEM for just $39.99:
               </p>
               <a href="/" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
-                🛒 Buy Windows 11 Pro OEM - $19.99 →
+                🛒 Buy Windows 11 Pro OEM - $39.99 →
               </a>
             </div>
 
@@ -427,7 +427,7 @@ export default function OEMvsRetailPage() {
                 <ul className="space-y-2 text-sm">
                   <li>✔️ Are building or upgrading a single PC</li>
                   <li>✔️ Won't change motherboards in next 3-5 years</li>
-                  <li>✔️ Want to save 90% on Windows license</li>
+                  <li>✔️ Want to save up to 80% on Windows license</li>
                   <li>✔️ Don't need Microsoft phone support</li>
                   <li>✔️ Are a home user, gamer, or small business</li>
                 </ul>
@@ -513,7 +513,7 @@ export default function OEMvsRetailPage() {
                 <strong>Why?</strong>
               </p>
               <ul className="list-disc pl-6 space-y-2 mb-4">
-                <li><strong>90% cheaper:</strong> $20-40 instead of $199</li>
+                <li><strong>About 80% cheaper:</strong> $35-40 instead of $199</li>
                 <li><strong>Same Windows:</strong> Identical features, updates, and performance</li>
                 <li><strong>Legal:</strong> Confirmed legal in EU and most regions</li>
                 <li><strong>Lifetime license:</strong> No expiration or subscription</li>
@@ -528,9 +528,9 @@ export default function OEMvsRetailPage() {
             <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
               <h2 className="text-3xl font-bold text-black mb-4">Get Genuine Windows 11 Pro OEM Key</h2>
               <p className="text-black text-lg mb-6">
-                Save 90% with OEM licensing. Same Windows, massive savings.
+                Save up to 80% with OEM licensing. Same Windows, massive savings.
               </p>
-              <p className="text-black text-3xl font-bold mb-6">Only $19.99</p>
+              <p className="text-black text-3xl font-bold mb-6">Only $39.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/" 

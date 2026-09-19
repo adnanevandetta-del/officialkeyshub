@@ -46,7 +46,7 @@ export default function Office2021Vs365Page() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">🎯 Quick Answer:</p>
               <p className="text-green-800">
-                <strong>Office 2021 offers better value for most users.</strong> Pay once ($29.99 at Official Keys Hub), use forever. Microsoft 365 costs $70/year forever but adds cloud storage and new features. For individuals not needing cloud features, Office 2021 saves $400+ over 5 years.
+                <strong>Office 2021 offers better value for most users.</strong> Pay once ($49.99 at Official Keys Hub), use forever. Microsoft 365 costs $70/year forever but adds cloud storage and new features. For individuals not needing cloud features, Office 2021 saves $400+ over 5 years.
               </p>
             </div>
 
@@ -65,12 +65,12 @@ export default function Office2021Vs365Page() {
                 <tbody className="text-sm">
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">Pricing Model</td>
-                    <td className="text-center bg-blue-50">One-time $249 (or $29.99)</td>
+                    <td className="text-center bg-blue-50">One-time $249 (or $49.99)</td>
                     <td className="text-center bg-green-50">$69.99/year</td>
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">5-Year Cost</td>
-                    <td className="text-center bg-blue-50 text-green-600">$29.99 total</td>
+                    <td className="text-center bg-blue-50 text-green-600">$49.99 total</td>
                     <td className="text-center bg-green-50 text-red-600">$350 total</td>
                   </tr>
                   <tr className="border-b border-gray-200">
@@ -133,7 +133,7 @@ export default function Office2021Vs365Page() {
               <h3 className="font-bold text-lg mb-3 text-blue-900">✅ Office 2021 Advantages:</h3>
               <ul className="space-y-2">
                 <li>✔️ <strong>One-time payment</strong> - no recurring subscription fees</li>
-                <li>✔️ <strong>Cheaper long-term</strong> - $29.99 vs $350 over 5 years (Microsoft 365)</li>
+                <li>✔️ <strong>Cheaper long-term</strong> - $49.99 vs $350 over 5 years (Microsoft 365)</li>
                 <li>✔️ <strong>Permanent license</strong> - use forever, no expiration</li>
                 <li>✔️ <strong>Offline-first</strong> - works without internet connection</li>
                 <li>✔️ <strong>Privacy-focused</strong> - less telemetry and cloud dependency</li>
@@ -177,11 +177,11 @@ export default function Office2021Vs365Page() {
               </div>
 
               <div className="bg-green-50 border-2 border-green-500 rounded-xl p-6">
-                <h4 className="font-bold text-lg mb-2">Office Professional Plus 2021 - $439 (or $29.99)</h4>
+                <h4 className="font-bold text-lg mb-2">Office Professional Plus 2021 - $439 (or $49.99)</h4>
                 <p className="text-sm mb-2">
                   <strong>Includes:</strong> Word, Excel, PowerPoint, Outlook, Publisher, Access
                 </p>
-                <p className="text-xs text-green-600">Best for: Power users, database work - Get it for $29.99 at Official Keys Hub!</p>
+                <p className="text-xs text-green-600">Best for: Power users, database work - Get it for $49.99 at Official Keys Hub!</p>
               </div>
             </div>
 
@@ -276,9 +276,9 @@ export default function Office2021Vs365Page() {
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">Single User (Official Keys Hub)</td>
-                    <td className="text-center text-green-600 font-bold">$29.99</td>
+                    <td className="text-center text-green-600 font-bold">$49.99</td>
                     <td className="text-center">$350</td>
-                    <td className="text-center font-bold">$320</td>
+                    <td className="text-center font-bold">$300</td>
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">Family (6 users, Microsoft)</td>
@@ -290,7 +290,7 @@ export default function Office2021Vs365Page() {
                     <td className="py-3 font-semibold">Family (6 users, Official Keys Hub)</td>
                     <td className="text-center text-green-600 font-bold">$180</td>
                     <td className="text-center">$500</td>
-                    <td className="text-center font-bold">$320</td>
+                    <td className="text-center font-bold">$300</td>
                   </tr>
                 </tbody>
               </table>
@@ -299,7 +299,7 @@ export default function Office2021Vs365Page() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">💡 Cost Winner:</p>
               <p className="text-green-800">
-                <strong>Office 2021 from Official Keys Hub saves $320 over 5 years</strong> for single users. For families, Microsoft 365 Family ($100/year for 6 users) beats buying 6 individual Office 2021 licenses.
+                <strong>Office 2021 from Official Keys Hub saves $300 over 5 years</strong> for single users. For families, Microsoft 365 Family ($100/year for 6 users) beats buying 6 individual Office 2021 licenses.
               </p>
             </div>
 
@@ -346,7 +346,7 @@ export default function Office2021Vs365Page() {
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6">
                 <h3 className="font-bold text-lg mb-3 text-blue-900">✅ Buy Office 2021 if you...</h3>
                 <ul className="space-y-2 text-sm">
-                  <li>✔️ Want to save money long-term (90% savings at Official Keys Hub)</li>
+                  <li>✔️ Want to save money long-term (up to 89% savings on Office at Official Keys Hub)</li>
                   <li>✔️ Use Office on a single PC only</li>
                   <li>✔️ Don't need cloud storage (or use Google Drive/Dropbox)</li>
                   <li>✔️ Prefer one-time payments over subscriptions</li>
@@ -426,7 +426,7 @@ export default function Office2021Vs365Page() {
                 <strong>Why Office 2021 wins:</strong>
               </p>
               <ul className="list-disc pl-6 space-y-2 mb-6">
-                <li><strong>$320 savings over 5 years</strong> - pay once vs $70/year forever</li>
+                <li><strong>$300 savings over 5 years</strong> - pay once vs $70/year forever</li>
                 <li><strong>Permanent ownership</strong> - no risk of losing access</li>
                 <li><strong>Offline-first</strong> - works without internet dependency</li>
                 <li><strong>All essential features</strong> - 95% of users don't need 365-exclusive features</li>
@@ -442,7 +442,7 @@ export default function Office2021Vs365Page() {
                 <li><strong>Real-time collaboration</strong> - working with teams regularly</li>
               </ul>
               <p className="text-lg font-bold">
-                <strong>Recommended:</strong> Office 2021 Professional Plus for $29.99 (single users) or Microsoft 365 Family for $100/year (families)
+                <strong>Recommended:</strong> Office 2021 Professional Plus for $49.99 (single users) or Microsoft 365 Family for $100/year (families)
               </p>
             </div>
 
@@ -450,15 +450,15 @@ export default function Office2021Vs365Page() {
             <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
               <h2 className="text-3xl font-bold text-black mb-4">Get Office 2021 Professional Plus</h2>
               <p className="text-black text-lg mb-6">
-                Save $420 compared to Microsoft 365 over 5 years. Pay once, use forever.
+                Save $300 compared to Microsoft 365 over 5 years. Pay once, use forever.
               </p>
-              <p className="text-black text-3xl font-bold mb-6">Only $29.99</p>
+              <p className="text-black text-3xl font-bold mb-6">Only $49.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/" 
                   className="px-8 py-4 bg-black text-white font-bold rounded-lg hover:bg-gray-800 transition"
                 >
-                  🛒 Buy Office 2021 Pro - $29.99
+                  🛒 Buy Office 2021 Pro - $49.99
                 </a>
                 <a 
                   href="/blog/how-to-activate-office-2021" 

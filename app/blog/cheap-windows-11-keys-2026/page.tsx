@@ -5,14 +5,14 @@ import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cheap Windows 11 Keys 2026 from $12.99 | Official Keys Hub",
+  title: "Cheap Windows 11 Keys 2026 from $34.99 | Official Keys Hub",
   description:
-    "Where to buy cheap Windows 11 keys in 2026. Genuine Windows 11 Pro & Home product keys up to 90% off, instant delivery, lifetime activation. Safe, legal, from $12.99.",
+    "Where to buy cheap Windows 11 keys in 2026. Genuine Windows 11 Pro & Home product keys up to 90% off, instant delivery, lifetime activation. Safe, legal, from $34.99.",
   keywords:
     "cheap windows 11 keys, buy windows 11 pro key, windows 11 key cheap, cheap windows 11 pro, windows 11 home key, genuine windows 11 key, windows 11 product key, buy windows 11 key online, discount windows 11 license, windows 11 activation key",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026" },
   openGraph: {
-    title: "Cheap Windows 11 Keys 2026 - Genuine Keys from $12.99",
+    title: "Cheap Windows 11 Keys 2026 - Genuine Keys from $34.99",
     description: "Buy genuine Windows 11 Pro & Home keys up to 90% off. Instant delivery, lifetime activation, 30-day guarantee.",
     url: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026",
     type: "article",
@@ -66,7 +66,7 @@ export default function CheapWindows11Keys2026() {
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 Cheap Windows 11 Keys 2026:
                 <br />
-                <span className="text-blue-600">Buy Genuine Keys from $12.99</span>
+                <span className="text-blue-600">Buy Genuine Keys from $34.99</span>
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -85,9 +85,9 @@ export default function CheapWindows11Keys2026() {
               {/* Quick answer */}
               <div className="bg-sky-50 border-l-4 border-sky-600 p-6 mb-10 rounded-r-lg">
                 <p className="text-gray-800 m-0">
-                  <strong>Quick answer:</strong> You can buy genuine <strong>Windows 11 Pro keys from $19.99</strong> and
-                  Windows 11 Home from $12.99 at trusted resellers like Official Keys Hub — around
-                  90% cheaper than Microsoft&apos;s $199 retail price. Keys are delivered instantly by email and
+                  <strong>Quick answer:</strong> You can buy genuine <strong>Windows 11 Pro keys from $39.99</strong> and
+                  Windows 11 Home from $34.99 at trusted resellers like Official Keys Hub — around
+                  80% cheaper than Microsoft&apos;s $199 retail price. Keys are delivered instantly by email and
                   activate for the lifetime of your device.
                 </p>
               </div>
@@ -130,20 +130,20 @@ export default function CheapWindows11Keys2026() {
                     <tr className="border-t border-gray-200">
                       <td className="p-3 font-semibold">Windows 11 Pro</td>
                       <td className="p-3">$199.99</td>
-                      <td className="p-3 text-sky-700 font-bold">$19.99</td>
-                      <td className="p-3">90%</td>
+                      <td className="p-3 text-sky-700 font-bold">$39.99</td>
+                      <td className="p-3">80%</td>
                     </tr>
                     <tr className="border-t border-gray-200 bg-gray-50">
                       <td className="p-3 font-semibold">Windows 11 Home</td>
                       <td className="p-3">$139.99</td>
-                      <td className="p-3 text-sky-700 font-bold">$12.99</td>
-                      <td className="p-3">91%</td>
+                      <td className="p-3 text-sky-700 font-bold">$34.99</td>
+                      <td className="p-3">75%</td>
                     </tr>
                     <tr className="border-t border-gray-200">
                       <td className="p-3 font-semibold">Windows 11 Pro (Online Key)</td>
                       <td className="p-3">$199.99</td>
-                      <td className="p-3 text-sky-700 font-bold">$17.99</td>
-                      <td className="p-3">91%</td>
+                      <td className="p-3 text-sky-700 font-bold">$34.99</td>
+                      <td className="p-3">83%</td>
                     </tr>
                   </tbody>
                 </table>
@@ -210,7 +210,7 @@ export default function CheapWindows11Keys2026() {
 
               {/* CTA */}
               <div className="not-prose bg-gradient-to-br from-sky-700 to-sky-800 rounded-2xl p-8 text-center text-white mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold mb-3">Get Your Genuine Windows 11 Key from $12.99</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-3">Get Your Genuine Windows 11 Key from $34.99</h2>
                 <p className="text-sky-100 mb-6 max-w-2xl mx-auto">Instant email delivery, lifetime activation, and a 30-day money-back guarantee.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <Link href="/#products" className="px-8 py-4 bg-white text-sky-800 font-bold rounded-lg hover:bg-sky-50 transition-all shadow-lg">

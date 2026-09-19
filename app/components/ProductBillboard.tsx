@@ -31,7 +31,7 @@ export default function ProductBillboard() {
     {
       name: "Windows 11 Pro",
       tagline: "Professional Edition",
-      price: "$38.99",
+      price: "$39.99",
       originalPrice: "$199.99",
       image: "/products/windows-11-pro.jpg",
       badge: "Best Seller",
@@ -43,7 +43,7 @@ export default function ProductBillboard() {
     {
       name: "Office 2021 Pro Plus",
       tagline: "Complete Productivity Suite",
-      price: "$48.99",
+      price: "$49.99",
       originalPrice: "$439.99",
       image: "/products/office-2021-professional-plus.jpg",
       badge: "Most Popular",
@@ -55,7 +55,7 @@ export default function ProductBillboard() {
     {
       name: "Office 365 Personal",
       tagline: "Cloud-Powered",
-      price: "$58.99",
+      price: "$59.99",
       originalPrice: "$99.99",
       image: "/products/office-365-1-year.jpg",
       badge: "Featured",
@@ -67,7 +67,7 @@ export default function ProductBillboard() {
     {
       name: "Windows Server 2022",
       tagline: "Enterprise Platform",
-      price: "$68.99",
+      price: "$69.99",
       originalPrice: "$1,069.00",
       image: "/products/windows-server-2022-standard.jpg",
       badge: "Enterprise",
@@ -164,6 +164,7 @@ export default function ProductBillboard() {
                     <i className="fas fa-lock text-[10px]"></i> Secure payments
                   </span>
                   <div className="flex items-center gap-2.5 text-white/75">
+                    <i className="fab fa-cc-paypal text-xl" title="PayPal"></i>
                     <i className="fab fa-cc-visa text-xl" title="Visa"></i>
                     <i className="fab fa-cc-mastercard text-xl" title="Mastercard"></i>
                     <i className="fab fa-bitcoin text-xl" title="USDT / Crypto"></i>
@@ -284,6 +285,7 @@ export default function ProductBillboard() {
 
                 {/* Secure payments we accept */}
                 <div className="flex items-center gap-2.5 text-white/75">
+                  <i className="fab fa-cc-paypal text-lg" title="PayPal"></i>
                   <i className="fab fa-cc-visa text-lg" title="Visa"></i>
                   <i className="fab fa-cc-mastercard text-lg" title="Mastercard"></i>
                   <i className="fab fa-bitcoin text-lg" title="USDT / Crypto"></i>

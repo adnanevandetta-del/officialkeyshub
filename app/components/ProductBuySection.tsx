@@ -38,7 +38,7 @@ export default function ProductBuySection({
     <div className="glass rounded-2xl p-6">
       <div className="flex items-baseline gap-3 mb-1">
         <span className="text-4xl font-black text-white">{price}</span>
-        <span className="text-xl text-white/40 line-through">{originalPrice}</span>
+        {originalPrice && <span className="text-xl text-white/40 line-through">{originalPrice}</span>}
       </div>
 
       {/* Reassurance */}

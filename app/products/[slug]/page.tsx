@@ -40,7 +40,7 @@ function keywordsFor(p: FlatProduct): string {
 }
 
 function metaDescription(p: FlatProduct): string {
-  return `Buy ${p.name} — a genuine Microsoft license for ${p.price} (was ${p.originalPrice}). ${p.description}. Instant email delivery, activates directly with Microsoft, and backed by a 30-day money-back guarantee.`;
+  return `Buy ${p.name} — a genuine Microsoft license for ${p.price}${p.originalPrice ? ` (was ${p.originalPrice})` : ""}. ${p.description}. Instant email delivery, activates directly with Microsoft, and backed by a 30-day money-back guarantee.`;
 }
 
 function faqsFor(p: FlatProduct) {
@@ -215,7 +215,7 @@ export default async function ProductPage({
               <h2 className="text-2xl font-bold text-white mb-4">About {p.name}</h2>
               <p className="text-slate-300 leading-relaxed mb-4">
                 Looking to <strong>buy {p.name}</strong> without paying full retail? Official Keys Hub delivers a
-                genuine {p.name} product key for <strong>{p.price}</strong> instead of {p.originalPrice} — a genuine
+                genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> instead of {p.originalPrice}</> : null} — a genuine
                 Microsoft license that activates directly on Microsoft&rsquo;s own servers. {p.description}, and it&rsquo;s
                 delivered to your inbox within minutes of purchase.
               </p>

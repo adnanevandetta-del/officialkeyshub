@@ -40,7 +40,7 @@ export default function CheapKeysSafePage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              Windows 11 Pro costs <strong>$199 from Microsoft</strong> but only <strong>$20 online</strong>. That's 90% off. Too good to be true? Is it safe? Will it harm your PC? This comprehensive guide examines the security, legality, and risks of buying cheap Windows keys - with expert analysis from cybersecurity professionals.
+              Windows 11 Pro costs <strong>$199 from Microsoft</strong> but only <strong>$40 online</strong>. That's about 80% off. Too good to be true? Is it safe? Will it harm your PC? This comprehensive guide examines the security, legality, and risks of buying cheap Windows keys - with expert analysis from cybersecurity professionals.
             </p>
 
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
@@ -126,7 +126,7 @@ export default function CheapKeysSafePage() {
                   <div>
                     <p className="font-bold mb-2">Downside:</p>
                     <ul className="space-y-1 text-gray-700">
-                      <li>⚠️ More expensive ($50-100 vs $20)</li>
+                      <li>⚠️ More expensive ($50-100 vs about $35-40)</li>
                       <li>⚠️ Harder to find cheap</li>
                     </ul>
                   </div>
@@ -216,7 +216,7 @@ export default function CheapKeysSafePage() {
                   <strong>Activated Windows = Full security</strong> - Once activated with any genuine key, you get all security patches and updates.
                 </li>
                 <li>
-                  <strong>Greatest risk: seller scams, not security</strong> - Losing $20 to a bad seller hurts more than technical security risks (which are nearly zero).
+                  <strong>Greatest risk: seller scams, not security</strong> - Losing $40 to a bad seller hurts more than technical security risks (which are nearly zero).
                 </li>
               </ol>
             </div>
@@ -351,7 +351,7 @@ export default function CheapKeysSafePage() {
                   <li>✅ Activation guide included</li>
                 </ul>
                 <a href="/" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition text-sm">
-                  🛒 Buy Windows 11 Pro - $19.99
+                  🛒 Buy Windows 11 Pro - $39.99
                 </a>
               </div>
 
@@ -455,7 +455,7 @@ export default function CheapKeysSafePage() {
               <p className="text-black text-lg mb-6">
                 Genuine OEM keys with 30-day money-back guarantee. 100% safe and secure.
               </p>
-              <p className="text-black text-3xl font-bold mb-6">Only $19.99</p>
+              <p className="text-black text-3xl font-bold mb-6">Only $39.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/" 
