@@ -302,13 +302,12 @@ export function GET(req: NextRequest) {
   <rect x="220" y="70" width="300" height="460" rx="4" fill="none" stroke="#fff" stroke-opacity="0.18"/>
 
   <!-- Store logo on the box -->
-  <rect x="220" y="86" width="300" height="76" fill="#000" fill-opacity="0.32"/>
+  <rect x="220" y="86" width="300" height="58" fill="#000" fill-opacity="0.32"/>
   <text x="370" y="118" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="27" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
   <line x1="290" y1="132" x2="450" y2="132" stroke="#fff" stroke-opacity="0.35"/>
-  <text x="370" y="153" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" fill-opacity="0.8" letter-spacing="2">${esc(meta.brand.toUpperCase())}</text>
 
   <!-- Product glyph -->
-  <g filter="url(#soft)"><g transform="translate(370,242) scale(0.62) translate(-400,-235)">${meta.glyph}</g></g>
+  <g filter="url(#soft)"><g transform="translate(370,240) scale(0.7) translate(-400,-235)">${meta.glyph}</g></g>
 
   <!-- Edition chip -->
   <g transform="translate(370,335)">
