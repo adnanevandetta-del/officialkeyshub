@@ -4,75 +4,32 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-type Review = {
-  name: string;
-  initials: string;
-  color: string;
-  rating: number;
-  text: string;
-};
-
-const reviews: Review[] = [
+const promises = [
   {
-    name: "Jordan R.",
-    initials: "JR",
-    color: "from-sky-600 to-sky-700",
-    rating: 4.5,
-    text: "ngl i was lowkey scared this was a scam 😭 but my windows 11 pro key hit my inbox in like 10 mins and activated first try. saved me a fat $100, no complaints",
-  },
-  {
-    name: "Sofia C.",
-    initials: "SC",
-    color: "from-blue-500 to-blue-600",
-    rating: 4,
-    text: "needed office 2021 for uni and was NOT tryna pay full price lol. key worked instantly, got word excel powerpoint all of it. asked a question on whatsapp and they replied same day fr",
-  },
-  {
-    name: "Dylan M.",
-    initials: "DM",
-    color: "from-purple-500 to-purple-600",
-    rating: 4.5,
-    text: "was skeptical bc the price felt too good to be true but grabbed a windows server 2022 key anyway. activated no problem, delivery was quick. would def cop again",
-  },
-  {
-    name: "Kayla T.",
-    initials: "KT",
+    icon: "fas fa-shield-alt",
     color: "from-emerald-500 to-emerald-600",
-    rating: 5,
-    text: "honestly didn't expect much but my office 365 was set up in minutes. clutch for my group projects 🙌 support was actually helpful too",
+    title: "30-Day Money-Back Guarantee",
+    text: "If your key doesn't activate and we can't fix it, you get your money back.",
   },
   {
-    name: "Marcus B.",
-    initials: "MB",
-    color: "from-cyan-500 to-cyan-600",
-    rating: 4,
-    text: "took me a sec to figure out the activation ngl but their guide + whatsapp support carried me. windows 11 running smooth now, no regrets",
+    icon: "fab fa-windows",
+    color: "from-sky-500 to-blue-600",
+    title: "Activates on Microsoft's Servers",
+    text: "Every key is genuine and activates directly with Microsoft.",
   },
   {
-    name: "Aisha K.",
-    initials: "AK",
-    color: "from-pink-500 to-pink-600",
-    rating: 5,
-    text: "cheapest genuine key i could find and it actually worked?? still shook. 10/10 would recommend to my broke friends lol",
+    icon: "fas fa-headset",
+    color: "from-orange-500 to-orange-600",
+    title: "Help When You Need It",
+    text: "Step-by-step activation guides, plus support on WhatsApp and email.",
+  },
+  {
+    icon: "fas fa-envelope-open-text",
+    color: "from-purple-500 to-purple-600",
+    title: "Simple Delivery",
+    text: "Your key and instructions are sent to your email or WhatsApp after payment is confirmed.",
   },
 ];
-
-function Stars({ rating, size = "text-lg" }: { rating: number; size?: string }) {
-  return (
-    <div className="flex gap-1">
-      {[1, 2, 3, 4, 5].map((i) => {
-        const filled = rating >= i;
-        const half = !filled && rating >= i - 0.5;
-        return (
-          <i
-            key={i}
-            className={`${half ? "fas fa-star-half-alt" : filled ? "fas fa-star" : "far fa-star"} text-yellow-400 ${size}`}
-          ></i>
-        );
-      })}
-    </div>
-  );
-}
 
 export default function ReviewsPage() {
   const [name, setName] = useState("");
@@ -97,38 +54,31 @@ export default function ReviewsPage() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Hero */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#00b67a" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-              </svg>
-              <span className="text-white font-bold text-lg">Trustpilot</span>
-            </div>
             <h1 className="text-4xl md:text-5xl font-black text-white mb-3">
               Customer <span className="gradient-text">Reviews</span>
             </h1>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Real words from real customers — and a spot to share yours. Bought from us? We&rsquo;d love your honest review.
+              We&rsquo;re a young store and every review matters to us. Bought from us? Tell us how it went &mdash; we read every one.
             </p>
           </div>
 
-          {/* Reviews grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {reviews.map((r) => (
-              <div key={r.name} className="glass glow-hover rounded-2xl p-7 transition-all duration-300">
-                <div className="flex items-center gap-2 mb-4">
-                  <Stars rating={r.rating} />
-                  <span className="text-yellow-500 font-bold">{r.rating.toFixed(1)}</span>
+          {/* What you can count on */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-2">
+              What you can <span className="gradient-text">count on</span>
+            </h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              We&rsquo;re building our reputation from day one. These are the promises we hold ourselves to on every order.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {promises.map((p) => (
+              <div key={p.title} className="glass glow-hover rounded-2xl p-6 transition-all duration-300">
+                <div className={`w-12 h-12 bg-gradient-to-br ${p.color} rounded-xl flex items-center justify-center text-white text-xl shadow-md mb-4`}>
+                  <i className={p.icon}></i>
                 </div>
-                <p className="text-slate-300 mb-6 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className={`w-11 h-11 bg-gradient-to-br ${r.color} rounded-full flex items-center justify-center text-white font-bold shadow-md`}>
-                    {r.initials}
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold">{r.name}</p>
-                    <p className="text-slate-400 text-sm">Verified Purchase</p>
-                  </div>
-                </div>
+                <h3 className="text-white font-bold text-lg mb-2">{p.title}</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">{p.text}</p>
               </div>
             ))}
           </div>
@@ -139,7 +89,7 @@ export default function ReviewsPage() {
               Leave a <span className="gradient-text">Review</span>
             </h2>
             <p className="text-slate-400 text-center mb-6 text-sm">
-              Share your experience and we&rsquo;ll add it here. It only takes a sec.
+              Be one of the first to share your experience. It only takes a minute, and it helps other customers decide.
             </p>
 
             <label className="block text-slate-300 text-sm font-semibold mb-1">Your name</label>

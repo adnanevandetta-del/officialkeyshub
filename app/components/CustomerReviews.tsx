@@ -1,104 +1,59 @@
 "use client";
 
+const promises = [
+  {
+    icon: "fas fa-shield-alt",
+    color: "from-emerald-500 to-emerald-600",
+    title: "30-Day Money-Back Guarantee",
+    text: "If your key doesn't activate and we can't fix it, you get your money back. No awkward questions.",
+  },
+  {
+    icon: "fab fa-windows",
+    color: "from-sky-500 to-blue-600",
+    title: "Activates on Microsoft's Servers",
+    text: "Every key is genuine and activates directly with Microsoft, so you can see for yourself that it works.",
+  },
+  {
+    icon: "fas fa-headset",
+    color: "from-orange-500 to-orange-600",
+    title: "Help When You Need It",
+    text: "Clear step-by-step activation guides, plus support on WhatsApp and email if you ever get stuck.",
+  },
+];
+
 export default function CustomerReviews() {
   return (
     <section className="py-20">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-black text-white mb-3">Customer <span className="gradient-text">Reviews</span></h2>
-          <p className="text-slate-400 text-lg">What our customers say about Official Keys Hub</p>
+          <h2 className="text-4xl font-black text-white mb-3">Buy with <span className="gradient-text">Confidence</span></h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            We&rsquo;re a young, independent store and we earn your trust one order at a time. Here&rsquo;s what you can count on.
+          </p>
         </div>
 
-        {/* Review Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-10">
-          {/* Review 1 */}
-          <div className="glass glow-hover rounded-2xl p-8 transition-all duration-300">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex gap-1">
-                {[...Array(4)].map((_, i) => (
-                  <i key={i} className="fas fa-star text-yellow-400 text-lg"></i>
-                ))}
-                <i className="fas fa-star-half-alt text-yellow-400 text-lg"></i>
+        {/* Promise Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-10">
+          {promises.map((p) => (
+            <div key={p.title} className="glass glow-hover rounded-2xl p-7 md:p-8 transition-all duration-300">
+              <div className={`w-14 h-14 bg-gradient-to-br ${p.color} rounded-xl flex items-center justify-center text-white text-2xl shadow-md mb-5`}>
+                <i className={p.icon}></i>
               </div>
-              <span className="text-yellow-500 font-bold text-lg">4.5</span>
+              <h3 className="text-white font-bold text-xl mb-2">{p.title}</h3>
+              <p className="text-slate-300 text-base leading-relaxed">{p.text}</p>
             </div>
-            <p className="text-slate-300 mb-6 text-base leading-relaxed">
-              "ngl i was lowkey scared this was a scam 😭 but my windows 11 pro key hit my inbox in like 10 mins and activated first try. saved me a fat $100, no complaints"
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-sky-600 to-sky-700 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
-                JR
-              </div>
-              <div>
-                <p className="text-white font-semibold">Jordan R.</p>
-                <p className="text-slate-400 text-sm">Verified Purchase</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Review 2 */}
-          <div className="glass glow-hover rounded-2xl p-8 transition-all duration-300">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex gap-1">
-                {[...Array(4)].map((_, i) => (
-                  <i key={i} className="fas fa-star text-yellow-400 text-lg"></i>
-                ))}
-                <i className="far fa-star text-yellow-400 text-lg"></i>
-              </div>
-              <span className="text-yellow-500 font-bold text-lg">4.0</span>
-            </div>
-            <p className="text-slate-300 mb-6 text-base leading-relaxed">
-              "needed office 2021 for uni and was NOT tryna pay full price lol. key worked instantly, got word excel powerpoint all of it. asked a question on whatsapp and they replied same day fr"
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
-                SC
-              </div>
-              <div>
-                <p className="text-white font-semibold">Sofia C.</p>
-                <p className="text-slate-400 text-sm">Verified Purchase</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Review 3 */}
-          <div className="glass glow-hover rounded-2xl p-8 transition-all duration-300">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex gap-1">
-                {[...Array(4)].map((_, i) => (
-                  <i key={i} className="fas fa-star text-yellow-400 text-lg"></i>
-                ))}
-                <i className="fas fa-star-half-alt text-yellow-400 text-lg"></i>
-              </div>
-              <span className="text-yellow-500 font-bold text-lg">4.5</span>
-            </div>
-            <p className="text-slate-300 mb-6 text-base leading-relaxed">
-              "was skeptical bc the price felt too good to be true but grabbed a windows server 2022 key anyway. activated no problem, delivery was quick. would def cop again"
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
-                DM
-              </div>
-              <div>
-                <p className="text-white font-semibold">Dylan M.</p>
-                <p className="text-slate-400 text-sm">Verified Purchase</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Review us badge */}
         <div className="text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 glass px-8 py-5 rounded-2xl">
-            <div className="flex items-center gap-2">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#00b67a" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-              </svg>
-              <span className="text-white font-bold text-lg">Trustpilot</span>
+            <div className="flex items-center gap-1 text-yellow-400" aria-hidden="true">
+              <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>
             </div>
             <p className="text-slate-300 text-sm sm:text-base">
-              Bought from us? We&rsquo;d love your honest review.
+              Bought from us? Share how it went &mdash; your feedback helps other customers.
             </p>
             <a
               href="/reviews"

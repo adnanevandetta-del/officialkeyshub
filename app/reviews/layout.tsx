@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Customer Reviews | Official Keys Hub",
   description:
-    "Real customer reviews of Official Keys Hub — genuine Windows and Office keys, instant delivery, and support. Read what buyers say and leave your own review.",
+    "Share your experience with Official Keys Hub — genuine Windows and Office keys, fast delivery and a 30-day money-back guarantee. Bought from us? Leave a review.",
   alternates: { canonical: "https://www.officialkeyshub.com/reviews" },
 };
 
