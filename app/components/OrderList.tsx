@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usdtProofMailto } from "../lib/payment";
 import { money, removeOrder, updateOrderStatus, type Order, type OrderStatus } from "../lib/account";
 
 const STATUS_LABEL: Record<OrderStatus, string> = {
@@ -79,7 +80,23 @@ export default function OrderList({ orders, emptyText }: { orders: Order[]; empt
               ))}
             </div>
 
-            {order.status === "pending" && (
+            {order.status === "pending" && order.method === "usdt" && (
+              <div className="mb-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm text-gray-700">
+                <p className="mb-2">
+                  <i className="fab fa-bitcoin text-green-600 mr-2"></i>
+                  Paid with USDT? Email a screenshot of the transaction so we can verify it — your key is released after
+                  verification.
+                </p>
+                <a
+                  href={usdtProofMailto(order.id, order.items.map((i) => `${i.quantity}x ${i.name}`).join(", "), order.total, order.email)}
+                  className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors"
+                >
+                  <i className="fas fa-envelope mr-2"></i>Email payment proof
+                </a>
+              </div>
+            )}
+
+            {order.status === "pending" && order.method !== "usdt" && (
               <p className="text-sm text-gray-600 mb-4">
                 <i className="fas fa-envelope text-sky-700 mr-2"></i>
                 Your key is delivered {order.email ? <>to <span className="font-semibold">{order.email}</span> </> : ""}

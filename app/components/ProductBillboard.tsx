@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { paypalPaymentUrl } from "../lib/payment";
-import { recordQuickOrder } from "../lib/account";
+import { recordQuickOrder, priceToNumber } from "../lib/account";
+import UsdtPay from "./UsdtPay";
 import { getProductImage, getProductBoxImage } from "../lib/productImage";
 
 interface BillboardProduct {
@@ -22,6 +23,8 @@ interface BillboardProduct {
 export default function ProductBillboard() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<BillboardProduct | null>(null);
+  const [usdtOrderId, setUsdtOrderId] = useState<string | null>(null);
+  useEffect(() => { setUsdtOrderId(null); }, [selectedProduct]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const products: BillboardProduct[] = [
@@ -374,22 +377,30 @@ export default function ProductBillboard() {
                   <i className="fas fa-arrow-right text-blue-400 text-xl"></i>
                 </a>
 
-                <a
-                  href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via USDT.%0D%0A%0D%0AProduct: ${selectedProduct.name}%0D%0APrice: ${selectedProduct.price}`}
-                  onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, "usdt")}
-                  className="flex items-center justify-between p-5 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center">
-                      <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
+                {usdtOrderId ? (
+                  <UsdtPay
+                    orderId={usdtOrderId}
+                    amount={priceToNumber(selectedProduct.price)}
+                    itemName={selectedProduct.name}
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setUsdtOrderId(recordQuickOrder(selectedProduct.name, selectedProduct.price, "usdt").id)}
+                    className="w-full text-left flex items-center justify-between p-5 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center">
+                        <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
+                      </div>
+                      <div>
+                        <p className="font-bold text-white">USDT (Crypto)</p>
+                        <p className="text-slate-400 text-sm">Send crypto, then email the transaction screenshot</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-bold text-white">USDT (Crypto)</p>
-                      <p className="text-slate-400 text-sm">Cryptocurrency Payment</p>
-                    </div>
-                  </div>
-                  <i className="fas fa-arrow-right text-green-400 text-xl"></i>
-                </a>
+                    <i className="fas fa-arrow-right text-green-400 text-xl"></i>
+                  </button>
+                )}
 
                 <a
                   href={`https://wa.me/16019756129?text=Hi! I want to buy ${encodeURIComponent(selectedProduct.name)} for ${selectedProduct.price}`}

@@ -10,9 +10,11 @@ import { validatePromoCode, getStoredPromo } from '../lib/promo';
 import { paypalPaymentUrl } from '../lib/payment';
 import { getProductImage } from '../lib/productImage';
 import { addOrder, getAccount } from '../lib/account';
+import UsdtPay from '../components/UsdtPay';
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
+  const [usdtOrderId, setUsdtOrderId] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<'paypal' | 'usdt' | 'whatsapp' | null>(null);
   const [promoInput, setPromoInput] = useState('');
   const [appliedPercent, setAppliedPercent] = useState(0);
@@ -60,14 +62,16 @@ export default function CheckoutPage() {
     const total = discountedTotal.toFixed(2);
 
     // Record the order in the customer's history (status: pending until delivered).
+    let recordedId = '';
     if (paymentMethod) {
-      addOrder({
+      const order = addOrder({
         items: cart.map((i) => ({ name: i.name, price: i.price, quantity: i.quantity })),
         total: discountedTotal,
         method: paymentMethod,
         email: formData.email,
         promoCode: appliedPercent > 0 ? appliedCode : undefined,
       });
+      recordedId = order.id;
     }
 
     if (paymentMethod === 'whatsapp') {
@@ -78,10 +82,8 @@ export default function CheckoutPage() {
       const itemName = cart.map((i) => `${i.quantity}x ${i.name}`).join(', ');
       window.location.href = paypalPaymentUrl(`Official Keys Hub — ${itemName}`, discountedTotal, formData.email);
     } else if (paymentMethod === 'usdt') {
-      const emailSubject = `Order Request - USDT Payment`;
-      const emailBody = `Hi, I want to complete my order via USDT:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ADelivery Email: ${formData.email}`;
-      window.location.href = `mailto:officialkeyshub@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-      // Note: order/support email standardized to officialkeyshub@gmail.com
+      // Show the wallet address + proof-of-payment steps instead of opening email.
+      setUsdtOrderId(recordedId);
     }
   };
 
@@ -192,6 +194,15 @@ export default function CheckoutPage() {
                       <i className="fas fa-check-circle text-green-600 text-2xl"></i>
                     )}
                   </button>
+                  {paymentMethod === 'usdt' && usdtOrderId && (
+                    <UsdtPay
+                      variant="light"
+                      orderId={usdtOrderId}
+                      amount={discountedTotal}
+                      itemName={cart.map((i) => `${i.quantity}x ${i.name}`).join(', ')}
+                      deliveryEmail={formData.email}
+                    />
+                  )}
 
                   {/* WhatsApp */}
                   <button

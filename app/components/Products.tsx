@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { catalog, slugify } from '../lib/catalog';
 import { paypalPaymentUrl } from '../lib/payment';
 import BundleBuilder from './BundleBuilder';
-import { recordQuickOrder } from '../lib/account';
+import { recordQuickOrder, priceToNumber } from '../lib/account';
+import UsdtPay from './UsdtPay';
 
 type CategoryId = "all" | "bundles" | "windows" | "office" | "server" | "visio" | "project" | "sql" | "visualstudio" | "antivirus";
 
@@ -29,19 +30,19 @@ export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [showCartPreview, setShowCartPreview] = useState(false);
+  const [usdtOrderId, setUsdtOrderId] = useState<string | null>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
-  const [moreToRight, setMoreToRight] = useState(false);
 
-  // Category row (phones): show a shimmering edge while more categories are off
-  // screen, and gently "peek" the row to the right until the visitor touches it.
+  // Close the USDT instructions whenever the payment window changes.
+  useEffect(() => {
+    setUsdtOrderId(null);
+  }, [selectedProduct, showModal]);
+
+  // Category row (phones): gently "peek" the row to the right, hinting there are
+  // more categories, until the visitor touches it.
   useEffect(() => {
     const el = tabsRef.current;
     if (!el) return;
-    const update = () => setMoreToRight(el.scrollWidth - el.clientWidth - el.scrollLeft > 8);
-    update();
-    el.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-
     let stopped = false;
     const stop = () => { stopped = true; el.style.scrollSnapType = ''; };
     ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => el.addEventListener(ev, stop, { passive: true }));
@@ -59,8 +60,6 @@ export default function Products() {
     timers.push(setTimeout(peek, 1500));
 
     return () => {
-      el.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
       ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => el.removeEventListener(ev, stop));
       clearInterval(interval);
       timers.forEach(clearTimeout);
@@ -176,13 +175,6 @@ export default function Products() {
             </button>
           ))}
         </div>
-        {/* Shimmering edge: more categories to the right (phones only) */}
-        <div
-          aria-hidden="true"
-          className={`md:hidden pointer-events-none absolute right-0 top-0 bottom-2 w-14 bg-gradient-to-l from-slate-950/90 via-slate-950/50 to-transparent transition-opacity duration-300 ${moreToRight ? "opacity-100" : "opacity-0"}`}
-        >
-          <span className="okh-edge-gleam absolute right-1.5 top-1/2 -translate-y-1/2 h-8 w-[3px] rounded-full bg-gradient-to-b from-transparent via-white to-transparent"></span>
-        </div>
         </div>
         <style>{`
           @keyframes okh-slide-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
@@ -191,10 +183,6 @@ export default function Products() {
             50% { box-shadow: 0 0 0 3px rgba(249,115,22,.25), 0 0 22px rgba(249,115,22,.8); }
           }
           @keyframes okh-sweep { 0% { left: -60%; } 60%, 100% { left: 130%; } }
-          @keyframes okh-edge-gleam {
-            0%, 100% { opacity: .5; box-shadow: 0 0 6px 1px rgba(251,146,60,.4); }
-            50% { opacity: 1; box-shadow: 0 0 14px 3px rgba(251,146,60,.95); }
-          }
           @media (min-width: 768px) { @keyframes okh-slide-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } } }
           .okh-bundle-tab {
             position: relative; overflow: hidden;
@@ -207,9 +195,8 @@ export default function Products() {
             transform: skewX(-20deg); animation: okh-sweep 2.4s ease-in-out infinite;
           }
           .okh-bundle-tab:hover { animation-play-state: paused; }
-          .okh-edge-gleam { animation: okh-edge-gleam 1.6s ease-in-out infinite; }
           @media (prefers-reduced-motion: reduce) {
-            .okh-bundle-tab, .okh-bundle-tab::after, .okh-edge-gleam { animation: none; }
+            .okh-bundle-tab, .okh-bundle-tab::after { animation: none; }
           }
         `}</style>
 
@@ -419,23 +406,33 @@ export default function Products() {
                     </p>
                   </div>
 
-                  {/* USDT */}
-                  <a
-                    href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${selectedProduct.name}&body=Hi, I want to purchase ${selectedProduct.name} for ${selectedProduct.price} via USDT.`}
-                    onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'usdt')}
-                    className="flex items-center justify-between p-4 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center group-hover:bg-green-500/25 transition-colors">
-                        <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
+                  {/* USDT — send directly to the store wallet, then email proof */}
+                  {usdtOrderId ? (
+                    <UsdtPay
+                      orderId={usdtOrderId}
+                      amount={priceToNumber(selectedProduct.price)}
+                      itemName={selectedProduct.name}
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setUsdtOrderId(recordQuickOrder(selectedProduct.name, selectedProduct.price, 'usdt').id)
+                      }
+                      className="flex items-center justify-between p-4 bg-white/[0.04] border border-green-400/40 rounded-xl hover:bg-green-500/10 transition-all group text-left w-full"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center group-hover:bg-green-500/25 transition-colors">
+                          <i className="fab fa-bitcoin text-green-400 text-2xl"></i>
+                        </div>
+                        <div>
+                          <p className="font-bold text-white">Pay with USDT</p>
+                          <p className="text-sm text-slate-400">Send crypto, then email the transaction screenshot</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-bold text-white">Pay with USDT</p>
-                        <p className="text-sm text-slate-400">Cryptocurrency payment</p>
-                      </div>
-                    </div>
-                    <i className="fas fa-arrow-right text-green-400 group-hover:translate-x-1 transition-transform"></i>
-                  </a>
+                      <i className="fas fa-arrow-right text-green-400 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                  )}
 
                   {/* WhatsApp */}
                   <a

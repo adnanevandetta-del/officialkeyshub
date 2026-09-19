@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useCart } from "./CartContext";
 import { getProductImage } from "../lib/productImage";
 import { paypalPaymentUrl } from "../lib/payment";
-import { recordQuickOrder } from "../lib/account";
+import { recordQuickOrder, priceToNumber } from "../lib/account";
+import UsdtPay from "./UsdtPay";
 
 export default function ProductBuySection({
   name,
@@ -17,6 +18,7 @@ export default function ProductBuySection({
 }) {
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
+  const [usdtOrderId, setUsdtOrderId] = useState<string | null>(null);
 
   const add = () => {
     addToCart({
@@ -66,13 +68,13 @@ export default function ProductBuySection({
         </button>
 
         <div className="grid grid-cols-2 gap-2.5 pt-1">
-          <a
-            href={`mailto:digitalkeyhubllc@gmail.com?subject=USDT Payment for ${encodeURIComponent(name)}&body=Hi, I want to purchase ${encodeURIComponent(name)} for ${price} via USDT.`}
-            onClick={() => recordQuickOrder(name, price, "usdt")}
+          <button
+            type="button"
+            onClick={() => setUsdtOrderId(recordQuickOrder(name, price, "usdt").id)}
             className="py-2.5 rounded-lg font-semibold text-slate-200 bg-white/5 border border-white/10 hover:bg-white/10 transition-all inline-flex items-center justify-center gap-2 text-sm"
           >
             <i className="fab fa-bitcoin text-[#26a17b]"></i> USDT
-          </a>
+          </button>
           <a
             href={`https://wa.me/16019756129?text=${waText}`}
             target="_blank"
@@ -84,6 +86,12 @@ export default function ProductBuySection({
           </a>
         </div>
       </div>
+
+      {usdtOrderId && (
+        <div className="mt-4">
+          <UsdtPay orderId={usdtOrderId} amount={priceToNumber(price)} itemName={name} />
+        </div>
+      )}
 
       {/* Accepted payments */}
       <div className="flex items-center gap-2.5 text-white/70 mt-5 pt-4 border-t border-white/10">
