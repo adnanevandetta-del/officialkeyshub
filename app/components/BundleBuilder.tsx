@@ -144,7 +144,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[26rem] overflow-y-auto pr-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:max-h-[26rem] lg:overflow-y-auto lg:pr-1">
               {list.map((p) => {
                 const isSel = selected.includes(p.name);
                 const disabled = !isSel && isFull;
