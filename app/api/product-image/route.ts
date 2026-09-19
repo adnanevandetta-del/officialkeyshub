@@ -230,6 +230,8 @@ function wrapTitle(s: string, max = 16, maxLines = 3): string[] {
 
 export function GET(req: NextRequest) {
   const name = req.nextUrl.searchParams.get("name") || "Microsoft Product";
+  // ?box=1 → just the box on a transparent background, tightly cropped (for the homepage carousel).
+  const boxOnly = req.nextUrl.searchParams.get("box") === "1";
   const meta = metaFor(name);
   const seed = hash(name);
 
@@ -253,7 +255,7 @@ export function GET(req: NextRequest) {
     : "";
   const chipW = Math.max(110, edition.length * 10 + 40);
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="${esc(name)} — Official Keys Hub">
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${boxOnly ? "200 50 400 530" : "0 0 800 600"}" width="${boxOnly ? 400 : 800}" height="${boxOnly ? 530 : 600}" role="img" aria-label="${esc(name)} — Official Keys Hub">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0a0e1a"/>
@@ -284,9 +286,9 @@ export function GET(req: NextRequest) {
     <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
   </defs>
 
-  <rect width="800" height="600" fill="url(#bg)"/>
-  <ellipse cx="400" cy="300" rx="330" ry="270" fill="url(#glow)"/>
-  <ellipse cx="410" cy="548" rx="215" ry="16" fill="#000" fill-opacity="0.55" filter="url(#blur)"/>
+  ${boxOnly ? "" : `<rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="300" rx="330" ry="270" fill="url(#glow)"/>`}
+  <ellipse cx="400" cy="546" rx="${boxOnly ? 170 : 215}" ry="${boxOnly ? 12 : 16}" fill="#000" fill-opacity="0.55" filter="url(#blur)"/>
 
   <!-- Box spine (right side) -->
   <polygon points="520,70 580,92 580,508 520,530" fill="url(#spine)"/>

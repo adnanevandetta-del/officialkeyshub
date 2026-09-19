@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { paypalPaymentUrl } from "../lib/payment";
-import { getProductImage } from "../lib/productImage";
+import { getProductImage, getProductBoxImage } from "../lib/productImage";
 
 interface BillboardProduct {
   name: string;
@@ -210,35 +210,23 @@ export default function ProductBillboard() {
                         filter: isActive ? "saturate(1.1)" : "brightness(0.8) saturate(0.85)",
                       }}
                     >
+                      {/* Just the box — no frame, background or overlay */}
                       <div
-                        className={`relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl w-[115px] h-[150px] md:w-[240px] md:h-[320px] bg-slate-800 ${
-                          isActive ? "ring-2 md:ring-4 ring-sky-600/60 shadow-sky-600/30" : "ring-1 ring-white/10"
-                        }`}
+                        className="relative w-[118px] h-[156px] md:w-[246px] md:h-[326px] transition-[filter] duration-[900ms]"
+                        style={{
+                          filter: isActive
+                            ? "drop-shadow(0 0 16px rgba(14,165,233,0.55)) drop-shadow(0 10px 14px rgba(0,0,0,0.45))"
+                            : "drop-shadow(0 8px 12px rgba(0,0,0,0.5))",
+                        }}
                       >
-                        <div className="relative h-full">
-                          <Image
-                            src={getProductImage(product.name)}
-                            alt={product.name}
-                            fill
-                            unoptimized
-                            className="object-contain p-2"
-                            priority={index === 0}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                          {isActive && (
-                            <div
-                              className="absolute inset-0 rounded-xl md:rounded-2xl"
-                              style={{ boxShadow: "0 0 24px rgba(3,105,161,0.55), inset 0 0 24px rgba(3,105,161,0.25)" }}
-                            ></div>
-                          )}
-                        </div>
-
-                        {/* Shimmer sweep on active */}
-                        {isActive && (
-                          <div className="absolute inset-0 overflow-hidden rounded-xl md:rounded-2xl pointer-events-none">
-                            <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                          </div>
-                        )}
+                        <Image
+                          src={getProductBoxImage(product.name)}
+                          alt={product.name}
+                          fill
+                          unoptimized
+                          className="object-contain"
+                          priority={index === 0}
+                        />
                       </div>
                     </div>
                   );

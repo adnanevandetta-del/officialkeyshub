@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { getProductImage } from '../lib/productImage';
 
 interface CartModalProps {
   onClose: () => void;
@@ -96,11 +97,11 @@ export default function CartModal({ onClose }: CartModalProps) {
                       {/* Product Image */}
                       <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-white/5 border border-white/10">
                         <Image
-                          src={item.image}
+                          src={getProductImage(item.name)}
                           alt={item.name}
                           fill
                           unoptimized
-                          className="object-cover"
+                          className="object-contain p-1"
                         />
                       </div>
 

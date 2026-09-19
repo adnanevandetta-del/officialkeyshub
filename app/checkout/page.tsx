@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { validatePromoCode, getStoredPromo } from '../lib/promo';
 import { paypalPaymentUrl } from '../lib/payment';
+import { getProductImage } from '../lib/productImage';
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
@@ -212,7 +213,7 @@ export default function CheckoutPage() {
                   {cart.map((item) => (
                     <div key={item.id} className="flex gap-3 pb-4 border-b border-gray-200">
                       <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden">
-                        <Image src={item.image} alt={item.name} fill unoptimized className="object-cover" />
+                        <Image src={getProductImage(item.name)} alt={item.name} fill unoptimized className="object-contain p-1" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-sm text-gray-900 truncate">{item.name}</p>
