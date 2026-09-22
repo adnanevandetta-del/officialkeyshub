@@ -8,14 +8,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        // Note: /_next/ is intentionally NOT disallowed — blocking it stops
-        // crawlers from fetching the site's CSS/JS (flagged as blocked resources).
-        disallow: ['/api/', '/admin/', '/private/', '/checkout/', '/orders/', '/profile/', '/login/'],
+        // Only block true non-content endpoints here. Account/checkout pages are
+        // deliberately kept crawlable so Googlebot can read their `noindex` meta
+        // tag and drop them cleanly — blocking them in robots.txt would hide the
+        // noindex and cause "Indexed, though blocked by robots.txt" warnings.
+        // /_next/ is intentionally NOT disallowed, so CSS/JS stay fetchable.
+        disallow: ['/api/', '/admin/', '/private/'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/checkout/', '/orders/', '/profile/', '/login/'],
+        disallow: ['/api/', '/admin/', '/private/'],
       },
       {
         userAgent: 'Googlebot-Image',
@@ -24,7 +27,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Bingbot',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/checkout/', '/orders/', '/profile/', '/login/'],
+        disallow: ['/api/', '/admin/', '/private/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
