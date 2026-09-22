@@ -3,7 +3,7 @@ import { allProducts } from './lib/catalog';
 
 // Fixed date (bump it when content really changes) — a lastmod that changes on every
 // deploy teaches Google to ignore the field.
-const LAST_UPDATED = new Date('2026-09-19');
+const LAST_UPDATED = new Date('2026-09-22');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Production domain — must match the host that serves 200 (www), so sitemap
