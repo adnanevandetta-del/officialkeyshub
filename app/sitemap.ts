@@ -1,16 +1,16 @@
 import { MetadataRoute } from 'next';
-import { allProducts } from './lib/catalog';
+import { canonicalProducts } from './lib/catalog';
 
 // Fixed date (bump it when content really changes) — a lastmod that changes on every
 // deploy teaches Google to ignore the field.
-const LAST_UPDATED = new Date('2026-09-22');
+const LAST_UPDATED = new Date('2026-09-23');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Production domain — must match the host that serves 200 (www), so sitemap
   // URLs don't 307-redirect to www and get flagged as "incorrect pages".
   const baseUrl = 'https://www.officialkeyshub.com';
 
-  const productPages: MetadataRoute.Sitemap = allProducts.map((p) => ({
+  const productPages: MetadataRoute.Sitemap = canonicalProducts.map((p) => ({
     url: `${baseUrl}/products/${p.slug}`,
     lastModified: LAST_UPDATED,
     changeFrequency: 'weekly',

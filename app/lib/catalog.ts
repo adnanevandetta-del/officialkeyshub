@@ -804,3 +804,31 @@ export const allProducts: FlatProduct[] = (
 export function getProductBySlug(slug: string): FlatProduct | undefined {
   return allProducts.find((p) => p.slug === slug);
 }
+
+// Activation-method variants ("- Online Key", "- Phone Key", "- Bind Key") are
+// the same product as their base and read as duplicates to Google. We point
+// each variant's canonical at its base product so Google consolidates them
+// instead of picking its own canonical ("Duplicate, Google chose different
+// canonical than user").
+const VARIANT_SUFFIX = /\s*-\s*(online|phone|bind)\s*key$/i;
+
+function baseName(name: string): string {
+  return name.replace(VARIANT_SUFFIX, "").trim();
+}
+
+export function canonicalSlugFor(p: FlatProduct): string {
+  if (!VARIANT_SUFFIX.test(p.name)) return p.slug;
+  const base = baseName(p.name);
+  // "Pro Plus" and "Professional Plus" name the same edition (Office).
+  const norm = (s: string) => s.toLowerCase().replace(/pro plus/g, "professional plus").trim();
+  const match =
+    allProducts.find((x) => x.name === base) ||
+    allProducts.find((x) => !VARIANT_SUFFIX.test(x.name) && norm(x.name) === norm(base));
+  return match ? match.slug : p.slug;
+}
+
+// Canonical products only (variants folded into their base) — use this for the
+// sitemap so it never lists non-canonical duplicate URLs.
+export const canonicalProducts: FlatProduct[] = allProducts.filter(
+  (p) => canonicalSlugFor(p) === p.slug
+);

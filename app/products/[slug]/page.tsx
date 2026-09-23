@@ -9,6 +9,7 @@ import { getProductImage } from "../../lib/productImage";
 import {
   allProducts,
   getProductBySlug,
+  canonicalSlugFor,
   categoryLabel,
   type CatalogCategory,
   type FlatProduct,
@@ -139,7 +140,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const p = getProductBySlug(slug);
   if (!p) return { title: "Product Not Found | Official Keys Hub" };
-  const url = `${SITE}/products/${p.slug}`;
+  // Variants ("- Online/Phone/Bind Key") canonicalize to their base product.
+  const canonicalUrl = `${SITE}/products/${canonicalSlugFor(p)}`;
+  const url = canonicalUrl;
   const desc = metaDescription(p);
   return {
     title: `${p.name} — Genuine Key, Instant Delivery`,
