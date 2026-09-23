@@ -10,6 +10,7 @@ import {
   allProducts,
   getProductBySlug,
   categoryLabel,
+  type CatalogCategory,
   type FlatProduct,
 } from "../../lib/catalog";
 
@@ -17,6 +18,64 @@ const SITE = "https://www.officialkeyshub.com";
 
 function numericPrice(p: string): string {
   return parseFloat(p.replace(/[^0-9.]/g, "")).toFixed(2);
+}
+
+// Category-specific overview copy so each page reads distinctly by product
+// family (not one boilerplate paragraph repeated across the whole catalog).
+const categoryIntro: Record<CatalogCategory, string> = {
+  bundles:
+    "This bundle pairs a full Windows license with the Office suite, so you can set up a new PC end to end for one low price instead of buying each license separately.",
+  windows:
+    "Windows licenses from Official Keys Hub give you the full desktop operating system with security updates and feature upgrades, activated permanently against your hardware or Microsoft account.",
+  office:
+    "This Office license unlocks the full desktop apps — Word, Excel, PowerPoint and more — installed locally with no ongoing subscription, so you own the version you buy for good.",
+  server:
+    "Windows Server licensing is built for businesses running on-premises workloads, virtual machines and network roles. This license activates genuinely and is covered by our replacement guarantee.",
+  visio:
+    "Visio and Project are Microsoft's professional diagramming and planning tools. This license installs the full desktop application for building flowcharts, org charts and project schedules.",
+  project:
+    "Microsoft Project is the industry standard for planning schedules, tracking tasks and managing resources. This license installs the complete desktop application, activated for good.",
+  sql:
+    "SQL Server powers databases and business applications at scale. This genuine license activates with Microsoft and is ideal for developers and businesses running production or test workloads.",
+  visualstudio:
+    "Visual Studio is Microsoft's flagship IDE for building apps across web, desktop, cloud and mobile. This license unlocks the full professional development environment.",
+  antivirus:
+    "This security license keeps your devices protected with real-time malware, ransomware and phishing defense, backed by regular definition updates for the full term of the license.",
+};
+
+// Product-specific "at a glance" facts, derived only from catalog data.
+function savingsPct(p: FlatProduct): number | null {
+  const now = parseFloat(p.price.replace(/[^0-9.]/g, ""));
+  const was = parseFloat((p.originalPrice || "").replace(/[^0-9.]/g, ""));
+  if (!now || !was || was <= now) return null;
+  return Math.round(((was - now) / was) * 100);
+}
+
+function specsFor(p: FlatProduct): { label: string; value: string }[] {
+  const feats = p.features.join(" ").toLowerCase();
+  const licenseType = /lifetime/.test(feats)
+    ? "Lifetime (one-time purchase)"
+    : /subscription|1 year|12 month|annual/.test(feats)
+      ? "Subscription"
+      : "Genuine license";
+  const activation = /phone activation|offline/.test(feats)
+    ? "Phone / offline activation"
+    : /online activation|digital/.test(feats)
+      ? "Online (Microsoft servers)"
+      : "Standard product key";
+  const deviceFeat = p.features.find((f) => /\bpc\b|device|user/i.test(f));
+  const specs: { label: string; value: string }[] = [
+    { label: "Product", value: p.name },
+    { label: "Category", value: categoryLabel[p.category] },
+    { label: "License type", value: licenseType },
+    { label: "Activation", value: activation },
+    { label: "Coverage", value: deviceFeat ?? "1 device" },
+    { label: "Delivery", value: "Instant email delivery" },
+    { label: "Price", value: p.price },
+  ];
+  const pct = savingsPct(p);
+  if (pct) specs.push({ label: "You save", value: `${pct}% vs ${p.originalPrice}` });
+  return specs;
 }
 
 function keywordsFor(p: FlatProduct): string {
@@ -219,6 +278,23 @@ export default async function ProductPage({
                 Microsoft license that activates directly on Microsoft&rsquo;s own servers. {p.description}, and it&rsquo;s
                 delivered to your inbox within minutes of purchase.
               </p>
+              <p className="text-slate-300 leading-relaxed mb-6">{categoryIntro[p.category]}</p>
+
+              <h3 className="text-xl font-bold text-white mt-2 mb-3">{p.name} at a glance</h3>
+              <div className="overflow-hidden rounded-xl border border-white/10 mb-2">
+                <table className="w-full text-sm">
+                  <tbody>
+                    {specsFor(p).map((s, i) => (
+                      <tr key={s.label} className={i % 2 ? "bg-white/[0.02]" : ""}>
+                        <th scope="row" className="text-left font-semibold text-slate-400 px-4 py-2.5 w-2/5 align-top">
+                          {s.label}
+                        </th>
+                        <td className="text-slate-200 px-4 py-2.5">{s.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
               <p className="text-slate-300 leading-relaxed mb-4">
                 As an independent reseller operating under EU resale rights, we source every {cat.toLowerCase()} license
                 through legitimate channels — so you get the real thing at a fair price, backed by our 30-day money-back
