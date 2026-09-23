@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { canonicalProducts } from './lib/catalog';
+import { getMdxListItems } from './lib/blog-mdx';
 
 // Fixed date (bump it when content really changes) — a lastmod that changes on every
 // deploy teaches Google to ignore the field.
@@ -17,6 +18,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Auto-generated (published) MDX blog articles.
+  const mdxBlogPages: MetadataRoute.Sitemap = getMdxListItems().map((a) => ({
+    url: `${baseUrl}/blog/${a.slug}`,
+    lastModified: a.date ? new Date(a.date) : LAST_UPDATED,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
   return [
     {
       url: `${baseUrl}/products`,
@@ -25,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...productPages,
+    ...mdxBlogPages,
     // Homepage
     {
       url: baseUrl,

@@ -1,0 +1,23 @@
+{
+  "_comment": "Keyword queue for the automated blog. Add keywords to the end of the list. The generator always picks the first item with status 'queued', writes an MDX draft, and flips it to 'drafted'; merging its PR is what publishes it. Statuses: queued -> drafted -> published.",
+  "keywords": [
+    { "keyword": "windows 10 end of support 2026", "title": "Windows 10 End of Support 2026: What Are Your Options?", "category": "Guide", "status": "drafted", "slug": "windows-10-end-of-support-2026", "draftedAt": "2026-09-23" },
+    { "keyword": "is windows 11 pro worth it", "title": "Is Windows 11 Pro Worth It? Pro vs Home for Real Users (2026)", "category": "Comparison", "status": "queued" },
+    { "keyword": "how to check if windows is genuine", "title": "How to Check if Your Windows License Is Genuine", "category": "Guide", "status": "queued" },
+    { "keyword": "digital license vs product key", "title": "Digital License vs Product Key: What's the Difference?", "category": "Guide", "status": "queued" },
+    { "keyword": "how to find windows product key", "title": "How to Find Your Windows Product Key (4 Easy Ways)", "category": "Guide", "status": "queued" },
+    { "keyword": "how to move office license to new pc", "title": "How to Move Your Microsoft Office License to a New PC", "category": "Guide", "status": "queued" },
+    { "keyword": "how to activate microsoft project 2021", "title": "How to Activate Microsoft Project 2021: Step-by-Step", "category": "Activation", "status": "queued" },
+    { "keyword": "how to activate microsoft visio 2021", "title": "How to Activate Microsoft Visio 2021: Step-by-Step", "category": "Activation", "status": "queued" },
+    { "keyword": "sql server 2022 standard vs enterprise", "title": "SQL Server 2022 Standard vs Enterprise: Which Do You Need?", "category": "Comparison", "status": "queued" },
+    { "keyword": "visual studio 2022 professional vs enterprise", "title": "Visual Studio 2022 Professional vs Enterprise Explained", "category": "Comparison", "status": "queued" },
+    { "keyword": "visio vs project", "title": "Visio vs Project: Which Microsoft Tool Is Right for You?", "category": "Comparison", "status": "queued" },
+    { "keyword": "cheap windows server 2022 keys", "title": "Cheap Windows Server 2022 Keys: A Buyer's Guide", "category": "Buying", "status": "queued" },
+    { "keyword": "upgrade windows 10 to windows 11 cheap", "title": "How to Upgrade from Windows 10 to Windows 11 Cheaply", "category": "Guide", "status": "queued" },
+    { "keyword": "best antivirus for windows 11 2026", "title": "Best Value Antivirus for Windows 11 in 2026", "category": "Buying", "status": "queued" },
+    { "keyword": "reinstall windows without losing license", "title": "How to Reinstall Windows Without Losing Your License", "category": "Guide", "status": "queued" },
+    { "keyword": "windows 11 enterprise vs pro", "title": "Windows 11 Enterprise vs Pro: Do You Really Need Enterprise?", "category": "Comparison", "status": "queued" },
+    { "keyword": "bind key vs online key vs phone key", "title": "Bind Key vs Online Key vs Phone Key: Which Should You Buy?", "category": "Guide", "status": "queued" },
+    { "keyword": "how to install office 2021 after buying key", "title": "How to Install Office 2021 After Buying a Key", "category": "Activation", "status": "queued" }
+  ]
+}

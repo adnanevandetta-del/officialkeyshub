@@ -6,12 +6,15 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "generate:article": "node scripts/generate-article.mjs"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.5.2",
         "axios": "^1.18.1",
+        "gray-matter": "^4.0.3",
         "next": "^15.1.0",
+        "next-mdx-remote": "^5.0.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
     },

@@ -1,0 +1,57 @@
+name: Auto Blog
+
+# Generates one SEO blog article from the next queued keyword and opens a PR.
+# Merging the PR publishes the article (it appears on /blog and in the sitemap).
+
+on:
+  schedule:
+    # Weekly — Mondays at 09:00 UTC.
+    - cron: "0 9 * * 1"
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate article draft
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Optional override, e.g. claude-opus-5 for higher quality:
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+        run: node scripts/generate-article.mjs
+
+      - name: Open pull request
+        if: steps.gen.outputs.generated == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto-blog/${{ steps.gen.outputs.slug }}
+          add-paths: content/blog/**
+          commit-message: "blog: ${{ steps.gen.outputs.title }}"
+          title: "blog: ${{ steps.gen.outputs.title }}"
+          body: |
+            Automated draft article generated from the keyword queue.
+
+            - **Slug:** `${{ steps.gen.outputs.slug }}`
+            - **File:** `content/blog/${{ steps.gen.outputs.slug }}.mdx`
+
+            Review it on the Vercel preview deployment for this PR. Edit the MDX
+            if needed, then **merge to publish** — it will appear on `/blog` and
+            in the sitemap automatically. To hold it back, set `draft: true` in
+            the file's frontmatter.
+
+            🤖 Generated with [Claude Code](https://claude.com/claude-code)
+          labels: auto-blog
+          delete-branch: true
