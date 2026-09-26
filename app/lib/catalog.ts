@@ -21,7 +21,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 11 Pro + Office 2021 Pro Plus Bundle",
         description: "Genuine Windows 11 Pro and Office 2021 Pro Plus together — one bundle, one low price",
-        price: "$59.99",
+        price: "$34.99",
         originalPrice: "$639.98",
         features: ["Windows 11 Pro License", "Office 2021 Pro Plus License", "Lifetime · 1 PC", "Instant Delivery", "Word, Excel, PowerPoint, Outlook & more"],
         popular: true,
@@ -31,7 +31,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 10 Pro + Office 2021 Pro Plus Bundle",
         description: "Genuine Windows 10 Pro paired with Office 2021 Pro Plus at a bundle price",
-        price: "$52.99",
+        price: "$29.99",
         originalPrice: "$589.98",
         features: ["Windows 10 Pro License", "Office 2021 Pro Plus License", "Lifetime · 1 PC", "Instant Delivery", "Full Office app suite"],
         popular: false,
@@ -43,7 +43,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 11 Pro",
         description: "Latest Windows OS with professional features",
-        price: "$39.99",
+        price: "$16.99",
         originalPrice: "$199.99",
         features: ["Lifetime License", "1 PC", "Instant Delivery", "Remote Desktop", "BitLocker Encryption"],
         popular: true,
@@ -52,7 +52,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 11 Pro - Online Key",
         description: "Digital activation via Microsoft servers",
-        price: "$33",
+        price: "$14.99",
         originalPrice: "$199.99",
         features: ["Online Activation", "1 PC", "Instant Delivery", "Digital License", "Microsoft Account Bind"],
         popular: false,
@@ -62,7 +62,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 11 Pro - Phone Key",
         description: "Telephone activation for offline PCs",
-        price: "$42",
+        price: "$18.99",
         originalPrice: "$199.99",
         features: ["Phone Activation", "1 PC", "Instant Delivery", "Offline Activation", "No Internet Required"],
         popular: false,
@@ -72,7 +72,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 11 Home",
         description: "Perfect for home users and students",
-        price: "$32.99",
+        price: "$12.99",
         originalPrice: "$139.99",
         features: ["Lifetime License", "1 PC", "Instant Delivery", "Gaming Optimized", "Security Updates"],
         popular: false,
@@ -81,7 +81,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 10 Pro",
         description: "Stable and reliable professional OS",
-        price: "$31",
+        price: "$13.99",
         originalPrice: "$199.99",
         features: ["Lifetime License", "1 PC", "Instant Delivery", "Tested & Trusted", "Long-term Support"],
         popular: false,
@@ -90,7 +90,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 10 Pro - Online Key",
         description: "Digital activation with Microsoft account",
-        price: "$29.99",
+        price: "$11.99",
         originalPrice: "$199.99",
         features: ["Online Activation", "1 PC", "Instant Delivery", "Cloud Linked", "Easy Reinstall"],
         popular: false,
@@ -100,7 +100,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 10 Pro - Phone Key",
         description: "Reliable phone activation method",
-        price: "$36",
+        price: "$15.99",
         originalPrice: "$199.99",
         features: ["Phone Activation", "1 PC", "Instant Delivery", "Works Offline", "100% Genuine"],
         popular: false,
@@ -110,7 +110,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 10 Home",
         description: "Classic Windows experience",
-        price: "$27.99",
+        price: "$10.99",
         originalPrice: "$139.99",
         features: ["Lifetime License", "1 PC", "Instant Delivery", "Stable Performance", "Regular Updates"],
         popular: false,
@@ -119,7 +119,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 8.1 Pro",
         description: "Efficient OS for older hardware",
-        price: "$25",
+        price: "$9.99",
         originalPrice: "$199.99",
         features: ["Lifetime License", "1 PC", "Instant Delivery", "Lightweight", "Legacy Support"],
         popular: false,
@@ -128,7 +128,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 7 Professional",
         description: "Classic Windows 7 for legacy systems",
-        price: "$24.99",
+        price: "$9.99",
         originalPrice: "$199.99",
         features: ["Lifetime License", "1 PC", "Instant Delivery", "Legacy Software Support", "Stable & Tested"],
         popular: false,
@@ -146,7 +146,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 11 Enterprise",
         description: "Advanced security and management features",
-        price: "$46.99",
+        price: "$24.99",
         originalPrice: "$309.00",
         features: ["Lifetime License", "1 PC", "Advanced Security", "Device Guard", "Credential Guard"],
         popular: false,
@@ -155,7 +155,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 10 Enterprise",
         description: "Enterprise-grade Windows for businesses",
-        price: "$41",
+        price: "$22.99",
         originalPrice: "$309.00",
         features: ["Lifetime License", "1 PC", "Advanced Security", "DirectAccess", "AppLocker"],
         popular: false,
@@ -164,7 +164,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows 11 Pro for Workstations",
         description: "High-performance OS for advanced workloads",
-        price: "$45.99",
+        price: "$24.99",
         originalPrice: "$309.00",
         features: ["Lifetime License", "1 PC", "ReFS File System", "Up to 6TB RAM", "Server-grade Performance"],
         popular: false,
@@ -175,7 +175,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2021 Professional Plus",
         description: "Complete Office suite with all applications",
-        price: "$49.99",
+        price: "$24.99",
         originalPrice: "$439.99",
         features: ["Word, Excel, PowerPoint", "Outlook, Access, Publisher", "Lifetime License", "1 PC", "Instant Delivery"],
         popular: true,
@@ -184,7 +184,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2021 Pro Plus - Online Key",
         description: "Digital activation via Microsoft account",
-        price: "$43",
+        price: "$22.99",
         originalPrice: "$439.99",
         features: ["All Office Apps", "Online Activation", "Lifetime License", "1 PC", "Cloud Integration"],
         popular: false,
@@ -194,7 +194,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2021 Pro Plus - Bind Key",
         description: "Bound to Microsoft account permanently",
-        price: "$47.99",
+        price: "$23.99",
         originalPrice: "$439.99",
         features: ["All Office Apps", "Account Bind", "Lifetime License", "1 PC", "Easy Transfer"],
         popular: false,
@@ -204,7 +204,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2021 Pro Plus - Phone Key",
         description: "Phone activation for offline use",
-        price: "$52",
+        price: "$26.99",
         originalPrice: "$439.99",
         features: ["All Office Apps", "Phone Activation", "Lifetime License", "1 PC", "Offline Ready"],
         popular: false,
@@ -214,7 +214,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2021 Home & Business",
         description: "Essential Office apps for home and business",
-        price: "$44.99",
+        price: "$27.99",
         originalPrice: "$249.99",
         features: ["Word, Excel, PowerPoint", "Outlook", "Lifetime License", "1 PC/Mac", "Instant Delivery"],
         popular: false,
@@ -223,7 +223,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2019 Professional Plus",
         description: "Reliable Office 2019 suite",
-        price: "$42",
+        price: "$19.99",
         originalPrice: "$439.99",
         features: ["Word, Excel, PowerPoint", "Outlook, Access, Publisher", "Lifetime License", "1 PC", "Proven Stability"],
         popular: false,
@@ -232,7 +232,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2019 Pro Plus - Online Key",
         description: "Digital version of Office 2019",
-        price: "$41.99",
+        price: "$17.99",
         originalPrice: "$439.99",
         features: ["All Office Apps", "Online Activation", "Lifetime License", "1 PC", "Quick Setup"],
         popular: false,
@@ -242,7 +242,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2019 Pro Plus - Bind Key",
         description: "Account-bound Office 2019",
-        price: "$46",
+        price: "$18.99",
         originalPrice: "$439.99",
         features: ["All Office Apps", "Account Bind", "Lifetime License", "1 PC", "Secure"],
         popular: false,
@@ -252,7 +252,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2019 Pro Plus - Phone Key",
         description: "Traditional activation method",
-        price: "$43.99",
+        price: "$21.99",
         originalPrice: "$439.99",
         features: ["All Office Apps", "Phone Activation", "Lifetime License", "1 PC", "100% Working"],
         popular: false,
@@ -262,7 +262,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2016 Professional Plus",
         description: "Proven Office suite for professionals",
-        price: "$37",
+        price: "$14.99",
         originalPrice: "$439.99",
         features: ["Word, Excel, PowerPoint", "Outlook, Access, Publisher", "Lifetime License", "1 PC", "Trusted Version"],
         popular: false,
@@ -271,7 +271,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2013 Professional Plus",
         description: "Classic Office suite for legacy systems",
-        price: "$34.99",
+        price: "$12.99",
         originalPrice: "$399.99",
         features: ["Word, Excel, PowerPoint", "Outlook, Access, Publisher", "Lifetime License", "1 PC", "Legacy Support"],
         popular: false,
@@ -280,7 +280,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 365 (1 Year)",
         description: "Cloud-based Office with 1TB OneDrive",
-        price: "$57",
+        price: "$29.99",
         originalPrice: "$99.99",
         features: ["All Office Apps", "1TB OneDrive", "5 Devices", "1 Year Subscription", "Always Updated"],
         popular: false,
@@ -289,7 +289,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Microsoft 365 Business Standard (1 Year)",
         description: "Complete business productivity suite",
-        price: "$79.99",
+        price: "$39.99",
         originalPrice: "$144.00",
         features: ["All Office Apps", "1TB OneDrive", "Microsoft Teams", "Business Email", "1 Year Subscription"],
         popular: false,
@@ -298,7 +298,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office 2010 Professional Plus",
         description: "Legacy Office suite for older systems",
-        price: "$33",
+        price: "$11.99",
         originalPrice: "$499.99",
         features: ["Word, Excel, PowerPoint", "Outlook, Access, Publisher", "Lifetime License", "1 PC", "Legacy Support"],
         popular: false,
@@ -307,7 +307,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Office Home & Student 2021",
         description: "Perfect for students and home use",
-        price: "$38.99",
+        price: "$22.99",
         originalPrice: "$149.99",
         features: ["Word, Excel, PowerPoint", "OneNote", "Lifetime License", "1 PC/Mac", "No Outlook"],
         popular: false,
@@ -318,7 +318,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2022 Standard",
         description: "Enterprise-grade server operating system",
-        price: "$69.99",
+        price: "$34.99",
         originalPrice: "$1,069.00",
         features: ["2 VMs", "Hyper-V", "Storage Replica", "Lifetime License", "Instant Delivery"],
         popular: true,
@@ -327,7 +327,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2022 Standard - Online Key",
         description: "Digital activation for Server 2022",
-        price: "$64",
+        price: "$32.99",
         originalPrice: "$1,069.00",
         features: ["2 VMs", "Online Activation", "Hyper-V", "Lifetime License", "Quick Setup"],
         popular: false,
@@ -337,7 +337,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2019 Standard",
         description: "Reliable server platform",
-        price: "$62.99",
+        price: "$29.99",
         originalPrice: "$972.00",
         features: ["2 VMs", "Hyper-V", "Containers", "Lifetime License", "Tested & Trusted"],
         popular: false,
@@ -346,7 +346,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2019 Standard - Online Key",
         description: "Online activation Server 2019",
-        price: "$58",
+        price: "$27.99",
         originalPrice: "$972.00",
         features: ["2 VMs", "Online Activation", "Hyper-V", "Lifetime License", "Instant Setup"],
         popular: false,
@@ -356,7 +356,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2022 Datacenter",
         description: "Unlimited virtualization rights",
-        price: "$99.99",
+        price: "$59.99",
         originalPrice: "$6,155.00",
         features: ["Unlimited VMs", "Shielded VMs", "Storage Spaces Direct", "Lifetime License", "Enterprise Features"],
         popular: false,
@@ -365,7 +365,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2016 Standard",
         description: "Proven server solution",
-        price: "$57",
+        price: "$24.99",
         originalPrice: "$882.00",
         features: ["2 VMs", "Hyper-V", "Nano Server", "Lifetime License", "Stable Release"],
         popular: false,
@@ -374,7 +374,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2019 Datacenter",
         description: "Unlimited virtualization for data centers",
-        price: "$94.99",
+        price: "$54.99",
         originalPrice: "$6,155.00",
         features: ["Unlimited VMs", "Hyper-V", "Storage Spaces Direct", "Lifetime License", "Enterprise Scale"],
         popular: false,
@@ -383,7 +383,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2016 Datacenter",
         description: "Legacy datacenter edition",
-        price: "$88",
+        price: "$49.99",
         originalPrice: "$6,155.00",
         features: ["Unlimited VMs", "Hyper-V", "Software Defined Datacenter", "Lifetime License", "Proven Stable"],
         popular: false,
@@ -392,7 +392,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server 2012 R2 Standard",
         description: "Reliable legacy server platform",
-        price: "$53.99",
+        price: "$19.99",
         originalPrice: "$882.00",
         features: ["2 VMs", "Hyper-V", "Storage Spaces", "Lifetime License", "Legacy Support"],
         popular: false,
@@ -401,7 +401,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server CAL 2022 (5 Device)",
         description: "Client Access Licenses for Server 2022",
-        price: "$48",
+        price: "$24.99",
         originalPrice: "$191.00",
         features: ["5 Device CALs", "Server 2022 Compatible", "Network Access Rights", "Lifetime License", "Instant Delivery"],
         popular: false,
@@ -410,7 +410,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Windows Server RDS CAL 2022 (5 User)",
         description: "Remote Desktop Services CALs",
-        price: "$54.99",
+        price: "$29.99",
         originalPrice: "$215.00",
         features: ["5 User RDS CALs", "Remote Access", "Terminal Services", "Lifetime License", "Quick Activation"],
         popular: false,
@@ -421,7 +421,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Professional 2021",
         description: "Advanced diagramming and vector graphics",
-        price: "$54.99",
+        price: "$24.99",
         originalPrice: "$579.99",
         features: ["All Visio Features", "Data Visualization", "Lifetime License", "1 PC", "Instant Delivery"],
         popular: true,
@@ -430,7 +430,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Professional 2021 - Online Key",
         description: "Digital activation for Visio 2021",
-        price: "$49",
+        price: "$22.99",
         originalPrice: "$579.99",
         features: ["All Visio Features", "Online Activation", "Lifetime License", "1 PC", "Cloud Ready"],
         popular: false,
@@ -440,7 +440,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Professional 2021 - Phone Key",
         description: "Phone activation for offline use",
-        price: "$56.99",
+        price: "$26.99",
         originalPrice: "$579.99",
         features: ["All Visio Features", "Phone Activation", "Lifetime License", "1 PC", "Offline Ready"],
         popular: false,
@@ -450,7 +450,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Standard 2021",
         description: "Essential diagramming tool",
-        price: "$47",
+        price: "$19.99",
         originalPrice: "$309.99",
         features: ["Standard Templates", "Basic Shapes", "Lifetime License", "1 PC", "Instant Delivery"],
         popular: false,
@@ -459,7 +459,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Professional 2019",
         description: "Reliable diagramming solution",
-        price: "$48.99",
+        price: "$21.99",
         originalPrice: "$579.99",
         features: ["All Visio Features", "Professional Templates", "Lifetime License", "1 PC", "Proven Version"],
         popular: false,
@@ -468,7 +468,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Professional 2019 - Online Key",
         description: "Online activation Visio 2019",
-        price: "$46",
+        price: "$19.99",
         originalPrice: "$579.99",
         features: ["All Visio Features", "Online Activation", "Lifetime License", "1 PC", "Quick Setup"],
         popular: false,
@@ -478,7 +478,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Standard 2019",
         description: "Essential diagramming for 2019",
-        price: "$42.99",
+        price: "$17.99",
         originalPrice: "$309.99",
         features: ["Standard Templates", "Basic Shapes", "Lifetime License", "1 PC", "Reliable Version"],
         popular: false,
@@ -487,7 +487,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visio Professional 2016",
         description: "Proven diagramming tool",
-        price: "$47",
+        price: "$17.99",
         originalPrice: "$579.99",
         features: ["All Visio Features", "Professional Templates", "Lifetime License", "1 PC", "Tested & Stable"],
         popular: false,
@@ -498,7 +498,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Professional 2021",
         description: "Complete project management solution",
-        price: "$54.99",
+        price: "$24.99",
         originalPrice: "$1,029.99",
         features: ["Resource Management", "Team Collaboration", "Lifetime License", "1 PC", "Instant Delivery"],
         popular: true,
@@ -507,7 +507,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Professional 2021 - Online Key",
         description: "Digital activation for Project 2021",
-        price: "$51",
+        price: "$22.99",
         originalPrice: "$1,029.99",
         features: ["All Project Features", "Online Activation", "Lifetime License", "1 PC", "Cloud Integration"],
         popular: false,
@@ -517,7 +517,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Professional 2021 - Phone Key",
         description: "Phone activation for offline use",
-        price: "$57.99",
+        price: "$26.99",
         originalPrice: "$1,029.99",
         features: ["All Project Features", "Phone Activation", "Lifetime License", "1 PC", "Works Offline"],
         popular: false,
@@ -527,7 +527,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Standard 2021",
         description: "Essential project management",
-        price: "$48",
+        price: "$19.99",
         originalPrice: "$679.99",
         features: ["Task Management", "Gantt Charts", "Lifetime License", "1 PC", "Instant Delivery"],
         popular: false,
@@ -536,7 +536,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Professional 2019",
         description: "Reliable project management tool",
-        price: "$49.99",
+        price: "$21.99",
         originalPrice: "$1,029.99",
         features: ["Resource Management", "Portfolio Analysis", "Lifetime License", "1 PC", "Proven Stable"],
         popular: false,
@@ -545,7 +545,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Professional 2019 - Online Key",
         description: "Online activation Project 2019",
-        price: "$47",
+        price: "$19.99",
         originalPrice: "$1,029.99",
         features: ["All Project Features", "Online Activation", "Lifetime License", "1 PC", "Quick Setup"],
         popular: false,
@@ -555,7 +555,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Standard 2019",
         description: "Essential project management for 2019",
-        price: "$43.99",
+        price: "$17.99",
         originalPrice: "$679.99",
         features: ["Task Management", "Gantt Charts", "Lifetime License", "1 PC", "Reliable"],
         popular: false,
@@ -564,7 +564,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Project Professional 2016",
         description: "Proven project management software",
-        price: "$46",
+        price: "$17.99",
         originalPrice: "$1,029.99",
         features: ["Resource Management", "Portfolio Analysis", "Lifetime License", "1 PC", "Stable & Tested"],
         popular: false,
@@ -575,7 +575,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2022 Standard",
         description: "Enterprise database management system",
-        price: "$109.99",
+        price: "$44.99",
         originalPrice: "$3,717.00",
         features: ["Core-based Licensing", "Advanced Security", "High Availability", "Lifetime License", "Instant Delivery"],
         popular: true,
@@ -584,7 +584,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2022 Standard - Online Key",
         description: "Digital activation for SQL 2022",
-        price: "$104",
+        price: "$42.99",
         originalPrice: "$3,717.00",
         features: ["Online Activation", "Advanced Security", "High Availability", "Lifetime License", "Cloud Ready"],
         popular: false,
@@ -594,7 +594,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2019 Standard",
         description: "Proven database platform",
-        price: "$99.99",
+        price: "$39.99",
         originalPrice: "$3,717.00",
         features: ["Core-based Licensing", "Big Data Clusters", "Security Features", "Lifetime License", "Reliable"],
         popular: false,
@@ -603,7 +603,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2019 Standard - Online Key",
         description: "Online activation SQL 2019",
-        price: "$96",
+        price: "$37.99",
         originalPrice: "$3,717.00",
         features: ["Online Activation", "Big Data Support", "Security Features", "Lifetime License", "Quick Setup"],
         popular: false,
@@ -613,7 +613,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2017 Standard",
         description: "Stable database solution",
-        price: "$93.99",
+        price: "$34.99",
         originalPrice: "$3,717.00",
         features: ["Core-based Licensing", "Graph Data", "Machine Learning", "Lifetime License", "Proven Stable"],
         popular: false,
@@ -622,7 +622,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2022 Enterprise",
         description: "Ultimate database platform for mission-critical workloads",
-        price: "$169.99",
+        price: "$79.99",
         originalPrice: "$14,256.00",
         features: ["Unlimited Cores", "In-Memory OLTP", "Advanced Analytics", "Lifetime License", "Enterprise Grade"],
         popular: false,
@@ -631,7 +631,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2019 Enterprise",
         description: "High-performance enterprise database",
-        price: "$159.99",
+        price: "$74.99",
         originalPrice: "$14,256.00",
         features: ["Unlimited Cores", "Big Data Clusters", "Advanced Security", "Lifetime License", "Mission Critical"],
         popular: false,
@@ -640,7 +640,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2016 Standard",
         description: "Reliable database for business applications",
-        price: "$92",
+        price: "$32.99",
         originalPrice: "$3,717.00",
         features: ["Core-based Licensing", "In-Memory Tables", "Always Encrypted", "Lifetime License", "Proven Platform"],
         popular: false,
@@ -651,7 +651,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visual Studio 2022 Professional",
         description: "Professional IDE for developers",
-        price: "$59.99",
+        price: "$29.99",
         originalPrice: "$499.00",
         features: ["Lifetime License", "1 PC", "Advanced Debugging", "Code Refactoring", "Azure DevOps"],
         popular: true,
@@ -660,7 +660,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visual Studio 2022 Enterprise",
         description: "Complete toolset for enterprise teams",
-        price: "$99.99",
+        price: "$49.99",
         originalPrice: "$5,999.00",
         features: ["Lifetime License", "1 PC", "IntelliTrace", "Code Map", "Live Unit Testing"],
         popular: false,
@@ -669,7 +669,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visual Studio 2019 Professional",
         description: "Reliable IDE with proven stability",
-        price: "$53",
+        price: "$27.99",
         originalPrice: "$499.00",
         features: ["Lifetime License", "1 PC", "Multi-language Support", "Git Integration", "Team Collaboration"],
         popular: false,
@@ -678,7 +678,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visual Studio Code Extensions Pack",
         description: "Premium extensions bundle for VS Code",
-        price: "$27.99",
+        price: "$9.99",
         originalPrice: "$49.99",
         features: ["Premium Themes", "Advanced Debugging", "AI Assistance", "Cloud Sync", "Priority Support"],
         popular: false,
@@ -687,7 +687,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visual Studio 2019 Enterprise",
         description: "Full-featured enterprise IDE",
-        price: "$94.99",
+        price: "$44.99",
         originalPrice: "$5,999.00",
         features: ["Lifetime License", "1 PC", "IntelliTrace", "Code Map", "Architecture Tools"],
         popular: false,
@@ -696,7 +696,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Visual Studio 2017 Professional",
         description: "Stable IDE for professional developers",
-        price: "$47",
+        price: "$24.99",
         originalPrice: "$499.00",
         features: ["Lifetime License", "1 PC", "Code Analysis", "Testing Tools", "Cross-platform Development"],
         popular: false,
@@ -707,7 +707,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Kaspersky Total Security",
         description: "Complete protection for all your devices",
-        price: "$38.99",
+        price: "$14.99",
         originalPrice: "$79.99",
         features: ["3 Devices", "1 Year", "Anti-virus & Anti-malware", "VPN Included", "Parental Controls"],
         popular: true,
@@ -716,7 +716,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Norton 360 Deluxe",
         description: "Advanced security with privacy features",
-        price: "$44.99",
+        price: "$16.99",
         originalPrice: "$104.99",
         features: ["5 Devices", "1 Year", "50GB Cloud Backup", "VPN Unlimited", "Dark Web Monitoring"],
         popular: false,
@@ -725,7 +725,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Bitdefender Total Security",
         description: "Award-winning antivirus protection",
-        price: "$37",
+        price: "$14.99",
         originalPrice: "$89.99",
         features: ["5 Devices", "1 Year", "Multi-layer Ransomware Protection", "VPN Included", "PC Optimization"],
         popular: false,
@@ -734,7 +734,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "McAfee Total Protection",
         description: "Comprehensive security suite",
-        price: "$39.99",
+        price: "$15.99",
         originalPrice: "$84.99",
         features: ["Unlimited Devices", "1 Year", "Web Protection", "Password Manager", "Identity Theft Protection"],
         popular: false,
@@ -743,7 +743,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "ESET Internet Security",
         description: "Fast and light antivirus protection",
-        price: "$36",
+        price: "$13.99",
         originalPrice: "$69.99",
         features: ["3 Devices", "1 Year", "Anti-Phishing", "Banking Protection", "Anti-Theft"],
         popular: false,
@@ -752,7 +752,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Avast Premium Security",
         description: "Advanced threat detection and protection",
-        price: "$32.99",
+        price: "$12.99",
         originalPrice: "$69.99",
         features: ["10 Devices", "1 Year", "Ransomware Shield", "Firewall", "Sandbox Protection"],
         popular: false,
@@ -761,7 +761,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "Trend Micro Maximum Security",
         description: "Multi-device protection suite",
-        price: "$42",
+        price: "$14.99",
         originalPrice: "$89.95",
         features: ["5 Devices", "1 Year", "Pay Guard", "Folder Shield", "Social Media Privacy"],
         popular: false,

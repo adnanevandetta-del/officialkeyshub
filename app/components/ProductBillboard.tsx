@@ -31,7 +31,7 @@ export default function ProductBillboard() {
     {
       name: "Windows 11 Pro",
       tagline: "Professional Edition",
-      price: "$39.99",
+      price: "$16.99",
       originalPrice: "$199.99",
       image: "/products/windows-11-pro.jpg",
       badge: "Best Seller",
@@ -43,7 +43,7 @@ export default function ProductBillboard() {
     {
       name: "Office 2021 Pro Plus",
       tagline: "Complete Productivity Suite",
-      price: "$49.99",
+      price: "$24.99",
       originalPrice: "$439.99",
       image: "/products/office-2021-professional-plus.jpg",
       badge: "Most Popular",
@@ -55,7 +55,7 @@ export default function ProductBillboard() {
     {
       name: "Office 365 Personal",
       tagline: "Cloud-Powered",
-      price: "$59.99",
+      price: "$29.99",
       originalPrice: "$99.99",
       image: "/products/office-365-1-year.jpg",
       badge: "Featured",
@@ -67,7 +67,7 @@ export default function ProductBillboard() {
     {
       name: "Windows Server 2022",
       tagline: "Enterprise Platform",
-      price: "$69.99",
+      price: "$34.99",
       originalPrice: "$1,069.00",
       image: "/products/windows-server-2022-standard.jpg",
       badge: "Enterprise",
