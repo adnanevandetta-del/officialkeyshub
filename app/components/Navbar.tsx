@@ -47,25 +47,26 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between w-full relative">
-          {/* Left: Hamburger + Search icon */}
-          <div className="flex items-center flex-shrink-0">
+          {/* Left: Hamburger + Search icon — kept compact and hugging the edge
+              so the centered logo gets breathing room on narrow phones */}
+          <div className="flex items-center flex-shrink-0 -ml-1.5">
             <button
               onClick={() => {
                 setIsMenuOpen((v) => !v);
                 setIsSearchOpen(false);
               }}
-              className="text-white focus:outline-none p-2"
+              className="text-white focus:outline-none p-1.5"
               aria-label="Open menu"
               aria-expanded={isMenuOpen}
             >
-              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
+              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-xl`}></i>
             </button>
             <button
               onClick={() => {
                 setIsSearchOpen((v) => !v);
                 setIsMenuOpen(false);
               }}
-              className="text-white focus:outline-none p-2"
+              className="text-white focus:outline-none p-1.5"
               aria-label="Search products"
               aria-expanded={isSearchOpen}
             >
