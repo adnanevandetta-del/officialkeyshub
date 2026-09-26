@@ -107,7 +107,7 @@ export default function Products() {
   const products = catalog;
 
   return (
-    <section className="pt-16 pb-20 relative overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60" id="products">
+    <section className="pt-16 pb-20 relative overflow-hidden bg-white" id="products">
       <div className="container mx-auto px-4 md:px-6">
         {/* Category Tabs — a normal swipeable row on phones (buttons gently float so it's
             clear the row moves), wrapped on larger screens. */}

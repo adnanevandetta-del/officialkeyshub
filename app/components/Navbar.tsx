@@ -5,6 +5,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import CartButton from "./CartButton";
 import ProfileButton from "./ProfileButton";
+import ProductSearch from "./ProductSearch";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,6 +91,9 @@ export default function Navbar() {
             <CartButton />
             <ProfileButton />
 
+            {/* Product search — sits right beside the menu button */}
+            <ProductSearch variant="desktop" />
+
             {/* Menu icon — moved to the far right (profile's old spot), holds Products / FAQ / Blog */}
             <div className="relative">
               <button
@@ -163,6 +167,9 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden mt-3 pb-3 border-t border-slate-800 pt-3">
             <div className="flex flex-col gap-3">
+              {/* Search */}
+              <ProductSearch variant="mobile" onNavigate={() => setIsMenuOpen(false)} />
+
               {/* Product Categories Section */}
               <div className="border-b border-slate-700 pb-3 mb-1">
                 <p className="text-sky-500 font-bold text-xs uppercase tracking-wider mb-2 px-1">Product Categories</p>
