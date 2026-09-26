@@ -27,7 +27,7 @@ export default function CustomerReviews() {
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-black text-gray-900 mb-3">Buy with <span className="gradient-text">Confidence</span></h2>
+          <h2 className="text-4xl font-black text-gray-900 mb-3">Buy with Confidence</h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Every order is backed by real guarantees and genuine keys. Here&rsquo;s what you can count on.
           </p>

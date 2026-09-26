@@ -167,7 +167,7 @@ export default function ActivationGuideSection() {
             <span className="text-sky-600 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            How to <span className="gradient-text">Activate Your Software</span>
+            How to Activate Your Software
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Complete activation guides for Windows, Office, and Server products. Follow these simple steps to activate your genuine Microsoft license key instantly.

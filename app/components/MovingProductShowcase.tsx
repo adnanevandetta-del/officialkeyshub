@@ -19,7 +19,7 @@ export default function MovingProductShowcase() {
     <div className="relative overflow-hidden py-12 border-y border-white/10 bg-[linear-gradient(180deg,#5d6370,#53575f)]">
       <div className="max-w-7xl mx-auto px-4 mb-8">
         <h2 className="text-2xl md:text-3xl font-black text-center text-white">
-          All you need in <span className="gradient-text">one place</span>
+          All you need in one place
         </h2>
         <p className="text-center text-slate-400 mt-2">
           Complete Microsoft software solutions for your business and personal needs

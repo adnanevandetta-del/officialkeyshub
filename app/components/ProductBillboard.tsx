@@ -281,12 +281,7 @@ export default function ProductBillboard() {
                 </button>
 
                 {/* Secure payments we accept */}
-                <div className="flex items-center gap-2.5 text-white/75">
-                  <i className="fab fa-cc-paypal text-lg" title="PayPal"></i>
-                  <i className="fab fa-cc-visa text-lg" title="Visa"></i>
-                  <i className="fab fa-cc-mastercard text-lg" title="Mastercard"></i>
-                  <i className="fab fa-bitcoin text-lg" title="USDT / Crypto"></i>
-                </div>
+                <PaymentIcons chipClass="h-6" className="gap-1.5" />
               </div>
             </div>
 
