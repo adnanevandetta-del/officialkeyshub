@@ -158,18 +158,18 @@ export default function ActivationGuideSection() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-4">
-            <i className="fas fa-graduation-cap text-sky-500"></i>
-            <span className="text-sky-400 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
+          <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 px-4 py-1.5 rounded-full mb-4">
+            <i className="fas fa-graduation-cap text-sky-600"></i>
+            <span className="text-sky-600 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             How to <span className="gradient-text">Activate Your Software</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Complete activation guides for Windows, Office, and Server products. Follow these simple steps to activate your genuine Microsoft license key instantly.
           </p>
         </div>
@@ -183,7 +183,7 @@ export default function ActivationGuideSection() {
               className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all ${
                 activeTab === tab.id
                   ? 'btn-primary scale-105'
-                  : 'glass text-slate-300 hover:text-white glow-hover'
+                  : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200'
               }`}
             >
               <i className={`${tab.icon} text-2xl`}></i>
@@ -196,14 +196,14 @@ export default function ActivationGuideSection() {
         </div>
 
         {/* Guide Content */}
-        <div className="glass-strong rounded-2xl p-8 md:p-12">
+        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12">
           {/* Guide Title */}
           <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-600/15 border border-sky-500/30 rounded-full mb-4">
-              <i className={`${currentGuide.icon} text-3xl text-sky-500`}></i>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-100 border border-sky-200 rounded-full mb-4">
+              <i className={`${currentGuide.icon} text-3xl text-sky-600`}></i>
             </div>
-            <h3 className="text-3xl font-black text-white mb-2">{currentGuide.title}</h3>
-            <p className="text-lg text-slate-400">{currentGuide.subtitle}</p>
+            <h3 className="text-3xl font-black text-gray-900 mb-2">{currentGuide.title}</h3>
+            <p className="text-lg text-gray-600">{currentGuide.subtitle}</p>
           </div>
 
           {/* Steps */}
@@ -211,7 +211,7 @@ export default function ActivationGuideSection() {
             {currentGuide.steps.map((step, idx) => (
               <div
                 key={idx}
-                className="flex gap-6 items-start bg-white/[0.03] p-6 rounded-xl border border-white/10 hover:border-sky-500/40 transition-all"
+                className="flex gap-6 items-start bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-sky-400 transition-all"
               >
                 {/* Step Number */}
                 <div className="flex-shrink-0">
@@ -223,28 +223,28 @@ export default function ActivationGuideSection() {
                 {/* Step Content */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <i className={`${step.icon} text-sky-500 text-xl`}></i>
-                    <h4 className="text-xl font-bold text-white">{step.title}</h4>
+                    <i className={`${step.icon} text-sky-600 text-xl`}></i>
+                    <h4 className="text-xl font-bold text-gray-900">{step.title}</h4>
                   </div>
-                  <p className="text-slate-300 leading-relaxed">{step.description}</p>
+                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Alternative Method */}
-          <div className="bg-amber-500/[0.07] rounded-xl p-8 border border-amber-400/30">
+          <div className="bg-amber-50 rounded-xl p-8 border border-amber-200">
             <div className="flex items-center gap-3 mb-4">
-              <i className="fas fa-lightbulb text-amber-400 text-2xl"></i>
-              <h4 className="text-xl font-bold text-white">{currentGuide.alternativeMethod.title}</h4>
+              <i className="fas fa-lightbulb text-amber-500 text-2xl"></i>
+              <h4 className="text-xl font-bold text-gray-900">{currentGuide.alternativeMethod.title}</h4>
             </div>
             <ol className="space-y-3">
               {currentGuide.alternativeMethod.steps.map((step, idx) => (
                 <li key={idx} className="flex gap-3 items-start">
-                  <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-black rounded-full flex items-center justify-center text-sm font-bold">
+                  <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
                     {idx + 1}
                   </span>
-                  <span className="text-slate-200 font-mono text-sm bg-black/30 px-3 py-2 rounded-lg flex-1 border border-white/10">
+                  <span className="text-gray-100 font-mono text-sm bg-gray-900 px-3 py-2 rounded-lg flex-1 border border-gray-800">
                     {step}
                   </span>
                 </li>

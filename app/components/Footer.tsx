@@ -15,7 +15,7 @@ export default function Footer() {
             </p>
             {/* Accepted payment methods */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">We Accept</p>
-            <PaymentIcons chip size="text-2xl" className="gap-2 flex-wrap" />
+            <PaymentIcons className="gap-2" />
 
             {/* Social media */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mt-5 mb-2">Follow Us</p>

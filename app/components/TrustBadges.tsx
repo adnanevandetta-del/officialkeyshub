@@ -1,37 +1,35 @@
 "use client";
 
+import PaymentIcons from "./PaymentIcons";
+
 export default function TrustBadges() {
   return (
-    <section className="py-12">
+    <section className="py-14 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Payment Methods */}
-        <div className="flex flex-wrap items-center justify-center gap-5 md:gap-7">
-          {/* PayPal */}
-          <div className="glass glow-hover rounded-xl flex items-center justify-center w-32 h-20 md:w-36 md:h-24">
-            <i className="fab fa-cc-paypal text-4xl md:text-5xl drop-shadow" style={{ color: '#0070ba' }}></i>
-          </div>
+        {/* Accepted payment methods + live chat */}
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <PaymentIcons chipClass="h-11" className="gap-3" />
 
-          {/* USDT/Crypto */}
-          <div className="glass glow-hover rounded-xl flex items-center justify-center w-32 h-20 md:w-36 md:h-24">
-            <i className="fab fa-bitcoin text-4xl md:text-5xl drop-shadow" style={{ color: '#f7931a' }}></i>
-          </div>
-
-          {/* WhatsApp */}
-          <div className="glass glow-hover rounded-xl flex items-center justify-center w-32 h-20 md:w-36 md:h-24">
-            <i className="fab fa-whatsapp text-4xl md:text-5xl drop-shadow" style={{ color: '#25D366' }}></i>
-          </div>
-
-          {/* Cards */}
-          <div className="glass glow-hover rounded-xl flex items-center justify-center gap-3 w-32 h-20 md:w-36 md:h-24">
-            <i className="fab fa-cc-visa text-3xl md:text-4xl drop-shadow" style={{ color: '#1a4fd6' }}></i>
-            <i className="fab fa-cc-mastercard text-3xl md:text-4xl drop-shadow" style={{ color: '#eb001b' }}></i>
-          </div>
+          {/* WhatsApp — presented as a live chat option with an "online" dot */}
+          <a
+            href="https://wa.me/16019756129?text=Hi! I have a question"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 h-11 px-4 rounded-lg bg-[#25D366] text-white font-bold shadow-md hover:brightness-105 transition-all"
+          >
+            <i className="fab fa-whatsapp text-xl"></i>
+            <span className="text-sm">Live Chat</span>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/80"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+            </span>
+          </a>
         </div>
 
         {/* Trust Text */}
         <div className="text-center mt-6">
-          <p className="text-slate-300 font-semibold text-base md:text-lg">
-            <i className="fas fa-shield-alt text-sky-500 mr-2"></i>
+          <p className="text-gray-700 font-semibold text-base md:text-lg">
+            <i className="fas fa-shield-alt text-sky-600 mr-2"></i>
             Secure Payment Methods • Instant Delivery • 24/7 Support
           </p>
         </div>

@@ -97,7 +97,7 @@ export default function ProductBuySection({
       {/* Accepted payments */}
       <div className="flex items-center gap-2.5 text-white/70 mt-5 pt-4 border-t border-white/10">
         <span className="text-white/45 text-[11px] font-medium">Secure payments</span>
-        <PaymentIcons size="text-xl" />
+        <PaymentIcons chipClass="h-7" />
       </div>
     </div>
   );
