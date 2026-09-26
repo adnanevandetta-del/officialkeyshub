@@ -163,14 +163,15 @@ export default function Products() {
                   : ""
               }`}
             >
-              {/* Product Image */}
-              <Link href={`/products/${slugify(product.name)}`} className="relative h-48 sm:h-52 w-full overflow-hidden flex-shrink-0 border-b border-slate-200/70 block bg-gradient-to-br from-slate-50 via-white to-sky-50">
+              {/* Product Image — transparent box floating on the card's own
+                  surface, so the image and description share one background. */}
+              <Link href={`/products/${slugify(product.name)}`} className="relative h-48 sm:h-52 w-full overflow-hidden flex-shrink-0 block">
                 <Image
-                  src={getProductImage(product.name)}
+                  src={getProductBoxImage(product.name)}
                   alt={product.name}
                   fill
                   unoptimized
-                  className="object-contain p-3 hover:scale-105 transition-transform duration-500"
+                  className="object-contain p-5 hover:scale-[1.06] transition-transform duration-500 drop-shadow-[0_12px_22px_rgba(0,0,0,0.5)]"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </Link>

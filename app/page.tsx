@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
 import PromoBanner from "./components/PromoBanner";
-import CategoryBar from "./components/CategoryBar";
 import ProductBillboard from "./components/ProductBillboard";
 import Products from "./components/Products";
 import MovingProductShowcase from "./components/MovingProductShowcase";
@@ -22,7 +21,6 @@ export default function Home() {
     <>
       <PromoBanner />
       <Navbar />
-      <CategoryBar />
       <ProductBillboard />
       <Products />
       <MovingProductShowcase />

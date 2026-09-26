@@ -87,6 +87,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/shipping" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  Shipping &amp; Delivery
+                </Link>
+              </li>
+              <li>
                 <Link href="/activation-guide" className="text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   Activation Guide
                 </Link>

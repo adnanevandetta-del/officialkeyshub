@@ -89,7 +89,7 @@ export default function ProductBillboard() {
   const currentProduct = products[currentIndex];
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-br from-slate-950/60 via-blue-950/30 to-slate-950/60 z-10">
+    <section className="relative w-full overflow-hidden bg-[linear-gradient(180deg,#5d6370,#53575f)] z-10">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-[0.06] block">
         <div className="absolute inset-0" style={{
@@ -98,7 +98,7 @@ export default function ProductBillboard() {
         }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-3 md:py-7">
+      <div className="max-w-7xl mx-auto px-4 py-2 md:py-5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-center">
           {/* Left - Product Info (static) — centered on mobile, left-aligned on desktop */}
           <div className="lg:col-span-5 space-y-3 md:space-y-4 z-20 text-center lg:text-left">
@@ -178,7 +178,7 @@ export default function ProductBillboard() {
 
           {/* Right - 3D Circular Carousel */}
           <div className="lg:col-span-7 relative" style={{ perspective: '1200px' }}>
-            <div className="relative w-full h-[180px] md:h-[420px]">
+            <div className="relative w-full h-[170px] md:h-[360px]">
               {/* Ambient glow + orbit rings (futuristic backdrop) */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-36 h-36 md:w-80 md:h-80 bg-sky-600/20 rounded-full blur-3xl animate-pulse"></div>
@@ -221,7 +221,7 @@ export default function ProductBillboard() {
                     >
                       {/* Just the box — no frame, background or overlay */}
                       <div
-                        className="relative w-[118px] h-[156px] md:w-[246px] md:h-[326px] transition-[filter] duration-[900ms]"
+                        className="relative w-[112px] h-[148px] md:w-[220px] md:h-[292px] transition-[filter] duration-[900ms]"
                         style={{
                           filter: isActive
                             ? "drop-shadow(0 0 16px rgba(14,165,233,0.55)) drop-shadow(0 10px 14px rgba(0,0,0,0.45))"

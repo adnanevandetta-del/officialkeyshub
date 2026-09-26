@@ -11,6 +11,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDeskMenuOpen, setIsDeskMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isDeskSearchOpen, setIsDeskSearchOpen] = useState(false);
 
   const productCategories = [
     { name: "Windows", icon: "fab fa-windows", href: "/#products", color: "text-blue-500", filter: "windows" },
@@ -107,27 +108,17 @@ export default function Navbar() {
           }
         `}</style>
 
-        {/* Desktop Layout */}
+        {/* Desktop Layout — icons far left, logo centered, cart/profile far right */}
         <div className="hidden md:flex items-center justify-between relative">
-          {/* Logo — left edge aligns with the billboard content below */}
-          <div>
-            <Logo size="sm" />
-          </div>
-
-
-          {/* Right controls */}
-          <div className="flex items-center gap-3">
-            {/* Cart & Profile Buttons - Icon Only */}
-            <CartButton />
-            <ProfileButton />
-
-            {/* Product search — sits right beside the menu button */}
-            <ProductSearch variant="desktop" />
-
-            {/* Menu icon — moved to the far right (profile's old spot), holds Products / FAQ / Blog */}
+          {/* Far left: menu + search icons */}
+          <div className="flex items-center gap-1">
+            {/* Menu icon — holds Products / FAQ / Blog / Partner / Contact */}
             <div className="relative">
               <button
-                onClick={() => setIsDeskMenuOpen((v) => !v)}
+                onClick={() => {
+                  setIsDeskMenuOpen((v) => !v);
+                  setIsDeskSearchOpen(false);
+                }}
                 onBlur={() => setTimeout(() => setIsDeskMenuOpen(false), 150)}
                 className="text-white hover:text-sky-500 focus:outline-none p-2 flex items-center"
                 aria-label="Open menu"
@@ -137,7 +128,7 @@ export default function Navbar() {
               </button>
 
               {isDeskMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 w-48 max-w-none bg-[#0b1020] rounded-xl shadow-2xl border border-sky-600/30 overflow-hidden z-[300] py-2">
+                <div className="absolute top-full left-0 mt-2 w-48 max-w-none bg-[#0b1020] rounded-xl shadow-2xl border border-sky-600/30 overflow-hidden z-[300] py-2">
                   <Link
                     href="/#products"
                     onClick={() => {
@@ -197,8 +188,45 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
+            {/* Search icon */}
+            <button
+              onClick={() => {
+                setIsDeskSearchOpen((v) => !v);
+                setIsDeskMenuOpen(false);
+              }}
+              className="text-white hover:text-sky-500 focus:outline-none p-2 flex items-center"
+              aria-label="Search products"
+              aria-expanded={isDeskSearchOpen}
+            >
+              <i className={`fas ${isDeskSearchOpen ? "fa-times" : "fa-search"} text-xl`}></i>
+            </button>
+          </div>
+
+          {/* Center: Logo */}
+          <div className="absolute left-1/2 -translate-x-1/2">
+            <Logo size="sm" />
+          </div>
+
+          {/* Far right: Cart & Profile */}
+          <div className="flex items-center gap-2">
+            <CartButton />
+            <ProfileButton />
           </div>
         </div>
+
+        {/* Desktop slide-down search */}
+        {isDeskSearchOpen && (
+          <div className="hidden md:block mt-3 okh-search-slide">
+            <div className="max-w-md mx-auto">
+              <ProductSearch
+                variant="mobile"
+                autoFocus
+                onNavigate={() => setIsDeskSearchOpen(false)}
+              />
+            </div>
+          </div>
+        )}
 
 
         {/* Mobile Menu */}
