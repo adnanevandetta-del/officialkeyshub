@@ -323,3 +323,18 @@ h1, h2, h3, h4, .font-display {
 @media (prefers-reduced-motion: reduce) {
   .okh-cat-float { animation: none; }
 }
+
+/* FeatureBar mobile marquee — items are duplicated once, so translating the
+   row by -50% loops seamlessly. Paused for reduced-motion users. */
+@keyframes okhFeatMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.okh-feat-marquee {
+  animation: okhFeatMarquee 20s linear infinite;
+  will-change: transform;
+  padding-left: 1rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .okh-feat-marquee { animation: none; }
+}
