@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PaymentIcons from "./PaymentIcons";
 
 export default function Footer() {
   return (
@@ -14,21 +15,7 @@ export default function Footer() {
             </p>
             {/* Accepted payment methods */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">We Accept</p>
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center justify-center h-7 w-11" title="Visa">
-                <i className="fab fa-cc-visa text-[#6d8dff] text-2xl"></i>
-              </span>
-              <span className="inline-flex items-center justify-center h-7 w-11" title="PayPal">
-                <i className="fab fa-cc-paypal text-[#009cde] text-2xl"></i>
-              </span>
-              <span className="inline-flex items-center justify-center h-7 w-11" title="Stripe">
-                <i className="fab fa-cc-stripe text-[#8b85ff] text-2xl"></i>
-              </span>
-              <span className="inline-flex items-center justify-center h-7 px-2 gap-1" title="USDT">
-                <span className="w-4 h-4 rounded-full bg-[#26a17b] text-white flex items-center justify-center text-[10px] font-black">₮</span>
-                <span className="text-[#26a17b] text-xs font-black">USDT</span>
-              </span>
-            </div>
+            <PaymentIcons chip size="text-2xl" className="gap-2 flex-wrap" />
 
             {/* Social media */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mt-5 mb-2">Follow Us</p>

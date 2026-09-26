@@ -6,6 +6,7 @@ import { getProductImage } from "../lib/productImage";
 import { paypalPaymentUrl } from "../lib/payment";
 import { recordQuickOrder, priceToNumber } from "../lib/account";
 import UsdtPay from "./UsdtPay";
+import PaymentIcons from "./PaymentIcons";
 
 export default function ProductBuySection({
   name,
@@ -96,10 +97,7 @@ export default function ProductBuySection({
       {/* Accepted payments */}
       <div className="flex items-center gap-2.5 text-white/70 mt-5 pt-4 border-t border-white/10">
         <span className="text-white/45 text-[11px] font-medium">Secure payments</span>
-        <i className="fab fa-cc-paypal text-lg" title="PayPal"></i>
-        <i className="fab fa-cc-visa text-lg" title="Visa"></i>
-        <i className="fab fa-cc-mastercard text-lg" title="Mastercard"></i>
-        <i className="fab fa-bitcoin text-lg" title="USDT / Crypto"></i>
+        <PaymentIcons size="text-xl" />
       </div>
     </div>
   );

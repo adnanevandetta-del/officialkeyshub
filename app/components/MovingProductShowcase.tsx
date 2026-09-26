@@ -16,7 +16,7 @@ export default function MovingProductShowcase() {
   const duplicatedProducts = [...products, ...products];
 
   return (
-    <div className="relative overflow-hidden py-12 border-y border-white/10">
+    <div className="relative overflow-hidden py-12 border-y border-white/10 bg-[linear-gradient(180deg,#5d6370,#53575f)]">
       <div className="max-w-7xl mx-auto px-4 mb-8">
         <h2 className="text-2xl md:text-3xl font-black text-center text-white">
           All you need in <span className="gradient-text">one place</span>

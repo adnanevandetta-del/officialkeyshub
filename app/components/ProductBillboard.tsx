@@ -5,6 +5,7 @@ import Image from "next/image";
 import { paypalPaymentUrl } from "../lib/payment";
 import { recordQuickOrder, priceToNumber } from "../lib/account";
 import UsdtPay from "./UsdtPay";
+import PaymentIcons from "./PaymentIcons";
 import { getProductImage, getProductBoxImage } from "../lib/productImage";
 
 interface BillboardProduct {
@@ -164,12 +165,7 @@ export default function ProductBillboard() {
                   <span className="text-white/45 text-[11px] font-medium flex items-center gap-1">
                     <i className="fas fa-lock text-[10px]"></i> Secure payments
                   </span>
-                  <div className="flex items-center gap-2.5 text-white/75">
-                    <i className="fab fa-cc-paypal text-xl" title="PayPal"></i>
-                    <i className="fab fa-cc-visa text-xl" title="Visa"></i>
-                    <i className="fab fa-cc-mastercard text-xl" title="Mastercard"></i>
-                    <i className="fab fa-bitcoin text-xl" title="USDT / Crypto"></i>
-                  </div>
+                  <PaymentIcons size="text-2xl" />
                 </div>
               </div>
             </div>

@@ -8,22 +8,23 @@ export default function TrustBadges() {
         <div className="flex flex-wrap items-center justify-center gap-5 md:gap-7">
           {/* PayPal */}
           <div className="glass glow-hover rounded-xl flex items-center justify-center w-32 h-20 md:w-36 md:h-24">
-            <i className="fab fa-paypal text-4xl md:text-5xl" style={{ color: '#3b9dff' }}></i>
+            <i className="fab fa-cc-paypal text-4xl md:text-5xl drop-shadow" style={{ color: '#0070ba' }}></i>
           </div>
 
           {/* USDT/Crypto */}
           <div className="glass glow-hover rounded-xl flex items-center justify-center w-32 h-20 md:w-36 md:h-24">
-            <i className="fab fa-bitcoin text-4xl md:text-5xl" style={{ color: '#f7b955' }}></i>
+            <i className="fab fa-bitcoin text-4xl md:text-5xl drop-shadow" style={{ color: '#f7931a' }}></i>
           </div>
 
           {/* WhatsApp */}
           <div className="glass glow-hover rounded-xl flex items-center justify-center w-32 h-20 md:w-36 md:h-24">
-            <i className="fab fa-whatsapp text-4xl md:text-5xl" style={{ color: '#25D366' }}></i>
+            <i className="fab fa-whatsapp text-4xl md:text-5xl drop-shadow" style={{ color: '#25D366' }}></i>
           </div>
 
-          {/* Credit Card */}
-          <div className="glass glow-hover rounded-xl flex items-center justify-center w-32 h-20 md:w-36 md:h-24">
-            <i className="fas fa-credit-card text-4xl md:text-5xl" style={{ color: '#818cf8' }}></i>
+          {/* Cards */}
+          <div className="glass glow-hover rounded-xl flex items-center justify-center gap-3 w-32 h-20 md:w-36 md:h-24">
+            <i className="fab fa-cc-visa text-3xl md:text-4xl drop-shadow" style={{ color: '#1a4fd6' }}></i>
+            <i className="fab fa-cc-mastercard text-3xl md:text-4xl drop-shadow" style={{ color: '#eb001b' }}></i>
           </div>
         </div>
 

@@ -50,28 +50,28 @@ export default function Navbar() {
         <div className="flex md:hidden items-center justify-between w-full relative">
           {/* Left: Hamburger + Search icon — kept compact and hugging the edge
               so the centered logo gets breathing room on narrow phones */}
-          <div className="flex items-center flex-shrink-0 -ml-1.5">
+          <div className="flex items-center flex-shrink-0 -ml-1">
             <button
               onClick={() => {
                 setIsMenuOpen((v) => !v);
                 setIsSearchOpen(false);
               }}
-              className="text-white focus:outline-none p-1.5"
+              className="text-white focus:outline-none p-1"
               aria-label="Open menu"
               aria-expanded={isMenuOpen}
             >
-              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-xl`}></i>
+              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-base`}></i>
             </button>
             <button
               onClick={() => {
                 setIsSearchOpen((v) => !v);
                 setIsMenuOpen(false);
               }}
-              className="text-white focus:outline-none p-1.5"
+              className="text-white focus:outline-none p-1"
               aria-label="Search products"
               aria-expanded={isSearchOpen}
             >
-              <i className={`fas ${isSearchOpen ? "fa-times" : "fa-search"} text-xl`}></i>
+              <i className={`fas ${isSearchOpen ? "fa-times" : "fa-search"} text-base`}></i>
             </button>
           </div>
 
@@ -80,8 +80,9 @@ export default function Navbar() {
             <Logo size="sm" />
           </div>
 
-          {/* Right: Cart & Profile Icons — hug the edge to mirror the left group */}
-          <div className="flex items-center gap-1.5 -mr-1.5">
+          {/* Right: Cart & Profile Icons — smaller on mobile so they match the
+              small menu/search icons flanking the logo */}
+          <div className="flex items-center gap-1.5 -mr-1 [&>button]:w-8 [&>button]:h-8 [&>button>svg]:!h-4 [&>button>svg]:!w-4">
             <CartButton />
             <ProfileButton />
           </div>
