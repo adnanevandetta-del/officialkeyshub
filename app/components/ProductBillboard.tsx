@@ -110,8 +110,9 @@ export default function ProductBillboard() {
 
             {/* Title */}
             <div>
-              {/* The page's single H1 is the site statement; the rotating product is an H2 */}
-              <h1 className="text-[11px] md:text-sm font-bold uppercase tracking-[0.18em] text-sky-300/90 mb-1.5 md:mb-2">
+              {/* The page's single H1 is the site statement; kept for SEO but
+                  visually hidden per request — the rotating product is the H2. */}
+              <h1 className="sr-only">
                 Genuine Microsoft Windows &amp; Office Licenses
               </h1>
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-1 md:mb-2 leading-tight">

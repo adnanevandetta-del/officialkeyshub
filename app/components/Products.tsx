@@ -92,25 +92,28 @@ export default function Products() {
     }
   }, []);
 
-  const categories: { id: CategoryId; name: string; icon: string }[] = [
-    { id: "bundles", name: "Bundles", icon: "fas fa-box-open" },
-    { id: "windows", name: "Windows", icon: "fab fa-windows" },
-    { id: "office", name: "Office", icon: "fas fa-file-word" },
-    { id: "server", name: "Server", icon: "fas fa-server" },
-    { id: "visio", name: "Visio", icon: "fas fa-project-diagram" },
-    { id: "project", name: "Project", icon: "fas fa-tasks" },
-    { id: "sql", name: "SQL Server", icon: "fas fa-database" },
-    { id: "visualstudio", name: "Visual Studio", icon: "fas fa-code" },
-    { id: "antivirus", name: "Security", icon: "fas fa-shield-alt" },
+  const categories: { id: CategoryId; name: string; icon: string; color: string }[] = [
+    { id: "bundles", name: "Bundles", icon: "fas fa-box-open", color: "#f59e0b" },
+    { id: "windows", name: "Windows", icon: "fab fa-windows", color: "#0284c7" },
+    { id: "office", name: "Office", icon: "fas fa-file-word", color: "#ea580c" },
+    { id: "server", name: "Server", icon: "fas fa-server", color: "#475569" },
+    { id: "visio", name: "Visio", icon: "fas fa-project-diagram", color: "#0d9488" },
+    { id: "project", name: "Project", icon: "fas fa-tasks", color: "#4f46e5" },
+    { id: "sql", name: "SQL Server", icon: "fas fa-database", color: "#1d4ed8" },
+    { id: "visualstudio", name: "Visual Studio", icon: "fas fa-code", color: "#7c3aed" },
+    { id: "antivirus", name: "Security", icon: "fas fa-shield-alt", color: "#dc2626" },
   ];
 
   const products = catalog;
 
   return (
-    <section className="pt-16 pb-20 relative overflow-hidden bg-white" id="products">
+    <section className="pt-14 pb-20 relative overflow-hidden bg-white rounded-t-[2rem] shadow-[0_-24px_60px_-30px_rgba(2,132,199,0.4)]" id="products">
+      {/* Top accent frame — a thin blue→green line that ties the white panel to
+          the site's ambient blue/emerald theme. */}
+      <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-sky-500 via-sky-500 to-emerald-500"></div>
       <div className="container mx-auto px-4 md:px-6">
         {/* Category Tabs — a normal swipeable row on phones (buttons gently float so it's
-            clear the row moves), wrapped on larger screens. */}
+            clear the row moves), wrapped on larger screens. Solid per-category colors. */}
         <div className="relative -mx-4 md:mx-0 mb-8 md:mb-12">
           <div
             ref={tabsRef}
@@ -120,13 +123,9 @@ export default function Products() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                style={{ animationDelay: `${i * 0.22}s` }}
-                className={`okh-tab flex-shrink-0 snap-start whitespace-nowrap min-h-[44px] px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-colors ${
-                  category.id === "bundles" && activeCategory !== "bundles" ? "okh-bundle-tab" : ""
-                } ${
-                  activeCategory === category.id
-                    ? "okh-tab-active"
-                    : "glass text-slate-300 hover:text-white glow-hover"
+                style={{ ["--tab" as string]: category.color, animationDelay: `${i * 0.22}s` } as React.CSSProperties}
+                className={`okh-cat flex-shrink-0 snap-start whitespace-nowrap min-h-[44px] px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all ${
+                  activeCategory === category.id ? "okh-cat-active" : ""
                 }`}
               >
                 <i className={`${category.icon} mr-2`}></i>
@@ -138,24 +137,30 @@ export default function Products() {
         <style>{`
           @keyframes okh-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
           @media (max-width: 767px) {
-            .okh-tab { animation: okh-float 2.6s ease-in-out infinite; }
+            .okh-cat { animation: okh-float 2.6s ease-in-out infinite; }
           }
           @media (prefers-reduced-motion: reduce) {
-            .okh-tab { animation: none; }
+            .okh-cat { animation: none; }
           }
-          .okh-tab-active {
-            background: linear-gradient(135deg, #10b981, #059669) !important;
-            border: 1px solid rgba(110,231,183,.6) !important;
-            color: #fff !important;
-            box-shadow: 0 0 16px rgba(16,185,129,.45);
+          .okh-cat {
+            background: #ffffff;
+            color: #475569;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 2px rgba(16,24,40,.05);
           }
-          .okh-bundle-tab {
-            background: linear-gradient(135deg, rgba(249,115,22,.22), rgba(234,88,12,.12)) !important;
-            border: 1px solid rgba(251,146,60,.75) !important;
-            color: #fed7aa !important;
-            box-shadow: 0 0 12px rgba(249,115,22,.25);
+          .okh-cat i { color: var(--tab); transition: color .2s ease; }
+          .okh-cat:hover {
+            border-color: var(--tab);
+            color: var(--tab);
+            box-shadow: 0 6px 14px -6px var(--tab);
           }
-          .okh-bundle-tab:hover { color: #fff !important; background: linear-gradient(135deg, rgba(249,115,22,.35), rgba(234,88,12,.2)) !important; box-shadow: 0 0 18px rgba(249,115,22,.5); }
+          .okh-cat-active {
+            background: var(--tab) !important;
+            border-color: var(--tab) !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 20px -6px var(--tab);
+          }
+          .okh-cat-active i { color: #ffffff !important; }
         `}</style>
 
         {/* Build-your-own bundle */}
@@ -187,7 +192,7 @@ export default function Products() {
               }`}
             >
               {/* Product Image */}
-              <Link href={`/products/${slugify(product.name)}`} className="relative h-48 sm:h-52 w-full overflow-hidden flex-shrink-0 border-b border-white/5 block bg-gradient-to-b from-slate-800/80 to-slate-900">
+              <Link href={`/products/${slugify(product.name)}`} className="relative h-48 sm:h-52 w-full overflow-hidden flex-shrink-0 border-b border-slate-200/70 block bg-gradient-to-br from-slate-50 via-white to-sky-50">
                 <Image
                   src={getProductImage(product.name)}
                   alt={product.name}
