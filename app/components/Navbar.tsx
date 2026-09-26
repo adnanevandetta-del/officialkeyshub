@@ -79,8 +79,8 @@ export default function Navbar() {
             <Logo size="sm" />
           </div>
 
-          {/* Right: Cart & Profile Icons */}
-          <div className="flex items-center gap-2">
+          {/* Right: Cart & Profile Icons — hug the edge to mirror the left group */}
+          <div className="flex items-center gap-1.5 -mr-1.5">
             <CartButton />
             <ProfileButton />
           </div>
@@ -117,15 +117,6 @@ export default function Navbar() {
 
           {/* Right controls */}
           <div className="flex items-center gap-3">
-            {/* Partner Program stays visible */}
-            <Link
-              href="/partner-program"
-              className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-1"
-            >
-              <i className="fas fa-handshake"></i>
-              Partner Program
-            </Link>
-
             {/* Cart & Profile Buttons - Icon Only */}
             <CartButton />
             <ProfileButton />
@@ -184,6 +175,14 @@ export default function Navbar() {
                   >
                     <i className="fas fa-key text-sky-500 w-4"></i>
                     Activation Guide
+                  </Link>
+                  <Link
+                    href="/partner-program"
+                    onClick={() => setIsDeskMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-handshake text-sky-500 w-4"></i>
+                    Partner Program
                   </Link>
                   <a
                     href="https://wa.me/16019756129"

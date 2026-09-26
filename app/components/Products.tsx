@@ -124,7 +124,7 @@ export default function Products() {
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
                 style={{ ["--tab" as string]: category.color, animationDelay: `${i * 0.22}s` } as React.CSSProperties}
-                className={`okh-cat flex-shrink-0 snap-start whitespace-nowrap min-h-[44px] px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all ${
+                className={`okh-cat okh-cat-float flex-shrink-0 snap-start whitespace-nowrap min-h-[44px] px-4 md:px-5 py-2.5 rounded-xl font-bold text-sm md:text-base transition-all ${
                   activeCategory === category.id ? "okh-cat-active" : ""
                 }`}
               >
@@ -134,34 +134,6 @@ export default function Products() {
             ))}
           </div>
         </div>
-        <style>{`
-          @keyframes okh-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-          @media (max-width: 767px) {
-            .okh-cat { animation: okh-float 2.6s ease-in-out infinite; }
-          }
-          @media (prefers-reduced-motion: reduce) {
-            .okh-cat { animation: none; }
-          }
-          .okh-cat {
-            background: #ffffff;
-            color: #475569;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 1px 2px rgba(16,24,40,.05);
-          }
-          .okh-cat i { color: var(--tab); transition: color .2s ease; }
-          .okh-cat:hover {
-            border-color: var(--tab);
-            color: var(--tab);
-            box-shadow: 0 6px 14px -6px var(--tab);
-          }
-          .okh-cat-active {
-            background: var(--tab) !important;
-            border-color: var(--tab) !important;
-            color: #ffffff !important;
-            box-shadow: 0 8px 20px -6px var(--tab);
-          }
-          .okh-cat-active i { color: #ffffff !important; }
-        `}</style>
 
         {/* Build-your-own bundle */}
         {activeCategory === "bundles" && (

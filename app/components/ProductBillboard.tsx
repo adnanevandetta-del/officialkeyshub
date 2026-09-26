@@ -98,7 +98,7 @@ export default function ProductBillboard() {
         }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-4 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 py-3 md:py-7">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-center">
           {/* Left - Product Info (static) — centered on mobile, left-aligned on desktop */}
           <div className="lg:col-span-5 space-y-3 md:space-y-4 z-20 text-center lg:text-left">
@@ -178,7 +178,7 @@ export default function ProductBillboard() {
 
           {/* Right - 3D Circular Carousel */}
           <div className="lg:col-span-7 relative" style={{ perspective: '1200px' }}>
-            <div className="relative w-full h-[190px] md:h-[500px]">
+            <div className="relative w-full h-[180px] md:h-[420px]">
               {/* Ambient glow + orbit rings (futuristic backdrop) */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-36 h-36 md:w-80 md:h-80 bg-sky-600/20 rounded-full blur-3xl animate-pulse"></div>

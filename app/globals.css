@@ -292,3 +292,34 @@ h1, h2, h3, h4, .font-display {
     transform: rotateY(var(--angle)) translateZ(320px) scale(var(--scale)) !important;
   }
 }
+
+/* Category tab pills — solid per-category colors (shared by the top
+   CategoryBar and the under-billboard Products tabs). Each button sets
+   its own color via the --tab custom property. */
+.okh-cat {
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .05);
+}
+.okh-cat i { color: var(--tab); transition: color .2s ease; }
+.okh-cat:hover {
+  border-color: var(--tab);
+  color: var(--tab);
+  box-shadow: 0 6px 14px -6px var(--tab);
+}
+.okh-cat-active {
+  background: var(--tab) !important;
+  border-color: var(--tab) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 20px -6px var(--tab);
+}
+.okh-cat-active i { color: #ffffff !important; }
+
+@keyframes okh-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@media (max-width: 767px) {
+  .okh-cat-float { animation: okh-float 2.6s ease-in-out infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .okh-cat-float { animation: none; }
+}
