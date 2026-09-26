@@ -32,15 +32,22 @@ function scoreMatch(name: string, q: string): number {
 export default function ProductSearch({
   variant = "desktop",
   onNavigate,
+  autoFocus = false,
 }: {
   variant?: "desktop" | "mobile";
   onNavigate?: () => void;
+  autoFocus?: boolean;
 }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const boxRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (autoFocus) inputRef.current?.focus();
+  }, [autoFocus]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -103,6 +110,7 @@ export default function ProductSearch({
       <div className="relative">
         <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
         <input
+          ref={inputRef}
           type="text"
           value={query}
           onChange={(e) => {

@@ -10,6 +10,7 @@ import ProductSearch from "./ProductSearch";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDeskMenuOpen, setIsDeskMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const productCategories = [
     { name: "Windows", icon: "fab fa-windows", href: "/#products", color: "text-blue-500", filter: "windows" },
@@ -45,19 +46,35 @@ export default function Navbar() {
     <nav className="font-math sticky top-0 left-0 right-0 z-[200] bg-[#0a0e1a] shadow-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 py-3">
         {/* Mobile Layout */}
-        <div className="flex md:hidden items-center justify-between w-full">
-          {/* Left: Hamburger Menu */}
-          <div className="flex-shrink-0">
+        <div className="flex md:hidden items-center justify-between w-full relative">
+          {/* Left: Hamburger + Search icon */}
+          <div className="flex items-center flex-shrink-0">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => {
+                setIsMenuOpen((v) => !v);
+                setIsSearchOpen(false);
+              }}
               className="text-white focus:outline-none p-2"
+              aria-label="Open menu"
+              aria-expanded={isMenuOpen}
             >
               <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
             </button>
+            <button
+              onClick={() => {
+                setIsSearchOpen((v) => !v);
+                setIsMenuOpen(false);
+              }}
+              className="text-white focus:outline-none p-2"
+              aria-label="Search products"
+              aria-expanded={isSearchOpen}
+            >
+              <i className={`fas ${isSearchOpen ? "fa-times" : "fa-search"} text-xl`}></i>
+            </button>
           </div>
 
-          {/* Center: Logo */}
-          <div className="flex-1 flex justify-center">
+          {/* Center: Logo — absolutely centered so the side icons don't push it off-center */}
+          <div className="absolute left-1/2 -translate-x-1/2">
             <Logo size="sm" />
           </div>
 
@@ -67,6 +84,27 @@ export default function Navbar() {
             <ProfileButton />
           </div>
         </div>
+
+        {/* Mobile slide-down search */}
+        {isSearchOpen && (
+          <div className="md:hidden mt-3 okh-search-slide">
+            <ProductSearch
+              variant="mobile"
+              autoFocus
+              onNavigate={() => setIsSearchOpen(false)}
+            />
+          </div>
+        )}
+        <style>{`
+          @keyframes okhSearchSlide {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          .okh-search-slide { animation: okhSearchSlide .26s ease-out; }
+          @media (prefers-reduced-motion: reduce) {
+            .okh-search-slide { animation: none; }
+          }
+        `}</style>
 
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between relative">
@@ -167,9 +205,6 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden mt-3 pb-3 border-t border-slate-800 pt-3">
             <div className="flex flex-col gap-3">
-              {/* Search */}
-              <ProductSearch variant="mobile" onNavigate={() => setIsMenuOpen(false)} />
-
               {/* Product Categories Section */}
               <div className="border-b border-slate-700 pb-3 mb-1">
                 <p className="text-sky-500 font-bold text-xs uppercase tracking-wider mb-2 px-1">Product Categories</p>
