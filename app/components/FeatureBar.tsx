@@ -1,54 +1,56 @@
-// Slim benefits strip that sits between the navbar and the billboard. It
-// separates the two visually and doubles as a trust bar — the copy carries
-// high-intent keywords (genuine Microsoft keys, instant delivery, money-back,
-// support) that help both conversion and SEO.
-//
-// Desktop: a static 4-up grid. Mobile: a slim auto-scrolling marquee so all
-// four benefits cycle past without the visitor having to swipe.
+// Slim benefits strip between the navbar and the billboard. It separates the
+// two visually and doubles as a trust bar — the copy carries high-intent
+// keywords (genuine Microsoft keys, instant delivery, money-back, support) that
+// help conversion and SEO. Compact single-line items on a continuous,
+// auto-scrolling marquee (pauses on hover / for reduced-motion users).
 
 const items = [
-  { icon: "fas fa-bolt", color: "#0ea5e9", title: "Instant Email Delivery", sub: "Your key in minutes" },
-  { icon: "fas fa-certificate", color: "#10b981", title: "Genuine Microsoft Keys", sub: "Activate on Microsoft servers" },
-  { icon: "fas fa-shield-halved", color: "#0ea5e9", title: "30-Day Money-Back", sub: "Risk-free guarantee" },
-  { icon: "fas fa-headset", color: "#10b981", title: "24/7 Support", sub: "WhatsApp & email" },
+  { icon: "fas fa-bolt", color: "#38bdf8", title: "Instant Email Delivery" },
+  { icon: "fas fa-certificate", color: "#34d399", title: "Genuine Microsoft Keys" },
+  { icon: "fas fa-lock", color: "#38bdf8", title: "Secure Payments" },
+  { icon: "fab fa-bitcoin", color: "#f7931a", title: "Crypto Payments Accepted" },
+  { icon: "fas fa-tags", color: "#fbbf24", title: "Up to 90% Off Retail" },
+  { icon: "fas fa-shield-halved", color: "#34d399", title: "30-Day Money-Back Guarantee" },
+  { icon: "fas fa-headset", color: "#38bdf8", title: "24/7 Support" },
 ];
 
-function Item({ icon, color, title, sub }: (typeof items)[number]) {
+function Item({ icon, color, title }: (typeof items)[number]) {
   return (
-    <div className="flex items-center gap-3 flex-shrink-0 md:justify-center md:px-4 whitespace-nowrap">
+    <div
+      className="flex items-center gap-2 flex-shrink-0 whitespace-nowrap rounded-full border px-3.5 py-1.5"
+      style={{
+        borderColor: `${color}66`,
+        backgroundColor: `${color}14`,
+        boxShadow: `0 0 14px ${color}33, inset 0 0 10px ${color}12`,
+      }}
+    >
+      <i
+        className={`${icon} text-sm`}
+        style={{ color, filter: `drop-shadow(0 0 5px ${color})` }}
+      ></i>
       <span
-        className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center"
-        style={{ backgroundColor: `${color}1f` }}
+        className="text-[13px] font-bold"
+        style={{ color: "#fff", textShadow: `0 0 8px ${color}66` }}
       >
-        <i className={`${icon} text-base`} style={{ color }}></i>
+        {title}
       </span>
-      <div className="leading-tight">
-        <p className="text-white text-[13px] font-bold">{title}</p>
-        <p className="text-slate-400 text-[11px]">{sub}</p>
-      </div>
     </div>
   );
 }
 
 export default function FeatureBar() {
+  // Seven unique items already overfill a wide viewport, so a single duplicate
+  // is enough for a seamless -50% loop (no visible repeat on screen at once).
+  const loop = [...items, ...items];
+
   return (
-    <div className="relative bg-gradient-to-r from-[#0a0e1a] via-[#0e1526] to-[#0a0e1a] border-b border-white/10 overflow-hidden">
+    <div className="group relative bg-gradient-to-b from-slate-900 to-slate-950 border-b border-white/10 overflow-hidden">
       {/* blue → green accent hairline, matching the site theme */}
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sky-500 to-emerald-500 z-10"></div>
 
-      {/* Desktop: static grid */}
-      <div className="hidden md:block max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-4 py-3 md:divide-x md:divide-white/10">
-          {items.map((it) => (
-            <Item key={it.title} {...it} />
-          ))}
-        </div>
-      </div>
-
-      {/* Mobile: auto-scrolling marquee (duplicated for a seamless loop) */}
-      <div className="md:hidden py-2.5">
-        <div className="flex w-max gap-8 okh-feat-marquee">
-          {[...items, ...items].map((it, i) => (
+      <div className="py-2.5">
+        <div className="flex w-max gap-10 okh-feat-marquee">
+          {loop.map((it, i) => (
             <Item key={`${it.title}-${i}`} {...it} />
           ))}
         </div>

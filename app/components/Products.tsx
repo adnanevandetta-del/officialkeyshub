@@ -107,10 +107,7 @@ export default function Products() {
   const products = catalog;
 
   return (
-    <section className="pt-14 pb-20 relative overflow-hidden bg-white rounded-t-[2rem] shadow-[0_-24px_60px_-30px_rgba(2,132,199,0.4)]" id="products">
-      {/* Top accent frame — a thin blue→green line that ties the white panel to
-          the site's ambient blue/emerald theme. */}
-      <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-sky-500 via-sky-500 to-emerald-500"></div>
+    <section className="pt-14 pb-20 relative overflow-hidden bg-white rounded-t-[2rem]" id="products">
       <div className="container mx-auto px-4 md:px-6">
         {/* Category Tabs — a normal swipeable row on phones (buttons gently float so it's
             clear the row moves), wrapped on larger screens. Solid per-category colors. */}

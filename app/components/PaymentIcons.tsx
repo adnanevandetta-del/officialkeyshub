@@ -1,19 +1,26 @@
 // Accepted-payment badges drawn as their real brand logos (Mastercard's
 // two-ring mark, a generic bank card, the PayPal two-tone wordmark, and the
 // Tether/USDT coin) so they read as authentic, not flat monochrome glyphs.
-// Brand marks sit on white chips because that's how the real logos are meant to
-// be shown and how they stay legible on dark backgrounds.
+//
+// By default the logos render bare (compact, no chip). Pass `chip` to sit each
+// logo on a white rounded chip — only needed on dark backgrounds where the
+// coloured marks would otherwise lose contrast.
 
 type Method = "mastercard" | "card" | "paypal" | "usdt";
+type Size = "sm" | "lg";
 
 const ALL: Method[] = ["mastercard", "card", "paypal", "usdt"];
+
+const SVG_H: Record<Size, string> = { sm: "h-[18px] w-auto", lg: "h-7 w-auto" };
+const PP_T: Record<Size, string> = { sm: "text-[14px]", lg: "text-2xl" };
+const USDT_COIN: Record<Size, string> = { sm: "w-[18px] h-[18px] text-[11px]", lg: "w-7 h-7 text-base" };
+const USDT_TXT: Record<Size, string> = { sm: "text-[11px]", lg: "text-base" };
 
 export function MastercardLogo({ className = "h-5 w-auto" }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 20" className={className} role="img" aria-label="Mastercard">
       <circle cx="12" cy="10" r="8" fill="#EB001B" />
       <circle cx="20" cy="10" r="8" fill="#F79E1B" />
-      {/* orange overlap lens of the two rings */}
       <path d="M16 3.6a7.99 7.99 0 0 0 0 12.8 7.99 7.99 0 0 0 0-12.8z" fill="#FF5F00" />
     </svg>
   );
@@ -57,16 +64,16 @@ export function UsdtLogo({
   );
 }
 
-function Logo({ m }: { m: Method }) {
+function Logo({ m, size }: { m: Method; size: Size }) {
   switch (m) {
     case "mastercard":
-      return <MastercardLogo />;
+      return <MastercardLogo className={SVG_H[size]} />;
     case "card":
-      return <CardLogo />;
+      return <CardLogo className={SVG_H[size]} />;
     case "paypal":
-      return <PayPalWordmark />;
+      return <PayPalWordmark className={PP_T[size]} />;
     case "usdt":
-      return <UsdtLogo />;
+      return <UsdtLogo coinClass={USDT_COIN[size]} textClass={USDT_TXT[size]} />;
     default:
       return null;
   }
@@ -75,22 +82,31 @@ function Logo({ m }: { m: Method }) {
 export default function PaymentIcons({
   methods = ALL,
   className = "",
-  chipClass = "h-8",
+  chip = false,
+  size = "sm",
 }: {
   methods?: Method[];
   className?: string;
-  chipClass?: string;
+  chip?: boolean;
+  size?: Size;
 }) {
   return (
-    <div className={`flex items-center gap-2 flex-wrap ${className}`}>
-      {methods.map((m) => (
-        <span
-          key={m}
-          className={`inline-flex items-center justify-center bg-white rounded-md shadow-sm ring-1 ring-black/5 px-2 ${chipClass}`}
-        >
-          <Logo m={m} />
-        </span>
-      ))}
+    <div className={`flex items-center gap-2.5 flex-wrap ${className}`}>
+      {methods.map((m) => {
+        const logo = <Logo m={m} size={size} />;
+        return chip ? (
+          <span
+            key={m}
+            className={`inline-flex items-center justify-center bg-white rounded-md shadow-sm ring-1 ring-black/5 px-2 ${size === "lg" ? "h-11" : "h-8"}`}
+          >
+            {logo}
+          </span>
+        ) : (
+          <span key={m} className="inline-flex items-center">
+            {logo}
+          </span>
+        );
+      })}
     </div>
   );
 }

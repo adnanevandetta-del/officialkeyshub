@@ -324,16 +324,20 @@ h1, h2, h3, h4, .font-display {
   .okh-cat-float { animation: none; }
 }
 
-/* FeatureBar mobile marquee — items are duplicated once, so translating the
-   row by -50% loops seamlessly. Paused for reduced-motion users. */
+/* FeatureBar marquee — the item list is repeated 4x, so translating the row by
+   -50% (two copies) loops seamlessly on any width. Pauses on hover and for
+   reduced-motion users. */
 @keyframes okhFeatMarquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 .okh-feat-marquee {
-  animation: okhFeatMarquee 20s linear infinite;
+  animation: okhFeatMarquee 40s linear infinite;
   will-change: transform;
-  padding-left: 1rem;
+  padding-left: 2.5rem;
+}
+.group:hover .okh-feat-marquee {
+  animation-play-state: paused;
 }
 @media (prefers-reduced-motion: reduce) {
   .okh-feat-marquee { animation: none; }

@@ -165,7 +165,7 @@ export default function ProductBillboard() {
                   <span className="text-white/45 text-[11px] font-medium flex items-center gap-1">
                     <i className="fas fa-lock text-[10px]"></i> Secure payments
                   </span>
-                  <PaymentIcons chipClass="h-6" className="gap-1.5" />
+                  <PaymentIcons className="gap-2" />
                 </div>
               </div>
             </div>
@@ -281,7 +281,7 @@ export default function ProductBillboard() {
                 </button>
 
                 {/* Secure payments we accept */}
-                <PaymentIcons chipClass="h-6" className="gap-1.5" />
+                <PaymentIcons className="gap-2" />
               </div>
             </div>
 

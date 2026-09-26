@@ -8,7 +8,7 @@ export default function TrustBadges() {
       <div className="max-w-7xl mx-auto px-4">
         {/* Accepted payment methods + live chat */}
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <PaymentIcons chipClass="h-11" className="gap-3" />
+          <PaymentIcons size="lg" className="gap-4" />
 
           {/* WhatsApp — presented as a live chat option with an "online" dot */}
           <a
