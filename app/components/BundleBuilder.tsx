@@ -98,7 +98,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto mb-8 md:mb-10">
-      <div className="rounded-2xl ring-1 ring-emerald-500/30 border border-white/10 bg-white/[0.025] backdrop-blur-sm overflow-hidden">
+      <div className="rounded-2xl ring-1 ring-emerald-500/30 border border-white/10 bg-slate-900 shadow-xl overflow-hidden">
         {/* Header */}
         <div className="px-4 md:px-6 py-4 md:py-5 bg-gradient-to-r from-emerald-700/20 via-emerald-600/10 to-transparent border-b border-white/10">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">

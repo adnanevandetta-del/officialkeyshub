@@ -104,7 +104,25 @@ export default function Products() {
     { id: "antivirus", name: "Security", icon: "fas fa-shield-alt", color: "#dc2626" },
   ];
 
-  const products = catalog;
+  // Show products in a fresh random order on every visit. We start from the
+  // catalog order (so server and first client render match — no hydration
+  // mismatch) and shuffle once after mount.
+  const [products, setProducts] = useState(catalog);
+  useEffect(() => {
+    const shuffle = <T,>(arr: T[]): T[] => {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    };
+    const next = {} as typeof catalog;
+    (Object.keys(catalog) as (keyof typeof catalog)[]).forEach((k) => {
+      next[k] = shuffle(catalog[k]);
+    });
+    setProducts(next);
+  }, []);
 
   return (
     <section className="pt-14 pb-20 relative overflow-hidden bg-white rounded-t-[2rem]" id="products">

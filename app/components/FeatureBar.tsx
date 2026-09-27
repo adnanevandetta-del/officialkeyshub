@@ -17,20 +17,20 @@ const items = [
 function Item({ icon, color, title }: (typeof items)[number]) {
   return (
     <div
-      className="flex items-center gap-2 flex-shrink-0 whitespace-nowrap rounded-full border px-3.5 py-1.5"
+      className="flex items-center gap-1.5 flex-shrink-0 whitespace-nowrap rounded-full border px-2.5 py-0.5"
       style={{
         borderColor: `${color}66`,
         backgroundColor: `${color}14`,
-        boxShadow: `0 0 14px ${color}33, inset 0 0 10px ${color}12`,
+        boxShadow: `0 0 10px ${color}2e`,
       }}
     >
       <i
-        className={`${icon} text-sm`}
-        style={{ color, filter: `drop-shadow(0 0 5px ${color})` }}
+        className={`${icon} text-[11px]`}
+        style={{ color, filter: `drop-shadow(0 0 4px ${color})` }}
       ></i>
       <span
-        className="text-[13px] font-bold"
-        style={{ color: "#fff", textShadow: `0 0 8px ${color}66` }}
+        className="text-[11px] font-bold"
+        style={{ color: "#fff", textShadow: `0 0 6px ${color}55` }}
       >
         {title}
       </span>
@@ -48,8 +48,8 @@ export default function FeatureBar() {
       {/* blue → green accent hairline, matching the site theme */}
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sky-500 to-emerald-500 z-10"></div>
 
-      <div className="py-2.5">
-        <div className="flex w-max gap-10 okh-feat-marquee">
+      <div className="py-1.5">
+        <div className="flex w-max gap-6 okh-feat-marquee">
           {loop.map((it, i) => (
             <Item key={`${it.title}-${i}`} {...it} />
           ))}
