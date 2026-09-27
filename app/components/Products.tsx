@@ -125,7 +125,7 @@ export default function Products() {
   }, []);
 
   return (
-    <section className="pt-14 pb-20 relative overflow-hidden bg-white rounded-t-[2rem]" id="products">
+    <section className="pt-14 pb-20 relative overflow-hidden bg-white" id="products">
       <div className="container mx-auto px-4 md:px-6">
         {/* Category Tabs — a normal swipeable row on phones (buttons gently float so it's
             clear the row moves), wrapped on larger screens. Solid per-category colors. */}
