@@ -14,40 +14,36 @@ export default function Logo({ size = "md", animated = true }: LogoProps) {
 
   const currentSize = sizes[size];
 
-  // Microsoft-style four tiles (darkened) + a modern key with an orbit swoosh.
+  // Shield + key: "genuine + secure" in one clear mark. Stays legible down to
+  // favicon size and reads as an independent reseller (no Microsoft four-square).
   const Mark = (
-    <svg viewBox="0 0 120 120" className="w-full h-full drop-shadow-md">
+    <svg viewBox="0 0 64 64" className="w-full h-full drop-shadow-md">
       <defs>
-        <linearGradient id="keyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#2f6fd0" />
+        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#3b82f6" />
           <stop offset="100%" stopColor="#173f82" />
-        </linearGradient>
-        <linearGradient id="swooshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#1f6fd0" />
-          <stop offset="100%" stopColor="#123f80" />
         </linearGradient>
       </defs>
 
-      {/* Four tiles — darkened Microsoft palette */}
-      <g transform="rotate(-6 60 56)">
-        <rect x="30" y="26" width="27" height="27" rx="4" fill="#B23A1A" />
-        <rect x="63" y="26" width="27" height="27" rx="4" fill="#4F7A00" />
-        <rect x="30" y="59" width="27" height="27" rx="4" fill="#0B6BA6" />
-        <rect x="63" y="59" width="27" height="27" rx="4" fill="#C88A00" />
-      </g>
+      {/* Shield */}
+      <path
+        d="M32 4 L54 12 V30 C54 46 44 55 32 60 C20 55 10 46 10 30 V12 Z"
+        fill="url(#shieldGrad)"
+      />
+      <path
+        d="M32 4 L54 12 V30 C54 46 44 55 32 60 C20 55 10 46 10 30 V12 Z"
+        fill="none"
+        stroke="#bcd4ff"
+        strokeOpacity="0.25"
+        strokeWidth="1.5"
+      />
 
-      {/* Orbit swoosh */}
-      <path d="M24 78 C 44 96, 86 92, 100 60" fill="none" stroke="url(#swooshGrad)" strokeWidth="6" strokeLinecap="round" />
-      <path d="M96 44 C 100 40, 104 44, 102 50" fill="none" stroke="url(#swooshGrad)" strokeWidth="6" strokeLinecap="round" />
-
-      {/* Modern key with a light outline so it reads over the tiles */}
-      <g>
-        <circle cx="60" cy="46" r="19" fill="#e8eefc" />
-        <circle cx="60" cy="46" r="15.5" fill="url(#keyGrad)" />
-        <circle cx="60" cy="41.5" r="5" fill="#e8eefc" />
-        <path d="M67 57 L96 86 L96 96 L90 96 L90 90 L84 90 L84 84 L78 84 L72 78 L68 82 L58 72 Z" fill="#e8eefc" />
-        <path d="M69 58 L94 83 L94 93 L91.5 93 L91.5 86.5 L85.5 86.5 L85.5 81 L79.5 81 L74 75.5 L69.5 79.5 L61 71 Z" fill="url(#keyGrad)" />
-      </g>
+      {/* Key: head with orange core (ties to the "Hub" accent) + toothed shaft */}
+      <circle cx="32" cy="26" r="8.5" fill="none" stroke="#fff" strokeWidth="4" />
+      <circle cx="32" cy="26" r="3" fill="#f97316" />
+      <rect x="30" y="30" width="4" height="18" rx="2" fill="#fff" />
+      <rect x="34" y="40" width="7" height="4" rx="2" fill="#fff" />
+      <rect x="34" y="46" width="5" height="4" rx="2" fill="#fff" />
     </svg>
   );
 
