@@ -229,21 +229,21 @@ export default async function ProductPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-950 pt-24 pb-20">
+      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-24 pb-20">
         <div className="max-w-6xl mx-auto px-6">
           {/* Breadcrumb */}
-          <nav className="text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-2">
-            <Link href="/" className="hover:text-sky-400">Home</Link>
-            <span>/</span>
-            <Link href="/#products" className="hover:text-sky-400">{cat}</Link>
-            <span>/</span>
-            <span className="text-slate-200 font-semibold">{p.name}</span>
+          <nav className="text-sm text-gray-500 mb-6 flex flex-wrap items-center gap-2">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            <span className="text-gray-300">/</span>
+            <Link href="/#products" className="hover:text-blue-600">{cat}</Link>
+            <span className="text-gray-300">/</span>
+            <span className="text-gray-800 font-semibold">{p.name}</span>
           </nav>
 
           {/* Hero */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
             {/* Image */}
-            <div className="relative h-64 md:h-80 rounded-2xl bg-gradient-to-b from-slate-800/80 to-slate-900 border border-white/10 flex items-center justify-center overflow-hidden">
+            <div className="relative h-64 md:h-80 rounded-2xl bg-gradient-to-b from-gray-50 to-white border border-gray-200 shadow-sm flex items-center justify-center overflow-hidden">
               <Image
                 src={getProductImage(p.name)}
                 alt={`${p.name} genuine product key`}
@@ -253,7 +253,7 @@ export default async function ProductPage({
                 priority
               />
               {p.badge && (
-                <span className="absolute top-4 left-4 bg-sky-600/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                <span className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">
                   {p.badge}
                 </span>
               )}
@@ -261,64 +261,64 @@ export default async function ProductPage({
 
             {/* Buy panel */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-sky-600/15 border border-sky-600/30 px-3 py-1 rounded-full mb-3">
-                <i className="fas fa-microchip text-sky-400 text-xs"></i>
-                <span className="text-sky-400 text-xs font-bold uppercase tracking-wide">{cat}</span>
+              <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full mb-3">
+                <i className="fas fa-microchip text-blue-600 text-xs"></i>
+                <span className="text-blue-700 text-xs font-bold uppercase tracking-wide">{cat}</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-black text-white mb-2">{p.name}</h1>
-              <p className="text-slate-300 mb-5">{p.description}</p>
+              <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">{p.name}</h1>
+              <p className="text-gray-600 mb-5">{p.description}</p>
               <ProductBuySection name={p.name} price={p.price} originalPrice={p.originalPrice} />
             </div>
           </div>
 
           {/* Overview + features */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
-            <div className="lg:col-span-2 prose prose-invert max-w-none">
-              <h2 className="text-2xl font-bold text-white mb-4">About {p.name}</h2>
-              <p className="text-slate-300 leading-relaxed mb-4">
+            <div className="lg:col-span-2 prose max-w-none">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">About {p.name}</h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
                 Looking to <strong>buy {p.name}</strong> without paying full retail? Official Keys Hub delivers a
                 genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> instead of {p.originalPrice}</> : null} — a genuine
                 Microsoft license that activates directly on Microsoft&rsquo;s own servers. {p.description}, and it&rsquo;s
                 delivered to your inbox within minutes of purchase.
               </p>
-              <p className="text-slate-300 leading-relaxed mb-6">{categoryIntro[p.category]}</p>
+              <p className="text-gray-700 leading-relaxed mb-6">{categoryIntro[p.category]}</p>
 
-              <h3 className="text-xl font-bold text-white mt-2 mb-3">{p.name} at a glance</h3>
-              <div className="overflow-hidden rounded-xl border border-white/10 mb-2">
+              <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3">{p.name} at a glance</h3>
+              <div className="overflow-hidden rounded-xl border border-gray-200 mb-2">
                 <table className="w-full text-sm">
                   <tbody>
                     {specsFor(p).map((s, i) => (
-                      <tr key={s.label} className={i % 2 ? "bg-white/[0.02]" : ""}>
-                        <th scope="row" className="text-left font-semibold text-slate-400 px-4 py-2.5 w-2/5 align-top">
+                      <tr key={s.label} className={i % 2 ? "bg-gray-50" : "bg-white"}>
+                        <th scope="row" className="text-left font-semibold text-gray-500 px-4 py-2.5 w-2/5 align-top">
                           {s.label}
                         </th>
-                        <td className="text-slate-200 px-4 py-2.5">{s.value}</td>
+                        <td className="text-gray-800 px-4 py-2.5">{s.value}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-              <p className="text-slate-300 leading-relaxed mb-4">
+              <p className="text-gray-700 leading-relaxed mb-4">
                 As an independent reseller operating under EU resale rights, we source every {cat.toLowerCase()} license
                 through legitimate channels — so you get the real thing at a fair price, backed by our 30-day money-back
                 guarantee and 24/7 support. Not sure how activation works? Our{" "}
-                <Link href="/activation-guide" className="text-sky-400 hover:underline">Activation Guide</Link>{" "}
+                <Link href="/activation-guide" className="text-blue-600 hover:underline">Activation Guide</Link>{" "}
                 walks you through every step, and you can read more about how we keep keys genuine on our{" "}
-                <Link href="/licensing" className="text-sky-400 hover:underline">Licensing &amp; Authenticity</Link>{" "}page.
+                <Link href="/licensing" className="text-blue-600 hover:underline">Licensing &amp; Authenticity</Link>{" "}page.
               </p>
 
-              <h3 className="text-xl font-bold text-white mt-8 mb-3">What you get</h3>
+              <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">What you get</h3>
               <ul className="space-y-2">
                 {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-slate-300">
-                    <i className="fas fa-check text-emerald-400 mt-1"></i>
+                  <li key={f} className="flex items-start gap-2 text-gray-700">
+                    <i className="fas fa-check text-emerald-500 mt-1"></i>
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <h3 className="text-xl font-bold text-white mt-8 mb-3">How to activate {p.name}</h3>
-              <ol className="space-y-2 text-slate-300 list-decimal pl-6">
+              <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3">How to activate {p.name}</h3>
+              <ol className="space-y-2 text-gray-700 list-decimal pl-6">
                 <li>Complete your purchase and receive the key by email (usually within minutes).</li>
                 <li>Open the product&rsquo;s activation settings and enter your key.</li>
                 <li>The key validates directly with Microsoft and activates your license.</li>
@@ -328,14 +328,14 @@ export default async function ProductPage({
 
             {/* Trust sidebar */}
             <aside className="space-y-4">
-              <div className="glass rounded-2xl p-6">
-                <h3 className="text-white font-bold mb-4">Why buy from us</h3>
-                <ul className="space-y-3 text-sm text-slate-300">
-                  <li className="flex items-start gap-2"><i className="fas fa-certificate text-sky-400 mt-0.5"></i> Genuine license, activates with Microsoft</li>
-                  <li className="flex items-start gap-2"><i className="fas fa-bolt text-sky-400 mt-0.5"></i> Instant email delivery</li>
-                  <li className="flex items-start gap-2"><i className="fas fa-scale-balanced text-sky-400 mt-0.5"></i> Legally resold under EU law</li>
-                  <li className="flex items-start gap-2"><i className="fas fa-rotate-left text-sky-400 mt-0.5"></i> 30-day money-back guarantee</li>
-                  <li className="flex items-start gap-2"><i className="fas fa-headset text-sky-400 mt-0.5"></i> 24/7 WhatsApp &amp; email support</li>
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                <h3 className="text-gray-900 font-bold mb-4">Why buy from us</h3>
+                <ul className="space-y-3 text-sm text-gray-600">
+                  <li className="flex items-start gap-2"><i className="fas fa-certificate text-blue-600 mt-0.5"></i> Genuine license, activates with Microsoft</li>
+                  <li className="flex items-start gap-2"><i className="fas fa-bolt text-blue-600 mt-0.5"></i> Instant email delivery</li>
+                  <li className="flex items-start gap-2"><i className="fas fa-scale-balanced text-blue-600 mt-0.5"></i> Legally resold under EU law</li>
+                  <li className="flex items-start gap-2"><i className="fas fa-rotate-left text-blue-600 mt-0.5"></i> 30-day money-back guarantee</li>
+                  <li className="flex items-start gap-2"><i className="fas fa-headset text-blue-600 mt-0.5"></i> 24/7 WhatsApp &amp; email support</li>
                 </ul>
               </div>
             </aside>
@@ -343,12 +343,12 @@ export default async function ProductPage({
 
           {/* FAQ */}
           <div className="mb-14">
-            <h2 className="text-2xl font-bold text-white mb-6">Frequently asked questions</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently asked questions</h2>
             <div className="space-y-4 max-w-3xl">
               {faqs.map((f) => (
-                <div key={f.q} className="glass rounded-xl p-5">
-                  <h3 className="text-white font-semibold mb-2">{f.q}</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">{f.a}</p>
+                <div key={f.q} className="bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+                  <h3 className="text-gray-900 font-semibold mb-2">{f.q}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{f.a}</p>
                 </div>
               ))}
             </div>
@@ -357,19 +357,19 @@ export default async function ProductPage({
           {/* Related */}
           {related.length > 0 && (
             <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Related {cat} keys</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Related {cat} keys</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {related.map((r) => (
                   <Link
                     key={r.slug}
                     href={`/products/${r.slug}`}
-                    className="glass glow-hover rounded-xl p-4 transition-all"
+                    className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
-                    <div className="relative h-24 mb-3 rounded-lg bg-gradient-to-b from-slate-800/80 to-slate-900 overflow-hidden flex items-center justify-center">
+                    <div className="relative h-24 mb-3 rounded-lg bg-gradient-to-b from-gray-50 to-white border border-gray-100 overflow-hidden flex items-center justify-center">
                       <Image src={getProductImage(r.name)} alt={r.name} fill unoptimized className="object-contain p-2" />
                     </div>
-                    <p className="text-white text-sm font-semibold line-clamp-2 mb-1">{r.name}</p>
-                    <p className="text-sky-400 font-bold">{r.price}</p>
+                    <p className="text-gray-900 text-sm font-semibold line-clamp-2 mb-1">{r.name}</p>
+                    <p className="text-blue-600 font-bold">{r.price}</p>
                   </Link>
                 ))}
               </div>

@@ -29,11 +29,11 @@ export function MastercardLogo({ className = "h-5 w-auto" }: { className?: strin
 export function CardLogo({ className = "h-5 w-auto" }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 20" className={className} role="img" aria-label="Credit / debit card">
-      <rect x="1" y="2.5" width="30" height="15" rx="2.5" fill="#1e3a8a" />
-      <rect x="1" y="5.5" width="30" height="3.6" fill="#0b1e4d" />
+      <rect x="1" y="2.5" width="30" height="15" rx="2.5" fill="#2952b3" stroke="#dbe4f5" strokeWidth="0.7" />
+      <rect x="1.5" y="5.5" width="29" height="3.6" fill="#12308a" />
       <rect x="24" y="7" width="5" height="3.6" rx="0.8" fill="#fbbf24" />
-      <rect x="4" y="12" width="8" height="2.4" rx="1" fill="#93c5fd" />
-      <rect x="15" y="12" width="4" height="2.4" rx="1" fill="#60a5fa" />
+      <rect x="4" y="12" width="8" height="2.4" rx="1" fill="#bfdbfe" />
+      <rect x="15" y="12" width="4" height="2.4" rx="1" fill="#93c5fd" />
     </svg>
   );
 }
