@@ -11,7 +11,20 @@ interface Meta {
   glyph: string; // inline SVG centered around (400,235), ~200px
   brand: string; // small brand label
   tintable: boolean; // Microsoft families get per-product tints; vendors keep exact brand colours
+  microsoft: boolean; // genuine Microsoft products get the authentic Microsoft logo badge
 }
+
+// Authentic Microsoft corporate logo (official four-colour squares + wordmark),
+// shown on genuine Microsoft-product boxes so they read as the real thing. The
+// four squares use Microsoft's exact brand colours and are never recoloured.
+const microsoftMark = `
+  <g transform="translate(321,119)">
+    <rect x="0" y="0" width="9" height="9" fill="#F25022"/>
+    <rect x="11" y="0" width="9" height="9" fill="#7FBA00"/>
+    <rect x="0" y="11" width="9" height="9" fill="#00A4EF"/>
+    <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
+    <text x="27" y="17" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="16" font-weight="600" fill="#ffffff">Microsoft</text>
+  </g>`;
 
 function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -188,10 +201,10 @@ function metaFor(name: string): Meta {
   const n = name.toLowerCase();
 
   if (n.startsWith("custom bundle"))
-    return { accent: "#0d9488", accent2: "#115e59", glyph: bundleBoxes, brand: "Custom Bundle", tintable: false };
+    return { accent: "#0d9488", accent2: "#115e59", glyph: bundleBoxes, brand: "Custom Bundle", tintable: false, microsoft: false };
 
   // Security vendors (brand colors)
-  const vendor = (label: string, c1: string, c2: string): Meta => ({ accent: c1, accent2: c2, glyph: shield("#ffffff", c1), brand: label, tintable: false });
+  const vendor = (label: string, c1: string, c2: string): Meta => ({ accent: c1, accent2: c2, glyph: shield("#ffffff", c1), brand: label, tintable: false, microsoft: false });
   if (n.includes("kaspersky")) return vendor("Kaspersky", "#1a9b5e", "#0d6b3f");
   if (n.includes("norton")) return vendor("Norton", "#ffb200", "#b97e00");
   if (n.includes("mcafee")) return vendor("McAfee", "#c01818", "#7a0f0f");
@@ -201,16 +214,16 @@ function metaFor(name: string): Meta {
   if (n.includes("trend micro")) return vendor("Trend Micro", "#d71920", "#8f1116");
 
   if ((/office\s*365|microsoft\s*365/.test(n)) || (/\b365\b/.test(n) && !n.includes("windows")))
-    return { accent: "#0364b8", accent2: "#022f5c", glyph: cloud("#ffffff"), brand: "Microsoft 365", tintable: true };
-  if (n.includes("visual studio")) return { accent: "#7c3aed", accent2: "#4c1d95", glyph: codeBrackets("#ffffff"), brand: "Visual Studio", tintable: true };
-  if (n.includes("sql")) return { accent: "#b91c1c", accent2: "#7f1d1d", glyph: database("#ffffff"), brand: "SQL Server", tintable: true };
-  if (n.includes("visio")) return { accent: "#0f9488", accent2: "#0b5c54", glyph: diagram("#ffffff"), brand: "Visio", tintable: true };
-  if (n.includes("project")) return { accent: "#16a34a", accent2: "#166534", glyph: barChart("#ffffff"), brand: "Project", tintable: true };
-  if (n.includes("server")) return { accent: "#3b6ea5", accent2: "#1e3a5f", glyph: serverRack("#ffffff"), brand: "Windows Server", tintable: true };
-  if (n.includes("office")) return { accent: "#c43e1c", accent2: "#7a2610", glyph: officeTiles, brand: "Microsoft Office", tintable: true };
-  if (n.includes("windows")) return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft Windows", tintable: true };
+    return { accent: "#0364b8", accent2: "#022f5c", glyph: cloud("#ffffff"), brand: "Microsoft 365", tintable: true, microsoft: true };
+  if (n.includes("visual studio")) return { accent: "#7c3aed", accent2: "#4c1d95", glyph: codeBrackets("#ffffff"), brand: "Visual Studio", tintable: true, microsoft: true };
+  if (n.includes("sql")) return { accent: "#b91c1c", accent2: "#7f1d1d", glyph: database("#ffffff"), brand: "SQL Server", tintable: true, microsoft: true };
+  if (n.includes("visio")) return { accent: "#0f9488", accent2: "#0b5c54", glyph: diagram("#ffffff"), brand: "Visio", tintable: true, microsoft: true };
+  if (n.includes("project")) return { accent: "#16a34a", accent2: "#166534", glyph: barChart("#ffffff"), brand: "Project", tintable: true, microsoft: true };
+  if (n.includes("server")) return { accent: "#3b6ea5", accent2: "#1e3a5f", glyph: serverRack("#ffffff"), brand: "Windows Server", tintable: true, microsoft: true };
+  if (n.includes("office")) return { accent: "#c43e1c", accent2: "#7a2610", glyph: officeTiles, brand: "Microsoft Office", tintable: true, microsoft: true };
+  if (n.includes("windows")) return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft Windows", tintable: true, microsoft: true };
 
-  return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft", tintable: true };
+  return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft", tintable: true, microsoft: true };
 }
 
 // Big faint identifier drawn behind the glyph (version / year / brand initial).
@@ -254,6 +267,12 @@ export function GET(req: NextRequest) {
   // Per-product tint keeps same-family products visually distinct.
   const accent = meta.tintable ? tint(meta.accent, seed, 26) : meta.accent;
   const accent2 = meta.tintable ? tint(meta.accent2, seed, 26) : meta.accent2;
+
+  // Pale themed scene background: a very light wash of the product's own accent
+  // hue, so each box sits on a backdrop that matches its colour family.
+  const [bgH, bgS] = hexToHsl(accent);
+  const bgTop = hslToHex(bgH, Math.min(bgS, 0.5), 0.965);
+  const bgBottom = hslToHex(bgH, Math.min(bgS, 0.62), 0.88);
   const edition = editionOf(name);
   const watermark = esc(watermarkOf(name));
 
@@ -276,11 +295,11 @@ export function GET(req: NextRequest) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${boxOnly ? "200 50 400 530" : "0 0 800 600"}" width="${boxOnly ? 400 : 800}" height="${boxOnly ? 530 : 600}" role="img" aria-label="${esc(name)} — Official Keys Hub">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0a0e1a"/>
-      <stop offset="1" stop-color="#111a2e"/>
+      <stop offset="0" stop-color="${bgTop}"/>
+      <stop offset="1" stop-color="${bgBottom}"/>
     </linearGradient>
     <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="${accent}" stop-opacity="0.45"/>
+      <stop offset="0" stop-color="${accent}" stop-opacity="0.20"/>
       <stop offset="1" stop-color="${accent}" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="front" x1="0" y1="0" x2="1" y2="1">
@@ -306,7 +325,7 @@ export function GET(req: NextRequest) {
 
   ${boxOnly ? "" : `<rect width="800" height="600" fill="url(#bg)"/>
   <ellipse cx="400" cy="300" rx="330" ry="270" fill="url(#glow)"/>`}
-  <ellipse cx="400" cy="546" rx="${boxOnly ? 170 : 215}" ry="${boxOnly ? 12 : 16}" fill="#000" fill-opacity="0.55" filter="url(#blur)"/>
+  <ellipse cx="400" cy="546" rx="${boxOnly ? 170 : 215}" ry="${boxOnly ? 12 : 16}" fill="#0f172a" fill-opacity="0.22" filter="url(#blur)"/>
 
   <!-- Box spine (right side) -->
   <polygon points="520,70 580,92 580,508 520,530" fill="url(#spine)"/>
@@ -322,6 +341,9 @@ export function GET(req: NextRequest) {
   <!-- Store logo on the box -->
   <rect x="220" y="70" width="300" height="42" rx="4" fill="#000" fill-opacity="0.32"/>
   <text x="370" y="97" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="18" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
+
+  <!-- Authentic Microsoft logo (genuine Microsoft products only) -->
+  ${meta.microsoft ? microsoftMark : ""}
 
   <!-- Product glyph -->
   <g filter="url(#soft)"><g transform="translate(370,222) scale(0.72) translate(-400,-235)">${meta.glyph}</g></g>
