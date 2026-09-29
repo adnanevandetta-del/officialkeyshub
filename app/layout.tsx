@@ -27,8 +27,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.officialkeyshub.com"),
-  title: "Official Keys Hub | Genuine Microsoft Windows & Office Licenses",
-  description: "Official Keys Hub is a digital software reseller offering Windows, Microsoft Office, Windows Server and security software licenses. Instant delivery, activation support and a 30-day money-back guarantee.",
+  title: "Buy Genuine Windows & Office Keys | Official Keys Hub",
+  description: "Buy genuine Microsoft Windows 11, Office 2021 and Windows Server product keys at unbeatable prices. Instant email delivery, activation support and a 30-day money-back guarantee.",
   keywords: [
     "buy windows 11 license",
     "buy microsoft office",
