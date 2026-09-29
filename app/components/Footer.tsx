@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 mb-8 pb-8 border-b border-slate-800">
           {/* Company Info */}
           <div className="col-span-2 lg:col-span-1">
-            <h3 className="text-xl font-bold text-white mb-4">Official Keys Hub</h3>
+            <h3 className="text-xl font-bold text-white mb-4">Official Keys <span className="text-orange-500">Hub</span></h3>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
               Genuine Windows, Office, and software licenses at honest prices, with fast delivery and friendly support.
             </p>
