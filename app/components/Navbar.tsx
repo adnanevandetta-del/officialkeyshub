@@ -145,6 +145,20 @@ export default function Navbar() {
                     Products
                   </Link>
                   <Link
+                    href="/#products"
+                    onClick={() => {
+                      setIsDeskMenuOpen(false);
+                      if (typeof window !== 'undefined') {
+                        sessionStorage.setItem('selectedCategory', 'bundles');
+                        window.dispatchEvent(new CustomEvent('categoryChanged', { detail: { category: 'bundles' } }));
+                      }
+                    }}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-box-open text-amber-500 w-4"></i>
+                    Build Your Own Bundle
+                  </Link>
+                  <Link
                     href="/faq"
                     onClick={() => setIsDeskMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
@@ -255,6 +269,17 @@ export default function Navbar() {
               </div>
 
               {/* Main Menu Items */}
+              <Link
+                href="/#products"
+                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                onClick={() => {
+                  handleCategoryClick('bundles');
+                  setIsMenuOpen(false);
+                }}
+              >
+                <i className="fas fa-box-open text-amber-500"></i>
+                Build Your Own Bundle
+              </Link>
               <Link
                 href="/#products"
                 className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"

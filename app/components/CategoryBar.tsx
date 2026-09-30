@@ -12,7 +12,6 @@ interface Cat {
 }
 
 const categories: Cat[] = [
-  { id: "bundles", name: "Bundles", icon: "fas fa-box-open", color: "#f59e0b" },
   { id: "windows", name: "Windows", icon: "fab fa-windows", color: "#0284c7" },
   { id: "office", name: "Office", icon: "fas fa-file-word", color: "#ea580c" },
   { id: "server", name: "Server", icon: "fas fa-server", color: "#475569" },
