@@ -1,9 +1,9 @@
 import { NextRequest } from "next/server";
 
 // Generates a branded retail-box product image as an SVG for each product —
-// Official Keys Hub logo on the front and spine, the product's glyph, edition
-// and name. Consistent styling, accurate to each product, and copyright-safe
-// (no third-party box art).
+// the product's own brand badge on top, its glyph, edition and name, and the
+// Official Keys Hub shield-key logo along the bottom. Consistent styling,
+// accurate to each product, and copyright-safe (no third-party box art).
 
 interface Meta {
   accent: string;
@@ -13,18 +13,6 @@ interface Meta {
   tintable: boolean; // Microsoft families get per-product tints; vendors keep exact brand colours
   microsoft: boolean; // genuine Microsoft products get the authentic Microsoft logo badge
 }
-
-// Authentic Microsoft corporate logo (official four-colour squares + wordmark),
-// shown on genuine Microsoft-product boxes so they read as the real thing. The
-// four squares use Microsoft's exact brand colours and are never recoloured.
-const microsoftMark = `
-  <g transform="translate(321,119)">
-    <rect x="0" y="0" width="9" height="9" fill="#F25022"/>
-    <rect x="11" y="0" width="9" height="9" fill="#7FBA00"/>
-    <rect x="0" y="11" width="9" height="9" fill="#00A4EF"/>
-    <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
-    <text x="27" y="17" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="16" font-weight="600" fill="#ffffff">Microsoft</text>
-  </g>`;
 
 function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -226,18 +214,6 @@ function metaFor(name: string): Meta {
   return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft", tintable: true, microsoft: true };
 }
 
-// Big faint identifier drawn behind the glyph (version / year / brand initial).
-function watermarkOf(name: string): string {
-  const n = name.toLowerCase();
-  if (n.startsWith("custom bundle")) return "$5";
-  if (/\b365\b/.test(n)) return "365";
-  const ver = n.match(/\b(11|10|8\.1|7)\b/);
-  if (ver && n.includes("windows")) return ver[1];
-  const year = n.match(/\b(20\d\d)\b/);
-  if (year) return year[1];
-  return name.trim().charAt(0).toUpperCase();
-}
-
 // Split a product title into up to `maxLines` lines of ~`max` characters.
 function wrapTitle(s: string, max = 16, maxLines = 3): string[] {
   const words = s.trim().split(/\s+/);
@@ -274,7 +250,6 @@ export function GET(req: NextRequest) {
   const bgTop = hslToHex(bgH, Math.min(bgS, 0.5), 0.965);
   const bgBottom = hslToHex(bgH, Math.min(bgS, 0.62), 0.88);
   const edition = editionOf(name);
-  const watermark = esc(watermarkOf(name));
 
   // Split "Base - Variant" into title + variant subtitle.
   const [base, variant] = name.split(" - ");
@@ -291,6 +266,20 @@ export function GET(req: NextRequest) {
   const chipW = Math.max(110, edition.length * 10 + 40);
   // Spine text: same font as the front title, shrunk so long names fit the spine.
   const spineSize = Math.max(13, Math.min(22, Math.floor(380 / (Math.max(base.length, 1) * 0.6))));
+
+  // Top-band brand badge: the authentic Microsoft four-colour logo on genuine
+  // Microsoft products (exact brand colours, never recoloured), the vendor's
+  // own name otherwise. A small genuine tick sits at the opposite end.
+  const brandBadge = meta.microsoft
+    ? `<g transform="translate(236,80)">
+        <rect x="0" y="0" width="9" height="9" fill="#F25022"/>
+        <rect x="11" y="0" width="9" height="9" fill="#7FBA00"/>
+        <rect x="0" y="11" width="9" height="9" fill="#00A4EF"/>
+        <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
+        <text x="28" y="17" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="15" font-weight="600" fill="#ffffff">Microsoft</text>
+      </g>`
+    : `<text x="236" y="97" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff">${esc(meta.brand)}</text>`;
+  const genuineTick = `<g transform="translate(497,91)"><circle r="9.5" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.2"/><path d="M-4.3 0 L-1 3.3 L4.6 -3.4" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>`;
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${boxOnly ? "200 50 400 530" : "0 0 800 600"}" width="${boxOnly ? 400 : 800}" height="${boxOnly ? 530 : 600}" role="img" aria-label="${esc(name)} — Official Keys Hub">
   <defs>
@@ -318,6 +307,10 @@ export function GET(req: NextRequest) {
       <stop offset="0" stop-color="#fff" stop-opacity="0.22"/>
       <stop offset="0.5" stop-color="#fff" stop-opacity="0"/>
     </linearGradient>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#173f82"/>
+    </linearGradient>
     <clipPath id="boxclip"><rect x="220" y="70" width="300" height="460" rx="4"/></clipPath>
     <filter id="soft"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/></filter>
     <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
@@ -334,16 +327,13 @@ export function GET(req: NextRequest) {
   <!-- Box front -->
   <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#front)"/>
   <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#shade)"/>
-  <text clip-path="url(#boxclip)" x="370" y="335" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="230" font-weight="900" fill="#ffffff" fill-opacity="0.07">${watermark}</text>
   <polygon points="220,70 400,70 220,300" fill="url(#gloss)"/>
   <rect x="220" y="70" width="300" height="460" rx="4" fill="none" stroke="#fff" stroke-opacity="0.18"/>
 
-  <!-- Store logo on the box -->
+  <!-- Top band: product brand badge + genuine tick -->
   <rect x="220" y="70" width="300" height="42" rx="4" fill="#000" fill-opacity="0.32"/>
-  <text x="370" y="97" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="18" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
-
-  <!-- Authentic Microsoft logo (genuine Microsoft products only) -->
-  ${meta.microsoft ? microsoftMark : ""}
+  ${brandBadge}
+  ${genuineTick}
 
   <!-- Product glyph -->
   <g filter="url(#soft)"><g transform="translate(370,222) scale(0.72) translate(-400,-235)">${meta.glyph}</g></g>
@@ -358,9 +348,20 @@ export function GET(req: NextRequest) {
   ${titleSvg}
   ${variantSvg}
 
-  <!-- Bottom band -->
+  <!-- Bottom band: Official Keys Hub shield-key logo -->
   <rect x="220" y="492" width="300" height="38" fill="#000" fill-opacity="0.45"/>
-  <text x="370" y="516" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="2">GENUINE LICENSE KEY</text>
+  <g transform="translate(299,511)">
+    <g transform="translate(0,-11) scale(0.34)">
+      <path d="M32 4 L54 12 V30 C54 46 44 55 32 60 C20 55 10 46 10 30 V12 Z" fill="url(#shieldGrad)"/>
+      <path d="M32 4 L54 12 V30 C54 46 44 55 32 60 C20 55 10 46 10 30 V12 Z" fill="none" stroke="#bcd4ff" stroke-opacity="0.3" stroke-width="1.5"/>
+      <circle cx="32" cy="26" r="8.5" fill="none" stroke="#fff" stroke-width="4"/>
+      <circle cx="32" cy="26" r="3" fill="#f97316"/>
+      <rect x="30" y="30" width="4" height="18" rx="2" fill="#fff"/>
+      <rect x="34" y="40" width="7" height="4" rx="2" fill="#fff"/>
+      <rect x="34" y="46" width="5" height="4" rx="2" fill="#fff"/>
+    </g>
+    <text x="30" y="5" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="16" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
+  </g>
 </svg>`;
 
   return new Response(svg, {
