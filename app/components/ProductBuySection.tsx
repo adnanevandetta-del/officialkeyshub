@@ -55,14 +55,14 @@ export default function ProductBuySection({
           onClick={() => recordQuickOrder(name, price, "paypal")}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-3 rounded-lg font-black text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg inline-flex items-center justify-center gap-2"
+          className="press-3d w-full py-3 rounded-lg font-black text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg inline-flex items-center justify-center gap-2"
         >
           Buy Now
         </a>
 
         <button
           onClick={add}
-          className="w-full py-2.5 rounded-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-md inline-flex items-center justify-center gap-2"
+          className="press-3d w-full py-2.5 rounded-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-md inline-flex items-center justify-center gap-2"
         >
           <i className={`fas ${added ? "fa-check" : "fa-cart-plus"}`}></i>
           {added ? "Added to Cart" : "Add to Cart"}
