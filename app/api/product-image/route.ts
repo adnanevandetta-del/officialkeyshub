@@ -264,8 +264,6 @@ export function GET(req: NextRequest) {
     ? `<text x="370" y="${variantY}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#ffffff" fill-opacity="0.85">${esc(variant)}</text>`
     : "";
   const chipW = Math.max(110, edition.length * 10 + 40);
-  // Spine text: same font as the front title, shrunk so long names fit the spine.
-  const spineSize = Math.max(13, Math.min(22, Math.floor(380 / (Math.max(base.length, 1) * 0.6))));
 
   // Top-band brand badge: the authentic Microsoft four-colour logo on genuine
   // Microsoft products (exact brand colours, never recoloured), the vendor's
@@ -320,9 +318,8 @@ export function GET(req: NextRequest) {
   <ellipse cx="400" cy="300" rx="330" ry="270" fill="url(#glow)"/>`}
   <ellipse cx="400" cy="546" rx="${boxOnly ? 170 : 215}" ry="${boxOnly ? 12 : 16}" fill="#0f172a" fill-opacity="0.22" filter="url(#blur)"/>
 
-  <!-- Box spine (right side) -->
+  <!-- Box spine (right side) — plain 3D side panel, no text -->
   <polygon points="520,70 580,92 580,508 520,530" fill="url(#spine)"/>
-  <text transform="translate(552,300) rotate(90)" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="${spineSize}" font-weight="800" fill="#ffffff">${esc(base)}</text>
 
   <!-- Box front -->
   <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#front)"/>

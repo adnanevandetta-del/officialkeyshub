@@ -5,7 +5,7 @@
 //
 // Bump IMG_VERSION whenever the box design changes so browsers and the CDN
 // fetch the new images instead of a cached older version.
-const IMG_VERSION = "16";
+const IMG_VERSION = "17";
 
 // Customer-built bundles ("Custom Bundle: A + B + C") share one generic image.
 const imageName = (name: string) => (name.startsWith("Custom Bundle") ? "Custom Bundle" : name);
