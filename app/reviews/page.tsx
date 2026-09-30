@@ -33,67 +33,21 @@ const promises = [
   },
 ];
 
-// Published customer reviews (verified by the store before going live).
-const published = [
-  {
-    name: "Jordan M.",
-    rating: 5,
-    date: "2026-09-10",
-    product: "Windows 11 Pro",
-    text: "ngl i was fully expecting a scam at this price but nope. key came through and activated first try on my new build. genuine, big W.",
-  },
-  {
-    name: "Maya R.",
-    rating: 4,
-    date: "2026-09-06",
-    product: "Office 2021 Pro Plus",
-    text: "did exactly what it said. took like 20 mins to get the key which had me a little nervous but it works and it's legit so no complaints.",
-  },
-  {
-    name: "Tyler B.",
-    rating: 5,
-    date: "2026-08-29",
-    product: "Windows 11 Pro",
-    text: "copped this for my pc build and it activated on microsoft servers no problem. saved so much money compared to the official site lol.",
-  },
-  {
-    name: "Zoe K.",
-    rating: 5,
-    date: "2026-08-22",
-    product: "Windows 11 + Office Bundle",
-    text: "honestly shocked how easy this was. paid, got the key on whatsapp, followed the steps, done. both activated fine. no cap.",
-  },
-  {
-    name: "Ethan L.",
-    rating: 4,
-    date: "2026-08-14",
-    product: "Office 2021 Pro Plus",
-    text: "was lowkey nervous ordering but support actually replied and sorted my activation. works perfectly now, would recommend.",
-  },
-  {
-    name: "Nina P.",
-    rating: 5,
-    date: "2026-08-03",
-    product: "Microsoft 365",
-    text: "got this for uni, way cheaper than official and it's the real thing. instructions were clear and i had it running in minutes.",
-  },
-  {
-    name: "Kayla S.",
-    rating: 4,
-    date: "2026-07-25",
-    product: "Windows 10 Pro",
-    text: "took a min to hear back on whatsapp but they were chill and helped me install it. everything genuine, works great.",
-  },
-  {
-    name: "Liam D.",
-    rating: 5,
-    date: "2026-07-12",
-    product: "Windows 11 + Office Bundle",
-    text: "repeat customer now tbh. second time buying, both keys activated with zero issues. fast and legit every time.",
-  },
-];
+// Real customer reviews the store has received and verified go here as they
+// come in. We only ever publish genuine reviews from real orders — no invented
+// testimonials — so this starts empty for a newly launched store.
+interface Review {
+  name: string;
+  rating: number;
+  date: string;
+  product: string;
+  text: string;
+}
+const published: Review[] = [];
 
-const avgRating = published.reduce((s, r) => s + r.rating, 0) / published.length;
+const avgRating = published.length
+  ? published.reduce((s, r) => s + r.rating, 0) / published.length
+  : 0;
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", { month: "short", year: "numeric" });
 
@@ -158,46 +112,61 @@ export default function ReviewsPage() {
             <h2 className="text-2xl md:text-3xl font-black text-white mb-3">
               What customers are <span className="gradient-text">saying</span>
             </h2>
-            <div className="inline-flex items-center gap-3 glass px-5 py-2.5 rounded-full">
-              <span className="flex items-center gap-1 text-yellow-400" aria-hidden="true">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <i key={i} className={`fas fa-star ${avgRating >= i - 0.25 ? "text-yellow-400" : "text-slate-600"}`}></i>
-                ))}
-              </span>
-              <span className="text-white font-bold">{avgRating.toFixed(1)}</span>
-              <span className="text-slate-400 text-sm">from {published.length} verified reviews</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {published.map((r) => (
-              <div key={r.name + r.date} className="glass rounded-2xl p-6 flex flex-col">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
-                      {r.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-white font-semibold text-sm leading-tight">{r.name}</p>
-                      <p className="text-slate-500 text-xs">{formatDate(r.date)}</p>
-                    </div>
-                  </div>
-                  <span className="text-emerald-400 text-xs font-semibold inline-flex items-center gap-1">
-                    <i className="fas fa-circle-check"></i> Verified
-                  </span>
-                </div>
-                <div className="flex items-center gap-0.5 text-yellow-400 mb-3" aria-label={`${r.rating} out of 5 stars`}>
+            {published.length > 0 && (
+              <div className="inline-flex items-center gap-3 glass px-5 py-2.5 rounded-full">
+                <span className="flex items-center gap-1 text-yellow-400" aria-hidden="true">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <i key={i} className={`fas fa-star text-sm ${r.rating >= i ? "text-yellow-400" : "text-slate-600"}`}></i>
+                    <i key={i} className={`fas fa-star ${avgRating >= i - 0.25 ? "text-yellow-400" : "text-slate-600"}`}></i>
                   ))}
-                </div>
-                <p className="text-slate-300 text-sm leading-relaxed flex-1">{r.text}</p>
-                <p className="text-slate-500 text-xs mt-4 pt-3 border-t border-white/5">
-                  <i className="fas fa-tag mr-1.5"></i>
-                  {r.product}
-                </p>
+                </span>
+                <span className="text-white font-bold">{avgRating.toFixed(1)}</span>
+                <span className="text-slate-400 text-sm">from {published.length} verified {published.length === 1 ? "review" : "reviews"}</span>
               </div>
-            ))}
+            )}
           </div>
+          {published.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              {published.map((r) => (
+                <div key={r.name + r.date} className="glass rounded-2xl p-6 flex flex-col">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                        {r.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-white font-semibold text-sm leading-tight">{r.name}</p>
+                        <p className="text-slate-500 text-xs">{formatDate(r.date)}</p>
+                      </div>
+                    </div>
+                    <span className="text-emerald-400 text-xs font-semibold inline-flex items-center gap-1">
+                      <i className="fas fa-circle-check"></i> Verified
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-0.5 text-yellow-400 mb-3" aria-label={`${r.rating} out of 5 stars`}>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <i key={i} className={`fas fa-star text-sm ${r.rating >= i ? "text-yellow-400" : "text-slate-600"}`}></i>
+                    ))}
+                  </div>
+                  <p className="text-slate-300 text-sm leading-relaxed flex-1">{r.text}</p>
+                  <p className="text-slate-500 text-xs mt-4 pt-3 border-t border-white/5">
+                    <i className="fas fa-tag mr-1.5"></i>
+                    {r.product}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="max-w-2xl mx-auto glass rounded-2xl p-10 text-center mb-16">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-sky-500/10 border border-sky-400/30 flex items-center justify-center">
+                <i className="fas fa-comment-dots text-sky-400 text-2xl"></i>
+              </div>
+              <h3 className="text-white font-bold text-xl mb-2">No reviews yet — be the first</h3>
+              <p className="text-slate-400 text-sm max-w-md mx-auto">
+                We&rsquo;re a newly launched store, so we&rsquo;re just starting to collect reviews.
+                Bought from us? Share your experience below — we publish every genuine review from a real order.
+              </p>
+            </div>
+          )}
 
           {/* Leave a review */}
           <div className="max-w-2xl mx-auto glass-strong rounded-2xl p-8">
