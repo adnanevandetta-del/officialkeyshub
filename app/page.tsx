@@ -8,6 +8,7 @@ import MovingProductShowcase from "./components/MovingProductShowcase";
 import TrustBadges from "./components/TrustBadges";
 import CustomerReviews from "./components/CustomerReviews";
 import ActivationGuideSection from "./components/ActivationGuideSection";
+import PopularProducts from "./components/PopularProducts";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -29,6 +30,7 @@ export default function Home() {
       <TrustBadges />
       <CustomerReviews />
       <ActivationGuideSection />
+      <PopularProducts />
       <Footer />
       <WhatsAppButton />
     </>

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ProductBuySection from "../../components/ProductBuySection";
+import ProductImageZoom from "../../components/ProductImageZoom";
 import { getProductImage } from "../../lib/productImage";
 import {
   allProducts,
@@ -243,21 +244,11 @@ export default async function ProductPage({
           {/* Hero */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
             {/* Image */}
-            <div className="relative h-64 md:h-80 rounded-2xl bg-gradient-to-b from-gray-50 to-white border border-gray-200 shadow-sm flex items-center justify-center overflow-hidden">
-              <Image
-                src={getProductImage(p.name)}
-                alt={`${p.name} genuine product key`}
-                fill
-                unoptimized
-                className="object-contain p-6"
-                priority
-              />
-              {p.badge && (
-                <span className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">
-                  {p.badge}
-                </span>
-              )}
-            </div>
+            <ProductImageZoom
+              src={getProductImage(p.name)}
+              alt={`${p.name} genuine product key`}
+              badge={p.badge}
+            />
 
             {/* Buy panel */}
             <div>

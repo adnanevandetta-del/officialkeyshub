@@ -1,90 +1,31 @@
 import { NextRequest } from "next/server";
 
-// Generates a branded retail-box product image as an SVG for each product —
-// the product's own brand badge on top, its glyph, edition and name, and the
-// Official Keys Hub shield-key logo along the bottom. Consistent styling,
-// accurate to each product, and copyright-safe (no third-party box art).
+// Generates a white retail-box product image as an SVG for each product —
+// Official Keys Hub logo centered on top, a realistic product logo, the name
+// and edition, with a per-product coloured trim. Copyright-safe (our own
+// branding; product logos are drawn as simple on-brand marks).
 
 interface Meta {
-  accent: string;
-  accent2: string;
-  glyph: string; // inline SVG centered around (400,235), ~200px
-  brand: string; // small brand label
-  tintable: boolean; // Microsoft families get per-product tints; vendors keep exact brand colours
-  microsoft: boolean; // genuine Microsoft products get the authentic Microsoft logo badge
+  accent: string;    // trim colour
+  accent2: string;   // darker trim shade
+  family: string;    // which logo + layout to use
+  brand: string;     // top-badge label for non-Microsoft products
+  microsoft: boolean; // genuine Microsoft product → show the Microsoft badge
 }
 
 function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-// --- deterministic per-product colour tinting ---------------------------
-// Same input name always yields the same output, so every product gets a
-// stable, unique-looking image while staying within its brand colour family.
-function hash(str: string): number {
-  let h = 2166136261;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
-}
-
-function hexToHsl(hex: string): [number, number, number] {
-  const r = parseInt(hex.slice(1, 3), 16) / 255;
-  const g = parseInt(hex.slice(3, 5), 16) / 255;
-  const b = parseInt(hex.slice(5, 7), 16) / 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let h = 0;
-  const l = (max + min) / 2;
-  const d = max - min;
-  const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
-  if (d !== 0) {
-    if (max === r) h = ((g - b) / d) % 6;
-    else if (max === g) h = (b - r) / d + 2;
-    else h = (r - g) / d + 4;
-    h *= 60;
-    if (h < 0) h += 360;
-  }
-  return [h, s, l];
-}
-
-function hslToHex(h: number, s: number, l: number): string {
-  h = ((h % 360) + 360) % 360;
-  s = Math.min(1, Math.max(0, s));
-  l = Math.min(1, Math.max(0, l));
-  const c = (1 - Math.abs(2 * l - 1)) * s;
-  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-  const m = l - c / 2;
-  let r = 0, g = 0, b = 0;
-  if (h < 60) [r, g, b] = [c, x, 0];
-  else if (h < 120) [r, g, b] = [x, c, 0];
-  else if (h < 180) [r, g, b] = [0, c, x];
-  else if (h < 240) [r, g, b] = [0, x, c];
-  else if (h < 300) [r, g, b] = [x, 0, c];
-  else [r, g, b] = [c, 0, x];
-  const to = (v: number) => Math.round((v + m) * 255).toString(16).padStart(2, "0");
-  return `#${to(r)}${to(g)}${to(b)}`;
-}
-
-// Shift a base colour by a bounded, name-seeded amount so products in the
-// same family (e.g. every Windows edition) each get a distinct on-brand tint.
-function tint(hex: string, seed: number, hueRange = 30): string {
-  const [h, s, l] = hexToHsl(hex);
-  const dh = ((seed % 1000) / 1000 - 0.5) * 2 * hueRange; // ±hueRange
-  const ds = (((seed >> 3) % 100) / 100 - 0.5) * 0.16; // ±0.08
-  const dl = (((seed >> 7) % 100) / 100 - 0.5) * 0.14; // ±0.07
-  return hslToHex(h + dh, s + ds, l + dl);
-}
-
-// Pull a human edition label out of the product name for the top chip.
+// Pull a human edition label out of the product name for the subtitle.
 function editionOf(name: string): string {
   const n = name.toLowerCase();
   const tags: [RegExp, string][] = [
     [/custom bundle/, "Build Your Own"],
     [/datacenter/, "Datacenter"],
     [/enterprise/, "Enterprise"],
-    [/professional plus|pro plus|pro\b/, "Professional"],
+    [/professional plus|pro plus/, "Professional Plus"],
+    [/professional|\bpro\b/, "Professional"],
     [/home\s*&\s*business/, "Home & Business"],
     [/home\s*&\s*student/, "Home & Student"],
     [/business standard/, "Business Standard"],
@@ -92,6 +33,7 @@ function editionOf(name: string): string {
     [/workstations/, "Workstations"],
     [/standard/, "Standard"],
     [/personal/, "Personal"],
+    [/family/, "Family"],
     [/deluxe/, "Deluxe"],
     [/premium/, "Premium"],
     [/maximum/, "Maximum"],
@@ -101,98 +43,111 @@ function editionOf(name: string): string {
   ];
   for (const [re, label] of tags) if (re.test(n)) return label;
   const kind = /online key/.test(n) ? "Online Key" : /phone key/.test(n) ? "Phone Key" : /bind key/.test(n) ? "Bind Key" : "";
-  return kind || "Genuine";
+  return kind || "Genuine License";
 }
 
-// --- category glyphs (drawn around cx=400, cy=235) ---
-const windowsTiles = (c: string) => `
-  <g transform="translate(400,235)">
-    <rect x="-92" y="-92" width="82" height="82" rx="8" fill="${c}"/>
-    <rect x="10" y="-92" width="82" height="82" rx="8" fill="${c}"/>
-    <rect x="-92" y="10" width="82" height="82" rx="8" fill="${c}"/>
-    <rect x="10" y="10" width="82" height="82" rx="8" fill="${c}"/>
+// The product's own components, shown under the name on non-Office boxes.
+function componentsOf(name: string): string[] {
+  const n = name.toLowerCase();
+  if (n.startsWith("custom bundle")) return ["Multiple genuine licenses", "One combined delivery", "Bundle discount applied"];
+  if (/kaspersky|norton|mcafee|bitdefender|avast|eset|trend micro/.test(n)) return ["Real-time antivirus", "Firewall & anti-phishing", "Secure VPN included"];
+  if (n.includes("visual studio")) return ["Full IDE & compilers", "Debugger & profiler", "IntelliCode assistance"];
+  if (n.includes("sql")) return ["Database engine", "Analysis Services", "Reporting Services"];
+  if (n.includes("visio")) return ["Pro diagram templates", "Data-linked shapes", "Real-time co-authoring"];
+  if (n.includes("project")) return ["Project scheduling", "Gantt & timelines", "Resource management"];
+  if (n.includes("server")) return ["Server OS license", "Hyper-V virtualization", "Active Directory"];
+  if (n.includes("windows")) {
+    if (/pro|professional|enterprise/.test(n)) return ["Desktop OS license", "BitLocker & Hyper-V", "Remote Desktop"];
+    return ["Desktop OS license", "Windows Security", "Free feature updates"];
+  }
+  return ["Genuine license key", "Lifetime activation", "Instant email delivery"];
+}
+
+// --- realistic product logos (drawn centred on the origin, ~±100) ---
+
+// Microsoft Office folded-ribbon mark (orange portal + magenta fold).
+const officeRibbon = `
+  <g>
+    <rect x="-73" y="-142" width="200" height="285" rx="44" fill="url(#oPanel)"/>
+    <rect x="-21" y="-76" width="96" height="150" rx="26" fill="#ffffff"/>
+    <path d="M-41 -128 L-29 -122 L-29 136 L-41 136 Z" fill="#7a1f33" opacity="0.32" filter="url(#foldShadow)"/>
+    <path d="M-127 -88 L-41 -128 L-41 126 Q-41 143 -58 143 L-110 143 Q-127 143 -127 126 Z" fill="url(#oFold)"/>
+    <path d="M-127 -88 L-41 -128 L-41 -112 L-127 -72 Z" fill="#ffffff" opacity="0.18"/>
+    <rect x="-127" y="-88" width="8" height="208" rx="4" fill="#ffffff" opacity="0.14"/>
   </g>`;
 
-const officeTiles = `
-  <g transform="translate(400,235)">
-    <rect x="-92" y="-92" width="82" height="82" rx="8" fill="#D83B01"/>
-    <rect x="10" y="-92" width="82" height="82" rx="8" fill="#185ABD"/>
-    <rect x="-92" y="10" width="82" height="82" rx="8" fill="#107C41"/>
-    <rect x="10" y="10" width="82" height="82" rx="8" fill="#C43E1C"/>
+// Authentic Windows 11 four-pane mark (flat squares, Windows blue).
+const windowsPanes = () => `
+  <g fill="url(#winGrad)">
+    <rect x="-92" y="-92" width="86" height="86" rx="3"/>
+    <rect x="6" y="-92" width="86" height="86" rx="3"/>
+    <rect x="-92" y="6" width="86" height="86" rx="3"/>
+    <rect x="6" y="6" width="86" height="86" rx="3"/>
   </g>`;
 
-const cloud = (c: string) => `
-  <g transform="translate(400,235)">
-    <path d="M-70 30 a45 45 0 0 1 12 -88 a55 55 0 0 1 104 12 a38 38 0 0 1 -6 76 Z" fill="${c}"/>
-    <path d="M-70 30 a45 45 0 0 1 12 -88 a55 55 0 0 1 104 12 a38 38 0 0 1 -6 76 Z" fill="#ffffff" opacity="0.12"/>
+const serverStack = (c: string) => `
+  <g>
+    <rect x="-92" y="-84" width="184" height="52" rx="10" fill="${c}"/>
+    <rect x="-92" y="-26" width="184" height="52" rx="10" fill="${c}"/>
+    <rect x="-92" y="32" width="184" height="52" rx="10" fill="${c}"/>
+    <circle cx="-66" cy="-58" r="7" fill="#fff"/><rect x="-48" y="-62" width="96" height="8" rx="4" fill="#fff" opacity="0.5"/>
+    <circle cx="-66" cy="0" r="7" fill="#fff"/><rect x="-48" y="-4" width="96" height="8" rx="4" fill="#fff" opacity="0.5"/>
+    <circle cx="-66" cy="58" r="7" fill="#fff"/><rect x="-48" y="54" width="96" height="8" rx="4" fill="#fff" opacity="0.5"/>
   </g>`;
 
-const serverRack = (c: string) => `
-  <g transform="translate(400,235)">
-    <rect x="-80" y="-90" width="160" height="52" rx="8" fill="${c}"/>
-    <rect x="-80" y="-26" width="160" height="52" rx="8" fill="${c}"/>
-    <rect x="-80" y="38" width="160" height="52" rx="8" fill="${c}"/>
-    <circle cx="-58" cy="-64" r="8" fill="#38bdf8"/><rect x="-40" y="-68" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
-    <circle cx="-58" cy="0" r="8" fill="#38bdf8"/><rect x="-40" y="-4" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
-    <circle cx="-58" cy="64" r="8" fill="#38bdf8"/><rect x="-40" y="60" width="80" height="8" rx="4" fill="#ffffff" opacity="0.5"/>
+const dbCylinder = (c: string) => `
+  <g>
+    <ellipse cx="0" cy="-74" rx="80" ry="25" fill="${c}"/>
+    <path d="M-80 -74 v148 a80 25 0 0 0 160 0 v-148" fill="${c}"/>
+    <ellipse cx="0" cy="-20" rx="80" ry="25" fill="#ffffff" opacity="0.2"/>
+    <ellipse cx="0" cy="36" rx="80" ry="25" fill="#ffffff" opacity="0.2"/>
   </g>`;
 
-const database = (c: string) => `
-  <g transform="translate(400,235)">
-    <ellipse cx="0" cy="-70" rx="78" ry="26" fill="${c}"/>
-    <path d="M-78 -70 v140 a78 26 0 0 0 156 0 v-140" fill="${c}"/>
-    <ellipse cx="0" cy="-20" rx="78" ry="26" fill="#ffffff" opacity="0.14"/>
-    <ellipse cx="0" cy="35" rx="78" ry="26" fill="#ffffff" opacity="0.14"/>
+const visioDiagram = (c: string) => `
+  <g>
+    <path d="M-58 -36 v34 h60 v34 M62 -36 v34 h-60" fill="none" stroke="${c}" stroke-opacity="0.55" stroke-width="7"/>
+    <rect x="-94" y="-82" width="72" height="50" rx="9" fill="${c}"/>
+    <rect x="30" y="-82" width="72" height="50" rx="9" fill="${c}"/>
+    <rect x="-32" y="40" width="72" height="50" rx="9" fill="${c}"/>
   </g>`;
 
-const diagram = (c: string) => `
-  <g transform="translate(400,235)">
-    <rect x="-90" y="-80" width="70" height="48" rx="8" fill="${c}"/>
-    <rect x="30" y="-80" width="70" height="48" rx="8" fill="${c}"/>
-    <rect x="-30" y="40" width="70" height="48" rx="8" fill="${c}"/>
-    <path d="M-55 -32 v40 h60 v32 M65 -32 v40 h-60" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="6"/>
+const projectBars = (c: string) => `
+  <g>
+    <rect x="-86" y="-10" width="36" height="96" rx="6" fill="${c}"/>
+    <rect x="-34" y="-56" width="36" height="142" rx="6" fill="${c}"/>
+    <rect x="18" y="-92" width="36" height="178" rx="6" fill="${c}"/>
+    <rect x="70" y="-32" width="36" height="118" rx="6" fill="${c}" opacity="0.7"/>
   </g>`;
 
-const barChart = (c: string) => `
-  <g transform="translate(400,235)">
-    <rect x="-84" y="-10" width="34" height="95" rx="6" fill="${c}"/>
-    <rect x="-33" y="-55" width="34" height="140" rx="6" fill="${c}"/>
-    <rect x="18" y="-90" width="34" height="175" rx="6" fill="${c}"/>
-    <rect x="69" y="-30" width="34" height="115" rx="6" fill="${c}" opacity="0.7"/>
+const vsMark = (c: string) => `
+  <g fill="none" stroke="${c}" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-46 -72 L-100 0 L-46 72"/>
+    <path d="M46 -72 L100 0 L46 72"/>
+    <path d="M14 -82 L-14 82" stroke-width="15"/>
   </g>`;
 
-const codeBrackets = (c: string) => `
-  <g transform="translate(400,235)" fill="none" stroke="${c}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M-40 -70 L-95 0 L-40 70"/>
-    <path d="M40 -70 L95 0 L40 70"/>
-    <path d="M12 -78 L-12 78" stroke-width="14"/>
+const shieldLogo = (c: string) => `
+  <g>
+    <path d="M0 -94 L80 -58 V16 C80 64 44 94 0 106 C-44 94 -80 64 -80 16 V-58 Z" fill="${c}"/>
+    <path d="M0 -94 L80 -58 V16 C80 64 44 94 0 106 C-44 94 -80 64 -80 16 V-58 Z" fill="#fff" opacity="0.10"/>
+    <path d="M-34 4 L-10 30 L38 -32" fill="none" stroke="#ffffff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
   </g>`;
 
-// Three stacked license boxes with a plus — used for "Custom Bundle" items.
-const bundleBoxes = `
-  <g transform="translate(400,235)">
-    <rect x="-98" y="-2" width="84" height="92" rx="9" fill="#ffffff" opacity="0.92"/>
-    <rect x="14" y="-2" width="84" height="92" rx="9" fill="#ffffff" opacity="0.92"/>
-    <rect x="-42" y="-96" width="84" height="92" rx="9" fill="#ffffff"/>
-    <path d="M-70 44 h28 M-56 30 v28" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
-    <path d="M42 44 h28 M56 30 v28" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
-    <path d="M-14 -50 h28 M0 -64 v28" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
-  </g>`;
-
-const shield = (fill: string, check: string) => `
-  <g transform="translate(400,235)">
-    <path d="M0 -95 L82 -60 V15 C82 65 45 95 0 108 C-45 95 -82 65 -82 15 V-60 Z" fill="${fill}"/>
-    <path d="M-34 4 L-10 30 L38 -30" fill="none" stroke="${check}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+const bundleStack = (c: string) => `
+  <g>
+    <rect x="-96" y="0" width="86" height="92" rx="10" fill="${c}" opacity="0.85"/>
+    <rect x="12" y="0" width="86" height="92" rx="10" fill="${c}" opacity="0.85"/>
+    <rect x="-42" y="-92" width="86" height="92" rx="10" fill="${c}"/>
+    <path d="M-67 46 h28 M-53 32 v28" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+    <path d="M41 46 h28 M55 32 v28" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+    <path d="M-13 -46 h28 M1 -60 v28" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
   </g>`;
 
 function metaFor(name: string): Meta {
   const n = name.toLowerCase();
+  if (n.startsWith("custom bundle")) return { accent: "#0d9488", accent2: "#0b5c54", family: "bundle", brand: "Custom Bundle", microsoft: false };
 
-  if (n.startsWith("custom bundle"))
-    return { accent: "#0d9488", accent2: "#115e59", glyph: bundleBoxes, brand: "Custom Bundle", tintable: false, microsoft: false };
-
-  // Security vendors (brand colors)
-  const vendor = (label: string, c1: string, c2: string): Meta => ({ accent: c1, accent2: c2, glyph: shield("#ffffff", c1), brand: label, tintable: false, microsoft: false });
+  const vendor = (label: string, c1: string, c2: string): Meta => ({ accent: c1, accent2: c2, family: "security", brand: label, microsoft: false });
   if (n.includes("kaspersky")) return vendor("Kaspersky", "#1a9b5e", "#0d6b3f");
   if (n.includes("norton")) return vendor("Norton", "#ffb200", "#b97e00");
   if (n.includes("mcafee")) return vendor("McAfee", "#c01818", "#7a0f0f");
@@ -202,20 +157,34 @@ function metaFor(name: string): Meta {
   if (n.includes("trend micro")) return vendor("Trend Micro", "#d71920", "#8f1116");
 
   if ((/office\s*365|microsoft\s*365/.test(n)) || (/\b365\b/.test(n) && !n.includes("windows")))
-    return { accent: "#0364b8", accent2: "#022f5c", glyph: cloud("#ffffff"), brand: "Microsoft 365", tintable: true, microsoft: true };
-  if (n.includes("visual studio")) return { accent: "#7c3aed", accent2: "#4c1d95", glyph: codeBrackets("#ffffff"), brand: "Visual Studio", tintable: true, microsoft: true };
-  if (n.includes("sql")) return { accent: "#b91c1c", accent2: "#7f1d1d", glyph: database("#ffffff"), brand: "SQL Server", tintable: true, microsoft: true };
-  if (n.includes("visio")) return { accent: "#0f9488", accent2: "#0b5c54", glyph: diagram("#ffffff"), brand: "Visio", tintable: true, microsoft: true };
-  if (n.includes("project")) return { accent: "#16a34a", accent2: "#166534", glyph: barChart("#ffffff"), brand: "Project", tintable: true, microsoft: true };
-  if (n.includes("server")) return { accent: "#3b6ea5", accent2: "#1e3a5f", glyph: serverRack("#ffffff"), brand: "Windows Server", tintable: true, microsoft: true };
-  if (n.includes("office")) return { accent: "#c43e1c", accent2: "#7a2610", glyph: officeTiles, brand: "Microsoft Office", tintable: true, microsoft: true };
-  if (n.includes("windows")) return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft Windows", tintable: true, microsoft: true };
+    return { accent: "#e3611f", accent2: "#c0330f", family: "office", brand: "Microsoft 365", microsoft: true };
+  if (n.includes("visual studio")) return { accent: "#7c3aed", accent2: "#5b21b6", family: "vs", brand: "Visual Studio", microsoft: true };
+  if (n.includes("sql")) return { accent: "#c0392b", accent2: "#8f261c", family: "sql", brand: "SQL Server", microsoft: true };
+  if (n.includes("visio")) return { accent: "#0f9488", accent2: "#0b5c54", family: "visio", brand: "Visio", microsoft: true };
+  if (n.includes("project")) return { accent: "#16a34a", accent2: "#0f7a37", family: "project", brand: "Project", microsoft: true };
+  if (n.includes("server")) return { accent: "#2f6fb0", accent2: "#234f7a", family: "server", brand: "Windows Server", microsoft: true };
+  if (n.includes("office")) return { accent: "#e3611f", accent2: "#c0330f", family: "office", brand: "Microsoft Office", microsoft: true };
+  if (n.includes("windows")) return { accent: "#0a63c9", accent2: "#0b4f9e", family: "windows", brand: "Microsoft Windows", microsoft: true };
+  return { accent: "#0a63c9", accent2: "#0b4f9e", family: "windows", brand: "Microsoft", microsoft: true };
+}
 
-  return { accent: "#0a63c9", accent2: "#053a7a", glyph: windowsTiles("#ffffff"), brand: "Microsoft", tintable: true, microsoft: true };
+function logoFor(meta: Meta): { svg: string; scale: number } {
+  switch (meta.family) {
+    case "office": return { svg: officeRibbon, scale: 0.76 };
+    case "windows": return { svg: windowsPanes(), scale: 0.84 };
+    case "server": return { svg: serverStack(meta.accent), scale: 0.86 };
+    case "sql": return { svg: dbCylinder(meta.accent), scale: 0.86 };
+    case "visio": return { svg: visioDiagram(meta.accent), scale: 0.92 };
+    case "project": return { svg: projectBars(meta.accent), scale: 0.86 };
+    case "vs": return { svg: vsMark(meta.accent), scale: 0.86 };
+    case "security": return { svg: shieldLogo(meta.accent), scale: 0.86 };
+    case "bundle": return { svg: bundleStack(meta.accent), scale: 0.86 };
+    default: return { svg: windowsPanes(), scale: 0.86 };
+  }
 }
 
 // Split a product title into up to `maxLines` lines of ~`max` characters.
-function wrapTitle(s: string, max = 16, maxLines = 3): string[] {
+function wrapTitle(s: string, max = 16, maxLines = 2): string[] {
   const words = s.trim().split(/\s+/);
   const lines: string[] = [];
   let cur = "";
@@ -233,132 +202,122 @@ function wrapTitle(s: string, max = 16, maxLines = 3): string[] {
   return lines;
 }
 
+// Office app icon in the classic style: a white document with content lines and
+// a coloured corner tab bearing the app letter — reads like a real program icon.
+const appIcon = (x: number, c: string, letter: string) => `
+  <g transform="translate(${x},0)">
+    <rect x="-14" y="-18" width="28" height="36" rx="3" fill="#ffffff" stroke="#d7dbe2" stroke-width="1"/>
+    <rect x="-6" y="-3" width="16" height="2.3" rx="1" fill="${c}" opacity="0.4"/>
+    <rect x="-6" y="3" width="16" height="2.3" rx="1" fill="${c}" opacity="0.4"/>
+    <rect x="-6" y="9" width="12" height="2.3" rx="1" fill="${c}" opacity="0.4"/>
+    <rect x="-16" y="-21" width="20" height="20" rx="4" fill="${c}"/>
+    <text x="-6" y="-6.5" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="800" fill="#ffffff">${letter}</text>
+  </g>`;
+
 export function GET(req: NextRequest) {
   const name = req.nextUrl.searchParams.get("name") || "Microsoft Product";
-  // ?box=1 → just the box on a transparent background, tightly cropped (for the homepage carousel).
   const boxOnly = req.nextUrl.searchParams.get("box") === "1";
   const meta = metaFor(name);
-  const seed = hash(name);
+  const { accent, accent2 } = meta;
+  const { svg: logoSvg, scale: logoScale } = logoFor(meta);
+  const isOffice = meta.family === "office";
 
-  // Per-product tint keeps same-family products visually distinct.
-  const accent = meta.tintable ? tint(meta.accent, seed, 26) : meta.accent;
-  const accent2 = meta.tintable ? tint(meta.accent2, seed, 26) : meta.accent2;
-
-  // Pale themed scene background: a very light wash of the product's own accent
-  // hue, so each box sits on a backdrop that matches its colour family.
-  const [bgH, bgS] = hexToHsl(accent);
-  const bgTop = hslToHex(bgH, Math.min(bgS, 0.5), 0.965);
-  const bgBottom = hslToHex(bgH, Math.min(bgS, 0.62), 0.88);
   const edition = editionOf(name);
-
-  // Split "Base - Variant" into title + variant subtitle.
   const [base, variant] = name.split(" - ");
-  const lines = wrapTitle(base);
-  const titleSize = Math.max(...lines.map((l) => l.length)) > 14 ? 25 : 28;
-  const titleY = 392;
-  const variantY = titleY + (lines.length - 1) * 30 + 28;
-  const titleSvg = lines
-    .map((l, i) => `<text x="370" y="${titleY + i * 30}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="${titleSize}" font-weight="800" fill="#ffffff">${esc(l)}</text>`)
+  // Clean headline → "Windows 11" / "Office 2021" style, with the edition as
+  // subtitle. The Microsoft badge already carries the maker, so the title drops
+  // a leading "Microsoft" — except where it is the product name ("Microsoft 365").
+  let headline = base
+    .replace(/professional plus|pro plus|professional|datacenter|enterprise|business standard|home\s*&\s*business|home\s*&\s*student|workstations|business|standard|personal|family|deluxe|premium|maximum|total security|internet security|\bpro\b|\bhome\b/ig, "")
+    .replace(/\s{2,}/g, " ").trim() || base;
+  if (meta.microsoft && /^microsoft\s+\D/i.test(headline)) headline = headline.replace(/^microsoft\s+/i, "");
+  const nameLines = wrapTitle(headline, 20, 2);
+  const maxLen = Math.max(...nameLines.map((l) => l.length));
+  const nameSize = maxLen <= 12 ? 52 : maxLen <= 16 ? 44 : maxLen <= 20 ? 38 : 34;
+
+  // ---- Flat product cover: card 40..560 (w520) x 30..750 (h720), the
+  // reference box's front face drawn straight-on (no fake 3D side). ----
+  // Title, edition and bottom block are stacked as one group and centred
+  // vertically in the band between the logo and the bottom bar (410..712).
+  const titleStep = nameSize + 10;
+  const comps = isOffice ? [] : componentsOf(name);
+  const bottomH = isOffice ? 58 : (comps.length - 1) * 34 + 20;
+  const blockH = nameSize * 0.72 + (nameLines.length - 1) * titleStep + 46 + 44 + bottomH;
+  const blockTop = 410 + Math.max(0, (302 - blockH) / 2);
+  const titleTop = Math.round(blockTop + nameSize * 0.72);
+  const titleBottom = titleTop + (nameLines.length - 1) * titleStep;
+  const titleSvg = nameLines
+    .map((l, i) => `<text x="300" y="${titleTop + i * titleStep}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="${nameSize}" font-weight="700" letter-spacing="-0.5" fill="#111827">${esc(l)}</text>`)
     .join("\n  ");
-  const variantSvg = variant
-    ? `<text x="370" y="${variantY}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#ffffff" fill-opacity="0.85">${esc(variant)}</text>`
-    : "";
-  const chipW = Math.max(110, edition.length * 10 + 40);
+  const editionY = titleBottom + 46;
+  const editionSvg = `<text x="300" y="${editionY}" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="30" font-weight="400" letter-spacing="0.5" fill="${accent2}">${esc(variant || edition)}</text>`;
+  const bottomTop = editionY + 44;
 
-  // Top-band brand badge: the authentic Microsoft four-colour logo on genuine
-  // Microsoft products (exact brand colours, never recoloured), the vendor's
-  // own name otherwise. A small genuine tick sits at the opposite end.
-  const brandBadge = meta.microsoft
-    ? `<g transform="translate(236,80)">
-        <rect x="0" y="0" width="9" height="9" fill="#F25022"/>
-        <rect x="11" y="0" width="9" height="9" fill="#7FBA00"/>
-        <rect x="0" y="11" width="9" height="9" fill="#00A4EF"/>
-        <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
-        <text x="28" y="17" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="15" font-weight="600" fill="#ffffff">Microsoft</text>
-      </g>`
-    : `<text x="236" y="97" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff">${esc(meta.brand)}</text>`;
-  const genuineTick = `<g transform="translate(497,91)"><circle r="9.5" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.2"/><path d="M-4.3 0 L-1 3.3 L4.6 -3.4" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+  // Bottom block: Office → app-icon row; others → component ticks, left-aligned
+  // as a list but centred as a block under the title.
+  let bottomSvg = "";
+  if (isOffice) {
+    bottomSvg = `<g transform="translate(300,${bottomTop + 31}) scale(1.5)">
+      ${appIcon(-114, "#2B579A", "W")}${appIcon(-76, "#077568", "P")}${appIcon(-38, "#217346", "X")}${appIcon(0, "#7719AA", "N")}${appIcon(38, "#0F6CBD", "O")}${appIcon(76, "#C43E1C", "P")}${appIcon(114, "#A4373A", "A")}
+    </g>`;
+  } else {
+    // ~10.6px per character at 21px Segoe UI; 30px for the tick + gap.
+    const listW = 30 + Math.max(...comps.map((c) => c.length)) * 10.6;
+    const listX = Math.round(300 - listW / 2);
+    bottomSvg = comps.map((c, i) => {
+      const y = bottomTop + i * 34;
+      return `<g transform="translate(${listX},${y})"><path d="M0 8 L6 14 L16 2" fill="none" stroke="${accent}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><text x="30" y="16" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="21" font-weight="500" fill="#4b5563">${esc(c)}</text></g>`;
+    }).join("\n  ");
+  }
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${boxOnly ? "200 50 400 530" : "0 0 800 600"}" width="${boxOnly ? 400 : 800}" height="${boxOnly ? 530 : 600}" role="img" aria-label="${esc(name)} — Official Keys Hub">
+  const vb = boxOnly ? "18 12 564 780" : "0 0 600 800";
+  const w = boxOnly ? 564 : 600;
+  const h = boxOnly ? 780 : 800;
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="${w}" height="${h}" role="img" aria-label="${esc(name)} — Official Keys Hub">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="${bgTop}"/>
-      <stop offset="1" stop-color="${bgBottom}"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="${accent}" stop-opacity="0.20"/>
-      <stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="front" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="${accent}"/>
-      <stop offset="1" stop-color="${accent2}"/>
-    </linearGradient>
-    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0.45" stop-color="#000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0.55"/>
-    </linearGradient>
-    <linearGradient id="spine" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="${accent2}"/>
-      <stop offset="1" stop-color="#05070d"/>
-    </linearGradient>
-    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#fff" stop-opacity="0.22"/>
-      <stop offset="0.5" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#3b82f6"/>
-      <stop offset="1" stop-color="#173f82"/>
-    </linearGradient>
-    <clipPath id="boxclip"><rect x="220" y="70" width="300" height="460" rx="4"/></clipPath>
-    <filter id="soft"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/></filter>
-    <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef1f5"/></linearGradient>
+    <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="0.6" stop-color="#f6f7f9"/><stop offset="1" stop-color="#e9ecf0"/></linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${accent}"/><stop offset="1" stop-color="${accent2}"/></linearGradient>
+    <linearGradient id="winGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0095f7"/><stop offset="1" stop-color="#0061bd"/></linearGradient>
+    <linearGradient id="oPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1872e"/><stop offset="1" stop-color="#e14a0f"/></linearGradient>
+    <linearGradient id="oFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eb4d67"/><stop offset="0.55" stop-color="#d12f4f"/><stop offset="1" stop-color="#b51d41"/></linearGradient>
+    <filter id="drop" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="foldShadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6"/></filter>
+    <clipPath id="card"><rect x="40" y="30" width="520" height="720" rx="14"/></clipPath>
   </defs>
 
-  ${boxOnly ? "" : `<rect width="800" height="600" fill="url(#bg)"/>
-  <ellipse cx="400" cy="300" rx="330" ry="270" fill="url(#glow)"/>`}
-  <ellipse cx="400" cy="546" rx="${boxOnly ? 170 : 215}" ry="${boxOnly ? 12 : 16}" fill="#0f172a" fill-opacity="0.22" filter="url(#blur)"/>
+  ${boxOnly ? "" : `<rect width="600" height="800" fill="url(#bg)"/>`}
+  <!-- Soft drop shadow under the cover -->
+  <rect x="52" y="48" width="496" height="712" rx="14" fill="#0b1020" fill-opacity="0.22" filter="url(#drop)"/>
 
-  <!-- Box spine (right side) — plain 3D side panel, no text -->
-  <polygon points="520,70 580,92 580,508 520,530" fill="url(#spine)"/>
+  <!-- Cover -->
+  <rect x="40" y="30" width="520" height="720" rx="14" fill="url(#cover)"/>
+  <g clip-path="url(#card)">
+    <!-- Brand bars, top and bottom -->
+    <rect x="40" y="30" width="520" height="24" fill="url(#edge)"/>
+    <rect x="40" y="726" width="520" height="24" fill="url(#edge)"/>
 
-  <!-- Box front -->
-  <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#front)"/>
-  <rect x="220" y="70" width="300" height="460" rx="4" fill="url(#shade)"/>
-  <polygon points="220,70 400,70 220,300" fill="url(#gloss)"/>
-  <rect x="220" y="70" width="300" height="460" rx="4" fill="none" stroke="#fff" stroke-opacity="0.18"/>
+    <!-- Brand badge: Microsoft logo on genuine MS products, vendor name otherwise -->
+    ${meta.microsoft ? `<g transform="translate(84,84)">
+      <rect x="0" y="0" width="20" height="20" fill="#F25022"/>
+      <rect x="23" y="0" width="20" height="20" fill="#7FBA00"/>
+      <rect x="0" y="23" width="20" height="20" fill="#00A4EF"/>
+      <rect x="23" y="23" width="20" height="20" fill="#FFB900"/>
+      <text x="58" y="35" font-family="'Segoe UI',Arial,sans-serif" font-size="38" font-weight="600" fill="#737373">Microsoft</text>
+    </g>` : `<text x="84" y="120" font-family="'Segoe UI',Arial,sans-serif" font-size="38" font-weight="700" fill="${accent}">${esc(meta.brand)}</text>`}
 
-  <!-- Top band: product brand badge + genuine tick -->
-  <rect x="220" y="70" width="300" height="42" rx="4" fill="#000" fill-opacity="0.32"/>
-  ${brandBadge}
-  ${genuineTick}
+    <!-- Product logo -->
+    <g transform="translate(300,272) scale(${(logoScale * 1.25).toFixed(3)})">${logoSvg}</g>
 
-  <!-- Product glyph -->
-  <g filter="url(#soft)"><g transform="translate(370,222) scale(0.72) translate(-400,-235)">${meta.glyph}</g></g>
+    <!-- Name + edition -->
+    ${titleSvg}
+    ${editionSvg}
 
-  <!-- Edition chip -->
-  <g transform="translate(370,335)">
-    <rect x="${-chipW / 2}" y="-15" width="${chipW}" height="30" rx="15" fill="#000" fill-opacity="0.35" stroke="#fff" stroke-opacity="0.5"/>
-    <text x="0" y="5" text-anchor="middle" font-family="'Segoe UI',Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="1.5">${esc(edition.toUpperCase())}</text>
+    <!-- Bottom block -->
+    ${bottomSvg}
   </g>
-
-  <!-- Product name -->
-  ${titleSvg}
-  ${variantSvg}
-
-  <!-- Bottom band: Official Keys Hub shield-key logo -->
-  <rect x="220" y="492" width="300" height="38" fill="#000" fill-opacity="0.45"/>
-  <g transform="translate(299,511)">
-    <g transform="translate(0,-11) scale(0.34)">
-      <path d="M32 4 L54 12 V30 C54 46 44 55 32 60 C20 55 10 46 10 30 V12 Z" fill="url(#shieldGrad)"/>
-      <path d="M32 4 L54 12 V30 C54 46 44 55 32 60 C20 55 10 46 10 30 V12 Z" fill="none" stroke="#bcd4ff" stroke-opacity="0.3" stroke-width="1.5"/>
-      <circle cx="32" cy="26" r="8.5" fill="none" stroke="#fff" stroke-width="4"/>
-      <circle cx="32" cy="26" r="3" fill="#f97316"/>
-      <rect x="30" y="30" width="4" height="18" rx="2" fill="#fff"/>
-      <rect x="34" y="40" width="7" height="4" rx="2" fill="#fff"/>
-      <rect x="34" y="46" width="5" height="4" rx="2" fill="#fff"/>
-    </g>
-    <text x="30" y="5" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="16" font-weight="900"><tspan fill="#ffffff">OfficialKeys</tspan><tspan fill="#f97316">Hub</tspan></text>
-  </g>
+  <rect x="40" y="30" width="520" height="720" rx="14" fill="none" stroke="#dfe3e8" stroke-width="1.5"/>
 </svg>`;
 
   return new Response(svg, {
