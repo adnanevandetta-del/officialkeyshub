@@ -87,6 +87,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Blog Articles - Buying Guides (high-intent keywords)
     {
+      url: `${baseUrl}/blog/office-2021-end-of-support`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog/microsoft-product-keys-guide`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
       url: `${baseUrl}/blog/buy-microsoft-retail-keys-safe`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'weekly',

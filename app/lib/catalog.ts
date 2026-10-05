@@ -10,6 +10,9 @@ export interface CatalogProduct {
   popular: boolean;
   image: string;
   badge?: string;
+  // Optional product-specific overview paragraph for the product page; falls
+  // back to the category intro when absent.
+  overview?: string;
 }
 
 export type CatalogCategory =
@@ -18,6 +21,18 @@ export type CatalogCategory =
 
 export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
     bundles: [
+      {
+        name: "Windows 11 Pro + Office 2024 Pro Plus Bundle",
+        description: "Genuine Windows 11 Pro and the newest Office 2024 Pro Plus together in one bundle",
+        price: "$44.99",
+        originalPrice: "$639.98",
+        features: ["Windows 11 Pro License", "Office 2024 Pro Plus License", "Lifetime · 1 PC", "Instant Delivery", "Word, Excel, PowerPoint, Outlook & more"],
+        popular: false,
+        image: "",
+        badge: "New",
+        overview:
+          "The newest Microsoft pairing: Windows 11 Pro with Office 2024 Professional Plus, the latest one-time-purchase Office. Office 2024 is supported by Microsoft until October 2029, so this bundle sets up a new PC with current, supported software for years to come.",
+      },
       {
         name: "Windows 11 Pro + Office 2021 Pro Plus Bundle",
         description: "Genuine Windows 11 Pro and Office 2021 Pro Plus together — one bundle, one low price",
@@ -173,6 +188,62 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
     ],
     office: [
       {
+        name: "Office 2024 Professional Plus",
+        description: "The newest one-time-purchase Office suite, supported until 2029",
+        price: "$34.99",
+        originalPrice: "$439.99",
+        features: ["Word, Excel, PowerPoint", "Outlook, Access, OneNote", "Lifetime License", "1 PC", "Instant Delivery"],
+        popular: true,
+        image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "Office 2024 Professional Plus is the latest one-time-purchase version of Office, released in October 2024 and supported by Microsoft with security updates until October 2029 — no subscription needed. It includes Word, Excel, PowerPoint, Outlook, Access and OneNote, with a refreshed modern look, new Excel features such as the IMAGE function and dynamic charts that grow with dynamic arrays, and support for the OpenDocument 1.4 format.",
+      },
+      {
+        name: "Office 2024 Pro Plus - Online Key",
+        description: "Office 2024 Pro Plus with digital activation via Microsoft",
+        price: "$32.99",
+        originalPrice: "$439.99",
+        features: ["All Office 2024 Apps", "Online Activation", "Lifetime License", "1 PC", "Instant Delivery"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80",
+        badge: "Online",
+      },
+      {
+        name: "Office 2024 Pro Plus - Bind Key",
+        description: "Office 2024 Pro Plus bound to your Microsoft account",
+        price: "$33.99",
+        originalPrice: "$439.99",
+        features: ["All Office 2024 Apps", "Account Bind", "Lifetime License", "1 PC", "Easy Reinstall"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80",
+        badge: "Bind",
+      },
+      {
+        name: "Office Home & Business 2024",
+        description: "Office 2024 essentials plus Outlook, licensed for business use",
+        price: "$39.99",
+        originalPrice: "$249.99",
+        features: ["Word, Excel, PowerPoint", "Outlook, OneNote", "Lifetime License", "1 PC/Mac", "Commercial Use"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "Office Home & Business 2024 gives you the classic desktop apps — Word, Excel, PowerPoint, OneNote — plus Outlook, with rights to use them for business. It's a one-time purchase supported by Microsoft until October 2029, so there's no subscription to renew.",
+      },
+      {
+        name: "Office Home 2024",
+        description: "Word, Excel, PowerPoint and OneNote 2024 for home use",
+        price: "$29.99",
+        originalPrice: "$149.99",
+        features: ["Word, Excel, PowerPoint", "OneNote", "Lifetime License", "1 PC/Mac", "No Outlook"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "Office Home 2024 is the newest one-time-purchase Office for home and students: Word, Excel, PowerPoint and OneNote, supported by Microsoft until October 2029. It doesn't include Outlook — choose Home & Business 2024 if you need it.",
+      },
+      {
         name: "Office 2021 Professional Plus",
         description: "Complete Office suite with all applications",
         price: "$24.99",
@@ -316,6 +387,30 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
     ],
     server: [
       {
+        name: "Windows Server 2025 Standard",
+        description: "The newest Windows Server for physical and lightly virtualized workloads",
+        price: "$44.99",
+        originalPrice: "$1,176.00",
+        features: ["2 VMs", "Hyper-V", "SMB over QUIC", "Lifetime License", "Instant Delivery"],
+        popular: true,
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "Windows Server 2025 is the latest Windows Server release (generally available since November 2024). Standard edition covers physical servers and up to two virtual machines, with improvements to Active Directory, Hyper-V, storage performance and SMB over QUIC for secure file access without a VPN.",
+      },
+      {
+        name: "Windows Server 2025 Datacenter",
+        description: "Windows Server 2025 for heavily virtualized datacenters",
+        price: "$69.99",
+        originalPrice: "$6,771.00",
+        features: ["Unlimited VMs", "Shielded VMs", "Storage Spaces Direct", "Lifetime License", "Enterprise Features"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "Windows Server 2025 Datacenter is the newest Windows Server edition for heavily virtualized environments: unlimited virtual machines, Shielded VMs, Storage Spaces Direct and software-defined networking on the latest Windows Server platform.",
+      },
+      {
         name: "Windows Server 2022 Standard",
         description: "Enterprise-grade server operating system",
         price: "$34.99",
@@ -419,6 +514,18 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
     ],
     visio: [
       {
+        name: "Visio Professional 2024",
+        description: "The newest one-time-purchase Visio for professional diagrams",
+        price: "$34.99",
+        originalPrice: "$579.99",
+        features: ["All Visio Features", "Data Visualization", "Lifetime License", "1 PC", "Instant Delivery"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "Visio Professional 2024 is the latest one-time-purchase version of Visio, released in October 2024 and supported by Microsoft until October 2029. Build flowcharts, org charts, floor plans and network diagrams with professional templates and data-linked shapes.",
+      },
+      {
         name: "Visio Professional 2021",
         description: "Advanced diagramming and vector graphics",
         price: "$24.99",
@@ -496,6 +603,18 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
     ],
     project: [
       {
+        name: "Project Professional 2024",
+        description: "The newest one-time-purchase Project for planning and scheduling",
+        price: "$34.99",
+        originalPrice: "$1,029.99",
+        features: ["Resource Management", "Team Collaboration", "Lifetime License", "1 PC", "Instant Delivery"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "Project Professional 2024 is the latest one-time-purchase version of Microsoft Project, released in October 2024 and supported until October 2029. Plan schedules, build Gantt charts, manage resources and track progress on the newest Project desktop app.",
+      },
+      {
         name: "Project Professional 2021",
         description: "Complete project management solution",
         price: "$24.99",
@@ -572,6 +691,18 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       },
     ],
     sql: [
+      {
+        name: "SQL Server 2025 Standard",
+        description: "The newest SQL Server with built-in AI and vector search",
+        price: "$54.99",
+        originalPrice: "$3,945.00",
+        features: ["Core-based Licensing", "Built-in Vector Search", "High Availability", "Lifetime License", "Instant Delivery"],
+        popular: false,
+        image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=600&fit=crop&q=80",
+        badge: "New",
+        overview:
+          "SQL Server 2025 is the latest SQL Server release (generally available since November 2025). Standard edition brings the newest database engine with built-in AI capabilities such as vector data and vector search, plus improved performance, security and developer features for production workloads.",
+      },
       {
         name: "SQL Server 2022 Standard",
         description: "Enterprise database management system",

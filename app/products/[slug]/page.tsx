@@ -272,7 +272,7 @@ export default async function ProductPage({
                 Microsoft license that activates directly on Microsoft&rsquo;s own servers. {p.description}, and it&rsquo;s
                 delivered to your inbox within minutes of purchase.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-6">{categoryIntro[p.category]}</p>
+              <p className="text-gray-700 leading-relaxed mb-6">{p.overview ?? categoryIntro[p.category]}</p>
 
               <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3">{p.name} at a glance</h3>
               <div className="overflow-hidden rounded-xl border border-gray-200 mb-2">

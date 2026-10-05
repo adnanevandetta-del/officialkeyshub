@@ -69,7 +69,7 @@ const products: Product[] = [
   },
   {
     id: 'office',
-    name: 'Office 2021 / 2019',
+    name: 'Office 2024 / 2021 / 2019',
     subtitle: 'Office Professional Plus, Home & Business',
     icon: 'fa-file-word',
     app: 'Office Setup (office.com/setup)',

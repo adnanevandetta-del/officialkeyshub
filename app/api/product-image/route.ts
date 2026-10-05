@@ -257,8 +257,24 @@ export function GET(req: NextRequest) {
   // as a list but centred as a block under the title.
   let bottomSvg = "";
   if (isOffice) {
+    // Show only the apps the edition actually includes.
+    const n = name.toLowerCase();
+    const apps: [string, string, string][] = [
+      ["word", "#2B579A", "W"], ["publisher", "#077568", "P"], ["excel", "#217346", "X"],
+      ["onenote", "#7719AA", "N"], ["outlook", "#0F6CBD", "O"], ["powerpoint", "#C43E1C", "P"], ["access", "#A4373A", "A"],
+    ];
+    const isHomeBiz = /home\s*(&|and)\s*business/.test(n);
+    const isHome = !isHomeBiz && /\bhome\b/.test(n);
+    const shown = apps.filter(([app]) => {
+      if (isHome) return ["word", "excel", "onenote", "powerpoint"].includes(app);
+      if (isHomeBiz) return ["word", "excel", "onenote", "outlook", "powerpoint"].includes(app);
+      if (app === "publisher") return !n.includes("2024"); // Publisher isn't part of Office 2024
+      return true;
+    });
+    const step = 38;
+    const x0 = -((shown.length - 1) * step) / 2;
     bottomSvg = `<g transform="translate(300,${bottomTop + 31}) scale(1.5)">
-      ${appIcon(-114, "#2B579A", "W")}${appIcon(-76, "#077568", "P")}${appIcon(-38, "#217346", "X")}${appIcon(0, "#7719AA", "N")}${appIcon(38, "#0F6CBD", "O")}${appIcon(76, "#C43E1C", "P")}${appIcon(114, "#A4373A", "A")}
+      ${shown.map(([, c, l], i) => appIcon(x0 + i * step, c, l)).join("")}
     </g>`;
   } else {
     // ~10.6px per character at 21px Segoe UI; 30px for the tick + gap.

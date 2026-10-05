@@ -41,12 +41,13 @@ function topProducts() {
 export default function PopularProducts() {
   const products = topProducts();
   return (
-    <section className="bg-[#070a12] border-t border-white/10 py-14">
+    // Same slate grey as the product cards and the Office 2024 promo above.
+    <section className="bg-gradient-to-b from-[#5d6370] to-[#53575f] border-t border-white/10 py-14">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-black text-white mb-2 text-center">
           Popular <span className="gradient-text">products</span>
         </h2>
-        <p className="text-slate-400 text-center text-sm mb-8">
+        <p className="text-slate-200 text-center text-sm mb-8">
           Genuine Microsoft &amp; security licenses — instant email delivery and lifetime activation.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">

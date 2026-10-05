@@ -14,6 +14,24 @@ export interface BlogListItem {
 
 export const staticBlogPosts: BlogListItem[] = [
   {
+    slug: "office-2021-end-of-support",
+    title: "Office 2021 End of Support (October 13, 2026): What Happens & Why to Upgrade to Office 2024",
+    excerpt: "Microsoft ends Office 2021 support on October 13, 2026. What changes, whether it's safe to keep using it, every Office end-of-support date, and how to upgrade to Office 2024.",
+    category: "Office",
+    readTime: "9 min",
+    date: "Oct 4, 2026",
+    image: "https://images.unsplash.com/photo-1484807352052-23338990c6c6?w=800&q=80",
+  },
+  {
+    slug: "microsoft-product-keys-guide",
+    title: "Microsoft Product Keys Explained (2026): Windows, Office, Server & More",
+    excerpt: "Every Microsoft product key in one guide — Windows 11, Office 2021, Microsoft 365, Server, Visio, Project, SQL Server and Visual Studio. Key types, real prices, support dates and how to spot a fake.",
+    category: "Buying",
+    readTime: "11 min",
+    date: "Oct 2, 2026",
+    image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80",
+  },
+  {
     slug: "buy-microsoft-retail-keys-safe",
     title: "How to Buy Microsoft Retail Keys — And Are They Safe? (2026 Guide)",
     excerpt: "What a Microsoft retail key is, where to buy one, and whether it's safe. Retail vs OEM explained, how to verify a genuine key, and red flags to avoid.",
