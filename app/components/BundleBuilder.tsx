@@ -100,7 +100,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
     <div className="max-w-7xl mx-auto mb-8 md:mb-10">
       <div className="rounded-2xl ring-1 ring-emerald-500/30 border border-white/10 bg-slate-900 shadow-xl overflow-hidden">
         {/* Header */}
-        <div className="px-4 md:px-6 py-4 md:py-5 bg-gradient-to-r from-emerald-700/20 via-emerald-600/10 to-transparent border-b border-white/10">
+        <div className="px-4 md:px-6 py-4 md:py-5 bg-emerald-700/15 border-b border-white/10">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-3 py-1 text-xs font-bold text-emerald-300">
               <i className="fas fa-wand-magic-sparkles"></i> BUILD YOUR OWN
@@ -127,7 +127,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
                   type="button"
                   onClick={() => setCategory(c.id)}
                   className={`flex-shrink-0 snap-start whitespace-nowrap min-h-[40px] px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                    category === c.id ? "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/30" : "glass text-slate-300 hover:text-white"
+                    category === c.id ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/30" : "glass text-slate-300 hover:text-white"
                   }`}
                 >
                   {c.label}
@@ -266,7 +266,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
                   type="button"
                   onClick={handleBuyNow}
                   disabled={!qualifies}
-                  className="w-full min-h-[48px] py-3 rounded-lg font-bold inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  className="w-full min-h-[48px] py-3 rounded-lg font-bold inline-flex items-center justify-center gap-2 bg-[#005A9E] text-white hover:bg-[#004578] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                 >
                   Buy Bundle Now <i className="fab fa-paypal text-2xl"></i>
                 </button>
@@ -274,7 +274,7 @@ export default function BundleBuilder({ onBuyNow, onAdded }: Props) {
                   type="button"
                   onClick={handleAdd}
                   disabled={!qualifies}
-                  className="w-full min-h-[44px] py-2.5 rounded-lg font-semibold inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  className="w-full min-h-[44px] py-2.5 rounded-lg font-semibold inline-flex items-center justify-center gap-2 bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                 >
                   <i className="fas fa-cart-plus"></i> Add Bundle to Cart
                 </button>

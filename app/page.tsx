@@ -10,6 +10,7 @@ import CustomerReviews from "./components/CustomerReviews";
 import ActivationGuideSection from "./components/ActivationGuideSection";
 import PopularProducts from "./components/PopularProducts";
 import Office2024Promo from "./components/Office2024Promo";
+import PartnerProgramPromo from "./components/PartnerProgramPromo";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -33,6 +34,7 @@ export default function Home() {
       <ActivationGuideSection />
       <Office2024Promo />
       <PopularProducts />
+      <PartnerProgramPromo />
       <Footer />
       <WhatsAppButton />
     </>

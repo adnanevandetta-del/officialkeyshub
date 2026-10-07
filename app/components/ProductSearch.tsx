@@ -121,7 +121,7 @@ export default function ProductSearch({
           onKeyDown={onKeyDown}
           placeholder="Search products…"
           aria-label="Search products"
-          className={`${widthClass} bg-white/5 border border-white/15 hover:border-white/25 focus:border-sky-500 focus:bg-white/10 focus:ring-2 focus:ring-sky-500/25 rounded-full pl-9 pr-8 py-2 text-sm text-white placeholder-slate-400 outline-none transition-all`}
+          className={`${widthClass} bg-slate-50 border border-slate-200 hover:border-slate-300 focus:border-[#005A9E] focus:bg-white focus:ring-2 focus:ring-[#005A9E]/20 rounded-full pl-9 pr-8 py-2 text-sm text-slate-900 placeholder-slate-400 outline-none transition-all`}
         />
         {query && (
           <button
@@ -131,7 +131,7 @@ export default function ProductSearch({
               setOpen(false);
             }}
             aria-label="Clear search"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
           >
             <i className="fas fa-times text-xs"></i>
           </button>
@@ -139,7 +139,7 @@ export default function ProductSearch({
       </div>
 
       {open && query.trim() && (
-        <div className="absolute left-0 right-0 mt-2 min-w-full bg-[#0b1020] rounded-xl shadow-2xl border border-sky-600/30 overflow-hidden z-[400] py-1">
+        <div className="absolute left-0 right-0 mt-2 min-w-full bg-white rounded-xl shadow-xl ring-1 ring-slate-200 overflow-hidden z-[400] py-1">
           {results.length > 0 ? (
             results.map((r, i) => (
               <button
@@ -147,22 +147,22 @@ export default function ProductSearch({
                 onMouseEnter={() => setActive(i)}
                 onClick={() => go(r.slug)}
                 className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 text-left transition-colors ${
-                  i === active ? "bg-sky-600/15" : "hover:bg-sky-600/10"
+                  i === active ? "bg-slate-100" : "hover:bg-slate-50"
                 }`}
               >
                 <span className="min-w-0">
-                  <span className="block text-sm font-semibold text-slate-100 truncate">
+                  <span className="block text-sm font-semibold text-slate-900 truncate">
                     {r.name}
                   </span>
-                  <span className="block text-[11px] text-slate-400">{r.category}</span>
+                  <span className="block text-[11px] text-slate-500">{r.category}</span>
                 </span>
-                <span className="text-sm font-bold text-sky-400 whitespace-nowrap">
+                <span className="text-sm font-bold text-slate-900 whitespace-nowrap">
                   {r.price}
                 </span>
               </button>
             ))
           ) : (
-            <div className="px-3 py-3 text-sm text-slate-400">
+            <div className="px-3 py-3 text-sm text-slate-500">
               No products match “{query.trim()}”.
             </div>
           )}

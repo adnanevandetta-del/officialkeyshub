@@ -10,17 +10,20 @@ export interface BlogListItem {
   readTime: string;
   date: string; // human label, e.g. "Sep 18, 2026"
   image: string;
+  // "contain" for product-box art that must not be cropped; photos use cover.
+  imageFit?: "cover" | "contain";
 }
 
 export const staticBlogPosts: BlogListItem[] = [
   {
     slug: "office-2021-end-of-support",
-    title: "Office 2021 End of Support (October 13, 2026): What Happens & Why to Upgrade to Office 2024",
-    excerpt: "Microsoft ends Office 2021 support on October 13, 2026. What changes, whether it's safe to keep using it, every Office end-of-support date, and how to upgrade to Office 2024.",
+    title: "Office 2021 End of Support: Is Office 2024 Worth It — or Is It Time for Microsoft 365?",
+    excerpt: "Office 2021 stops getting security updates on October 13, 2026. Every date that matters, the honest case for Office 2024, Microsoft 365 and staying put, the 3-year cost math, and how to upgrade.",
     category: "Office",
-    readTime: "9 min",
-    date: "Oct 4, 2026",
-    image: "https://images.unsplash.com/photo-1484807352052-23338990c6c6?w=800&q=80",
+    readTime: "12 min",
+    date: "Oct 7, 2026",
+    image: "/api/product-image?name=Office%202024%20Professional%20Plus&box=1&v=23",
+    imageFit: "contain",
   },
   {
     slug: "microsoft-product-keys-guide",

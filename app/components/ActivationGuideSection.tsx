@@ -162,9 +162,9 @@ export default function ActivationGuideSection() {
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 px-4 py-1.5 rounded-full mb-4">
-            <i className="fas fa-graduation-cap text-sky-600"></i>
-            <span className="text-sky-600 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
+          <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-1.5 rounded-full mb-4">
+            <i className="fas fa-graduation-cap text-emerald-700"></i>
+            <span className="text-emerald-700 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             How to Activate Your Software
@@ -182,7 +182,7 @@ export default function ActivationGuideSection() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all ${
                 activeTab === tab.id
-                  ? 'btn-primary scale-105'
+                  ? 'bg-emerald-600 text-white shadow-md scale-105'
                   : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200'
               }`}
             >
@@ -199,8 +199,8 @@ export default function ActivationGuideSection() {
         <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12">
           {/* Guide Title */}
           <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-100 border border-sky-200 rounded-full mb-4">
-              <i className={`${currentGuide.icon} text-3xl text-sky-600`}></i>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 border border-emerald-200 rounded-full mb-4">
+              <i className={`${currentGuide.icon} text-3xl text-emerald-700`}></i>
             </div>
             <h3 className="text-3xl font-black text-gray-900 mb-2">{currentGuide.title}</h3>
             <p className="text-lg text-gray-600">{currentGuide.subtitle}</p>
@@ -211,11 +211,11 @@ export default function ActivationGuideSection() {
             {currentGuide.steps.map((step, idx) => (
               <div
                 key={idx}
-                className="flex gap-6 items-start bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-sky-400 transition-all"
+                className="flex gap-6 items-start bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-emerald-400 transition-all"
               >
                 {/* Step Number */}
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 btn-primary rounded-full flex items-center justify-center font-black text-xl">
+                  <div className="w-14 h-14 bg-emerald-600 text-white rounded-full flex items-center justify-center font-black text-xl">
                     {step.number}
                   </div>
                 </div>
@@ -223,7 +223,7 @@ export default function ActivationGuideSection() {
                 {/* Step Content */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <i className={`${step.icon} text-sky-600 text-xl`}></i>
+                    <i className={`${step.icon} text-emerald-700 text-xl`}></i>
                     <h4 className="text-xl font-bold text-gray-900">{step.title}</h4>
                   </div>
                   <p className="text-gray-600 leading-relaxed">{step.description}</p>
@@ -254,10 +254,10 @@ export default function ActivationGuideSection() {
 
           {/* Help Section */}
           <div className="mt-10 text-center">
-            <div className="relative overflow-hidden bg-gradient-to-r from-sky-700 to-cyan-600 text-white rounded-xl p-8">
+            <div className="relative overflow-hidden bg-emerald-700 text-white rounded-xl p-8">
               <i className="fas fa-headset text-4xl mb-4"></i>
               <h4 className="text-2xl font-bold mb-2">Need Help with Activation?</h4>
-              <p className="text-sky-50/90 mb-6">
+              <p className="text-white mb-6">
                 Our expert support team is available 24/7 to help you activate your Microsoft product key.
                 Get instant assistance via WhatsApp, email, or phone.
               </p>
@@ -266,14 +266,14 @@ export default function ActivationGuideSection() {
                   href="https://wa.me/16019756129?text=Hi! I need help with activation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white text-sky-800 px-6 py-3 rounded-lg font-bold hover:bg-sky-50 transition-all shadow-lg"
+                  className="inline-flex items-center gap-2 bg-white text-emerald-800 px-6 py-3 rounded-lg font-bold hover:bg-emerald-50 transition-all shadow-lg"
                 >
                   <i className="fab fa-whatsapp text-xl"></i>
                   WhatsApp Support
                 </a>
                 <a
                   href="mailto:officialkeyshub@gmail.com"
-                  className="inline-flex items-center gap-2 bg-black/25 border border-white/20 text-white px-6 py-3 rounded-lg font-bold hover:bg-black/40 transition-all"
+                  className="inline-flex items-center gap-2 bg-emerald-800 border border-white/20 text-white px-6 py-3 rounded-lg font-bold hover:bg-emerald-900 transition-all"
                 >
                   <i className="fas fa-envelope text-xl"></i>
                   Email Support

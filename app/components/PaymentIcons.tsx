@@ -2,9 +2,10 @@
 // two-ring mark, a generic bank card, the PayPal two-tone wordmark, and the
 // Tether/USDT coin) so they read as authentic, not flat monochrome glyphs.
 //
-// By default the logos render bare (compact, no chip). Pass `chip` to sit each
-// logo on a white rounded chip — only needed on dark backgrounds where the
-// coloured marks would otherwise lose contrast.
+// By default the logos render bare (compact, no chip). On dark backgrounds,
+// pass `onDark` to use the brands' official reversed (white) wordmarks — PayPal
+// and the USDT label switch to white — or `chip` to sit each logo on a white
+// rounded chip.
 
 type Method = "mastercard" | "card" | "paypal" | "usdt";
 type Size = "sm" | "lg";
@@ -38,11 +39,11 @@ export function CardLogo({ className = "h-5 w-auto" }: { className?: string }) {
   );
 }
 
-export function PayPalWordmark({ className = "text-[15px]" }: { className?: string }) {
+export function PayPalWordmark({ className = "text-[15px]", mono = false }: { className?: string; mono?: boolean }) {
   return (
     <span className={`font-black italic leading-none tracking-tight ${className}`} aria-label="PayPal">
-      <span style={{ color: "#253B80" }}>Pay</span>
-      <span style={{ color: "#179BD7" }}>Pal</span>
+      <span style={{ color: mono ? "#ffffff" : "#253B80" }}>Pay</span>
+      <span style={{ color: mono ? "#ffffff" : "#179BD7" }}>Pal</span>
     </span>
   );
 }
@@ -50,30 +51,32 @@ export function PayPalWordmark({ className = "text-[15px]" }: { className?: stri
 export function UsdtLogo({
   coinClass = "w-5 h-5 text-[12px]",
   textClass = "text-[12px]",
+  mono = false,
 }: {
   coinClass?: string;
   textClass?: string;
+  mono?: boolean;
 }) {
   return (
     <span className="inline-flex items-center gap-1" aria-label="USDT (Tether)">
       <span className={`inline-flex items-center justify-center rounded-full bg-[#26A17B] text-white font-black leading-none ${coinClass}`}>
         ₮
       </span>
-      <span className={`text-[#26A17B] font-black leading-none ${textClass}`}>USDT</span>
+      <span className={`${mono ? "text-white" : "text-[#26A17B]"} font-black leading-none ${textClass}`}>USDT</span>
     </span>
   );
 }
 
-function Logo({ m, size }: { m: Method; size: Size }) {
+function Logo({ m, size, onDark }: { m: Method; size: Size; onDark: boolean }) {
   switch (m) {
     case "mastercard":
       return <MastercardLogo className={SVG_H[size]} />;
     case "card":
       return <CardLogo className={SVG_H[size]} />;
     case "paypal":
-      return <PayPalWordmark className={PP_T[size]} />;
+      return <PayPalWordmark className={PP_T[size]} mono={onDark} />;
     case "usdt":
-      return <UsdtLogo coinClass={USDT_COIN[size]} textClass={USDT_TXT[size]} />;
+      return <UsdtLogo coinClass={USDT_COIN[size]} textClass={USDT_TXT[size]} mono={onDark} />;
     default:
       return null;
   }
@@ -83,17 +86,19 @@ export default function PaymentIcons({
   methods = ALL,
   className = "",
   chip = false,
+  onDark = false,
   size = "sm",
 }: {
   methods?: Method[];
   className?: string;
   chip?: boolean;
+  onDark?: boolean;
   size?: Size;
 }) {
   return (
     <div className={`flex items-center gap-2.5 flex-wrap ${className}`}>
       {methods.map((m) => {
-        const logo = <Logo m={m} size={size} />;
+        const logo = <Logo m={m} size={size} onDark={onDark && !chip} />;
         return chip ? (
           <span
             key={m}

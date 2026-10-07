@@ -75,11 +75,11 @@ family. Light article pages (see below) use light tints like `bg-sky-50`,
 
 ## Typography
 
-- **Headings** (`h1`–`h4`, `.font-display`): STIX Two Text, **italic + bold** —
-  the "Mathematical Bold Italic" display look. Applied globally in `globals.css`
-  and available as the `.font-math` class for one-off elements (navbar, logo,
-  buttons). Loaded via `next/font/google` in `app/layout.tsx` as `--font-math`.
-- **Body**: Inter (`next/font/google`), set on `<body>`.
+- **One family: Plus Jakarta Sans** (weights 400–800), loaded via
+  `next/font/google` in `app/layout.tsx` as `--font-sans` and set on `<body>`.
+- **Headings** (`h1`–`h4`, `.font-display`): upright (never italic), weight 700,
+  letter-spacing `-0.02em`. The `.font-math` class (navbar, logo, buttons) is a
+  legacy name that now maps to the same family, upright, weight 700.
 - **`.gradient-text`**: despite the name it's a **solid** accent color
   (`#0284c7`, no gradient) — used to highlight one phrase inside a heading. Do
   NOT use it for prices (prices stay solid white).

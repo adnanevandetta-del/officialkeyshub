@@ -90,11 +90,11 @@ export default function ProductBillboard() {
   const currentProduct = products[currentIndex];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[linear-gradient(180deg,#5d6370,#53575f)] z-10">
+    <section className="relative w-full overflow-hidden bg-[#005A9E] z-10">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-[0.06] block">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(2, 132, 199, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(2, 132, 199, 0.3) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
         }}></div>
       </div>
@@ -104,9 +104,9 @@ export default function ProductBillboard() {
           {/* Left - Product Info (static) — centered on mobile, left-aligned on desktop */}
           <div className="lg:col-span-5 space-y-3 md:space-y-4 z-20 text-center lg:text-left">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-sky-600/20 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-sky-600/30">
-              <i className="fas fa-fire text-sky-500 text-sm"></i>
-              <span className="text-sky-500 text-xs md:text-sm font-bold uppercase">{currentProduct.badge}</span>
+            <div className="inline-flex items-center gap-2 bg-[#004E8C] px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/25">
+              <i className="fas fa-fire text-white text-sm"></i>
+              <span className="text-white text-xs md:text-sm font-bold uppercase">{currentProduct.badge}</span>
             </div>
 
             {/* Title */}
@@ -119,7 +119,7 @@ export default function ProductBillboard() {
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-1 md:mb-2 leading-tight">
                 {currentProduct.name}
               </h2>
-              <p className="text-sm md:text-lg text-white/80 font-semibold">
+              <p className="text-sm md:text-lg text-white font-semibold">
                 {currentProduct.tagline}
               </p>
             </div>
@@ -127,8 +127,8 @@ export default function ProductBillboard() {
             {/* Features */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 md:gap-2">
               {currentProduct.features.map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-1 md:gap-1.5 bg-white/5 backdrop-blur-sm px-2 py-1 md:px-3 md:py-1.5 rounded-lg border border-white/10">
-                  <i className="fas fa-check text-sky-500 text-xs"></i>
+                <div key={idx} className="flex items-center gap-1 md:gap-1.5 bg-[#004E8C] px-2 py-1 md:px-3 md:py-1.5 rounded-lg border border-white/20">
+                  <i className="fas fa-check text-white text-xs"></i>
                   <span className="text-white text-xs md:text-sm font-medium">{feature}</span>
                 </div>
               ))}
@@ -141,7 +141,7 @@ export default function ProductBillboard() {
                   <span className="text-3xl md:text-5xl font-black text-white">
                     {currentProduct.price}
                   </span>
-                  <span className="text-lg md:text-2xl text-white/40 line-through">
+                  <span className="text-lg md:text-2xl text-white/60 line-through">
                     {currentProduct.originalPrice}
                   </span>
                 </div>
@@ -153,7 +153,7 @@ export default function ProductBillboard() {
                     setSelectedProduct(currentProduct);
                     setShowModal(true);
                   }}
-                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black text-sm md:text-lg rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all hover:scale-105 shadow-lg hover:shadow-blue-500/50 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 btn-shine text-white font-black text-sm md:text-lg rounded-lg transition-all hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <i className="fas fa-shopping-cart text-sm md:text-base"></i>
                   Buy Now
@@ -162,10 +162,10 @@ export default function ProductBillboard() {
 
                 {/* Secure payments we accept */}
                 <div className="flex flex-col items-center sm:items-start gap-1.5 self-center">
-                  <span className="text-white/45 text-[11px] font-medium flex items-center gap-1">
+                  <span className="text-white text-[11px] font-medium flex items-center gap-1">
                     <i className="fas fa-lock text-[10px]"></i> Secure payments
                   </span>
-                  <PaymentIcons className="gap-2" />
+                  {/* Bare logos; PayPal and USDT use their official white versions on blue */}<PaymentIcons className="gap-3" onDark />
                 </div>
               </div>
             </div>
@@ -177,9 +177,9 @@ export default function ProductBillboard() {
             <div className="relative w-full h-[170px] md:h-[360px]">
               {/* Ambient glow + orbit rings (futuristic backdrop) */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-36 h-36 md:w-80 md:h-80 bg-sky-600/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute w-[180px] h-[180px] md:w-[420px] md:h-[420px] rounded-full border border-sky-500/10 animate-spin-slow"></div>
-                <div className="absolute w-[130px] h-[130px] md:w-[300px] md:h-[300px] rounded-full border border-cyan-400/10 animate-spin-slow-rev"></div>
+                <div className="w-36 h-36 md:w-80 md:h-80 bg-white/15 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute w-[180px] h-[180px] md:w-[420px] md:h-[420px] rounded-full border border-white/15 animate-spin-slow"></div>
+                <div className="absolute w-[130px] h-[130px] md:w-[300px] md:h-[300px] rounded-full border border-white/10 animate-spin-slow-rev"></div>
               </div>
 
               {/* Face-forward orbit — products stay visible and rotate around the ring */}
@@ -220,7 +220,7 @@ export default function ProductBillboard() {
                         className="relative w-[112px] h-[148px] md:w-[220px] md:h-[292px] transition-[filter] duration-[900ms]"
                         style={{
                           filter: isActive
-                            ? "drop-shadow(0 0 16px rgba(14,165,233,0.55)) drop-shadow(0 10px 14px rgba(0,0,0,0.45))"
+                            ? "drop-shadow(0 0 16px rgba(255,255,255,0.35)) drop-shadow(0 10px 14px rgba(0,0,0,0.35))"
                             : "drop-shadow(0 8px 12px rgba(0,0,0,0.5))",
                         }}
                       >
@@ -241,7 +241,7 @@ export default function ProductBillboard() {
 
             {/* Swiping widget — mobile, futuristic glowing pills, directly under the product animation and above Buy Now */}
             <div className="flex lg:hidden items-center justify-center mt-4">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-sky-500/20 shadow-[0_0_18px_rgba(3,105,161,0.15)]">
+              <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/25">
                 {products.map((_, idx) => (
                   <button
                     key={idx}
@@ -249,7 +249,7 @@ export default function ProductBillboard() {
                     aria-label={`Go to product ${idx + 1}`}
                     className={`relative h-1.5 rounded-full transition-all duration-500 ease-out after:absolute after:-inset-x-2 after:-inset-y-3 after:content-[''] ${
                       idx === currentIndex
-                        ? 'w-9 bg-gradient-to-r from-sky-500 to-cyan-400 shadow-[0_0_12px_rgba(3,105,161,0.9)]'
+                        ? 'w-9 bg-white'
                         : 'w-1.5 bg-white/25 hover:bg-white/45'
                     }`}
                   />
@@ -263,7 +263,7 @@ export default function ProductBillboard() {
                 <span className="text-2xl font-black text-white">
                   {currentProduct.price}
                 </span>
-                <span className="text-base text-white/40 line-through">
+                <span className="text-base text-white/60 line-through">
                   {currentProduct.originalPrice}
                 </span>
               </div>
@@ -274,14 +274,14 @@ export default function ProductBillboard() {
                     setSelectedProduct(currentProduct);
                     setShowModal(true);
                   }}
-                  className="px-7 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-sm rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg flex items-center gap-1.5"
+                  className="px-7 py-2.5 btn-shine text-white font-bold text-sm rounded-lg transition-all flex items-center gap-1.5"
                 >
                   <i className="fas fa-shopping-cart text-xs"></i>
                   Buy Now
                 </button>
 
                 {/* Secure payments we accept */}
-                <PaymentIcons className="gap-2" />
+                {/* Bare logos; PayPal and USDT use their official white versions on blue */}<PaymentIcons className="gap-3" onDark />
               </div>
             </div>
 
@@ -293,7 +293,7 @@ export default function ProductBillboard() {
                   onClick={() => setCurrentIndex(idx)}
                   className={`transition-all ${
                     idx === currentIndex
-                      ? 'w-10 h-2.5 bg-sky-500'
+                      ? 'w-10 h-2.5 bg-white'
                       : 'w-2.5 h-2.5 bg-white/30 hover:bg-white/50'
                   } rounded-full`}
                   aria-label={`Go to product ${idx + 1}`}
@@ -310,7 +310,7 @@ export default function ProductBillboard() {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in" onClick={() => setShowModal(false)}>
           <div className="glass-strong rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-slide-up" onClick={(e) => e.stopPropagation()}>
             {/* Header with Image — clean, centered product tile */}
-            <div className="relative h-36 md:h-44 rounded-t-2xl bg-gradient-to-b from-slate-800/80 to-slate-900 flex items-center justify-center overflow-hidden">
+            <div className="relative h-36 md:h-44 rounded-t-2xl bg-slate-800 flex items-center justify-center overflow-hidden">
               <Image
                 src={getProductImage(selectedProduct.name)}
                 alt={selectedProduct.name}
@@ -403,7 +403,7 @@ export default function ProductBillboard() {
                   onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, "whatsapp")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl"
+                  className="flex items-center justify-between p-5 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all shadow-lg hover:shadow-xl"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">

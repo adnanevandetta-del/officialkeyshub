@@ -3,7 +3,7 @@ import PaymentIcons from "./PaymentIcons";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-slate-900 to-slate-950 text-white pt-12 pb-6">
+    <footer className="bg-[#0a0e1a] text-white pt-12 pb-6">
       <div className="container mx-auto px-6">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 mb-8 pb-8 border-b border-slate-800">

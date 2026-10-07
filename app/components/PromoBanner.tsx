@@ -24,7 +24,7 @@ export default function PromoBanner() {
   };
 
   return (
-    <div className="relative z-[150] bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 text-white">
+    <div className="relative z-[150] bg-emerald-600 text-white">
       <div className="container mx-auto px-3 sm:px-4 py-2">
         <div className="flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-center text-xs sm:text-sm font-semibold">
           <i className="fas fa-gift text-white/90"></i>

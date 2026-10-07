@@ -41,13 +41,13 @@ function topProducts() {
 export default function PopularProducts() {
   const products = topProducts();
   return (
-    // Same slate grey as the product cards and the Office 2024 promo above.
-    <section className="bg-gradient-to-b from-[#5d6370] to-[#53575f] border-t border-white/10 py-14">
+    // Microsoft blue, matching the billboard, product cards and Office 2024 promo.
+    <section className="bg-[#005A9E] border-t border-white/15 py-14">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-black text-white mb-2 text-center">
-          Popular <span className="gradient-text">products</span>
+          Popular products
         </h2>
-        <p className="text-slate-200 text-center text-sm mb-8">
+        <p className="text-white text-center text-sm mb-8">
           Genuine Microsoft &amp; security licenses — instant email delivery and lifetime activation.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -55,9 +55,9 @@ export default function PopularProducts() {
             <Link
               key={p.slug}
               href={`/products/${p.slug}`}
-              className="group flex items-center justify-between gap-2 glass rounded-xl px-4 py-3 hover:border-sky-600/40 transition-colors"
+              className="group flex items-center justify-between gap-2 rounded-xl bg-[#004E8C] border border-white/20 px-4 py-3 hover:bg-[#003E70] transition-colors"
             >
-              <span className="text-slate-200 text-sm font-semibold group-hover:text-sky-400 line-clamp-1">
+              <span className="text-white text-sm font-semibold group-hover:underline underline-offset-2 line-clamp-1">
                 {p.name}
               </span>
               <span className="text-white text-sm font-bold flex-shrink-0">{p.price}</span>
@@ -67,7 +67,7 @@ export default function PopularProducts() {
         <div className="text-center mt-8">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 font-semibold text-sm"
+            className="inline-flex items-center gap-2 text-white hover:underline underline-offset-2 font-semibold text-sm"
           >
             View all products <i className="fas fa-arrow-right text-xs"></i>
           </Link>

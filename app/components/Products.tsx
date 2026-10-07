@@ -171,9 +171,9 @@ export default function Products() {
           ).map((product, index) => (
             <div
               key={index}
-              className={`glass rounded-2xl overflow-hidden transition-all duration-300 flex flex-col relative glow-hover ${
+              className={`bg-[#005A9E] border border-[#004E8C] rounded-2xl overflow-hidden transition-all duration-300 flex flex-col relative glow-hover ${
                 product.popular
-                  ? "ring-1 ring-sky-500/50 glow-sky"
+                  ? "ring-2 ring-white/60 glow-sky"
                   : ""
               }`}
             >
@@ -193,12 +193,12 @@ export default function Products() {
               <div className="p-4 md:p-6 flex flex-col flex-grow">
                 <div className="mb-3 md:mb-4 flex-grow">
                   <h3 className="text-lg font-bold text-white mb-2 md:h-14 line-clamp-2">
-                    <Link href={`/products/${slugify(product.name)}`} className="hover:text-sky-400 transition-colors">
+                    <Link href={`/products/${slugify(product.name)}`} className="hover:underline underline-offset-2 transition-colors">
                       {product.name}
                     </Link>
                   </h3>
-                  <p className="text-slate-400 text-sm md:h-10 line-clamp-2">{product.description}</p>
-                  <Link href={`/products/${slugify(product.name)}`} className="inline-flex items-center gap-1 text-sky-400 hover:text-sky-300 text-xs font-semibold mt-1 py-2">
+                  <p className="text-white text-sm md:h-10 line-clamp-2">{product.description}</p>
+                  <Link href={`/products/${slugify(product.name)}`} className="inline-flex items-center gap-1 text-white hover:underline underline-offset-2 text-xs font-semibold mt-1 py-2">
                     View details <i className="fas fa-arrow-right text-[10px]"></i>
                   </Link>
                 </div>
@@ -206,23 +206,23 @@ export default function Products() {
                 <div className="mb-3 md:mb-4">
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black text-white">{product.price}</span>
-                    {product.originalPrice && <span className="text-sm text-slate-500 line-through">{product.originalPrice}</span>}
+                    {product.originalPrice && <span className="text-sm text-white/60 line-through">{product.originalPrice}</span>}
                   </div>
                 </div>
 
                 {/* Phones: three compact feature pills instead of the tall checklist */}
                 <ul className="flex md:hidden flex-wrap gap-1.5 mb-4">
                   {product.features.slice(0, 3).map((feature, idx) => (
-                    <li key={idx} className="inline-flex items-center gap-1 rounded-full bg-white/5 border border-white/10 px-2.5 py-1 text-xs text-slate-300">
-                      <i className="fas fa-check text-sky-500 text-[10px]"></i>
+                    <li key={idx} className="inline-flex items-center gap-1 rounded-full bg-[#004E8C] border border-white/20 px-2.5 py-1 text-xs text-white">
+                      <i className="fas fa-check text-white text-[10px]"></i>
                       <span className="line-clamp-1">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <ul className="hidden md:block space-y-2 mb-6 h-32 overflow-hidden">
                   {product.features.slice(0, 5).map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
-                      <i className="fas fa-check text-sky-500 mt-1 flex-shrink-0"></i>
+                    <li key={idx} className="flex items-start gap-2 text-sm text-white">
+                      <i className="fas fa-check text-white mt-1 flex-shrink-0"></i>
                       <span className="line-clamp-1">{feature}</span>
                     </li>
                   ))}
@@ -235,9 +235,9 @@ export default function Products() {
                       setSelectedProduct(product);
                       setShowModal(true);
                     }}
-                    className="press-3d w-full min-h-[48px] py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-blue-500/50"
+                    className="press-3d w-full min-h-[48px] py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-white text-[#005A9E] hover:bg-blue-50 shadow-lg"
                     style={{
-                      boxShadow: '0 0 20px rgba(37, 99, 235, 0.5), 0 4px 14px rgba(0, 0, 0, 0.25)'
+                      boxShadow: '0 4px 14px rgba(0, 0, 0, 0.2)'
                     }}
                   >
                     <span className="flex items-center gap-2">
@@ -258,7 +258,7 @@ export default function Products() {
                       setShowCartPreview(true);
                       setTimeout(() => setShowCartPreview(false), 2000);
                     }}
-                    className="press-3d w-full min-h-[44px] py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 shadow-md"
+                    className="press-3d w-full min-h-[44px] py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center bg-emerald-600 text-white hover:bg-emerald-700 shadow-md"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -277,7 +277,7 @@ export default function Products() {
         <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70 backdrop-blur-md" onClick={() => setShowModal(false)}>
           <div className="glass-strong rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-md w-full max-h-[92vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Header */}
-            <div className="sticky top-0 z-10 bg-gradient-to-r from-sky-600 to-sky-700 px-5 py-4 rounded-t-2xl">
+            <div className="sticky top-0 z-10 bg-[#005A9E] px-5 py-4 rounded-t-2xl">
               <div className="flex justify-between items-center gap-3">
                 <div className="relative w-11 h-14 flex-shrink-0">
                   <Image
@@ -320,7 +320,7 @@ export default function Products() {
                   {selectedProduct.features
                     .filter((f) => f !== 'Instant Delivery')
                     .map((f, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
+                      <li key={idx} className="flex items-start gap-2 text-sm text-white">
                         <i className="fas fa-check text-sky-500 mt-1 text-xs flex-shrink-0"></i>
                         <span>{f}</span>
                       </li>
@@ -376,7 +376,7 @@ export default function Products() {
                     onClick={() => recordQuickOrder(selectedProduct.name, selectedProduct.price, 'whatsapp')}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between min-h-[56px] px-4 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all group shadow-lg"
+                    className="flex items-center justify-between min-h-[56px] px-4 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-all group shadow-lg"
                   >
                     <div className="flex items-center gap-3">
                       <i className="fab fa-whatsapp text-2xl"></i>

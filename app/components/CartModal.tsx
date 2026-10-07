@@ -43,7 +43,7 @@ export default function CartModal({ onClose }: CartModalProps) {
         style={{ animation: 'slideInRight 0.3s ease-out' }}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-5 flex-shrink-0 border-b border-slate-700">
+        <div className="bg-slate-900 text-white p-5 flex-shrink-0 border-b border-slate-700">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-sky-600/20 rounded-lg flex items-center justify-center">
@@ -79,7 +79,7 @@ export default function CartModal({ onClose }: CartModalProps) {
               </p>
               <button
                 onClick={onClose}
-                className="px-6 py-3 bg-gradient-to-r from-sky-700 to-sky-800 text-white rounded-lg font-semibold hover:from-sky-800 hover:to-sky-800 transition-all shadow-md"
+                className="px-6 py-3 bg-[#005A9E] text-white rounded-lg font-semibold hover:bg-[#004578] transition-all shadow-md"
               >
                 Browse Products
               </button>
@@ -198,7 +198,7 @@ export default function CartModal({ onClose }: CartModalProps) {
             <Link
               href="/checkout"
               onClick={onClose}
-              className="block w-full py-3.5 bg-gradient-to-r from-sky-700 to-sky-800 text-white text-center font-bold text-base rounded-lg hover:from-sky-800 hover:to-sky-800 transition-all shadow-lg hover:shadow-xl mb-2"
+              className="block w-full py-3.5 bg-[#005A9E] text-white text-center font-bold text-base rounded-lg hover:bg-[#004578] transition-all shadow-lg hover:shadow-xl mb-2"
             >
               <i className="fas fa-lock mr-2"></i>
               Secure Checkout

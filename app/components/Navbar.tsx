@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import CartButton from "./CartButton";
 import ProfileButton from "./ProfileButton";
 import ProductSearch from "./ProductSearch";
+import { HEADER_THEME } from "../lib/headerTheme";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,8 +45,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="font-math sticky top-0 left-0 right-0 z-[200] bg-[#0a0e1a] shadow-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 py-3">
+    <nav
+      className="font-math sticky top-0 left-0 right-0 z-[200] border-b border-slate-200 shadow-[0_1px_12px_rgba(15,23,42,0.06)]"
+      style={{ backgroundColor: HEADER_THEME.nav }}
+    >
+      <div className="px-4 md:px-8 py-3">
         {/* Mobile Layout */}
         <div className="flex md:hidden items-center justify-between w-full relative">
           {/* Left: Hamburger + Search icon — kept compact and hugging the edge
@@ -56,7 +60,7 @@ export default function Navbar() {
                 setIsMenuOpen((v) => !v);
                 setIsSearchOpen(false);
               }}
-              className="text-white focus:outline-none p-1"
+              className="text-slate-800 focus:outline-none p-1"
               aria-label="Open menu"
               aria-expanded={isMenuOpen}
             >
@@ -67,7 +71,7 @@ export default function Navbar() {
                 setIsSearchOpen((v) => !v);
                 setIsMenuOpen(false);
               }}
-              className="text-white focus:outline-none p-1"
+              className="text-slate-800 focus:outline-none p-1"
               aria-label="Search products"
               aria-expanded={isSearchOpen}
             >
@@ -121,15 +125,15 @@ export default function Navbar() {
                   setIsDeskSearchOpen(false);
                 }}
                 onBlur={() => setTimeout(() => setIsDeskMenuOpen(false), 150)}
-                className="text-white hover:text-sky-500 focus:outline-none p-2 flex items-center"
+                className="w-10 h-10 rounded-lg text-slate-800 hover:bg-slate-100 hover:text-[#005A9E] focus:outline-none flex items-center justify-center transition-colors"
                 aria-label="Open menu"
                 aria-expanded={isDeskMenuOpen}
               >
-                <i className={`fas ${isDeskMenuOpen ? "fa-times" : "fa-bars"} text-xl`}></i>
+                <i className={`fas ${isDeskMenuOpen ? "fa-times" : "fa-bars"} text-lg`}></i>
               </button>
 
               {isDeskMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 max-w-none bg-[#0b1020] rounded-xl shadow-2xl border border-sky-600/30 overflow-hidden z-[300] py-2">
+                <div className="absolute top-full left-0 mt-2 w-56 max-w-none bg-white rounded-xl shadow-xl ring-1 ring-slate-200 overflow-hidden z-[300] py-2">
                   <Link
                     href="/#products"
                     onClick={() => {
@@ -139,9 +143,9 @@ export default function Navbar() {
                         window.dispatchEvent(new CustomEvent('categoryChanged', { detail: { category: 'all' } }));
                       }
                     }}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-box text-sky-500 w-4"></i>
+                    <i className="fas fa-box text-[#005A9E] w-4"></i>
                     Products
                   </Link>
                   <Link
@@ -153,7 +157,7 @@ export default function Navbar() {
                         window.dispatchEvent(new CustomEvent('categoryChanged', { detail: { category: 'bundles' } }));
                       }
                     }}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
                   >
                     <i className="fas fa-box-open text-amber-500 w-4"></i>
                     Build Your Own Bundle
@@ -161,33 +165,33 @@ export default function Navbar() {
                   <Link
                     href="/faq"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-question-circle text-sky-500 w-4"></i>
+                    <i className="fas fa-question-circle text-[#005A9E] w-4"></i>
                     FAQ
                   </Link>
                   <Link
                     href="/blog"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-blog text-sky-500 w-4"></i>
+                    <i className="fas fa-blog text-[#005A9E] w-4"></i>
                     Blog
                   </Link>
                   <Link
                     href="/activation-guide"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-key text-sky-500 w-4"></i>
+                    <i className="fas fa-key text-[#005A9E] w-4"></i>
                     Activation Guide
                   </Link>
                   <Link
                     href="/partner-program"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
                   >
-                    <i className="fas fa-handshake text-sky-500 w-4"></i>
+                    <i className="fas fa-handshake text-[#005A9E] w-4"></i>
                     Partner Program
                   </Link>
                   <a
@@ -195,9 +199,9 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsDeskMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-slate-200 hover:bg-sky-600/10 hover:text-sky-400 transition-colors text-sm font-semibold"
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
                   >
-                    <i className="fab fa-whatsapp text-sky-500 w-4"></i>
+                    <i className="fab fa-whatsapp text-[#25D366] w-4"></i>
                     Contact Us
                   </a>
                 </div>
@@ -210,17 +214,17 @@ export default function Navbar() {
                 setIsDeskSearchOpen((v) => !v);
                 setIsDeskMenuOpen(false);
               }}
-              className="text-white hover:text-sky-500 focus:outline-none p-2 flex items-center"
+              className="w-10 h-10 rounded-lg text-slate-800 hover:bg-slate-100 hover:text-[#005A9E] focus:outline-none flex items-center justify-center transition-colors"
               aria-label="Search products"
               aria-expanded={isDeskSearchOpen}
             >
-              <i className={`fas ${isDeskSearchOpen ? "fa-times" : "fa-search"} text-xl`}></i>
+              <i className={`fas ${isDeskSearchOpen ? "fa-times" : "fa-search"} text-lg`}></i>
             </button>
           </div>
 
-          {/* Center: Logo */}
+          {/* Center: Logo — larger on desktop */}
           <div className="absolute left-1/2 -translate-x-1/2">
-            <Logo size="sm" />
+            <Logo size="md" />
           </div>
 
           {/* Far right: Cart & Profile */}
@@ -246,11 +250,11 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-3 pb-3 border-t border-slate-800 pt-3">
+          <div className="md:hidden mt-3 pb-3 border-t border-slate-200 pt-3">
             <div className="flex flex-col gap-3">
               {/* Product Categories Section */}
-              <div className="border-b border-slate-700 pb-3 mb-1">
-                <p className="text-sky-500 font-bold text-xs uppercase tracking-wider mb-2 px-1">Product Categories</p>
+              <div className="border-b border-slate-200 pb-3 mb-1">
+                <p className="text-[#005A9E] font-bold text-xs uppercase tracking-wider mb-2 px-1">Product Categories</p>
                 <div className="grid grid-cols-2 gap-2">
                   {productCategories.map((category) => (
                     <button
@@ -259,10 +263,10 @@ export default function Navbar() {
                         handleCategoryClick(category.filter);
                         setIsMenuOpen(false);
                       }}
-                      className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700 rounded-lg transition-all text-left"
+                      className="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 hover:bg-slate-100 rounded-lg transition-all text-left"
                     >
                       <i className={`${category.icon} ${category.color} text-sm`}></i>
-                      <span className="text-white text-sm font-semibold">{category.name}</span>
+                      <span className="text-slate-800 text-sm font-semibold">{category.name}</span>
                     </button>
                   ))}
                 </div>
@@ -271,7 +275,7 @@ export default function Navbar() {
               {/* Main Menu Items */}
               <Link
                 href="/#products"
-                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => {
                   handleCategoryClick('bundles');
                   setIsMenuOpen(false);
@@ -282,52 +286,52 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/#products"
-                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-box text-sky-500"></i>
+                <i className="fas fa-box text-[#005A9E]"></i>
                 All Products
               </Link>
               <Link
                 href="/partner-program"
-                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-handshake text-sky-500"></i>
+                <i className="fas fa-handshake text-[#005A9E]"></i>
                 Partner Program
               </Link>
               <Link
                 href="/blog"
-                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-blog text-sky-500"></i>
+                <i className="fas fa-blog text-[#005A9E]"></i>
                 Blog
               </Link>
               <Link
                 href="/faq"
-                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-question-circle text-sky-500"></i>
+                <i className="fas fa-question-circle text-[#005A9E]"></i>
                 FAQ
               </Link>
               <Link
                 href="/activation-guide"
-                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-key text-sky-500"></i>
+                <i className="fas fa-key text-[#005A9E]"></i>
                 Activation Guide
               </Link>
               <a
                 href="https://wa.me/16019756129"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-sky-500 font-semibold transition-colors text-sm flex items-center gap-2"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fab fa-whatsapp text-sky-500"></i>
+                <i className="fab fa-whatsapp text-[#25D366]"></i>
                 Contact Us
               </a>
             </div>

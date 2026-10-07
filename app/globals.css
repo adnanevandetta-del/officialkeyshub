@@ -41,7 +41,7 @@ html, body {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans), 'Segoe UI', system-ui, sans-serif;
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
@@ -60,19 +60,51 @@ body {
   background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
 }
 
-/* Headings use the Mathematical Bold Italic display font (STIX Two Text). */
+/* Headings: Plus Jakarta Sans, upright, slightly tightened for an elegant look. */
 h1, h2, h3, h4, .font-display {
-  font-family: var(--font-math), 'Space Grotesk', Georgia, serif;
-  font-style: italic;
+  font-family: var(--font-sans), 'Segoe UI', system-ui, sans-serif;
+  font-style: normal;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+}
+
+/* Shiny green "Buy Now": solid emerald with a glossy top highlight, a soft
+   green glow and a light streak that sweeps across every few seconds.
+   No gradients — the streak is a solid translucent bar. */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #059669;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 10px 24px -8px rgba(16, 185, 129, 0.75);
+}
+.btn-shine:hover { background-color: #047857; }
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: -60%;
+  width: 35%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-20deg);
+  animation: okh-shine 3.4s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+@keyframes okh-shine {
+  0%, 60% { left: -60%; }
+  100% { left: 140%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after { display: none; }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: #05060b; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #0284c7, #10b981);
+  background: #005A9E;
   border-radius: 8px;
   border: 2px solid #05060b;
 }
@@ -86,11 +118,13 @@ h1, h2, h3, h4, .font-display {
     -webkit-text-fill-color: #0284c7;
   }
 
-  /* Mathematical Bold Italic display font, usable on any element (navbar, logo, buttons). */
+  /* Display font for UI chrome (navbar, logo, buttons). The class name is kept
+     for existing markup; it now maps to the same elegant sans as headings. */
   .font-math {
-    font-family: var(--font-math), 'Space Grotesk', Georgia, serif;
-    font-style: italic;
+    font-family: var(--font-sans), 'Segoe UI', system-ui, sans-serif;
+    font-style: normal;
     font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
   /* Elevated surfaces — solid semi-opaque so they read on the dark

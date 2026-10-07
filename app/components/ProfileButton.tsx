@@ -36,7 +36,7 @@ export default function ProfileButton() {
             {isLoggedIn ? (
               <>
                 {/* Logged In Menu */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4">
+                <div className="bg-[#005A9E] text-white p-4">
                   <p className="font-bold text-lg break-words">{displayName(account)}</p>
                   <p className="text-blue-100 text-sm break-all">{account?.email}</p>
                 </div>

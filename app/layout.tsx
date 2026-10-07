@@ -1,19 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, STIX_Two_Text } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Script from "next/script";
 import { CartProvider } from "./components/CartContext";
 
-const inter = Inter({ subsets: ["latin"] });
-
-// Mathematical Bold Italic display font (scientific/math typesetting serif),
-// self-hosted via next/font and applied to headings in globals.css.
-const stixMath = STIX_Two_Text({
+// Plus Jakarta Sans — one elegant, modern sans for headings and body text,
+// self-hosted via next/font. Exposed as --font-sans for globals.css.
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["italic", "normal"],
-  variable: "--font-math",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -94,13 +91,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${stixMath.variable}`}>
+    <html lang="en" className={`scroll-smooth ${jakarta.variable}`}>
       <head>
         <meta name="theme-color" content="#0369a1" />
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="sG23QnRZt0jwlqElmdDi6H0SfVOqBFkGJllZlzgBFtk" />
       </head>
-      <body className={inter.className}>
+      <body className={jakarta.className}>
         <CartProvider>
         {/* Schema Markup for SEO */}
         <Script id="schema-organization" type="application/ld+json" strategy="beforeInteractive">

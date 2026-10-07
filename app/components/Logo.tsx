@@ -8,8 +8,9 @@ interface LogoProps {
 
 export default function Logo({ size = "md", animated = true }: LogoProps) {
   const sizes = {
-    sm: { container: "h-10", text: "text-base", tagline: "text-[8px]", icon: "w-8 h-8", showTag: false },
-    md: { container: "h-14", text: "text-xl", tagline: "text-[9px]", icon: "w-11 h-11", showTag: false },
+    // sm (phones) scales down below 360px so it never touches the cart/profile icons
+    sm: { container: "h-10", text: "text-[14px] min-[360px]:text-base", tagline: "text-[8px]", icon: "w-7 h-7 min-[360px]:w-8 min-[360px]:h-8", showTag: false },
+    md: { container: "h-11", text: "text-[19px]", tagline: "text-[9px]", icon: "w-9 h-9", showTag: false },
     lg: { container: "h-20", text: "text-2xl", tagline: "text-[11px]", icon: "w-16 h-16", showTag: true },
   };
 
@@ -76,18 +77,18 @@ export default function Logo({ size = "md", animated = true }: LogoProps) {
   );
 
   return (
-    <Link href="/" className={`flex items-center gap-2 ${currentSize.container} group`}>
+    <Link href="/" className={`flex items-center gap-1.5 min-[360px]:gap-2 ${currentSize.container} group`}>
       <div className={`relative ${currentSize.icon} flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}>
         {Mark}
       </div>
 
       <div className="flex flex-col leading-none">
-        <span className={`font-math font-black tracking-tight ${currentSize.text}`}>
-          <span className="text-white">OfficialKeys</span>
-          <span className="text-orange-500">Hub</span>
+        <span className={`font-math font-extrabold tracking-tight ${currentSize.text}`}>
+          <span className="text-slate-900">OfficialKeys</span>
+          <span className="text-orange-600">Hub</span>
         </span>
         {currentSize.showTag && (
-          <span className={`font-math text-slate-400 font-semibold tracking-wide mt-1 ${currentSize.tagline}`}>
+          <span className={`font-math text-slate-500 font-semibold tracking-wide mt-1 ${currentSize.tagline}`}>
             Microsoft Keys • Fast • Safe • Trusted
           </span>
         )}

@@ -4,34 +4,23 @@
 // help conversion and SEO. Compact single-line items on a continuous,
 // auto-scrolling marquee (pauses on hover / for reduced-motion users).
 
+import { HEADER_THEME } from "../lib/headerTheme";
+
 const items = [
-  { icon: "fas fa-bolt", color: "#38bdf8", title: "Instant Email Delivery" },
-  { icon: "fas fa-certificate", color: "#34d399", title: "Genuine Microsoft Keys" },
-  { icon: "fas fa-lock", color: "#38bdf8", title: "Secure Payments" },
-  { icon: "fab fa-bitcoin", color: "#f7931a", title: "Crypto Payments Accepted" },
-  { icon: "fas fa-tags", color: "#fbbf24", title: "Save up to 15% on Bundles" },
-  { icon: "fas fa-shield-halved", color: "#34d399", title: "30-Day Money-Back Guarantee" },
-  { icon: "fas fa-headset", color: "#38bdf8", title: "24/7 Support" },
+  { icon: "fas fa-bolt", title: "Instant Email Delivery" },
+  { icon: "fas fa-certificate", title: "Genuine Microsoft Keys" },
+  { icon: "fas fa-lock", title: "Secure Payments" },
+  { icon: "fab fa-bitcoin", title: "Crypto Payments Accepted" },
+  { icon: "fas fa-tags", title: "Save up to 15% on Bundles" },
+  { icon: "fas fa-shield-halved", title: "30-Day Money-Back Guarantee" },
+  { icon: "fas fa-headset", title: "24/7 Support" },
 ];
 
-function Item({ icon, color, title }: (typeof items)[number]) {
+function Item({ icon, title }: (typeof items)[number]) {
   return (
-    <div
-      className="flex items-center gap-1 md:gap-1.5 flex-shrink-0 whitespace-nowrap rounded-full border px-2 md:px-2.5 py-0.5 transition-transform duration-200 hover:scale-110"
-      style={{
-        borderColor: `${color}66`,
-        backgroundColor: `${color}14`,
-        boxShadow: `0 0 10px ${color}2e`,
-      }}
-    >
-      <i
-        className={`${icon} text-[9px] md:text-[11px]`}
-        style={{ color, filter: `drop-shadow(0 0 4px ${color})` }}
-      ></i>
-      <span
-        className="text-[10px] md:text-[11px] font-bold"
-        style={{ color: "#fff", textShadow: `0 0 6px ${color}55` }}
-      >
+    <div className="flex items-center gap-1 md:gap-1.5 flex-shrink-0 whitespace-nowrap rounded-full border border-white/30 bg-white/10 px-2 md:px-2.5 py-0.5 transition-transform duration-200 hover:scale-105">
+      <i className={`${icon} text-[9px] md:text-[11px] text-white`}></i>
+      <span className="text-[10px] md:text-[11px] font-bold text-white">
         {title}
       </span>
     </div>
@@ -44,9 +33,10 @@ export default function FeatureBar() {
   const loop = [...items, ...items];
 
   return (
-    <div className="group relative bg-gradient-to-b from-slate-900 to-slate-950 border-b border-white/10 overflow-hidden">
-      {/* blue → green accent hairline, matching the site theme */}
-      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sky-500 to-emerald-500 z-10"></div>
+    <div
+      className="group relative border-b border-white/10 overflow-hidden"
+      style={{ backgroundColor: HEADER_THEME.strip }}
+    >
 
       <div className="py-1.5">
         <div className="flex w-max gap-4 md:gap-6 okh-feat-marquee">
