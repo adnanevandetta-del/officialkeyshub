@@ -87,7 +87,7 @@ export default function ActivateWindows11Key() {
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
@@ -100,7 +100,7 @@ export default function ActivateWindows11Key() {
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 How Do I Activate My Windows 11 Key?
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                <span className="text-blue-600">
                   Quick Answer + Every Method (2026)
                 </span>
               </h1>
@@ -133,7 +133,7 @@ export default function ActivateWindows11Key() {
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
                 🖱️ Method 1: Activate in Settings (easiest)
               </h2>
-              <div className="not-prose bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl mb-8">
+              <div className="not-prose p-8 rounded-xl mb-8 bg-blue-50">
                 <div className="space-y-5">
                   {[
                     ["Open Settings", "Press Windows + I, or click Start → Settings (gear icon)."],
@@ -247,7 +247,7 @@ export default function ActivateWindows11Key() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-br from-blue-600 to-indigo-600">
+        <section className="py-16 bg-indigo-600">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">Need a genuine Windows 11 key?</h2>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">

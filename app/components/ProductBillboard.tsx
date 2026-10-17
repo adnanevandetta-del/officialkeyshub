@@ -30,6 +30,18 @@ export default function ProductBillboard() {
 
   const products: BillboardProduct[] = [
     {
+      name: "Office 2024 Pro Plus",
+      tagline: "The Newest Office · Supported to 2029",
+      price: "$34.99",
+      originalPrice: "$439.99",
+      image: "/products/office-2024-professional-plus.jpg",
+      badge: "Hot Now",
+      icon: "fas fa-file-word",
+      features: ["Word", "Excel", "PowerPoint", "Outlook"],
+      description: "The newest one-time-purchase Office, supported until 2029",
+      productFeatures: ["All Office 2024 Apps", "Lifetime License", "1 PC", "Instant Delivery", "Genuine Microsoft"],
+    },
+    {
       name: "Windows 11 Pro",
       tagline: "Professional Edition",
       price: "$16.99",

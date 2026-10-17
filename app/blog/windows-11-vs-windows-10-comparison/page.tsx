@@ -593,7 +593,7 @@ export default function Windows11VsWindows10Page() {
             {/* Final Verdict */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">🏆 Final Verdict: Windows 11 vs Windows 10</h2>
 
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-500 rounded-xl p-8 mb-8">
+            <div className="border-2 border-green-500 rounded-xl p-8 mb-8 bg-green-50">
               <p className="text-xl font-bold mb-4">Windows 11 is the clear winner for most users in 2026.</p>
               <p className="mb-4">
                 <strong>Why Windows 11 wins:</strong>
@@ -612,7 +612,7 @@ export default function Windows11VsWindows10Page() {
             </div>
 
             {/* CTA */}
-            <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
+            <div className="rounded-2xl p-8 text-center my-12 bg-[#22c55e]">
               <h2 className="text-3xl font-bold text-black mb-4">Ready to Upgrade to Windows 11?</h2>
               <p className="text-black text-lg mb-6">
                 Get a genuine Windows 11 Pro license key for just <span className="font-bold text-2xl">$39.99</span> (instead of $199)

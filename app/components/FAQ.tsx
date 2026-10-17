@@ -49,7 +49,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -102,7 +102,7 @@ export default function FAQ() {
             href="https://wa.me/16019756129"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-bold rounded-xl hover:from-sky-700 hover:to-sky-800 transition-all shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 text-white font-bold rounded-xl transition-all shadow-lg bg-sky-700 hover:bg-sky-800"
           >
             <i className="fab fa-whatsapp text-2xl"></i>
             <span>Chat with Us on WhatsApp</span>

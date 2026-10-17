@@ -102,28 +102,28 @@ export default function PaymentMethodsPage() {
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; border: string; text: string; badge: string; glow: string }> = {
       blue: {
-        bg: "from-blue-50 to-blue-100",
+        bg: "bg-blue-50",
         border: "border-blue-300",
         text: "text-blue-700",
         badge: "bg-blue-500",
         glow: "shadow-blue-500/50"
       },
       purple: {
-        bg: "from-purple-50 to-purple-100",
+        bg: "bg-purple-50",
         border: "border-purple-300",
         text: "text-purple-700",
         badge: "bg-purple-500",
         glow: "shadow-purple-500/50"
       },
       sky: {
-        bg: "from-sky-50 to-sky-100",
+        bg: "bg-sky-50",
         border: "border-sky-400",
         text: "text-sky-800",
         badge: "bg-sky-600",
         glow: "shadow-sky-600/50"
       },
       orange: {
-        bg: "from-orange-50 to-orange-100",
+        bg: "bg-orange-50",
         border: "border-orange-300",
         text: "text-orange-700",
         badge: "bg-orange-500",
@@ -137,7 +137,7 @@ export default function PaymentMethodsPage() {
     <>
       <Navbar />
       
-      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 pt-24 pb-16">
+      <div className="min-h-screen pt-24 pb-16 bg-white">
         <div className="container mx-auto px-6">
           <Breadcrumb 
             items={[
@@ -163,7 +163,7 @@ export default function PaymentMethodsPage() {
 
           {/* Security Banner */}
           <div className="max-w-5xl mx-auto mb-16">
-            <div className="bg-gradient-to-r from-sky-600 to-sky-700 rounded-2xl shadow-2xl p-8 text-white">
+            <div className="rounded-2xl shadow-2xl p-8 text-white bg-sky-700">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <i className="fas fa-shield-alt text-5xl"></i>
                 <div className="text-left">
@@ -203,7 +203,7 @@ export default function PaymentMethodsPage() {
                   className={`bg-white rounded-2xl shadow-xl overflow-hidden border-2 ${colors.border} hover:${colors.glow} transition-all`}
                 >
                   {/* Method Header */}
-                  <div className={`bg-gradient-to-r ${colors.bg} p-6 border-b-2 ${colors.border}`}>
+                  <div className={`${colors.bg} p-6 border-b-2 ${colors.border}`}>
                     <div className="flex items-center gap-4">
                       <div className={`w-16 h-16 ${colors.badge} rounded-xl flex items-center justify-center text-white shadow-lg`}>
                         <i className={`${method.icon} text-3xl`}></i>
@@ -324,7 +324,7 @@ export default function PaymentMethodsPage() {
 
           {/* Contact Support */}
           <div className="max-w-5xl mx-auto mt-16">
-            <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl shadow-2xl p-10 text-white text-center">
+            <div className="rounded-2xl shadow-2xl p-10 text-white text-center bg-blue-600">
               <i className="fas fa-headset text-6xl mb-6 opacity-90"></i>
               <h2 className="text-3xl font-black mb-4">Need Help with Payment?</h2>
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">

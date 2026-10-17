@@ -30,7 +30,7 @@ export default function HowToActivateWindows11() {
         <Breadcrumb items={breadcrumbItems} />
         
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
@@ -43,7 +43,7 @@ export default function HowToActivateWindows11() {
               <h1 className="text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 How to Activate Windows 11 Pro
                 <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                <span className="text-blue-600">
                   Complete Step-by-Step Guide 2026
                 </span>
               </h1>
@@ -106,7 +106,7 @@ export default function HowToActivateWindows11() {
                 This is the easiest and fastest method. It takes about 2 minutes and requires internet connection.
               </p>
 
-              <div className="not-prose bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl mb-8">
+              <div className="not-prose p-8 rounded-xl mb-8 bg-blue-50">
                 <h3 className="font-bold text-gray-900 text-xl mb-6">📝 Step-by-Step Instructions:</h3>
                 
                 <div className="space-y-6">
@@ -314,7 +314,7 @@ export default function HowToActivateWindows11() {
                   { icon: "🛡️", title: "Genuine Keys", desc: "Always buy from legitimate sellers. Pirated keys can be banned by Microsoft." },
                   { icon: "📞", title: "24/7 Support", desc: "If you bought from us, contact support anytime for activation help." },
                 ].map((tip, idx) => (
-                  <div key={idx} className="bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
+                  <div key={idx} className="p-6 rounded-xl border border-purple-200 bg-purple-50">
                     <div className="text-4xl mb-3">{tip.icon}</div>
                     <h3 className="font-bold text-gray-900 text-lg mb-2">{tip.title}</h3>
                     <p className="text-gray-700">{tip.desc}</p>
@@ -351,7 +351,7 @@ export default function HowToActivateWindows11() {
                 ✅ Summary: Windows 11 Activation Checklist
               </h2>
 
-              <div className="not-prose bg-gradient-to-r from-sky-50 to-blue-50 p-8 rounded-xl border-2 border-sky-400 mb-8">
+              <div className="not-prose p-8 rounded-xl border-2 border-sky-400 mb-8 bg-sky-50">
                 <h3 className="font-bold text-gray-900 text-xl mb-4">Quick Reference:</h3>
                 <div className="space-y-2 text-gray-700">
                   <div className="flex gap-3">
@@ -395,7 +395,7 @@ export default function HowToActivateWindows11() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-600 to-indigo-600">
+        <section className="py-16 bg-indigo-600">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">
               Need a Windows 11 Product Key?

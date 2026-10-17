@@ -64,7 +64,7 @@ export default function OrdersPage() {
             export your data.
           </p>
 
-          <div className="mt-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 md:p-8 text-white">
+          <div className="mt-8 rounded-2xl p-6 md:p-8 text-white bg-blue-700">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">

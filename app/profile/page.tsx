@@ -151,12 +151,12 @@ export default function ProfilePage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-6 md:py-8 px-4">
+      <div className="min-h-screen py-6 md:py-8 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 mb-6">
             <div className="flex flex-col md:flex-row items-center gap-5 md:gap-6">
-              <div className="w-[96px] h-[96px] md:w-[120px] md:h-[120px] rounded-full border-4 border-sky-600 bg-gradient-to-br from-sky-600 to-cyan-600 flex items-center justify-center text-white text-3xl md:text-4xl font-black select-none flex-shrink-0">
+              <div className="w-[96px] h-[96px] md:w-[120px] md:h-[120px] rounded-full border-4 border-sky-600 flex items-center justify-center text-white text-3xl md:text-4xl font-black select-none flex-shrink-0 bg-cyan-600">
                 {initials || <i className="fas fa-user"></i>}
               </div>
 
@@ -184,7 +184,7 @@ export default function ProfilePage() {
 
           {/* Promo Code Card */}
           {promo && (
-            <div className="relative overflow-hidden rounded-2xl shadow-lg mb-6 bg-gradient-to-r from-sky-700 via-sky-700 to-cyan-600 p-5 md:p-8">
+            <div className="relative overflow-hidden rounded-2xl shadow-lg mb-6 p-5 md:p-8 bg-cyan-600">
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"></div>
               <div className="absolute -bottom-12 -left-6 w-40 h-40 bg-white/10 rounded-full"></div>
               <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-5 md:gap-6">
@@ -342,7 +342,7 @@ export default function ProfilePage() {
                         o.items.map((item, idx) => (
                           <div
                             key={`${o.id}-${idx}`}
-                            className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-4 md:p-5 border-2 border-sky-200 flex flex-col md:flex-row md:items-center justify-between gap-3"
+                            className="rounded-xl p-4 md:p-5 border-2 border-sky-200 flex flex-col md:flex-row md:items-center justify-between gap-3 bg-sky-50"
                           >
                             <div className="min-w-0">
                               <h3 className="text-lg font-black text-gray-900 break-words">{item.name}</h3>
@@ -396,7 +396,7 @@ export default function ProfilePage() {
                   ) : (
                     <div className="space-y-3">
                       {reviews.map((r) => (
-                        <div key={r.id} className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl p-4 md:p-5 border-2 border-amber-200">
+                        <div key={r.id} className="rounded-xl p-4 md:p-5 border-2 border-amber-200 bg-amber-50">
                           <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                             <div className="flex gap-0.5" aria-label={`${r.rating} out of 5 stars`}>
                               {[1, 2, 3, 4, 5].map((i) => (

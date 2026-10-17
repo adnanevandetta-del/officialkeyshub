@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function BuyCheapMicrosoftOfficeKeys() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <main className="min-h-screen bg-slate-50">
       <article className="max-w-4xl mx-auto px-4 py-12">
         {/* Header */}
         <header className="mb-8">
@@ -90,7 +90,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
             </h2>
             
             <div className="space-y-6">
-              <div className="bg-gradient-to-r from-orange-50 to-orange-100 p-6 rounded-xl border border-orange-200">
+              <div className="p-6 rounded-xl border border-orange-200 bg-orange-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-star text-orange-600 mr-2"></i>
                   Office 2021 Professional Plus - $49.99
@@ -105,7 +105,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+              <div className="p-6 rounded-xl border border-blue-200 bg-blue-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-briefcase text-blue-600 mr-2"></i>
                   Office 2021 Home & Business - $44.99
@@ -119,7 +119,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
+              <div className="p-6 rounded-xl border border-purple-200 bg-purple-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-cloud text-purple-600 mr-2"></i>
                   Office 365 Personal (1 Year) - $39.99
@@ -133,7 +133,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
+              <div className="p-6 rounded-xl border border-green-200 bg-green-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-history text-green-600 mr-2"></i>
                   Office 2019 Professional Plus - $44.99
@@ -173,7 +173,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               </ul>
               <Link 
                 href="/#products" 
-                className="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-bold rounded-lg hover:from-sky-700 hover:to-sky-800 transition-all shadow-md"
+                className="inline-block mt-4 px-6 py-3 text-white font-bold rounded-lg transition-all shadow-md bg-sky-700 hover:bg-sky-800"
               >
                 Browse Office Keys →
               </Link>
@@ -260,7 +260,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-orange-500 to-red-500 p-6 rounded-xl text-white shadow-xl">
+              <div className="p-6 rounded-xl text-white shadow-xl bg-red-500">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-2xl font-black">Office 2021 Pro Plus</h3>
                   <span className="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold">89% OFF</span>
@@ -274,7 +274,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </Link>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-500 to-indigo-500 p-6 rounded-xl text-white shadow-xl">
+              <div className="p-6 rounded-xl text-white shadow-xl bg-indigo-500">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-2xl font-black">Office 365 (1 Year)</h3>
                   <span className="bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-bold">60% OFF</span>
@@ -317,7 +317,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
           </section>
 
           {/* Conclusion */}
-          <section className="bg-gradient-to-r from-blue-50 to-sky-50 p-8 rounded-xl border-2 border-blue-200">
+          <section className="p-8 rounded-xl border-2 border-blue-200 bg-blue-50">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Conclusion: Get Genuine Office Keys for Less</h2>
             <p className="text-gray-700 mb-4">
               Buying <strong>cheap Microsoft Office keys</strong> is a smart way to save money while getting genuine, fully-functional software. With discounts up to 93%, you can get Office 2021 Professional Plus for just $29.99 instead of $439.99.
@@ -328,7 +328,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
             <div className="flex flex-wrap gap-4">
               <Link 
                 href="/#products" 
-                className="px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-bold rounded-lg hover:from-sky-700 hover:to-sky-800 transition-all shadow-lg"
+                className="px-8 py-4 text-white font-bold rounded-lg transition-all shadow-lg bg-sky-700 hover:bg-sky-800"
               >
                 Browse Office Keys →
               </Link>

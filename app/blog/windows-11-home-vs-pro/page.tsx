@@ -30,7 +30,7 @@ export default function Windows11HomeVsPro() {
         <Breadcrumb items={breadcrumbItems} />
         
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
@@ -43,7 +43,7 @@ export default function Windows11HomeVsPro() {
               <h1 className="text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 Windows 11 Home vs Pro
                 <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                <span className="text-blue-600">
                   Complete Comparison Guide 2026
                 </span>
               </h1>
@@ -98,7 +98,7 @@ export default function Windows11HomeVsPro() {
 
               <div className="not-prose overflow-x-auto mb-8">
                 <table className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
-                  <thead className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                  <thead className="text-white bg-purple-500">
                     <tr>
                       <th className="p-4 text-left">Feature</th>
                       <th className="p-4 text-center">Home</th>
@@ -325,7 +325,7 @@ export default function Windows11HomeVsPro() {
               </h2>
 
               <div className="not-prose grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border-2 border-blue-300">
+                <div className="p-6 rounded-xl border-2 border-blue-300 bg-blue-50">
                   <h3 className="text-2xl font-bold text-blue-900 mb-4 flex items-center gap-2">
                     <i className="fas fa-home"></i>
                     Choose Home If:
@@ -364,7 +364,7 @@ export default function Windows11HomeVsPro() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border-2 border-purple-300">
+                <div className="p-6 rounded-xl border-2 border-purple-300 bg-purple-50">
                   <h3 className="text-2xl font-bold text-purple-900 mb-4 flex items-center gap-2">
                     <i className="fas fa-briefcase"></i>
                     Choose Pro If:
@@ -482,7 +482,7 @@ export default function Windows11HomeVsPro() {
                 ✅ Final Recommendation
               </h2>
 
-              <div className="not-prose bg-gradient-to-r from-sky-50 to-blue-50 p-8 rounded-xl border-2 border-sky-400 mb-8">
+              <div className="not-prose p-8 rounded-xl border-2 border-sky-400 mb-8 bg-sky-50">
                 <h3 className="font-bold text-gray-900 text-xl mb-4">🎯 Our Advice:</h3>
                 <div className="space-y-4 text-gray-700">
                   <p>
@@ -522,7 +522,7 @@ export default function Windows11HomeVsPro() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-purple-600 to-blue-600">
+        <section className="py-16 bg-blue-600">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">
               Ready to Buy Windows 11?

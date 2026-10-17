@@ -507,7 +507,7 @@ export default function OEMvsRetailPage() {
             {/* Final Recommendation */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">🏆 Final Recommendation</h2>
 
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-500 rounded-xl p-8 mb-8">
+            <div className="border-2 border-blue-500 rounded-xl p-8 mb-8 bg-blue-50">
               <p className="text-xl font-bold mb-4">For 95% of users, OEM keys are the best choice.</p>
               <p className="mb-4">
                 <strong>Why?</strong>
@@ -525,7 +525,7 @@ export default function OEMvsRetailPage() {
             </div>
 
             {/* CTA */}
-            <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
+            <div className="rounded-2xl p-8 text-center my-12 bg-[#22c55e]">
               <h2 className="text-3xl font-bold text-black mb-4">Get Genuine Windows 11 Pro OEM Key</h2>
               <p className="text-black text-lg mb-6">
                 Save up to 80% with OEM licensing. Same Windows, massive savings.

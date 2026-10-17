@@ -111,7 +111,7 @@ export default function UsdtPay({ orderId, amount, itemName, deliveryEmail, vari
           </p>
           <a
             href={usdtProofMailto(orderId, itemName, amount, deliveryEmail)}
-            className="flex items-center justify-center min-h-[48px] px-5 py-2.5 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold hover:from-emerald-600 hover:to-emerald-700 transition-all"
+            className="flex items-center justify-center min-h-[48px] px-5 py-2.5 rounded-lg text-white font-bold transition-all bg-emerald-600 hover:bg-emerald-700"
           >
             <i className="fas fa-envelope mr-2"></i>Email payment proof
           </a>

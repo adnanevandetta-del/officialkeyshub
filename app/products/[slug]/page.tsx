@@ -230,7 +230,7 @@ export default async function ProductPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-24 pb-20">
+      <main className="min-h-screen pt-24 pb-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-6 flex flex-wrap items-center gap-2">
@@ -356,7 +356,7 @@ export default async function ProductPage({
                     href={`/products/${r.slug}`}
                     className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
-                    <div className="relative h-24 mb-3 rounded-lg bg-gradient-to-b from-gray-50 to-white border border-gray-100 overflow-hidden flex items-center justify-center">
+                    <div className="relative h-24 mb-3 rounded-lg border border-gray-100 overflow-hidden flex items-center justify-center bg-gray-50">
                       <Image src={getProductImage(r.name)} alt={r.name} fill unoptimized className="object-contain p-2" />
                     </div>
                     <p className="text-gray-900 text-sm font-semibold line-clamp-2 mb-1">{r.name}</p>

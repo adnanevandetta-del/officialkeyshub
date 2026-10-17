@@ -87,7 +87,7 @@ export default function BuyGenuineOfficeCheap() {
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-sky-50 to-teal-50">
+        <section className="py-16 bg-sky-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
@@ -100,7 +100,7 @@ export default function BuyGenuineOfficeCheap() {
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 How to Buy a Genuine Microsoft Office Key Cheap
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-700 to-teal-600">
+                <span className="text-sky-700">
                   Without Getting Scammed (2026)
                 </span>
               </h1>
@@ -197,7 +197,7 @@ export default function BuyGenuineOfficeCheap() {
                   ["💳 Protected payment", "Options like PayPal with buyer protection, plus card and crypto."],
                   ["⚡ Instant delivery", "Your key by email within minutes, with activation help if you need it."],
                 ].map(([t, d], i) => (
-                  <div key={i} className="bg-gradient-to-br from-sky-50 to-teal-50 p-6 rounded-xl border border-sky-200">
+                  <div key={i} className="p-6 rounded-xl border border-sky-200 bg-sky-50">
                     <h3 className="font-bold text-gray-900 mb-2">{t}</h3>
                     <p className="text-gray-700 mb-0">{d}</p>
                   </div>
@@ -236,7 +236,7 @@ export default function BuyGenuineOfficeCheap() {
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
                 How to buy in 4 simple steps
               </h2>
-              <div className="not-prose bg-gradient-to-r from-sky-50 to-teal-50 p-8 rounded-xl mb-10 space-y-5">
+              <div className="not-prose p-8 rounded-xl mb-10 space-y-5 bg-sky-50">
                 {[
                   ["Pick the right edition", "Office 2021/2019 for a one-time lifetime license, or Microsoft 365 for a subscription with cloud storage."],
                   ["Choose a seller with a guarantee", "Confirm there's a refund policy and reachable support before paying."],
@@ -283,7 +283,7 @@ export default function BuyGenuineOfficeCheap() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-br from-sky-700 to-teal-600">
+        <section className="py-16 bg-teal-600">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">Shop genuine Microsoft Office keys</h2>
             <p className="text-xl text-sky-100 mb-8 max-w-3xl mx-auto">

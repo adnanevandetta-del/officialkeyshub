@@ -50,7 +50,7 @@ export default function HowToActivateOffice2021() {
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-orange-50 to-red-50">
+        <section className="py-16 bg-orange-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
@@ -161,7 +161,7 @@ export default function HowToActivateOffice2021() {
               </p>
 
               {/* CTA */}
-              <div className="not-prose bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-8 text-center text-white mb-6">
+              <div className="not-prose rounded-2xl p-8 text-center text-white mb-6 bg-red-600">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">Need an Office 2021 Key?</h2>
                 <p className="text-orange-100 mb-6 max-w-2xl mx-auto">Genuine Office 2021 Professional Plus from $49.99 — instant delivery and lifetime activation.</p>
                 <div className="flex flex-wrap gap-4 justify-center">

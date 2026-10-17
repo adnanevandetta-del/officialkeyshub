@@ -432,7 +432,7 @@ export default function CheapKeysSafePage() {
             {/* Final Verdict */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">🏆 Final Safety Verdict</h2>
 
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-500 rounded-xl p-8 mb-8">
+            <div className="border-2 border-green-500 rounded-xl p-8 mb-8 bg-green-50">
               <p className="text-xl font-bold mb-4">Yes, cheap Windows keys ARE safe - if you buy from reputable sellers.</p>
               <p className="mb-4">
                 <strong>Safety Summary:</strong>
@@ -450,7 +450,7 @@ export default function CheapKeysSafePage() {
             </div>
 
             {/* CTA */}
-            <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
+            <div className="rounded-2xl p-8 text-center my-12 bg-[#22c55e]">
               <h2 className="text-3xl font-bold text-black mb-4">Buy Windows 11 Pro Safely</h2>
               <p className="text-black text-lg mb-6">
                 Genuine OEM keys with 30-day money-back guarantee. 100% safe and secure.

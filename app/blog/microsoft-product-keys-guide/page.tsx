@@ -116,7 +116,7 @@ export default function MicrosoftProductKeysGuide() {
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -127,7 +127,7 @@ export default function MicrosoftProductKeysGuide() {
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 Microsoft Product Keys Explained
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                <span className="text-blue-600">
                   Windows, Office, Server &amp; More (2026)
                 </span>
               </h1>
@@ -417,7 +417,7 @@ export default function MicrosoftProductKeysGuide() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-br from-blue-600 to-indigo-700">
+        <section className="py-16 bg-indigo-700">
           <div className="container mx-auto px-6 text-center max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get a Genuine Microsoft Product Key</h2>
             <p className="text-blue-100 text-lg mb-8">
@@ -426,7 +426,7 @@ export default function MicrosoftProductKeysGuide() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/products/windows-11-pro"
-                className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-black rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition"
+                className="px-8 py-4 text-white font-black rounded-lg transition bg-emerald-600 hover:bg-emerald-700"
               >
                 Buy Windows 11 Pro — $16.99
               </Link>

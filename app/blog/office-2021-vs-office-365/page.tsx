@@ -420,7 +420,7 @@ export default function Office2021Vs365Page() {
             {/* Final Verdict */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">🏆 Final Verdict</h2>
 
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-500 rounded-xl p-8 mb-8">
+            <div className="border-2 border-blue-500 rounded-xl p-8 mb-8 bg-blue-50">
               <p className="text-xl font-bold mb-4">For most individual users, Office 2021 is the better value.</p>
               <p className="mb-4">
                 <strong>Why Office 2021 wins:</strong>
@@ -447,7 +447,7 @@ export default function Office2021Vs365Page() {
             </div>
 
             {/* CTA */}
-            <div className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-2xl p-8 text-center my-12">
+            <div className="rounded-2xl p-8 text-center my-12 bg-[#22c55e]">
               <h2 className="text-3xl font-bold text-black mb-4">Get Office 2021 Professional Plus</h2>
               <p className="text-black text-lg mb-6">
                 Save $300 compared to Microsoft 365 over 5 years. Pay once, use forever.

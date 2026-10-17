@@ -110,7 +110,7 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black font-bold rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-md"
+              className="w-full py-3 text-black font-bold rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-md bg-[#22c55e]"
             >
               <i className="fas fa-paper-plane"></i> Send Message
             </button>

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function VersionCheck() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-sky-50 flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-8 bg-blue-50">
       <div className="bg-white rounded-2xl shadow-2xl p-12 max-w-2xl w-full">
         <h1 className="text-4xl font-bold text-center mb-8 text-sky-700">
           Version Check - v3.0.1
@@ -17,7 +17,7 @@ export default function VersionCheck() {
         <div className="space-y-6">
           <div className="border-l-4 border-blue-500 pl-4">
             <h2 className="font-bold text-xl mb-2">✅ PayPal Logo Test</h2>
-            <button className="w-full py-3 rounded-lg font-bold bg-gradient-to-r from-blue-600 to-blue-700 text-white flex items-center justify-center gap-2">
+            <button className="w-full py-3 rounded-lg font-bold text-white flex items-center justify-center gap-2 bg-blue-700">
               <span>Buy Now</span>
               <i className="fab fa-paypal text-2xl"></i>
             </button>

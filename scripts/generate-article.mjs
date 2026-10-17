@@ -5,7 +5,7 @@
  * Picks the next `queued` keyword from content/blog/keywords.json, asks the
  * Claude API to write a house-style article, writes it as an MDX draft in
  * content/blog/, and flips the keyword to `drafted`. A GitHub Action runs this
- * on a schedule and opens a PR; merging the PR publishes the article.
+ * when started manually and opens a PR for review; merging it approves the article.
  *
  * Env:
  *   ANTHROPIC_API_KEY  (required)

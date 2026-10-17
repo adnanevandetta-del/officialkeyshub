@@ -1,13 +1,11 @@
 name: Auto Blog
 
-# Generates one SEO blog article from the next queued keyword and opens a PR.
-# Merging the PR publishes the article (it appears on /blog and in the sitemap).
+# On demand only (no schedule): run it from the Actions tab to draft one SEO
+# article from the next queued keyword. It opens a PR for review — nothing is
+# published until the PR is merged and the site is deployed.
 
 on:
-  schedule:
-    # Weekly — Mondays at 09:00 UTC.
-    - cron: "0 9 * * 1"
-  workflow_dispatch: {} # allow manual runs from the Actions tab
+  workflow_dispatch: {} # manual runs only, from the Actions tab
 
 permissions:
   contents: write
@@ -47,10 +45,11 @@ jobs:
             - **Slug:** `${{ steps.gen.outputs.slug }}`
             - **File:** `content/blog/${{ steps.gen.outputs.slug }}.mdx`
 
-            Review it on the Vercel preview deployment for this PR. Edit the MDX
-            if needed, then **merge to publish** — it will appear on `/blog` and
-            in the sitemap automatically. To hold it back, set `draft: true` in
-            the file's frontmatter.
+            **Preview before publishing:** read it in the "Files changed" tab, or
+            ask for a local preview of `/blog/${{ steps.gen.outputs.slug }}`.
+            Edit the MDX if needed, then **merge to approve** — it goes live on
+            `/blog` and in the sitemap with the next deploy. To reject it, close
+            the PR (or set `draft: true` in the frontmatter to keep it hidden).
 
             🤖 Generated with [Claude Code](https://claude.com/claude-code)
           labels: auto-blog

@@ -87,7 +87,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-indigo-50 to-blue-50">
+        <section className="py-16 bg-indigo-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
@@ -100,7 +100,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 How to Buy Microsoft Retail Keys
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">
+                <span className="text-indigo-600">
                   And Are They Safe? (2026)
                 </span>
               </h1>
@@ -226,7 +226,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Buy safely in 4 steps</h2>
-              <div className="not-prose bg-gradient-to-r from-indigo-50 to-blue-50 p-8 rounded-xl mb-10 space-y-5">
+              <div className="not-prose p-8 rounded-xl mb-10 space-y-5 bg-indigo-50">
                 {[
                   ["Confirm you want retail", "Choose retail if you may move the license to a new PC or want Microsoft support; OEM if it stays on one machine."],
                   ["Check the seller's guarantee", "Make sure there's a clear refund policy and reachable support before paying."],
@@ -273,7 +273,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-br from-indigo-600 to-blue-600">
+        <section className="py-16 bg-blue-600">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">Shop genuine Microsoft keys</h2>
             <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">

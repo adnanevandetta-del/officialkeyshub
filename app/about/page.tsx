@@ -33,7 +33,7 @@ export default function AboutPage() {
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-sky-50">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
                   Genuine Microsoft Licenses
                   <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-700">
+                  <span className="text-blue-600">
                     at Honest Prices
                   </span>
                 </h1>
@@ -104,7 +104,7 @@ export default function AboutPage() {
         </section>
 
         {/* How we do business */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-white" id="how-we-work">
+        <section className="py-16 bg-blue-50" id="how-we-work">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-4xl font-bold mb-4 text-gray-900 text-center">How We Do Business</h2>
@@ -179,7 +179,7 @@ export default function AboutPage() {
         </section>
 
         {/* How We Operate */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
+        <section className="py-16 bg-blue-50">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-4xl font-bold mb-4 text-gray-900 text-center">
@@ -312,7 +312,7 @@ export default function AboutPage() {
               </div>
 
               {/* Independence Notice */}
-              <div className="mt-12 bg-gradient-to-r from-blue-50 to-sky-50 border-2 border-blue-200 rounded-2xl p-8">
+              <div className="mt-12 border-2 border-blue-200 rounded-2xl p-8 bg-blue-50">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <i className="fas fa-circle-info text-white text-xl"></i>
@@ -422,7 +422,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our Commitment */}
-        <section className="py-16 bg-gradient-to-br from-sky-50 to-white">
+        <section className="py-16 bg-sky-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">Our Commitment to You</h2>
@@ -531,7 +531,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="mt-8 bg-gradient-to-r from-blue-50 to-sky-50 rounded-xl p-8 border-2 border-blue-200">
+              <div className="mt-8 rounded-xl p-8 border-2 border-blue-200 bg-blue-50">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Where We Are Today</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                   <div>
@@ -557,7 +557,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-600 to-sky-700">
+        <section className="py-16 bg-sky-700">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">

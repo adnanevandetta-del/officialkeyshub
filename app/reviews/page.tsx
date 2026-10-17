@@ -9,25 +9,25 @@ import { addReview, useAccountData } from "../lib/account";
 const promises = [
   {
     icon: "fas fa-shield-alt",
-    color: "from-emerald-500 to-emerald-600",
+    color: "bg-emerald-600",
     title: "30-Day Money-Back Guarantee",
     text: "If your key doesn't activate and we can't fix it, you get your money back.",
   },
   {
     icon: "fab fa-windows",
-    color: "from-sky-500 to-blue-600",
+    color: "bg-blue-600",
     title: "Activates on Microsoft's Servers",
     text: "Every key is genuine and activates directly with Microsoft.",
   },
   {
     icon: "fas fa-headset",
-    color: "from-orange-500 to-orange-600",
+    color: "bg-orange-600",
     title: "Help When You Need It",
     text: "Step-by-step activation guides, plus support on WhatsApp and email.",
   },
   {
     icon: "fas fa-envelope-open-text",
-    color: "from-purple-500 to-purple-600",
+    color: "bg-purple-600",
     title: "Simple Delivery",
     text: "Your key and instructions are sent to your email or WhatsApp after payment is confirmed.",
   },
@@ -74,7 +74,7 @@ export default function ReviewsPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-950 pt-24 pb-20">
+      <main className="min-h-screen pt-24 pb-20 bg-slate-950">
         <div className="max-w-6xl mx-auto px-6">
           {/* Hero */}
           <div className="text-center mb-12">
@@ -98,7 +98,7 @@ export default function ReviewsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {promises.map((p) => (
               <div key={p.title} className="glass glow-hover rounded-2xl p-6 transition-all duration-300">
-                <div className={`w-12 h-12 bg-gradient-to-br ${p.color} rounded-xl flex items-center justify-center text-white text-xl shadow-md mb-4`}>
+                <div className={`w-12 h-12 ${p.color} rounded-xl flex items-center justify-center text-white text-xl shadow-md mb-4`}>
                   <i className={p.icon}></i>
                 </div>
                 <h3 className="text-white font-bold text-lg mb-2">{p.title}</h3>
@@ -130,7 +130,7 @@ export default function ReviewsPage() {
                 <div key={r.name + r.date} className="glass rounded-2xl p-6 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm bg-blue-600">
                         {r.name.charAt(0)}
                       </div>
                       <div>
@@ -214,7 +214,7 @@ export default function ReviewsPage() {
             <button
               onClick={submit}
               disabled={!text.trim()}
-              className="w-full py-3 rounded-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-lg font-bold text-white transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700"
             >
               <i className="fab fa-whatsapp text-lg"></i>
               Submit Review

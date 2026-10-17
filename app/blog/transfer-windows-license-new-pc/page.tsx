@@ -52,7 +52,7 @@ export default function TransferWindowsLicense() {
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50">
+        <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-4">
@@ -164,7 +164,7 @@ export default function TransferWindowsLicense() {
               </p>
 
               {/* CTA */}
-              <div className="not-prose bg-gradient-to-br from-sky-700 to-sky-800 rounded-2xl p-8 text-center text-white mb-6">
+              <div className="not-prose rounded-2xl p-8 text-center text-white mb-6 bg-sky-800">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">Need a Fresh Windows License?</h2>
                 <p className="text-sky-100 mb-6 max-w-2xl mx-auto">Genuine Windows 10 &amp; 11 keys from $29.99 — instant delivery and lifetime activation.</p>
                 <div className="flex flex-wrap gap-4 justify-center">

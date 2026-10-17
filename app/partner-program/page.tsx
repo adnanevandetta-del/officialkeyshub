@@ -1,322 +1,191 @@
 import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Partner Program - Affiliate Marketing | Official Keys Hub",
-  description: "Join our affiliate program and earn commission by promoting genuine Microsoft software keys. Competitive rates, instant payouts, and dedicated support for partners.",
-  keywords: "affiliate program, partner program, earn money, affiliate marketing, microsoft keys affiliate, reseller program",
+  title: "Partner Program — Earn up to 20% Commission | Official Keys Hub",
+  description:
+    "Recommend genuine Microsoft licenses and earn 10–20% commission on every completed order you refer. Free to join, personal referral code, monthly payouts via PayPal, USDT or bank transfer.",
+  keywords: "affiliate program, partner program, microsoft keys affiliate, software affiliate program, referral program",
+  alternates: { canonical: "https://www.officialkeyshub.com/partner-program" },
 };
+
+// Programme terms shown on this page and summarised on the homepage
+// (app/components/PartnerProgramPromo.tsx) — keep the two in sync.
+const tiers = [
+  { name: "Starter", sales: "1–10 referred sales / month", pct: "10%", perks: ["Personal referral code", "Monthly payouts", "Email & WhatsApp support"] },
+  { name: "Pro", sales: "11–50 referred sales / month", pct: "15%", perks: ["Everything in Starter", "Priority support", "Ready-made product images & copy"], featured: true },
+  { name: "Elite", sales: "51+ referred sales / month", pct: "20%", perks: ["Everything in Pro", "Payouts every two weeks", "Early access to new products"] },
+];
+
+const steps = [
+  { t: "Apply", d: "Message us on WhatsApp or email with where you'll promote (site, channel or shop). We reply within 1–2 business days." },
+  { t: "Share your code", d: "You get a personal referral code. Customers enter it at checkout, and every order with your code is credited to you." },
+  { t: "Get paid", d: "Commission is earned on completed orders once the 30-day money-back window has passed, then paid out monthly." },
+];
+
+const faqs = [
+  {
+    q: "Who can become a partner?",
+    a: "Bloggers, YouTubers, IT consultants, PC repair shops and anyone with an audience that needs Windows or Office licenses. You need a real place to promote — a site, channel, social page or shop.",
+  },
+  {
+    q: "How are referrals tracked?",
+    a: "With your personal referral code. When a customer enters it at checkout, the order is recorded against your code. We send you a statement of your referred orders with every payout.",
+  },
+  {
+    q: "When is commission paid?",
+    a: "Commission is earned once an order is complete and its 30-day money-back window has passed (refunded orders don't earn commission). Payouts go out monthly — every two weeks on the Elite tier — once your balance reaches $50.",
+  },
+  {
+    q: "How do I get paid?",
+    a: "By PayPal, USDT or bank transfer — your choice.",
+  },
+  {
+    q: "Is there a cost to join?",
+    a: "No. The program is free to join, with no fees and no minimum sales commitment.",
+  },
+  {
+    q: "Are there any rules?",
+    a: "Promote honestly: no spam, no misleading claims, don't present yourself as Microsoft or as us, and don't bid on our brand name in paid search ads. Accounts that break these rules are closed and unpaid commission is forfeited.",
+  },
+];
+
+const JOIN_WA = "https://wa.me/16019756129?text=" + encodeURIComponent("Hi! I'd like to apply for the Partner Program.");
+const JOIN_MAIL = "mailto:officialkeyshub@gmail.com?subject=" + encodeURIComponent("Partner Program application");
 
 export default function PartnerProgramPage() {
   return (
     <>
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-sky-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-sky-600/20 px-4 py-2 rounded-full mb-6">
-            <i className="fas fa-handshake text-sky-500"></i>
-            <span className="text-sky-400 font-bold text-sm uppercase">Partner Program</span>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-            Earn Money as Our Partner
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Join our affiliate program and earn up to 30% commission on every sale you refer. 
-            Help businesses get genuine Microsoft software at great prices.
-          </p>
-          <a
-            href="https://wa.me/16019756129?text=Hi! I want to join the Partner Program"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-black text-lg rounded-xl hover:from-sky-700 hover:to-sky-800 transition-all shadow-xl hover:scale-105"
-          >
-            <i className="fab fa-whatsapp mr-2"></i>
-            Become a Partner Now
-          </a>
-        </div>
-      </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-gray-900 mb-4">Why Partner With Us?</h2>
-            <p className="text-xl text-gray-600">Industry-leading benefits and support</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Benefit 1 */}
-            <div className="bg-gradient-to-br from-sky-50 to-green-50 rounded-2xl p-8 border-2 border-sky-200 hover:border-sky-600 transition-all">
-              <div className="w-16 h-16 bg-sky-700 rounded-full flex items-center justify-center mb-6">
-                <i className="fas fa-percentage text-white text-2xl"></i>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Up to 30% Commission</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Earn competitive commissions on every sale. The more you sell, the higher your commission rate.
-              </p>
-            </div>
-
-            {/* Benefit 2 */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-200 hover:border-blue-500 transition-all">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6">
-                <i className="fas fa-bolt text-white text-2xl"></i>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Instant Payouts</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Get paid quickly via PayPal, bank transfer, or cryptocurrency. Weekly payment schedule available.
-              </p>
-            </div>
-
-            {/* Benefit 3 */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-200 hover:border-purple-500 transition-all">
-              <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6">
-                <i className="fas fa-headset text-white text-2xl"></i>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Dedicated Support</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Get priority support, marketing materials, and a dedicated account manager to help you succeed.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Commission Tiers */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-gray-900 mb-4">Commission Structure</h2>
-            <p className="text-xl text-gray-600">Earn more as you sell more</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Starter */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
-              <div className="text-center mb-6">
-                <i className="fas fa-star text-gray-400 text-4xl mb-3"></i>
-                <h3 className="text-2xl font-bold text-gray-900">Starter</h3>
-                <p className="text-gray-600 mt-2">0-10 sales/month</p>
-              </div>
-              <div className="text-center mb-6">
-                <p className="text-5xl font-black text-sky-700">15%</p>
-                <p className="text-gray-600 mt-2">Commission per sale</p>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Basic marketing materials
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Email support
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Monthly payouts
-                </li>
-              </ul>
-            </div>
-
-            {/* Professional */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl border-4 border-sky-600 relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-sky-600 text-white px-4 py-1 rounded-full text-sm font-bold">
-                Most Popular
-              </div>
-              <div className="text-center mb-6">
-                <i className="fas fa-crown text-sky-700 text-4xl mb-3"></i>
-                <h3 className="text-2xl font-bold text-gray-900">Professional</h3>
-                <p className="text-gray-600 mt-2">11-50 sales/month</p>
-              </div>
-              <div className="text-center mb-6">
-                <p className="text-5xl font-black text-sky-700">25%</p>
-                <p className="text-gray-600 mt-2">Commission per sale</p>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Premium marketing materials
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Priority support
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Weekly payouts
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Custom discount codes
-                </li>
-              </ul>
-            </div>
-
-            {/* Enterprise */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
-              <div className="text-center mb-6">
-                <i className="fas fa-rocket text-blue-600 text-4xl mb-3"></i>
-                <h3 className="text-2xl font-bold text-gray-900">Enterprise</h3>
-                <p className="text-gray-600 mt-2">51+ sales/month</p>
-              </div>
-              <div className="text-center mb-6">
-                <p className="text-5xl font-black text-sky-700">30%</p>
-                <p className="text-gray-600 mt-2">Commission per sale</p>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  All Professional features
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Dedicated account manager
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Instant payouts
-                </li>
-                <li className="flex items-center gap-2 text-gray-700">
-                  <i className="fas fa-check text-sky-700"></i>
-                  Custom partnership terms
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-gray-900 mb-4">How It Works</h2>
-            <p className="text-xl text-gray-600">Start earning in 3 simple steps</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-sky-700 text-white rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-6 shadow-lg">
-                1
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Sign Up</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Contact us via WhatsApp or email to join our partner program. Quick approval process.
-              </p>
-            </div>
-
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-6 shadow-lg">
-                2
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Promote</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Get your unique referral link and start promoting our products using our marketing materials.
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="w-20 h-20 bg-purple-600 text-white rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-6 shadow-lg">
-                3
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Earn</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Earn commission on every sale. Track your earnings in real-time and get paid on schedule.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-sky-700 to-sky-800">
+      {/* Hero */}
+      <section className="bg-[#005A9E] text-white py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <i className="fas fa-handshake text-white text-6xl mb-6"></i>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Ready to Start Earning?
-          </h2>
-          <p className="text-xl text-sky-100 mb-8">
-            Join hundreds of partners already earning with Official Keys Hub. 
-            No upfront costs, no commitment required.
+          <span className="inline-flex items-center gap-2 bg-[#004578] border border-white/20 px-4 py-1.5 rounded-full mb-6 text-xs font-bold uppercase tracking-wide">
+            <i className="fas fa-handshake"></i> Partner Program
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight text-white">
+            Earn up to 20% on every order you refer
+          </h1>
+          <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto">
+            Recommend genuine Microsoft licenses to your audience and earn 10–20% commission on every completed order.
+            Free to join, simple to track, paid monthly.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://wa.me/16019756129?text=Hi! I want to join the Partner Program"
+              href={JOIN_WA}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-white text-sky-700 font-black text-lg rounded-xl hover:bg-sky-50 transition-all shadow-xl"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-[#005A9E] font-bold rounded-xl hover:bg-blue-50 transition"
             >
-              <i className="fab fa-whatsapp mr-2"></i>
-              Contact Us on WhatsApp
+              <i className="fab fa-whatsapp text-lg"></i> Apply on WhatsApp
             </a>
             <a
-              href="mailto:officialkeyshub@gmail.com?subject=Partner Program Inquiry"
-              className="px-8 py-4 bg-sky-800 text-white font-black text-lg rounded-xl hover:bg-sky-900 transition-all shadow-xl"
+              href={JOIN_MAIL}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#004578] text-white font-bold rounded-xl border border-white/20 hover:bg-[#003A66] transition"
             >
-              <i className="fas fa-envelope mr-2"></i>
-              Email Us
+              <i className="fas fa-envelope"></i> Apply by email
             </a>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-gray-900 mb-4">Frequently Asked Questions</h2>
+      {/* Tiers */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Commission tiers</h2>
+            <p className="text-lg text-gray-600">Your rate is set by the number of referred sales you make each month.</p>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {tiers.map((t) => (
+              <div
+                key={t.name}
+                className={`relative rounded-2xl p-7 border ${t.featured ? "border-2 border-[#005A9E] shadow-xl" : "border-gray-200 shadow-sm"} bg-white`}
+              >
+                {t.featured && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#005A9E] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                    Most common
+                  </span>
+                )}
+                <p className="text-sm font-bold uppercase tracking-wide text-gray-500 text-center">{t.name}</p>
+                <p className="text-5xl font-extrabold text-[#005A9E] text-center mt-3">{t.pct}</p>
+                <p className="text-sm text-gray-500 text-center mt-1">commission per completed order</p>
+                <p className="text-sm font-semibold text-gray-700 text-center mt-4 mb-5">{t.sales}</p>
+                <ul className="space-y-2.5 border-t border-gray-100 pt-5">
+                  {t.perks.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-gray-700">
+                      <i className="fas fa-check text-[#005A9E] mt-1"></i>
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-gray-500 text-center mt-6">
+            Example: refer 20 orders of Windows 11 Pro ($16.99) in a month on the Pro tier and you earn about $51.
+          </p>
+        </div>
+      </section>
 
-          <div className="space-y-6">
-            {/* FAQ 1 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <i className="fas fa-question-circle text-sky-700"></i>
-                Who can become a partner?
-              </h3>
-              <p className="text-gray-700">
-                Anyone! Whether you're a blogger, influencer, business owner, or have an audience interested in Microsoft software, you can join our partner program.
-              </p>
-            </div>
+      {/* How it works */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">How it works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {steps.map((s, i) => (
+              <div key={s.t} className="rounded-2xl bg-white border border-gray-200 p-7">
+                <span className="inline-flex w-11 h-11 rounded-full bg-[#005A9E] text-white font-extrabold text-lg items-center justify-center mb-4">
+                  {i + 1}
+                </span>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{s.t}</h3>
+                <p className="text-gray-700 leading-relaxed">{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* FAQ 2 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <i className="fas fa-question-circle text-sky-700"></i>
-                How do I track my sales and commissions?
-              </h3>
-              <p className="text-gray-700">
-                You'll get access to a partner dashboard where you can track clicks, conversions, earnings, and payment history in real-time.
-              </p>
-            </div>
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Questions & program rules</h2>
+          <div className="space-y-3">
+            {faqs.map((f) => (
+              <details key={f.q} className="group rounded-2xl border border-gray-200 bg-white p-5 open:shadow-md transition">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-lg text-gray-900">
+                  {f.q}
+                  <i className="fas fa-plus text-sm text-gray-400 transition group-open:rotate-45"></i>
+                </summary>
+                <p className="mt-3 text-gray-700">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* FAQ 3 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <i className="fas fa-question-circle text-sky-700"></i>
-                When and how do I get paid?
-              </h3>
-              <p className="text-gray-700">
-                Payments are processed weekly or monthly depending on your tier. We support PayPal, bank transfer, USDT, and other payment methods with a minimum payout of $100.
-              </p>
-            </div>
-
-            {/* FAQ 4 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <i className="fas fa-question-circle text-sky-700"></i>
-                Is there a cost to join?
-              </h3>
-              <p className="text-gray-700">
-                No! Our partner program is completely free to join. There are no hidden fees or upfront costs.
-              </p>
-            </div>
+      {/* CTA */}
+      <section className="py-16 bg-[#005A9E]">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to apply?</h2>
+          <p className="text-lg text-white mb-8">Free to join. Tell us where you&apos;ll promote and we&apos;ll set up your referral code.</p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={JOIN_WA}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-[#005A9E] font-bold rounded-xl hover:bg-blue-50 transition"
+            >
+              <i className="fab fa-whatsapp text-lg"></i> Apply on WhatsApp
+            </a>
+            <a
+              href={JOIN_MAIL}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#004578] text-white font-bold rounded-xl border border-white/20 hover:bg-[#003A66] transition"
+            >
+              <i className="fas fa-envelope"></i> Apply by email
+            </a>
           </div>
         </div>
       </section>

@@ -226,7 +226,7 @@ export default function FAQPage() {
         <Breadcrumb items={breadcrumbItems} />
         
         {/* Header */}
-        <section className="py-16 bg-gradient-to-br from-sky-50 to-white">
+        <section className="py-16 bg-sky-50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-5xl font-extrabold mb-4 text-gray-900">
@@ -282,7 +282,7 @@ export default function FAQPage() {
         </section>
 
         {/* Still Have Questions */}
-        <section className="py-16 bg-gradient-to-br from-sky-50 to-white">
+        <section className="py-16 bg-sky-50">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-4 text-gray-900">Still Have Questions?</h2>
@@ -294,7 +294,7 @@ export default function FAQPage() {
                   href="https://wa.me/16019756129"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-bold rounded-lg hover:from-sky-700 hover:to-sky-800 transition-all shadow-lg inline-flex items-center justify-center"
+                  className="px-8 py-4 text-white font-bold rounded-lg transition-all shadow-lg inline-flex items-center justify-center bg-sky-700 hover:bg-sky-800"
                 >
                   <i className="fab fa-whatsapp mr-2 text-xl"></i>
                   Chat on WhatsApp

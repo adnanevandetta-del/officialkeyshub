@@ -13,7 +13,7 @@ export default function BlogPage() {
     <>
       <Navbar />
       <CategoryBar />
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <main className="min-h-screen bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 py-12">
           {/* Header */}
           <div className="mb-10">
@@ -33,7 +33,7 @@ export default function BlogPage() {
           <BlogList posts={posts} />
 
           {/* CTA Section */}
-          <div className="mt-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 md:p-12 text-center text-white">
+          <div className="mt-16 rounded-2xl p-8 md:p-12 text-center text-white bg-blue-700">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Need Help with Activation?</h2>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
               Our support team is available 24/7 to help you with Windows and Office activation, installation, and any technical questions.

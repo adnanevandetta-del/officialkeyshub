@@ -8,7 +8,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import { getMdxArticle, getMdxSlugs } from "../../lib/blog-mdx";
 import { mdxComponents } from "../mdx-components";
 
-const SITE = "https://www.officialkeyshub.com";
+const SITE = "https://officialkeyshub.com";
 
 // Hand-written .tsx article folders take route priority; this dynamic segment
 // only serves auto-generated MDX slugs, and 404s for anything else.
@@ -90,7 +90,7 @@ export default async function MdxBlogArticle({
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Hero */}
-        <section className="py-12 md:py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <section className="py-12 md:py-16 bg-blue-50">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto">
               <div className="flex items-center gap-3 mb-4 flex-wrap">
@@ -127,7 +127,7 @@ export default async function MdxBlogArticle({
               <MDXRemote source={content} components={mdxComponents} />
 
               {/* CTA */}
-              <div className="mt-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 text-center text-white">
+              <div className="mt-14 rounded-2xl p-8 text-center text-white bg-blue-700">
                 <h2 className="text-2xl font-bold mb-3">Need a genuine key?</h2>
                 <p className="text-blue-100 mb-6 max-w-xl mx-auto">
                   Get genuine Microsoft licenses with instant delivery, a 30-day money-back guarantee, and 24/7 support.

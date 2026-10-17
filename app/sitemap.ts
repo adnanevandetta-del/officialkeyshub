@@ -7,9 +7,8 @@ import { getMdxListItems } from './lib/blog-mdx';
 const LAST_UPDATED = new Date('2026-09-23');
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Production domain — must match the host that serves 200 (www), so sitemap
-  // URLs don't 307-redirect to www and get flagged as "incorrect pages".
-  const baseUrl = 'https://www.officialkeyshub.com';
+  // Production domain — use non-www as primary (cleaner, shorter)
+  const baseUrl = 'https://officialkeyshub.com';
 
   const productPages: MetadataRoute.Sitemap = canonicalProducts.map((p) => ({
     url: `${baseUrl}/products/${p.slug}`,

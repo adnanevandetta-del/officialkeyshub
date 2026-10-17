@@ -51,7 +51,7 @@ export default function ProductImageZoom({
         onMouseLeave={() => setHover(false)}
         onMouseMove={(e) => setOrigin(pct(e))}
         aria-label={`Zoom image: ${alt}`}
-        className="group relative block w-full h-64 md:h-80 rounded-2xl bg-gradient-to-b from-gray-50 to-white border border-gray-200 shadow-sm overflow-hidden cursor-zoom-in"
+        className="group relative block w-full h-64 md:h-80 rounded-2xl border border-gray-200 shadow-sm overflow-hidden cursor-zoom-in bg-gray-50"
       >
         <Image
           src={src}
