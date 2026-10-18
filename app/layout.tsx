@@ -96,6 +96,20 @@ export default function RootLayout({
         <meta name="theme-color" content="#0369a1" />
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="sG23QnRZt0jwlqElmdDi6H0SfVOqBFkGJllZlzgBFtk" />
+        
+        {/* Google Analytics - G-DQJRSHQN1M */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-DQJRSHQN1M"
+          strategy="beforeInteractive"
+        />
+        <Script id="google-analytics-config" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DQJRSHQN1M');
+          `}
+        </Script>
       </head>
       <body className={jakarta.className}>
         <CartProvider>
@@ -140,20 +154,6 @@ export default function RootLayout({
 
         {children}
         </CartProvider>
-        
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-DQJRSHQN1M"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-DQJRSHQN1M');
-          `}
-        </Script>
       </body>
     </html>
   );
