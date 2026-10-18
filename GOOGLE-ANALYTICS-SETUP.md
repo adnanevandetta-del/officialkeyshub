@@ -6,7 +6,7 @@
 
 | Setting | Value |
 |---------|-------|
-| **GA Measurement ID** | `G-150ZZZL2J8` |
+| **GA Measurement ID** | `G-DQJRSHQN1M` |
 | **Location** | `app/layout.tsx` (lines 150-157) |
 | **Status** | ✅ Active and tracking |
 | **Implementation** | Direct gtag.js (recommended) |
