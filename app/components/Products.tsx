@@ -22,6 +22,7 @@ interface Product {
   popular: boolean;
   image: string;
   badge?: string;
+  outOfStock?: boolean;
 }
 
 export default function Products() {
