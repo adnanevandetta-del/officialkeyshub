@@ -21,6 +21,8 @@ type Tab = 'profile' | 'orders' | 'licenses' | 'reviews' | 'settings';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function ProfilePage() {
+  // useAccountData loads fresh data from localStorage and automatically
+  // re-renders when localStorage changes (via storage events or direct updates)
   const { account, orders, reviews, ready } = useAccountData();
   const [activeTab, setActiveTab] = useState<Tab>('profile');
   const [isEditing, setIsEditing] = useState(false);
@@ -44,10 +46,14 @@ export default function ProfilePage() {
     return () => window.removeEventListener('hashchange', applyHash);
   }, []);
 
+  // Always sync form with fresh account data
   useEffect(() => {
     setPromo(getStoredPromo());
-    if (account && !isEditing) {
+    if (account) {
       setForm({ name: account.name, email: account.email, phone: account.phone });
+      // Reset editing state to ensure fresh data is shown
+      setIsEditing(false);
+      setFormError('');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
@@ -68,11 +74,13 @@ export default function ProfilePage() {
       setFormError('Please enter a valid email address.');
       return;
     }
-    saveAccount(form);
+    const updatedAccount = saveAccount(form);
     setPromo(getStoredPromo());
     setFormError('');
     setIsEditing(false);
     setSaved(true);
+    // Ensure form reflects the saved data
+    setForm({ name: updatedAccount.name, email: updatedAccount.email, phone: updatedAccount.phone });
     setTimeout(() => setSaved(false), 2500);
   };
 
