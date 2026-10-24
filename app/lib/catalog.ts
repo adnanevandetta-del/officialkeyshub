@@ -10,6 +10,7 @@ export interface CatalogProduct {
   popular: boolean;
   image: string;
   badge?: string;
+  outOfStock?: boolean;
   // Optional product-specific overview paragraph for the product page; falls
   // back to the category intro when absent.
   overview?: string;
@@ -700,6 +701,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
         popular: false,
         image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=600&fit=crop&q=80",
         badge: "New",
+        outOfStock: true,
         overview:
           "SQL Server 2025 is the latest SQL Server release (generally available since November 2025). Standard edition brings the newest database engine with built-in AI capabilities such as vector data and vector search, plus improved performance, security and developer features for production workloads.",
       },

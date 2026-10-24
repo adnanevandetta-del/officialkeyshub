@@ -185,9 +185,16 @@ export default function Products() {
                   alt={product.name}
                   fill
                   unoptimized
-                  className="object-contain p-5 hover:scale-[1.06] transition-transform duration-500 drop-shadow-[0_12px_22px_rgba(0,0,0,0.5)]"
+                  className={`object-contain p-5 hover:scale-[1.06] transition-transform duration-500 drop-shadow-[0_12px_22px_rgba(0,0,0,0.5)] ${product.outOfStock ? 'opacity-40 grayscale' : ''}`}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
+                {product.outOfStock && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-red-600 text-white px-6 py-3 rounded-xl font-bold text-lg shadow-2xl border-2 border-white/30 rotate-[-12deg]">
+                      OUT OF STOCK
+                    </div>
+                  </div>
+                )}
               </Link>
 
               <div className="p-4 md:p-6 flex flex-col flex-grow">
@@ -232,22 +239,38 @@ export default function Products() {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
+                      if (product.outOfStock) return;
                       setSelectedProduct(product);
                       setShowModal(true);
                     }}
-                    className="press-3d w-full min-h-[48px] py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center bg-white text-[#005A9E] hover:bg-blue-50 shadow-lg"
+                    disabled={product.outOfStock}
+                    className={`press-3d w-full min-h-[48px] py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center shadow-lg ${
+                      product.outOfStock 
+                        ? 'bg-gray-400 text-gray-600 cursor-not-allowed opacity-60' 
+                        : 'bg-white text-[#005A9E] hover:bg-blue-50'
+                    }`}
                     style={{
                       boxShadow: '0 4px 14px rgba(0, 0, 0, 0.2)'
                     }}
                   >
                     <span className="flex items-center gap-2">
-                      Buy Now
-                      <i className="fab fa-paypal text-2xl"></i>
+                      {product.outOfStock ? (
+                        <>
+                          <i className="fas fa-ban"></i>
+                          Out of Stock
+                        </>
+                      ) : (
+                        <>
+                          Buy Now
+                          <i className="fab fa-paypal text-2xl"></i>
+                        </>
+                      )}
                     </span>
                   </button>
                   <button
                     onClick={(e) => {
                       e.preventDefault();
+                      if (product.outOfStock) return;
                       addToCart({
                         id: product.name.toLowerCase().replace(/\s+/g, '-'),
                         name: product.name,
@@ -258,12 +281,17 @@ export default function Products() {
                       setShowCartPreview(true);
                       setTimeout(() => setShowCartPreview(false), 2000);
                     }}
-                    className="press-3d w-full min-h-[44px] py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center bg-emerald-600 text-white hover:bg-emerald-700 shadow-md"
+                    disabled={product.outOfStock}
+                    className={`press-3d w-full min-h-[44px] py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center shadow-md ${
+                      product.outOfStock
+                        ? 'bg-gray-500 text-gray-300 cursor-not-allowed opacity-60'
+                        : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                    }`}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
-                    Add to Cart
+                    {product.outOfStock ? 'Unavailable' : 'Add to Cart'}
                   </button>
                 </div>
               </div>
