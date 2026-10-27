@@ -16,6 +16,33 @@ export interface BlogListItem {
 
 export const staticBlogPosts: BlogListItem[] = [
   {
+    slug: "windows-11-24h2-end-support-october-2026",
+    title: "Windows 11 24H2 End of Support: What You Need to Know (October 2026)",
+    excerpt: "Windows 11 version 24H2 Home and Pro reach end of support on October 13, 2026. Learn what this means for your PC, how to upgrade safely, and where to get genuine Windows keys.",
+    category: "Windows",
+    readTime: "8 min",
+    date: "Jan 15, 2026",
+    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+  },
+  {
+    slug: "microsoft-office-activation-complete-guide",
+    title: "Microsoft Office Activation: Complete Guide (2024, 2021, 2019)",
+    excerpt: "Learn how to activate Office 2024, 2021, and 2019 with step-by-step guides for all key types (Retail, Online, Bind, Phone). Real product images, troubleshooting tips, and honest advice from software sellers.",
+    category: "Activation",
+    readTime: "18 min",
+    date: "Jan 15, 2026",
+    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+  },
+  {
+    slug: "microsoft-activation-scripts-mas-guide",
+    title: "Microsoft Activation Scripts (MAS): What It Is, How It Works & Should You Use It?",
+    excerpt: "MAS is a free Windows and Office activation tool using HWID, Ohook, and KMS methods. We explain how it works, the risks, and why we recommend genuine keys instead — honest guide from a software retailer.",
+    category: "Guide",
+    readTime: "12 min",
+    date: "Jan 15, 2026",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+  },
+  {
     slug: "office-2021-end-of-support",
     title: "Office 2021 End of Support: Is Office 2024 Worth It — or Is It Time for Microsoft 365?",
     excerpt: "Office 2021 stops getting security updates on October 13, 2026. Every date that matters, the honest case for Office 2024, Microsoft 365 and staying put, the 3-year cost math, and how to upgrade.",
