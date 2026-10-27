@@ -1,535 +1,763 @@
-import type { Metadata } from "next";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import Breadcrumb from "../../components/Breadcrumb";
 import Image from "next/image";
-import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
-import Breadcrumb from "@/app/components/Breadcrumb";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Windows 11 24H2 End of Support: What You Need to Know (October 2026)",
-  description: "Windows 11 version 24H2 Home and Pro reach end of support on October 13, 2026. Learn what this means for your PC, how to upgrade safely, and where to get genuine Windows keys.",
-  keywords: "Windows 11 24H2, end of support, Windows 11 update, October 2026, Windows 11 25H2, upgrade Windows, genuine Windows keys",
+  alternates: { canonical: "https://officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026" },
+  title: "Windows 11 24H2 End of Support October 2026: What Happens & How to Upgrade",
+  description: "Windows 11 24H2 Home and Pro end support October 13, 2026. Learn what this means, how to check your version, upgrade options, and where to get genuine Windows 11 keys.",
+  keywords: "windows 11 24h2 end of support, windows 11 24h2, windows 11 25h2 upgrade, windows 11 support end date, upgrade windows 11, windows 11 pro key",
   openGraph: {
-    title: "Windows 11 24H2 End of Support Guide",
-    description: "Everything you need to know about Windows 11 24H2 reaching end of support in October 2026",
+    title: "Windows 11 24H2 End of Support Guide - October 2026",
+    description: "Complete guide to Windows 11 24H2 reaching end of support. What it means, how to upgrade, and genuine Windows keys.",
+    url: "https://officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026",
     type: "article",
-    publishedTime: "2026-01-15T00:00:00Z",
   },
 };
 
 export default function Windows1124H2EndSupport() {
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
+    { label: "Windows 11 24H2 End of Support" },
+  ];
+
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        <article className="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
-          <Breadcrumb
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Blog", href: "/blog" },
-              { label: "Windows 11 24H2 End of Support" },
-            ]}
-          />
-
-          {/* Header */}
-          <header className="mb-8">
-            <div className="inline-flex items-center gap-2 bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              <i className="fas fa-exclamation-triangle"></i>
-              Important: End of Support October 13, 2026
-            </div>
-            <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 leading-tight">
-              Windows 11 24H2 End of Support: What Happens After October 2026?
-            </h1>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-              <span className="flex items-center gap-2">
-                <i className="fas fa-calendar"></i>
-                January 15, 2026
-              </span>
-              <span className="flex items-center gap-2">
-                <i className="fas fa-clock"></i>
-                8 min read
-              </span>
-              <span className="flex items-center gap-2">
-                <i className="fas fa-user"></i>
-                Official Keys Hub Team
-              </span>
-            </div>
-          </header>
-
-          {/* Featured Image */}
-          <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=1200&h=600&fit=crop&q=80"
-              alt="Windows 11 Update Notification"
-              width={1200}
-              height={600}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-
-          {/* Introduction */}
-          <div className="prose prose-lg max-w-none">
-            <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8 rounded-r-xl">
-              <p className="text-lg font-semibold text-gray-900 mb-2">
-                <i className="fas fa-info-circle text-blue-600 mr-2"></i>
-                Quick Summary
-              </p>
-              <p className="text-gray-700 mb-0">
-                Windows 11 version 24H2 Home and Pro editions will stop receiving security updates on <strong>October 13, 2026</strong>. If you're running these editions, you need to upgrade to Windows 11 25H2 or newer to stay protected. Enterprise and Education editions have support until October 2027.
-              </p>
-            </div>
-
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              What Does "End of Support" Mean?
-            </h2>
-
-            <p className="text-gray-700 leading-relaxed mb-6">
-              When a Windows version reaches end of support, Microsoft stops providing security patches, bug fixes, and technical support. This means your computer will still work, but it becomes increasingly vulnerable to security threats.
-            </p>
-
-            <div className="bg-gray-50 rounded-xl p-6 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                After October 13, 2026, Windows 11 24H2 will no longer receive:
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-times-circle text-red-600 mt-1"></i>
-                  <span className="text-gray-700">Monthly security updates protecting against new threats</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-times-circle text-red-600 mt-1"></i>
-                  <span className="text-gray-700">Bug fixes for known issues</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-times-circle text-red-600 mt-1"></i>
-                  <span className="text-gray-700">Technical support from Microsoft</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-times-circle text-red-600 mt-1"></i>
-                  <span className="text-gray-700">Time zone and daylight saving updates</span>
-                </li>
-              </ul>
-            </div>
-
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              Which Versions Are Affected?
-            </h2>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
+      <div className="pt-20 bg-white min-h-screen">
+        <Breadcrumb items={breadcrumbItems} />
+        
+        {/* Professional Header */}
+        <section className="bg-white py-12 border-b border-gray-200">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex flex-wrap items-center gap-4 mb-6">
+                <span className="inline-flex items-center gap-2 bg-red-50 text-red-700 px-4 py-2 rounded-lg font-semibold text-sm border border-red-200">
                   <i className="fas fa-exclamation-triangle"></i>
-                  Support Ends October 2026
-                </h3>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <i className="fas fa-circle text-red-600 text-xs mt-1.5"></i>
-                    <span className="text-gray-700">Windows 11 Home (24H2)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <i className="fas fa-circle text-red-600 text-xs mt-1.5"></i>
-                    <span className="text-gray-700">Windows 11 Pro (24H2)</span>
-                  </li>
-                </ul>
+                  Important: End of Support October 13, 2026
+                </span>
+                <span className="text-gray-500 text-sm flex items-center gap-2">
+                  <i className="far fa-calendar"></i>
+                  January 15, 2026
+                </span>
+                <span className="text-gray-500 text-sm flex items-center gap-2">
+                  <i className="far fa-clock"></i>
+                  8 min read
+                </span>
               </div>
 
-              <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-green-900 mb-4 flex items-center gap-2">
-                  <i className="fas fa-check-circle"></i>
-                  Support Until October 2027
-                </h3>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <i className="fas fa-circle text-green-600 text-xs mt-1.5"></i>
-                    <span className="text-gray-700">Windows 11 Enterprise (24H2)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <i className="fas fa-circle text-green-600 text-xs mt-1.5"></i>
-                    <span className="text-gray-700">Windows 11 Education (24H2)</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                Windows 11 24H2 End of Support: What Happens After October 2026?
+              </h1>
 
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              How to Check Your Windows Version
-            </h2>
+              <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                Windows 11 version 24H2 Home and Pro editions will stop receiving security updates on October 13, 2026. 
+                Here's everything you need to know about upgrading to Windows 11 25H2, what happens if you don't, and 
+                how to get genuine Windows 11 licenses at the best prices.
+              </p>
 
-            <div className="bg-gray-900 text-gray-100 rounded-xl p-6 mb-8">
-              <p className="font-semibold mb-4 text-white">Follow these simple steps:</p>
-              <ol className="space-y-3 list-decimal list-inside">
-                <li className="text-gray-200">Press <kbd className="bg-gray-700 px-2 py-1 rounded text-sm">Windows Key + R</kbd></li>
-                <li className="text-gray-200">Type <code className="bg-gray-700 px-2 py-1 rounded text-sm">winver</code> and press Enter</li>
-                <li className="text-gray-200">Look for "Version 24H2" in the window that appears</li>
-              </ol>
-            </div>
-
-            <div className="mb-8">
-              <Image
-                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop&q=80"
-                alt="Windows Settings Interface"
-                width={1200}
-                height={600}
-                className="w-full h-auto rounded-xl shadow-md"
-              />
-            </div>
-
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              What Should You Do Now?
-            </h2>
-
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-8 mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Your Options:</h3>
-              
-              <div className="space-y-6">
-                <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h4 className="text-lg font-bold text-blue-900 mb-3 flex items-center gap-2">
-                    <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
-                    Upgrade to Windows 11 25H2 (Free)
-                  </h4>
-                  <p className="text-gray-700 mb-3">
-                    Microsoft will automatically update most devices to the latest version. If you have a genuine Windows 11 license, this update is free and happens through Windows Update.
-                  </p>
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-700 mb-2"><strong>How to update:</strong></p>
-                    <p className="text-sm text-gray-600">
-                      Go to Settings → Windows Update → Check for updates
-                    </p>
+              <div className="flex flex-wrap items-center gap-6 pb-6 border-b border-gray-200">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-sky-600 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                    OK
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900">Official Keys Hub</div>
+                    <div className="text-sm text-gray-500">Microsoft Licensing Experts</div>
                   </div>
                 </div>
-
-                <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h4 className="text-lg font-bold text-blue-900 mb-3 flex items-center gap-2">
-                    <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
-                    Upgrade to Windows 11 Pro (Recommended)
-                  </h4>
-                  <p className="text-gray-700 mb-4">
-                    If you're currently on Windows 11 Home, consider upgrading to Windows 11 Pro for enhanced security features, remote desktop, BitLocker encryption, and longer support timelines.
-                  </p>
-                  <Link
-                    href="/#products"
-                    className="inline-flex items-center gap-2 bg-sky-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-sky-800 transition-colors"
-                  >
-                    <i className="fab fa-windows"></i>
-                    Get Windows 11 Pro from $16.99
-                  </Link>
-                </div>
-
-                <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h4 className="text-lg font-bold text-blue-900 mb-3 flex items-center gap-2">
-                    <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
-                    Fresh Installation with a New Key
-                  </h4>
-                  <p className="text-gray-700 mb-3">
-                    If you're experiencing issues or want a clean start, you can perform a fresh installation of the latest Windows 11 version with a genuine product key.
-                  </p>
-                  <p className="text-sm text-gray-600 italic">
-                    Perfect for older PCs or systems that have accumulated software issues over time.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              Common Issues with Windows 11 24H2
-            </h2>
-
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Many users have reported problems with the 24H2 update, which is another reason to consider upgrading to the newer 25H2 version:
-            </p>
-
-            <div className="bg-amber-50 border-l-4 border-amber-500 p-6 mb-8 rounded-r-xl">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Known 24H2 Issues:</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-bug text-amber-600 mt-1"></i>
-                  <span className="text-gray-700">8.63 GB undeletable update cache</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-bug text-amber-600 mt-1"></i>
-                  <span className="text-gray-700">Remote Desktop Services instability</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-bug text-amber-600 mt-1"></i>
-                  <span className="text-gray-700">Update installation failures (Error 0x800F0845)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-bug text-amber-600 mt-1"></i>
-                  <span className="text-gray-700">Wi-Fi connectivity drops</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-bug text-amber-600 mt-1"></i>
-                  <span className="text-gray-700">Performance slowdowns on some hardware</span>
-                </li>
-              </ul>
-            </div>
-
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              Why You Shouldn't Delay Upgrading
-            </h2>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
-                  <i className="fas fa-shield-alt text-red-600 text-xl"></i>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">Security Risks</h3>
-                <p className="text-gray-700 text-sm">
-                  Without security updates, your PC becomes vulnerable to new malware, ransomware, and hacking attempts that target unpatched systems.
-                </p>
               </div>
 
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                  <i className="fas fa-exclamation-triangle text-orange-600 text-xl"></i>
+              {/* Quick Answer Box */}
+              <div className="mt-6 bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 border-2 border-sky-200">
+                <div className="font-bold text-gray-900 mb-3 flex items-center gap-2 text-lg">
+                  <i className="fas fa-lightbulb text-yellow-500"></i>
+                  Quick Answer
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">Software Compatibility</h3>
-                <p className="text-gray-700 text-sm">
-                  Modern software and applications will eventually stop supporting outdated Windows versions, limiting what you can install and use.
-                </p>
-              </div>
-
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                  <i className="fas fa-tools text-yellow-600 text-xl"></i>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">No Bug Fixes</h3>
-                <p className="text-gray-700 text-sm">
-                  Any bugs or performance issues discovered after October 2026 will never be fixed, potentially leaving you with a frustrating user experience.
-                </p>
-              </div>
-
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                  <i className="fas fa-headset text-blue-600 text-xl"></i>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">No Technical Support</h3>
-                <p className="text-gray-700 text-sm">
-                  Microsoft support will no longer help with issues related to Windows 11 24H2, leaving you on your own if problems arise.
+                <p className="text-gray-700 leading-relaxed">
+                  <strong>Windows 11 24H2 Home and Pro stop getting security updates on October 13, 2026.</strong> Your computer 
+                  will still work, but it becomes vulnerable to new security threats. The free upgrade to Windows 11 25H2 is 
+                  available now through Windows Update. Enterprise and Education editions have support until October 2027.
                 </p>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="mb-8">
-              <Image
-                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=600&fit=crop&q=80"
-                alt="Computer Security Concept"
-                width={1200}
-                height={600}
-                className="w-full h-auto rounded-xl shadow-md"
-              />
-            </div>
+        {/* Hero - Windows 11 Product Showcase */}
+        <section className="py-16 bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700">
+          <div className="container mx-auto px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+                  Upgrade to the Latest Windows 11
+                </h2>
+                <p className="text-xl text-white/90">
+                  Genuine Windows 11 licenses from $12.99 • Instant delivery • Lifetime support
+                </p>
+              </div>
 
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              Get a Genuine Windows 11 License
-            </h2>
-
-            <p className="text-gray-700 leading-relaxed mb-6">
-              If you need a new Windows 11 license or want to upgrade from Home to Pro, we offer genuine Microsoft product keys at affordable prices with instant delivery.
-            </p>
-
-            <div className="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-8 mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                Popular Windows 11 Options
-              </h3>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-6 shadow-md">
-                  <div className="text-center mb-4">
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Windows 11 Pro</h4>
-                    <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-4xl font-black text-sky-700">$16.99</span>
-                      <span className="text-gray-500 line-through">$199.99</span>
-                    </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Windows 11 Pro */}
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border-2 border-yellow-400 hover:border-yellow-300 transition-all">
+                  <div className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                    MOST POPULAR
                   </div>
-                  <ul className="space-y-2 mb-6">
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">Lifetime license</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">BitLocker encryption</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">Remote Desktop</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">Instant delivery</span>
-                    </li>
-                  </ul>
+                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5">
+                    <Image
+                      src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop&q=80"
+                      alt="Windows 11 Pro"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-black text-white mb-2">Windows 11 Pro</h3>
+                  <p className="text-white/90 text-sm mb-4">Full features, BitLocker, Remote Desktop</p>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-4xl font-black text-white">$16.99</span>
+                    <span className="text-white/60 line-through text-sm">$199.99</span>
+                  </div>
                   <Link
                     href="/#products"
-                    className="block w-full text-center bg-sky-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-sky-800 transition-colors"
+                    className="block w-full text-center bg-white text-sky-700 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors"
                   >
                     Get Windows 11 Pro
                   </Link>
                 </div>
 
-                <div className="bg-white rounded-xl p-6 shadow-md">
-                  <div className="text-center mb-4">
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Windows 11 Home</h4>
-                    <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-4xl font-black text-sky-700">$12.99</span>
-                      <span className="text-gray-500 line-through">$139.99</span>
-                    </div>
+                {/* Windows 11 Home */}
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
+                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5 mt-8">
+                    <Image
+                      src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=600&fit=crop&q=80"
+                      alt="Windows 11 Home"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <ul className="space-y-2 mb-6">
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">Lifetime license</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">Perfect for home users</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">Gaming optimized</span>
-                    </li>
-                    <li className="flex items-start gap-2 text-sm">
-                      <i className="fas fa-check text-green-600 mt-1"></i>
-                      <span className="text-gray-700">Instant delivery</span>
-                    </li>
-                  </ul>
+                  <h3 className="text-2xl font-black text-white mb-2">Windows 11 Home</h3>
+                  <p className="text-white/90 text-sm mb-4">Perfect for personal use & gaming</p>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-4xl font-black text-white">$12.99</span>
+                    <span className="text-white/60 line-through text-sm">$139.99</span>
+                  </div>
                   <Link
                     href="/#products"
-                    className="block w-full text-center bg-sky-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-sky-800 transition-colors"
+                    className="block w-full text-center bg-white/20 text-white border-2 border-white px-6 py-3 rounded-lg font-bold hover:bg-white/30 transition-colors"
                   >
                     Get Windows 11 Home
                   </Link>
                 </div>
+
+                {/* Windows 11 Enterprise */}
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
+                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5 mt-8">
+                    <Image
+                      src="https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&h=600&fit=crop&q=80"
+                      alt="Windows 11 Enterprise"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-black text-white mb-2">Windows 11 Enterprise</h3>
+                  <p className="text-white/90 text-sm mb-4">Advanced security & management</p>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-4xl font-black text-white">$24.99</span>
+                    <span className="text-white/60 line-through text-sm">$309.00</span>
+                  </div>
+                  <Link
+                    href="/#products"
+                    className="block w-full text-center bg-white/20 text-white border-2 border-white px-6 py-3 rounded-lg font-bold hover:bg-white/30 transition-colors"
+                  >
+                    Get Enterprise
+                  </Link>
+                </div>
               </div>
             </div>
-
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              Frequently Asked Questions
-            </h2>
-
-            <div className="space-y-4 mb-8">
-              <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors">
-                <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-2">
-                  <i className="fas fa-question-circle text-sky-600"></i>
-                  Will my computer stop working after October 13, 2026?
-                </summary>
-                <p className="text-gray-700 mt-4 pl-7">
-                  No, your computer will continue to function normally. However, it will stop receiving security updates, making it vulnerable to new threats. All your files and programs will remain intact.
-                </p>
-              </details>
-
-              <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors">
-                <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-2">
-                  <i className="fas fa-question-circle text-sky-600"></i>
-                  Is the upgrade to Windows 11 25H2 free?
-                </summary>
-                <p className="text-gray-700 mt-4 pl-7">
-                  Yes, if you have a genuine Windows 11 24H2 license, the upgrade to 25H2 is completely free through Windows Update. You don't need to buy a new license.
-                </p>
-              </details>
-
-              <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors">
-                <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-2">
-                  <i className="fas fa-question-circle text-sky-600"></i>
-                  What if Windows Update doesn't offer me 25H2?
-                </summary>
-                <p className="text-gray-700 mt-4 pl-7">
-                  You can manually download the Windows 11 Installation Assistant from Microsoft's website or use the Media Creation Tool to create installation media. Make sure your PC meets the system requirements for Windows 11.
-                </p>
-              </details>
-
-              <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors">
-                <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-2">
-                  <i className="fas fa-question-circle text-sky-600"></i>
-                  Can I keep using Windows 11 24H2 if I don't care about updates?
-                </summary>
-                <p className="text-gray-700 mt-4 pl-7">
-                  Technically yes, but it's strongly discouraged. Without security updates, your computer becomes an easy target for malware, viruses, and hackers. Your personal data and financial information could be at risk.
-                </p>
-              </details>
-
-              <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors">
-                <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-2">
-                  <i className="fas fa-question-circle text-sky-600"></i>
-                  Will my files be deleted when I upgrade?
-                </summary>
-                <p className="text-gray-700 mt-4 pl-7">
-                  No, upgrading to Windows 11 25H2 keeps all your files, apps, and settings intact. However, it's always a good practice to back up important files before any major update.
-                </p>
-              </details>
-
-              <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors">
-                <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-2">
-                  <i className="fas fa-question-circle text-sky-600"></i>
-                  Should I upgrade to Windows 11 Pro or stay with Home?
-                </summary>
-                <p className="text-gray-700 mt-4 pl-7">
-                  If you need features like BitLocker encryption, Remote Desktop, Hyper-V, or advanced security tools, upgrade to Pro. For basic home use, Windows 11 Home is sufficient. Pro also typically receives longer support.
-                </p>
-              </details>
-            </div>
-
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-12 mb-6">
-              Final Thoughts
-            </h2>
-
-            <p className="text-gray-700 leading-relaxed mb-6">
-              The end of support for Windows 11 24H2 is a normal part of Microsoft's update cycle. The important thing is to upgrade before October 13, 2026, to ensure your computer stays secure and functional.
-            </p>
-
-            <p className="text-gray-700 leading-relaxed mb-8">
-              Whether you choose to accept the free update to Windows 11 25H2 or upgrade to a better edition like Windows 11 Pro, the key is to take action soon. Don't wait until the last minute when support ends.
-            </p>
-
-            <div className="bg-gradient-to-r from-sky-600 to-blue-600 rounded-2xl p-8 text-center text-white">
-              <h3 className="text-2xl font-black mb-4">Need a Windows 11 License?</h3>
-              <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-                Get genuine Windows 11 keys at unbeatable prices with instant delivery. All licenses are tested and backed by our money-back guarantee.
-              </p>
-              <Link
-                href="/#products"
-                className="inline-flex items-center gap-2 bg-white text-sky-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                <i className="fab fa-windows"></i>
-                Browse Windows 11 Licenses
-                <i className="fas fa-arrow-right"></i>
-              </Link>
-            </div>
           </div>
+        </section>
 
-          {/* Related Articles */}
-          <div className="mt-16 pt-8 border-t-2 border-gray-200">
-            <h2 className="text-2xl font-black text-gray-900 mb-6">Related Articles</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link
-                href="/blog/windows-11-home-vs-pro"
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-500 hover:shadow-lg transition-all"
-              >
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Windows 11 Home vs Pro: Which Should You Choose?
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Compare features, pricing, and learn which edition is right for your needs.
-                </p>
-              </Link>
+        {/* Main Content */}
+        <article className="py-16">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              
+              {/* What Does End of Support Mean */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
+                    <i className="fas fa-info-circle"></i>
+                  </span>
+                  What Does "End of Support" Actually Mean?
+                </h2>
 
-              <Link
-                href="/blog/how-to-activate-windows-11"
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-500 hover:shadow-lg transition-all"
-              >
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  How to Activate Windows 11 with a Product Key
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Step-by-step guide to activating Windows 11 using your product key.
-                </p>
-              </Link>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-gray-700 leading-relaxed mb-6">
+                    When a Windows version reaches end of support, Microsoft stops providing security patches, 
+                    bug fixes, and technical support. Your computer continues to work normally, but it gradually 
+                    becomes more vulnerable to security threats.
+                  </p>
+
+                  <div className="bg-gray-50 rounded-xl p-8 mb-8 border border-gray-200">
+                    <h3 className="text-xl font-bold text-gray-900 mb-6">
+                      After October 13, 2026, Windows 11 24H2 will no longer receive:
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="flex items-start gap-3 bg-white p-4 rounded-lg">
+                        <i className="fas fa-times-circle text-red-500 text-xl mt-1"></i>
+                        <div>
+                          <div className="font-bold text-gray-900 mb-1">Security Updates</div>
+                          <p className="text-sm text-gray-600">No protection against new malware and vulnerabilities</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3 bg-white p-4 rounded-lg">
+                        <i className="fas fa-times-circle text-red-500 text-xl mt-1"></i>
+                        <div>
+                          <div className="font-bold text-gray-900 mb-1">Bug Fixes</div>
+                          <p className="text-sm text-gray-600">Known issues will never be resolved</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3 bg-white p-4 rounded-lg">
+                        <i className="fas fa-times-circle text-red-500 text-xl mt-1"></i>
+                        <div>
+                          <div className="font-bold text-gray-900 mb-1">Technical Support</div>
+                          <p className="text-sm text-gray-600">Microsoft won't help with 24H2 issues</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3 bg-white p-4 rounded-lg">
+                        <i className="fas fa-times-circle text-red-500 text-xl mt-1"></i>
+                        <div>
+                          <div className="font-bold text-gray-900 mb-1">Time Zone Updates</div>
+                          <p className="text-sm text-gray-600">No daylight saving or timezone changes</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Which Versions Affected */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
+                    <i className="fas fa-list-check"></i>
+                  </span>
+                  Which Windows 11 Versions Are Affected?
+                </h2>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  {/* Support Ends October 2026 */}
+                  <div className="bg-red-50 rounded-xl p-6 border-2 border-red-200">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                        <i className="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                      </div>
+                      <div>
+                        <div className="font-bold text-red-900">Support Ends</div>
+                        <div className="text-red-700 text-sm">October 13, 2026</div>
+                      </div>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-center gap-3">
+                        <i className="fab fa-windows text-red-600"></i>
+                        <span className="font-semibold text-gray-900">Windows 11 Home (24H2)</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <i className="fab fa-windows text-red-600"></i>
+                        <span className="font-semibold text-gray-900">Windows 11 Pro (24H2)</span>
+                      </li>
+                    </ul>
+                    <div className="mt-4 pt-4 border-t border-red-200">
+                      <p className="text-sm text-red-800">
+                        <i className="fas fa-arrow-right mr-2"></i>
+                        <strong>Action required:</strong> Upgrade to 25H2 or newer
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Support Until October 2027 */}
+                  <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                        <i className="fas fa-check-circle text-green-600 text-xl"></i>
+                      </div>
+                      <div>
+                        <div className="font-bold text-green-900">Extended Support</div>
+                        <div className="text-green-700 text-sm">Until October 12, 2027</div>
+                      </div>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-center gap-3">
+                        <i className="fab fa-windows text-green-600"></i>
+                        <span className="font-semibold text-gray-900">Windows 11 Enterprise (24H2)</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <i className="fab fa-windows text-green-600"></i>
+                        <span className="font-semibold text-gray-900">Windows 11 Education (24H2)</span>
+                      </li>
+                    </ul>
+                    <div className="mt-4 pt-4 border-t border-green-200">
+                      <p className="text-sm text-green-800">
+                        <i className="fas fa-info-circle mr-2"></i>
+                        <strong>You have more time</strong> to plan your upgrade
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Real Windows 11 Screenshot */}
+                <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
+                  <Image
+                    src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop&q=80"
+                    alt="Windows 11 Desktop Interface"
+                    width={1200}
+                    height={600}
+                    className="w-full h-auto"
+                  />
+                </div>
+                <p className="text-sm text-gray-500 text-center">Windows 11 modern interface with centered taskbar and rounded corners</p>
+              </section>
+
+              {/* How to Check Version */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
+                    <i className="fas fa-search"></i>
+                  </span>
+                  How to Check Your Windows Version
+                </h2>
+
+                <div className="bg-gray-900 rounded-xl p-8 mb-6">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-10 h-10 bg-sky-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="fas fa-terminal text-white"></i>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-2">Quick Method (30 seconds)</h3>
+                      <p className="text-gray-300 text-sm">The fastest way to check if you're running Windows 11 24H2</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 text-white font-bold">
+                        1
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-gray-200 mb-2">Press <kbd className="bg-gray-700 text-white px-3 py-1.5 rounded font-mono text-sm">Windows Key + R</kbd></p>
+                        <p className="text-gray-400 text-sm">This opens the Run dialog box</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 text-white font-bold">
+                        2
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-gray-200 mb-2">Type <code className="bg-gray-700 text-cyan-400 px-3 py-1.5 rounded font-mono">winver</code> and press Enter</p>
+                        <p className="text-gray-400 text-sm">This opens the Windows version information window</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 text-white font-bold">
+                        3
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-gray-200 mb-2">Look for "Version 24H2"</p>
+                        <p className="text-gray-400 text-sm">If you see this, your support ends October 13, 2026</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 pt-6 border-t border-white/10">
+                    <div className="bg-amber-500/20 border border-amber-500/40 rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <i className="fas fa-lightbulb text-amber-400 text-xl mt-1"></i>
+                        <div>
+                          <p className="text-white font-semibold mb-1">Pro Tip</p>
+                          <p className="text-gray-300 text-sm">
+                            You can also go to Settings → System → About to see your Windows version and build number.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* What to Do Now */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
+                    <i className="fas fa-arrow-up"></i>
+                  </span>
+                  Your Upgrade Options
+                </h2>
+
+                <div className="space-y-6">
+                  {/* Option 1 */}
+                  <div className="bg-white border-2 border-sky-200 rounded-xl p-8 hover:border-sky-400 hover:shadow-lg transition-all">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 text-white text-2xl font-black shadow-lg">
+                        1
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-black text-gray-900 mb-3">
+                          Upgrade to Windows 11 25H2 (Free)
+                        </h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          If you already have a genuine Windows 11 license, Microsoft will upgrade you to version 25H2 for 
+                          free through Windows Update. This is the easiest option and keeps all your files and programs.
+                        </p>
+                        <div className="bg-sky-50 rounded-lg p-4 border border-sky-200">
+                          <p className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                            <i className="fas fa-arrow-right text-sky-600"></i>
+                            How to update:
+                          </p>
+                          <p className="text-gray-700 text-sm">
+                            Go to <strong>Settings → Windows Update → Check for updates</strong>. If 25H2 is available, 
+                            click Download and install.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Option 2 */}
+                  <div className="bg-white border-2 border-green-200 rounded-xl p-8 hover:border-green-400 hover:shadow-lg transition-all">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 text-white text-2xl font-black shadow-lg">
+                        2
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-black text-gray-900 mb-3">
+                          Upgrade to Windows 11 Pro
+                        </h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          If you're on Windows 11 Home, consider upgrading to Pro for better security features like 
+                          BitLocker encryption, Remote Desktop, and typically longer support periods. Perfect for 
+                          professionals and power users.
+                        </p>
+                        <div className="flex flex-wrap items-center gap-4">
+                          <div className="flex items-baseline gap-2">
+                            <span className="text-3xl font-black text-sky-700">$16.99</span>
+                            <span className="text-gray-500 line-through">$199.99</span>
+                            <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">SAVE 92%</span>
+                          </div>
+                          <Link
+                            href="/#products"
+                            className="inline-flex items-center gap-2 bg-sky-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-sky-800 transition-colors"
+                          >
+                            <i className="fab fa-windows"></i>
+                            Get Windows 11 Pro
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Option 3 */}
+                  <div className="bg-white border-2 border-purple-200 rounded-xl p-8 hover:border-purple-400 hover:shadow-lg transition-all">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 text-white text-2xl font-black shadow-lg">
+                        3
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-black text-gray-900 mb-3">
+                          Fresh Installation with New Key
+                        </h3>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                          Experiencing issues or want a completely clean start? Perform a fresh installation of the 
+                          latest Windows 11 version. Great for older PCs or systems with accumulated software problems.
+                        </p>
+                        <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                          <p className="text-sm text-gray-700">
+                            <strong>Best for:</strong> Older PCs, systems with persistent errors, or if you want maximum 
+                            performance with a clean slate.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Why You Shouldn't Wait */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600">
+                    <i className="fas fa-shield-alt"></i>
+                  </span>
+                  Why You Shouldn't Delay
+                </h2>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                      <i className="fas fa-virus text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Security Vulnerabilities</h3>
+                    <p className="text-gray-700">
+                      Without updates, your PC becomes an easy target for hackers, malware, and ransomware. New 
+                      vulnerabilities discovered after October 2026 will never be patched.
+                    </p>
+                  </div>
+
+                  <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                      <i className="fas fa-puzzle-piece text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Software Compatibility</h3>
+                    <p className="text-gray-700">
+                      Modern software will eventually stop supporting Windows 11 24H2. You'll miss out on new 
+                      applications and updates to your favorite programs.
+                    </p>
+                  </div>
+
+                  <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div className="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                      <i className="fas fa-bug text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Unfixed Bugs</h3>
+                    <p className="text-gray-700">
+                      Any performance issues or bugs discovered after end of support will remain forever. This could 
+                      mean dealing with crashes, slowdowns, or glitches permanently.
+                    </p>
+                  </div>
+
+                  <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+                    <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                      <i className="fas fa-headset text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">No Support</h3>
+                    <p className="text-gray-700">
+                      Microsoft technical support won't help with Windows 11 24H2 issues after October 2026. 
+                      You're on your own if something goes wrong.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Real Computer Security Image */}
+                <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
+                  <Image
+                    src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=600&fit=crop&q=80"
+                    alt="Computer Security and Cybersecurity Concept"
+                    width={1200}
+                    height={600}
+                    className="w-full h-auto"
+                  />
+                </div>
+                <p className="text-sm text-gray-500 text-center">Keeping Windows updated is essential for cybersecurity</p>
+              </section>
+
+              {/* Common 24H2 Issues */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600">
+                    <i className="fas fa-exclamation-circle"></i>
+                  </span>
+                  Known Windows 11 24H2 Issues
+                </h2>
+
+                <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-8">
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    Many users have reported problems with the 24H2 update. Upgrading to 25H2 not only extends 
+                    your support but also fixes these known issues:
+                  </p>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-white rounded-lg p-4 flex items-start gap-3">
+                      <i className="fas fa-bug text-amber-600 mt-1"></i>
+                      <div>
+                        <div className="font-bold text-gray-900 mb-1">Storage Issues</div>
+                        <p className="text-sm text-gray-600">8.63 GB undeletable update cache reported by users</p>
+                      </div>
+                    </div>
+                    <div className="bg-white rounded-lg p-4 flex items-start gap-3">
+                      <i className="fas fa-bug text-amber-600 mt-1"></i>
+                      <div>
+                        <div className="font-bold text-gray-900 mb-1">Remote Desktop</div>
+                        <p className="text-sm text-gray-600">RDS instability and connection drops</p>
+                      </div>
+                    </div>
+                    <div className="bg-white rounded-lg p-4 flex items-start gap-3">
+                      <i className="fas fa-bug text-amber-600 mt-1"></i>
+                      <div>
+                        <div className="font-bold text-gray-900 mb-1">Update Failures</div>
+                        <p className="text-sm text-gray-600">Error 0x800F0845 during installation</p>
+                      </div>
+                    </div>
+                    <div className="bg-white rounded-lg p-4 flex items-start gap-3">
+                      <i className="fas fa-bug text-amber-600 mt-1"></i>
+                      <div>
+                        <div className="font-bold text-gray-900 mb-1">Wi-Fi Problems</div>
+                        <p className="text-sm text-gray-600">Intermittent connectivity drops</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* FAQ */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
+                    <i className="fas fa-circle-question"></i>
+                  </span>
+                  Frequently Asked Questions
+                </h2>
+
+                <div className="space-y-4">
+                  <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors group">
+                    <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-3 list-none">
+                      <i className="fas fa-chevron-right text-sky-600 transition-transform group-open:rotate-90"></i>
+                      Will my computer stop working after October 13, 2026?
+                    </summary>
+                    <div className="mt-4 pl-8 text-gray-700 leading-relaxed">
+                      No, your computer will continue functioning normally. All your files, programs, and settings remain 
+                      intact. However, you won't receive security updates, making your PC increasingly vulnerable to new 
+                      threats over time.
+                    </div>
+                  </details>
+
+                  <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors group">
+                    <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-3 list-none">
+                      <i className="fas fa-chevron-right text-sky-600 transition-transform group-open:rotate-90"></i>
+                      Is the upgrade to Windows 11 25H2 free?
+                    </summary>
+                    <div className="mt-4 pl-8 text-gray-700 leading-relaxed">
+                      Yes! If you have a genuine Windows 11 24H2 license, the upgrade to 25H2 is completely free through 
+                      Windows Update. You don't need to purchase a new license.
+                    </div>
+                  </details>
+
+                  <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors group">
+                    <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-3 list-none">
+                      <i className="fas fa-chevron-right text-sky-600 transition-transform group-open:rotate-90"></i>
+                      Will my files be deleted when I upgrade?
+                    </summary>
+                    <div className="mt-4 pl-8 text-gray-700 leading-relaxed">
+                      No, upgrading to Windows 11 25H2 keeps all your files, applications, and settings. However, it's always 
+                      good practice to back up important files before any major update.
+                    </div>
+                  </details>
+
+                  <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors group">
+                    <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-3 list-none">
+                      <i className="fas fa-chevron-right text-sky-600 transition-transform group-open:rotate-90"></i>
+                      What if Windows Update doesn't show 25H2?
+                    </summary>
+                    <div className="mt-4 pl-8 text-gray-700 leading-relaxed">
+                      You can manually download the Windows 11 Installation Assistant or Media Creation Tool from Microsoft's 
+                      official website. Make sure your PC meets Windows 11 system requirements (TPM 2.0, Secure Boot, etc.).
+                    </div>
+                  </details>
+
+                  <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors group">
+                    <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-3 list-none">
+                      <i className="fas fa-chevron-right text-sky-600 transition-transform group-open:rotate-90"></i>
+                      Should I upgrade to Windows 11 Pro or stay with Home?
+                    </summary>
+                    <div className="mt-4 pl-8 text-gray-700 leading-relaxed">
+                      Windows 11 Pro offers additional features like BitLocker encryption, Remote Desktop, Hyper-V 
+                      virtualization, and Group Policy management. If you need these features or want longer support cycles, 
+                      Pro is worth considering. For basic home use, Windows 11 Home is sufficient.
+                    </div>
+                  </details>
+
+                  <details className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-300 transition-colors group">
+                    <summary className="font-bold text-gray-900 cursor-pointer flex items-center gap-3 list-none">
+                      <i className="fas fa-chevron-right text-sky-600 transition-transform group-open:rotate-90"></i>
+                      Where can I buy a genuine Windows 11 key?
+                    </summary>
+                    <div className="mt-4 pl-8 text-gray-700 leading-relaxed">
+                      Official Keys Hub offers genuine Windows 11 Home ($12.99) and Pro ($16.99) licenses with instant 
+                      delivery, lifetime support, and a money-back guarantee. All keys are tested and verified to work with 
+                      the latest Windows 11 versions including 25H2.
+                    </div>
+                  </details>
+                </div>
+              </section>
+
+              {/* Final CTA */}
+              <section className="mb-12">
+                <div className="bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 rounded-2xl p-8 md:p-12 text-center text-white">
+                  <div className="max-w-3xl mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-black mb-4">
+                      Ready to Upgrade Windows 11?
+                    </h2>
+                    <p className="text-xl text-white/90 mb-8">
+                      Get genuine Windows 11 licenses at unbeatable prices. Instant delivery, lifetime support, 
+                      and verified to work with Windows 11 25H2 and beyond.
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                      <Link
+                        href="/#products"
+                        className="inline-flex items-center gap-2 bg-white text-sky-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors shadow-xl"
+                      >
+                        <i className="fab fa-windows text-xl"></i>
+                        Browse Windows 11 Licenses
+                        <i className="fas fa-arrow-right"></i>
+                      </Link>
+                      <a
+                        href="https://wa.me/16019756129?text=Hi! I need help upgrading Windows 11"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-600 transition-colors shadow-xl"
+                      >
+                        <i className="fab fa-whatsapp text-xl"></i>
+                        Chat with Support
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Related Articles */}
+              <section>
+                <h3 className="text-2xl font-black text-gray-900 mb-6">Related Articles</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <Link
+                    href="/blog/windows-11-home-vs-pro"
+                    className="group bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-500 hover:shadow-lg transition-all"
+                  >
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-sky-700 transition-colors">
+                      Windows 11 Home vs Pro: Which Should You Choose?
+                    </h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Compare features, pricing, and security to decide which Windows 11 edition is right for you.
+                    </p>
+                    <span className="text-sky-700 font-semibold text-sm flex items-center gap-2">
+                      Read more <i className="fas fa-arrow-right text-xs"></i>
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/blog/how-to-activate-windows-11"
+                    className="group bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-500 hover:shadow-lg transition-all"
+                  >
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-sky-700 transition-colors">
+                      How to Activate Windows 11 with a Product Key
+                    </h4>
+                    <p className="text-gray-600 text-sm mb-3">
+                      Complete step-by-step guide to activating Windows 11 Home, Pro, and Enterprise editions.
+                    </p>
+                    <span className="text-sky-700 font-semibold text-sm flex items-center gap-2">
+                      Read more <i className="fas fa-arrow-right text-xs"></i>
+                    </span>
+                  </Link>
+                </div>
+              </section>
+
             </div>
           </div>
         </article>
-      </main>
+      </div>
       <Footer />
     </>
   );
