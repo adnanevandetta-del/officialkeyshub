@@ -109,8 +109,8 @@ export default function Windows1124H2EndSupport() {
                   </div>
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5">
                     <Image
-                      src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop&q=80"
-                      alt="Windows 11 Pro"
+                      src="https://images.unsplash.com/photo-1547082299-de196ea013d6?w=800&h=600&fit=crop&q=80"
+                      alt="Windows 11 Pro - Modern laptop with Windows interface"
                       fill
                       className="object-cover"
                     />
@@ -133,8 +133,8 @@ export default function Windows1124H2EndSupport() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5 mt-8">
                     <Image
-                      src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=600&fit=crop&q=80"
-                      alt="Windows 11 Home"
+                      src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=600&fit=crop&q=80"
+                      alt="Windows 11 Home - Personal computer setup"
                       fill
                       className="object-cover"
                     />
@@ -157,8 +157,8 @@ export default function Windows1124H2EndSupport() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5 mt-8">
                     <Image
-                      src="https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&h=600&fit=crop&q=80"
-                      alt="Windows 11 Enterprise"
+                      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&q=80"
+                      alt="Windows 11 Enterprise - Business workstation"
                       fill
                       className="object-cover"
                     />
@@ -309,17 +309,17 @@ export default function Windows1124H2EndSupport() {
                   </div>
                 </div>
 
-                {/* Real Windows 11 Screenshot */}
+                {/* Windows 11 Laptop Display */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
                   <Image
-                    src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop&q=80"
-                    alt="Windows 11 Desktop Interface"
+                    src="https://images.unsplash.com/photo-1593642532400-2682810df593?w=1200&h=600&fit=crop&q=80"
+                    alt="Modern laptop displaying Windows interface and productivity workspace"
                     width={1200}
                     height={600}
                     className="w-full h-auto"
                   />
                 </div>
-                <p className="text-sm text-gray-500 text-center">Windows 11 modern interface with centered taskbar and rounded corners</p>
+                <p className="text-sm text-gray-500 text-center">Modern Windows 11 workspace with clean desktop environment</p>
               </section>
 
               {/* How to Check Version */}
@@ -542,17 +542,17 @@ export default function Windows1124H2EndSupport() {
                   </div>
                 </div>
 
-                {/* Real Computer Security Image */}
+                {/* Windows Security Update Concept */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
                   <Image
-                    src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=600&fit=crop&q=80"
-                    alt="Computer Security and Cybersecurity Concept"
+                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop&q=80"
+                    alt="Technology and computer security - digital workspace protection"
                     width={1200}
                     height={600}
                     className="w-full h-auto"
                   />
                 </div>
-                <p className="text-sm text-gray-500 text-center">Keeping Windows updated is essential for cybersecurity</p>
+                <p className="text-sm text-gray-500 text-center">Regular Windows updates protect your system from security vulnerabilities</p>
               </section>
 
               {/* Common 24H2 Issues */}
