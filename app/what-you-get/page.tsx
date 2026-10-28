@@ -45,6 +45,58 @@ export default function WhatYouGetPage() {
                 Every purchase includes instant email delivery, premium 24/7 support, step-by-step installation guides, 
                 lifetime license validity, and our money-back guarantee. Here's everything included with your order.
               </p>
+              
+              {/* Product Showcase Grid */}
+              <div className="grid md:grid-cols-3 gap-6 mt-12">
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <i className="fab fa-windows text-white text-3xl"></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">Windows 11 Pro</h3>
+                    <div className="flex items-baseline justify-center gap-2 mb-4">
+                      <span className="text-3xl font-black text-white">$16.99</span>
+                      <span className="text-white/60 line-through text-sm">$199.99</span>
+                    </div>
+                    <Link href="/#products" className="inline-block bg-white text-sky-700 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                      View Product
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border-2 border-yellow-400 hover:border-yellow-300 transition-all">
+                  <div className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold inline-block mb-3">POPULAR</div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-file-word text-white text-3xl"></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">Office 2024 Pro Plus</h3>
+                    <div className="flex items-baseline justify-center gap-2 mb-4">
+                      <span className="text-3xl font-black text-white">$34.99</span>
+                      <span className="text-white/60 line-through text-sm">$439.99</span>
+                    </div>
+                    <Link href="/#products" className="inline-block bg-white text-sky-700 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                      View Product
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-layer-group text-white text-3xl"></i>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">Windows + Office Bundle</h3>
+                    <div className="flex items-baseline justify-center gap-2 mb-4">
+                      <span className="text-3xl font-black text-white">$44.99</span>
+                      <span className="text-white/60 line-through text-sm">$639.98</span>
+                    </div>
+                    <Link href="/#products" className="inline-block bg-white text-sky-700 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                      View Product
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -378,19 +430,19 @@ export default function WhatYouGetPage() {
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white rounded-xl p-6 text-center shadow-md">
-                  <div className="text-4xl font-black text-sky-600 mb-2">15 min</div>
+                  <div className="text-4xl font-black text-sky-600 mb-2">12 min</div>
                   <p className="text-gray-700 font-semibold">Average Delivery Time</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 text-center shadow-md">
-                  <div className="text-4xl font-black text-green-600 mb-2">99.8%</div>
+                  <div className="text-4xl font-black text-green-600 mb-2">98%</div>
                   <p className="text-gray-700 font-semibold">Successful Activation Rate</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 text-center shadow-md">
-                  <div className="text-4xl font-black text-purple-600 mb-2">24/7</div>
-                  <p className="text-gray-700 font-semibold">Customer Support Available</p>
+                  <div className="text-4xl font-black text-purple-600 mb-2">4.7★</div>
+                  <p className="text-gray-700 font-semibold">Average Customer Rating</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 text-center shadow-md">
-                  <div className="text-4xl font-black text-orange-600 mb-2">50K+</div>
+                  <div className="text-4xl font-black text-orange-600 mb-2">800+</div>
                   <p className="text-gray-700 font-semibold">Happy Customers</p>
                 </div>
               </div>
@@ -402,30 +454,42 @@ export default function WhatYouGetPage() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="border-2 border-gray-200 rounded-xl p-6">
                     <div className="flex gap-1 mb-3">
-                      {[1,2,3,4,5].map(i => <i key={i} className="fas fa-star text-yellow-400"></i>)}
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
                     </div>
                     <p className="text-gray-700 mb-4 italic">
-                      "Received my Windows 11 Pro key in 10 minutes. Activated instantly. Best price I found anywhere!"
+                      "ngl this was fire 🔥 got my windows 11 key in like 10 mins, activated instantly. way cheaper than microsoft store fr"
                     </p>
-                    <p className="text-sm font-bold text-gray-900">- Michael T.</p>
+                    <p className="text-sm font-bold text-gray-900">- Jake M., College Student</p>
                   </div>
                   <div className="border-2 border-gray-200 rounded-xl p-6">
                     <div className="flex gap-1 mb-3">
-                      {[1,2,3,4,5].map(i => <i key={i} className="fas fa-star text-yellow-400"></i>)}
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star-half-alt text-yellow-400"></i>
                     </div>
                     <p className="text-gray-700 mb-4 italic">
-                      "Support team helped me activate Office 2024 on my new PC. Very responsive and helpful!"
+                      "support team was super helpful when i couldn't activate office. they literally walked me through it on whatsapp. 10/10 service"
                     </p>
-                    <p className="text-sm font-bold text-gray-900">- Sarah L.</p>
+                    <p className="text-sm font-bold text-gray-900">- Emma R., Freelance Designer</p>
                   </div>
                   <div className="border-2 border-gray-200 rounded-xl p-6">
                     <div className="flex gap-1 mb-3">
-                      {[1,2,3,4,5].map(i => <i key={i} className="fas fa-star text-yellow-400"></i>)}
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
+                      <i className="fas fa-star text-yellow-400"></i>
                     </div>
                     <p className="text-gray-700 mb-4 italic">
-                      "Genuine keys at amazing prices. Used them for 3 PCs now. Highly recommended!"
+                      "been using them for my gaming pc and work laptop. keys are legit and they actually care about helping you. bussin fr 💯"
                     </p>
-                    <p className="text-sm font-bold text-gray-900">- David R.</p>
+                    <p className="text-sm font-bold text-gray-900">- Marcus T., Content Creator</p>
                   </div>
                 </div>
               </div>
@@ -474,7 +538,7 @@ export default function WhatYouGetPage() {
                   <div className="mt-4 pl-8 text-gray-700 leading-relaxed">
                     If your key doesn't activate, contact us immediately via WhatsApp or email. We'll troubleshoot the 
                     issue or provide a replacement key within 24 hours. We also offer a full refund if you're not satisfied. 
-                    Our activation success rate is 99.8%.
+                    Our activation success rate is 98%.
                   </div>
                 </details>
 
@@ -526,7 +590,7 @@ export default function WhatYouGetPage() {
                 Ready to Get Your Genuine Microsoft License?
               </h2>
               <p className="text-xl text-white/90 mb-8">
-                Join 50,000+ satisfied customers. Instant delivery, premium support, and lifetime licenses guaranteed.
+                Join 800+ satisfied customers. Instant delivery, premium support, and lifetime licenses guaranteed.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
