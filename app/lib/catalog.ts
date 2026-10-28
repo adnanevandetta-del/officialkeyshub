@@ -695,7 +695,7 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       {
         name: "SQL Server 2025 Standard",
         description: "The newest SQL Server with built-in AI and vector search",
-        price: "$54.99",
+        price: "$189.00",
         originalPrice: "$3,945.00",
         features: ["Core-based Licensing", "Built-in Vector Search", "High Availability", "Lifetime License", "Instant Delivery"],
         popular: false,
