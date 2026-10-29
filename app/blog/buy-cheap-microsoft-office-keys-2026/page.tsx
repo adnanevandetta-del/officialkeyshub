@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -30,9 +31,12 @@ export default function BuyCheapMicrosoftOfficeKeys() {
 
         {/* Featured Image */}
         <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1200&h=600&fit=crop&q=80"
             alt="Microsoft Office 2021 Product Keys"
+            width={1200}
+            height={400}
+            unoptimized
             className="w-full h-[400px] object-cover"
           />
         </div>

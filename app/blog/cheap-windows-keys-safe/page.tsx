@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import Breadcrumb from "../../components/Breadcrumb";
 
 export const metadata = {
@@ -32,9 +33,12 @@ export default function CheapKeysSafePage() {
             <span>⏱️ 12 min read</span>
           </div>
 
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80" 
             alt="Computer Security Concept"
+            width={1200}
+            height={384}
+            unoptimized
             className="w-full h-96 object-cover rounded-xl mb-8"
           />
 
