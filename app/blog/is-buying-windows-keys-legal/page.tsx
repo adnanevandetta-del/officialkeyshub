@@ -34,8 +34,8 @@ export default function IsItLegalPage() {
           </div>
 
           <Image 
-            src="/og-image.jpg" 
-            alt="Windows Keys Legal Information - Official Keys Hub"
+            src="/og/windows-10-pro.jpg" 
+            alt="Windows Product Keys Legal Information"
             width={1200}
             height={384}
             className="w-full h-96 object-cover rounded-xl mb-8"

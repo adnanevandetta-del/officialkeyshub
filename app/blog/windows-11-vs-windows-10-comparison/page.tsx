@@ -34,8 +34,8 @@ export default function Windows11VsWindows10Page() {
           </div>
 
           <Image 
-            src="/og-image.jpg" 
-            alt="Windows 11 vs Windows 10 Interface Comparison - Official Keys Hub"
+            src="/og/windows-11-pro.jpg" 
+            alt="Windows 11 vs Windows 10 Interface Comparison"
             width={1200}
             height={384}
             className="w-full h-96 object-cover rounded-xl mb-8"

@@ -34,8 +34,8 @@ export default function OEMvsRetailPage() {
           </div>
 
           <Image 
-            src="/og-image.jpg" 
-            alt="OEM vs Retail Windows Keys Comparison - Official Keys Hub"
+            src="/og/windows-11-pro.jpg" 
+            alt="OEM vs Retail Windows Keys Comparison"
             width={1200}
             height={384}
             className="w-full h-96 object-cover rounded-xl mb-8"

@@ -32,8 +32,8 @@ export default function BuyCheapMicrosoftOfficeKeys() {
         {/* Featured Image */}
         <div className="mb-8 rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-600 to-purple-700 p-8">
           <Image
-            src="/og-image.jpg"
-            alt="Microsoft Office Product Keys - Official Keys Hub"
+            src="/og/office-2021-professional-plus.jpg"
+            alt="Microsoft Office 2021 Professional Plus Product"
             width={1200}
             height={400}
             className="w-full h-[400px] object-cover rounded-lg"

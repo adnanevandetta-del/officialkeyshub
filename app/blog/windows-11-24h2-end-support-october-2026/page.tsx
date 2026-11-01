@@ -109,8 +109,8 @@ export default function Windows1124H2EndSupport() {
                   </div>
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
                     <Image
-                      src="/og-image.jpg"
-                      alt="Windows 11 Pro - Official Microsoft Product"
+                      src="/og/windows-11-pro.jpg"
+                      alt="Windows 11 Pro Product"
                       fill
                       className="object-cover"
                     />
@@ -133,8 +133,8 @@ export default function Windows1124H2EndSupport() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-sky-500 to-blue-600 mt-8">
                     <Image
-                      src="/og-image.jpg"
-                      alt="Windows 11 Home - Official Microsoft Product"
+                      src="/og/windows-11-home.jpg"
+                      alt="Windows 11 Home Product"
                       fill
                       className="object-cover"
                     />
@@ -157,8 +157,8 @@ export default function Windows1124H2EndSupport() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-700 mt-8">
                     <Image
-                      src="/og-image.jpg"
-                      alt="Windows 11 Enterprise - Official Microsoft Product"
+                      src="/og/windows-11-enterprise.jpg"
+                      alt="Windows 11 Enterprise Product"
                       fill
                       className="object-cover"
                     />
@@ -312,7 +312,7 @@ export default function Windows1124H2EndSupport() {
                 {/* Windows 11 Laptop Display */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
                   <Image
-                    src="/og-image.jpg"
+                    src="/og/windows-11-pro.jpg"
                     alt="Modern laptop displaying Windows interface and productivity workspace"
                     width={1200}
                     height={600}
@@ -545,7 +545,7 @@ export default function Windows1124H2EndSupport() {
                 {/* Windows Security Update Concept */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
                   <Image
-                    src="/og-image.jpg"
+                    src="/og/windows-11-pro.jpg"
                     alt="Technology and computer security - digital workspace protection"
                     width={1200}
                     height={600}

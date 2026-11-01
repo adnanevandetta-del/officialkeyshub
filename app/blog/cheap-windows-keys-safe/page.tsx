@@ -34,8 +34,8 @@ export default function CheapKeysSafePage() {
           </div>
 
           <Image 
-            src="/og-image.jpg" 
-            alt="Windows Product Keys Security - Official Keys Hub"
+            src="/og/windows-11-pro.jpg" 
+            alt="Windows 11 Product Keys Security"
             width={1200}
             height={384}
             className="w-full h-96 object-cover rounded-xl mb-8"
