@@ -107,10 +107,10 @@ export default function Windows1124H2EndSupport() {
                   <div className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold inline-block mb-3">
                     MOST POPULAR
                   </div>
-                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5">
+                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
                     <Image
-                      src="https://images.unsplash.com/photo-1547082299-de196ea013d6?w=800&h=600&fit=crop&q=80"
-                      alt="Windows 11 Pro - Modern laptop with Windows interface"
+                      src="/og-image.jpg"
+                      alt="Windows 11 Pro - Official Microsoft Product"
                       fill
                       className="object-cover"
                     />
@@ -131,10 +131,10 @@ export default function Windows1124H2EndSupport() {
 
                 {/* Windows 11 Home */}
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
-                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5 mt-8">
+                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-sky-500 to-blue-600 mt-8">
                     <Image
-                      src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=600&fit=crop&q=80"
-                      alt="Windows 11 Home - Personal computer setup"
+                      src="/og-image.jpg"
+                      alt="Windows 11 Home - Official Microsoft Product"
                       fill
                       className="object-cover"
                     />
@@ -155,10 +155,10 @@ export default function Windows1124H2EndSupport() {
 
                 {/* Windows 11 Enterprise */}
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
-                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-white/5 mt-8">
+                  <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-700 mt-8">
                     <Image
-                      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&q=80"
-                      alt="Windows 11 Enterprise - Business workstation"
+                      src="/og-image.jpg"
+                      alt="Windows 11 Enterprise - Official Microsoft Product"
                       fill
                       className="object-cover"
                     />
@@ -312,7 +312,7 @@ export default function Windows1124H2EndSupport() {
                 {/* Windows 11 Laptop Display */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
                   <Image
-                    src="https://images.unsplash.com/photo-1593642532400-2682810df593?w=1200&h=600&fit=crop&q=80"
+                    src="/og-image.jpg"
                     alt="Modern laptop displaying Windows interface and productivity workspace"
                     width={1200}
                     height={600}
@@ -545,7 +545,7 @@ export default function Windows1124H2EndSupport() {
                 {/* Windows Security Update Concept */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
                   <Image
-                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop&q=80"
+                    src="/og-image.jpg"
                     alt="Technology and computer security - digital workspace protection"
                     width={1200}
                     height={600}

@@ -34,11 +34,10 @@ export default function Office2021Vs365Page() {
           </div>
 
           <Image 
-            src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&q=80" 
-            alt="Microsoft Office Comparison"
+            src="/og-image.jpg" 
+            alt="Microsoft Office 2021 vs Office 365 Comparison - Official Keys Hub"
             width={1200}
             height={384}
-            unoptimized
             className="w-full h-96 object-cover rounded-xl mb-8"
           />
 

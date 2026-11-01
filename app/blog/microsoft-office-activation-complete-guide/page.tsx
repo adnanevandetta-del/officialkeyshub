@@ -127,7 +127,7 @@ export default function MicrosoftOfficeActivationGuide() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80"
+                      src="/og-image.jpg"
                       alt="Office 2024 Professional Plus"
                       fill
                       className="object-cover"
@@ -148,7 +148,7 @@ export default function MicrosoftOfficeActivationGuide() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border-2 border-yellow-400 hover:border-yellow-300 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80"
+                      src="/og-image.jpg"
                       alt="Office 2021 Professional Plus"
                       fill
                       className="object-cover"
@@ -169,7 +169,7 @@ export default function MicrosoftOfficeActivationGuide() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80"
+                      src="/og-image.jpg"
                       alt="Office 2019 Professional Plus"
                       fill
                       className="object-cover"
@@ -228,7 +228,7 @@ export default function MicrosoftOfficeActivationGuide() {
               <div className="not-prose mb-8">
                 <div className="relative w-full h-64 rounded-xl overflow-hidden border-2 border-gray-200 shadow-lg">
                   <Image
-                    src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&h=600&fit=crop&q=80"
+                    src="/og-image.jpg"
                     alt="Microsoft Office 2024 Professional Plus"
                     fill
                     className="object-cover"
@@ -366,7 +366,7 @@ export default function MicrosoftOfficeActivationGuide() {
               <div className="not-prose mb-8 grid md:grid-cols-2 gap-6">
                 <div className="relative h-48 rounded-xl overflow-hidden border-2 border-gray-200 shadow-lg">
                   <Image
-                    src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80"
+                    src="/og-image.jpg"
                     alt="Office 2021 Professional Plus"
                     fill
                     className="object-cover"
@@ -378,7 +378,7 @@ export default function MicrosoftOfficeActivationGuide() {
                 </div>
                 <div className="relative h-48 rounded-xl overflow-hidden border-2 border-gray-200 shadow-lg">
                   <Image
-                    src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop&q=80"
+                    src="/og-image.jpg"
                     alt="Office 2019 Professional Plus"
                     fill
                     className="object-cover"

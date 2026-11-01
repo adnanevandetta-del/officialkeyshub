@@ -34,11 +34,10 @@ export default function CheapKeysSafePage() {
           </div>
 
           <Image 
-            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80" 
-            alt="Computer Security Concept"
+            src="/og-image.jpg" 
+            alt="Windows Product Keys Security - Official Keys Hub"
             width={1200}
             height={384}
-            unoptimized
             className="w-full h-96 object-cover rounded-xl mb-8"
           />
 
