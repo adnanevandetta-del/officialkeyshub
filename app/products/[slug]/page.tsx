@@ -76,7 +76,7 @@ function specsFor(p: FlatProduct): { label: string; value: string }[] {
     { label: "Price", value: p.price },
   ];
   const pct = savingsPct(p);
-  if (pct) specs.push({ label: "You save", value: `${pct}% vs ${p.originalPrice}` });
+  if (pct) specs.push({ label: "You save", value: `${pct}% vs Microsoft retail price (${p.originalPrice})` });
   return specs;
 }
 
@@ -101,7 +101,7 @@ function keywordsFor(p: FlatProduct): string {
 }
 
 function metaDescription(p: FlatProduct): string {
-  return `Buy ${p.name} — a genuine Microsoft license for ${p.price}${p.originalPrice ? ` (was ${p.originalPrice})` : ""}. ${p.description}. Instant email delivery, activates directly with Microsoft, and backed by a 30-day money-back guarantee.`;
+  return `Buy ${p.name} — a genuine Microsoft license for ${p.price}${p.originalPrice ? ` (Microsoft retail price ${p.originalPrice})` : ""}. ${p.description}. Instant email delivery, activates directly with Microsoft, and backed by a 30-day money-back guarantee.`;
 }
 
 function faqsFor(p: FlatProduct) {
@@ -268,7 +268,7 @@ export default async function ProductPage({
               <h2 className="text-2xl font-bold text-gray-900 mb-4">About {p.name}</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Looking to <strong>buy {p.name}</strong> without paying full retail? Official Keys Hub delivers a
-                genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> instead of {p.originalPrice}</> : null} — a genuine
+                genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> (Microsoft&apos;s retail price is {p.originalPrice})</> : null} — a genuine
                 Microsoft license that activates directly on Microsoft&rsquo;s own servers. {p.description}, and it&rsquo;s
                 delivered to your inbox within minutes of purchase.
               </p>

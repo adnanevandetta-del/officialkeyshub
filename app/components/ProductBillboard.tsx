@@ -153,9 +153,7 @@ export default function ProductBillboard() {
                   <span className="text-3xl md:text-5xl font-black text-white">
                     {currentProduct.price}
                   </span>
-                  <span className="text-lg md:text-2xl text-white/60 line-through">
-                    {currentProduct.originalPrice}
-                  </span>
+                  <span className="text-lg md:text-2xl text-white/60" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{currentProduct.originalPrice}</span></span>
                 </div>
               </div>
 
@@ -275,9 +273,7 @@ export default function ProductBillboard() {
                 <span className="text-2xl font-black text-white">
                   {currentProduct.price}
                 </span>
-                <span className="text-base text-white/60 line-through">
-                  {currentProduct.originalPrice}
-                </span>
+                <span className="text-base text-white/60" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{currentProduct.originalPrice}</span></span>
               </div>
 
               <div className="flex flex-col items-center gap-2">
@@ -352,7 +348,7 @@ export default function ProductBillboard() {
               {/* Price */}
               <div className="flex items-baseline gap-3 flex-wrap">
                 <span className="text-4xl md:text-5xl font-black text-white">{selectedProduct.price}</span>
-                <span className="text-2xl text-slate-500 line-through">{selectedProduct.originalPrice}</span>
+                <span className="text-2xl text-slate-500" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{selectedProduct.originalPrice}</span></span>
               </div>
 
               {/* Reassurance strip — keeps the buyer at ease */}

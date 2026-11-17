@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/payment-methods" },
   title: "Payment Methods - Official Keys Hub",
   description: "Multiple secure payment options available: PayPal, Stripe, Credit Cards (Visa, Mastercard), and Cryptocurrency (USDT). Safe and encrypted transactions.",
   keywords: "payment methods, paypal, stripe, visa, mastercard, usdt payment, cryptocurrency, secure payment, buy software keys",

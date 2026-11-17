@@ -449,7 +449,7 @@ export default function Windows11VsWindows10Page() {
             <div className="bg-red-50 border-l-4 border-red-500 p-6 my-8">
               <p className="font-bold text-red-900 mb-2">⚠️ Critical Warning:</p>
               <p className="text-red-800">
-                Windows 10 support ends <strong>October 14, 2025</strong> (less than 2 months away in our 2026 timeline). After this date:
+                Windows 10 support ended on <strong>October 14, 2025</strong>. Since that date (unless you pay for Extended Security Updates):
               </p>
               <ul className="list-disc pl-6 mt-3 space-y-1 text-red-800">
                 <li>No more security updates</li>
@@ -522,7 +522,7 @@ export default function Windows11VsWindows10Page() {
                   <li>✔️ Use your PC for work/productivity</li>
                   <li>✔️ Want longer battery life (laptops)</li>
                   <li>✔️ Like modern UI design</li>
-                  <li>✔️ Need continued updates (Win 10 EOL 2025)</li>
+                  <li>✔️ Need continued updates (Windows 10 support ended Oct 2025)</li>
                 </ul>
               </div>
               <div className="bg-yellow-50 border-2 border-yellow-500 rounded-xl p-6">
@@ -581,7 +581,7 @@ export default function Windows11VsWindows10Page() {
               <details className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
                 <summary className="font-bold cursor-pointer text-lg">What happens if I stay on Windows 10?</summary>
                 <p className="mt-3 text-gray-700">
-                  Windows 10 reaches end-of-life October 14, 2025. After this date, you'll receive no security updates, making your PC vulnerable to malware and viruses. Businesses may face compliance issues.
+                  Windows 10 reached end-of-life on October 14, 2025. Since then it receives no free security updates (only paid Extended Security Updates), making your PC vulnerable to malware and viruses. Businesses may face compliance issues.
                 </p>
               </details>
 
@@ -606,7 +606,7 @@ export default function Windows11VsWindows10Page() {
                 <li><strong>Gaming:</strong> 6-16% higher FPS with DirectStorage and Game Mode</li>
                 <li><strong>Security:</strong> Mandatory TPM 2.0, Secure Boot, VBS protection</li>
                 <li><strong>Battery:</strong> 11-14% longer battery life on laptops</li>
-                <li><strong>Support:</strong> Receives updates until 2029+ (vs Win 10 ending in 2025)</li>
+                <li><strong>Support:</strong> Receives updates until 2029+ (vs Windows 10, whose support ended in October 2025)</li>
                 <li><strong>Features:</strong> Snap Layouts, Auto HDR, improved widgets</li>
               </ul>
               <p className="text-lg font-bold">

@@ -123,7 +123,7 @@ export default function CartModal({ onClose }: CartModalProps) {
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-sky-500 font-bold text-lg">{item.price}</span>
                           {item.originalPrice && (
-                            <span className="text-slate-500 text-xs line-through">{item.originalPrice}</span>
+                            <span className="text-slate-500 text-xs" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{item.originalPrice}</span></span>
                           )}
                         </div>
 

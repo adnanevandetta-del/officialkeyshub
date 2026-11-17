@@ -6,14 +6,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "https://officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026" },
+  alternates: { canonical: "https://www.officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026" },
   title: "Windows 11 24H2 End of Support October 2026: What Happens & How to Upgrade",
   description: "Windows 11 24H2 Home and Pro end support October 13, 2026. Learn what this means, how to check your version, upgrade options, and where to get genuine Windows 11 keys.",
   keywords: "windows 11 24h2 end of support, windows 11 24h2, windows 11 25h2 upgrade, windows 11 support end date, upgrade windows 11, windows 11 pro key",
   openGraph: {
     title: "Windows 11 24H2 End of Support Guide - October 2026",
     description: "Complete guide to Windows 11 24H2 reaching end of support. What it means, how to upgrade, and genuine Windows keys.",
-    url: "https://officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026",
+    url: "https://www.officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026",
     type: "article",
   },
 };
@@ -119,7 +119,7 @@ export default function Windows1124H2EndSupport() {
                   <p className="text-white/90 text-sm mb-4">Full features, BitLocker, Remote Desktop</p>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-4xl font-black text-white">$16.99</span>
-                    <span className="text-white/60 line-through text-sm">$199.99</span>
+                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
                   </div>
                   <Link
                     href="/#products"
@@ -143,7 +143,7 @@ export default function Windows1124H2EndSupport() {
                   <p className="text-white/90 text-sm mb-4">Perfect for personal use & gaming</p>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-4xl font-black text-white">$12.99</span>
-                    <span className="text-white/60 line-through text-sm">$139.99</span>
+                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$139.99</span></span>
                   </div>
                   <Link
                     href="/#products"
@@ -167,7 +167,7 @@ export default function Windows1124H2EndSupport() {
                   <p className="text-white/90 text-sm mb-4">Advanced security & management</p>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-4xl font-black text-white">$24.99</span>
-                    <span className="text-white/60 line-through text-sm">$309.00</span>
+                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$309.00</span></span>
                   </div>
                   <Link
                     href="/#products"
@@ -446,7 +446,7 @@ export default function Windows1124H2EndSupport() {
                         <div className="flex flex-wrap items-center gap-4">
                           <div className="flex items-baseline gap-2">
                             <span className="text-3xl font-black text-sky-700">$16.99</span>
-                            <span className="text-gray-500 line-through">$199.99</span>
+                            <span className="text-gray-500" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
                             <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">SAVE 92%</span>
                           </div>
                           <Link

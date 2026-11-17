@@ -23,14 +23,15 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://officialkeyshub.com"),
+  metadataBase: new URL("https://www.officialkeyshub.com"),
   title: "Buy Genuine Windows & Office Keys | Official Keys Hub",
-  description: "Buy genuine Microsoft Windows 11, Office 2021 and Windows Server product keys at unbeatable prices. Instant email delivery, activation support and a 30-day money-back guarantee.",
+  description: "Buy genuine Microsoft Windows 11, Office 2024 and Windows Server product keys. Instant email delivery, step-by-step activation support and a 30-day money-back guarantee.",
   keywords: [
     "buy windows 11 license",
     "buy microsoft office",
     "windows 11 activation key",
     "genuine windows 11 key",
+    "office 2024 professional plus key",
     "office 2021 professional plus key",
     "windows office bundle",
     "genuine microsoft keys",
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Official Keys Hub",
-    url: "https://officialkeyshub.com",
+    url: "https://www.officialkeyshub.com",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub - genuine Microsoft Windows & Office licenses" }],
   },
   twitter: {
@@ -93,16 +94,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${jakarta.variable}`}>
       <head>
-        <meta name="theme-color" content="#0369a1" />
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="sG23QnRZt0jwlqElmdDi6H0SfVOqBFkGJllZlzgBFtk" />
         
+      </head>
+      <body className={jakarta.className}>
         {/* Google Analytics - G-DQJRSHQN1M */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DQJRSHQN1M"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
-        <Script id="google-analytics-config" strategy="beforeInteractive">
+        <Script id="google-analytics-config" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -110,47 +112,45 @@ export default function RootLayout({
             gtag('config', 'G-DQJRSHQN1M');
           `}
         </Script>
-      </head>
-      <body className={jakarta.className}>
         <CartProvider>
-        {/* Schema Markup for SEO */}
-        <Script id="schema-organization" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Store",
-            "name": "Official Keys Hub",
-            "description": "Digital software reseller offering genuine Windows, Office, Server, and security software licenses with instant delivery and activation support",
-            "url": "https://www.officialkeyshub.com",
-            "logo": "https://www.officialkeyshub.com/logo.png",
-            "image": "https://www.officialkeyshub.com/og-image.jpg",
-            "foundingDate": "2025",
-            "priceRange": "$$",
-            "telephone": "+1-601-975-6129",
-            "email": "officialkeyshub@gmail.com",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Stockholm",
-              "addressCountry": "SE"
-            },
-            "sameAs": [
-              "https://wa.me/16019756129"
-            ]
-          })}
-        </Script>
-        
-        <Script id="schema-website" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Official Keys Hub",
-            "url": "https://www.officialkeyshub.com",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://www.officialkeyshub.com/#products",
-              "query-input": "required name=search_term_string"
-            }
-          })}
-        </Script>
+        {/* Schema Markup for SEO (plain JSON-LD, rendered into the HTML for crawlers) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Store",
+              "name": "Official Keys Hub",
+              "description": "Digital software reseller offering genuine Windows, Office, Server, and security software licenses with instant delivery and activation support",
+              "url": "https://www.officialkeyshub.com",
+              "logo": "https://www.officialkeyshub.com/logo.png",
+              "image": "https://www.officialkeyshub.com/og-image.jpg",
+              "foundingDate": "2025",
+              "priceRange": "$$",
+              "telephone": "+1-601-975-6129",
+              "email": "officialkeyshub@gmail.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Stockholm",
+                "addressCountry": "SE"
+              },
+              "sameAs": [
+                "https://wa.me/16019756129"
+              ]
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Official Keys Hub",
+              "url": "https://www.officialkeyshub.com"
+            }),
+          }}
+        />
 
         {children}
         </CartProvider>

@@ -8,7 +8,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import { getMdxArticle, getMdxSlugs } from "../../lib/blog-mdx";
 import { mdxComponents } from "../mdx-components";
 
-const SITE = "https://officialkeyshub.com";
+const SITE = "https://www.officialkeyshub.com";
 
 // Hand-written .tsx article folders take route priority; this dynamic segment
 // only serves auto-generated MDX slugs, and 404s for anything else.

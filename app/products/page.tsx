@@ -96,7 +96,7 @@ export default function ProductsIndexPage() {
                     <p className="text-gray-900 text-sm font-semibold line-clamp-2 mb-2 flex-grow">{p.name}</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-lg font-black text-gray-900">{p.price}</span>
-                      {p.originalPrice && <span className="text-xs text-gray-400 line-through">{p.originalPrice}</span>}
+                      {p.originalPrice && <span className="text-xs text-gray-400" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{p.originalPrice}</span></span>}
                     </div>
                   </Link>
                 ))}

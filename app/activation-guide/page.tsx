@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/activation-guide" },
   title: "Activation Guide - Official Keys Hub",
   description: "Step-by-step activation guides for Windows, Office, and other Microsoft products. Learn how to activate your software licenses quickly and easily.",
   keywords: "windows activation, office activation, product key activation, microsoft activation guide, windows 11 activation, office 2021 activation",

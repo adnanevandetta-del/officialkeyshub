@@ -270,7 +270,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-4xl font-black">$49.99</span>
-                  <span className="text-xl line-through opacity-75">$439.99</span>
+                  <span className="text-xl opacity-75" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                 </div>
                 <Link href="/#products" className="block w-full text-center bg-white text-orange-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
                   Buy Now →
@@ -284,7 +284,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-4xl font-black">$39.99</span>
-                  <span className="text-xl line-through opacity-75">$99.99</span>
+                  <span className="text-xl opacity-75" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$99.99</span></span>
                 </div>
                 <Link href="/#products" className="block w-full text-center bg-white text-blue-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
                   Buy Now →

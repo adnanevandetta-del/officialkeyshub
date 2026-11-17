@@ -58,6 +58,17 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  // Retired pages — permanent redirects keep their search traffic.
+  async redirects() {
+    return [
+      {
+        source: '/blog/microsoft-activation-scripts-mas-guide',
+        destination: '/blog/cheap-windows-keys-safe',
+        permanent: true,
+      },
+    ];
+  },
+
   // Image Optimization
   images: {
     formats: ['image/webp', 'image/avif'],

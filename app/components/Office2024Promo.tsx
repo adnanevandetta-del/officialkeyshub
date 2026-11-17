@@ -40,7 +40,7 @@ export default function Office2024Promo() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-black text-white">$34.99</span>
-                  <span className="text-white/60 line-through">$439.99</span>
+                  <span className="text-white/60" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                 </div>
                 <Link
                   href="/products/office-2024-professional-plus"

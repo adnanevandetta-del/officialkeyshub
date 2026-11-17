@@ -134,19 +134,23 @@ export const catalog: Record<CatalogCategory, CatalogProduct[]> = {
       },
       {
         name: "Windows 8.1 Pro",
-        description: "Efficient OS for older hardware",
+        description: "For older hardware only — Microsoft support ended January 2023",
         price: "$9.99",
         originalPrice: "$199.99",
-        features: ["Lifetime License", "1 PC", "Instant Delivery", "Lightweight", "Legacy Support"],
+        features: ["Lifetime License", "1 PC", "Instant Delivery", "Lightweight", "No security updates since Jan 2023"],
+        overview:
+          "Windows 8.1 Pro reached end of support on January 10, 2023, so it no longer receives security updates from Microsoft. We offer it only for legacy hardware or software that cannot run Windows 10 or 11 — ideally on machines kept offline. For everyday use we recommend Windows 11 Pro.",
         popular: false,
         image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop&q=80",
       },
       {
         name: "Windows 7 Professional",
-        description: "Classic Windows 7 for legacy systems",
+        description: "For legacy systems only — Microsoft support ended January 2020",
         price: "$9.99",
         originalPrice: "$199.99",
-        features: ["Lifetime License", "1 PC", "Instant Delivery", "Legacy Software Support", "Stable & Tested"],
+        features: ["Lifetime License", "1 PC", "Instant Delivery", "Legacy Software Support", "No security updates since Jan 2020"],
+        overview:
+          "Windows 7 Professional reached end of support on January 14, 2020, so it no longer receives security updates from Microsoft. We offer it only for legacy machines or software that require Windows 7 — ideally kept offline. For everyday use we recommend Windows 11 Pro.",
         popular: false,
         image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=600&fit=crop&q=80",
       },

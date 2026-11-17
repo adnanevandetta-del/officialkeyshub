@@ -6,6 +6,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.officialkeyshub.com/about" },
   title: "About Official Keys Hub — Genuine Software Resale",
   description:
     "Official Keys Hub is an independent reseller of genuine Windows, Office, and Server licenses, sold legally under EU resale rights with instant delivery and a 30-day money-back guarantee.",

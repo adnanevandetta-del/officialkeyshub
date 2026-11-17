@@ -214,7 +214,7 @@ export default function Products() {
                 <div className="mb-3 md:mb-4">
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black text-white">{product.price}</span>
-                    {product.originalPrice && <span className="text-sm text-white/60 line-through">{product.originalPrice}</span>}
+                    {product.originalPrice && <span className="text-sm text-white/60" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{product.originalPrice}</span></span>}
                   </div>
                 </div>
 
@@ -334,7 +334,7 @@ export default function Products() {
               <div>
                 <div className="flex items-baseline gap-3">
                   <span className="text-4xl font-black text-white">{selectedProduct.price}</span>
-                  {selectedProduct.originalPrice && <span className="text-lg text-slate-500 line-through">{selectedProduct.originalPrice}</span>}
+                  {selectedProduct.originalPrice && <span className="text-lg text-slate-500" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{selectedProduct.originalPrice}</span></span>}
                 </div>
                 <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-300">
                   <span className="flex items-center gap-1.5"><i className="fas fa-bolt text-sky-400"></i> Instant delivery</span>
