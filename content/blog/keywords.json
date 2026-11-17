@@ -2,7 +2,7 @@
   "_comment": "Keyword queue for the automated blog. Add keywords to the end of the list. The generator always picks the first item with status 'queued', writes an MDX draft, and flips it to 'drafted'; merging its PR is what publishes it. Statuses: queued -> drafted -> published.",
   "keywords": [
     { "keyword": "windows 10 end of support 2026", "title": "Windows 10 End of Support 2026: What Are Your Options?", "category": "Guide", "status": "drafted", "slug": "windows-10-end-of-support-2026", "draftedAt": "2026-09-23" },
-    { "keyword": "office 2024 professional plus key", "title": "Office 2024 Professional Plus Key: What You Get & How to Buy Safely", "category": "Buying", "status": "queued" },
+    { "keyword": "office 2024 professional plus key", "title": "Office 2024 Professional Plus Key: What You Get & How to Buy", "category": "Buying", "status": "published", "slug": "office-2024-professional-plus-key", "draftedAt": "2026-11-17" },
     { "keyword": "how to tell if a windows key seller is legit", "title": "Is That Cheap Windows Key Legit? 7 Checks Before You Pay", "category": "Buying", "status": "queued" },
     { "keyword": "office 2024 home vs professional plus", "title": "Office 2024 Home vs Professional Plus: Which Do You Need?", "category": "Comparison", "status": "queued" },
     { "keyword": "windows 10 esu free enroll", "title": "How to Get Windows 10 ESU Free Until 2027 (Step by Step)", "category": "Guide", "status": "queued" },
