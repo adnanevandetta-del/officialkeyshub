@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.officialkeyshub.com"),
   title: "Buy Genuine Windows & Office Keys | Official Keys Hub",
-  description: "Buy genuine Microsoft Windows 11, Office 2024 and Windows Server product keys. Instant email delivery, step-by-step activation support and a 30-day money-back guarantee.",
+  description: "Buy genuine Microsoft Windows 11, Office 2024 and Windows Server keys. Instant email delivery, activation support and a 30-day money-back guarantee.",
   keywords: [
     "buy windows 11 license",
     "buy microsoft office",
@@ -71,7 +71,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Official Keys Hub",
-    url: "https://www.officialkeyshub.com",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub - genuine Microsoft Windows & Office licenses" }],
   },
   twitter: {

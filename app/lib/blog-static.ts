@@ -2,6 +2,8 @@
 // This is the single source of truth for listing them on /blog. Auto-generated
 // MDX articles live in content/blog/ and are merged in via app/lib/blog-mdx.ts.
 
+import { getProductBoxImage } from "./productImage";
+
 export interface BlogListItem {
   slug: string;
   title: string;
@@ -18,11 +20,12 @@ export const staticBlogPosts: BlogListItem[] = [
   {
     slug: "windows-11-24h2-end-support-october-2026",
     title: "Windows 11 24H2 End of Support: What You Need to Know (October 2026)",
-    excerpt: "Windows 11 version 24H2 Home and Pro reach end of support on October 13, 2026. Learn what this means for your PC, how to upgrade safely, and where to get genuine Windows keys.",
+    excerpt: "Windows 11 version 24H2 Home and Pro reached end of support on October 13, 2026. Learn what this means for your PC, how to upgrade safely, and where to get genuine Windows keys.",
     category: "Windows",
     readTime: "8 min",
-    date: "Jan 15, 2026",
-    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
+    date: "Nov 17, 2026",
+    image: getProductBoxImage("Windows 11 Pro"),
+    imageFit: "contain",
   },
   {
     slug: "microsoft-office-activation-complete-guide",
@@ -30,17 +33,18 @@ export const staticBlogPosts: BlogListItem[] = [
     excerpt: "Learn how to activate Office 2024, 2021, and 2019 with step-by-step guides for all key types (Retail, Online, Bind, Phone). Real product images, troubleshooting tips, and honest advice from software sellers.",
     category: "Activation",
     readTime: "18 min",
-    date: "Jan 15, 2026",
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+    date: "Nov 17, 2026",
+    image: getProductBoxImage("Office 2024 Professional Plus"),
+    imageFit: "contain",
   },
   {
     slug: "office-2021-end-of-support",
     title: "Office 2021 End of Support: Is Office 2024 Worth It — or Is It Time for Microsoft 365?",
-    excerpt: "Office 2021 stops getting security updates on October 13, 2026. Every date that matters, the honest case for Office 2024, Microsoft 365 and staying put, the 3-year cost math, and how to upgrade.",
+    excerpt: "Office 2021 stopped getting security updates on October 13, 2026. Every date that matters, the honest case for Office 2024, Microsoft 365 and staying put, the 3-year cost math, and how to upgrade.",
     category: "Office",
     readTime: "12 min",
-    date: "Oct 7, 2026",
-    image: "/api/product-image?name=Office%202024%20Professional%20Plus&box=1&v=23",
+    date: "Nov 17, 2026",
+    image: getProductBoxImage("Office 2024 Professional Plus"),
     imageFit: "contain",
   },
   {
@@ -50,7 +54,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Buying",
     readTime: "11 min",
     date: "Oct 2, 2026",
-    image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Pro + Office 2024 Pro Plus Bundle"),
+    imageFit: "contain",
   },
   {
     slug: "buy-microsoft-retail-keys-safe",
@@ -59,7 +64,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Buying",
     readTime: "7 min",
     date: "Sep 18, 2026",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Pro"),
+    imageFit: "contain",
   },
   {
     slug: "activate-windows-11-key",
@@ -68,7 +74,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Activation",
     readTime: "6 min",
     date: "Sep 17, 2026",
-    image: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Pro"),
+    imageFit: "contain",
   },
   {
     slug: "buy-genuine-microsoft-office-key-cheap",
@@ -77,7 +84,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Buying",
     readTime: "7 min",
     date: "Sep 17, 2026",
-    image: "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=800&q=80",
+    image: getProductBoxImage("Office 2021 Professional Plus"),
+    imageFit: "contain",
   },
   {
     slug: "cheap-windows-11-keys-2026",
@@ -86,7 +94,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Buying",
     readTime: "10 min",
     date: "Sep 10, 2026",
-    image: "https://images.unsplash.com/photo-1624571409108-e9a41746af53?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Home"),
+    imageFit: "contain",
   },
   {
     slug: "buy-cheap-microsoft-office-keys-2026",
@@ -95,7 +104,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Buying",
     readTime: "8 min",
     date: "Sep 8, 2026",
-    image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80",
+    image: getProductBoxImage("Office Home & Business 2024"),
+    imageFit: "contain",
   },
   {
     slug: "how-to-activate-office-2021",
@@ -104,7 +114,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Activation",
     readTime: "7 min",
     date: "Sep 12, 2026",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
+    image: getProductBoxImage("Office 2021 Professional Plus"),
+    imageFit: "contain",
   },
   {
     slug: "transfer-windows-license-new-pc",
@@ -113,7 +124,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Guide",
     readTime: "8 min",
     date: "Sep 14, 2026",
-    image: "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=800&q=80",
+    image: getProductBoxImage("Windows 10 Pro"),
+    imageFit: "contain",
   },
   {
     slug: "how-to-activate-windows-11",
@@ -122,7 +134,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Activation",
     readTime: "8 min",
     date: "Sep 2, 2026",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Pro"),
+    imageFit: "contain",
   },
   {
     slug: "windows-11-home-vs-pro",
@@ -131,7 +144,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Comparison",
     readTime: "12 min",
     date: "Sep 2, 2026",
-    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Home"),
+    imageFit: "contain",
   },
   {
     slug: "windows-11-vs-windows-10-comparison",
@@ -139,8 +153,9 @@ export const staticBlogPosts: BlogListItem[] = [
     excerpt: "Windows 11 vs Windows 10 comparison - performance, features, gaming, and security. Should you upgrade? Complete guide with benchmarks.",
     category: "Comparison",
     readTime: "15 min",
-    date: "Sep 1, 2026",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80",
+    date: "Nov 17, 2026",
+    image: getProductBoxImage("Windows 10 Pro"),
+    imageFit: "contain",
   },
   {
     slug: "oem-vs-retail-windows-keys",
@@ -149,7 +164,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Guide",
     readTime: "12 min",
     date: "Aug 30, 2026",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Pro"),
+    imageFit: "contain",
   },
   {
     slug: "is-buying-windows-keys-legal",
@@ -158,7 +174,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Legal",
     readTime: "14 min",
     date: "Aug 28, 2026",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Enterprise"),
+    imageFit: "contain",
   },
   {
     slug: "cheap-windows-keys-safe",
@@ -167,7 +184,8 @@ export const staticBlogPosts: BlogListItem[] = [
     category: "Security",
     readTime: "12 min",
     date: "Aug 25, 2026",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+    image: getProductBoxImage("Windows 11 Home"),
+    imageFit: "contain",
   },
   {
     slug: "office-2021-vs-office-365",
@@ -175,7 +193,8 @@ export const staticBlogPosts: BlogListItem[] = [
     excerpt: "Office 2021 vs Office 365 comparison - pricing, features, updates, and value. One-time purchase vs subscription explained.",
     category: "Comparison",
     readTime: "13 min",
-    date: "Aug 22, 2026",
-    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80",
+    date: "Nov 17, 2026",
+    image: getProductBoxImage("Microsoft 365 Business Standard (1 Year)"),
+    imageFit: "contain",
   },
 ];

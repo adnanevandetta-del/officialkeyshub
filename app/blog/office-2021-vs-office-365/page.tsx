@@ -1,19 +1,29 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
-import Image from "next/image";
 import Breadcrumb from "../../components/Breadcrumb";
+import ArticleHero from "../ArticleHero";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/office-2021-vs-office-365" },
   title: "Office 2021 vs Office 365: Which Should You Buy in 2026?",
-  description: "Office 2021 vs Office 365 comparison - pricing, features, updates, and value. One-time purchase vs subscription. Complete guide for 2026.",
+  description: "Office 2021 vs Microsoft 365 in 2026: current prices, what Office 2021 end of support means, and whether Office 2024 or a subscription is the better buy.",
   keywords: "office 2021 vs 365, office 2021 vs microsoft 365, office one-time vs subscription, should i buy office 2021, office 365 worth it",
+  openGraph: {
+    title: "Office 2021 vs Office 365: Which Should You Buy in 2026?",
+    description: "Office 2021 vs Microsoft 365 in 2026: current prices, what Office 2021 end of support means, and whether Office 2024 or a subscription is the better buy.",
+    url: "https://www.officialkeyshub.com/blog/office-2021-vs-office-365",
+    type: "article",
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/office-2021-vs-office-365.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
+  },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/office-2021-vs-office-365.jpg"] },
 };
 
 export default function Office2021Vs365Page() {
   return (
     <>
+      <ArticleSchema slug="office-2021-vs-office-365" />
       <Navbar />
       <main className="min-h-screen bg-white pt-24">
         <article className="container mx-auto px-6 py-16 max-w-4xl">
@@ -29,27 +39,21 @@ export default function Office2021Vs365Page() {
           </h1>
 
           <div className="flex items-center gap-4 text-sm text-gray-600 mb-8">
-            <span>📅 Updated: September 2, 2026</span>
+            <span>📅 Updated: November 17, 2026</span>
             <span>⏱️ 13 min read</span>
           </div>
 
-          <Image 
-            src="/og/office-2021-professional-plus.jpg" 
-            alt="Microsoft Office 2021 vs Office 365 Comparison"
-            width={1200}
-            height={384}
-            className="w-full h-96 object-cover rounded-xl mb-8"
-          />
+          <ArticleHero products={["Office 2021 Professional Plus", "Microsoft 365 Business Standard (1 Year)"]} alt="Office 2021 Professional Plus vs Microsoft 365 product boxes" className="mb-8" />
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              Microsoft offers two ways to get Office: <strong>Office 2021</strong> (one-time purchase, $250) or <strong>Microsoft 365</strong> (subscription, $70/year). Same apps, but fundamentally different models. Which is better? This complete 2026 guide breaks down pricing, features, updates, and value to help you decide.
+              Microsoft offers two ways to get Office: a <strong>one-time purchase</strong> (Office 2021, now replaced by Office 2024 — $249.99 for Home &amp; Business at Microsoft) or <strong>Microsoft 365</strong> (subscription, $99.99/year for Personal). Same apps, but fundamentally different models. Which is better? This complete 2026 guide breaks down pricing, features, updates, and value to help you decide.
             </p>
 
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">🎯 Quick Answer:</p>
               <p className="text-green-800">
-                <strong>Office 2021 offers better value for most users.</strong> Pay once ($49.99 at Official Keys Hub), use forever. Microsoft 365 costs $70/year forever but adds cloud storage and new features. For individuals not needing cloud features, Office 2021 saves $400+ over 5 years.
+                <strong>A one-time Office license is still the better value for most single users — but buy Office 2024, not Office 2021.</strong> Office 2021 stopped receiving security updates on October 13, 2026, while Office 2024 is supported until October 2029. Pay once ($34.99 for Office 2024 Pro Plus at Official Keys Hub) instead of $99.99/year for Microsoft 365 Personal — a saving of over $450 across 5 years. Microsoft 365 still wins if you need 1TB of OneDrive, Copilot or Office on several devices.
               </p>
             </div>
 
@@ -68,13 +72,13 @@ export default function Office2021Vs365Page() {
                 <tbody className="text-sm">
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">Pricing Model</td>
-                    <td className="text-center bg-blue-50">One-time $249 (or $49.99)</td>
-                    <td className="text-center bg-green-50">$69.99/year</td>
+                    <td className="text-center bg-blue-50">One-time $249 (or $24.99 here)</td>
+                    <td className="text-center bg-green-50">$99.99/year</td>
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">5-Year Cost</td>
-                    <td className="text-center bg-blue-50 text-green-600">$49.99 total</td>
-                    <td className="text-center bg-green-50 text-red-600">$350 total</td>
+                    <td className="text-center bg-blue-50 text-green-600">$24.99 total</td>
+                    <td className="text-center bg-green-50 text-red-600">$499.95 total</td>
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">Apps Included</td>
@@ -88,7 +92,7 @@ export default function Office2021Vs365Page() {
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">Security Updates</td>
-                    <td className="text-center bg-blue-50">✅ 5 years (until 2026)</td>
+                    <td className="text-center bg-blue-50 text-red-600">❌ Ended Oct 13, 2026</td>
                     <td className="text-center bg-green-50">✅ Continuous</td>
                   </tr>
                   <tr className="border-b border-gray-200">
@@ -109,11 +113,11 @@ export default function Office2021Vs365Page() {
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">AI Features (Copilot)</td>
                     <td className="text-center bg-blue-50 text-red-600">❌ Not available</td>
-                    <td className="text-center bg-green-50 text-green-600">✅ Available (extra $20/mo)</td>
+                    <td className="text-center bg-green-50 text-green-600">✅ Included (usage limits; more in M365 Premium)</td>
                   </tr>
                   <tr className="border-b border-gray-200">
                     <td className="py-3 font-semibold">Support Duration</td>
-                    <td className="text-center bg-blue-50">5 years (ends 2026)</td>
+                    <td className="text-center bg-blue-50">Ended October 13, 2026</td>
                     <td className="text-center bg-green-50">Lifetime (while subscribed)</td>
                   </tr>
                   <tr>
@@ -136,7 +140,7 @@ export default function Office2021Vs365Page() {
               <h3 className="font-bold text-lg mb-3 text-blue-900">✅ Office 2021 Advantages:</h3>
               <ul className="space-y-2">
                 <li>✔️ <strong>One-time payment</strong> - no recurring subscription fees</li>
-                <li>✔️ <strong>Cheaper long-term</strong> - $49.99 vs $350 over 5 years (Microsoft 365)</li>
+                <li>✔️ <strong>Cheaper long-term</strong> - $24.99 once vs $499.95 over 5 years (Microsoft 365 Personal)</li>
                 <li>✔️ <strong>Permanent license</strong> - use forever, no expiration</li>
                 <li>✔️ <strong>Offline-first</strong> - works without internet connection</li>
                 <li>✔️ <strong>Privacy-focused</strong> - less telemetry and cloud dependency</li>
@@ -149,7 +153,7 @@ export default function Office2021Vs365Page() {
                 <li>✖️ <strong>Single device</strong> - license ties to one PC only</li>
                 <li>✖️ <strong>No OneDrive 1TB</strong> - only 5GB free storage</li>
                 <li>✖️ <strong>No Teams</strong> - Microsoft Teams not included</li>
-                <li>✖️ <strong>Limited support</strong> - ends October 2026 (5 years after release)</li>
+                <li>✖️ <strong>No more security updates</strong> - support ended October 13, 2026 (Office 2024 is supported until October 2029)</li>
               </ul>
             </div>
 
@@ -180,11 +184,11 @@ export default function Office2021Vs365Page() {
               </div>
 
               <div className="bg-green-50 border-2 border-green-500 rounded-xl p-6">
-                <h4 className="font-bold text-lg mb-2">Office Professional Plus 2021 - $439 (or $49.99)</h4>
+                <h4 className="font-bold text-lg mb-2">Office Professional Plus 2021 - $439 (or $24.99 here)</h4>
                 <p className="text-sm mb-2">
                   <strong>Includes:</strong> Word, Excel, PowerPoint, Outlook, Publisher, Access
                 </p>
-                <p className="text-xs text-green-600">Best for: Power users, database work - Get it for $49.99 at Official Keys Hub!</p>
+                <p className="text-xs text-green-600">Best for: Power users, database work - $24.99 at Official Keys Hub. For ongoing security updates, choose <Link href="/products/office-2024-professional-plus" className="underline">Office 2024 Pro Plus ($34.99)</Link>.</p>
               </div>
             </div>
 
@@ -202,14 +206,14 @@ export default function Office2021Vs365Page() {
                 <li>✔️ <strong>1TB OneDrive</strong> - cloud storage included</li>
                 <li>✔️ <strong>5 devices</strong> - install on PC, Mac, tablet, phone</li>
                 <li>✔️ <strong>Microsoft Teams</strong> - collaboration platform included</li>
-                <li>✔️ <strong>AI Copilot ready</strong> - can add AI assistant ($20/mo extra)</li>
-                <li>✔️ <strong>Family plan option</strong> - up to 6 users for $99/year</li>
+                <li>✔️ <strong>Copilot included</strong> - AI features with monthly usage limits (Microsoft 365 Premium, $199.99/year, raises them)</li>
+                <li>✔️ <strong>Family plan option</strong> - up to 6 users for $129.99/year</li>
                 <li>✔️ <strong>Continuous support</strong> - no expiration while subscribed</li>
               </ul>
 
               <h3 className="font-bold text-lg mb-3 mt-6 text-green-900">❌ Microsoft 365 Disadvantages:</h3>
               <ul className="space-y-2">
-                <li>✖️ <strong>Recurring cost</strong> - $70/year forever (adds up over time)</li>
+                <li>✖️ <strong>Recurring cost</strong> - $99.99/year forever (raised from $69.99 in January 2025)</li>
                 <li>✖️ <strong>No ownership</strong> - stop paying = lose access to Office</li>
                 <li>✖️ <strong>Internet required</strong> - needs online activation regularly</li>
                 <li>✖️ <strong>Forced updates</strong> - UI changes you can't opt out of</li>
@@ -220,7 +224,7 @@ export default function Office2021Vs365Page() {
             <h3 className="text-2xl font-bold mt-8 mb-4">Microsoft 365 Plans</h3>
             <div className="space-y-4 mb-8">
               <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
-                <h4 className="font-bold text-lg mb-2">Microsoft 365 Personal - $69.99/year</h4>
+                <h4 className="font-bold text-lg mb-2">Microsoft 365 Personal - $99.99/year</h4>
                 <p className="text-sm mb-2">
                   <strong>Includes:</strong> Office apps, 1TB OneDrive, 1 user, 5 devices
                 </p>
@@ -228,7 +232,7 @@ export default function Office2021Vs365Page() {
               </div>
 
               <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
-                <h4 className="font-bold text-lg mb-2">Microsoft 365 Family - $99.99/year</h4>
+                <h4 className="font-bold text-lg mb-2">Microsoft 365 Family - $129.99/year</h4>
                 <p className="text-sm mb-2">
                   <strong>Includes:</strong> Office apps, 1TB per user, 6 users, 5 devices each
                 </p>
@@ -236,7 +240,7 @@ export default function Office2021Vs365Page() {
               </div>
 
               <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
-                <h4 className="font-bold text-lg mb-2">Microsoft 365 Business Basic - $6/user/month</h4>
+                <h4 className="font-bold text-lg mb-2">Microsoft 365 Business Basic - $7/user/month</h4>
                 <p className="text-sm mb-2">
                   <strong>Includes:</strong> Web/mobile Office apps, 1TB OneDrive, Teams, Exchange
                 </p>
@@ -244,7 +248,7 @@ export default function Office2021Vs365Page() {
               </div>
 
               <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
-                <h4 className="font-bold text-lg mb-2">Microsoft 365 Business Standard - $12.50/user/month</h4>
+                <h4 className="font-bold text-lg mb-2">Microsoft 365 Business Standard - $14/user/month</h4>
                 <p className="text-sm mb-2">
                   <strong>Includes:</strong> Full desktop Office apps, 1TB OneDrive, Teams, Exchange
                 </p>
@@ -256,7 +260,7 @@ export default function Office2021Vs365Page() {
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">💰 5-Year Cost Analysis</h2>
 
             <p className="mb-6">
-              Let's compare the true cost of Office 2021 vs Microsoft 365 over 5 years:
+              Let's compare the true cost of a one-time Office license vs Microsoft 365 over 5 years (Microsoft list prices, November 2026). Because Office 2021 is no longer supported, the one-time figures below use Office 2024:
             </p>
 
             <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6 mb-8">
@@ -265,35 +269,35 @@ export default function Office2021Vs365Page() {
                 <thead>
                   <tr className="border-b-2 border-gray-300">
                     <th className="text-left py-3">Scenario</th>
-                    <th className="text-center py-3">Office 2021</th>
+                    <th className="text-center py-3">One-time (Office 2024)</th>
                     <th className="text-center py-3">Microsoft 365</th>
                     <th className="text-center py-3">Savings</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-200">
-                    <td className="py-3 font-semibold">Single User (Microsoft Price)</td>
-                    <td className="text-center text-green-600 font-bold">$249</td>
-                    <td className="text-center">$350</td>
-                    <td className="text-center">$101</td>
+                    <td className="py-3 font-semibold">Single User (Microsoft, Office Home &amp; Business 2024)</td>
+                    <td className="text-center text-green-600 font-bold">$249.99</td>
+                    <td className="text-center">$499.95</td>
+                    <td className="text-center">$249.96</td>
                   </tr>
                   <tr className="border-b border-gray-200">
-                    <td className="py-3 font-semibold">Single User (Official Keys Hub)</td>
-                    <td className="text-center text-green-600 font-bold">$49.99</td>
-                    <td className="text-center">$350</td>
-                    <td className="text-center font-bold">$300</td>
+                    <td className="py-3 font-semibold">Single User (Official Keys Hub, Office 2024 Pro Plus)</td>
+                    <td className="text-center text-green-600 font-bold">$34.99</td>
+                    <td className="text-center">$499.95</td>
+                    <td className="text-center font-bold">$464.96</td>
                   </tr>
                   <tr className="border-b border-gray-200">
-                    <td className="py-3 font-semibold">Family (6 users, Microsoft)</td>
-                    <td className="text-center">$1,494</td>
-                    <td className="text-center text-green-600 font-bold">$500</td>
-                    <td className="text-center">-$994</td>
+                    <td className="py-3 font-semibold">Family of 6 (Microsoft, 6 × Home &amp; Business 2024)</td>
+                    <td className="text-center">$1,499.94</td>
+                    <td className="text-center text-green-600 font-bold">$649.95</td>
+                    <td className="text-center">-$849.99</td>
                   </tr>
                   <tr>
-                    <td className="py-3 font-semibold">Family (6 users, Official Keys Hub)</td>
-                    <td className="text-center text-green-600 font-bold">$180</td>
-                    <td className="text-center">$500</td>
-                    <td className="text-center font-bold">$300</td>
+                    <td className="py-3 font-semibold">Family of 6 (Official Keys Hub, 6 × Office 2024 Pro Plus)</td>
+                    <td className="text-center text-green-600 font-bold">$209.94</td>
+                    <td className="text-center">$649.95</td>
+                    <td className="text-center font-bold">$440.01</td>
                   </tr>
                 </tbody>
               </table>
@@ -302,7 +306,7 @@ export default function Office2021Vs365Page() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">💡 Cost Winner:</p>
               <p className="text-green-800">
-                <strong>Office 2021 from Official Keys Hub saves $300 over 5 years</strong> for single users. For families, Microsoft 365 Family ($100/year for 6 users) beats buying 6 individual Office 2021 licenses.
+                <strong>A one-time Office 2024 license from Official Keys Hub saves about $465 over 5 years</strong> for a single user compared with Microsoft 365 Personal. For families, Microsoft 365 Family ($129.99/year for 6 users) is the better deal if everyone needs 1TB of OneDrive and Office on several devices; if you only need the desktop apps on one PC each, six Office 2024 licenses still cost less.
               </p>
             </div>
 
@@ -318,7 +322,7 @@ export default function Office2021Vs365Page() {
                 <h3 className="text-lg font-bold mb-3">Features ONLY in Microsoft 365:</h3>
                 <ul className="space-y-2 text-sm">
                   <li>✅ <strong>Real-time collaboration</strong> - multiple people editing same document</li>
-                  <li>✅ <strong>AI Copilot integration</strong> - AI assistant (extra $20/mo)</li>
+                  <li>✅ <strong>Copilot integration</strong> - AI assistant with monthly usage limits</li>
                   <li>✅ <strong>Advanced Excel features</strong> - Power Query, Power Pivot</li>
                   <li>✅ <strong>Microsoft Teams</strong> - video calls, chat, collaboration</li>
                   <li>✅ <strong>1TB OneDrive</strong> - cloud file storage and sync</li>
@@ -367,7 +371,7 @@ export default function Office2021Vs365Page() {
                   <li>✔️ Collaborate with others in real-time</li>
                   <li>✔️ Want Microsoft Teams for video calls</li>
                   <li>✔️ Need the latest features as they release</li>
-                  <li>✔️ Have a family (6 people = $100/year is great value)</li>
+                  <li>✔️ Have a family (6 people for $129.99/year is great value)</li>
                   <li>✔️ Want AI Copilot access (requires 365 subscription)</li>
                 </ul>
               </div>
@@ -380,7 +384,7 @@ export default function Office2021Vs365Page() {
               <details className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
                 <summary className="font-bold cursor-pointer text-lg">Will Office 2021 stop working after 5 years?</summary>
                 <p className="mt-3 text-gray-700">
-                  No! Office 2021 works forever on your PC. However, Microsoft ends security updates in October 2026 (5 years after release). After that, you can still use it, but you won't get security patches. Consider upgrading to Office 2024 or Microsoft 365 at that point.
+                  No — Office 2021 keeps working on your PC. However, Microsoft ended its security updates on October 13, 2026, so it no longer gets security patches. Consider upgrading to Office 2024 (supported until October 2029) or Microsoft 365 at that point.
                 </p>
               </details>
 
@@ -392,9 +396,9 @@ export default function Office2021Vs365Page() {
               </details>
 
               <details className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
-                <summary className="font-bold cursor-pointer text-lg">Is Microsoft 365 really worth $70/year?</summary>
+                <summary className="font-bold cursor-pointer text-lg">Is Microsoft 365 really worth $99.99/year?</summary>
                 <p className="mt-3 text-gray-700">
-                  For most single users: No. The 1TB OneDrive alone costs $20/year separately, but if you don't need cloud storage or Teams, Office 2021 is better value. For families (6 users), Microsoft 365 Family at $100/year is an incredible deal.
+                  For most single users: No. If you don't need 1TB of cloud storage, Teams or Copilot, a one-time Office 2024 license is better value. For families (6 users), Microsoft 365 Family at $129.99/year is still a strong deal.
                 </p>
               </details>
 
@@ -424,12 +428,12 @@ export default function Office2021Vs365Page() {
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">🏆 Final Verdict</h2>
 
             <div className="border-2 border-blue-500 rounded-xl p-8 mb-8 bg-blue-50">
-              <p className="text-xl font-bold mb-4">For most individual users, Office 2021 is the better value.</p>
+              <p className="text-xl font-bold mb-4">For most individual users, a one-time license is the better value — and in 2026 that means Office 2024.</p>
               <p className="mb-4">
-                <strong>Why Office 2021 wins:</strong>
+                <strong>Why a one-time license (Office 2024) wins:</strong>
               </p>
               <ul className="list-disc pl-6 space-y-2 mb-6">
-                <li><strong>$300 savings over 5 years</strong> - pay once vs $70/year forever</li>
+                <li><strong>About $465 saved over 5 years</strong> - pay $34.99 once vs $99.99/year</li><li><strong>Supported until October 2029</strong> - unlike Office 2021, whose support ended October 13, 2026</li>
                 <li><strong>Permanent ownership</strong> - no risk of losing access</li>
                 <li><strong>Offline-first</strong> - works without internet dependency</li>
                 <li><strong>All essential features</strong> - 95% of users don't need 365-exclusive features</li>
@@ -439,29 +443,29 @@ export default function Office2021Vs365Page() {
                 <strong>When Microsoft 365 wins:</strong>
               </p>
               <ul className="list-disc pl-6 space-y-2 mb-6">
-                <li><strong>Families (6 users)</strong> - $100/year for 6 people is unbeatable value</li>
+                <li><strong>Families (6 users)</strong> - $129.99/year for 6 people, each with 1TB OneDrive</li>
                 <li><strong>Cloud-dependent users</strong> - if you need 1TB OneDrive storage</li>
                 <li><strong>Multi-device users</strong> - Office on PC, Mac, tablet, phone</li>
                 <li><strong>Real-time collaboration</strong> - working with teams regularly</li>
               </ul>
               <p className="text-lg font-bold">
-                <strong>Recommended:</strong> Office 2021 Professional Plus for $49.99 (single users) or Microsoft 365 Family for $100/year (families)
+                <strong>Recommended:</strong> Office 2024 Professional Plus for $34.99 (single users) or Microsoft 365 Family for $129.99/year (families who need cloud storage)
               </p>
             </div>
 
             {/* CTA */}
             <div className="rounded-2xl p-8 text-center my-12 bg-[#22c55e]">
-              <h2 className="text-3xl font-bold text-black mb-4">Get Office 2021 Professional Plus</h2>
+              <h2 className="text-3xl font-bold text-black mb-4">Get Office 2024 Professional Plus</h2>
               <p className="text-black text-lg mb-6">
-                Save $300 compared to Microsoft 365 over 5 years. Pay once, use forever.
+                Save about $465 compared to Microsoft 365 Personal over 5 years. Pay once — supported until October 2029.
               </p>
-              <p className="text-black text-3xl font-bold mb-6">Only $49.99</p>
+              <p className="text-black text-3xl font-bold mb-6">Only $34.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="/" 
+                  href="/products/office-2024-professional-plus" 
                   className="px-8 py-4 bg-black text-white font-bold rounded-lg hover:bg-gray-800 transition"
                 >
-                  🛒 Buy Office 2021 Pro - $49.99
+                  🛒 Buy Office 2024 Pro Plus - $34.99
                 </a>
                 <a 
                   href="/blog/how-to-activate-office-2021" 

@@ -11,11 +11,12 @@ const SITE = "https://www.officialkeyshub.com";
 export const metadata: Metadata = {
   title: "All Products — Genuine Microsoft Keys",
   description:
-    "Browse every genuine Microsoft software key at Official Keys Hub — Windows 11 & 10, Office 2021 & 365, Windows Server, Visio, Project, SQL Server, Visual Studio and security software. Instant delivery, 30-day money-back guarantee.",
+    "Browse genuine keys for Windows 11 & 10, Office 2024 & 2021, Windows Server, Visio, Project, SQL Server and Visual Studio. Instant delivery, 30-day guarantee.",
   keywords:
     "buy windows key, buy office key, cheap microsoft keys, genuine software licenses, windows 11 pro key, office 2021 key, windows server key, all products",
   alternates: { canonical: `${SITE}/products` },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub — genuine Microsoft Windows & Office licenses" }],
     title: "All Products — Genuine Microsoft Keys | Official Keys Hub",
     description: "Every genuine Windows, Office and Server key in one place. Instant delivery, money-back guarantee.",
     url: `${SITE}/products`,
@@ -96,7 +97,7 @@ export default function ProductsIndexPage() {
                     <p className="text-gray-900 text-sm font-semibold line-clamp-2 mb-2 flex-grow">{p.name}</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-lg font-black text-gray-900">{p.price}</span>
-                      {p.originalPrice && <span className="text-xs text-gray-400" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{p.originalPrice}</span></span>}
+                      {p.originalPrice && <span className="text-xs text-gray-400" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{p.originalPrice}</span></span>}
                     </div>
                   </Link>
                 ))}

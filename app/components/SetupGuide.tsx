@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import ArticleHero from '../blog/ArticleHero';
 
 interface Step {
   title: string;
@@ -147,6 +148,7 @@ export default function SetupGuide() {
             Activate your genuine Microsoft product in under 5 minutes. Select your product below for
             step-by-step instructions.
           </p>
+            <ArticleHero products={["Windows 11 Pro", "Office 2024 Professional Plus", "Windows Server 2025 Standard"]} alt="Windows 11 Pro, Office 2024 Professional Plus and Windows Server 2025 product boxes" className="mb-10 max-w-4xl mx-auto" />
 
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             <div className="flex items-center gap-2">

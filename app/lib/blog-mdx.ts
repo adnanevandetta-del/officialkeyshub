@@ -3,6 +3,12 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { staticBlogPosts, type BlogListItem } from "./blog-static";
+import { getProductBoxImage } from "./productImage";
+
+/** Article image: a custom image if set, otherwise our Microsoft product-box art. */
+export function mdxImage(data: { image?: string; product?: string }): string {
+  return data.image ?? getProductBoxImage(data.product ?? "Windows 11 Pro");
+}
 
 // Auto-generated MDX articles live here. Hand-written .tsx articles keep their
 // own folders under app/blog/ and always win the route, so MDX slugs must not
@@ -23,6 +29,7 @@ export interface MdxFrontmatter {
   date?: string; // ISO, e.g. "2026-09-23"
   readTime?: string;
   image?: string;
+  product?: string; // product-box art for the article image when no custom image
   keywords?: string;
   draft?: boolean;
 }
@@ -77,7 +84,8 @@ export function getMdxListItems(): BlogListItem[] {
       category: a.data.category ?? "Guide",
       readTime: a.data.readTime ?? "8 min",
       date: formatDate(a.data.date),
-      image: a.data.image ?? "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
+      image: mdxImage(a.data),
+      imageFit: (a.data.image ? "cover" : "contain") as "cover" | "contain",
     }))
     .sort((x, y) => new Date(y.date).getTime() - new Date(x.date).getTime());
 }

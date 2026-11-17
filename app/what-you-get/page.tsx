@@ -7,10 +7,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/what-you-get" },
-  title: "What You Get When You Buy From Us - Instant Delivery, Premium Support & Lifetime License",
-  description: "Get genuine Windows & Office keys with instant email delivery, step-by-step installation guides, 24/7 premium support, lifetime license validity, and money-back guarantee. Buy with confidence.",
+  title: "What You Get When You Buy | Official Keys Hub",
+  description: "Genuine Windows & Office keys with instant email delivery, step-by-step install guides, 24/7 support, lifetime licenses and a 30-day money-back guarantee.",
   keywords: "instant delivery, email delivery, installation guide, premium support, lifetime license, genuine product key, activation support, money back guarantee, retail license, OEM key, product key email, 24/7 support, authentic Microsoft key, lifetime validity, installation instructions, activation help",
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub — genuine Microsoft Windows & Office licenses" }],
     title: "What's Included With Every Purchase - Official Keys Hub",
     description: "Instant email delivery, premium 24/7 support, step-by-step guides, lifetime licenses, and genuine Microsoft keys. See what makes us different.",
     url: "https://www.officialkeyshub.com/what-you-get",
@@ -56,7 +57,7 @@ export default function WhatYouGetPage() {
                     <h3 className="text-xl font-bold text-white mb-2">Windows 11 Pro</h3>
                     <div className="flex items-baseline justify-center gap-2 mb-4">
                       <span className="text-3xl font-black text-white">$16.99</span>
-                      <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
+                      <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
                     </div>
                     <Link href="/#products" className="inline-block bg-white text-sky-700 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
                       View Product
@@ -73,7 +74,7 @@ export default function WhatYouGetPage() {
                     <h3 className="text-xl font-bold text-white mb-2">Office 2024 Pro Plus</h3>
                     <div className="flex items-baseline justify-center gap-2 mb-4">
                       <span className="text-3xl font-black text-white">$34.99</span>
-                      <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
+                      <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                     </div>
                     <Link href="/#products" className="inline-block bg-white text-sky-700 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
                       View Product
@@ -89,7 +90,7 @@ export default function WhatYouGetPage() {
                     <h3 className="text-xl font-bold text-white mb-2">Windows + Office Bundle</h3>
                     <div className="flex items-baseline justify-center gap-2 mb-4">
                       <span className="text-3xl font-black text-white">$44.99</span>
-                      <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$639.98</span></span>
+                      <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$639.98</span></span>
                     </div>
                     <Link href="/#products" className="inline-block bg-white text-sky-700 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors">
                       View Product

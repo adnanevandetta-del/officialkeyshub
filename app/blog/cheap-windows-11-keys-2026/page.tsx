@@ -5,18 +5,20 @@ import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cheap Windows 11 Keys 2026 from $34.99 | Official Keys Hub",
+  title: "Cheap Windows 11 Keys 2026 from $12.99 | Official Keys Hub",
   description:
-    "Where to buy cheap Windows 11 keys in 2026. Genuine Windows 11 Pro & Home product keys up to 90% off, instant delivery, lifetime activation. Safe, legal, from $34.99.",
+    "Where to buy cheap Windows 11 keys in 2026: genuine Windows 11 Pro & Home keys up to 90% off, with instant delivery and lifetime activation. From $12.99.",
   keywords:
     "cheap windows 11 keys, buy windows 11 pro key, windows 11 key cheap, cheap windows 11 pro, windows 11 home key, genuine windows 11 key, windows 11 product key, buy windows 11 key online, discount windows 11 license, windows 11 activation key",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026" },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/cheap-windows-11-keys-2026.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "Cheap Windows 11 Keys 2026 - Genuine Keys from $34.99",
     description: "Buy genuine Windows 11 Pro & Home keys up to 90% off. Instant delivery, lifetime activation, 30-day guarantee.",
     url: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/cheap-windows-11-keys-2026.jpg"] },
 };
 
 const articleSchema = {
@@ -85,9 +87,9 @@ export default function CheapWindows11Keys2026() {
               {/* Quick answer */}
               <div className="bg-sky-50 border-l-4 border-sky-600 p-6 mb-10 rounded-r-lg">
                 <p className="text-gray-800 m-0">
-                  <strong>Quick answer:</strong> You can buy genuine <strong>Windows 11 Pro keys from $39.99</strong> and
-                  Windows 11 Home from $34.99 at trusted resellers like Official Keys Hub — around
-                  80% cheaper than Microsoft&apos;s $199 retail price. Keys are delivered instantly by email and
+                  <strong>Quick answer:</strong> You can buy genuine <strong>Windows 11 Pro keys from $16.99</strong> and
+                  Windows 11 Home from $12.99 at trusted resellers like Official Keys Hub — around
+                  90% cheaper than Microsoft&apos;s $199.99 retail price. Keys are delivered instantly by email and
                   activate for the lifetime of your device.
                 </p>
               </div>

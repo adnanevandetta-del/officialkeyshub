@@ -12,12 +12,14 @@ export const metadata: Metadata = {
     "how do i activate my windows 11 key, activate windows 11 key, enter windows 11 product key, windows 11 activation command, slmgr activate windows 11, activate windows 11 home",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/activate-windows-11-key" },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/activate-windows-11-key.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "How to Activate My Windows 11 Key (2026) | Official Keys Hub",
     description:
       "The fast answer plus every activation method for Windows 11 Home, Pro and Enterprise — Settings, Command Prompt and phone activation.",
     url: "https://www.officialkeyshub.com/blog/activate-windows-11-key",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/activate-windows-11-key.jpg"] },
 };
 
 const faqs = [

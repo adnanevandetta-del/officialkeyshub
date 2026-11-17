@@ -5,9 +5,10 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "Licensing & Authenticity | Official Keys Hub",
   description:
-    "How Official Keys Hub sells genuine Microsoft product keys legally: the EU resale rights that make it lawful, how to verify a key's authenticity yourself through Microsoft, and our genuine-or-your-money-back guarantee.",
+    "How we sell genuine Microsoft keys legally under EU resale rights, how to verify a key yourself with Microsoft, and our genuine-or-money-back guarantee.",
   alternates: { canonical: "https://www.officialkeyshub.com/licensing" },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub — genuine Microsoft Windows & Office licenses" }],
     title: "Licensing & Authenticity | Official Keys Hub",
     description:
       "Genuine keys, sold legally under EU resale rights. Verify authenticity through Microsoft, backed by a 30-day money-back guarantee.",

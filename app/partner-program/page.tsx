@@ -3,9 +3,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Partner Program — Earn up to 20% Commission | Official Keys Hub",
+  title: "Partner Program — Earn up to 20% | Official Keys Hub",
   description:
-    "Recommend genuine Microsoft licenses and earn 10–20% commission on every completed order you refer. Free to join, personal referral code, monthly payouts via PayPal, USDT or bank transfer.",
+    "Earn 10–20% commission on every order you refer for genuine Microsoft licenses. Free to join, with monthly payouts via PayPal, USDT or bank transfer.",
   keywords: "affiliate program, partner program, microsoft keys affiliate, software affiliate program, referral program",
   alternates: { canonical: "https://www.officialkeyshub.com/partner-program" },
 };

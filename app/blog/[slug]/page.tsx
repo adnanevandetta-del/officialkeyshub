@@ -5,7 +5,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
-import { getMdxArticle, getMdxSlugs } from "../../lib/blog-mdx";
+import { getMdxArticle, getMdxSlugs, mdxImage } from "../../lib/blog-mdx";
+import ArticleHero from "../ArticleHero";
 import { mdxComponents } from "../mdx-components";
 
 const SITE = "https://www.officialkeyshub.com";
@@ -39,7 +40,8 @@ export async function generateMetadata({
       description: data.description ?? data.excerpt,
       url,
       type: "article",
-      images: data.image ? [{ url: data.image }] : undefined,
+      // Social cards need a raster image: a custom image, else the site card.
+      images: [{ url: data.image ?? `${SITE}/og-image.jpg`, width: data.image ? undefined : 1200, height: data.image ? undefined : 630 }],
     },
   };
 }
@@ -64,7 +66,7 @@ export default async function MdxBlogArticle({
     "@type": "Article",
     headline: data.title,
     description: data.description ?? data.excerpt,
-    image: data.image,
+    image: data.image ?? `${SITE}${mdxImage(data)}`,
     datePublished: data.date,
     dateModified: data.date,
     author: { "@type": "Organization", name: "Official Keys Hub" },
@@ -119,10 +121,12 @@ export default async function MdxBlogArticle({
         <article className="py-12">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto">
-              {data.image && (
+              {data.image ? (
                 <div className="relative w-full h-56 md:h-80 rounded-2xl overflow-hidden mb-10">
                   <Image src={data.image} alt={data.title} fill unoptimized className="object-cover" priority />
                 </div>
+              ) : (
+                <ArticleHero products={[data.product ?? "Windows 11 Pro"]} alt={`${data.product ?? "Windows 11 Pro"} product box`} className="mb-10" />
               )}
               <MDXRemote source={content} components={mdxComponents} />
 

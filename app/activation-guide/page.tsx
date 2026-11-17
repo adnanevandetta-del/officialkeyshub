@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
+import ArticleHero from "../blog/ArticleHero";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/activation-guide" },
@@ -310,6 +311,7 @@ export default function ActivationGuidePage() {
               Follow our step-by-step guides to activate Windows, Office, and other Microsoft products. 
               Simple instructions for both online and offline activation methods.
             </p>
+              <ArticleHero products={["Windows 11 Pro", "Office 2024 Professional Plus", "Windows Server 2025 Standard"]} alt="Windows 11 Pro, Office 2024 Professional Plus and Windows Server 2025 product boxes" className="mt-10 max-w-4xl mx-auto" />
           </div>
 
           {/* Quick Links */}

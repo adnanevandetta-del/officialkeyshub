@@ -1,19 +1,29 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
-import Image from "next/image";
 import Breadcrumb from "../../components/Breadcrumb";
+import ArticleHero from "../ArticleHero";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/is-buying-windows-keys-legal" },
   title: "Is Buying Cheap Windows Keys Legal? | Official Keys Hub",
   description: "Are cheap Windows keys legal? Complete legal analysis of buying discounted Windows licenses, EU court ruling, and how to avoid scams. Truth revealed.",
   keywords: "are cheap windows keys legal, gray market keys, is buying windows keys legal, oem key legality, usedsoft ruling, microsoft key resale legal",
+  openGraph: {
+    title: "Is Buying Cheap Windows Keys Legal?",
+    description: "Are cheap Windows keys legal? Complete legal analysis of buying discounted Windows licenses, EU court ruling, and how to avoid scams. Truth revealed.",
+    url: "https://www.officialkeyshub.com/blog/is-buying-windows-keys-legal",
+    type: "article",
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/is-buying-windows-keys-legal.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
+  },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/is-buying-windows-keys-legal.jpg"] },
 };
 
 export default function IsItLegalPage() {
   return (
     <>
+      <ArticleSchema slug="is-buying-windows-keys-legal" />
       <Navbar />
       <main className="min-h-screen bg-white pt-24">
         <article className="container mx-auto px-6 py-16 max-w-4xl">
@@ -33,17 +43,11 @@ export default function IsItLegalPage() {
             <span>⏱️ 14 min read</span>
           </div>
 
-          <Image 
-            src="/og/windows-10-pro.jpg" 
-            alt="Windows Product Keys Legal Information"
-            width={1200}
-            height={384}
-            className="w-full h-96 object-cover rounded-xl mb-8"
-          />
+          <ArticleHero products={["Windows 11 Pro", "Office 2024 Professional Plus"]} alt="Genuine Windows 11 Pro and Office 2024 Professional Plus licenses" className="mb-8" />
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-700 leading-relaxed mb-8">
-              You can buy Windows 11 Pro from Microsoft for <strong>$199</strong> or find "the same key" online for <strong>under $40</strong>. That's about 80% cheaper. But is it legal? Will Microsoft ban you? Is it a scam? This comprehensive guide answers every legal question about buying cheap Windows keys.
+              You can buy Windows 11 Pro from Microsoft for <strong>$199.99</strong> or find "the same key" online for <strong>under $20</strong>. That's about 90% cheaper. But is it legal? Will Microsoft ban you? Is it a scam? This comprehensive guide answers every legal question about buying cheap Windows keys.
             </p>
 
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
@@ -456,8 +460,8 @@ export default function IsItLegalPage() {
                 <li>✅ Activation guide included</li>
                 <li>✅ Secure payment (PayPal, USDT, card)</li>
               </ul>
-              <a href="/" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
-                🛒 Buy Windows 11 Pro - $39.99 →
+              <a href="/products/windows-11-pro" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                🛒 Buy Windows 11 Pro - $16.99 →
               </a>
             </div>
 

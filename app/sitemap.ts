@@ -5,7 +5,7 @@ import { staticBlogPosts } from './lib/blog-static';
 
 // Fixed date (bump it when content really changes) — a lastmod that changes on every
 // deploy teaches Google to ignore the field.
-const LAST_UPDATED = new Date('2026-09-23');
+const LAST_UPDATED = new Date('2026-11-17');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Production domain — www is the live host (the apex domain redirects to it),
@@ -80,6 +80,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/what-you-get`,
+      lastModified: LAST_UPDATED,
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/partner-program`,

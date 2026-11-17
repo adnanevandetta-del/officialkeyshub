@@ -7,16 +7,18 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Transfer a Windows License to a New PC | Official Keys Hub",
   description:
-    "Can you move your Windows key to a new computer? Learn how to transfer a Windows 10 or 11 license to a new PC, OEM vs retail transfer rules, and step-by-step deactivation.",
+    "Can you move your Windows key to a new computer? How to transfer a Windows 10 or 11 license to a new PC, OEM vs retail rules and step-by-step steps.",
   keywords:
     "transfer windows license to new pc, move windows key to new computer, transfer windows 11 license, transfer windows 10 license, can i transfer my windows key, deactivate windows key old pc, retail vs oem transfer, reactivate windows new hardware",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/transfer-windows-license-new-pc" },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/transfer-windows-license-new-pc.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "How to Transfer a Windows License to a New PC (2026)",
     description: "Step-by-step guide to move your Windows 10/11 license to a new computer, including OEM vs retail rules.",
     url: "https://www.officialkeyshub.com/blog/transfer-windows-license-new-pc",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/transfer-windows-license-new-pc.jpg"] },
 };
 
 const articleSchema = {

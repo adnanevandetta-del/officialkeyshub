@@ -9,10 +9,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/about" },
   title: "About Official Keys Hub — Genuine Software Resale",
   description:
-    "Official Keys Hub is an independent reseller of genuine Windows, Office, and Server licenses, sold legally under EU resale rights with instant delivery and a 30-day money-back guarantee.",
+    "Official Keys Hub is an independent reseller of genuine Windows, Office and Server licenses, sold under EU resale rights with a 30-day money-back guarantee.",
   keywords:
     "genuine windows keys, independent software reseller, legitimate microsoft keys, cheap office keys, EU software resale, genuine license reseller",
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub — genuine Microsoft Windows & Office licenses" }],
     title: "About Official Keys Hub",
     description:
       "Independent reseller of genuine Microsoft licenses. Sold legally, delivered instantly, backed by a 30-day money-back guarantee.",

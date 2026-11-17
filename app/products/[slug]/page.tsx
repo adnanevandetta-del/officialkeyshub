@@ -18,6 +18,21 @@ import {
 
 const SITE = "https://www.officialkeyshub.com";
 
+// Who makes the product — Microsoft for everything except the antivirus range.
+// Used so copy, structured data and FAQs never call a Kaspersky or Norton key
+// a "Microsoft license".
+const ANTIVIRUS_BRANDS = ["Trend Micro", "Kaspersky", "Norton", "Bitdefender", "McAfee", "ESET", "Avast"];
+function vendorOf(p: FlatProduct): string {
+  if (p.category !== "antivirus") return "Microsoft";
+  return ANTIVIRUS_BRANDS.find((b) => p.name.startsWith(b)) ?? p.name.split(" ")[0];
+}
+
+// Page title kept under ~60 characters so Google shows it in full.
+function pageTitle(p: FlatProduct): string {
+  const full = `${p.name} — Genuine Key, Instant Delivery`;
+  return full.length <= 60 ? full : `${p.name} — Genuine Key`;
+}
+
 function numericPrice(p: string): string {
   return parseFloat(p.replace(/[^0-9.]/g, "")).toFixed(2);
 }
@@ -76,7 +91,7 @@ function specsFor(p: FlatProduct): { label: string; value: string }[] {
     { label: "Price", value: p.price },
   ];
   const pct = savingsPct(p);
-  if (pct) specs.push({ label: "You save", value: `${pct}% vs Microsoft retail price (${p.originalPrice})` });
+  if (pct) specs.push({ label: "You save", value: `${pct}% vs ${vendorOf(p)} retail price (${p.originalPrice})` });
   return specs;
 }
 
@@ -101,14 +116,17 @@ function keywordsFor(p: FlatProduct): string {
 }
 
 function metaDescription(p: FlatProduct): string {
-  return `Buy ${p.name} — a genuine Microsoft license for ${p.price}${p.originalPrice ? ` (Microsoft retail price ${p.originalPrice})` : ""}. ${p.description}. Instant email delivery, activates directly with Microsoft, and backed by a 30-day money-back guarantee.`;
+  // Kept under ~160 characters so the whole snippet shows in search results.
+  const long = `Buy ${p.name} for ${p.price} — a genuine ${vendorOf(p)} license. Instant email delivery, easy activation and a 30-day money-back guarantee.`;
+  if (long.length <= 160) return long;
+  return `Buy ${p.name} for ${p.price} — genuine ${vendorOf(p)} license, instant email delivery and a 30-day money-back guarantee.`;
 }
 
 function faqsFor(p: FlatProduct) {
   return [
     {
       q: `Is this ${p.name} key genuine?`,
-      a: `Yes. Every ${p.name} key we sell is a genuine Microsoft license that activates on Microsoft's own servers and receives official updates. We never sell cracked or pirated software.`,
+      a: `Yes. Every ${p.name} key we sell is a genuine ${vendorOf(p)} license that activates on ${vendorOf(p)}'s own servers and receives official updates. We never sell cracked or pirated software.`,
     },
     {
       q: `How is my ${p.name} key delivered?`,
@@ -116,7 +134,7 @@ function faqsFor(p: FlatProduct) {
     },
     {
       q: `How do I activate ${p.name}?`,
-      a: `Enter the key in the product's activation settings and it validates directly with Microsoft. Our Activation Guide walks you through it, and 24/7 support is available if you get stuck.`,
+      a: `Enter the key in the product's activation settings and it validates directly with ${vendorOf(p)}. Our Activation Guide walks you through it, and 24/7 support is available if you get stuck.`,
     },
     {
       q: `Is it legal to buy ${p.name} at this price?`,
@@ -146,12 +164,12 @@ export async function generateMetadata({
   const url = canonicalUrl;
   const desc = metaDescription(p);
   return {
-    title: `${p.name} — Genuine Key, Instant Delivery`,
+    title: pageTitle(p),
     description: desc,
     keywords: keywordsFor(p),
     alternates: { canonical: url },
     openGraph: {
-      title: `${p.name} — Genuine Microsoft Key | Official Keys Hub`,
+      title: `${p.name} — Genuine ${vendorOf(p)} Key | Official Keys Hub`,
       description: `${p.name} for ${p.price}. Instant delivery, genuine license, 30-day money-back guarantee.`,
       url,
       type: "website",
@@ -159,7 +177,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${p.name} — Genuine Microsoft Key | Official Keys Hub`,
+      title: `${p.name} — Genuine ${vendorOf(p)} Key | Official Keys Hub`,
       description: `${p.name} for ${p.price}. Instant delivery, genuine license, 30-day money-back guarantee.`,
       images: [`${SITE}/og/${p.slug}.jpg`],
     },
@@ -192,7 +210,7 @@ export default async function ProductPage({
         description: metaDescription(p),
         image: img,
         sku: p.slug,
-        brand: { "@type": "Brand", name: "Microsoft" },
+        brand: { "@type": "Brand", name: vendorOf(p) },
         category: cat,
         offers: {
           "@type": "Offer",
@@ -268,8 +286,8 @@ export default async function ProductPage({
               <h2 className="text-2xl font-bold text-gray-900 mb-4">About {p.name}</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Looking to <strong>buy {p.name}</strong> without paying full retail? Official Keys Hub delivers a
-                genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> (Microsoft&apos;s retail price is {p.originalPrice})</> : null} — a genuine
-                Microsoft license that activates directly on Microsoft&rsquo;s own servers. {p.description}, and it&rsquo;s
+                genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> ({vendorOf(p)}&apos;s retail price is {p.originalPrice})</> : null} — a genuine
+                {vendorOf(p)} license that activates directly on {vendorOf(p)}&rsquo;s own servers. {p.description}, and it&rsquo;s
                 delivered to your inbox within minutes of purchase.
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">{p.overview ?? categoryIntro[p.category]}</p>
@@ -312,7 +330,7 @@ export default async function ProductPage({
               <ol className="space-y-2 text-gray-700 list-decimal pl-6">
                 <li>Complete your purchase and receive the key by email (usually within minutes).</li>
                 <li>Open the product&rsquo;s activation settings and enter your key.</li>
-                <li>The key validates directly with Microsoft and activates your license.</li>
+                <li>The key validates directly with {vendorOf(p)} and activates your license.</li>
                 <li>Need help? Message our 24/7 support on WhatsApp for step-by-step assistance.</li>
               </ol>
             </div>
@@ -322,7 +340,7 @@ export default async function ProductPage({
               <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                 <h3 className="text-gray-900 font-bold mb-4">Why buy from us</h3>
                 <ul className="space-y-3 text-sm text-gray-600">
-                  <li className="flex items-start gap-2"><i className="fas fa-certificate text-blue-600 mt-0.5"></i> Genuine license, activates with Microsoft</li>
+                  <li className="flex items-start gap-2"><i className="fas fa-certificate text-blue-600 mt-0.5"></i> Genuine license, activates with {vendorOf(p)}</li>
                   <li className="flex items-start gap-2"><i className="fas fa-bolt text-blue-600 mt-0.5"></i> Instant email delivery</li>
                   <li className="flex items-start gap-2"><i className="fas fa-scale-balanced text-blue-600 mt-0.5"></i> Legally resold under EU law</li>
                   <li className="flex items-start gap-2"><i className="fas fa-rotate-left text-blue-600 mt-0.5"></i> 30-day money-back guarantee</li>

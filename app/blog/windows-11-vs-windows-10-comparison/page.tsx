@@ -1,19 +1,29 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
-import Image from "next/image";
 import Breadcrumb from "../../components/Breadcrumb";
+import ArticleHero from "../ArticleHero";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/windows-11-vs-windows-10-comparison" },
   title: "Windows 11 vs Windows 10 (2026) | Official Keys Hub",
   description: "Windows 11 vs Windows 10 comparison - performance, features, system requirements, gaming, and security. Should you upgrade? Complete guide with benchmarks.",
   keywords: "windows 11 vs windows 10, windows 11 comparison, should i upgrade to windows 11, windows 10 vs 11 performance, windows 11 gaming performance",
+  openGraph: {
+    title: "Windows 11 vs Windows 10 (2026)",
+    description: "Windows 11 vs Windows 10 comparison - performance, features, system requirements, gaming, and security. Should you upgrade? Complete guide with benchmarks.",
+    url: "https://www.officialkeyshub.com/blog/windows-11-vs-windows-10-comparison",
+    type: "article",
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/windows-11-vs-windows-10-comparison.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
+  },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/windows-11-vs-windows-10-comparison.jpg"] },
 };
 
 export default function Windows11VsWindows10Page() {
   return (
     <>
+      <ArticleSchema slug="windows-11-vs-windows-10-comparison" />
       <Navbar />
       <main className="min-h-screen bg-white pt-24">
         <article className="container mx-auto px-6 py-16 max-w-4xl">
@@ -33,13 +43,7 @@ export default function Windows11VsWindows10Page() {
             <span>⏱️ 15 min read</span>
           </div>
 
-          <Image 
-            src="/og/windows-11-pro.jpg" 
-            alt="Windows 11 vs Windows 10 Interface Comparison"
-            width={1200}
-            height={384}
-            className="w-full h-96 object-cover rounded-xl mb-8"
-          />
+          <ArticleHero products={["Windows 11 Pro", "Windows 10 Pro"]} alt="Windows 11 Pro vs Windows 10 Pro product boxes" className="mb-8" />
 
           {/* Introduction */}
           <div className="prose prose-lg max-w-none">
@@ -502,10 +506,10 @@ export default function Windows11VsWindows10Page() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">💡 Pro Tip - Save up to 80%:</p>
               <p className="text-green-800 mb-3">
-                Don't pay Microsoft's retail prices. Get genuine Windows 11 Pro keys from Official Keys Hub for just <strong>$39.99</strong> (instead of $199):
+                Don't pay Microsoft's retail prices. Get genuine Windows 11 Pro keys from Official Keys Hub for just <strong>$16.99</strong> (instead of $199.99):
               </p>
-              <a href="/" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
-                🛒 Buy Windows 11 Pro for $39.99 →
+              <a href="/products/windows-11-pro" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                🛒 Buy Windows 11 Pro for $16.99 →
               </a>
             </div>
 
@@ -618,14 +622,14 @@ export default function Windows11VsWindows10Page() {
             <div className="rounded-2xl p-8 text-center my-12 bg-[#22c55e]">
               <h2 className="text-3xl font-bold text-black mb-4">Ready to Upgrade to Windows 11?</h2>
               <p className="text-black text-lg mb-6">
-                Get a genuine Windows 11 Pro license key for just <span className="font-bold text-2xl">$39.99</span> (instead of $199)
+                Get a genuine Windows 11 Pro license key for just <span className="font-bold text-2xl">$16.99</span> (instead of $199.99)
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="/" 
+                  href="/products/windows-11-pro" 
                   className="px-8 py-4 bg-black text-white font-bold rounded-lg hover:bg-gray-800 transition"
                 >
-                  🛒 Buy Windows 11 Pro - $39.99
+                  🛒 Buy Windows 11 Pro - $16.99
                 </a>
                 <a 
                   href="/blog/how-to-activate-windows-11" 

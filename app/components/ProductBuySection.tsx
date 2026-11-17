@@ -39,7 +39,7 @@ export default function ProductBuySection({
     <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
       <div className="flex items-baseline gap-3 mb-1">
         <span className="text-4xl font-black text-gray-900">{price}</span>
-        {originalPrice && <span className="text-xl text-gray-400" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{originalPrice}</span></span>}
+        {originalPrice && <span className="text-xl text-gray-400" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{originalPrice}</span></span>}
       </div>
 
       {/* Reassurance */}

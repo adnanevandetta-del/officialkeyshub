@@ -2,6 +2,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/how-to-activate-windows-11" },
@@ -9,11 +10,13 @@ export const metadata: Metadata = {
   description: "Learn how to activate Windows 11 Pro with product key. Complete guide with screenshots, troubleshooting, and phone activation method. Works 100%.",
   keywords: "activate windows 11, windows 11 activation, how to activate windows 11 pro, windows 11 product key activation, windows 11 activation guide",
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/how-to-activate-windows-11.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "How to Activate Windows 11 Pro - Complete Guide 2026",
     description: "Step-by-step guide to activate Windows 11 with product key. Includes troubleshooting and phone activation.",
     url: "https://www.officialkeyshub.com/blog/how-to-activate-windows-11",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/how-to-activate-windows-11.jpg"] },
 };
 
 export default function HowToActivateWindows11() {
@@ -25,6 +28,7 @@ export default function HowToActivateWindows11() {
 
   return (
     <>
+      <ArticleSchema slug="how-to-activate-windows-11" />
       <Navbar />
       <div className="pt-20 bg-white min-h-screen">
         <Breadcrumb items={breadcrumbItems} />
@@ -379,7 +383,7 @@ export default function HowToActivateWindows11() {
                 <div className="mt-6 p-4 bg-white rounded-lg">
                   <p className="text-gray-800 font-semibold">
                     ⏱️ <strong>Total time:</strong> 2-5 minutes | 
-                    💰 <strong>Cost:</strong> $39.99 for Windows 11 Pro key | 
+                    💰 <strong>Cost:</strong> $16.99 for Windows 11 Pro key | 
                     ✅ <strong>Success rate:</strong> 99.9%
                   </p>
                 </div>
@@ -401,7 +405,7 @@ export default function HowToActivateWindows11() {
               Need a Windows 11 Product Key?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Get genuine Windows 11 Pro for only $39.99. Instant delivery, lifetime license, 
+              Get genuine Windows 11 Pro for only $16.99. Instant delivery, lifetime license, 
               30-day money-back guarantee. Chosen by hundreds of customers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -410,7 +414,7 @@ export default function HowToActivateWindows11() {
                 className="px-10 py-5 bg-yellow-400 text-gray-900 font-bold text-lg rounded-xl hover:bg-yellow-300 transition-all shadow-xl inline-flex items-center justify-center"
               >
                 <i className="fab fa-windows mr-3"></i>
-                Buy Windows 11 Pro - $39.99
+                Buy Windows 11 Pro - $16.99
               </a>
               <a
                 href="https://wa.me/16019756129"

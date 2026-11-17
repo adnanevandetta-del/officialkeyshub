@@ -1,19 +1,29 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
-import Image from "next/image";
 import Breadcrumb from "../../components/Breadcrumb";
+import ArticleHero from "../ArticleHero";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/oem-vs-retail-windows-keys" },
   title: "OEM vs Retail Windows Keys: Complete Difference Guide 2026",
   description: "What's the difference between OEM and Retail Windows keys? Compare pricing, transferability, support, and legality. Which should you buy?",
   keywords: "oem vs retail windows keys, windows key types, oem license vs retail, volume license windows, can i transfer windows oem key",
+  openGraph: {
+    title: "OEM vs Retail Windows Keys: Complete Difference Guide 2026",
+    description: "What's the difference between OEM and Retail Windows keys? Compare pricing, transferability, support, and legality. Which should you buy?",
+    url: "https://www.officialkeyshub.com/blog/oem-vs-retail-windows-keys",
+    type: "article",
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/oem-vs-retail-windows-keys.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
+  },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/oem-vs-retail-windows-keys.jpg"] },
 };
 
 export default function OEMvsRetailPage() {
   return (
     <>
+      <ArticleSchema slug="oem-vs-retail-windows-keys" />
       <Navbar />
       <main className="min-h-screen bg-white pt-24">
         <article className="container mx-auto px-6 py-16 max-w-4xl">
@@ -33,13 +43,7 @@ export default function OEMvsRetailPage() {
             <span>⏱️ 12 min read</span>
           </div>
 
-          <Image 
-            src="/og/windows-11-pro.jpg" 
-            alt="OEM vs Retail Windows Keys Comparison"
-            width={1200}
-            height={384}
-            className="w-full h-96 object-cover rounded-xl mb-8"
-          />
+          <ArticleHero products={["Windows 11 Pro", "Windows 11 Home"]} alt="Windows 11 Pro and Windows 11 Home license product boxes" className="mb-8" />
 
           {/* Introduction */}
           <div className="prose prose-lg max-w-none">
@@ -414,10 +418,10 @@ export default function OEMvsRetailPage() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-8">
               <p className="font-bold text-green-900 mb-2">💡 Best Value:</p>
               <p className="text-green-800 mb-3">
-                For home users and single PC builds, <strong>OEM keys offer around 80% savings</strong> with identical Windows features. Get Windows 11 Pro OEM for just $39.99:
+                For home users and single PC builds, <strong>OEM keys offer around 90% savings</strong> with identical Windows features. Get Windows 11 Pro OEM for just $16.99:
               </p>
-              <a href="/" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
-                🛒 Buy Windows 11 Pro OEM - $39.99 →
+              <a href="/products/windows-11-pro" className="inline-block bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                🛒 Buy Windows 11 Pro OEM - $16.99 →
               </a>
             </div>
 
@@ -536,7 +540,7 @@ export default function OEMvsRetailPage() {
               <p className="text-black text-3xl font-bold mb-6">Only $39.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href="/" 
+                  href="/products/windows-11-pro" 
                   className="px-8 py-4 bg-black text-white font-bold rounded-lg hover:bg-gray-800 transition"
                 >
                   🛒 Buy Windows 11 Pro OEM

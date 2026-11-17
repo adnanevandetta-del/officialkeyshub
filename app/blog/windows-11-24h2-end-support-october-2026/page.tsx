@@ -4,18 +4,23 @@ import Breadcrumb from "../../components/Breadcrumb";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import ArticleHero from "../ArticleHero";
+import { getProductBoxImage } from "../../lib/productImage";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026" },
-  title: "Windows 11 24H2 End of Support October 2026: What Happens & How to Upgrade",
-  description: "Windows 11 24H2 Home and Pro end support October 13, 2026. Learn what this means, how to check your version, upgrade options, and where to get genuine Windows 11 keys.",
+  title: "Windows 11 24H2 End of Support (Oct 2026): What Now?",
+  description: "Windows 11 24H2 Home and Pro support ended October 13, 2026. What it means, how to check your version and how to upgrade to 25H2 safely.",
   keywords: "windows 11 24h2 end of support, windows 11 24h2, windows 11 25h2 upgrade, windows 11 support end date, upgrade windows 11, windows 11 pro key",
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/windows-11-24h2-end-support-october-2026.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "Windows 11 24H2 End of Support Guide - October 2026",
     description: "Complete guide to Windows 11 24H2 reaching end of support. What it means, how to upgrade, and genuine Windows keys.",
     url: "https://www.officialkeyshub.com/blog/windows-11-24h2-end-support-october-2026",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/windows-11-24h2-end-support-october-2026.jpg"] },
 };
 
 export default function Windows1124H2EndSupport() {
@@ -27,6 +32,7 @@ export default function Windows1124H2EndSupport() {
 
   return (
     <>
+      <ArticleSchema slug="windows-11-24h2-end-support-october-2026" />
       <Navbar />
       <div className="pt-20 bg-white min-h-screen">
         <Breadcrumb items={breadcrumbItems} />
@@ -38,11 +44,11 @@ export default function Windows1124H2EndSupport() {
               <div className="flex flex-wrap items-center gap-4 mb-6">
                 <span className="inline-flex items-center gap-2 bg-red-50 text-red-700 px-4 py-2 rounded-lg font-semibold text-sm border border-red-200">
                   <i className="fas fa-exclamation-triangle"></i>
-                  Important: End of Support October 13, 2026
+                  Support Ended October 13, 2026
                 </span>
                 <span className="text-gray-500 text-sm flex items-center gap-2">
                   <i className="far fa-calendar"></i>
-                  January 15, 2026
+                  Updated November 17, 2026
                 </span>
                 <span className="text-gray-500 text-sm flex items-center gap-2">
                   <i className="far fa-clock"></i>
@@ -55,7 +61,7 @@ export default function Windows1124H2EndSupport() {
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Windows 11 version 24H2 Home and Pro editions will stop receiving security updates on October 13, 2026. 
+                Windows 11 version 24H2 Home and Pro editions stopped receiving security updates on October 13, 2026. 
                 Here's everything you need to know about upgrading to Windows 11 25H2, what happens if you don't, and 
                 how to get genuine Windows 11 licenses at the best prices.
               </p>
@@ -79,8 +85,8 @@ export default function Windows1124H2EndSupport() {
                   Quick Answer
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  <strong>Windows 11 24H2 Home and Pro stop getting security updates on October 13, 2026.</strong> Your computer 
-                  will still work, but it becomes vulnerable to new security threats. The free upgrade to Windows 11 25H2 is 
+                  <strong>Windows 11 24H2 Home and Pro stopped getting security updates on October 13, 2026.</strong> Your computer 
+                  still works, but it is now vulnerable to new security threats. The free upgrade to Windows 11 25H2 is 
                   available now through Windows Update. Enterprise and Education editions have support until October 2027.
                 </p>
               </div>
@@ -109,20 +115,21 @@ export default function Windows1124H2EndSupport() {
                   </div>
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
                     <Image
-                      src="/og/windows-11-pro.jpg"
-                      alt="Windows 11 Pro Product"
+                      src={getProductBoxImage("Windows 11 Pro")}
+                      alt="Windows 11 Pro product box"
                       fill
-                      className="object-cover"
+                      unoptimized
+                      className="object-contain p-3"
                     />
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2">Windows 11 Pro</h3>
                   <p className="text-white/90 text-sm mb-4">Full features, BitLocker, Remote Desktop</p>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-4xl font-black text-white">$16.99</span>
-                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
+                    <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
                   </div>
                   <Link
-                    href="/#products"
+                    href="/products/windows-11-pro"
                     className="block w-full text-center bg-white text-sky-700 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors"
                   >
                     Get Windows 11 Pro
@@ -133,20 +140,21 @@ export default function Windows1124H2EndSupport() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-sky-500 to-blue-600 mt-8">
                     <Image
-                      src="/og/windows-11-home.jpg"
-                      alt="Windows 11 Home Product"
+                      src={getProductBoxImage("Windows 11 Home")}
+                      alt="Windows 11 Home product box"
                       fill
-                      className="object-cover"
+                      unoptimized
+                      className="object-contain p-3"
                     />
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2">Windows 11 Home</h3>
                   <p className="text-white/90 text-sm mb-4">Perfect for personal use & gaming</p>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-4xl font-black text-white">$12.99</span>
-                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$139.99</span></span>
+                    <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$139.99</span></span>
                   </div>
                   <Link
-                    href="/#products"
+                    href="/products/windows-11-home"
                     className="block w-full text-center bg-white/20 text-white border-2 border-white px-6 py-3 rounded-lg font-bold hover:bg-white/30 transition-colors"
                   >
                     Get Windows 11 Home
@@ -157,20 +165,21 @@ export default function Windows1124H2EndSupport() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-purple-600 to-indigo-700 mt-8">
                     <Image
-                      src="/og/windows-11-enterprise.jpg"
-                      alt="Windows 11 Enterprise Product"
+                      src={getProductBoxImage("Windows 11 Enterprise")}
+                      alt="Windows 11 Enterprise product box"
                       fill
-                      className="object-cover"
+                      unoptimized
+                      className="object-contain p-3"
                     />
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2">Windows 11 Enterprise</h3>
                   <p className="text-white/90 text-sm mb-4">Advanced security & management</p>
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-4xl font-black text-white">$24.99</span>
-                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$309.00</span></span>
+                    <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$309.00</span></span>
                   </div>
                   <Link
-                    href="/#products"
+                    href="/products/windows-11-enterprise"
                     className="block w-full text-center bg-white/20 text-white border-2 border-white px-6 py-3 rounded-lg font-bold hover:bg-white/30 transition-colors"
                   >
                     Get Enterprise
@@ -204,7 +213,7 @@ export default function Windows1124H2EndSupport() {
 
                   <div className="bg-gray-50 rounded-xl p-8 mb-8 border border-gray-200">
                     <h3 className="text-xl font-bold text-gray-900 mb-6">
-                      After October 13, 2026, Windows 11 24H2 will no longer receive:
+                      Since October 13, 2026, Windows 11 24H2 no longer receives:
                     </h3>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="flex items-start gap-3 bg-white p-4 rounded-lg">
@@ -311,15 +320,9 @@ export default function Windows1124H2EndSupport() {
 
                 {/* Windows 11 Laptop Display */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
-                  <Image
-                    src="/og/windows-11-pro.jpg"
-                    alt="Modern laptop displaying Windows interface and productivity workspace"
-                    width={1200}
-                    height={600}
-                    className="w-full h-auto"
-                  />
+                  <ArticleHero products={["Windows 11 Pro", "Windows 11 Home"]} alt="Windows 11 Pro and Windows 11 Home product boxes" className="" />
                 </div>
-                <p className="text-sm text-gray-500 text-center">Modern Windows 11 workspace with clean desktop environment</p>
+                <p className="text-sm text-gray-500 text-center">Windows 11 Pro and Windows 11 Home — both get feature updates when you upgrade to 25H2</p>
               </section>
 
               {/* How to Check Version */}
@@ -369,7 +372,7 @@ export default function Windows1124H2EndSupport() {
                       </div>
                       <div className="flex-1">
                         <p className="text-gray-200 mb-2">Look for "Version 24H2"</p>
-                        <p className="text-gray-400 text-sm">If you see this, your support ends October 13, 2026</p>
+                        <p className="text-gray-400 text-sm">If you see this, your support ended on October 13, 2026 — upgrade to 25H2</p>
                       </div>
                     </div>
                   </div>
@@ -446,7 +449,7 @@ export default function Windows1124H2EndSupport() {
                         <div className="flex flex-wrap items-center gap-4">
                           <div className="flex items-baseline gap-2">
                             <span className="text-3xl font-black text-sky-700">$16.99</span>
-                            <span className="text-gray-500" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
+                            <span className="text-gray-500" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$199.99</span></span>
                             <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">SAVE 92%</span>
                           </div>
                           <Link
@@ -544,15 +547,9 @@ export default function Windows1124H2EndSupport() {
 
                 {/* Windows Security Update Concept */}
                 <div className="rounded-xl overflow-hidden shadow-lg border-2 border-gray-200 mb-4">
-                  <Image
-                    src="/og/windows-11-pro.jpg"
-                    alt="Technology and computer security - digital workspace protection"
-                    width={1200}
-                    height={600}
-                    className="w-full h-auto"
-                  />
+                  <ArticleHero products={["Windows 11 Pro", "Windows 11 Enterprise"]} alt="Windows 11 Pro and Windows 11 Enterprise product boxes" className="" />
                 </div>
-                <p className="text-sm text-gray-500 text-center">Regular Windows updates protect your system from security vulnerabilities</p>
+                <p className="text-sm text-gray-500 text-center">A genuine, supported Windows 11 license keeps the monthly security updates coming</p>
               </section>
 
               {/* Common 24H2 Issues */}

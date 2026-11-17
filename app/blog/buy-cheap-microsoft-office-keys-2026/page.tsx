@@ -1,21 +1,25 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Metadata } from "next";
+import ArticleHero from "../ArticleHero";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/buy-cheap-microsoft-office-keys-2026" },
   title: "Buy Cheap Microsoft Office Keys 2026 | Official Keys Hub",
-  description: "Buy authentic Microsoft Office 2021, 2019, and Office 365 product keys at up to 90% discount. Genuine licenses, instant delivery, lifetime support. Best prices for Office Professional Plus, Home & Business.",
+  description: "Buy genuine Microsoft Office 2024, 2021 and 2019 keys for up to 90% less, with instant email delivery and lifetime licenses for Pro Plus and Home & Business.",
   keywords: "cheap Microsoft Office keys, buy Office 2021 key, Office 365 product key, genuine Office license, Microsoft Office discount, Office 2019 cheap, Office Professional Plus key, buy Office activation key, legitimate Office keys, Office home and business license",
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/buy-cheap-microsoft-office-keys-2026.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "Buy Cheap Microsoft Office Keys 2026 - Genuine Licenses",
     description: "Authentic Office keys at 90% off. Instant delivery, lifetime support.",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/buy-cheap-microsoft-office-keys-2026.jpg"] },
 };
 
 export default function BuyCheapMicrosoftOfficeKeys() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <ArticleSchema slug="buy-cheap-microsoft-office-keys-2026" />
       <article className="max-w-4xl mx-auto px-4 py-12">
         {/* Header */}
         <header className="mb-8">
@@ -30,15 +34,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
         </header>
 
         {/* Featured Image */}
-        <div className="mb-8 rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-blue-600 to-purple-700 p-8">
-          <Image
-            src="/og/office-2021-professional-plus.jpg"
-            alt="Microsoft Office 2021 Professional Plus Product"
-            width={1200}
-            height={400}
-            className="w-full h-[400px] object-cover rounded-lg"
-          />
-        </div>
+        <ArticleHero products={["Office 2024 Professional Plus", "Office Home & Business 2024"]} alt="Microsoft Office 2024 Professional Plus and Office Home & Business 2024 product boxes" className="mb-8" />
 
         {/* Table of Contents */}
         <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8 rounded-r-lg">
@@ -96,7 +92,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="p-6 rounded-xl border border-orange-200 bg-orange-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-star text-orange-600 mr-2"></i>
-                  Office 2021 Professional Plus - $49.99
+                  Office 2021 Professional Plus - $24.99
                 </h3>
                 <p className="mb-3">The most popular choice with all Office applications included.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -111,7 +107,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="p-6 rounded-xl border border-blue-200 bg-blue-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-briefcase text-blue-600 mr-2"></i>
-                  Office 2021 Home & Business - $44.99
+                  Office 2021 Home & Business - $27.99
                 </h3>
                 <p className="mb-3">Essential Office apps for home users and small businesses.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -125,7 +121,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="p-6 rounded-xl border border-purple-200 bg-purple-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-cloud text-purple-600 mr-2"></i>
-                  Office 365 Personal (1 Year) - $39.99
+                  Office 365 (1 Year) - $29.99
                 </h3>
                 <p className="mb-3">Cloud-based Office with premium features and 1TB OneDrive storage.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -139,7 +135,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="p-6 rounded-xl border border-green-200 bg-green-50">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   <i className="fas fa-history text-green-600 mr-2"></i>
-                  Office 2019 Professional Plus - $44.99
+                  Office 2019 Professional Plus - $19.99
                 </h3>
                 <p className="mb-3">Reliable older version with full functionality.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -270,7 +266,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-4xl font-black">$49.99</span>
-                  <span className="text-xl opacity-75" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
+                  <span className="text-xl opacity-75" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                 </div>
                 <Link href="/#products" className="block w-full text-center bg-white text-orange-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
                   Buy Now →
@@ -284,7 +280,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-4xl font-black">$39.99</span>
-                  <span className="text-xl opacity-75" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$99.99</span></span>
+                  <span className="text-xl opacity-75" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$99.99</span></span>
                 </div>
                 <Link href="/#products" className="block w-full text-center bg-white text-blue-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
                   Buy Now →
@@ -323,7 +319,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
           <section className="p-8 rounded-xl border-2 border-blue-200 bg-blue-50">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Conclusion: Get Genuine Office Keys for Less</h2>
             <p className="text-gray-700 mb-4">
-              Buying <strong>cheap Microsoft Office keys</strong> is a smart way to save money while getting genuine, fully-functional software. With discounts up to 93%, you can get Office 2021 Professional Plus for just $29.99 instead of $439.99.
+              Buying <strong>cheap Microsoft Office keys</strong> is a smart way to save money while getting genuine, fully-functional software. With discounts of over 90%, you can get Office 2021 Professional Plus for just $24.99 instead of $439.99 — or the newer Office 2024 Professional Plus, supported until 2029, for $34.99.
             </p>
             <p className="text-gray-700 mb-6">
               Always purchase from <strong>trusted retailers</strong> like Official Keys Hub that offer instant delivery, lifetime support, and money-back guarantees. Avoid suspiciously cheap keys under $10 that are likely fraudulent.

@@ -4,9 +4,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Shipping & Delivery — Instant Digital Delivery | Official Keys Hub",
+  title: "Shipping & Delivery — Instant Email Delivery",
   description:
-    "Every order is delivered digitally, straight to your email inbox — usually within minutes of payment. No physical shipping, no shipping fees, no waiting for a courier.",
+    "Every order is delivered digitally to your email inbox, usually within minutes of payment. No physical shipping, no shipping fees, no waiting for a courier.",
   alternates: { canonical: "https://www.officialkeyshub.com/shipping" },
 };
 

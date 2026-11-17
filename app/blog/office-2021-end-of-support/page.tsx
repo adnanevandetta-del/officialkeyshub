@@ -17,21 +17,23 @@ import { getProductBoxImage } from "../../lib/productImage";
 const URL = "https://www.officialkeyshub.com/blog/office-2021-end-of-support";
 const TITLE = "Office 2021 End of Support: What It Means — and Is Office 2024 Worth It?";
 const DESCRIPTION =
-  "Office 2021 stops receiving security updates on October 13, 2026. A sourced briefing: what Microsoft's lifecycle says, why support windows have shrunk from 10 years to 5, Office 2024 vs Microsoft 365 vs staying put, and how to upgrade.";
+  "Office 2021 stopped receiving security updates on October 13, 2026. What it means, Office 2024 vs Microsoft 365 vs staying put, and how to upgrade safely.";
 
 export const metadata: Metadata = {
-  title: "Office 2021 End of Support (Oct 13, 2026): Is Office 2024 Worth It? | Official Keys Hub",
+  title: "Office 2021 End of Support: Is Office 2024 Worth It?",
   description: DESCRIPTION,
   keywords:
     "office 2021 end of support, office 2021 end of support date, office 2021 end of life, office ltsc 2021 end of support, office 2021 no longer supported, microsoft office end of support dates, microsoft office end of life dates, office 2019 end of support, office 2016 end of support, publisher end of support, is office 2024 worth it, is office 2024 worth it over 2021, should i upgrade to office 2024, should i upgrade office 2021 to 2024, upgrade office 2021 to office 2024, office 2024 vs microsoft 365, office 2024 vs 2021, office home 2024 vs microsoft 365, is office home 2024 worth it, office 2024 end of support",
   alternates: { canonical: URL },
   openGraph: {
-    title: "Office 2021 is losing support. Upgrade, subscribe — or stay put?",
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/office-2021-end-of-support.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
+    title: "Office 2021 support has ended. Upgrade, subscribe — or stay put?",
     description:
       "What Microsoft's lifecycle says, why Office support windows shrank from 10 years to 5, and how Office 2024, Microsoft 365 and staying on 2021 compare.",
     url: URL,
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/office-2021-end-of-support.jpg"] },
 };
 
 // --- Sources (Microsoft's own pages) -------------------------------------
@@ -68,7 +70,7 @@ const fmt = (iso: string) =>
 const faqs = [
   {
     q: "When does Office 2021 support end?",
-    a: "Microsoft ends support for Office 2021 — including Office LTSC 2021, Office Standard 2021 and Office 2021 for Mac — on October 13, 2026. There is no extension and no paid Extended Security Updates program for Office 2021.",
+    a: "Microsoft ended support for Office 2021 — including Office LTSC 2021, Office Standard 2021 and Office 2021 for Mac — on October 13, 2026. There is no extension and no paid Extended Security Updates program for Office 2021.",
   },
   {
     q: "Will Office 2021 stop working after October 13, 2026?",
@@ -113,8 +115,8 @@ const eolDates: { product: string; date: string; status: "ended" | "ending" | "o
   { product: "Office 2013", date: "April 11, 2023", status: "ended" },
   { product: "Office 2016", date: "October 14, 2025", status: "ended" },
   { product: "Office 2019", date: "October 14, 2025", status: "ended" },
-  { product: "Office 2021 / LTSC 2021", date: "October 13, 2026", status: "ending" },
-  { product: "Publisher (all versions)", date: "October 2026", status: "ending" },
+  { product: "Office 2021 / LTSC 2021", date: "October 13, 2026", status: "ended" },
+  { product: "Publisher (all versions)", date: "October 2026", status: "ended" },
   { product: "Office 2024 / LTSC 2024", date: "October 9, 2029", status: "ok" },
   { product: "Microsoft 365", date: "Updated while subscribed", status: "ok" },
 ];
@@ -239,7 +241,7 @@ export default function Office2021EndOfSupport() {
           logo: { "@type": "ImageObject", url: "https://www.officialkeyshub.com/logo.png" },
         },
         datePublished: "2026-10-04",
-        dateModified: "2026-10-07",
+        dateModified: "2026-11-17",
         mainEntityOfPage: URL,
         citation: sources.map((s) => s.href),
       },
@@ -300,7 +302,7 @@ export default function Office2021EndOfSupport() {
               <div className="flex flex-wrap items-center gap-2 mb-6">
                 <span className="bg-blue-700 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Briefing</span>
                 <span className="bg-amber-100 text-amber-900 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Deadline: Oct 13, 2026</span>
-                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Updated Oct 7, 2026</span>
+                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Updated Nov 17, 2026</span>
               </div>
 
               <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-[1.1] mb-6">
@@ -318,7 +320,7 @@ export default function Office2021EndOfSupport() {
                 <Image src="/logo.png" alt="" width={40} height={40} className="rounded-full ring-1 ring-gray-200" />
                 <div>
                   <p className="font-semibold text-gray-900">Official Keys Hub team</p>
-                  <p>Published Oct 4, 2026 · Updated Oct 7, 2026 · 12 min read</p>
+                  <p>Published Oct 4, 2026 · Updated Nov 17, 2026 · 12 min read</p>
                 </div>
               </div>
             </div>
@@ -421,11 +423,11 @@ export default function Office2021EndOfSupport() {
             <p className="mb-5">
               The practical takeaway: <strong>one-time-purchase Office now runs on a roughly five-year cycle</strong>,
               with a new version every three years. Buying the newest version as early as possible gets you the most
-              supported years for your money — which is why a 2021 license bought today buys only days of security
-              updates, while Office 2024 still has three years left.
+              supported years for your money — which is why a 2021 license bought today comes with no security
+              updates at all, while Office 2024 still has about three years left.
             </p>
 
-            <H2 id="what-happens">What Changes on October 13</H2>
+            <H2 id="what-happens">What Changed on October 13</H2>
             <p className="mb-6">
               <strong>Nothing you&apos;ll see on day one.</strong> The change is underneath:
             </p>
@@ -448,7 +450,7 @@ export default function Office2021EndOfSupport() {
               </div>
             </div>
             <p className="mb-5">
-              <strong>Publisher retires in the same month.</strong> Microsoft ends support for Publisher in October
+              <strong>Publisher retires in the same month.</strong> Microsoft ended support for Publisher in October
               2026, and it isn&apos;t part of Office 2024.<Cite n={6} /> If you use it, save your .pub files as PDF or
               Word documents now.
             </p>

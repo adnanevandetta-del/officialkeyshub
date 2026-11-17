@@ -7,21 +7,23 @@ import type { Metadata } from "next";
 const URL = "https://www.officialkeyshub.com/blog/microsoft-product-keys-guide";
 const TITLE = "Microsoft Product Keys Explained (2026): Windows, Office, Server & More";
 const DESCRIPTION =
-  "Every Microsoft product key in one guide: Windows 11, Office 2021, Microsoft 365, Windows Server, Visio, Project, SQL Server and Visual Studio. Key types, real prices, support dates, how to find your key and how to spot a fake.";
+  "Every Microsoft product key in one guide — Windows 11, Office, Server, Visio, Project, SQL Server and Visual Studio: key types, prices and how to spot a fake.";
 
 export const metadata: Metadata = {
-  title: `${TITLE} | Official Keys Hub`,
+  title: "Microsoft Product Keys Explained (2026 Guide)",
   description: DESCRIPTION,
   keywords:
     "microsoft product key, microsoft product key price, windows product key, windows 11 pro key, windows 11 pro key price, buy windows key, buy windows key cheap, office product key, office 2021 professional plus key, lifetime microsoft office, lifetime microsoft office license, microsoft product key lookup, microsoft product key checker, where to find microsoft product key, windows server 2022 key, visio 2021 key, project 2021 key, sql server 2022 key, visual studio 2022 key, retail vs oem key",
   alternates: { canonical: URL },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/microsoft-product-keys-guide.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: TITLE,
     description:
       "Windows, Office, Server, Visio, Project, SQL Server and Visual Studio keys explained — key types, prices, support dates and how to buy safely.",
     url: URL,
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/microsoft-product-keys-guide.jpg"] },
 };
 
 const faqs = [
@@ -69,7 +71,7 @@ const products: { family: string; name: string; href: string; price: string; bes
   { family: "Server", name: "Windows Server 2025 Datacenter", href: "/products/windows-server-2025-datacenter", price: "$69.99", bestFor: "Heavily virtualized datacenters" },
   { family: "Visio", name: "Visio Professional 2024", href: "/products/visio-professional-2024", price: "$34.99", bestFor: "Flowcharts, network and org diagrams" },
   { family: "Project", name: "Project Professional 2024", href: "/products/project-professional-2024", price: "$34.99", bestFor: "Schedules, Gantt charts, resources" },
-  { family: "SQL Server", name: "SQL Server 2025 Standard", href: "/products/sql-server-2025-standard", price: "$54.99", bestFor: "Newest SQL Server with vector search" },
+  { family: "SQL Server", name: "SQL Server 2025 Standard", href: "/products/sql-server-2025-standard", price: "$189.00", bestFor: "Newest SQL Server with vector search" },
   { family: "Developer", name: "Visual Studio 2022 Professional", href: "/products/visual-studio-2022-professional", price: "$29.99", bestFor: "Professional .NET and C++ development" },
 ];
 
@@ -339,7 +341,7 @@ export default function MicrosoftProductKeysGuide() {
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Windows 11</td><td className="p-3">✅ Supported (keep it on a current version)</td></tr>
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Windows 10</td><td className="p-3">⚠️ Ended Oct 14, 2025 — paid Extended Security Updates only</td></tr>
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Office 2024</td><td className="p-3">✅ Supported until 2029</td></tr>
-                    <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Office 2021</td><td className="p-3">⚠️ Ends Oct 13, 2026 — keeps working, no further updates</td></tr>
+                    <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Office 2021</td><td className="p-3">❌ Ended Oct 13, 2026 — keeps working, no further updates</td></tr>
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Office 2019 / 2016</td><td className="p-3">❌ Ended Oct 14, 2025</td></tr>
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Microsoft 365</td><td className="p-3">✅ Always updated while subscribed</td></tr>
                   </tbody>

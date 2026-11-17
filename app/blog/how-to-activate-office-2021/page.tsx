@@ -3,20 +3,23 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata: Metadata = {
   title: "How to Activate Office 2021 (2026 Guide) | Official Keys Hub",
   description:
-    "How to activate Microsoft Office 2021 with a product key. Complete 2026 guide covering online activation, the Office account method, and fixing common activation errors.",
+    "How to activate Microsoft Office 2021 with a product key: online activation, the Microsoft account method and fixes for common activation errors.",
   keywords:
     "how to activate office 2021, activate office 2021, office 2021 product key activation, office 2021 activation guide, activate microsoft office 2021, office 2021 professional plus activation, office 2021 not activating, enter office 2021 key",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/how-to-activate-office-2021" },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/how-to-activate-office-2021.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "How to Activate Office 2021 - Step-by-Step Guide 2026",
     description: "Activate Office 2021 in minutes with your product key. Includes troubleshooting for common activation errors.",
     url: "https://www.officialkeyshub.com/blog/how-to-activate-office-2021",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/how-to-activate-office-2021.jpg"] },
 };
 
 const howToSchema = {
@@ -41,6 +44,7 @@ export default function HowToActivateOffice2021() {
 
   return (
     <>
+      <ArticleSchema slug="how-to-activate-office-2021" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
@@ -163,7 +167,7 @@ export default function HowToActivateOffice2021() {
               {/* CTA */}
               <div className="not-prose rounded-2xl p-8 text-center text-white mb-6 bg-red-600">
                 <h2 className="text-2xl md:text-3xl font-bold mb-3">Need an Office 2021 Key?</h2>
-                <p className="text-orange-100 mb-6 max-w-2xl mx-auto">Genuine Office 2021 Professional Plus from $49.99 — instant delivery and lifetime activation.</p>
+                <p className="text-orange-100 mb-6 max-w-2xl mx-auto">Genuine Office 2021 Professional Plus from $24.99 — instant delivery and lifetime activation.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <Link href="/#products" className="px-8 py-4 bg-white text-orange-600 font-bold rounded-lg hover:bg-orange-50 transition-all shadow-lg">
                     Browse Office Keys →

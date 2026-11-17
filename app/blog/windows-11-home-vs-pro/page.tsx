@@ -2,6 +2,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/windows-11-home-vs-pro" },
@@ -9,11 +10,13 @@ export const metadata: Metadata = {
   description: "Compare Windows 11 Home vs Pro. See all differences, features, prices. Which edition is right for you? Complete guide with comparison table.",
   keywords: "windows 11 home vs pro, windows 11 editions, windows 11 comparison, windows 11 pro features, which windows 11 to buy",
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/windows-11-home-vs-pro.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "Windows 11 Home vs Pro: Complete Comparison Guide 2026",
     description: "Detailed comparison of Windows 11 Home and Pro editions. Features, prices, and which one you should buy.",
     url: "https://www.officialkeyshub.com/blog/windows-11-home-vs-pro",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/windows-11-home-vs-pro.jpg"] },
 };
 
 export default function Windows11HomeVsPro() {
@@ -25,6 +28,7 @@ export default function Windows11HomeVsPro() {
 
   return (
     <>
+      <ArticleSchema slug="windows-11-home-vs-pro" />
       <Navbar />
       <div className="pt-20 bg-white min-h-screen">
         <Breadcrumb items={breadcrumbItems} />
@@ -358,7 +362,7 @@ export default function Windows11HomeVsPro() {
                   </ul>
                   <div className="mt-6 p-4 bg-white rounded-lg">
                     <p className="font-bold text-blue-900">💰 Price: $34.99</p>
-                    <a href="/#products" className="inline-block mt-3 px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors">
+                    <a href="/products/windows-11-home" className="inline-block mt-3 px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors">
                       Buy Home →
                     </a>
                   </div>
@@ -397,7 +401,7 @@ export default function Windows11HomeVsPro() {
                   </ul>
                   <div className="mt-6 p-4 bg-white rounded-lg">
                     <p className="font-bold text-purple-900">💰 Price: $39.99 (+$5)</p>
-                    <a href="/#products" className="inline-block mt-3 px-6 py-2 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors">
+                    <a href="/products/windows-11-pro" className="inline-block mt-3 px-6 py-2 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors">
                       Buy Pro →
                     </a>
                   </div>
@@ -459,7 +463,7 @@ export default function Windows11HomeVsPro() {
 
               <div className="not-prose space-y-4 mb-8">
                 {[
-                  { q: "Can I upgrade from Home to Pro later?", a: "Yes! You can upgrade anytime by purchasing a Windows 11 Pro upgrade key ($39.99). No reinstallation needed - just enter the Pro key and upgrade in minutes." },
+                  { q: "Can I upgrade from Home to Pro later?", a: "Yes! You can upgrade anytime by entering a genuine Windows 11 Pro key ($16.99). No reinstallation needed - just enter the Pro key and upgrade in minutes." },
                   { q: "Is Windows 11 Pro faster than Home?", a: "No. Performance is identical for gaming and everyday tasks. Pro has more features but doesn't run faster." },
                   { q: "Can Home users use Remote Desktop?", a: "Home can CONNECT to other PCs using Remote Desktop, but can't HOST (let others connect to it). Pro can both host and connect." },
                   { q: "Is the $5 difference worth it?", a: "If you need ANY Pro feature (Remote Desktop, BitLocker, Hyper-V), yes. If you're unsure, start with Home and upgrade later if needed." },
@@ -503,14 +507,14 @@ export default function Windows11HomeVsPro() {
 
                 <div className="mt-6 grid md:grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-lg">
-                    <p className="font-bold text-blue-900 mb-2">Windows 11 Home: $34.99</p>
-                    <a href="/#products" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors text-center w-full">
+                    <p className="font-bold text-blue-900 mb-2">Windows 11 Home: $12.99</p>
+                    <a href="/products/windows-11-home" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors text-center w-full">
                       Buy Home →
                     </a>
                   </div>
                   <div className="bg-white p-4 rounded-lg">
-                    <p className="font-bold text-purple-900 mb-2">Windows 11 Pro: $39.99</p>
-                    <a href="/#products" className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors text-center w-full">
+                    <p className="font-bold text-purple-900 mb-2">Windows 11 Pro: $16.99</p>
+                    <a href="/products/windows-11-pro" className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition-colors text-center w-full">
                       Buy Pro →
                     </a>
                   </div>

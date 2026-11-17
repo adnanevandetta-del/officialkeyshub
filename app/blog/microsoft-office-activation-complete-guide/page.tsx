@@ -3,18 +3,22 @@ import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { getProductBoxImage } from "../../lib/productImage";
+import ArticleSchema from "../ArticleSchema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/microsoft-office-activation-complete-guide" },
-  title: "How to Activate Microsoft Office 2024/2021/2019 - Complete Guide (2026)",
-  description: "Complete guide to activating Microsoft Office (2024, 2021, 2019). Learn product key activation, troubleshooting, online vs bind keys, and why genuine Office licenses beat subscriptions.",
+  title: "How to Activate Office 2024, 2021 & 2019 (2026 Guide)",
+  description: "Step-by-step guide to activating Microsoft Office 2024, 2021 and 2019: product key activation, online vs bind keys and fixes for common activation errors.",
   keywords: "activate microsoft office, office product key activation, office 2024 activation, office 2021 activation, how to activate office, office activation guide, office online key, office bind key, genuine office key",
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/microsoft-office-activation-complete-guide.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "Microsoft Office Activation Guide (2026) - All Versions",
     description: "Step-by-step guide to activating Office 2024, 2021, 2019. Includes troubleshooting, key types explained, and why one-time purchase beats subscriptions.",
     url: "https://www.officialkeyshub.com/blog/microsoft-office-activation-complete-guide",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/microsoft-office-activation-complete-guide.jpg"] },
 };
 
 export default function MicrosoftOfficeActivationGuide() {
@@ -26,6 +30,7 @@ export default function MicrosoftOfficeActivationGuide() {
 
   return (
     <>
+      <ArticleSchema slug="microsoft-office-activation-complete-guide" />
       <Navbar />
       <div className="pt-20 bg-white min-h-screen">
         <Breadcrumb items={breadcrumbItems} />
@@ -127,10 +132,11 @@ export default function MicrosoftOfficeActivationGuide() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
                     <Image
-                      src="/og/office-2021-professional-plus.jpg"
-                      alt="Office 2024 Professional Plus"
+                      src={getProductBoxImage("Office 2024 Professional Plus")}
+                      alt="Office 2024 Professional Plus product box"
                       fill
-                      className="object-cover"
+                      unoptimized
+                      className="object-contain p-3"
                     />
                     <div className="absolute top-3 right-3 bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">
                       NEW
@@ -140,7 +146,7 @@ export default function MicrosoftOfficeActivationGuide() {
                   <p className="text-white/90 text-sm mb-3">Latest version with 5-year support</p>
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black text-white">$34.99</span>
-                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
+                    <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                   </div>
                 </div>
 
@@ -148,10 +154,11 @@ export default function MicrosoftOfficeActivationGuide() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border-2 border-yellow-400 hover:border-yellow-300 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
                     <Image
-                      src="/og/office-2021-professional-plus.jpg"
-                      alt="Office 2021 Professional Plus"
+                      src={getProductBoxImage("Office 2021 Professional Plus")}
+                      alt="Office 2021 Professional Plus product box"
                       fill
-                      className="object-cover"
+                      unoptimized
+                      className="object-contain p-3"
                     />
                     <div className="absolute top-3 right-3 bg-green-400 text-black px-3 py-1 rounded-full text-xs font-bold">
                       POPULAR
@@ -161,7 +168,7 @@ export default function MicrosoftOfficeActivationGuide() {
                   <p className="text-white/90 text-sm mb-3">Best value with proven stability</p>
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black text-white">$24.99</span>
-                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
+                    <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                   </div>
                 </div>
 
@@ -169,17 +176,18 @@ export default function MicrosoftOfficeActivationGuide() {
                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:border-white/40 transition-all">
                   <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
                     <Image
-                      src="/og/office-2021-professional-plus.jpg"
-                      alt="Office 2019 Professional Plus"
+                      src={getProductBoxImage("Office 2019 Professional Plus")}
+                      alt="Office 2019 Professional Plus product box"
                       fill
-                      className="object-cover"
+                      unoptimized
+                      className="object-contain p-3"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">Office 2019</h3>
                   <p className="text-white/90 text-sm mb-3">Reliable and budget-friendly</p>
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black text-white">$19.99</span>
-                    <span className="text-white/60 text-sm" title="Microsoft retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
+                    <span className="text-white/60 text-sm" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                   </div>
                 </div>
               </div>
@@ -228,10 +236,11 @@ export default function MicrosoftOfficeActivationGuide() {
               <div className="not-prose mb-8">
                 <div className="relative w-full h-64 rounded-xl overflow-hidden border-2 border-gray-200 shadow-lg">
                   <Image
-                    src="/og/office-2021-professional-plus.jpg"
-                    alt="Microsoft Office 2024 Professional Plus"
+                    src={getProductBoxImage("Office 2024 Professional Plus")}
+                    alt="Office 2024 Professional Plus product box"
                     fill
-                    className="object-cover"
+                    unoptimized
+                    className="object-contain p-3 pb-20"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                     <p className="text-white font-bold text-lg">Office 2024 Professional Plus</p>
@@ -366,10 +375,11 @@ export default function MicrosoftOfficeActivationGuide() {
               <div className="not-prose mb-8 grid md:grid-cols-2 gap-6">
                 <div className="relative h-48 rounded-xl overflow-hidden border-2 border-gray-200 shadow-lg">
                   <Image
-                    src="/og/office-2021-professional-plus.jpg"
-                    alt="Office 2021 Professional Plus"
+                    src={getProductBoxImage("Office 2021 Professional Plus")}
+                    alt="Office 2021 Professional Plus product box"
                     fill
-                    className="object-cover"
+                    unoptimized
+                    className="object-contain p-3 pb-20"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                     <p className="text-white font-bold">Office 2021 Pro Plus</p>
@@ -378,10 +388,11 @@ export default function MicrosoftOfficeActivationGuide() {
                 </div>
                 <div className="relative h-48 rounded-xl overflow-hidden border-2 border-gray-200 shadow-lg">
                   <Image
-                    src="/og/office-2021-professional-plus.jpg"
-                    alt="Office 2019 Professional Plus"
+                    src={getProductBoxImage("Office 2019 Professional Plus")}
+                    alt="Office 2019 Professional Plus product box"
                     fill
-                    className="object-cover"
+                    unoptimized
+                    className="object-contain p-3 pb-20"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                     <p className="text-white font-bold">Office 2019 Pro Plus</p>
@@ -852,10 +863,10 @@ export default function MicrosoftOfficeActivationGuide() {
                   { q: "How long does Office activation take?", a: "Online activation: 30-60 seconds. Phone activation: 10-15 minutes. Both are straightforward once you have your product key." },
                   { q: "Can I transfer my Office license to a new computer?", a: "Retail licenses: Yes (uninstall from old PC, install on new PC with same key). OEM licenses: No (tied to first PC). Bind keys: Depends on Microsoft's transfer policy. Always check your license type." },
                   { q: "What happens if I reinstall Windows?", a: "Your Office activation remains valid! Just reinstall Office and use the same product key. Office remembers your PC's hardware signature, so reactivation is automatic in many cases." },
-                  { q: "Is Office 2024 worth it over Office 2021?", a: "Office 2024 has newer features and 5-year support (until 2029) vs Office 2021's support (until 2026). Price difference is $10. If buying new, get Office 2024. If you have 2021, no urgent need to upgrade." },
+                  { q: "Is Office 2024 worth it over Office 2021?", a: "Yes. Office 2024 has newer features and security updates until October 2029, while Office 2021's support ended on October 13, 2026. The price difference is only $10. If buying new, get Office 2024. If you already have Office 2021, it keeps working, but upgrading is recommended so you keep getting security patches." },
                   { q: "Can I use Office offline after activation?", a: "Yes! Once activated, Office works 100% offline. You only need internet for the initial activation. After that, all apps work without internet forever." },
                   { q: "What if my key doesn't work?", a: "Contact your seller immediately. Legitimate sellers (like us) offer free key replacements if there's an activation issue. We verify all keys before selling and provide lifetime support." },
-                  { q: "Do I get free updates with one-time Office purchase?", a: "You get security updates for 5 years (until October 2029 for Office 2024, October 2026 for Office 2021). You don't get new features like Office 365 subscribers. But the apps you bought remain yours forever." },
+                  { q: "Do I get free updates with one-time Office purchase?", a: "Office 2024 gets security updates until October 2029; Office 2021 updates ended in October 2026. You don't get new features like Office 365 subscribers. But the apps you bought remain yours forever." },
                 ].map((faq, idx) => (
                   <details key={idx} className="bg-orange-50 rounded-xl p-6 hover:bg-orange-100 transition-colors group shadow-md border border-orange-200">
                     <summary className="font-bold text-orange-900 cursor-pointer flex items-center justify-between text-lg">

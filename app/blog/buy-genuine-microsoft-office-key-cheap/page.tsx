@@ -7,17 +7,19 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Buy a Genuine Office Key Cheap (2026) | Official Keys Hub",
   description:
-    "A practical buyer's guide to buying a genuine, cheap Microsoft Office key in 2026. Why low prices can still be legitimate, how to verify a key is genuine, scam red flags to avoid, and safe ways to pay.",
+    "How to buy a genuine, cheap Microsoft Office key in 2026: why low prices can be legitimate, how to verify a key, scam red flags and safe ways to pay.",
   keywords:
     "buy genuine microsoft office key cheap, cheap genuine office key, is cheap office key genuine, how to buy office cheap, genuine office 2021 key, avoid office key scam",
   alternates: { canonical: "https://www.officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap" },
   openGraph: {
+    images: [{ url: "https://www.officialkeyshub.com/og/blog/buy-genuine-microsoft-office-key-cheap.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
     title: "Buy a Genuine Office Key Cheap (2026) | Official Keys Hub",
     description:
       "Why cheap Office keys can be genuine, how to verify one, the scam red flags to avoid, and how to pay safely.",
     url: "https://www.officialkeyshub.com/blog/buy-genuine-microsoft-office-key-cheap",
     type: "article",
   },
+  twitter: { card: "summary_large_image", images: ["https://www.officialkeyshub.com/og/blog/buy-genuine-microsoft-office-key-cheap.jpg"] },
 };
 
 const faqs = [
@@ -218,9 +220,9 @@ export default function BuyGenuineOfficeCheap() {
                   </thead>
                   <tbody>
                     {[
-                      ["Office 2021 Professional Plus", "$439.99", "from $49.99"],
-                      ["Office 2019 Professional Plus", "$439.99", "from $44.99"],
-                      ["Office Home & Business 2021", "$249.99", "from $44.99"],
+                      ["Office 2021 Professional Plus", "$439.99", "from $24.99"],
+                      ["Office 2019 Professional Plus", "$439.99", "from $19.99"],
+                      ["Office Home & Business 2021", "$249.99", "from $27.99"],
                     ].map((row, i) => (
                       <tr key={i} className="border-b border-gray-200">
                         <td className="p-4 text-gray-800">{row[0]}</td>

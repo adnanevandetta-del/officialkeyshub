@@ -160,9 +160,19 @@ function main() {
       while (reserved.has(slug)) slug = `${base}-${n++}`;
 
       const today = new Date().toISOString().slice(0, 10);
-      const image =
-        item.image ||
-        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80";
+      // Article image: our own Microsoft product-box art (rendered by
+      // /api/product-image), chosen from the topic. A custom image in the
+      // keyword queue still wins.
+      const topic = `${item.keyword} ${a.title}`.toLowerCase();
+      const product =
+        item.product ||
+        (/office|word|excel|outlook|365/.test(topic)
+          ? "Office 2024 Professional Plus"
+          : /server/.test(topic)
+            ? "Windows Server 2025 Standard"
+            : /windows 11 home|home vs pro/.test(topic)
+              ? "Windows 11 Home"
+              : "Windows 11 Pro");
 
       const frontmatter = [
         "---",
@@ -173,7 +183,8 @@ function main() {
         `date: "${today}"`,
         `readTime: "${yamlEscape(a.readTime)}"`,
         `keywords: "${yamlEscape(a.keywords)}"`,
-        `image: "${yamlEscape(image)}"`,
+        ...(item.image ? [`image: "${yamlEscape(item.image)}"`] : []),
+        `product: "${yamlEscape(product)}"`,
         `draft: false`,
         "---",
         "",
