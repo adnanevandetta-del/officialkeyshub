@@ -264,13 +264,13 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="p-6 rounded-xl text-white shadow-xl bg-red-500">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-2xl font-black">Office 2021 Pro Plus</h3>
-                  <span className="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold">89% OFF</span>
+                  <span className="bg-white text-red-600 px-3 py-1 rounded-full text-sm font-bold">94% OFF</span>
                 </div>
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-black">$49.99</span>
+                  <span className="text-4xl font-black">$24.99</span>
                   <span className="text-xl opacity-75" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$439.99</span></span>
                 </div>
-                <Link href="/#products" className="block w-full text-center bg-white text-orange-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                <Link href="/products/office-2021-professional-plus" className="block w-full text-center bg-white text-orange-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
                   Buy Now →
                 </Link>
               </div>
@@ -278,13 +278,13 @@ export default function BuyCheapMicrosoftOfficeKeys() {
               <div className="p-6 rounded-xl text-white shadow-xl bg-indigo-500">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-2xl font-black">Office 365 (1 Year)</h3>
-                  <span className="bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-bold">60% OFF</span>
+                  <span className="bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-bold">70% OFF</span>
                 </div>
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-black">$39.99</span>
+                  <span className="text-4xl font-black">$29.99</span>
                   <span className="text-xl opacity-75" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">$99.99</span></span>
                 </div>
-                <Link href="/#products" className="block w-full text-center bg-white text-blue-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                <Link href="/products/office-365-1-year" className="block w-full text-center bg-white text-blue-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition-colors">
                   Buy Now →
                 </Link>
               </div>

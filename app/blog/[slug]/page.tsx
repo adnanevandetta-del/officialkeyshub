@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+
+// GFM adds markdown tables, strikethrough and autolinks to MDX articles.
+const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -161,11 +165,11 @@ export default async function MdxBlogArticle({
                 const [before, after] = splitForAd(content);
                 return (
                   <>
-                    <MDXRemote source={before} components={mdxComponents} />
+                    <MDXRemote source={before} components={mdxComponents} options={mdxOptions} />
                     {after && (
                       <>
                         <ProductAd name={data.product} topic={adTopic} />
-                        <MDXRemote source={after} components={mdxComponents} />
+                        <MDXRemote source={after} components={mdxComponents} options={mdxOptions} />
                       </>
                     )}
                   </>

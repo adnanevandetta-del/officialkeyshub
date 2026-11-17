@@ -1,0 +1,93 @@
+---
+title: "How to Find Your Windows Product Key (Windows 10 & 11)"
+description: "Find your Windows 10 or 11 product key in minutes: the PowerShell command for keys stored in your PC's firmware, where else to look, and what to do if you have a digital license with no key."
+excerpt: "Lost your Windows key? Here are the real ways to find it, and what to do if your PC never had one."
+category: "Guides"
+date: "2026-11-17"
+summary: "If your PC came with Windows, the key is usually stored in its firmware. Open PowerShell and run (Get-CimInstance -ClassName SoftwareLicensingService).OA3xOriginalProductKey to show it. If you bought a key, check the order email. If you have a digital license, there may be no key at all, because activation is tied to your hardware or Microsoft account."
+readTime: "5 min"
+keywords: "how to find windows product key, find windows 11 product key, find windows 10 product key, windows product key cmd, where is my windows key, recover windows product key"
+product: "Windows 11 Pro"
+draft: true
+---
+
+You're reinstalling Windows, or moving to a new SSD, and Windows asks for a product key. Cool. Where is it? 💀
+
+Here's every legit place your key could be hiding.
+
+## TL;DR
+
+- **Laptop or prebuilt PC?** The key is probably in the firmware. One PowerShell command shows it.
+- **Bought a key online?** It's in your order email.
+- **Upgraded from Windows 10, or activated with your Microsoft account?** You may have a **digital license** and no key at all, and that's fine.
+
+## Method 1: the PowerShell command (firmware key)
+
+Most PCs sold with Windows 8 or later have the key stored in the motherboard. To show it:
+
+1. Right-click **Start** and open **Terminal** or **PowerShell**.
+2. Paste this and press Enter:
+
+```
+(Get-CimInstance -ClassName SoftwareLicensingService).OA3xOriginalProductKey
+```
+
+If a 25-character key appears, that's your original key. Copy it somewhere safe.
+
+The old `wmic path softwarelicensingservice get OA3xOriginalProductKey` command does the same thing, but `wmic` is removed by default on newer Windows 11 builds, so use the PowerShell version.
+
+**Blank result?** Your PC either never had a firmware key (common on custom builds) or uses a digital license. Keep reading.
+
+## Method 2: your order email
+
+If you bought a key, it's in the order confirmation. Search your inbox for "product key", the store's name, or "Windows 11". Keys from us arrive by email after payment, so search for **Official Keys Hub**.
+
+## Method 3: the sticker
+
+Older PCs (Windows 7 era) have a **Certificate of Authenticity** sticker on the bottom, the back, or under the battery. Newer PCs usually don't have one, because the key moved into the firmware.
+
+## Method 4: check what you have with slmgr
+
+Run `slmgr /dli` (Win + R, then Enter). It shows the **last 5 characters** of the installed key and the license type. That won't give you the full key, but it helps you match it against an old email or a sticker.
+
+## "I don't have a key at all"
+
+That's normal if you have a **digital license**. It happens when:
+
+- You upgraded from Windows 10 to 11 for free.
+- Your PC was activated once and Windows saved the license to Microsoft's servers.
+- You linked activation to your Microsoft account.
+
+When you reinstall the **same edition** on the **same PC**, just click *"I don't have a product key"* during setup. Windows reactivates by itself once it's online.
+
+Changed your motherboard? Sign in with your Microsoft account and use the **Activation troubleshooter** ("I changed hardware on this device recently"). More on that in our [license transfer guide](/blog/transfer-windows-license-new-pc).
+
+## Skip the shady key-finder tools
+
+Plenty of "free key finder" downloads are adware, or worse. You don't need them, because the PowerShell command reads the same firmware key. And no tool can recover a key from a digital license, because there isn't one stored on the PC.
+
+## Still no key? Get a genuine one
+
+If you built the PC yourself, moved to new hardware, or your old license was a work or volume key, you'll need a new license. A genuine **Windows 11 Pro** key activates on Microsoft's servers in seconds, and if you're unsure between Home and Pro, our [key finder tool](/key-finder) tells you in two questions.
+
+## Frequently asked questions
+
+### How do I find my Windows 11 product key with CMD?
+
+Open PowerShell and run `(Get-CimInstance -ClassName SoftwareLicensingService).OA3xOriginalProductKey`. It shows the key stored in your PC's firmware, if there is one.
+
+### Why does the command show nothing?
+
+Your PC has no key in its firmware. That's common on custom-built PCs and on PCs activated with a digital license.
+
+### Can I reinstall Windows without a product key?
+
+Yes, if the PC already has a digital license for that edition. Choose "I don't have a product key" during setup and Windows activates automatically once it connects to the internet.
+
+### Can I use my old Windows 10 key for Windows 11?
+
+Usually yes. A genuine Windows 10 Home or Pro key generally activates the same edition of Windows 11.
+
+### Does my product key work on another PC?
+
+A retail key can usually be moved to a new PC after you remove it from the old one. An OEM key built into a laptop's firmware is tied to that device.

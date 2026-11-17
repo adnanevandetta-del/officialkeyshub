@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026" },
   openGraph: {
     images: [{ url: "https://www.officialkeyshub.com/og/blog/cheap-windows-11-keys-2026.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
-    title: "Cheap Windows 11 Keys 2026 - Genuine Keys from $34.99",
+    title: "Cheap Windows 11 Keys 2026 - Genuine Keys from $12.99",
     description: "Buy genuine Windows 11 Pro & Home keys up to 90% off. Instant delivery, lifetime activation, 30-day guarantee.",
     url: "https://www.officialkeyshub.com/blog/cheap-windows-11-keys-2026",
     type: "article",
@@ -69,7 +69,7 @@ export default function CheapWindows11Keys2026() {
               <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 leading-tight">
                 Cheap Windows 11 Keys 2026:
                 <br />
-                <span className="text-blue-600">Buy Genuine Keys from $34.99</span>
+                <span className="text-blue-600">Buy Genuine Keys from $12.99</span>
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -133,20 +133,20 @@ export default function CheapWindows11Keys2026() {
                     <tr className="border-t border-gray-200">
                       <td className="p-3 font-semibold">Windows 11 Pro</td>
                       <td className="p-3">$199.99</td>
-                      <td className="p-3 text-sky-700 font-bold">$39.99</td>
-                      <td className="p-3">80%</td>
+                      <td className="p-3 text-sky-700 font-bold">$16.99</td>
+                      <td className="p-3">92%</td>
                     </tr>
                     <tr className="border-t border-gray-200 bg-gray-50">
                       <td className="p-3 font-semibold">Windows 11 Home</td>
                       <td className="p-3">$139.99</td>
-                      <td className="p-3 text-sky-700 font-bold">$34.99</td>
-                      <td className="p-3">75%</td>
+                      <td className="p-3 text-sky-700 font-bold">$12.99</td>
+                      <td className="p-3">91%</td>
                     </tr>
                     <tr className="border-t border-gray-200">
                       <td className="p-3 font-semibold">Windows 11 Pro (Online Key)</td>
                       <td className="p-3">$199.99</td>
-                      <td className="p-3 text-sky-700 font-bold">$34.99</td>
-                      <td className="p-3">83%</td>
+                      <td className="p-3 text-sky-700 font-bold">$14.99</td>
+                      <td className="p-3">93%</td>
                     </tr>
                   </tbody>
                 </table>
@@ -215,7 +215,7 @@ export default function CheapWindows11Keys2026() {
 
               {/* CTA */}
               <div className="not-prose rounded-2xl p-8 text-center text-white mb-6 bg-sky-800">
-                <h2 className="text-2xl md:text-3xl font-bold mb-3">Get Your Genuine Windows 11 Key from $34.99</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-3">Get Your Genuine Windows 11 Key from $12.99</h2>
                 <p className="text-sky-100 mb-6 max-w-2xl mx-auto">Instant email delivery, lifetime activation, and a 30-day money-back guarantee.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <Link href="/#products" className="px-8 py-4 bg-white text-sky-800 font-bold rounded-lg hover:bg-sky-50 transition-all shadow-lg">

@@ -1,0 +1,96 @@
+---
+title: "How to Check if Windows Is Genuine (and Spot a Cracked Activation)"
+description: "Check if your Windows 10 or 11 is genuine in 30 seconds: the Settings check, the slmgr commands, and the signs your PC was activated with a crack instead of a real key."
+excerpt: "Bought a PC second-hand or a key that felt too cheap? Here's how to check if your Windows is genuine, in about 30 seconds."
+category: "Guides"
+date: "2026-11-17"
+summary: "Open Settings, then System, then Activation. Genuine Windows says 'Windows is activated with a digital license' or 'with a product key'. To double-check, run slmgr /dli and slmgr /xpr: a genuine retail or OEM license is permanently activated, while a KMS crack shows a volume channel and an expiry date about 180 days away."
+readTime: "5 min"
+keywords: "how to check if windows is genuine, is my windows genuine, check windows activation, windows genuine check, slmgr dli, kms activation check, cracked windows check"
+product: "Windows 11 Pro"
+draft: true
+---
+
+You bought a "pre-activated" laptop off Marketplace. Or you paid $2 for a key and it *worked*, which is suspicious. Either way, you want to know: **is this Windows actually genuine?**
+
+Good news: you can check in about 30 seconds, no downloads needed.
+
+## TL;DR
+
+1. **Settings → System → Activation.** It should say *activated with a digital license* or *with a product key*.
+2. Run **`slmgr /xpr`**. Genuine = "permanently activated". A date about 6 months away = probably a KMS crack.
+3. Run **`slmgr /dli`**. "RETAIL" or "OEM" channel = normal. "VOLUME_KMSCLIENT" on a home PC = big red flag.
+
+## Check 1: the Settings page
+
+On Windows 11, open **Settings → System → Activation**. On Windows 10, it's **Settings → Update & Security → Activation**.
+
+You want to see one of these:
+
+- *Windows is activated with a digital license*
+- *Windows is activated with a digital license linked to your Microsoft account*
+- *Windows is activated using your organization's activation service* (fine on a **work** PC, sus on a personal one)
+
+If it says **"Windows is not activated"** or you see the "Activate Windows" watermark in the corner, you don't have a valid license at all.
+
+## Check 2: slmgr /xpr (does it expire?)
+
+Press **Win + R**, type `slmgr /xpr` and press Enter. A small box pops up.
+
+- **"The machine is permanently activated."** That's what a genuine retail or OEM license looks like.
+- **"Volume activation will expire 5/14/2027"** or similar. That's KMS activation. Legit inside companies, but on a home PC it almost always means a **KMS crack** that renews itself in the background.
+
+## Check 3: slmgr /dli (what kind of license?)
+
+Run `slmgr /dli`. Look at the **Description** line:
+
+| What it says | What it means |
+| --- | --- |
+| RETAIL channel | A retail key, the normal kind you buy |
+| OEM_DM channel | The key built into your PC's firmware by the manufacturer |
+| VOLUME_MAK channel | A business multiple-activation key |
+| VOLUME_KMSCLIENT channel | Activated by a KMS server. On a home PC, likely a crack |
+
+Real talk: if a seller's "key" ended up as VOLUME_KMSCLIENT, you didn't buy a license. You bought a script.
+
+## Other signs it's cracked
+
+- You were told to **turn off your antivirus** or run a `.cmd` or `.ps1` file to activate.
+- There's a scheduled task or service with a random name that runs at every boot.
+- A tool called **KMSpico, KMSAuto or MAS** was involved. We explain why that's a bad idea in our [MAS guide](/blog/microsoft-activation-scripts-mas-guide).
+- Activation randomly disappears after an update.
+
+## Why it matters
+
+Cracked activators are the #1 way people get malware bundled with "free Windows". They also break after updates and can leave you without security patches if they mess with Windows Update. A genuine license avoids all of that and costs less than a takeaway.
+
+## How to fix it
+
+1. Get a genuine key. Windows 11 Home and Pro keys here start from the price of a pizza.
+2. Go to **Settings → System → Activation → Change product key** and paste it in.
+3. If a KMS crack was used, remove it first: run `slmgr /upk` then `slmgr /cpky` in an admin Command Prompt, and delete any activator tasks.
+4. Run `slmgr /xpr` again. You want "permanently activated".
+
+Our [Windows 11 activation guide](/blog/how-to-activate-windows-11) walks through every error code if something goes wrong.
+
+## Frequently asked questions
+
+### How do I know if my Windows key is genuine?
+
+Activate it, then open Settings, System, Activation. A genuine key shows "activated with a digital license" or "with a product key", and `slmgr /xpr` says the machine is permanently activated.
+
+### Is KMS activation illegal?
+
+KMS is a real Microsoft system that companies use for their own PCs. Using a pirate KMS server or activator on your home PC to avoid buying a license is not legitimate and breaks Microsoft's license terms.
+
+### Can Microsoft detect cracked Windows?
+
+Microsoft can deactivate keys and block pirate activations through updates. Cracked PCs often lose activation after a major update.
+
+### What does "permanently activated" mean?
+
+It means the license never needs to renew. That's normal for genuine retail, OEM and digital licenses.
+
+### Will a genuine key remove the "Activate Windows" watermark?
+
+Yes. As soon as Windows activates with a genuine key, the watermark disappears, usually right away or after a restart.

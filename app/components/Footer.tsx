@@ -79,6 +79,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/key-finder" className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  Which Key Do I Need?
+                </Link>
+              </li>
+              <li>
                 <Link href="/activation-guide" className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   Activation Guide
                 </Link>

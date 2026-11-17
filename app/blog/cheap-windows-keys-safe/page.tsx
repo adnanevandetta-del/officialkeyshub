@@ -464,7 +464,7 @@ export default function CheapKeysSafePage() {
               <p className="text-black text-lg mb-6">
                 Genuine OEM keys with 30-day money-back guarantee. 100% safe and secure.
               </p>
-              <p className="text-black text-3xl font-bold mb-6">Only $39.99</p>
+              <p className="text-black text-3xl font-bold mb-6">From $12.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/" 

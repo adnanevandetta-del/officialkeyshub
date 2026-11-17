@@ -163,6 +163,14 @@ export default function Navbar() {
                     Build Your Own Bundle
                   </Link>
                   <Link
+                    href="/key-finder"
+                    onClick={() => setIsDeskMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-wand-magic-sparkles text-[#005A9E] w-4"></i>
+                    Which Key Do I Need?
+                  </Link>
+                  <Link
                     href="/faq"
                     onClick={() => setIsDeskMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
@@ -307,6 +315,14 @@ export default function Navbar() {
               >
                 <i className="fas fa-blog text-[#005A9E]"></i>
                 Blog
+              </Link>
+              <Link
+                href="/key-finder"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <i className="fas fa-wand-magic-sparkles text-[#005A9E]"></i>
+                Which Key Do I Need?
               </Link>
               <Link
                 href="/faq"

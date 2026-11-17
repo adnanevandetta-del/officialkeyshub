@@ -539,7 +539,7 @@ export default function OEMvsRetailPage() {
               <p className="text-black text-lg mb-6">
                 Save up to 80% with OEM licensing. Same Windows, massive savings.
               </p>
-              <p className="text-black text-3xl font-bold mb-6">Only $39.99</p>
+              <p className="text-black text-3xl font-bold mb-6">From $12.99</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/products/windows-11-pro" 
