@@ -6,6 +6,7 @@
 
 import { useEffect, useState } from "react";
 import { getStoredPromo, savePromoForEmail, clearStoredPromo } from "./promo";
+import { trackEvent } from "./analytics";
 
 export type OrderStatus = "pending" | "delivered" | "cancelled";
 export type PaymentMethod = "paypal" | "usdt" | "whatsapp";
@@ -171,6 +172,14 @@ export function addOrder(input: {
     status: "pending",
   };
   write(ORDERS_KEY, [order, ...list]);
+  // Every checkout path (Buy Now, cart, USDT, WhatsApp) goes through here, so this
+  // is the one place GA4 learns that someone started paying, and with which method.
+  trackEvent("begin_checkout", {
+    currency: "USD",
+    value: input.total,
+    payment_type: input.method,
+    items: input.items.map((i) => ({ item_name: i.name, price: priceToNumber(i.price), quantity: i.quantity })),
+  });
   return order;
 }
 

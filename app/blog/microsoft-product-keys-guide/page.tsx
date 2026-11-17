@@ -339,7 +339,7 @@ export default function MicrosoftProductKeysGuide() {
                   </thead>
                   <tbody className="text-gray-700">
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Windows 11</td><td className="p-3">✅ Supported (keep it on a current version)</td></tr>
-                    <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Windows 10</td><td className="p-3">⚠️ Ended Oct 14, 2025 — paid Extended Security Updates only</td></tr>
+                    <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Windows 10</td><td className="p-3">⚠️ Ended Oct 14, 2025 — consumer ESU security updates until Oct 12, 2027</td></tr>
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Office 2024</td><td className="p-3">✅ Supported until 2029</td></tr>
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Office 2021</td><td className="p-3">❌ Ended Oct 13, 2026 — keeps working, no further updates</td></tr>
                     <tr className="border-t border-gray-200"><td className="p-3 font-semibold">Office 2019 / 2016</td><td className="p-3">❌ Ended Oct 14, 2025</td></tr>

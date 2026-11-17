@@ -57,8 +57,11 @@ export default function ProductBuySection({
           rel="noopener noreferrer"
           className="press-3d w-full py-3 rounded-lg font-black text-white transition-all shadow-lg inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800"
         >
-          Buy Now
+          <i className="fab fa-paypal"></i> Buy Now — {price}
         </a>
+        <p className="text-center text-xs text-gray-500 -mt-1">
+          Secure checkout on PayPal · PayPal balance or debit/credit card · key emailed after payment
+        </p>
 
         <button
           onClick={add}

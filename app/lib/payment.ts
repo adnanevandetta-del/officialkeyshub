@@ -2,6 +2,7 @@
 // PayPal's hosted "_xclick" checkout URL (no API keys or SDK required).
 
 export const PAYPAL_EMAIL = "officialkeyshub@gmail.com";
+export const SITE_URL = "https://www.officialkeyshub.com";
 
 /**
  * Build a PayPal checkout URL that charges `amount` (USD) for `itemName`
@@ -26,6 +27,14 @@ export function paypalPaymentUrl(
     currency_code: "USD",
     no_shipping: "1",
     no_note: "0",
+    // Item names contain "—" etc.; without this PayPal decodes them as windows-1252.
+    charset: "utf-8",
+    // Send the buyer back to the store after paying (or cancelling) instead of
+    // leaving them stranded on PayPal. rm=1 = return via GET with no POST data.
+    return: `${SITE_URL}/thank-you?${new URLSearchParams({ item: itemName.slice(0, 120), amount: amt }).toString()}`,
+    cancel_return: `${SITE_URL}/thank-you?cancelled=1`,
+    rm: "1",
+    cbt: "Return to Official Keys Hub",
   });
   if (note) params.set("custom", note);
 
