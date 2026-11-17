@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import Image from "next/image";
@@ -395,6 +396,7 @@ export default function Windows1124H2EndSupport() {
 
               {/* What to Do Now */}
               <section className="mb-16">
+                <ProductAd topic="windows-11-24h2-end-support-october-2026" />
                 <h2 className="text-3xl font-black text-gray-900 mb-6 flex items-center gap-3">
                   <span className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
                     <i className="fas fa-arrow-up"></i>
@@ -755,6 +757,7 @@ export default function Windows1124H2EndSupport() {
           </div>
         </article>
       </div>
+      <BlogShopStrip topic="windows-11-24h2-end-support-october-2026" />
       <Footer />
     </>
   );

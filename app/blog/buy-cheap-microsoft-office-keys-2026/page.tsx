@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import { Metadata } from "next";
 import ArticleHero from "../ArticleHero";
 import ArticleSchema from "../ArticleSchema";
@@ -149,6 +150,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
           </section>
 
           <section id="where-to-buy" className="mb-10">
+            <ProductAd topic="buy-cheap-microsoft-office-keys-2026" />
             <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <i className="fas fa-shopping-cart text-blue-600"></i>
               Where to Buy Genuine Microsoft Office Keys
@@ -341,6 +343,7 @@ export default function BuyCheapMicrosoftOfficeKeys() {
           </section>
         </div>
       </article>
+      <BlogShopStrip topic="buy-cheap-microsoft-office-keys-2026" />
     </main>
   );
 }

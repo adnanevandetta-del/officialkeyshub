@@ -1,9 +1,12 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
+import { ProductAd } from "./BlogAds";
 
 // Styling for MDX article bodies so auto-generated posts match the look of the
 // hand-written .tsx articles (light theme, blue accents).
 export const mdxComponents = {
+  // Inline catalog ad: <ProductAd name="Windows 11 Pro" /> inside an article.
+  ProductAd,
   h2: (props: ComponentProps<"h2">) => (
     <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-4" {...props} />
   ),

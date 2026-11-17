@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import ProductStrip from "../../components/ProductStrip";
@@ -728,6 +729,7 @@ export default function Office2021EndOfSupport() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="office-2021-end-of-support" />
       <Footer />
     </>
   );

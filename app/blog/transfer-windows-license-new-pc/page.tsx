@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -149,6 +150,7 @@ export default function TransferWindowsLicense() {
                 </Link>.
               </p>
 
+              <ProductAd topic="transfer-windows-license-new-pc" />
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Tip: Link Your License to a Microsoft Account</h2>
               <p className="mb-8 text-gray-700">
                 Signing into Windows with a Microsoft account creates a <strong>digital license</strong>. After a hardware
@@ -182,6 +184,7 @@ export default function TransferWindowsLicense() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="transfer-windows-license-new-pc" />
       <Footer />
     </>
   );

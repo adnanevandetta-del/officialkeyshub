@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -303,6 +304,7 @@ export default function CheapKeysSafePage() {
             </div>
 
             {/* Red Flags */}
+            <ProductAd topic="cheap-windows-keys-safe" />
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">🚩 Red Flags: Avoid These Sellers</h2>
 
             <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 mb-8">
@@ -496,6 +498,7 @@ export default function CheapKeysSafePage() {
           </div>
         </article>
       </main>
+      <BlogShopStrip topic="cheap-windows-keys-safe" />
       <Footer />
     </>
   );

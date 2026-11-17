@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -311,6 +312,7 @@ export default function Office2021Vs365Page() {
             </div>
 
             {/* Feature Comparison */}
+            <ProductAd topic="office-2021-vs-office-365" />
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">⚙️ Feature Differences</h2>
 
             <p className="mb-6">
@@ -493,6 +495,7 @@ export default function Office2021Vs365Page() {
           </div>
         </article>
       </main>
+      <BlogShopStrip topic="office-2021-vs-office-365" />
       <Footer />
     </>
   );

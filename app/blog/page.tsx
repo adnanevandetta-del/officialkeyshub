@@ -3,6 +3,7 @@ import CategoryBar from "../components/CategoryBar";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import BlogList from "./BlogList";
+import { BlogShopStrip } from "./BlogAds";
 import { getAllBlogListItems } from "../lib/blog-mdx";
 
 export default function BlogPage() {
@@ -50,6 +51,7 @@ export default function BlogPage() {
           </div>
         </div>
       </main>
+      <BlogShopStrip topic="windows office" title="Best sellers right now" subtitle="The keys our readers buy most, with instant email delivery and a 30-day money-back guarantee." />
       <Footer />
     </>
   );

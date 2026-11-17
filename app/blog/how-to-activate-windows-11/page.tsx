@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
@@ -305,6 +306,7 @@ export default function HowToActivateWindows11() {
                 ))}
               </div>
 
+              <ProductAd topic="how-to-activate-windows-11" />
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
                 💡 Pro Tips for Windows 11 Activation
               </h2>
@@ -432,6 +434,7 @@ export default function HowToActivateWindows11() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="how-to-activate-windows-11" />
       <Footer />
     </>
   );

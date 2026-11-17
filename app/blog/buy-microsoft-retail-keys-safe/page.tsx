@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import Link from "next/link";
@@ -187,6 +188,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
                 ))}
               </div>
 
+              <ProductAd topic="buy-microsoft-retail-keys-safe" />
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
                 Is it safe? How to verify a genuine key
               </h2>
@@ -295,6 +297,7 @@ export default function BuyMicrosoftRetailKeysSafe() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="buy-microsoft-retail-keys-safe" />
       <Footer />
     </>
   );

@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import Image from "next/image";
@@ -754,6 +755,7 @@ export default function MicrosoftOfficeActivationGuide() {
                 </ul>
               </div>
 
+              <ProductAd topic="microsoft-office-activation-complete-guide" />
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
                 💰 Office 2024/2021 vs Office 365: Which Should You Buy?
               </h2>
@@ -1016,6 +1018,7 @@ export default function MicrosoftOfficeActivationGuide() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="microsoft-office-activation-complete-guide" />
       <Footer />
     </>
   );

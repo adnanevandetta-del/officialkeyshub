@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import Link from "next/link";
@@ -190,6 +191,7 @@ export default function BuyGenuineOfficeCheap() {
                 </ul>
               </div>
 
+              <ProductAd topic="buy-genuine-microsoft-office-key-cheap" />
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
                 What you should get from a good seller
               </h2>
@@ -305,6 +307,7 @@ export default function BuyGenuineOfficeCheap() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="buy-genuine-microsoft-office-key-cheap" />
       <Footer />
     </>
   );

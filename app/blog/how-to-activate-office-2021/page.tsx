@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -136,6 +137,7 @@ export default function HowToActivateOffice2021() {
                 </p>
               </div>
 
+              <ProductAd topic="how-to-activate-office-2021" />
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Fixing Common Office 2021 Activation Errors</h2>
               <div className="space-y-5 mb-8">
                 <div>
@@ -181,6 +183,7 @@ export default function HowToActivateOffice2021() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="how-to-activate-office-2021" />
       <Footer />
     </>
   );

@@ -8,6 +8,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 import { getMdxArticle, getMdxSlugs, mdxImage } from "../../lib/blog-mdx";
 import ArticleHero from "../ArticleHero";
 import { mdxComponents } from "../mdx-components";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 
 const SITE = "https://www.officialkeyshub.com";
 
@@ -57,6 +58,7 @@ export default async function MdxBlogArticle({
   if (!article) notFound();
   const { data, content } = article;
   const url = `${SITE}/blog/${slug}`;
+  const adTopic = `${slug} ${data.title} ${data.keywords ?? ""} ${data.product ?? ""}`;
 
   const fmt = (d?: string) =>
     d ? new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "";
@@ -155,7 +157,20 @@ export default async function MdxBlogArticle({
                   <p className="text-gray-800 leading-relaxed m-0">{data.summary}</p>
                 </aside>
               )}
-              <MDXRemote source={content} components={mdxComponents} />
+              {(() => {
+                const [before, after] = splitForAd(content);
+                return (
+                  <>
+                    <MDXRemote source={before} components={mdxComponents} />
+                    {after && (
+                      <>
+                        <ProductAd name={data.product} topic={adTopic} />
+                        <MDXRemote source={after} components={mdxComponents} />
+                      </>
+                    )}
+                  </>
+                );
+              })()}
 
               {/* CTA */}
               <div className="mt-14 rounded-2xl p-8 text-center text-white bg-blue-700">
@@ -174,9 +189,24 @@ export default async function MdxBlogArticle({
           </div>
         </article>
       </div>
+      <BlogShopStrip topic={adTopic} />
       <Footer />
     </>
   );
+}
+
+/**
+ * Splits the article at a "## " heading roughly halfway through (never at or
+ * after the FAQ) so a product ad can sit mid-article. Returns [whole, ""] for
+ * short articles.
+ */
+function splitForAd(mdx: string): [string, string] {
+  const heads = [...mdx.matchAll(/^##\s+(.+)$/gm)].filter(
+    (m) => !/frequently asked|faqs?\s*$/i.test(m[1]),
+  );
+  if (heads.length < 3) return [mdx, ""];
+  const at = heads[Math.floor(heads.length / 2)].index!;
+  return [mdx.slice(0, at), mdx.slice(at)];
 }
 
 /** Q&A pairs from a "## Frequently asked questions" section (### question + answer text). */

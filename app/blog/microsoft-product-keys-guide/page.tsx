@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import Link from "next/link";
@@ -299,6 +300,7 @@ export default function MicrosoftProductKeysGuide() {
                 Office key doesn&apos;t activate Visio or Project.
               </p>
 
+              <ProductAd topic="microsoft-product-keys-guide" />
               <h2 id="price" className="text-3xl font-bold mt-12 mb-6 text-gray-900">Microsoft Product Key Price: What Should You Pay?</h2>
               <p className="mb-5">
                 Microsoft&apos;s own Store lists <strong>Windows 11 Pro at $199.99</strong> and{" "}
@@ -467,6 +469,7 @@ export default function MicrosoftProductKeysGuide() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="microsoft-product-keys-guide" />
       <Footer />
     </>
   );

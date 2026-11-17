@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -291,6 +292,7 @@ export default function OEMvsRetailPage() {
             </div>
 
             {/* Legality */}
+            <ProductAd topic="oem-vs-retail-windows-keys" />
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">⚖️ Is It Legal to Buy OEM Keys?</h2>
 
             <p className="mb-6">
@@ -571,6 +573,7 @@ export default function OEMvsRetailPage() {
           </div>
         </article>
       </main>
+      <BlogShopStrip topic="oem-vs-retail-windows-keys" />
       <Footer />
     </>
   );

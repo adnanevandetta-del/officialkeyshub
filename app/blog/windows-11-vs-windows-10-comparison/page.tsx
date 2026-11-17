@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -360,6 +361,7 @@ export default function Windows11VsWindows10Page() {
             </p>
 
             {/* Compatibility */}
+            <ProductAd topic="windows-11-vs-windows-10-comparison" />
             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">🔧 Software & Hardware Compatibility</h2>
 
             <p className="mb-6">
@@ -657,6 +659,7 @@ export default function Windows11VsWindows10Page() {
           </div>
         </article>
       </main>
+      <BlogShopStrip topic="windows-11-vs-windows-10-comparison" />
       <Footer />
     </>
   );

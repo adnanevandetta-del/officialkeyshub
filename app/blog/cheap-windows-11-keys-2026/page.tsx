@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -171,6 +172,7 @@ export default function CheapWindows11Keys2026() {
                 </p>
               </div>
 
+              <ProductAd topic="cheap-windows-11-keys-2026" />
               <h2 className="text-3xl font-bold text-gray-900 mb-4">How to Activate Your Cheap Windows 11 Key</h2>
               <ol className="space-y-3 mb-8 list-decimal pl-6 text-gray-700">
                 <li>Open <strong>Settings → System → Activation</strong>.</li>
@@ -227,6 +229,7 @@ export default function CheapWindows11Keys2026() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="cheap-windows-11-keys-2026" />
       <Footer />
     </>
   );

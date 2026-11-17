@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import { BlogShopStrip, ProductAd } from "../BlogAds";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
 import type { Metadata } from "next";
@@ -408,6 +409,7 @@ export default function Windows11HomeVsPro() {
                 </div>
               </div>
 
+              <ProductAd topic="windows-11-home-vs-pro" />
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
                 💡 Common Scenarios
               </h2>
@@ -557,6 +559,7 @@ export default function Windows11HomeVsPro() {
           </div>
         </section>
       </div>
+      <BlogShopStrip topic="windows-11-home-vs-pro" />
       <Footer />
     </>
   );
