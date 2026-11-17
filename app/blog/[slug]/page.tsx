@@ -30,7 +30,8 @@ export async function generateMetadata({
   const { data } = article;
   const url = `${SITE}/blog/${slug}`;
   return {
-    title: `${data.title} | Official Keys Hub`,
+    // Brand suffix only when the full title still fits in ~60 characters.
+    title: data.title.length <= 40 ? `${data.title} | Official Keys Hub` : data.title,
     description: data.description ?? data.excerpt,
     keywords: data.keywords,
     alternates: { canonical: url },
