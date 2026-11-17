@@ -29,6 +29,20 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/api/', '/admin/', '/private/'],
       },
+      {
+        // AI search & answer engines — explicitly welcome so the store can be
+        // found and cited in ChatGPT, Perplexity, Claude, Gemini, Copilot and
+        // Apple Intelligence answers. /llms.txt summarises the site for them.
+        userAgent: [
+          'OAI-SearchBot', 'ChatGPT-User', 'GPTBot',
+          'PerplexityBot', 'Perplexity-User',
+          'ClaudeBot', 'Claude-SearchBot', 'Claude-User',
+          'Google-Extended', 'Applebot', 'Applebot-Extended',
+          'Amazonbot', 'DuckAssistBot', 'MistralAI-User', 'CCBot',
+        ],
+        allow: '/',
+        disallow: ['/api/', '/admin/', '/private/'],
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,

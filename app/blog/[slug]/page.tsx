@@ -58,26 +58,44 @@ export default async function MdxBlogArticle({
   const { data, content } = article;
   const url = `${SITE}/blog/${slug}`;
 
-  const dateLabel = data.date
-    ? new Date(data.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
-    : "";
+  const fmt = (d?: string) =>
+    d ? new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "";
+  const dateLabel = fmt(data.date);
+  const updatedLabel = data.updated && data.updated !== data.date ? fmt(data.updated) : "";
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: data.title,
-    description: data.description ?? data.excerpt,
+    description: data.summary ?? data.description ?? data.excerpt,
     image: data.image ?? `${SITE}${mdxImage(data)}`,
     datePublished: data.date,
-    dateModified: data.date,
-    author: { "@type": "Organization", name: "Official Keys Hub" },
+    dateModified: data.updated ?? data.date,
+    author: { "@type": "Organization", name: "Official Keys Hub", url: SITE },
     publisher: {
       "@type": "Organization",
       name: "Official Keys Hub",
-      logo: { "@type": "ImageObject", url: `${SITE}/icon.svg` },
+      logo: { "@type": "ImageObject", url: `${SITE}/logo.png` },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    ...(data.keywords ? { keywords: data.keywords } : {}),
   };
+
+  // FAQ structured data from the article's "## Frequently asked questions"
+  // section (### question, then answer paragraphs). Answer engines read this to
+  // lift exact Q&A pairs.
+  const faqs = extractFaqs(content);
+  const faqLd = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
 
   const breadcrumbItems = [
     { label: "Home", href: "/" },
@@ -88,6 +106,7 @@ export default async function MdxBlogArticle({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <Navbar />
       <div className="pt-20 bg-white min-h-screen">
         <Breadcrumb items={breadcrumbItems} />
@@ -103,7 +122,8 @@ export default async function MdxBlogArticle({
                   </span>
                 )}
                 <span className="text-gray-500 text-sm">
-                  {dateLabel && <>📅 {dateLabel}</>} {data.readTime && <>• ⏱️ {data.readTime} read</>}
+                  {dateLabel && <>📅 {dateLabel}</>} {updatedLabel && <>• Updated {updatedLabel}</>}{" "}
+                  {data.readTime && <>• ⏱️ {data.readTime} read</>}
                 </span>
               </div>
               <h1 className="text-3xl md:text-5xl font-extrabold mb-5 text-gray-900 leading-tight">
@@ -129,6 +149,12 @@ export default async function MdxBlogArticle({
               ) : (
                 <ArticleHero products={[data.product ?? "Windows 11 Pro"]} alt={`${data.product ?? "Windows 11 Pro"} product box`} className="mb-10" />
               )}
+              {data.summary && (
+                <aside className="mb-10 rounded-2xl border border-sky-200 bg-sky-50 p-6" aria-label="Quick answer">
+                  <p className="text-xs font-bold uppercase tracking-wide text-sky-700 mb-2">Quick answer</p>
+                  <p className="text-gray-800 leading-relaxed m-0">{data.summary}</p>
+                </aside>
+              )}
               <MDXRemote source={content} components={mdxComponents} />
 
               {/* CTA */}
@@ -151,4 +177,25 @@ export default async function MdxBlogArticle({
       <Footer />
     </>
   );
+}
+
+/** Q&A pairs from a "## Frequently asked questions" section (### question + answer text). */
+function extractFaqs(mdx: string): { q: string; a: string }[] {
+  const section = mdx.split(/^##\s+(?:frequently asked questions|faqs?)\s*$/im)[1];
+  if (!section) return [];
+  const body = section.split(/^##\s+/m)[0];
+  return body
+    .split(/^###\s+/m)
+    .slice(1)
+    .map((block) => {
+      const [q, ...rest] = block.split("\n");
+      const a = rest
+        .join(" ")
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links -> text
+        .replace(/[*_`>]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+      return { q: q.trim(), a };
+    })
+    .filter((f) => f.q && f.a);
 }

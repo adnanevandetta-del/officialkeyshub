@@ -73,7 +73,8 @@ BRAND FACTS you may use (do not contradict, do not invent others):
 STYLE:
 - Helpful, trustworthy, plain English. UK/US neutral. No hype, no fake urgency.
 - 900-1400 words. Skimmable: short paragraphs, "##" and "###" headings, bullet/numbered lists, and a comparison table where useful.
-- Include a short "## Frequently asked questions" section with 3-4 Q&As (### question, then answer).
+- Include a short "## Frequently asked questions" section with 3-4 Q&As (### question, then answer). Phrase questions the way people ask an AI assistant, and start each answer with a direct one-sentence answer.
+- Under each "##" heading, open with one sentence that directly answers that heading before adding detail (answer engines quote these).
 - Add 1-3 relevant internal links using root-relative markdown links, e.g. [Windows 11 Pro](/products/windows-11-pro), [our blog](/blog), or a specific product/guide. Only link to plausible paths under /products or /blog.
 - Do NOT invent statistics, prices, reviews, or legal claims beyond the brand facts above. If you mention a price, keep it general ("from around $30") rather than exact.
 - Do NOT include a top-level "# H1" heading (the page renders the title separately). Start with a 1-2 sentence intro paragraph, then the first "##" section.
@@ -84,6 +85,7 @@ Respond with ONLY a JSON object (no markdown fences, no commentary) with exactly
   "title": "60 chars or fewer, compelling, includes the main keyword",
   "description": "meta description, 150 chars or fewer",
   "excerpt": "1-2 sentence summary for the blog card, 160 chars or fewer",
+  "summary": "2-3 sentence direct, factual answer to the keyword's question that makes sense on its own (shown as a Quick answer box and quoted by AI search engines), 320 chars or fewer",
   "category": "one of: Buying, Activation, Comparison, Guide, Legal, Security",
   "readTime": "e.g. \\"8 min\\"",
   "keywords": "comma-separated list of 5-8 keywords",
@@ -179,6 +181,7 @@ function main() {
         `title: "${yamlEscape(a.title)}"`,
         `description: "${yamlEscape(a.description)}"`,
         `excerpt: "${yamlEscape(a.excerpt)}"`,
+        ...(a.summary ? [`summary: "${yamlEscape(a.summary)}"`] : []),
         `category: "${yamlEscape(a.category)}"`,
         `date: "${today}"`,
         `readTime: "${yamlEscape(a.readTime)}"`,

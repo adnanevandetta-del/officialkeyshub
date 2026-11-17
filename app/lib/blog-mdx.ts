@@ -27,6 +27,10 @@ export interface MdxFrontmatter {
   excerpt?: string;
   category?: string;
   date?: string; // ISO, e.g. "2026-09-23"
+  updated?: string; // ISO; last meaningful content update (freshness signal)
+  // 1–3 sentence direct answer shown at the top of the article. AI answer
+  // engines and featured snippets quote this kind of self-contained passage.
+  summary?: string;
   readTime?: string;
   image?: string;
   product?: string; // product-box art for the article image when no custom image
