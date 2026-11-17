@@ -201,7 +201,9 @@ export default function ProductBillboard() {
                   const sx = Math.sin(theta); // -1 (left) .. 1 (right)
                   const dz = Math.cos(theta); // 1 (front) .. -1 (back)
                   const isActive = rel === 0;
-                  const opacity = 0.4 + ((dz + 1) / 2) * 0.6;
+                  // Rounded so server and browser render the identical value
+                  // (unrounded floats caused a React hydration mismatch).
+                  const opacity = Math.round((0.4 + ((dz + 1) / 2) * 0.6) * 1000) / 1000;
                   const zIndex = Math.round((dz + 1) * 50) + (isActive ? 100 : 0);
 
                   return (

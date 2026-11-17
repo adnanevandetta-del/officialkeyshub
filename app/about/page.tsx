@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/about" },
   title: "About Official Keys Hub — Genuine Software Resale",
   description:
-    "Official Keys Hub is an independent reseller of genuine Windows, Office and Server licenses, sold under EU resale rights with a 30-day money-back guarantee.",
+    "Official Keys Hub is an independent reseller of genuine Windows, Office and Server licenses, that activate directly with Microsoft, backed by a 30-day money-back guarantee.",
   keywords:
-    "genuine windows keys, independent software reseller, legitimate microsoft keys, cheap office keys, EU software resale, genuine license reseller",
+    "genuine windows keys, independent software reseller, legitimate microsoft keys, cheap office keys, genuine license reseller usa, genuine license reseller",
   openGraph: {
     images: [{ url: "https://www.officialkeyshub.com/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub — genuine Microsoft Windows & Office licenses" }],
     title: "About Official Keys Hub",
@@ -89,13 +89,13 @@ export default function AboutPage() {
                   Official Keys Hub was founded in <strong>2025</strong> as a small startup with one straightforward aim: to provide <strong>genuine Microsoft software and genuine service at the best prices we can offer</strong>. We&rsquo;re not a large corporation or a mega-retailer &mdash; we&rsquo;re a small, focused team that is new to this market, and we&rsquo;d rather say so openly than pretend otherwise.
                 </p>
                 <p>
-                  As an <strong>independent reseller</strong>, we source genuine product keys through legitimate channels &mdash; including surplus and previously-sold licenses that can be lawfully resold within the EU. That lets us offer authentic keys at lower prices than Microsoft&rsquo;s retail price, and we pass those savings directly on to our customers.
+                  As an <strong>independent reseller</strong>, we source genuine product keys through legitimate channels &mdash; including surplus and previously-sold licenses. That lets us offer authentic keys at lower prices than Microsoft&rsquo;s retail price, and we pass those savings directly on to our customers.
                 </p>
                 <p>
                   <strong>Where we are today:</strong> since launching we have served a few hundred satisfied customers. That is a modest number next to the big retailers, and we won&rsquo;t inflate it. What we can promise is that every order gets our direct attention, and that we treat each early customer as someone whose trust we still have to earn.
                 </p>
                 <p>
-                  We are an independent business based in Stockholm, Sweden, and we try to be fully transparent about how we work. Every key we sell is <strong>genuine, legally sourced, and backed by our 30-day money-back guarantee</strong>. Each one activates directly through Microsoft&rsquo;s own servers &mdash; the best proof of authenticity there is.
+                  We are an independent business based in the United States, and we try to be fully transparent about how we work. Every key we sell is <strong>genuine, legally sourced, and backed by our 30-day money-back guarantee</strong>. Each one activates directly through Microsoft&rsquo;s own servers &mdash; the best proof of authenticity there is.
                 </p>
                 <p>
                   <strong>Customer satisfaction is our top priority.</strong> We provide clear activation instructions, we reply to messages as quickly as we can, and we stand behind every sale. If something goes wrong, we make it right. As a young business that depends on your trust and word of mouth, we have every reason to get it right.
@@ -222,28 +222,28 @@ export default function AboutPage() {
                   </ul>
                 </div>
 
-                {/* Based in Sweden */}
+                {/* Based in the USA */}
                 <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-sky-200">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center">
                       <i className="fas fa-building text-sky-700 text-2xl"></i>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">Based in the EU</h3>
-                      <p className="text-sky-700 font-semibold">Based in Sweden</p>
+                      <h3 className="text-2xl font-bold text-gray-900">Based in the USA</h3>
+                      <p className="text-sky-700 font-semibold">United States</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    We&rsquo;re an independent startup operating from Stockholm, Sweden. We aim to follow EU consumer-protection and data-protection rules and to keep our records and policies clear and honest.
+                    We&rsquo;re an independent startup based in the United States. We aim to follow consumer-protection and data-protection rules and to keep our records and policies clear and honest.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
-                      <span>Based in Stockholm, Sweden</span>
+                      <span>Based in the United States</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
-                      <span>Follows EU consumer-protection rules</span>
+                      <span>Clear refund and privacy policies</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-sky-700 mt-1"></i>
@@ -264,7 +264,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    We source keys only through legitimate channels — including genuine, previously-sold licenses that can be lawfully resold within the EU. This keeps prices low without ever compromising on authenticity.
+                    We source keys only through legitimate channels — including genuine, previously-sold licenses. This keeps prices low without ever compromising on authenticity.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
@@ -273,7 +273,7 @@ export default function AboutPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-purple-600 mt-1"></i>
-                      <span>Lawful EU resale (exhaustion of rights)</span>
+                      <span>Activates directly on Microsoft&rsquo;s servers</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-purple-600 mt-1"></i>
@@ -290,16 +290,16 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900">Legal Compliance</h3>
-                      <p className="text-orange-600 font-semibold">EU Resale Rights</p>
+                      <p className="text-orange-600 font-semibold">Honest &amp; Transparent</p>
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Reselling genuine licenses is lawful under EU law — confirmed by the Court of Justice of the EU in <strong>UsedSoft v. Oracle (Case C-128/11)</strong>. We operate in full compliance with those rules.
+                    We sell only genuine licenses that activate through Microsoft&rsquo;s own servers &mdash; never cracks, activators or pirated software. Every order is covered by our 30-day money-back guarantee.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-orange-600 mt-1"></i>
-                      <span>EU law compliant (UsedSoft ruling)</span>
+                      <span>No cracks, activators or pirated software</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-orange-600 mt-1"></i>
@@ -307,7 +307,7 @@ export default function AboutPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <i className="fas fa-check-circle text-orange-600 mt-1"></i>
-                      <span>GDPR data protection</span>
+                      <span>Careful data protection</span>
                     </li>
                   </ul>
                 </div>
@@ -328,7 +328,7 @@ export default function AboutPage() {
                     <div className="flex flex-wrap gap-3">
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
-                        <span className="text-sm font-semibold text-gray-800">Based in Sweden (EU)</span>
+                        <span className="text-sm font-semibold text-gray-800">Based in the USA</span>
                       </div>
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
@@ -336,7 +336,7 @@ export default function AboutPage() {
                       </div>
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
-                        <span className="text-sm font-semibold text-gray-800">Lawful EU Resale</span>
+                        <span className="text-sm font-semibold text-gray-800">Activates on Microsoft</span>
                       </div>
                       <div className="bg-white px-4 py-2 rounded-lg border border-blue-200">
                         <i className="fas fa-check text-blue-600 mr-2"></i>
@@ -524,7 +524,7 @@ export default function AboutPage() {
                   </h3>
                   <div className="space-y-3 text-gray-700">
                     <p><strong>Email:</strong> officialkeyshub@gmail.com</p>
-                    <p><strong>Location:</strong> Stockholm, Sweden</p>
+                    <p><strong>Location:</strong> United States</p>
                     <p><strong>WhatsApp:</strong> +1 (601) 975-6129</p>
                     <p><strong>Support Hours:</strong> 24/7 Available</p>
                     <p><strong>Response Time:</strong> As quickly as we can</p>
@@ -549,8 +549,8 @@ export default function AboutPage() {
                     <div className="text-gray-700 text-sm">Money-Back Guarantee</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-orange-600">Sweden</div>
-                    <div className="text-gray-700 text-sm">Based in Stockholm</div>
+                    <div className="text-3xl font-bold text-orange-600">USA</div>
+                    <div className="text-gray-700 text-sm">Based in the United States</div>
                   </div>
                 </div>
               </div>

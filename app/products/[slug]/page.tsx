@@ -138,7 +138,7 @@ function faqsFor(p: FlatProduct) {
     },
     {
       q: `Is it legal to buy ${p.name} at this price?`,
-      a: `Yes. We are an independent reseller of genuine licenses, sold lawfully under EU resale rights (the UsedSoft v. Oracle ruling). The low price comes from legitimate sourcing, not from anything counterfeit.`,
+      a: `Yes. We are an independent reseller of genuine licenses that activate directly on Microsoft's servers. The low price comes from legitimate sourcing, not from anything counterfeit, and every order has a 30-day money-back guarantee.`,
     },
     {
       q: `What if the ${p.name} key doesn't work?`,
@@ -308,7 +308,7 @@ export default async function ProductPage({
                 </table>
               </div>
               <p className="text-gray-700 leading-relaxed mb-4">
-                As an independent reseller operating under EU resale rights, we source every {cat.toLowerCase()} license
+                As an independent reseller, we source every {cat.toLowerCase()} license
                 through legitimate channels — so you get the real thing at a fair price, backed by our 30-day money-back
                 guarantee and 24/7 support. Not sure how activation works? Our{" "}
                 <Link href="/activation-guide" className="text-blue-600 hover:underline">Activation Guide</Link>{" "}
@@ -342,7 +342,7 @@ export default async function ProductPage({
                 <ul className="space-y-3 text-sm text-gray-600">
                   <li className="flex items-start gap-2"><i className="fas fa-certificate text-blue-600 mt-0.5"></i> Genuine license, activates with {vendorOf(p)}</li>
                   <li className="flex items-start gap-2"><i className="fas fa-bolt text-blue-600 mt-0.5"></i> Instant email delivery</li>
-                  <li className="flex items-start gap-2"><i className="fas fa-scale-balanced text-blue-600 mt-0.5"></i> Legally resold under EU law</li>
+                  <li className="flex items-start gap-2"><i className="fas fa-scale-balanced text-blue-600 mt-0.5"></i> Activates on Microsoft&apos;s servers</li>
                   <li className="flex items-start gap-2"><i className="fas fa-rotate-left text-blue-600 mt-0.5"></i> 30-day money-back guarantee</li>
                   <li className="flex items-start gap-2"><i className="fas fa-headset text-blue-600 mt-0.5"></i> 24/7 WhatsApp &amp; email support</li>
                 </ul>

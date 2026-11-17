@@ -160,7 +160,7 @@ export default function FAQPage() {
       questions: [
         {
           q: "Is it safe to buy from you?",
-          a: "100% safe! We use encrypted payment processing (256-bit SSL), never store your payment information, and are an independent startup based in Stockholm, Sweden. We launched in 2025 and have served a few hundred satisfied customers so far."
+          a: "100% safe! We use encrypted payment processing (256-bit SSL), never store your payment information, and are an independent startup based in the United States. We launched in 2025 and have served a few hundred satisfied customers so far."
         },
         {
           q: "Will you share my information?",
@@ -168,7 +168,7 @@ export default function FAQPage() {
         },
         {
           q: "Are these keys legal?",
-          a: "Absolutely legal! All keys are sourced from authorized distributors. The software license resale market is legal in the EU under the 'doctrine of exhaustion' (UsedSoft v. Oracle case)."
+          a: "Absolutely legal! We sell only genuine licenses that activate directly on Microsoft's servers — no cracks or activators — and every order has a 30-day money-back guarantee."
         },
         {
           q: "Why are your prices so low?",

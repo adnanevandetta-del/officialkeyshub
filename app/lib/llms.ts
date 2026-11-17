@@ -13,12 +13,12 @@ const SUMMARY =
   "Official Keys Hub (officialkeyshub.com) is an independent online reseller of genuine Microsoft software licenses — Windows, Office, Windows Server, Visio, Project, SQL Server and Visual Studio product keys — at discounted prices. Keys activate directly on Microsoft's own servers, are delivered by email (usually within minutes of payment), and are backed by a 30-day money-back guarantee. Payment: PayPal (PayPal balance or debit/credit card), USDT, or assisted checkout on WhatsApp.";
 
 const DISCLAIMER =
-  'Official Keys Hub is an independent startup founded in 2025 and based in Stockholm, Sweden. It is not affiliated with, authorized by, or endorsed by Microsoft Corporation; "Microsoft", "Windows" and "Office" are trademarks of Microsoft Corporation, used only to describe the products resold.';
+  'Official Keys Hub is an independent startup founded in 2025 and based in the United States. It is not affiliated with, authorized by, or endorsed by Microsoft Corporation; "Microsoft", "Windows" and "Office" are trademarks of Microsoft Corporation, used only to describe the products resold.';
 
 const PAGES: [string, string, string][] = [
   ["Shop (home)", "/", "Featured Windows, Office and bundle deals."],
   ["All products", "/products", "Every product with current price and MSRP."],
-  ["Licensing & authenticity", "/licensing", "Why the keys are genuine and lawful to resell (EU exhaustion of rights), and how to verify a key yourself."],
+  ["Licensing & authenticity", "/licensing", "Why the keys are genuine, where they come from, and how to verify a key yourself."],
   ["Activation guide", "/activation-guide", "Step-by-step activation for Windows and Office, including phone activation."],
   ["What you get", "/what-you-get", "What is included with every order."],
   ["FAQ", "/faq", "Genuine keys, key types (online / phone / bind), delivery and refunds."],
@@ -32,7 +32,7 @@ const PAGES: [string, string, string][] = [
 const CONTACT = [
   "- WhatsApp: https://wa.me/16019756129 (+1 601 975 6129)",
   "- Email: officialkeyshub@gmail.com",
-  "- Location: Stockholm, Sweden",
+  "- Location: United States",
 ];
 
 function priceRange(list: FlatProduct[]): string {
@@ -86,7 +86,6 @@ export function buildLlmsFullTxt(): string {
     "- Delivery: product key + activation instructions by email, usually within minutes of payment confirmation.",
     "- Guarantee: 30-day money-back; a key that fails to activate is replaced or refunded.",
     "- Key types: Online Key (activates over the internet), Phone Key (activates via Microsoft's phone line, PC can stay offline), Bind Key (redeemed to your Microsoft account for easy reinstall). All are genuine single-PC licenses.",
-    "- Legal basis: reselling genuine software licenses is lawful in the EU under the exhaustion-of-rights principle (CJEU, UsedSoft GmbH v Oracle, C-128/11, 2012).",
     "- Verify a license yourself: Windows → Settings → System → Activation (or run `slmgr /xpr`); Office → File → Account.",
     "- Support: WhatsApp and email.",
     ""

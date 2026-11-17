@@ -154,9 +154,10 @@ export default function CheapWindows11Keys2026() {
 
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Is It Safe and Legal to Buy Cheap Windows 11 Keys?</h2>
               <p className="mb-4 text-gray-700">
-                Yes — buying and reselling genuine, unused licenses is legal in the US and EU (the EU Court of
-                Justice confirmed the resale of software licenses in the <em>UsedSoft v. Oracle</em> ruling). The key
-                is to buy from a reputable seller. For a deeper dive, read our guides on{" "}
+                Buying a genuine license is safe when it activates directly with Microsoft. In the EU, the Court of
+                Justice confirmed the resale of software licenses in the <em>UsedSoft v. Oracle</em> ruling; in the US
+                the law is less settled, and Microsoft&apos;s license terms still apply. The key is to buy from a
+                reputable seller with a money-back guarantee. For a deeper dive, read our guides on{" "}
                 <Link href="/blog/is-buying-windows-keys-legal" className="text-blue-600 hover:underline">
                   whether buying Windows keys is legal
                 </Link>{" "}

@@ -5,13 +5,13 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "Licensing & Authenticity | Official Keys Hub",
   description:
-    "How we sell genuine Microsoft keys legally under EU resale rights, how to verify a key yourself with Microsoft, and our genuine-or-money-back guarantee.",
+    "Where our genuine Microsoft keys come from, how to verify a key yourself with Microsoft, and our genuine-or-money-back guarantee.",
   alternates: { canonical: "https://www.officialkeyshub.com/licensing" },
   openGraph: {
     images: [{ url: "https://www.officialkeyshub.com/og-image.jpg", width: 1200, height: 630, alt: "Official Keys Hub — genuine Microsoft Windows & Office licenses" }],
     title: "Licensing & Authenticity | Official Keys Hub",
     description:
-      "Genuine keys, sold legally under EU resale rights. Verify authenticity through Microsoft, backed by a 30-day money-back guarantee.",
+      "Genuine keys that activate directly with Microsoft. Verify authenticity through Microsoft, backed by a 30-day money-back guarantee.",
   },
 };
 
@@ -42,7 +42,7 @@ export default function LicensingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
             {[
               { icon: "fas fa-certificate", label: "Genuine Licenses" },
-              { icon: "fas fa-scale-balanced", label: "Legally Resold (EU)" },
+              { icon: "fas fa-scale-balanced", label: "Genuine Licenses" },
               { icon: "fas fa-rotate-left", label: "30-Day Money Back" },
               { icon: "fas fa-bolt", label: "Instant Delivery" },
             ].map((b) => (
@@ -76,26 +76,25 @@ export default function LicensingPage() {
 
             {/* Legal basis */}
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Why Reselling Genuine Keys Is Legal</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Where Our Licenses Come From</h2>
               <p className="text-gray-700 mb-4">
-                Our business is based in Stockholm, Sweden and operates under European Union law. Under the
-                EU principle of <strong>&ldquo;exhaustion of rights&rdquo;</strong>, once a software license
-                has been sold within the European Economic Area with the rightsholder&rsquo;s consent, that
-                license can be legally resold to another buyer.
+                Official Keys Hub is an independent reseller based in the United States. We source genuine
+                product keys through legitimate channels, including surplus and previously-sold licenses,
+                which is why our prices are lower than Microsoft&rsquo;s retail price.
               </p>
               <p className="text-gray-700 mb-4">
-                This was confirmed by the Court of Justice of the European Union in the landmark ruling
-                <strong> UsedSoft GmbH v. Oracle International Corp. (Case C-128/11, 2012)</strong>, which
-                established that the resale of &ldquo;used&rdquo; software licenses is lawful, even for
-                downloaded software delivered without a physical disc. It is the same legal principle that
-                lets you resell a book, a car, or any product you legitimately own.
+                Software license rules differ from country to country. In the European Union, the Court of
+                Justice confirmed in <strong>UsedSoft GmbH v. Oracle (Case C-128/11, 2012)</strong> that
+                &ldquo;used&rdquo; software licenses can be resold. Microsoft&rsquo;s own license terms
+                also apply to every product, so we describe each key&rsquo;s type and activation method
+                honestly on its product page.
               </p>
               <div className="bg-sky-50 border border-sky-200 rounded-xl p-5 mb-4">
                 <p className="text-gray-700 mb-0">
                   <i className="fas fa-circle-info text-sky-600 mr-2"></i>
-                  In short: we deal only in genuine, legitimately-sourced licenses, and EU law expressly
-                  permits their resale. That is the entire basis of our business — no counterfeits, no
-                  cracks, no &ldquo;pirated&rdquo; software.
+                  In short: we deal only in genuine licenses that activate directly on Microsoft&rsquo;s
+                  servers — no counterfeits, no cracks, no &ldquo;pirated&rdquo; software — and every
+                  order is backed by our 30-day money-back guarantee.
                 </p>
               </div>
             </section>
@@ -185,7 +184,7 @@ export default function LicensingPage() {
                 </h3>
                 <p className="text-gray-700 mb-0">
                   We only sell genuine, legitimately-sourced licenses that activate through Microsoft&rsquo;s
-                  own servers, we sell them lawfully under EU resale rights, and we back every purchase with
+                  own servers, and we back every purchase with
                   a 30-day money-back guarantee. If it doesn&rsquo;t activate, you don&rsquo;t pay. That is
                   our commitment to every customer.
                 </p>

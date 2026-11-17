@@ -66,7 +66,7 @@ BRAND FACTS you may use (do not contradict, do not invent others):
 - Licenses are genuine and activate directly on Microsoft's servers.
 - Instant delivery by email/WhatsApp after payment.
 - 30-day money-back guarantee; free replacement if a key fails.
-- Independent reseller operating lawfully under EU resale rights (UsedSoft v. Oracle).
+- Independent reseller based in the United States. Do not make legal claims about resale rights.
 - 24/7 support on WhatsApp and email.
 - Product catalog lives at ${SITE}/products.
 

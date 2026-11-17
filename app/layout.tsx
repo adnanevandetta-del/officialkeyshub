@@ -130,8 +130,7 @@ export default function RootLayout({
               "email": "officialkeyshub@gmail.com",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Stockholm",
-                "addressCountry": "SE"
+                "addressCountry": "US"
               },
               "sameAs": [
                 "https://wa.me/16019756129"

@@ -24,7 +24,7 @@ crawling and indexing.
 5. **Unique, accurate content.** No fabricated statistics, fake reviews, or
    invented legal claims. Reuse the site's real positioning: genuine licenses,
    activates with Microsoft, instant email delivery, 30-day money-back
-   guarantee, EU resale rights (UsedSoft v. Oracle), 24/7 WhatsApp/email
+   guarantee, US-based independent reseller (no legal resale claims), 24/7 WhatsApp/email
    support. Prices: reference the catalog in `app/lib/catalog.ts` if quoting.
 6. **Follow the design system.** Invoke the `officialkeyshub-design` skill and
    mirror an existing article (e.g. `app/blog/how-to-activate-windows-11/page.tsx`)

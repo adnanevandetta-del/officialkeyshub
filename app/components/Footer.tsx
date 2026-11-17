@@ -167,12 +167,12 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <i className="fas fa-map-marker-alt text-sky-500 text-sm"></i>
                 <a
-                  href="https://www.google.com/maps/place/Stockholm,+Sweden"
+                  href="https://www.google.com/maps/place/United+States"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm"
                 >
-                  Stockholm, Sweden
+                  United States
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -217,12 +217,12 @@ export default function Footer() {
             <div>
               <p className="text-white text-sm font-semibold">Official Keys Hub — Headquarters</p>
               <a
-                href="https://www.google.com/maps/place/Stockholm,+Sweden"
+                href="https://www.google.com/maps/place/United+States"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm"
               >
-                Stockholm, Sweden
+                United States
               </a>
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function Footer() {
             Independent startup · Genuine software licenses · Founded 2025
           </p>
           <a
-            href="https://www.google.com/maps/place/Stockholm,+Sweden"
+            href="https://www.google.com/maps/place/United+States"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sky-500 hover:text-sky-400 text-sm font-semibold inline-flex items-center gap-1"
