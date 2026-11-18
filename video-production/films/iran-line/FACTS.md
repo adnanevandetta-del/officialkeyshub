@@ -1,0 +1,20 @@
+# FACTS — "The Line" (Iran's missile-range limit)
+
+Every number and claim on screen or in the narration, with its source and basis. Checked 18 Nov 2026.
+
+| # | Claim in the film | Basis / source |
+|---|---|---|
+| 1 | Iran kept a 2,000 km range limit "for years" | IRGC commander Mohammad Ali Jafari, 31 Oct 2017: Supreme Leader Khamenei restricted the range of domestically built ballistic missiles to 2,000 km. CSIS Missile Threat, https://missilethreat.csis.org/?p=3205 ; Arms Control Association, Dec 2017, https://www.armscontrol.org/act/2017-12/news/iran’s-leader-sets-missile-range-limit ; Al Jazeera, 31 Oct 2017. Some later reporting dates the policy to 2015. The film says "for years", not a year. |
+| 2 | Inside 2,000 km: Israel, the Gulf, the US bases in the region | Geometry: geodesic circle of 2,000 km around Tehran (computed). Jafari 2017: limit "sufficient for now because Americans are present within 2,000 km" (Al Jazeera, 31 Oct 2017). Bases shown: Al Udeid (Qatar), NSA Bahrain, Al Dhafra (UAE), Ali Al Salem (Kuwait), Al Asad (Iraq): long-standing public US installations. |
+| 3 | March 2026: two missiles toward Diego Garcia, about 4,000 km away | UK minister Steve Reed, 22 Mar 2026: base "some 4,000 kilometres" from Iran (CNBC, https://www.cnbc.com/2026/03/22/uk-confirms-iran-fired-two-missiles-at-british-american-base.html ; The Defense Post, 22 Mar 2026). Computed: Bandar Abbas → Diego Garcia 4,211 km. Some analysts say ~3,800 km from the likely launch area. |
+| 4 | Britain says one failed and one was shot down; Iran denies firing them | Reed: "one missile fell short, failed… The other was intercepted" (CNBC, 22 Mar 2026). Iran denied the attack (Wikipedia, "2026 Iranian strike on Diego Garcia"; Israel Hayom, 21 Mar 2026). Israel's military called it a two-stage ICBM; not independently confirmed — the film does not repeat that label as fact. |
+| 5 | "During the war" | US–Israeli strikes on Iran began 28 Feb 2026 (Britannica, "2026 Iran war"; CRS R48887). |
+| 6 | November 2026: the Revolutionary Guard says the limit is gone | IRGC spokesman Gen. Hossein Mohebbi, Tehran press conference, 7 Nov 2026: "that restriction has been lifted for us" (Times of Israel, https://www.timesofisrael.com/irgc-says-its-self-imposed-limit-on-ballistic-missile-range-has-been-lifted/ ; Al Jazeera, 10 Nov 2026). |
+| 7 | Iran is not known to have a missile that reaches the US | "Iran is not currently known to possess ballistic missiles with ranges exceeding 2,000 kilometers… capability remains unverified" (coverage of the 7 Nov statement, e.g. National Security Journal / Fox News, Nov 2026). DIA 2025: Iran has no deployed ICBMs. Sources disagree on the March launch (claim 3/4); the film states only that Iran is not *known* to have an intercontinental missile. |
+| 8 | Washington is ~10,000 km from Tehran | Computed great-circle: Tehran → Washington 10,177 km; Tehran → New York 9,855 km. On screen: "10,177 km". |
+| 9 | Intercontinental = more than 5,500 km | Standard ICBM definition (range > 5,500 km), e.g. US arms-control usage; DIA cited by Tasnim/Al Jazeera coverage (Nov 2026). |
+| 10 | US intelligence: could build one by 2035, if it decides to | Defense Intelligence Agency, "Golden Dome" missile-threat assessment, 13 May 2025: Iran "has space launch vehicles it could use to develop a militarily-viable ICBM by 2035 should Tehran decide to pursue the capability." (Washington Times, 14 May 2025 and 22 Jan 2026; DIA PDF copy). |
+
+Not used (unconfirmed or contested): the "two-stage ICBM" label for the March launch; stockpile and production figures from secondary newsletters; Tasnim's proposed 3,000–4,000 km Khorramshahr-4 variant.
+
+Map data: AWS Terrain Tiles (Mapzen terrarium; SRTM, GMTED, ETOPO1 and others — attribution); imagery EOX Sentinel-2 cloudless 2016 (CC BY 4.0, "Sentinel-2 cloudless – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016)"). No borders drawn (DIRECTOR.md §13); China kept out of frame.

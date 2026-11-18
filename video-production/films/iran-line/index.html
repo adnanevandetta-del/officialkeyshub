@@ -1,0 +1,500 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>The Line</title>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+@font-face{font-family:Barlow;src:url(fonts/BarlowCondensed-Medium.ttf);font-weight:500}
+@font-face{font-family:Barlow;src:url(fonts/BarlowCondensed-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#05080c;overflow:hidden}
+canvas{position:absolute;left:0;top:0;width:1920px;height:1080px}
+</style></head>
+<body>
+<script type="module">
+// "The Line": one timeline, 90 bpm (beat 0.6667 s, bar 2.6667 s), 62.67 s. Shot list in TREATMENT.md.
+//  S1 0–6 the point · S2 6–14 the line ignites · S3 11–17 what lies inside · S4 16–31 the crossing (camera looks south)
+//  S5 31–37.3 the line breaks · dissolve 37.33–38.13 · S6 38.1–62.7 the globe, the measured distance
+import * as THREE from 'three';
+import { makePost } from '/core/three/post.js';
+import { clamp, lerp, seg, ss, eo, eio, ei, track, mulberry, hash } from '/core/lib.js';
+
+const Wd = 1920, Ht = 1080, Q = new URLSearchParams(location.search);
+const FULL = 62.67, BEAT = 60 / 90, BAR = 4 * BEAT;
+const T0 = +(Q.get('t0') || 0), T1 = Q.has('t1') ? +Q.get('t1') : FULL;
+
+// ---------- data ----------
+const J = u => fetch(u).then(r => r.json()), B = u => fetch(u).then(r => r.arrayBuffer());
+const [meta, hraw, CUES] = await Promise.all([J('assets/meta.json'), B('assets/height.bin'), J('voice/cues.json')]);
+const hbuf = new Float32Array(hraw);
+const EX = 5;                                       // relief ×5 (stated on screen)
+const { GW, GH, km_px, width_km: WK, height_km: HK } = meta;
+const [MX0, MY0] = meta.merc;
+const D2R = Math.PI / 180, RE = 6371;
+function merc(lon, lat) { const n = 2 ** meta.z * 256; return [(lon + 180) / 360 * n, (1 - Math.asinh(Math.tan(lat * D2R)) / Math.PI) / 2 * n]; }
+function xz(lon, lat) { const [mx, my] = merc(lon, lat); return [(mx - MX0) * km_px - WK / 2, (my - MY0) * km_px - HK / 2]; }
+function unxz(p) { const n = 2 ** meta.z * 256; const mx = (p.x + WK / 2) / km_px + MX0, my = (p.z + HK / 2) / km_px + MY0;
+  return [mx / n * 360 - 180, Math.atan(Math.sinh(Math.PI * (1 - 2 * my / n))) / D2R]; }
+function bil(buf, w, h, gx, gz) {
+  const x0 = Math.max(0, Math.min(w - 2, Math.floor(gx))), z0 = Math.max(0, Math.min(h - 2, Math.floor(gz)));
+  const fx = clamp(gx - x0), fz = clamp(gz - z0);
+  const a = buf[z0 * w + x0], b = buf[z0 * w + x0 + 1], c = buf[(z0 + 1) * w + x0], d = buf[(z0 + 1) * w + x0 + 1];
+  return (a * (1 - fx) + b * fx) * (1 - fz) + (c * (1 - fx) + d * fx) * fz;
+}
+const hAt = (X, Z) => bil(hbuf, GW, GH, (X + WK / 2) / WK * (GW - 1), (Z + HK / 2) / HK * (GH - 1));
+const yOf = h => Math.max(h, 0) / 1000 * EX;
+function geo(lon, lat, lift = 0) { const [X, Z] = xz(lon, lat); return new THREE.Vector3(X, yOf(hAt(X, Z)) + lift, Z); }
+// geodesics
+const gdir = (lat, lon) => new THREE.Vector3(Math.cos(lat * D2R) * Math.sin(lon * D2R), Math.sin(lat * D2R), Math.cos(lat * D2R) * Math.cos(lon * D2R));
+const toLL = v => [Math.asin(clamp(v.y, -1, 1)) / D2R, Math.atan2(v.x, v.z) / D2R];
+function gcPts(a, b, n, f0 = 0, f1 = 1) {           // [lat,lon] → [lat,lon] list along the great circle
+  const A = gdir(...a), Bv = gdir(...b), om = A.angleTo(Bv), s = Math.sin(om), out = [];
+  for (let i = 0; i <= n; i++) { const f = lerp(f0, f1, i / n); out.push(toLL(A.clone().multiplyScalar(Math.sin((1 - f) * om) / s).add(Bv.clone().multiplyScalar(Math.sin(f * om) / s)))); }
+  return out;
+}
+function circlePts(c, km, n) {                       // geodesic circle of radius km around c=[lat,lon]
+  const C = gdir(...c), a = km / RE, u = new THREE.Vector3(0, 1, 0).cross(C).normalize(), w = C.clone().cross(u).normalize(), out = [];
+  for (let i = 0; i <= n; i++) { const th = i / n * Math.PI * 2; out.push(toLL(C.clone().multiplyScalar(Math.cos(a)).addScaledVector(u, Math.cos(th) * Math.sin(a)).addScaledVector(w, Math.sin(th) * Math.sin(a)))); }
+  return out;
+}
+const kmBetween = (a, b) => gdir(...a).angleTo(gdir(...b)) * RE;
+
+// ---------- renderer and the map scene ----------
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(+(Q.get('ss') || 2)); renderer.setSize(Wd, Ht);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.25;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const HAZE = new THREE.Color(0x0b1016); scene.background = HAZE.clone(); scene.fog = new THREE.Fog(HAZE, 3000, 12000);
+const tl = new THREE.TextureLoader(), load = u => new Promise((r, e) => tl.load(u, r, undefined, e));
+const [albedo, waterTex, shadowTex, worldTex] = await Promise.all(['assets/albedo.jpg', 'assets/water.png', 'assets/shadow.png', 'assets/world.jpg'].map(load));
+for (const t of [albedo, worldTex]) { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 16; }
+shadowTex.anisotropy = 8;
+function roughFrom(tex) {
+  const c = document.createElement('canvas'); c.width = tex.image.width; c.height = tex.image.height;
+  const g = c.getContext('2d'); g.drawImage(tex.image, 0, 0); const id = g.getImageData(0, 0, c.width, c.height);
+  for (let i = 0; i < id.data.length; i += 4) { const w = id.data[i] / 255; id.data[i] = id.data[i + 1] = id.data[i + 2] = 245 * (1 - w) + 185 * w; }
+  g.putImageData(id, 0, 0); return new THREE.CanvasTexture(c);
+}
+const LIGHT_CHUNK = THREE.ShaderChunk.lights_fragment_begin.replaceAll('RE_Direct( directLight,', 'directLight.color *= mix( 1.0, texture2D( tShadow, vMapUv ).r, 0.85 );\n\t\tRE_Direct( directLight,');
+const terrainU = { dark: { value: 0 }, darkC: { value: new THREE.Vector3() }, halfS: { value: new THREE.Vector2(WK / 2, HK / 2) }, bgC: { value: new THREE.Color(0x0b1016) } };
+const tmat = new THREE.MeshStandardMaterial({ map: albedo, roughnessMap: roughFrom(waterTex), roughness: 1, metalness: 0 });
+tmat.onBeforeCompile = sh => {
+  Object.assign(sh.uniforms, terrainU, { tShadow: { value: shadowTex } });
+  sh.vertexShader = 'varying vec3 vWp;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\n vWp = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+  // "dark": the opening's dark region, lifting radially from the glowing point outward
+  sh.fragmentShader = 'uniform sampler2D tShadow; uniform float dark; uniform vec3 darkC; uniform vec2 halfS; uniform vec3 bgC; varying vec3 vWp;\n' + sh.fragmentShader
+    .replace('#include <lights_fragment_begin>', LIGHT_CHUNK)
+    .replace('#include <dithering_fragment>', '#include <dithering_fragment>\n float dk = dark * smoothstep(45., 300., length(vWp.xz - darkC.xz)); gl_FragColor.rgb *= 1. - .93 * dk;\n vec2 ed = halfS - abs(vWp.xz); float ef = smoothstep(0., 260., min(ed.x, ed.y)); gl_FragColor.rgb = mix(bgC, gl_FragColor.rgb, ef);');
+};
+{
+  const g = new THREE.PlaneGeometry(WK, HK, GW - 1, GH - 1); g.rotateX(-Math.PI / 2);
+  const p = g.attributes.position; for (let i = 0; i < p.count; i++) p.setY(i, yOf(hbuf[i]));
+  g.computeVertexNormals(); scene.add(new THREE.Mesh(g, tmat));
+}
+const sun = new THREE.DirectionalLight(0xffe2b8, 3.1); sun.position.set(-150, 62, -70); sun.target.position.set(0, 0, 0);
+scene.add(sun, sun.target, new THREE.HemisphereLight(0x9fb6c8, 0x4a3420, 0.6));
+
+// ---------- glowing ribbons (map and globe) ----------
+const camera = new THREE.PerspectiveCamera(28, Wd / Ht, 2, 40000);
+const gcam = new THREE.PerspectiveCamera(28, Wd / Ht, 100, 2e5);
+const PIXK = 2 * Math.tan(THREE.MathUtils.degToRad(14)) / Ht;
+const RIB_V = `attribute float aSide; attribute vec3 aNorm; attribute float aAlong;
+  uniform float wW, pxW, pixK; varying float vSide, vAlong;
+  void main(){ vec4 wp = modelMatrix * vec4(position, 1.); float pw = length(cameraPosition - wp.xyz) * pixK;
+    float hw = max(wW * .5, pxW * .5 * pw); wp.xyz += aNorm * aSide * hw; vSide = aSide; vAlong = aAlong;
+    gl_Position = projectionMatrix * viewMatrix * wp; }`;
+const RIB_F = `varying float vSide, vAlong; uniform vec3 col; uniform float k, inten, revA, revB, soft, head, headAmt, dash, duty, flowSp, flowLen, flowAmt, flowPh, base, L, normalA, flick;
+  void main(){
+    float g = exp(-vSide * vSide * k);
+    float vis = smoothstep(revA - soft, revA, vAlong) * (1. - smoothstep(revB, revB + soft, vAlong));
+    if (vis <= 0.) discard;
+    float a = base;
+    if (dash > 0.) a *= step(fract(vAlong / dash), duty);
+    if (flowAmt > 0.) { float f = fract((vAlong - flowPh) / flowSp); a += flowAmt * smoothstep(1. - flowLen / flowSp, 1., f) * smoothstep(1., .985, f); }
+    a += headAmt * exp(-pow((vAlong - head) / max(2.5, soft), 2.));
+    a *= 1. - flick * (.5 + .5 * sin(vAlong * .9 + flowPh * 3.));
+    if (normalA > 0.) { gl_FragColor = vec4(col, normalA * g * vis * inten); return; }
+    gl_FragColor = vec4(col * g * a * inten * vis, 1.); }`;
+function ribbon(pts, o, sc = scene, up = false) {
+  const pos = [], side = [], nrm = [], al = [], idx = []; let L = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)];
+    const t = new THREE.Vector3().subVectors(b, a); const u = up ? pts[i].clone().normalize() : new THREE.Vector3(0, 1, 0);
+    const n = new THREE.Vector3().crossVectors(t, u).normalize();
+    if (i) L += pts[i].distanceTo(pts[i - 1]);
+    for (const s of [1, -1]) { pos.push(pts[i].x, pts[i].y, pts[i].z); side.push(s); nrm.push(n.x, n.y, n.z); al.push(L); }
+    if (i) { const q = 2 * i; idx.push(q - 2, q - 1, q, q - 1, q + 1, q); }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('aSide', new THREE.Float32BufferAttribute(side, 1));
+  g.setAttribute('aNorm', new THREE.Float32BufferAttribute(nrm, 3)); g.setAttribute('aAlong', new THREE.Float32BufferAttribute(al, 1)); g.setIndex(idx);
+  const U = { col: new THREE.Color(o.col ?? 0xffa63d), k: o.k ?? 3, inten: 0, wW: o.wW ?? 0, pxW: o.pxW ?? 2, pixK: PIXK, revA: 0, revB: 1e9, soft: o.soft ?? 20,
+    head: -1e6, headAmt: 0, dash: o.dash ?? 0, duty: o.duty ?? .55, flowSp: o.flowSp ?? 300, flowLen: o.flowLen ?? 60, flowAmt: o.flowAmt ?? 0, flowPh: 0,
+    base: o.base ?? 1, L, normalA: o.normalA ?? 0, flick: 0 };
+  const uniforms = {}; for (const k in U) uniforms[k] = { value: U[k] };
+  const normal = (o.normalA ?? 0) > 0;
+  const m = new THREE.Mesh(g, new THREE.ShaderMaterial({ uniforms, vertexShader: RIB_V, fragmentShader: RIB_F, side: THREE.DoubleSide, transparent: true, depthWrite: false, depthTest: o.depthTest ?? true,
+    blending: normal ? THREE.NormalBlending : THREE.AdditiveBlending, toneMapped: false }));
+  m.renderOrder = o.order ?? 2; m.frustumCulled = false; sc.add(m); m.L = L; m.u = uniforms; return m;
+}
+const rv = (r, a) => { for (const k in a) r.u[k].value = a[k]; };
+const AMB = 0xffa63d, AMB2 = 0xffc36b, TEAL = 0x2fa3b0, TEAL2 = 0x8fd6de, WARMW = 0xf6eee0;
+const lift = 6;                                      // km above the ground for the data layer
+const mapLine = ll => ll.map(([la, lo]) => geo(lo, la, lift));
+
+// the line: 2,000 km around Tehran, in 36 segments (so it can break apart)
+const TEH = [35.69, 51.39];
+const RING = circlePts(TEH, 2000, 720);
+const ringPts = mapLine(RING);
+const NSEG = 36, segs = [];
+for (let s = 0; s < NSEG; s++) {
+  const a = Math.floor(s * 720 / NSEG), b = Math.floor((s + 1) * 720 / NSEG) + 1, pts = ringPts.slice(a, b);
+  segs.push({ s, a, glow: ribbon(pts, { pxW: 14, k: 3, base: .3, col: AMB }), core: ribbon(pts, { pxW: 2.8, k: 1.2, base: 1.4, col: AMB2, flowAmt: 1.6, flowSp: 240, flowLen: 60 }),
+    rnd: hash(s * 7.13 + 3) });
+}
+const ringStart = 540;                               // index on the circle where the bright head starts (west), runs clockwise
+// the two paths toward Diego Garcia (schematic)
+const DG = [-7.31, 72.42], LA1 = [27.0, 57.2], LA2 = [26.6, 57.9];
+const P1ll = gcPts(LA1, DG, 260, 0, .42), P2ll = gcPts(LA2, DG, 400, 0, .955);
+const P1 = mapLine(P1ll), P2 = mapLine(P2ll);
+const path1 = { glow: ribbon(P1, { pxW: 12, k: 3, base: .3, col: TEAL }), core: ribbon(P1, { pxW: 2.6, k: 1.2, base: 1.5, col: TEAL2 }) };
+const path2 = { glow: ribbon(P2, { pxW: 12, k: 3, base: .3, col: TEAL }), core: ribbon(P2, { pxW: 2.6, k: 1.2, base: 1.5, col: TEAL2 }) };
+const DG_KM = 4000;                                  // UK minister, 22 Mar 2026: "some 4,000 kilometres" (FACTS.md #3)
+
+// ---------- the globe ----------
+const gscene = new THREE.Scene(); gscene.background = new THREE.Color(0x04070b);
+const SUND = gdir(15, -30);
+{
+  const NU = 360, NV = 180, pos = [], uv = [], idx = [];
+  for (let j = 0; j <= NV; j++) for (let i = 0; i <= NU; i++) { const lat = 90 - j * 180 / NV, lon = -180 + i * 360 / NU, p = gdir(lat, lon).multiplyScalar(RE); pos.push(p.x, p.y, p.z); uv.push(i / NU, 1 - j / NV); }
+  for (let j = 0; j < NV; j++) for (let i = 0; i < NU; i++) { const a = j * (NU + 1) + i, b = a + NU + 1; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(idx); g.computeVertexNormals();
+  const gm = new THREE.MeshStandardMaterial({ map: worldTex, roughness: .85, metalness: 0 });
+  const [mx0, my0, mx1, my1] = meta.merc;
+  gm.onBeforeCompile = sh => {
+    sh.uniforms.tWide = { value: albedo }; sh.uniforms.wM = { value: new THREE.Vector4(mx0, my0, mx1, my1) }; sh.uniforms.wz = { value: meta.z };
+    sh.vertexShader = 'varying vec3 vOP;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vOP = position;');
+    sh.fragmentShader = 'uniform sampler2D tWide; uniform vec4 wM; uniform float wz; varying vec3 vOP;\n' + sh.fragmentShader.replace('#include <map_fragment>', `
+      vec4 sampledDiffuseColor = texture2D( map, vMapUv );
+      { vec3 dn = normalize(vOP); float la = asin(dn.y), lo = atan(dn.x, dn.z); float N = exp2(wz) * 256.;
+        float mx = (lo + PI) / (2. * PI) * N, my = (1. - log(tan(PI * .25 + la * .5)) / PI) * .5 * N;
+        vec2 uw = vec2((mx - wM.x) / (wM.z - wM.x), 1. - (my - wM.y) / (wM.w - wM.y));
+        if (uw.x > 0. && uw.x < 1. && uw.y > 0. && uw.y < 1.) { float e = smoothstep(0., .06, min(min(uw.x, 1. - uw.x), min(uw.y, 1. - uw.y)));
+          sampledDiffuseColor = mix(sampledDiffuseColor, texture2D(tWide, uw), e); } }
+      diffuseColor *= sampledDiffuseColor;`);
+  };
+  gscene.add(new THREE.Mesh(g, gm));
+  const am = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false, uniforms: { sunD: { value: SUND } },
+    vertexShader: `varying vec3 vN, vP; void main(){ vN = normalize(normal); vec4 w = modelMatrix * vec4(position, 1.); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+    fragmentShader: `varying vec3 vN, vP; uniform vec3 sunD; void main(){ vec3 v = normalize(cameraPosition - vP); float r = 1. - clamp(dot(vN, v), 0., 1.);
+      float rim = pow(r, 3.2); float day = smoothstep(-.2, .45, dot(vN, sunD));
+      vec3 c = mix(vec3(.20, .36, .60), vec3(.98, .80, .58), day * .5); gl_FragColor = vec4(c * rim * (.08 + .55 * day), 1.); }` });
+  gscene.add(new THREE.Mesh(new THREE.SphereGeometry(RE * 1.012, 160, 80), am));
+  const gs = new THREE.DirectionalLight(0xffe6c4, 3.0); gs.position.copy(SUND.clone().multiplyScalar(5e4)); gscene.add(gs, new THREE.HemisphereLight(0x3a5878, 0x0a0a10, .1));
+  const R = mulberry(11), sp = [];
+  for (let i = 0; i < 1600; i++) { const u = R() * 2 - 1, th = R() * Math.PI * 2, r = Math.sqrt(1 - u * u); sp.push(r * Math.cos(th) * 9e4, u * 9e4, r * Math.sin(th) * 9e4); }
+  const sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(sp, 3));
+  gscene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0x9aa6b4, size: 1.3, sizeAttenuation: false, transparent: true, opacity: .55 })));
+}
+const DC = [38.90, -77.04], TD_KM = Math.round(kmBetween(TEH, DC));
+const TDll = gcPts(TEH, DC, 500);
+const gLine = ll => ll.map(([la, lo]) => gdir(la, lo).multiplyScalar(RE + 12));
+const TDg = gLine(TDll);
+const measure = { glow: ribbon(TDg, { pxW: 10, k: 3, base: .22, col: WARMW }, gscene, true), core: ribbon(TDg, { pxW: 2.2, k: 1.2, base: 1.3, col: WARMW }, gscene, true) };
+const ICBM_F = 5500 / TD_KM;
+const ringG = gLine(RING);
+const gring = { glow: ribbon(ringG, { pxW: 8, k: 3, base: .25, col: AMB, dash: 70, duty: .5 }, gscene, true) };
+
+// ---------- cameras ----------
+// map keys: t, [log distance km, pitch°, yaw° (0 = camera south of target, looking north), target lon, lat]
+const CAM = track([
+  [0.0, [Math.log(1500), 40, 2, 51.4, 34.6]],
+  [5.4, [Math.log(1200), 42, 0, 51.4, 34.9]],
+  [10.2, [Math.log(6000), 55, 4, 49.5, 31.0]],
+  [13.6, [Math.log(5900), 56, 6, 48.2, 30.6]],
+  [15.8, [Math.log(5800), 56, 9, 46.8, 30.2]],
+  [19.0, [Math.log(7600), 50, 172, 61.5, 13.5]],
+  [24.5, [Math.log(7200), 52, 178, 62.5, 12.5]],
+  [29.5, [Math.log(6900), 51, 182, 62.8, 12.0]],
+  [32.0, [Math.log(5200), 46, 182, 55.5, 22.0]],
+  [35.2, [Math.log(5000), 47, 184, 55.0, 22.5]],
+  [37.4, [Math.log(2600), 80, 358, 53.0, 29.5]]]);
+function mapCam(t) {
+  const [ld, pd, yd, lo, la] = CAM(clamp(t, 0, 38.2)); const [X, Z] = xz(lo, la), d = Math.exp(ld), p = pd * D2R, y = yd * D2R;
+  return { d, cam: new THREE.Vector3(X + Math.sin(y) * Math.cos(p) * d, Math.sin(p) * d, Z + Math.cos(y) * Math.cos(p) * d), tgt: new THREE.Vector3(X, 0, Z) };
+}
+function setCamera(t) {
+  const { d, cam, tgt } = mapCam(t);
+  camera.position.copy(cam); camera.up.set(0, 1, 0); camera.lookAt(tgt);
+  camera.near = Math.max(1, d * .05); camera.far = d * 6 + 2000; camera.updateProjectionMatrix(); camera.updateMatrixWorld();
+  scene.fog.near = d * 1.2; scene.fog.far = d * 3.5 + 500; return d;
+}
+// the same view on the globe (used through the dissolve, so map and globe line up)
+function mapToGlobe(t) { const { cam, tgt } = mapCam(t); const [clo, cla] = unxz(cam), [tlo, tla] = unxz(tgt);
+  const up = camera.up.clone(); return [Math.log(cam.y), cla, clo, tla, tlo]; }
+const GKEYS = [
+  [37.33, null], [38.13, null],
+  [40.6, [Math.log(11000), 40.0, 18.0, 37.0, 16.0]],
+  [44.5, [Math.log(15500), 43.0, -22.0, 40.0, -18.0]],
+  [52.0, [Math.log(16200), 44.0, -25.0, 41.0, -21.0]],
+  [62.7, [Math.log(17200), 44.5, -27.0, 41.5, -23.0]]];
+let GCAM;
+function setGlobeCam(t) {
+  const dis = t < 38.13;
+  const [la, cla, clo, tla, tlo] = dis ? mapToGlobe(t) : GCAM(clamp(t, 38.13, 62.7)); const alt = Math.exp(la);
+  const td = gdir(tla, tlo), north = new THREE.Vector3(0, 1, 0).addScaledVector(td, -td.y).normalize();
+  gcam.position.copy(gdir(cla, clo).multiplyScalar(RE + alt)); gcam.up.copy(north); gcam.lookAt(td.clone().multiplyScalar(RE));
+  const ox = 250 * eio(seg(t, 40.0, 44.5)); if (Math.abs(ox) > .5) gcam.setViewOffset(Wd, Ht, ox, 0, Wd, Ht); else gcam.clearViewOffset();
+  gcam.near = Math.max(50, alt * .3); gcam.far = 2e5; gcam.updateProjectionMatrix(); gcam.updateMatrixWorld();
+}
+
+// ---------- post ----------
+const SS = +(Q.get('ss') || 2);
+const post = makePost(renderer, scene, camera, Wd, Ht, { ssaa: SS, ao: false });
+post.dof.maxCoc = 6; post.bloom.strength = .6; post.bloom.radius = .55; post.bloom.threshold = .95;
+const VU = post.vig.uniforms; VU.amt.value = .45; VU.warm.value = .25; VU.sat.value = .92; VU.contrast.value = .12;
+const gpost = makePost(renderer, gscene, gcam, Wd, Ht, { ssaa: SS, ao: false });
+gpost.dof.maxCoc = 0; gpost.bloom.strength = .7; gpost.bloom.radius = .6; gpost.bloom.threshold = .9;
+const GU = gpost.vig.uniforms; GU.amt.value = .5; GU.warm.value = .2; GU.sat.value = .95; GU.contrast.value = .1;
+
+// ---------- overlay ----------
+const ov = document.createElement('canvas'); ov.width = Wd * 2; ov.height = Ht * 2; ov.style.width = Wd + 'px'; ov.style.height = Ht + 'px'; document.body.appendChild(ov);
+const g = ov.getContext('2d');
+const snap = document.createElement('canvas'); snap.width = Wd * 2; snap.height = Ht * 2; const sg = snap.getContext('2d');
+await Promise.all(['500 20px Barlow', '600 20px Barlow'].map(f => document.fonts.load(f, 'ABC')));
+const scrW = (v, cam) => { const p = v.clone().project(cam); return [(p.x + 1) / 2 * Wd, (1 - p.y) / 2 * Ht, p.z]; };
+const scr = v => scrW(v, camera);
+const C = { land: '#2b2119', sea: '#bcdbe6', light: '#f6eee0', amber: '#ffc36b', amberSoft: 'rgba(255,214,150,.92)', teal: '#9fe3ea', dim: 'rgba(240,232,216,.66)' };
+let TX = [];
+function txt(s, x, y, o) {
+  g.save(); g.font = `${o.w || 500} ${o.size}px Barlow`; g.letterSpacing = (o.sp || 0) + 'px';
+  g.textAlign = o.align || 'center'; g.textBaseline = o.base || 'middle'; g.globalAlpha = clamp(o.a ?? 1); g.fillStyle = o.col || C.light;
+  g.fillText(s, x, y); const w = g.measureText(s).width; const x0 = o.align === 'left' ? x : o.align === 'right' ? x - w : x - w / 2;
+  if ((o.a ?? 1) > .5 && !o.nobox) TX.push({ id: o.id || s, text: s, x0, y0: y - o.size * .6, x1: x0 + w, y1: y + o.size * .6, pass: !!o.pass });
+  g.restore(); return w;
+}
+const tw = (s, size, w = 500, sp = 0) => { g.save(); g.font = `${w} ${size}px Barlow`; g.letterSpacing = sp + 'px'; const r = g.measureText(s).width; g.restore(); return r; };
+function line(pts, col, w = 1.4, a = 1, dash = null) { g.save(); g.globalAlpha = a; g.strokeStyle = col; g.lineWidth = w; if (dash) g.setLineDash(dash); g.beginPath(); pts.forEach(([x, y], i) => i ? g.lineTo(x, y) : g.moveTo(x, y)); g.stroke(); g.restore(); }
+function dot(x, y, r, col, a = 1) { g.save(); g.globalAlpha = a; g.fillStyle = col; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.restore(); }
+function pulse(x, y, t0, t, col, a = 1, rmax = 34) { const r = seg(t, t0, t0 + 1.4); for (const k of [0, .35]) { const q = (r * 1.2 + k) % 1; if (r <= 0) continue; g.save(); g.globalAlpha = a * (1 - q) * .8; g.strokeStyle = col; g.lineWidth = 1.4; g.beginPath(); g.arc(x, y, 5 + rmax * q, 0, 7); g.stroke(); g.restore(); } }
+const BOTTOM_SAFE = 200;
+const STY = {
+  land: { size: 30, w: 600, sp: 9, col: C.land, a: .85 }, landS: { size: 20, w: 600, sp: 5, col: C.land, a: .8 },
+  sea: { size: 21, w: 500, sp: 7, col: C.sea, a: .92 }, seaL: { size: 26, w: 500, sp: 9, col: C.sea, a: .9 } };
+// [lon, lat, text, style, from, to]
+const LABELS = [
+  [54.5, 32.6, 'IRAN', 'land', 7.4, 15.6], [35.0, 31.3, 'ISRAEL', 'landS', 12.0, 16.4], [51.0, 27.4, 'PERSIAN GULF', 'sea', 12.4, 16.4],
+  [43.0, 24.0, 'SAUDI ARABIA', 'land', 8.0, 15.6], [33.5, 34.0, 'MEDITERRANEAN', 'sea', 8.2, 15.6],
+  [62.0, 16.0, 'ARABIAN SEA', 'seaL', 18.2, 36.6], [66.0, 2.0, 'INDIAN OCEAN', 'seaL', 18.6, 36.6], [55.0, 31.8, 'IRAN', 'land', 18.0, 36.6]];
+function mapLabels(t) {
+  for (const [lo, la, s, kind, a0, a1] of LABELS) {
+    let a = ss(seg(t, a0, a0 + .6)) * (1 - ss(seg(t, a1 - .5, a1))); if (a <= .01) continue;
+    const st = STY[kind], [x, y, z] = scr(geo(lo, la, 20)); if (z > 1) continue;
+    const w = tw(s, st.size, st.w, st.sp), x0 = x - w / 2, x1 = x0 + w;
+    const m = Math.min(x0 - 40, Wd - 40 - x1, y - 60, (x0 < 1100 ? Ht - BOTTOM_SAFE : Ht - 70) - y);
+    a *= ss(seg(m, 0, 50)); if (a <= .01) continue;
+    txt(s, x, y, { ...st, a: a * st.a, id: 'L' + s + a0 });
+  }
+}
+// what lies inside: five long-standing US bases (public installations)
+const BASES = [[25.12, 51.31, 'AL UDEID', 'QATAR', 1], [26.21, 50.61, 'NSA BAHRAIN', 'BAHRAIN', -1], [24.25, 54.55, 'AL DHAFRA', 'UAE', 1], [29.35, 47.52, 'ALI AL SALEM', 'KUWAIT', -1], [33.79, 42.44, 'AL ASAD', 'IRAQ', -1]];
+const BASE_T = [13.33, 13.67, 14.0, 14.33, 14.67];
+function bases(t) {
+  const out = 1 - ss(seg(t, 17.0, 18.0)); if (out <= 0) return;
+  BASES.forEach(([la, lo, n, c, side], i) => {
+    const t0 = BASE_T[i], a = ss(seg(t, t0, t0 + .3)) * out; if (a <= 0) return;
+    const [x, y] = scr(geo(lo, la, lift));
+    pulse(x, y, t0, t, C.light, out);
+    g.save(); g.globalAlpha = a; g.strokeStyle = C.light; g.lineWidth = 1.6; g.beginPath(); g.rect(x - 4, y - 4, 8, 8); g.stroke(); g.restore();
+    const lx = x + side * 16; txt(n, lx, y - 7, { size: 16, w: 600, sp: 3, align: side > 0 ? 'left' : 'right', col: C.light, a, id: 'b' + n });
+    txt(c, lx, y + 11, { size: 12, w: 500, sp: 3, align: side > 0 ? 'left' : 'right', col: C.dim, a, id: 'bc' + n, pass: true });
+  });
+  const a = ss(seg(t, 15.0, 15.5)) * out;
+  if (a > 0) { const [x, y] = scr(geo(47.0, 21.0, lift)); txt('US BASES IN RANGE', x, y, { size: 18, w: 600, sp: 4, col: C.amberSoft, a, id: 'inrange' }); }
+}
+// S1/S2: the point and the title
+function opening(t) {
+  const [x, y] = scr(geo(TEH[1], TEH[0], lift));
+  const a = ss(seg(t, .3, .9));
+  if (t < 38) { const o = 1 - ss(seg(t, 36.5, 37.3)); pulse(x, y, .3, t, C.amber, o, 46);
+    g.save(); g.globalAlpha = a * o; const gr = g.createRadialGradient(x, y, 0, x, y, 26); gr.addColorStop(0, 'rgba(255,214,150,.9)'); gr.addColorStop(1, 'rgba(255,166,61,0)'); g.fillStyle = gr; g.beginPath(); g.arc(x, y, 26, 0, 7); g.fill(); g.restore();
+    dot(x, y, 6, '#ffe2b0', a * o); }
+  const tA = ss(seg(t, 1.2, 1.8)) * (1 - ss(seg(t, 5.6, 6.2)));
+  if (tA > 0) {
+    const lx = x - 560, ly = y - 230, e = eo(seg(t, 1.2, 1.9));
+    line([[x - 6, y - 6], [x - 6 + (lx + 380 - x) * e, y - 6 + (ly + 40 - y) * e]], 'rgba(255,214,150,.85)', 1.2, tA);
+    txt('35°41′N   51°23′E · TEHRAN', lx, ly - 46, { size: 17, w: 500, sp: 4, align: 'left', col: C.amberSoft, a: tA, id: 'coord' });
+    txt('THE LINE', lx - 2, ly, { size: 64, w: 600, sp: 9, align: 'left', col: C.light, a: tA * ss(seg(t, 1.4, 2.0)), id: 'title' });
+    txt("IRAN'S MISSILE-RANGE LIMIT", lx, ly + 46, { size: 22, w: 600, sp: 5, align: 'left', col: C.dim, a: tA * ss(seg(t, 1.7, 2.3)), id: 'subtitle' });
+  }
+  // the ring's measure, drawn then labelled (S2)
+  const rA = ss(seg(t, 9.0, 9.5)) * (1 - ss(seg(t, 12.6, 13.2)));
+  if (rA > 0) {
+    const C0 = geo(TEH[1], TEH[0], lift), E = ringPts[ringStart];
+    const [ax, ay] = scr(C0), [bx, by] = scr(E), e = eio(seg(t, 9.0, 9.7));
+    line([[ax, ay], [ax + (bx - ax) * e, ay + (by - ay) * e]], 'rgba(246,238,224,.95)', 1.5, rA);
+    const mx = (ax + bx) / 2, my = (ay + by) / 2;
+    txt('2,000 KM', mx, my - 34, { size: 44, w: 600, sp: 3, col: C.light, a: rA * ss(seg(t, 9.5, 9.9)), id: 'r2000' });
+    txt('SELF-IMPOSED LIMIT · SINCE 2017', mx, my - 2, { size: 15, w: 600, sp: 3, col: C.amberSoft, a: rA * ss(seg(t, 9.6, 10.0)), id: 'r2000s' });
+  }
+}
+// S4: the crossing
+function crossing(t) {
+  const out = 1 - ss(seg(t, 31.0, 31.8)); if (out <= 0 || t < 17.5) return;
+  const [dx, dy, dz] = scr(geo(DG[1], DG[0], 2)); if (dz < 1) {
+    const a = ss(seg(t, 18.4, 18.9)) * out;
+    pulse(dx, dy, 18.4, t, C.light, a); dot(dx, dy, 3.5, C.light, a);
+    txt('DIEGO GARCIA', dx - 14, dy - 8, { size: 17, w: 600, sp: 3, align: 'right', col: C.light, a, id: 'dg' });
+    txt('US–UK BASE', dx - 14, dy + 12, { size: 13, w: 500, sp: 3, align: 'right', col: C.dim, a, id: 'dgs', pass: true });
+  }
+  // distance, measured along path 2
+  const la = ss(seg(t, 22.6, 23.1)) * out;
+  if (la > 0) {
+    const m = P2[Math.round(P2.length * .55)], [x, y] = scr(m);
+    txt(`≈ ${(DG_KM).toLocaleString('en-US')} KM`, x + 26, y - 6, { size: 46, w: 600, sp: 3, align: 'left', col: C.light, a: la, id: 'km4000' });
+    txt('PATHS SCHEMATIC', x + 28, y + 28, { size: 13, w: 600, sp: 3, align: 'left', col: C.dim, a: la, id: 'schem', pass: true });
+  }
+  // the outcome (UK account) and the denial
+  const f = ss(seg(t, 26.0, 26.4)) * out;
+  if (f > 0) { const [x, y] = scr(P1[P1.length - 1]); txt('FAILED', x + 16, y, { size: 18, w: 600, sp: 4, align: 'left', col: C.teal, a: f, id: 'failed' }); }
+  const s2 = ss(seg(t, 27.4, 27.8)) * out;
+  if (s2 > 0) {
+    const [x, y] = scr(P2[P2.length - 1]); const r = seg(t, 27.3, 28.4);
+    g.save(); g.globalAlpha = (1 - r) * out; const gr = g.createRadialGradient(x, y, 0, x, y, 10 + 60 * r); gr.addColorStop(0, '#ffffff'); gr.addColorStop(.3, 'rgba(159,227,234,.9)'); gr.addColorStop(1, 'rgba(159,227,234,0)'); g.fillStyle = gr; g.beginPath(); g.arc(x, y, 10 + 60 * r, 0, 7); g.fill(); g.restore();
+    txt('INTERCEPTED', x + 18, y - 4, { size: 18, w: 600, sp: 4, align: 'left', col: C.teal, a: s2, id: 'intercept' });
+  }
+  const s3 = ss(seg(t, 28.6, 29.1)) * out;
+  if (s3 > 0) {
+    txt('UK GOVERNMENT ACCOUNT, 22 MARCH 2026', 96, 132, { size: 16, w: 600, sp: 4, align: 'left', col: C.amberSoft, a: s3, id: 'uk' });
+    txt('IRAN DENIES FIRING THEM', 95, 168, { size: 34, w: 600, sp: 3, align: 'left', col: C.light, a: s3, id: 'deny' });
+  }
+}
+// S5: the break
+function breakText(t) {
+  const a = ss(seg(t, 33.0, 33.5)) * (1 - ss(seg(t, 36.6, 37.2))); if (a <= 0) return;
+  txt('IRGC · 7 NOVEMBER 2026', 96, 132, { size: 16, w: 600, sp: 4, align: 'left', col: C.amberSoft, a, id: 'irgc' });
+  txt('“THAT RESTRICTION HAS BEEN LIFTED”', 95, 172, { size: 40, w: 600, sp: 3, align: 'left', col: C.light, a, id: 'lifted' });
+}
+// S6: the globe
+function globeText(t) {
+  const [tx, ty, tz] = scrW(gdir(...TEH).multiplyScalar(RE + 12), gcam), [wx, wy, wz] = scrW(gdir(...DC).multiplyScalar(RE + 12), gcam);
+  const a = ss(seg(t, 38.6, 39.2));
+  if (tz < 1) { dot(tx, ty, 4.5, C.amber, a); txt('TEHRAN', tx + 14, ty + 4, { size: 16, w: 600, sp: 3, align: 'left', col: C.amberSoft, a: a * ss(seg(t, 39.0, 39.5)), id: 'gteh' }); }
+  const wa = ss(seg(t, 42.0, 42.4));
+  if (wz < 1 && wa > 0) { pulse(wx, wy, 42.0, t, C.light, wa); dot(wx, wy, 4, C.light, wa); txt('WASHINGTON', wx - 14, wy + 4, { size: 16, w: 600, sp: 3, align: 'right', col: C.light, a: wa, id: 'gdc' }); }
+  // the measured distance
+  const da = ss(seg(t, 42.2, 42.7));
+  if (da > 0) {
+    const m = TDg[Math.round(TDg.length * .5)], [mx, my] = scrW(m, gcam);
+    txt(`${TD_KM.toLocaleString('en-US')} KM`, mx, my - 92, { size: 72, w: 600, sp: 3, col: C.light, a: da, id: 'g10177' });
+    txt('TEHRAN → WASHINGTON · GREAT-CIRCLE DISTANCE', mx, my - 50, { size: 15, w: 600, sp: 3, col: C.dim, a: da, id: 'g10177s' });
+  }
+  // the ICBM threshold: a tick at 5,500 km along the line
+  const ia = ss(seg(t, 45.0, 45.4));
+  if (ia > 0) {
+    const i = Math.round(ICBM_F * (TDg.length - 1)), p = TDg[i], q = TDg[i + 1];
+    const [x, y] = scrW(p, gcam), [x2, y2] = scrW(q, gcam), ux = x2 - x, uy = y2 - y, ul = Math.hypot(ux, uy) || 1, nx = -uy / ul * 14, ny = ux / ul * 14;
+    line([[x - nx, y - ny], [x + nx, y + ny]], C.light, 2, ia);
+    const sgn = ny < 0 ? -1 : 1; txt('5,500 KM', x - nx * 2.6 * sgn, y + 40, { size: 22, w: 600, sp: 3, col: C.light, a: ia, id: 'g5500' });
+    txt('INTERCONTINENTAL BEGINS', x - nx * 2.6 * sgn, y + 64, { size: 13, w: 600, sp: 3, col: C.amberSoft, a: ia, id: 'g5500s', pass: true });
+  }
+  // 2035
+  const ya = ss(seg(t, 50.5, 51.0));
+  if (ya > 0) {
+    const X = 1480, Y = 330;
+    txt('2035', X, Y, { size: 96, w: 600, sp: 2, align: 'left', col: '#ffd08a', a: ya, id: 'g2035' });
+    txt('EARLIEST, IF IRAN DECIDES TO BUILD ONE', X + 4, Y + 66, { size: 19, w: 600, sp: 3.5, align: 'left', col: C.light, a: ya, id: 'g2035a' });
+    txt('US DEFENSE INTELLIGENCE AGENCY, MAY 2025', X + 4, Y + 94, { size: 15, w: 600, sp: 3, align: 'left', col: C.dim, a: ya, id: 'g2035b' });
+  }
+}
+function subtitles(t) {
+  const c = CUES.find(c => t >= c.t0 - .12 && t < c.t1 + .12);
+  g.save(); const gr = g.createLinearGradient(0, Ht - 250, 0, Ht); gr.addColorStop(0, 'rgba(6,10,15,0)'); gr.addColorStop(1, 'rgba(6,10,15,.55)'); g.fillStyle = gr; g.fillRect(0, Ht - 250, Wd, 250); g.restore();
+  if (!c) return;
+  const a = ss(seg(t, c.t0 - .12, c.t0 + .08)) * (1 - ss(seg(t, c.t1 - .08, c.t1 + .12))), X = 96, Y = Ht - 92;
+  g.save(); g.globalAlpha = a; g.fillStyle = C.amber; g.fillRect(X - 22, Y - 26, 3, 52); g.restore();
+  txt(c.text, X, Y, { size: 36, w: 500, sp: 1.5, align: 'left', col: C.light, a, id: 'sub', nobox: true });
+}
+function credits(t) {
+  txt('ELEVATION AWS TERRAIN TILES · IMAGERY SENTINEL-2 CLOUDLESS 2016 BY EOX (CC BY 4.0) · RELIEF ×5 · PATHS SCHEMATIC · NO BORDERS SHOWN',
+    Wd - 40, Ht - 26, { size: 11.5, w: 500, sp: 1.1, align: 'right', col: 'rgba(240,232,216,.55)', base: 'alphabetic', a: ss(seg(t, .6, 1.4)), id: 'credits', nobox: true });
+}
+function endCard(t) {
+  const a = ss(seg(t, 59.4, 59.9)); if (a <= 0) return;
+  const X = 1480, Y = 650, e = eo(seg(t, 59.4, 60.0));
+  g.save(); g.globalAlpha = a; g.fillStyle = C.amber; g.beginPath(); g.moveTo(X + 7, Y - 92); g.lineTo(X + 14, Y - 70); g.lineTo(X + 7, Y - 75); g.lineTo(X, Y - 70); g.closePath(); g.fill(); g.fillRect(X + 26, Y - 80, 60 * e, 3); g.restore();
+  txt('N', X + 7, Y - 56, { size: 13, w: 600, sp: 1, col: C.amberSoft, a, id: 'end-n', nobox: true });
+  txt('THE LINE', X - 2, Y, { size: 54, w: 600, sp: 7, align: 'left', col: C.light, a, id: 'end-title' });
+  line([[X, Y + 40], [X + 380 * e, Y + 40]], 'rgba(246,238,224,.35)', 1, a);
+  txt("IRAN'S MISSILE-RANGE LIMIT · NOVEMBER 2026", X, Y + 66, { size: 18, w: 600, sp: 3.5, align: 'left', col: C.amberSoft, a, id: 'end-sub' });
+}
+
+// ---------- the frame ----------
+function mapFrame(t, dist) {
+  // opening darkness lifts radially from the point
+  terrainU.dark.value = 1 - ss(seg(t, 4.6, 8.4)); const [cx, cz] = xz(TEH[1], TEH[0]); terrainU.darkC.value.set(cx, 0, cz);
+  // the line ignites at bar 3 (5.33): a bright head runs the whole circle clockwise from the west
+  const k = eio(seg(t, 5.33, 8.6)), headI = Math.round(k * 720);
+  const brk = t >= 32.0;
+  for (const S of segs) {
+    let a0 = 0, a1 = S.glow.L + 1, on = 0;
+    const iRel = ((S.a - ringStart) % 720 + 720) % 720, segEnd = iRel + 720 / NSEG;
+    if (headI >= segEnd) { on = 1; } else if (headI > iRel) { on = 1; a1 = (headI - iRel) / (720 / NSEG) * S.glow.L; }
+    const head = headI > iRel && headI < segEnd ? a1 : -1e6;
+    let inten = on * ss(seg(t, 5.33, 5.6));
+    // S5: the break — segments shrink to nothing, in a seeded order, with a last flare
+    if (brk) { const tb = 32.0 + S.rnd * 2.4, b = seg(t, tb, tb + .9); const mid = S.glow.L / 2; a0 = mid * eio(b); a1 = S.glow.L - mid * eio(b); inten *= 1 + 1.8 * Math.sin(Math.PI * clamp(b * 1.6)); if (b >= 1) inten = 0; }
+    inten *= 1 - .45 * ss(seg(t, 17.0, 18.0)) * (t < 31 ? 1 : 0) + .45 * ss(seg(t, 30.0, 31.0)) * 0;
+    for (const r of [S.glow, S.core]) rv(r, { revA: a0, revB: a1, inten, head, headAmt: r === S.core ? 2.2 * (1 - ss(seg(k, .9, 1))) : 0, flowPh: t * 120, soft: 8 });
+  }
+  // S4: the two paths (schematic), teal; path 1 dies, path 2 is stopped short
+  const k1 = eo(seg(t, 18.0, 21.4)), k2 = eo(seg(t, 18.7, 23.6));
+  const out = 1 - ss(seg(t, 30.8, 31.8));
+  const f1 = 1 - ss(seg(t, 26.0, 27.0));
+  for (const r of [path1.glow, path1.core]) rv(r, { revB: k1 * r.L, inten: (t >= 18 ? 1 : 0) * out * (t < 26 ? 1 : f1 * .6), head: k1 * r.L, headAmt: r === path1.core ? 2 * (1 - ss(seg(k1, .9, 1))) : 0, soft: 10, flick: ss(seg(t, 25.6, 26.2)) * .8, flowPh: t });
+  for (const r of [path2.glow, path2.core]) rv(r, { revB: k2 * r.L, inten: (t >= 18.7 ? 1 : 0) * out, head: k2 * r.L, headAmt: r === path2.core ? 2 * (1 - ss(seg(k2, .9, 1))) : 0, soft: 10 });
+  post.dof.focus = dist; post.dof.aper = dist * 3.2;
+  VU.fade.value = ss(seg(t, 0, .8));
+  post.composer.render();
+}
+function globeFrame(t) {
+  setGlobeCam(t);
+  const k = eio(seg(t, 38.67, 42.2));
+  for (const r of [measure.glow, measure.core]) rv(r, { revB: k * r.L, inten: t >= 38.67 ? 1 : 0, head: k * r.L, headAmt: r === measure.core ? 1.6 * (1 - ss(seg(k, .9, 1))) : 0, soft: 80 });
+  rv(gring.glow, { inten: .35 * (1 - ss(seg(t, 38.2, 40.0))) });
+  GU.fade.value = t > 61.5 ? 1 - ss(seg(t, 61.5, 62.67)) : 1;
+  gpost.composer.render();
+}
+function frame(t) {
+  TX = [];
+  const gW = t < 37.33 ? 0 : t < 38.13 ? ss(seg(t, 37.33, 38.13)) : 1;
+  const dist = gW < 1 ? setCamera(t) : 0;
+  g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, Wd, Ht);
+  if (gW > 0 && gW < 1) {
+    globeFrame(t); g.setTransform(1, 0, 0, 1, 0, 0); sg.clearRect(0, 0, Wd * 2, Ht * 2); sg.drawImage(renderer.domElement, 0, 0, Wd * 2, Ht * 2);
+    mapFrame(t, dist); g.drawImage(renderer.domElement, 0, 0, Wd * 2, Ht * 2); g.globalAlpha = gW; g.drawImage(snap, 0, 0); g.globalAlpha = 1;
+    g.fillStyle = `rgba(232,214,180,${.22 * Math.sin(Math.PI * gW)})`; g.fillRect(0, 0, Wd * 2, Ht * 2);
+    g.setTransform(2, 0, 0, 2, 0, 0);
+  } else if (gW >= 1) globeFrame(t); else mapFrame(t, dist);
+  if (gW < 1) { g.save(); mapLabels(t); opening(t); bases(t); crossing(t); breakText(t); g.restore(); }
+  if (t > 38.13) { globeText(t); endCard(t); }
+  if (!Q.has('nosubs')) subtitles(t);
+  credits(t);
+  if (t > 61.5) { g.fillStyle = `rgba(0,0,0,${ss(seg(t, 61.5, 62.67))})`; g.fillRect(0, 0, Wd, Ht); }
+}
+GCAM = track(GKEYS.map(([t, v]) => [t, v || mapToGlobe(t)]));
+
+window.DUR = T1 - T0;
+window.render = t => frame(t + T0);
+window.TEXTS = t => { window.render(t); return TX.map(o => ({ ...o })); };
+// cue events for the mixer (film time)
+const EVF = [
+  { t: .3, type: 'point' }, { t: 1.2, type: 'title' }, { t: 5.33, type: 'ignite' }, { t: 8.6, type: 'close' }, { t: 9.0, type: 'measure' },
+  ...BASE_T.map((t, i) => ({ t, type: 'base', i })), { t: 16.0, type: 'turn' }, { t: 18.0, type: 'path', i: 0 }, { t: 18.7, type: 'path', i: 1 },
+  { t: 18.4, type: 'dg' }, { t: 22.6, type: 'measure' }, { t: 26.0, type: 'fail' }, { t: 27.3, type: 'intercept' }, { t: 28.6, type: 'tick' },
+  { t: 31.33, type: 'silence' }, { t: 32.0, type: 'break' }, ...segs.map(S => ({ t: 32.0 + S.rnd * 2.4, type: 'seg' })), { t: 35.2, type: 'rise' }, { t: 37.33, type: 'dissolve' },
+  { t: 38.67, type: 'ruler' }, { t: 42.0, type: 'dc' }, { t: 45.0, type: 'tick' }, { t: 50.5, type: 'year' }, { t: 56.67, type: 'final' }, { t: 59.4, type: 'end' }];
+window.EV = EVF.map(e => ({ ...e, t: e.t - T0 })).filter(e => e.t >= 0 && e.t <= T1 - T0);
+window.render(0);
+window.READY = true;
+</script>
+</body></html>
