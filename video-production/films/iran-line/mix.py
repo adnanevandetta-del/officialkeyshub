@@ -120,6 +120,17 @@ for e in EV:
     elif k == 'ruler':
         for i in range(4): add(mix, hp(click(pitch=1.0 + .1 * i, v=1.0), 1500) * .06, t + i * .18, 1, -.2 + .15 * i)
 
+# suspense, as in the first trailer: a heartbeat under the tense middle (bars 6-12) and deep impacts on the big turns
+for b in range(6, 13):
+    for q in (0, 2):
+        if b == 12 and q == 2: continue                              # the half bar of silence before the break
+        t = bt(b, q); g = .14 + .02 * (b - 6)
+        add(mix, thump(.5, 52) * g, t, 1, 0); add(mix, thump(.4, 60) * g * .55, t + .22, 1, 0)
+for t in (5.33, 16.0, 32.0, 37.33, 56.67):
+    n = int(2.6 * SR); x = np.arange(n) / SR
+    boom = np.sin(2 * np.pi * np.cumsum(36 + 80 * np.exp(-x * 6)) / SR) * np.exp(-x * 1.6)
+    add(mix, boom * .2 + lp(rng.standard_normal(n), 400) * np.exp(-x * 9) * .05, t, 1, 0)
+
 # carve the voice band from the music, duck it under every line
 mid = np.stack([bp(music[:, c], 300, 4000, 2) for c in range(2)], 1)
 music = music - mid * (1 - 10 ** (-4 / 20))

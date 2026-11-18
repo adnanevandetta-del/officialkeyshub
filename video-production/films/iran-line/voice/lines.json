@@ -1,66 +1,67 @@
 [
  {
   "id": "v01",
-  "text": "This November, Iran erased a line it had kept for years.",
-  "voice": "am_michael",
-  "speed": 0.86
+  "text": "This November... Iran erased a line.",
+  "voice": "am_fenrir",
+  "speed": 0.8,
+  "asr": "This November, Iran erased a line."
  },
  {
   "id": "v02",
-  "text": "Two thousand kilometres. The farthest its missiles were meant to fly.",
-  "voice": "am_michael",
-  "speed": 0.86,
-  "asr": "2,000 km. The farthest its missiles were meant to fly."
+  "text": "Two thousand kilometres. As far as its missiles were meant to fly.",
+  "voice": "am_fenrir",
+  "speed": 0.82,
+  "asr": "2,000 km. As far as its missiles were meant to fly."
  },
  {
   "id": "v03",
-  "text": "Inside it: Israel, the Gulf, and every American base in the region.",
-  "voice": "am_michael",
-  "speed": 0.86
+  "text": "Inside it... Israel. The Gulf. Every American base in the region.",
+  "voice": "am_fenrir",
+  "speed": 0.82
  },
  {
   "id": "v04",
-  "text": "In March, during the war, two missiles flew toward Diego Garcia, about four thousand kilometres away.",
-  "voice": "am_michael",
-  "speed": 0.88,
-  "asr": "In March, during the war, two missiles flew toward Diego Garcia, about 4,000 km away."
+  "text": "Then, in March... two missiles flew toward Diego Garcia. About four thousand kilometres away.",
+  "voice": "am_fenrir",
+  "speed": 0.84,
+  "asr": "Then in March, two missiles flew toward Diego Garcia, about 4,000 km away."
  },
  {
   "id": "v05",
-  "text": "Britain says one failed, and one was shot down. Iran denies firing them.",
-  "voice": "am_michael",
-  "speed": 0.86
- },
- {
-  "id": "v06",
-  "text": "Now its Revolutionary Guard says the limit is gone.",
-  "voice": "am_michael",
+  "text": "Britain says one failed... and one was shot down. Iran denies firing them.",
+  "voice": "am_fenrir",
   "speed": 0.84
  },
  {
+  "id": "v06",
+  "text": "Now... its Revolutionary Guard says the limit is gone.",
+  "voice": "am_fenrir",
+  "speed": 0.82
+ },
+ {
   "id": "v07",
-  "text": "But Washington is ten thousand kilometres from Tehran.",
-  "voice": "am_michael",
+  "text": "But Washington... is ten thousand kilometres away.",
+  "voice": "am_fenrir",
   "speed": 0.84,
-  "asr": "But Washington is 10,000 kilometers from Tehran."
+  "asr": "But Washington is 10,000 kilometers away."
  },
  {
   "id": "v08",
-  "text": "That takes an intercontinental missile, and Iran is not known to have one.",
-  "voice": "am_michael",
-  "speed": 0.86
+  "text": "That takes an intercontinental missile. Iran is not known to have one.",
+  "voice": "am_fenrir",
+  "speed": 0.84
  },
  {
   "id": "v09",
-  "text": "US intelligence says it could build one by twenty thirty-five, if it decides to.",
-  "voice": "am_michael",
-  "speed": 0.86,
-  "asr": "US intelligence says it could build one by 2035, if it decides to."
+  "text": "US intelligence says it could build one by twenty thirty-five... if it decides to.",
+  "voice": "am_fenrir",
+  "speed": 0.84,
+  "asr": "US intelligence says it could build one by 2035 if it decides to."
  },
  {
   "id": "v10",
-  "text": "The line is gone. The distance isn't.",
-  "voice": "am_michael",
-  "speed": 0.8
+  "text": "The line is gone. The distance... isn't.",
+  "voice": "am_fenrir",
+  "speed": 0.78
  }
 ]
