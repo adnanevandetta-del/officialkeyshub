@@ -1,0 +1,8 @@
+THE LINE (2026), a short explainer film made in code with the Lemo-Opuscar library (3D Map Explainer style)
+
+Imagery: Sentinel-2 cloudless 2016 by EOX IT Services GmbH (https://s2maps.eu), contains modified Copernicus Sentinel data 2016, CC BY 4.0
+Elevation: Terrain Tiles on AWS (Mapzen terrarium format), sources incl. SRTM, GMTED2010, ETOPO1
+Typeface: Barlow Condensed by Jeremy Tribby, SIL Open Font License 1.1 (fonts/OFL.txt)
+Narration: Kokoro-82M text-to-speech (Apache 2.0), voice am_fenrir
+Samples (CC0): VS Chamber Orchestra: Community Edition (Versilian Studios), Versilian Community Sample Library (Versilian Studios)
+Sources for every claim: FACTS.md
