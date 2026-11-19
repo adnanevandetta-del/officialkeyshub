@@ -446,8 +446,9 @@ export default function ProfilePage() {
                   <div className="bg-gray-50 rounded-xl p-5 md:p-6 border-2 border-gray-200">
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Your data</h3>
                     <p className="text-gray-600 text-sm mb-4">
-                      Your profile and order history are saved in this browser on this device only. They are not on our
-                      servers, so they won&apos;t appear on other devices or if you clear your browser data.
+                      Your profile and order history are saved in this browser, so they won&apos;t appear on other
+                      devices or if you clear your browser data. We also keep your email and the orders you start so
+                      we can help with delivery and follow up. To have them deleted, email officialkeyshub@gmail.com.
                     </p>
                     <div className="flex flex-wrap gap-3">
                       <button

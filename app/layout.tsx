@@ -1,15 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Script from "next/script";
 import { CartProvider } from "./components/CartContext";
 
 // Plus Jakarta Sans — one elegant, modern sans for headings and body text,
-// self-hosted via next/font. Exposed as --font-sans for globals.css.
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+// bundled in the repo (OFL-1.1, variable weights) instead of fetched from
+// Google Fonts at build time, which broke production builds in Nov 2026.
+// Exposed as --font-sans for globals.css.
+const jakarta = localFont({
+  src: "./fonts/PlusJakartaSans-latin-var.woff2",
+  weight: "200 800",
+  style: "normal",
   variable: "--font-sans",
   display: "swap",
 });

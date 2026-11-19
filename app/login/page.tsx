@@ -104,8 +104,9 @@ function LoginForm() {
 
       <p className="text-xs text-gray-500 mt-4">
         <i className="fas fa-lock mr-1"></i>
-        No password needed. Your details and order history are saved in this browser on this device only — we
-        don&apos;t store them on our servers.
+        No password needed. Your order history is saved in this browser. We keep your email so we can help with
+        your orders and occasionally send deals. Unsubscribe anytime. See our{" "}
+        <a href="/privacy" className="underline">Privacy Policy</a>.
       </p>
     </form>
   );

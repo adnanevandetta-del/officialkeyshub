@@ -86,6 +86,21 @@ export function getAccount(): Account | null {
   return null;
 }
 
+// Sends a lead (sign-up or started checkout) to the store owner. keepalive lets
+// it finish even when checkout immediately redirects to PayPal or WhatsApp.
+function sendLead(data: Record<string, unknown>) {
+  try {
+    void fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...data, page: window.location.pathname }),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // never block the customer on lead capture
+  }
+}
+
 export function saveAccount(input: { name?: string; email: string; phone?: string }): Account {
   const existing = read<Account | null>(ACCOUNT_KEY, null);
   const email = input.email.trim().toLowerCase();
@@ -97,6 +112,7 @@ export function saveAccount(input: { name?: string; email: string; phone?: strin
   };
   write(ACCOUNT_KEY, account);
   savePromoForEmail(email); // keep the customer's promo code tied to their email
+  if (existing?.email !== email) sendLead({ type: "signup", email, name: account.name });
   return account;
 }
 
@@ -172,6 +188,17 @@ export function addOrder(input: {
     status: "pending",
   };
   write(ORDERS_KEY, [order, ...list]);
+  if (order.email) {
+    sendLead({
+      type: "checkout",
+      email: order.email,
+      items: order.items,
+      total: order.total,
+      method: order.method,
+      promoCode: order.promoCode,
+      orderId: order.id,
+    });
+  }
   // Every checkout path (Buy Now, cart, USDT, WhatsApp) goes through here, so this
   // is the one place GA4 learns that someone started paying, and with which method.
   trackEvent("begin_checkout", {

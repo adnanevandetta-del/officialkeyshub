@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
               <ul className="list-disc pl-6 text-gray-700 mb-4">
                 <li>Process your orders and deliver your license keys</li>
                 <li>Process payments and manage your account</li>
-                <li>Communicate with you about your orders and provide support</li>
+                <li>Communicate with you about your orders and provide support, including orders you started but did not finish</li>
                 <li>Improve and optimize our website and services</li>
                 <li>Prevent fraud and unauthorized access</li>
                 <li>Comply with legal obligations</li>
