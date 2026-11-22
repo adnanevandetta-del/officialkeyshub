@@ -1,0 +1,102 @@
+---
+title: "Windows Product Key Blocked or Stopped Working? Fix It"
+description: "Why a Windows product key gets blocked or stops working months later, what errors like 0xC004C060 and 0xC004F213 mean, the fixes to try, and when you need a replacement key."
+excerpt: "Windows was activated, and now it isn't. Here's why keys get blocked and exactly what to do next."
+category: "Guide"
+date: "2026-11-22"
+summary: "A Windows key usually gets blocked because Microsoft sees it used on more PCs than its licence allows, which is common with resold or leaked keys. First rule out other causes: check you installed the right edition, run Settings > System > Activation > Troubleshoot, and re-enter the key. If Windows still says the key is blocked, it can't be revived. Ask the seller for a replacement, or buy a new genuine key."
+readTime: "7 min"
+keywords: "windows product key blocked, windows key stopped working, windows key blocked after months, this product key has been blocked, windows deactivated suddenly, 0xc004c060, 0xc004f213, windows activation error"
+product: "Windows 11 Pro"
+draft: false
+---
+
+You open Settings and see **"Windows isn't activated"**, or a watermark appears in the corner after months of working fine. Sometimes it's a real block, but often it's something you can fix in two minutes. Here's how to tell the difference.
+
+## First: is it actually blocked?
+
+Open **Settings → System → Activation** and read the error. The code tells you a lot:
+
+| Error | What it usually means | Fixable yourself? |
+| --- | --- | --- |
+| **0xC004C060** / *"This product key has been blocked"* | Microsoft has blocked the key | ❌ Need a new key |
+| **0xC004C003** | Key blocked or invalid on Microsoft's servers | ❌ Usually need a new key |
+| **0xC004F213** | No licence found for this hardware (after a motherboard swap, BIOS update or reinstall) | ✅ Often |
+| **0xC004F050** | Key doesn't match the edition installed | ✅ Yes |
+| **0x803F7001** | No digital licence found for this PC | ✅ Often |
+| **0xC004C008** | Key used on too many PCs | ⚠️ Try phone activation |
+
+## Fixes to try before buying anything
+
+### 1. Check the edition
+
+The most common "my key stopped working" story is really an edition mismatch. A **Pro** key won't activate **Home**, and the other way round. If Settings shows the wrong edition, use **Change product key** to switch, or reinstall the right edition.
+
+### 2. Run the Activation troubleshooter
+
+**Settings → System → Activation → Troubleshoot.** If you recently changed the motherboard, or updated the BIOS and reinstalled, choose **"I changed hardware on this device recently"** and sign in with the Microsoft account the licence was linked to.
+
+Tip from Microsoft's own forums: **don't remove the old PC from your Microsoft account** before you do this. The troubleshooter needs it to move the licence.
+
+### 3. Re-enter the key and force activation
+
+1. **Settings → System → Activation → Change product key**, and type the key in again.
+2. Or open **Command Prompt as administrator** and run:
+
+```
+slmgr /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+slmgr /ato
+```
+
+### 4. Try phone activation
+
+For *"used too many times"* errors, run `slui 4`, pick your country, and follow the automated steps. It works for keys that are valid but have hit an activation limit.
+
+### 5. OEM PC? Ask the manufacturer
+
+If Windows came with your laptop and stopped activating after a BIOS update, the key stored in the firmware may not be read. The manufacturer (HP, Dell, Lenovo…) can help.
+
+## Why do keys get blocked?
+
+Microsoft blocks a key when it sees it activated on more devices than its licence allows. That happens when:
+
+- The key was **leaked or shared** online.
+- A seller **sold the same key to several people**.
+- It was a **volume or MSDN key** never meant for single-PC resale in bulk.
+- It was a **refunded retail key** that someone resold.
+
+That last part is why the seller matters. You can't fix a blocked key yourself, but a good seller will replace it.
+
+## If your key really is blocked
+
+1. **Contact the seller first.** Send the error code and a screenshot of the Activation page. A trustworthy shop replaces it. Ours does, under the [30-day money-back guarantee](/refund-policy).
+2. **If you paid with PayPal or a card** and the seller won't respond, open a dispute.
+3. **Get a genuine replacement.** A [Windows 11 Pro key](/products/windows-11-pro) is $16.99 and arrives instantly by email. Need Home? [Windows 11 Home](/products/windows-11-home) is $12.99.
+
+Before you buy again, read [Are cheap Windows keys safe?](/blog/cheap-windows-keys-safe). It covers the warning signs that a key is likely to get blocked.
+
+## Was it ever really activated?
+
+If Windows was "activated" by a script or a KMS tool, it wasn't a real licence. Those fake activations expire or get removed by updates, which looks like "my key stopped working". Run `slmgr /xpr`. If it shows an expiry date instead of **permanently activated**, that's what happened. See [How to check if Windows is genuine](/blog/how-to-check-if-windows-is-genuine).
+
+## Frequently asked questions
+
+### Can a blocked Windows key be unblocked?
+
+No. Once Microsoft blocks a product key on its activation servers, it can't be reactivated. You need a replacement key from the seller or a new genuine licence.
+
+### Why did my Windows key stop working after a few months?
+
+The most common reasons are that the key was resold to several people and Microsoft blocked it, the PC was activated by a KMS tool that expired, or a hardware change or BIOS update means Windows no longer recognises the licence.
+
+### What does error 0xC004C060 mean?
+
+It means the product key has been blocked by Microsoft and can't be used to activate Windows any more.
+
+### Does Windows stop working if it's not activated?
+
+No. Windows keeps running, but you'll see a watermark, can't change personalisation settings, and get reminders to activate.
+
+### Will a blocked key affect my files?
+
+No. Activation only affects the licence. Your files, apps and settings stay exactly as they are, and they remain after you activate with a new key.

@@ -1,0 +1,103 @@
+---
+title: "How to Reinstall Windows Without Losing Your License"
+description: "Reinstall or reset Windows 11 or 10 and keep your activation: save your key, link a Microsoft account, pick the right edition, and fix 'Windows is not activated' afterwards."
+excerpt: "A clean reinstall shouldn't cost you a new licence. Here's how to keep your activation every time."
+category: "Guide"
+date: "2026-11-22"
+summary: "To reinstall Windows without losing your license, first save your product key and link Windows to your Microsoft account. Then either use Settings > System > Recovery > Reset this PC, or clean install from a Microsoft USB, click 'I don't have a product key' and choose the same edition you had. On the same hardware, Windows reactivates automatically once it's online."
+readTime: "7 min"
+keywords: "reinstall windows without losing license, reinstall windows 11 keep activation, reset windows 11 keep license, clean install windows 11 digital license, windows not activated after reinstall, reinstall windows 10 without product key"
+product: "Windows 11 Pro"
+draft: false
+---
+
+Your PC is slow, full of junk, or you just want a fresh start. Reinstalling Windows is the fix, and on the **same PC** you don't lose your licence. You just need to do three things before you wipe anything.
+
+## Before you start: 3 things to save
+
+### 1. Your product key
+
+Find it and save it somewhere that isn't the PC you're wiping (email it to yourself, or take a photo).
+
+- Bought a key? It's in your order email.
+- Don't know it? Open PowerShell and run:
+
+```
+(Get-WmiObject -query 'select * from SoftwareLicensingService').OA3xOriginalProductKey
+```
+
+That shows a key stored in the BIOS (common on laptops). More options in [How to find your Windows product key](/blog/how-to-find-windows-product-key).
+
+### 2. Link Windows to your Microsoft account
+
+Go to **Settings → Accounts → Your info** and sign in with a Microsoft account. Then check **Settings → System → Activation**. It should say *"…digital license linked to your Microsoft account"*. That's your safety net if activation ever fails. Not sure what that means? See [Digital license vs product key](/blog/digital-license-vs-product-key).
+
+### 3. Note your edition
+
+Same Activation page: is it **Home** or **Pro**? Reinstalling the wrong edition is the most common reason Windows won't reactivate.
+
+And of course: **back up your files.**
+
+## Option A: Reset this PC (easiest)
+
+Good for "make it feel new" without a USB stick.
+
+1. Open **Settings → System → Recovery**.
+2. Click **Reset PC**.
+3. Choose **Keep my files** (removes apps, keeps documents) or **Remove everything** (full wipe).
+4. Choose **Cloud download**. It grabs a fresh copy of Windows from Microsoft and avoids corrupted local files.
+5. Follow the prompts. Your activation is kept.
+
+## Option B: Clean install from USB (most thorough)
+
+Best for malware, a new SSD, or a properly fresh install.
+
+1. On any PC, download the **Media Creation Tool** from [Microsoft's Windows 11 page](https://www.microsoft.com/software-download/windows11) and make a bootable USB (8 GB+).
+2. Boot from the USB (usually F12, F11 or Esc at startup).
+3. At the product key screen, click **"I don't have a product key"**.
+4. Pick the **same edition** you noted earlier.
+5. Delete the old Windows partitions and install to the unallocated space.
+6. Finish setup and connect to the internet. Within a few minutes, Windows activates itself.
+
+## "Windows is not activated" after reinstalling?
+
+Try these, in order:
+
+1. **Wait and restart.** Activation can take a little while after the first internet connection.
+2. **Check the edition.** If you installed Home but your licence is Pro (or the other way), reinstall the right edition, or use **Change product key** to switch.
+3. **Run the troubleshooter.** Settings → System → Activation → **Troubleshoot**. If you changed the motherboard, pick *"I changed hardware on this device recently"*.
+4. **Enter your key manually.** Settings → System → Activation → **Change product key**.
+5. **Phone activation.** If you see "this key has been used too many times", run `slui 4` and follow the automated phone steps.
+
+## When reinstalling *won't* save your licence
+
+- **New PC or new motherboard with an OEM licence.** OEM keys stay with the original motherboard.
+- **You never had a genuine licence.** If Windows was activated with a KMS script or activator, a clean install wipes the crack and there's nothing to reactivate.
+
+In both cases you'll need a new key. A genuine [Windows 11 Pro key](/products/windows-11-pro) is $16.99 and arrives instantly, or [Windows 11 Home](/products/windows-11-home) is $12.99. If you're reinstalling Office as well, the [Windows 11 Pro + Office 2024 bundle](/products/windows-11-pro-office-2024-pro-plus-bundle) covers both.
+
+## Frequently asked questions
+
+### Do I need my product key to reinstall Windows?
+
+Not on the same PC if it has a digital license. Click "I don't have a product key" during setup, choose the same edition, and Windows reactivates online. Keep the key anyway in case the automatic activation fails.
+
+### Does Reset this PC remove my Windows activation?
+
+No. Reset this PC keeps your Windows licence and reactivates automatically, whether you choose Keep my files or Remove everything.
+
+### Why is Windows not activated after a clean install?
+
+The most common causes are installing a different edition than your licence (Home vs Pro), no internet connection yet, or a motherboard change. Use Settings > System > Activation > Troubleshoot to fix it.
+
+### Can I reinstall Windows on a new SSD and keep my license?
+
+Yes. Swapping the drive doesn't change your PC's hardware ID enough to affect activation. Install to the new SSD, choose the same edition, and Windows reactivates.
+
+### Will reinstalling Windows delete Office?
+
+Yes, a clean install removes Office. Reinstall it afterwards from your Microsoft account or with your Office key. See [how to move Office to a new PC](/blog/move-office-license-to-new-pc) for the activation steps.
+
+### Why won't Windows activate after a BIOS update and reinstall?
+
+A BIOS update can change how Windows reads your hardware ID, which often shows up as error 0xC004F213. Sign in with the Microsoft account the licence was linked to and run Settings > System > Activation > Troubleshoot > "I changed hardware on this device recently". Don't remove the old device from your Microsoft account before you do, because the troubleshooter needs it. On a PC with Windows preinstalled, the manufacturer can also help.

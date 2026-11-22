@@ -1,0 +1,119 @@
+---
+title: "How to Move Your Microsoft Office License to a New PC"
+description: "Move Office 2024, 2021 or 2019 to a new computer: which licences can be transferred, how to deactivate the old PC, reinstall, and fix 'this key has already been used'."
+excerpt: "New laptop, same Office. Here's how to move your licence across without buying it again."
+category: "Guide"
+date: "2026-11-22"
+summary: "Retail Office licences (Home, Home & Business) are tied to your Microsoft account: sign out or uninstall on the old PC, then install from account.microsoft.com on the new one. Key-based editions like Professional Plus are moved by removing the key from the old PC with ospp.vbs /unpkey, installing on the new PC, and activating online or by phone. Office that came preinstalled (OEM) usually can't be moved."
+readTime: "7 min"
+keywords: "how to move office license to new pc, transfer office 2021 to new computer, transfer office 2024 to new pc, move microsoft office to another computer, deactivate office on old computer, office key already used"
+product: "Office 2024 Professional Plus"
+draft: false
+---
+
+Bought a new PC and don't want to pay for Office again? For most one-time-purchase licences you don't have to. How you move it depends on **which kind** of Office licence you have.
+
+## Step 1: figure out which licence you have
+
+Open any Office app on the **old PC** → **File → Account**.
+
+| What you see | Licence type | Can you move it? |
+| --- | --- | --- |
+| Your Microsoft account email under *Product Information* | Retail (Home / Home & Business), tied to your account | ✅ Yes, via your account |
+| *Office Professional Plus* and no account | Key-based (Pro Plus) | ✅ Usually, via the key |
+| *Microsoft 365* | Subscription | ✅ Just sign in on the new PC |
+| Came preinstalled with the PC, no key email | OEM | ❌ Usually stays with that PC |
+
+## If Office is tied to your Microsoft account (Home, Home & Business)
+
+1. On the **old PC**: uninstall Office from **Settings → Apps**, or just sign out of Office.
+2. On the **new PC**: go to [account.microsoft.com/services](https://account.microsoft.com/services) and sign in with the same Microsoft account.
+3. Find your Office product and click **Install**.
+4. Open Word, sign in, and Office activates.
+
+Microsoft's licence terms for one-time-purchase Office let you move it to another device you own, **but not more often than once every 90 days** (unless the old device died).
+
+## If you have a key-based edition (Professional Plus)
+
+Professional Plus activates with a key, not an account, so you move it by **removing the key from the old PC first**. That frees up the activation.
+
+### On the old PC
+
+1. Open **Command Prompt as administrator**.
+2. Go to the Office folder:
+
+```
+cd "C:\Program Files\Microsoft Office\Office16"
+```
+
+(Office 2016, 2019, 2021 and 2024 all use the `Office16` folder.)
+
+3. Show the installed key:
+
+```
+cscript ospp.vbs /dstatus
+```
+
+Note the **last 5 characters** of the key.
+
+4. Remove it:
+
+```
+cscript ospp.vbs /unpkey:XXXXX
+```
+
+5. Uninstall Office from Settings → Apps.
+
+### On the new PC
+
+1. Install the **same version and edition** of Office (2024 Pro Plus key → Office 2024 Pro Plus).
+2. Open Word → **File → Account → Change Product Key** and enter your key.
+3. It activates online. If it says the key was used too many times, choose **phone activation** in the activation wizard and follow the automated steps.
+
+## "This product key has already been used"
+
+This usually means the old PC still holds the activation. Fixes:
+
+- Run the `/unpkey` step on the old PC if you still have it.
+- Use **phone activation**: explain you moved it to a new PC. It's automated and usually works.
+- Contact the seller. A good one will replace a key that genuinely won't move. (Ours: [30-day guarantee](/refund-policy).)
+
+## When it's cheaper to just buy a new key
+
+If your old Office was **OEM** (preinstalled), the old PC is dead and the key's lost, or it's **Office 2021 or older**, it may not be worth the hassle:
+
+- **Office 2021** stopped getting security updates in **October 2026**. See [Office 2021 end of support](/blog/office-2021-end-of-support).
+- A genuine [Office 2024 Professional Plus key](/products/office-2024-professional-plus) is **$34.99** with updates until 2029.
+- New PC with no Windows licence either? The [Windows 11 Pro + Office 2024 bundle](/products/windows-11-pro-office-2024-pro-plus-bundle) is $44.99 for both.
+
+Not sure which Office 2024 edition fits? [Office 2024 Home vs Home & Business vs Pro Plus](/blog/office-2024-home-vs-professional-plus).
+
+## Frequently asked questions
+
+### Can I transfer Office 2021 or 2024 to a new computer?
+
+Yes, if it's a retail or key-based one-time purchase. Remove it from the old PC first, then install and activate on the new one. Preinstalled OEM copies usually can't be moved.
+
+### How do I deactivate Office on my old computer?
+
+For account-based Office, sign out or uninstall it. For key-based editions like Professional Plus, run `cscript ospp.vbs /unpkey:` followed by the last five characters of the key from the Office16 folder, then uninstall.
+
+### Can I use one Office key on two computers?
+
+No. A one-time-purchase Office licence covers one PC at a time. Microsoft 365 is the option that covers several devices.
+
+### How often can I move my Office licence?
+
+Microsoft's terms for one-time-purchase Office allow moving it to another device you own, but not more than once every 90 days unless the old device failed.
+
+### Do I lose my documents when I move Office?
+
+No. Your files are separate from the Office licence. Copy them to the new PC, or keep them in OneDrive, and they open the same in the new install.
+
+### Can I move Office to a different Microsoft account?
+
+No. A retail Office 2021 or 2024 licence stays linked to the Microsoft account it was first redeemed on. Sign in with that same account on the new PC.
+
+### Can I move Office from a Windows PC to a Mac?
+
+Not with the same licence. One-time-purchase Office is sold either for Windows or for Mac. Office 2024 Professional Plus is Windows-only, and Mac users need Office Home 2024 or Home & Business 2024 for Mac.
