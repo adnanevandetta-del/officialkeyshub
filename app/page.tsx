@@ -25,6 +25,7 @@ export default function Home() {
     <>
       <PromoBanner />
       <Navbar />
+      <main>
       <FeatureBar />
       <ProductBillboard />
       <Products />
@@ -35,6 +36,7 @@ export default function Home() {
       <Office2024Promo />
       <PopularProducts />
       <PartnerProgramPromo />
+      </main>
       <Footer />
       <WhatsAppButton />
     </>

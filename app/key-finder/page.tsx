@@ -10,7 +10,7 @@ import KeyFinder, { type FinderProduct } from "./KeyFinder";
 const URL = "https://www.officialkeyshub.com/key-finder";
 
 export const metadata: Metadata = {
-  title: "Which Windows or Office Key Do I Need? Free Key Finder | Official Keys Hub",
+  title: "Which Windows or Office Key Do I Need? Free Key Finder",
   description:
     "Answer 2 quick questions and get the right Microsoft license: Windows 11 Home vs Pro, Office Home vs Home & Business vs Pro Plus, Visio, Project, Server and more.",
   alternates: { canonical: URL },

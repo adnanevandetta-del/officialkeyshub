@@ -1,0 +1,6 @@
+/* Font Awesome ships font-display:block, which hides text that uses icons
+   until the icon font arrives (Lighthouse "Font display"). Re-declare the
+   three faces we use with swap. Imported after all.min.css so these win. */
+@font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:swap;src:url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2") format("woff2")}
+@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:400;font-display:swap;src:url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2") format("woff2")}
+@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:swap;src:url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2")}

@@ -133,6 +133,13 @@ const nextConfig: NextConfig = {
 
   // React Strict Mode
   reactStrictMode: true,
+
+  // Inline CSS into the HTML instead of separate <link> files: removes the
+  // render-blocking stylesheet requests that delayed first paint and LCP on
+  // mobile (PageSpeed, Nov 2026).
+  experimental: {
+    inlineCss: true,
+  },
 };
 
 export default nextConfig;
