@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { trackEvent } from '../lib/analytics';
 
 export interface CartItem {
   id: string;
@@ -40,6 +41,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [cart]);
 
   const addToCart = (item: Omit<CartItem, 'quantity'>) => {
+    trackEvent("add_to_cart", {
+      currency: "USD",
+      value: parseFloat(item.price.replace(/[^0-9.]/g, "")) || 0,
+      items: [{ item_name: item.name }],
+    });
     setCart((prevCart) => {
       const existingItem = prevCart.find((i) => i.id === item.id);
       if (existingItem) {

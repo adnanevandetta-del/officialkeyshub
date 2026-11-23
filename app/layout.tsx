@@ -124,6 +124,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Store",
               "name": "Official Keys Hub",
+              "alternateName": ["OfficialKeysHub", "officialkeyshub.com"],
               "description": "Digital software reseller offering genuine Windows, Office, Server, and security software licenses with instant delivery and activation support",
               "url": "https://www.officialkeyshub.com",
               "logo": "https://www.officialkeyshub.com/logo.png",
@@ -149,6 +150,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Official Keys Hub",
+              "alternateName": ["OfficialKeysHub", "officialkeyshub.com"],
               "url": "https://www.officialkeyshub.com"
             }),
           }}

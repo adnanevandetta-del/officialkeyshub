@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ProductBuySection from "../../components/ProductBuySection";
 import ProductImageZoom from "../../components/ProductImageZoom";
+import MobileBuyBar from "../../components/MobileBuyBar";
 import { getProductImage } from "../../lib/productImage";
 import {
   allProducts,
@@ -248,7 +249,7 @@ export default async function ProductPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      <main className="min-h-screen pt-24 pb-20 bg-slate-50">
+      <main className="min-h-screen pt-6 md:pt-10 pb-28 lg:pb-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-6 flex flex-wrap items-center gap-2">
@@ -277,6 +278,7 @@ export default async function ProductPage({
               <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">{p.name}</h1>
               <p className="text-gray-600 mb-5">{p.description}</p>
               <ProductBuySection name={p.name} price={p.price} originalPrice={p.originalPrice} />
+              {!p.outOfStock && <MobileBuyBar name={p.name} price={p.price} />}
             </div>
           </div>
 
@@ -286,7 +288,7 @@ export default async function ProductPage({
               <h2 className="text-2xl font-bold text-gray-900 mb-4">About {p.name}</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Looking to <strong>buy {p.name}</strong> without paying full retail? Official Keys Hub delivers a
-                genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> ({vendorOf(p)}&apos;s retail price is {p.originalPrice})</> : null} — a genuine
+                genuine {p.name} product key for <strong>{p.price}</strong>{p.originalPrice ? <> ({vendorOf(p)}&apos;s retail price is {p.originalPrice})</> : null} — a genuine{" "}
                 {vendorOf(p)} license that activates directly on {vendorOf(p)}&rsquo;s own servers. {p.description}, and it&rsquo;s
                 delivered to your inbox within minutes of purchase.
               </p>
