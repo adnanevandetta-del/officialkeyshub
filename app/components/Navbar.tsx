@@ -171,6 +171,14 @@ export default function Navbar() {
                     Which Key Do I Need?
                   </Link>
                   <Link
+                    href="/microsoft-end-of-support"
+                    onClick={() => setIsDeskMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
+                  >
+                    <i className="fas fa-calendar-xmark text-[#005A9E] w-4"></i>
+                    End of Support Dates
+                  </Link>
+                  <Link
                     href="/faq"
                     onClick={() => setIsDeskMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-[#005A9E] transition-colors text-sm font-semibold"
@@ -323,6 +331,14 @@ export default function Navbar() {
               >
                 <i className="fas fa-wand-magic-sparkles text-[#005A9E]"></i>
                 Which Key Do I Need?
+              </Link>
+              <Link
+                href="/microsoft-end-of-support"
+                className="text-slate-800 hover:text-[#005A9E] font-semibold transition-colors text-sm flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <i className="fas fa-calendar-xmark text-[#005A9E]"></i>
+                End of Support Dates
               </Link>
               <Link
                 href="/faq"

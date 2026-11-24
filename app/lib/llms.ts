@@ -27,6 +27,7 @@ const PAGES: [string, string, string][] = [
   ["Refund policy", "/refund-policy", "30-day money-back guarantee terms."],
   ["About", "/about", "Who runs the store."],
   ["Blog", "/blog", "Buying, activation and licensing guides."],
+  ["Microsoft end of support dates", "/microsoft-end-of-support", "End of support dates for Windows, Office, Windows Server, SQL Server, Visio, Project and Visual Studio, with days left."],
 ];
 
 const CONTACT = [

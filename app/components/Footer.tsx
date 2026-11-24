@@ -84,6 +84,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/microsoft-end-of-support" className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                  Microsoft End of Support Dates
+                </Link>
+              </li>
+              <li>
                 <Link href="/activation-guide" className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   Activation Guide
                 </Link>

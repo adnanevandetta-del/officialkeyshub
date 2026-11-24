@@ -70,6 +70,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/microsoft-end-of-support`,
+      lastModified: new Date('2026-11-23'),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/key-finder`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',
