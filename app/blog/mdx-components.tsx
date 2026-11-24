@@ -1,14 +1,16 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 import { ProductAd } from "./BlogAds";
+import { headingId, textOf } from "./article-parts";
 
 // Styling for MDX article bodies so auto-generated posts match the look of the
 // hand-written .tsx articles (light theme, blue accents).
 export const mdxComponents = {
   // Inline catalog ad: <ProductAd name="Windows 11 Pro" /> inside an article.
   ProductAd,
+  // ids match the table of contents (tocFromMdx), so "On this page" links jump here.
   h2: (props: ComponentProps<"h2">) => (
-    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-4" {...props} />
+    <h2 id={headingId(textOf(props.children))} className="scroll-mt-24 text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4" {...props} />
   ),
   h3: (props: ComponentProps<"h3">) => (
     <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3" {...props} />

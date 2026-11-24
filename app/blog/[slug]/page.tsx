@@ -9,10 +9,20 @@ const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb";
-import { getMdxArticle, getMdxSlugs, mdxImage } from "../../lib/blog-mdx";
+import { getMdxArticle, getMdxSlugs, mdxImage, getAllBlogListItems } from "../../lib/blog-mdx";
 import ArticleHero from "../ArticleHero";
 import { mdxComponents } from "../mdx-components";
 import { BlogShopStrip, ProductAd } from "../BlogAds";
+import ReadingProgress from "../ReadingProgress";
+import {
+  tocFromMdx,
+  themeFor,
+  TableOfContents,
+  SidebarProduct,
+  SupportEndingSoon,
+  KeyFinderNudge,
+  RelatedArticles,
+} from "../article-parts";
 
 const SITE = "https://www.officialkeyshub.com";
 
@@ -109,89 +119,124 @@ export default async function MdxBlogArticle({
     { label: data.title },
   ];
 
+  const toc = tocFromMdx(content);
+  const theme = themeFor(data.category);
+  const productName = data.product ?? "Windows 11 Pro";
+  const others = getAllBlogListItems().filter((a) => a.slug !== slug);
+  const related = [
+    ...others.filter((a) => a.category === data.category),
+    ...others.filter((a) => a.category !== data.category),
+  ].slice(0, 3);
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
+      <ReadingProgress />
       <Navbar />
-      <div className="pt-20 bg-white min-h-screen">
-        <Breadcrumb items={breadcrumbItems} />
-
-        {/* Hero */}
-        <section className="py-12 md:py-16 bg-blue-50">
-          <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto">
-              <div className="flex items-center gap-3 mb-4 flex-wrap">
-                {data.category && (
-                  <span className="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm font-bold">
-                    {data.category}
-                  </span>
+      <div className="bg-white min-h-screen">
+        {/* Hero: category-tinted band, title on the left, the product box on the right */}
+        <section className={`bg-gradient-to-br ${theme.band} border-b border-gray-100`}>
+          <div className="max-w-6xl mx-auto px-4 pt-5 pb-10 md:pb-14">
+            <Breadcrumb items={breadcrumbItems} />
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] items-center">
+              <div>
+                <div className="flex items-center gap-3 mb-4 flex-wrap">
+                  {data.category && (
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold ${theme.chip}`}>
+                      <i className={`fas ${theme.icon} text-xs`} /> {data.category}
+                    </span>
+                  )}
+                  {data.readTime && <span className="text-sm text-gray-500"><i className="far fa-clock mr-1" />{data.readTime} read</span>}
+                </div>
+                <h1 className="text-3xl md:text-5xl font-extrabold mb-5 text-gray-900 leading-tight">{data.title}</h1>
+                {(data.description ?? data.excerpt) && (
+                  <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">{data.description ?? data.excerpt}</p>
                 )}
-                <span className="text-gray-500 text-sm">
-                  {dateLabel && <>📅 {dateLabel}</>} {updatedLabel && <>• Updated {updatedLabel}</>}{" "}
-                  {data.readTime && <>• ⏱️ {data.readTime} read</>}
-                </span>
+                <div className="mt-6 flex items-center gap-3 text-sm text-gray-600">
+                  <Image src="/logo.png" alt="" width={36} height={36} className="rounded-full ring-1 ring-gray-200 bg-white" />
+                  <div>
+                    <p className="font-semibold text-gray-900 m-0">Official Keys Hub team</p>
+                    <p className="m-0 text-gray-500">
+                      {dateLabel && <>Published {dateLabel}</>}
+                      {updatedLabel && <> · Updated {updatedLabel}</>}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h1 className="text-3xl md:text-5xl font-extrabold mb-5 text-gray-900 leading-tight">
-                {data.title}
-              </h1>
-              {(data.description ?? data.excerpt) && (
-                <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                  {data.description ?? data.excerpt}
-                </p>
-              )}
+              <div className="hidden lg:block">
+                {data.image ? (
+                  <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-lg">
+                    <Image src={data.image} alt={data.title} fill unoptimized className="object-cover" priority />
+                  </div>
+                ) : (
+                  <ArticleHero products={[productName]} alt={`${productName} product box`} className="m-0" />
+                )}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Body */}
-        <article className="py-12">
-          <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto">
-              {data.image ? (
-                <div className="relative w-full h-56 md:h-80 rounded-2xl overflow-hidden mb-10">
-                  <Image src={data.image} alt={data.title} fill unoptimized className="object-cover" priority />
-                </div>
-              ) : (
-                <ArticleHero products={[data.product ?? "Windows 11 Pro"]} alt={`${data.product ?? "Windows 11 Pro"} product box`} className="mb-10" />
-              )}
-              {data.summary && (
-                <aside className="mb-10 rounded-2xl border border-sky-200 bg-sky-50 p-6" aria-label="Quick answer">
-                  <p className="text-xs font-bold uppercase tracking-wide text-sky-700 mb-2">Quick answer</p>
-                  <p className="text-gray-800 leading-relaxed m-0">{data.summary}</p>
-                </aside>
-              )}
-              {(() => {
-                const [before, after] = splitForAd(content);
-                return (
-                  <>
-                    <MDXRemote source={before} components={mdxComponents} options={mdxOptions} />
-                    {after && (
-                      <>
-                        <ProductAd name={data.product} topic={adTopic} />
-                        <MDXRemote source={after} components={mdxComponents} options={mdxOptions} />
-                      </>
-                    )}
-                  </>
-                );
-              })()}
-
-              {/* CTA */}
-              <div className="mt-14 rounded-2xl p-8 text-center text-white bg-blue-700">
-                <h2 className="text-2xl font-bold mb-3">Need a genuine key?</h2>
-                <p className="text-blue-100 mb-6 max-w-xl mx-auto">
-                  Get genuine Microsoft licenses with instant delivery, a 30-day money-back guarantee, and 24/7 support.
+        {/* Body + sidebar */}
+        <div className="max-w-6xl mx-auto px-4 py-10 md:py-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
+          <article className="min-w-0 max-w-3xl">
+            {data.summary && (
+              <aside className="mb-8 rounded-2xl border border-sky-200 bg-sky-50 p-6" aria-label="Quick answer">
+                <p className="text-xs font-bold uppercase tracking-wide text-sky-700 mb-2">
+                  <i className="fas fa-bolt mr-1" /> Quick answer
                 </p>
-                <a
-                  href="/products"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all"
-                >
-                  Browse products
-                </a>
-              </div>
+                <p className="text-gray-800 leading-relaxed m-0">{data.summary}</p>
+              </aside>
+            )}
+
+            {toc.length >= 3 && (
+              <details className="lg:hidden mb-8 rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                <summary className="cursor-pointer font-bold text-gray-900">On this page ({toc.length} sections)</summary>
+                <TableOfContents items={toc} className="mt-4" />
+              </details>
+            )}
+
+            {(() => {
+              const [before, after] = splitForAd(content);
+              return (
+                <>
+                  <MDXRemote source={before} components={mdxComponents} options={mdxOptions} />
+                  {after && (
+                    <>
+                      <ProductAd name={data.product} topic={adTopic} />
+                      <MDXRemote source={after} components={mdxComponents} options={mdxOptions} />
+                    </>
+                  )}
+                </>
+              );
+            })()}
+
+            {/* CTA */}
+            <div className="mt-14 rounded-2xl p-8 text-center text-white bg-blue-700">
+              <h2 className="text-2xl font-bold mb-3">Need a genuine key?</h2>
+              <p className="text-blue-100 mb-6 max-w-xl mx-auto">
+                Get genuine Microsoft licenses with instant delivery, a 30-day money-back guarantee, and 24/7 support.
+              </p>
+              <a
+                href="/products"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all"
+              >
+                Browse products
+              </a>
             </div>
-          </div>
-        </article>
+
+            <RelatedArticles items={related} />
+          </article>
+
+          <aside className="hidden lg:block" aria-label="Article sidebar">
+            <div className="sticky top-24 space-y-6 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">
+              <TableOfContents items={toc} />
+              <SidebarProduct name={data.product} topic={adTopic} />
+              <SupportEndingSoon />
+              <KeyFinderNudge />
+            </div>
+          </aside>
+        </div>
       </div>
       <BlogShopStrip topic={adTopic} />
       <Footer />

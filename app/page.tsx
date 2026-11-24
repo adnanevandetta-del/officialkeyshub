@@ -12,6 +12,7 @@ import PopularProducts from "./components/PopularProducts";
 import Office2024Promo from "./components/Office2024Promo";
 import PartnerProgramPromo from "./components/PartnerProgramPromo";
 import Footer from "./components/Footer";
+import LatestGuides from "./components/LatestGuides";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 // Canonical for the homepage only — set per page (not in the root layout) so it is
@@ -36,6 +37,7 @@ export default function Home() {
       <Office2024Promo />
       <PopularProducts />
       <PartnerProgramPromo />
+      <LatestGuides />
       </main>
       <Footer />
       <WhatsAppButton />
