@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
 import PromoBanner from "./components/PromoBanner";
 import FeatureBar from "./components/FeatureBar";
-import ProductBillboard from "./components/ProductBillboard";
+import Hero3D from "./components/Hero3D";
+import BestSellers3D from "./components/BestSellers3D";
 import Products from "./components/Products";
 import MovingProductShowcase from "./components/MovingProductShowcase";
 import TrustBadges from "./components/TrustBadges";
@@ -28,7 +29,8 @@ export default function Home() {
       <Navbar />
       <main>
       <FeatureBar />
-      <ProductBillboard />
+      <Hero3D />
+      <BestSellers3D />
       <Products />
       <MovingProductShowcase />
       <TrustBadges />
