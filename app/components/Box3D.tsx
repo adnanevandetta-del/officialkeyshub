@@ -12,6 +12,7 @@ export default function Box3D({
   width = 260,
   height = 360,
   depth = 54,
+  still = false,
 }: {
   front: string;
   title: string;
@@ -19,11 +20,17 @@ export default function Box3D({
   width?: number;
   height?: number;
   depth?: number;
+  /** Don't animate or follow the pointer (e.g. when a parent carousel moves the box). */
+  still?: boolean;
 }) {
   const boxRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (still) {
+      if (boxRef.current) boxRef.current.style.transform = "none";
+      return;
+    }
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let t = 0;
@@ -55,7 +62,7 @@ export default function Box3D({
       cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onMove);
     };
-  }, []);
+  }, [still]);
 
   const face = "absolute left-1/2 top-1/2 [backface-visibility:hidden]";
   const spine = `linear-gradient(180deg, ${accent} 0%, #0b1530 100%)`;

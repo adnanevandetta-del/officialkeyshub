@@ -18,30 +18,26 @@ export interface BillboardProduct {
 
 const SWAP_MS = 4800;
 
-// The homepage hero. Copy stays put; the 3D box on the right turns away and
-// comes back as the next best seller every few seconds (pausable, clickable).
+// The homepage hero. Copy stays put; the best sellers stand on a 3D turntable
+// that turns to the next one every few seconds (pauses on hover, dots to pick).
 export default function HeroBillboard({ products }: { products: BillboardProduct[] }) {
-  const [i, setI] = useState(0);
-  const [turning, setTurning] = useState(false);
+  const n = products.length;
+  const [k, setK] = useState(0); // total steps turned; never wraps, so the ring keeps spinning forward
   const [paused, setPaused] = useState(false);
+  const i = ((k % n) + n) % n;
   const p = products[i];
-  const next = products[(i + 1) % products.length];
+  const step = 360 / n;
+  const fromPrice = products
+    .map((x) => x.price)
+    .sort((a, b) => parseFloat(a.replace(/[^0-9.]/g, "")) - parseFloat(b.replace(/[^0-9.]/g, "")))[0];
 
-  const go = (to: number) => {
-    if (to === i || turning) return;
-    setTurning(true);
-    window.setTimeout(() => {
-      setI(to);
-      setTurning(false);
-    }, 380);
-  };
+  const go = (to: number) => setK((cur) => cur + ((to - (((cur % n) + n) % n) + n) % n));
 
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => go((i + 1) % products.length), SWAP_MS);
+    const id = window.setInterval(() => setK((cur) => cur + 1), SWAP_MS);
     return () => window.clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i, paused, products.length]);
+  }, [paused]);
 
   return (
     <section className="relative -mb-px overflow-hidden bg-[linear-gradient(180deg,#dcefff_0%,#eef7ff_45%,#ffffff_100%)]">
@@ -71,19 +67,25 @@ export default function HeroBillboard({ products }: { products: BillboardProduct
         >
           <div className="absolute bottom-4 sm:bottom-8 h-16 w-[260px] sm:w-[380px] rounded-[50%] bg-gradient-to-b from-white to-[#e3f1ff] shadow-[0_22px_60px_-12px_rgba(0,103,184,0.45)] border border-white" />
 
-          {/* the next product waits behind */}
-          <div className="absolute left-[4%] sm:left-[10%] top-[16%] scale-[0.42] sm:scale-[0.56] origin-top-left opacity-80 transition-opacity duration-500">
-            <Box3D front={next.image} title={next.short} accent={next.accent} />
-          </div>
-
-          <div
-            className="relative z-10 scale-[0.72] sm:scale-90 lg:scale-100 transition-[transform,opacity] duration-[380ms] ease-in-out"
-            style={{
-              transform: turning ? "perspective(1400px) rotateY(90deg) scale(0.92)" : undefined,
-              opacity: turning ? 0 : 1,
-            }}
-          >
-            <Box3D key={p.slug} front={p.image} title={p.short} accent={p.accent} />
+          {/* turntable: every best seller stands on a ring that turns to bring the next one forward */}
+          <div className="relative z-10 h-[360px] w-[260px] scale-[0.66] sm:scale-[0.82] lg:scale-100" style={{ perspective: 1600 }}>
+            <div
+              className="absolute inset-0 [transform-style:preserve-3d] transition-transform duration-[1100ms] [transition-timing-function:cubic-bezier(.65,0,.35,1)]"
+              style={{ transform: `translateZ(-250px) rotateX(-7deg) rotateY(${-k * step}deg)` }}
+            >
+              {products.map((x, idx) => {
+                // No opacity here: it would flatten the 3D box and show back faces through it.
+                return (
+                  <div
+                    key={x.slug}
+                    className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d]"
+                    style={{ transform: `rotateY(${idx * step}deg) translateZ(250px)` }}
+                  >
+                    <Box3D still front={x.image} title={x.short} accent={x.accent} width={232} height={320} depth={46} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* price chip */}
@@ -123,15 +125,14 @@ export default function HeroBillboard({ products }: { products: BillboardProduct
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Genuine licenses · US-based store
           </span>
           <h1 className="mt-6 text-[2.5rem] leading-[1.05] sm:text-[3.6rem] xl:text-[4.2rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
-            Genuine Microsoft keys.
+            Genuine Windows &amp; Office keys
             <span className="block mt-1 bg-gradient-to-r from-[#0067b8] via-[#0078d4] to-[#2b9af3] bg-clip-text text-transparent pb-2">
-              Activated in minutes.
+              from {fromPrice}.
             </span>
-            <span className="sr-only"> Windows and Office licenses</span>
           </h1>
           <p className="mt-5 text-[1.075rem] leading-relaxed text-slate-600 max-w-xl mx-auto lg:mx-0">
-            Windows and Office licenses that activate on Microsoft&apos;s own servers. Emailed after payment, backed by a
-            30-day money-back guarantee.
+            Activate in minutes on Microsoft&apos;s own servers. Emailed after payment, pay once, and backed by a 30-day
+            money-back guarantee.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
