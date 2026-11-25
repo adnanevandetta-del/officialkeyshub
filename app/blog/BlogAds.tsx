@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { canonicalProducts } from "../lib/catalog";
 import { getProductBoxImage } from "../lib/productImage";
-import { getProductByName, pickAdProducts, savingsPercent } from "../lib/blogAds";
+import { getProductByName, pickAdProducts } from "../lib/blogAds";
 
 // Product "ads" for blog pages. Dark navy cards so they pop on the white
 // article layout; blue brand accents, white prices, green buy buttons (see the
@@ -14,7 +14,6 @@ const CARD_BG = "bg-gradient-to-br from-[#071836] via-[#0b2a52] to-[#0369a1]";
 export function ProductAd({ name, topic, label = "Deal pick for this guide" }: { name?: string; topic?: string; label?: string }) {
   const p = (name && getProductByName(name)) || pickAdProducts(topic ?? name ?? "", 1)[0];
   if (!p) return null;
-  const save = savingsPercent(p);
   const href = `/products/${p.slug}`;
   return (
     <aside
@@ -41,10 +40,7 @@ export function ProductAd({ name, topic, label = "Deal pick for this guide" }: {
           <p className="text-sm text-slate-300 mt-1 mb-3">{p.description}</p>
           <div className="flex items-baseline justify-center sm:justify-start gap-2 flex-wrap">
             <span className="text-3xl font-black text-white">{p.price}</span>
-            <span className="text-white/40 line-through">{p.originalPrice}</span>
-            {save > 0 && (
-              <span className="px-2 py-0.5 rounded-md bg-yellow-400 text-gray-900 text-xs font-black">-{save}%</span>
-            )}
+            <span className="text-white/50 text-sm">Retail {p.originalPrice}</span>
           </div>
           <p className="text-xs text-slate-300 mt-2 mb-0">
             <i className="fas fa-envelope mr-1" /> Emailed after payment · <i className="fas fa-rotate-left mx-1" /> 30-day money-back
@@ -89,8 +85,7 @@ export function BlogShopStrip({
         </div>
         <div className={`grid gap-5 ${products.length >= 3 ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2 max-w-3xl mx-auto"}`}>
           {products.map((p) => {
-            const save = savingsPercent(p);
-            const href = `/products/${p.slug}`;
+                      const href = `/products/${p.slug}`;
             return (
               <div
                 key={p.slug}
@@ -101,9 +96,6 @@ export function BlogShopStrip({
                     <span className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-sky-600 text-white text-[10px] font-black uppercase">
                       {p.badge}
                     </span>
-                  )}
-                  {save > 0 && (
-                    <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-yellow-400 text-gray-900 text-xs font-black">-{save}%</span>
                   )}
                   <Image
                     src={getProductBoxImage(p.name)}
@@ -128,7 +120,7 @@ export function BlogShopStrip({
                 <div className="mt-auto flex items-center justify-between gap-3">
                   <div>
                     <span className="text-2xl font-black text-white">{p.price}</span>
-                    <span className="ml-2 text-sm text-white/40 line-through">{p.originalPrice}</span>
+                    <span className="ml-2 text-xs text-white/50">Retail {p.originalPrice}</span>
                   </div>
                   <Link
                     href={href}
