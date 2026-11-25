@@ -30,7 +30,7 @@ export default function TiltCard({ children, className = "" }: { children: React
       {children}
       <div
         className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity"
-        style={{ background: "radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,0.14), transparent 45%)" }}
+        style={{ background: "radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(56,189,248,0.16), transparent 50%)" }}
       />
     </div>
   );
