@@ -84,17 +84,17 @@ export default function Box3D({
       <div ref={boxRef} className="relative h-full w-full [transform-style:preserve-3d] will-change-transform">
         {/* front: the box art, a soft gloss and a hairline edge */}
         <div
-          className={`${face} overflow-hidden rounded-[5px] shadow-[0_30px_60px_-24px_rgba(11,31,58,0.45)]`}
+          className={`${face} overflow-hidden rounded-[3px] shadow-[0_30px_60px_-24px_rgba(11,31,58,0.45)]`}
           style={{ width, height, transform: `translate(-50%,-50%) translateZ(${depth / 2}px)` }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={front} alt={`${title} box`} className="h-full w-full object-cover" draggable={false} />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.38)_0%,rgba(255,255,255,0)_36%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.12)_100%)]" />
-          <div className="pointer-events-none absolute inset-0 rounded-[5px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.45)]" />
+          <div className="pointer-events-none absolute inset-0 rounded-[3px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.45)]" />
         </div>
         {/* back */}
         <div
-          className={`${face} rounded-[5px] flex items-center justify-center`}
+          className={`${face} rounded-[3px] flex items-center justify-center`}
           style={{ width, height, background: shade(55), transform: `translate(-50%,-50%) rotateY(180deg) translateZ(${depth / 2}px)` }}
         >
           <span className="text-white/60 text-sm font-bold tracking-widest uppercase">Official Keys Hub</span>

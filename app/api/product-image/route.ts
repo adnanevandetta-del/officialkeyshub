@@ -217,6 +217,9 @@ const appIcon = (x: number, c: string, letter: string) => `
 export function GET(req: NextRequest) {
   const name = req.nextUrl.searchParams.get("name") || "Microsoft Product";
   const boxOnly = req.nextUrl.searchParams.get("box") === "1";
+  // face=1: just the cover, edge to edge (no shadow, square corners, light
+  // brand tint), for the front face of the homepage's 3D boxes.
+  const faceOnly = req.nextUrl.searchParams.get("face") === "1";
   const meta = metaFor(name);
   const { accent, accent2 } = meta;
   const { svg: logoSvg, scale: logoScale } = logoFor(meta);
@@ -286,9 +289,10 @@ export function GET(req: NextRequest) {
     }).join("\n  ");
   }
 
-  const vb = boxOnly ? "18 12 564 780" : "0 0 600 800";
-  const w = boxOnly ? 564 : 600;
-  const h = boxOnly ? 780 : 800;
+  const vb = faceOnly ? "40 30 520 720" : boxOnly ? "18 12 564 780" : "0 0 600 800";
+  const w = faceOnly ? 520 : boxOnly ? 564 : 600;
+  const h = faceOnly ? 720 : boxOnly ? 780 : 800;
+  const rx = faceOnly ? 0 : 14;
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="${w}" height="${h}" role="img" aria-label="${esc(name)} — Official Keys Hub">
   <defs>
@@ -300,15 +304,17 @@ export function GET(req: NextRequest) {
     <linearGradient id="oFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eb4d67"/><stop offset="0.55" stop-color="#d12f4f"/><stop offset="1" stop-color="#b51d41"/></linearGradient>
     <filter id="drop" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter>
     <filter id="foldShadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6"/></filter>
-    <clipPath id="card"><rect x="40" y="30" width="520" height="720" rx="14"/></clipPath>
+    <clipPath id="card"><rect x="40" y="30" width="520" height="720" rx="${rx}"/></clipPath>
+    <linearGradient id="tint" x1="0" y1="0" x2="0" y2="1"><stop offset="0.35" stop-color="${accent}" stop-opacity="0"/><stop offset="1" stop-color="${accent}" stop-opacity="0.13"/></linearGradient>
   </defs>
 
-  ${boxOnly ? "" : `<rect width="600" height="800" fill="url(#bg)"/>`}
-  <!-- Soft drop shadow under the cover -->
-  <rect x="52" y="48" width="496" height="712" rx="14" fill="#0b1020" fill-opacity="0.22" filter="url(#drop)"/>
+  ${boxOnly || faceOnly ? "" : `<rect width="600" height="800" fill="url(#bg)"/>`}
+  ${faceOnly ? "" : `<!-- Soft drop shadow under the cover -->
+  <rect x="52" y="48" width="496" height="712" rx="14" fill="#0b1020" fill-opacity="0.22" filter="url(#drop)"/>`}
 
   <!-- Cover -->
-  <rect x="40" y="30" width="520" height="720" rx="14" fill="url(#cover)"/>
+  <rect x="40" y="30" width="520" height="720" rx="${rx}" fill="url(#cover)"/>
+  ${faceOnly ? `<rect x="40" y="30" width="520" height="720" fill="url(#tint)"/>` : ""}
   <g clip-path="url(#card)">
     <!-- Brand bars, top and bottom -->
     <rect x="40" y="30" width="520" height="24" fill="url(#edge)"/>
@@ -333,7 +339,7 @@ export function GET(req: NextRequest) {
     <!-- Bottom block -->
     ${bottomSvg}
   </g>
-  <rect x="40" y="30" width="520" height="720" rx="14" fill="none" stroke="#dfe3e8" stroke-width="1.5"/>
+  ${faceOnly ? "" : `<rect x="40" y="30" width="520" height="720" rx="14" fill="none" stroke="#dfe3e8" stroke-width="1.5"/>`}
 </svg>`;
 
   return new Response(svg, {

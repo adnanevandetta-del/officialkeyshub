@@ -19,3 +19,9 @@ export function getProductImage(name: string): string {
 export function getProductBoxImage(name: string): string {
   return `/api/product-image?name=${encodeURIComponent(imageName(name))}&box=1&v=${IMG_VERSION}`;
 }
+
+// Cover only, edge to edge with a light brand tint — the front face of the
+// homepage's 3D boxes (no shadow or rounded corners to show at the edges).
+export function getProductFaceImage(name: string): string {
+  return `/api/product-image?name=${encodeURIComponent(imageName(name))}&face=1&v=${IMG_VERSION}`;
+}
