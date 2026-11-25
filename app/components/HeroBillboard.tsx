@@ -18,15 +18,15 @@ export interface BillboardProduct {
 
 const SWAP_MS = 4800;
 
-// The homepage hero. Copy stays put; the best sellers stand on a 3D turntable
-// that turns to the next one every few seconds (pauses on hover, dots to pick).
+// The homepage hero. The current best seller stands in front (gently turning,
+// leaning toward the pointer); the next and previous wait behind it, and every few
+// seconds they swap places in 3D (pauses on hover, dots to pick).
 export default function HeroBillboard({ products }: { products: BillboardProduct[] }) {
   const n = products.length;
   const [k, setK] = useState(0); // total steps turned; never wraps, so the ring keeps spinning forward
   const [paused, setPaused] = useState(false);
   const i = ((k % n) + n) % n;
   const p = products[i];
-  const step = 360 / n;
   const fromPrice = products
     .map((x) => x.price)
     .sort((a, b) => parseFloat(a.replace(/[^0-9.]/g, "")) - parseFloat(b.replace(/[^0-9.]/g, "")))[0];
@@ -67,21 +67,27 @@ export default function HeroBillboard({ products }: { products: BillboardProduct
         >
           <div className="absolute bottom-4 sm:bottom-8 h-16 w-[260px] sm:w-[380px] rounded-[50%] bg-gradient-to-b from-white to-[#e3f1ff] shadow-[0_22px_60px_-12px_rgba(0,103,184,0.45)] border border-white" />
 
-          {/* turntable: every best seller stands on a ring that turns to bring the next one forward */}
-          <div className="relative z-10 h-[360px] w-[260px] scale-[0.66] sm:scale-[0.82] lg:scale-100" style={{ perspective: 1600 }}>
-            <div
-              className="absolute inset-0 [transform-style:preserve-3d] transition-transform duration-[1100ms] [transition-timing-function:cubic-bezier(.65,0,.35,1)]"
-              style={{ transform: `translateZ(-250px) rotateX(-7deg) rotateY(${-k * step}deg)` }}
-            >
+          {/* carousel: the current best seller stands in front, the next and previous wait
+              behind it; each swap slides them into each other's places in 3D */}
+          <div className="relative z-10 h-[360px] w-[260px] scale-[0.7] sm:scale-[0.85] lg:scale-100" style={{ perspective: 1500 }}>
+            <div className="absolute inset-0 [transform-style:preserve-3d]">
               {products.map((x, idx) => {
-                // No opacity here: it would flatten the 3D box and show back faces through it.
+                const d = (idx - i + n) % n; // 0 = front, 1 = next (right), n-1 = previous (left)
+                const pose =
+                  d === 0
+                    ? "translate3d(0,0,0) rotateY(0deg)"
+                    : d === 1
+                      ? "translate3d(185px,-26px,-300px) rotateY(-22deg)"
+                      : d === n - 1
+                        ? "translate3d(-185px,-26px,-300px) rotateY(22deg)"
+                        : "translate3d(0,-40px,-620px) rotateY(0deg)";
                 return (
                   <div
                     key={x.slug}
-                    className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d]"
-                    style={{ transform: `rotateY(${idx * step}deg) translateZ(250px)` }}
+                    className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d] transition-transform duration-[950ms] [transition-timing-function:cubic-bezier(.65,0,.35,1)]"
+                    style={{ transform: pose }}
                   >
-                    <Box3D still front={x.image} title={x.short} accent={x.accent} width={232} height={320} depth={46} />
+                    <Box3D still={d !== 0} front={x.image} title={x.short} accent={x.accent} />
                   </div>
                 );
               })}
@@ -93,14 +99,6 @@ export default function HeroBillboard({ products }: { products: BillboardProduct
             <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 font-bold">One-time price</p>
             <p key={p.slug} className="text-2xl font-extrabold text-[#0b1f3a] leading-tight tabular-nums">{p.price}</p>
             <p className="text-[11px] text-slate-500">Retail {p.originalPrice}</p>
-          </div>
-          <div className="okh3d-float-slow absolute left-0 sm:left-[2%] bottom-[18%] z-20 hidden sm:flex items-center gap-2 rounded-full bg-white/90 backdrop-blur border border-[#d6e9fb] pl-2 pr-4 py-2 shadow-[0_15px_40px_-12px_rgba(0,103,184,0.4)]">
-            <span className="h-7 w-7 rounded-full bg-emerald-500/12 text-emerald-600 flex items-center justify-center"><LineIcon name="mail" className="h-4 w-4" /></span>
-            <span className="text-sm font-semibold text-slate-800">Emailed after payment</span>
-          </div>
-          <div className="okh3d-float absolute right-0 bottom-[26%] z-20 hidden sm:flex items-center gap-2 rounded-full bg-white/90 backdrop-blur border border-[#d6e9fb] pl-2 pr-4 py-2 shadow-[0_15px_40px_-12px_rgba(0,103,184,0.4)] [animation-delay:-3s]">
-            <span className="h-7 w-7 rounded-full bg-[#0078d4]/12 text-[#0067b8] flex items-center justify-center"><LineIcon name="windows" className="h-3.5 w-3.5" /></span>
-            <span className="text-sm font-semibold text-slate-800">Activates on Microsoft</span>
           </div>
 
           {/* which best seller is showing */}
@@ -121,21 +119,14 @@ export default function HeroBillboard({ products }: { products: BillboardProduct
 
         {/* copy */}
         <div className="text-center lg:text-left lg:col-start-1 lg:row-start-1">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur border border-[#cfe5fa] text-[#0b4a8a] text-[11px] font-bold uppercase tracking-[0.12em] shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Genuine licenses · US-based store
-          </span>
-          <h1 className="mt-6 text-[2.5rem] leading-[1.05] sm:text-[3.6rem] xl:text-[4.2rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
+          <h1 className="text-[2.5rem] leading-[1.05] sm:text-[3.6rem] xl:text-[4.2rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
             Genuine Windows &amp; Office keys
-            <span className="block mt-1 bg-gradient-to-r from-[#0067b8] via-[#0078d4] to-[#2b9af3] bg-clip-text text-transparent pb-2">
+            <span className="block mt-1 text-[#0067b8]">
               from {fromPrice}.
             </span>
           </h1>
-          <p className="mt-5 text-[1.075rem] leading-relaxed text-slate-600 max-w-xl mx-auto lg:mx-0">
-            Activate in minutes on Microsoft&apos;s own servers. Emailed after payment, pay once, and backed by a 30-day
-            money-back guarantee.
-          </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
+          <div className="mt-9 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
             <Link
               href={`/products/${p.slug}`}
               className="group inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold shadow-[0_14px_34px_-10px_rgba(16,185,129,0.75)] transition-all hover:-translate-y-0.5"

@@ -28,13 +28,18 @@ export default function Box3D({
 
   useEffect(() => {
     if (still) {
-      if (boxRef.current) boxRef.current.style.transform = "none";
+      // Settle smoothly (e.g. a box leaving the front of the carousel).
+      if (boxRef.current) {
+        boxRef.current.style.transition = "transform 0.9s cubic-bezier(.65,0,.35,1)";
+        boxRef.current.style.transform = "none";
+      }
       return;
     }
+    if (boxRef.current) boxRef.current.style.transition = "none";
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let t = 0;
-    let cur = { x: -8, y: -24 };
+    let cur = { x: 0, y: 0 }; // eases into the idle turn, so a box arriving at the front doesn't jump
     const onMove = (e: PointerEvent) => {
       target.current = {
         x: ((e.clientY / window.innerHeight) - 0.5) * -18,
