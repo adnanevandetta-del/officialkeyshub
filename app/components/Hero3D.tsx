@@ -1,32 +1,40 @@
 import { getProductByName } from "../lib/blogAds";
 import { getProductBoxImage } from "../lib/productImage";
-import HeroBillboard, { type BillboardProduct } from "./HeroBillboard";
+import HeroBillboard, { type BundleOffer } from "./HeroBillboard";
 
-// Best sellers the hero box rotates through, with the name shown on the box
-// spine and button, and a spine colour that matches each product's box art.
-const ROTATION: { name: string; short: string; accent: string }[] = [
-  { name: "Office 2024 Professional Plus", short: "Office 2024", accent: "#d83b01" },
-  { name: "Windows 11 Pro", short: "Windows 11 Pro", accent: "#0067b8" },
-  { name: "Windows 11 Pro + Office 2024 Pro Plus Bundle", short: "Windows 11 + Office", accent: "#0b4a8a" },
-  { name: "Windows 11 Home", short: "Windows 11 Home", accent: "#0078d4" },
-];
+const BUNDLE = "Windows 11 Pro + Office 2024 Pro Plus Bundle";
+const ITEMS = [
+  { name: "Windows 11 Pro", short: "Windows 11 Pro", accent: "#0067b8", perks: "Remote Desktop, BitLocker, Hyper-V" },
+  { name: "Office 2024 Professional Plus", short: "Office 2024", accent: "#d83b01", perks: "Word, Excel, PowerPoint, Outlook, Access" },
+] as const;
 
-// Server wrapper: prices come straight from the catalog.
+const num = (s: string) => parseFloat(s.replace(/[^0-9.]/g, "")) || 0;
+const usd = (n: number) => `$${n.toFixed(2)}`;
+
+// Server wrapper: the bundle offer and its saving come straight from the catalog,
+// so the "Save $X" figure is always the real difference vs buying separately.
 export default function Hero3D() {
-  const products: BillboardProduct[] = [];
-  for (const r of ROTATION) {
-    const p = getProductByName(r.name);
-    if (p)
-      products.push({
-        name: p.name,
-        short: r.short,
-        slug: p.slug,
-        price: p.price,
-        originalPrice: p.originalPrice,
-        image: getProductBoxImage(p.name),
-        accent: r.accent,
-      });
-  }
-  if (products.length < 2) return null;
-  return <HeroBillboard products={products} />;
+  const bundle = getProductByName(BUNDLE);
+  const parts = ITEMS.map((it) => ({ it, p: getProductByName(it.name) }));
+  if (!bundle || parts.some((x) => !x.p)) return null;
+
+  const separately = parts.reduce((sum, x) => sum + num(x.p!.price), 0);
+  const save = separately - num(bundle.price);
+  if (save <= 0) return null; // never advertise a "saving" that isn't one
+
+  const offer: BundleOffer = {
+    slug: bundle.slug,
+    price: bundle.price,
+    separately: usd(separately),
+    save: usd(save),
+    items: parts.map(({ it, p }) => ({
+      name: p!.name,
+      short: it.short,
+      price: p!.price,
+      image: getProductBoxImage(p!.name),
+      accent: it.accent,
+      perks: it.perks,
+    })) as BundleOffer["items"],
+  };
+  return <HeroBillboard offer={offer} />;
 }

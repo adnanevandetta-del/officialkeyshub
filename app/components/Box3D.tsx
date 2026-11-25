@@ -70,52 +70,61 @@ export default function Box3D({
   }, [still]);
 
   const face = "absolute left-1/2 top-1/2 [backface-visibility:hidden]";
-  const spine = `linear-gradient(180deg, ${accent} 0%, #0b1530 100%)`;
+  const shade = (pct: number) => `color-mix(in srgb, ${accent} ${pct}%, black)`;
+  const tint = (pct: number) => `color-mix(in srgb, ${accent} ${pct}%, white)`;
+  const spine = `linear-gradient(90deg, ${tint(80)} 0%, ${accent} 40%, ${shade(72)} 100%)`;
 
   return (
     <div className="relative" style={{ width, height, perspective: 1400 }}>
       {/* floor shadow */}
       <div
-        className="absolute left-1/2 -bottom-10 h-10 rounded-[50%] bg-black/50 blur-2xl"
-        style={{ width: width * 0.9, transform: "translateX(-50%)" }}
+        className="absolute left-1/2 -bottom-8 h-9 rounded-[50%] bg-[#0b1f3a]/35 blur-2xl"
+        style={{ width: width * 0.85, transform: "translateX(-50%)" }}
       />
       <div ref={boxRef} className="relative h-full w-full [transform-style:preserve-3d] will-change-transform">
-        {/* front */}
+        {/* front: the box art, a soft gloss and a hairline edge */}
         <div
-          className={`${face} overflow-hidden rounded-[6px] shadow-[0_30px_80px_-20px_rgba(2,132,199,0.55)]`}
+          className={`${face} overflow-hidden rounded-[5px] shadow-[0_30px_60px_-24px_rgba(11,31,58,0.45)]`}
           style={{ width, height, transform: `translate(-50%,-50%) translateZ(${depth / 2}px)` }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={front} alt={`${title} box`} className="h-full w-full object-cover" draggable={false} />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/25" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.38)_0%,rgba(255,255,255,0)_36%,rgba(255,255,255,0)_70%,rgba(255,255,255,0.12)_100%)]" />
+          <div className="pointer-events-none absolute inset-0 rounded-[5px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.45)]" />
         </div>
         {/* back */}
         <div
-          className={`${face} rounded-[6px] flex items-center justify-center`}
-          style={{ width, height, background: "#0b1530", transform: `translate(-50%,-50%) rotateY(180deg) translateZ(${depth / 2}px)` }}
+          className={`${face} rounded-[5px] flex items-center justify-center`}
+          style={{ width, height, background: shade(55), transform: `translate(-50%,-50%) rotateY(180deg) translateZ(${depth / 2}px)` }}
         >
           <span className="text-white/60 text-sm font-bold tracking-widest uppercase">Official Keys Hub</span>
         </div>
-        {/* right spine */}
+        {/* right spine: four-tile mark and the product name */}
         <div
-          className={`${face} flex items-center justify-center`}
+          className={`${face} flex flex-col items-center justify-start gap-3 py-4`}
           style={{ width: depth, height, background: spine, transform: `translate(-50%,-50%) rotateY(90deg) translateZ(${width / 2}px)` }}
         >
-          <span className="text-white font-extrabold text-sm tracking-wide whitespace-nowrap [writing-mode:vertical-rl]">{title}</span>
+          <span className="grid grid-cols-2 gap-[2px]" aria-hidden>
+            <i className="block h-[6px] w-[6px] bg-[#f25022]" />
+            <i className="block h-[6px] w-[6px] bg-[#7fba00]" />
+            <i className="block h-[6px] w-[6px] bg-[#00a4ef]" />
+            <i className="block h-[6px] w-[6px] bg-[#ffb900]" />
+          </span>
+          <span className="text-white font-semibold text-[13px] tracking-[0.06em] whitespace-nowrap [writing-mode:vertical-rl]">{title}</span>
         </div>
         {/* left spine */}
         <div
-          className={`${face}`}
-          style={{ width: depth, height, background: spine, filter: "brightness(0.7)", transform: `translate(-50%,-50%) rotateY(-90deg) translateZ(${width / 2}px)` }}
+          className={face}
+          style={{ width: depth, height, background: shade(60), transform: `translate(-50%,-50%) rotateY(-90deg) translateZ(${width / 2}px)` }}
         />
         {/* top & bottom */}
         <div
           className={face}
-          style={{ width, height: depth, background: "#e7ecf5", transform: `translate(-50%,-50%) rotateX(90deg) translateZ(${height / 2}px)` }}
+          style={{ width, height: depth, background: "linear-gradient(180deg,#ffffff,#e6edf6)", transform: `translate(-50%,-50%) rotateX(90deg) translateZ(${height / 2}px)` }}
         />
         <div
           className={face}
-          style={{ width, height: depth, background: "#0b1530", transform: `translate(-50%,-50%) rotateX(-90deg) translateZ(${height / 2}px)` }}
+          style={{ width, height: depth, background: shade(45), transform: `translate(-50%,-50%) rotateX(-90deg) translateZ(${height / 2}px)` }}
         />
       </div>
     </div>

@@ -1,43 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Box3D from "./Box3D";
 import LineIcon from "./LineIcon";
 import { PROMO_PERCENT } from "../lib/promo";
 
-export interface BillboardProduct {
+export interface BundleItem {
   name: string;
-  short: string; // name on the box spine and the button
-  slug: string;
+  short: string;
   price: string;
-  originalPrice: string;
   image: string;
-  accent: string; // spine colour
+  accent: string;
+  perks: string;
 }
 
-const SWAP_MS = 4800;
+export interface BundleOffer {
+  slug: string;
+  price: string;
+  items: [BundleItem, BundleItem];
+  separately: string; // the two items bought one by one
+  save: string; // separately minus bundle price
+}
 
-// The homepage hero. The current best seller stands in front (gently turning,
-// leaning toward the pointer); the next and previous wait behind it, and every few
-// seconds they swap places in 3D (pauses on hover, dots to pick).
-export default function HeroBillboard({ products }: { products: BillboardProduct[] }) {
-  const n = products.length;
-  const [k, setK] = useState(0); // total steps turned; never wraps, so the ring keeps spinning forward
-  const [paused, setPaused] = useState(false);
-  const i = ((k % n) + n) % n;
-  const p = products[i];
-  const fromPrice = products
-    .map((x) => x.price)
-    .sort((a, b) => parseFloat(a.replace(/[^0-9.]/g, "")) - parseFloat(b.replace(/[^0-9.]/g, "")))[0];
+// Opens the bundle builder inside the product grid (same event the navbar uses).
+function openBundleBuilder() {
+  try {
+    sessionStorage.setItem("selectedCategory", "bundles");
+  } catch {
+    // storage blocked: the grid just opens on its default tab
+  }
+  window.dispatchEvent(new CustomEvent("categoryChanged", { detail: { category: "bundles" } }));
+}
 
-  const go = (to: number) => setK((cur) => cur + ((to - (((cur % n) + n) % n) + n) % n));
-
-  useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => setK((cur) => cur + 1), SWAP_MS);
-    return () => window.clearInterval(id);
-  }, [paused]);
+// Homepage hero as a bundle offer: Windows + Office shown together in 3D, the
+// real saving against buying them separately (from catalog prices), one CTA.
+export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
+  const [win, office] = offer.items;
 
   return (
     <section className="relative -mb-px overflow-hidden bg-[linear-gradient(180deg,#dcefff_0%,#eef7ff_45%,#ffffff_100%)]">
@@ -58,87 +56,79 @@ export default function HeroBillboard({ products }: { products: BillboardProduct
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 pt-10 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
-        {/* 3D stage (first on phones) */}
-        <div
-          className="relative order-first lg:order-none h-[330px] sm:h-[410px] lg:h-[500px] flex items-center justify-center lg:col-start-2 lg:row-start-1"
-          onPointerEnter={() => setPaused(true)}
-          onPointerLeave={() => setPaused(false)}
-        >
-          <div className="absolute bottom-4 sm:bottom-8 h-16 w-[260px] sm:w-[380px] rounded-[50%] bg-gradient-to-b from-white to-[#e3f1ff] shadow-[0_22px_60px_-12px_rgba(0,103,184,0.45)] border border-white" />
+      <div className="relative max-w-7xl mx-auto px-4 pt-10 pb-20 lg:pt-16 lg:pb-24 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-12 items-center">
+        {/* 3D stage: the two boxes together (first on phones) */}
+        <div className="relative order-first lg:order-none h-[330px] sm:h-[420px] lg:h-[500px] flex items-center justify-center lg:col-start-2 lg:row-start-1">
+          <div className="absolute bottom-6 sm:bottom-10 h-16 w-[300px] sm:w-[460px] rounded-[50%] bg-gradient-to-b from-white to-[#e3f1ff] shadow-[0_22px_60px_-12px_rgba(0,103,184,0.45)] border border-white" />
 
-          {/* carousel: the current best seller stands in front, the next and previous wait
-              behind it; each swap slides them into each other's places in 3D */}
-          <div className="relative z-10 h-[360px] w-[260px] scale-[0.7] sm:scale-[0.85] lg:scale-100" style={{ perspective: 1500 }}>
-            <div className="absolute inset-0 [transform-style:preserve-3d]">
-              {products.map((x, idx) => {
-                const d = (idx - i + n) % n; // 0 = front, 1 = next (right), n-1 = previous (left)
-                const pose =
-                  d === 0
-                    ? "translate3d(0,0,0) rotateY(0deg)"
-                    : d === 1
-                      ? "translate3d(185px,-26px,-300px) rotateY(-22deg)"
-                      : d === n - 1
-                        ? "translate3d(-185px,-26px,-300px) rotateY(22deg)"
-                        : "translate3d(0,-40px,-620px) rotateY(0deg)";
-                return (
-                  <div
-                    key={x.slug}
-                    className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d] transition-transform duration-[950ms] [transition-timing-function:cubic-bezier(.65,0,.35,1)]"
-                    style={{ transform: pose }}
-                  >
-                    <Box3D still={d !== 0} front={x.image} title={x.short} accent={x.accent} />
-                  </div>
-                );
-              })}
+          <div className="relative flex items-end scale-[0.62] sm:scale-[0.8] lg:scale-100">
+            <div className="relative -mr-6 -translate-y-4">
+              <Box3D front={win.image} title={win.short} accent={win.accent} width={230} height={318} depth={44} />
             </div>
+            <div className="relative z-20">
+              <Box3D front={office.image} title={office.short} accent={office.accent} width={244} height={337} depth={46} />
+            </div>
+            {/* the "+" that ties them together */}
+            <span className="okh3d-float absolute left-1/2 top-[40%] z-30 -ml-7 h-14 w-14 rounded-full bg-white border border-[#d6e9fb] shadow-[0_12px_30px_-8px_rgba(0,103,184,0.55)] flex items-center justify-center text-[#0067b8] text-3xl font-extrabold leading-none">
+              +
+            </span>
           </div>
 
-          {/* price chip */}
-          <div className="okh3d-float absolute right-[2%] sm:right-[6%] top-[8%] z-20 rounded-2xl bg-white/90 backdrop-blur border border-[#d6e9fb] px-4 py-3 shadow-[0_15px_40px_-12px_rgba(0,103,184,0.45)] min-w-[128px]">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 font-bold">One-time price</p>
-            <p key={p.slug} className="text-2xl font-extrabold text-[#0b1f3a] leading-tight tabular-nums">{p.price}</p>
-            <p className="text-[11px] text-slate-500">Retail {p.originalPrice}</p>
+          {/* bundle price tag and the real saving */}
+          <div className="okh3d-float absolute right-[2%] sm:right-[4%] top-[4%] z-30 rounded-2xl bg-white/95 backdrop-blur border border-[#d6e9fb] px-4 py-3 shadow-[0_15px_40px_-12px_rgba(0,103,184,0.45)]">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 font-bold">Bundle price</p>
+            <p className="text-2xl font-extrabold text-[#0b1f3a] leading-tight tabular-nums">{offer.price}</p>
+            <p className="text-[11px] text-slate-500">
+              Separately <span className="line-through">{offer.separately}</span>
+            </p>
           </div>
-
-          {/* which best seller is showing */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 flex gap-2" role="tablist" aria-label="Best sellers">
-            {products.map((x, n) => (
-              <button
-                key={x.slug}
-                type="button"
-                role="tab"
-                aria-selected={n === i}
-                aria-label={x.name}
-                onClick={() => go(n)}
-                className={`h-2 rounded-full transition-all ${n === i ? "w-7 bg-[#0067b8]" : "w-2 bg-[#0067b8]/25 hover:bg-[#0067b8]/50"}`}
-              />
-            ))}
-          </div>
+          <span className="absolute left-[4%] sm:left-[8%] top-[8%] z-30 -rotate-6 rounded-xl bg-emerald-600 px-3 py-1.5 text-white text-sm font-extrabold shadow-[0_10px_24px_-8px_rgba(5,150,105,0.7)]">
+            Save {offer.save}
+          </span>
         </div>
 
         {/* copy */}
         <div className="text-center lg:text-left lg:col-start-1 lg:row-start-1">
-          <h1 className="text-[2.5rem] leading-[1.05] sm:text-[3.6rem] xl:text-[4.2rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
-            Genuine Windows &amp; Office keys
-            <span className="block mt-1 text-[#0067b8]">
-              from {fromPrice}.
-            </span>
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0067b8] text-white text-[11px] font-bold uppercase tracking-[0.14em] shadow-[0_8px_20px_-8px_rgba(0,103,184,0.8)]">
+            Bundle offer
+          </span>
+          <h1 className="mt-5 text-[2.4rem] leading-[1.06] sm:text-[3.4rem] xl:text-[4rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
+            {win.short} + {office.short}
+            <span className="block mt-1 text-[#0067b8]">together for {offer.price}.</span>
           </h1>
 
-          <div className="mt-9 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
+          {/* what's inside */}
+          <ul className="mt-6 space-y-2.5 max-w-md mx-auto lg:mx-0 text-left">
+            {offer.items.map((it) => (
+              <li key={it.name} className="flex items-start gap-3 rounded-2xl bg-white/75 backdrop-blur border border-white px-4 py-3 shadow-[0_8px_24px_-16px_rgba(0,103,184,0.6)]">
+                <span className="mt-0.5 h-7 w-7 shrink-0 rounded-lg flex items-center justify-center text-white" style={{ background: it.accent }}>
+                  <LineIcon name={it.name.includes("Windows") ? "windows" : "doc"} className="h-3.5 w-3.5" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="flex items-baseline justify-between gap-3">
+                    <span className="font-bold text-[#0b1f3a]">{it.name}</span>
+                    <span className="text-sm text-slate-500 tabular-nums">{it.price}</span>
+                  </span>
+                  <span className="block text-xs text-slate-500 mt-0.5">{it.perks}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-7 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
             <Link
-              href={`/products/${p.slug}`}
+              href={`/products/${offer.slug}`}
               className="group inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold shadow-[0_14px_34px_-10px_rgba(16,185,129,0.75)] transition-all hover:-translate-y-0.5"
             >
-              Get {p.short} · {p.price}
+              Get the bundle · {offer.price}
               <LineIcon name="arrowRight" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/products"
+              href="/#products"
+              onClick={openBundleBuilder}
               className="px-6 py-4 rounded-2xl bg-white/80 backdrop-blur border border-[#cfe5fa] hover:border-[#0078d4] text-[#0b1f3a] font-bold shadow-sm transition-colors"
             >
-              Browse all keys
+              Build your own bundle
             </Link>
           </div>
 

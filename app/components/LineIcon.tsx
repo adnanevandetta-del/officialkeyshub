@@ -1,7 +1,7 @@
 // One consistent set of thin line icons (24px grid, 1.75 stroke, round caps)
 // for the homepage hero and best sellers, instead of mixed icon-font glyphs.
 
-export type LineIconName = "mail" | "shieldCheck" | "refund" | "bolt" | "arrowRight" | "windows" | "card" | "lock";
+export type LineIconName = "mail" | "shieldCheck" | "refund" | "bolt" | "arrowRight" | "windows" | "card" | "lock" | "doc";
 
 const PATHS: Record<Exclude<LineIconName, "windows">, React.ReactNode> = {
   mail: (
@@ -34,6 +34,12 @@ const PATHS: Record<Exclude<LineIconName, "windows">, React.ReactNode> = {
     <>
       <rect x="2.75" y="5.25" width="18.5" height="13.5" rx="2.5" />
       <path d="M2.75 9.75h18.5M6.5 15h3.5" />
+    </>
+  ),
+  doc: (
+    <>
+      <path d="M6.5 2.75h7.25l4.5 4.5v13a1 1 0 0 1-1 1h-10.75a1 1 0 0 1-1-1V3.75a1 1 0 0 1 1-1Z" />
+      <path d="M13.5 2.75v4.75h4.75M8.75 12.5h6.5M8.75 16h4.5" />
     </>
   ),
   lock: (
