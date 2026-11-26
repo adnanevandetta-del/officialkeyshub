@@ -1,0 +1,90 @@
+---
+title: "How to Install and Activate Visio 2021 and Project 2021"
+description: "Step-by-step: install Visio Professional 2021 or Project Professional 2021 with Microsoft's Office Deployment Tool and activate it with your key, plus what changed now that 2021 support has ended."
+excerpt: "Install with the Office Deployment Tool, activate under File > Account. And why 2024 is the better buy today."
+category: "Guides"
+date: "2026-11-26"
+summary: "Visio 2021 and Project 2021 install with Microsoft's free Office Deployment Tool, using the Product IDs VisioPro2021Volume or ProjectPro2021Volume and the channel PerpetualVL2021. After installing, open the app and enter your key under File > Account > Change Product Key. Both 2021 versions stopped getting security updates on October 13, 2026, so new buyers should choose the 2024 versions, supported until October 9, 2029."
+readTime: "7 min"
+keywords: "how to activate visio 2021, how to activate project 2021, install visio professional 2021, install project professional 2021, visio 2021 product key, project 2021 activation"
+product: "Visio Professional 2024"
+draft: true
+---
+
+Visio and Project don't come with a big "Download" button like Microsoft 365 does. The Professional editions install through Microsoft's free **Office Deployment Tool (ODT)**, then activate with your key. It takes about 15 minutes.
+
+> **Before you start:** Visio 2021 and Project 2021 **stopped getting security updates on October 13, 2026**. They still work, but if you're buying now, [Visio Professional 2024](/products/visio-professional-2024) and [Project Professional 2024](/products/project-professional-2024) are supported until October 9, 2029, and install the same way. The 2024 settings are included below.
+
+## Step 1: check what's already installed
+
+Visio and Project install **alongside** Office, but the versions have to match how Office was installed. If you have Office 2021 or 2024 installed with the Office Deployment Tool, you're fine. If you're unsure, check **File → Account** in Word: it shows the Office version.
+
+## Step 2: download the Office Deployment Tool
+
+1. Download the **Office Deployment Tool** from the [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=49117).
+2. Run it and extract the files to a new folder, for example `C:\ODT`. You'll get `setup.exe` and some sample files.
+
+## Step 3: create the configuration file
+
+In `C:\ODT`, create a text file named `configuration.xml` and paste in the version you need.
+
+**Visio Professional 2021:**
+
+```xml
+<Configuration>
+  <Add OfficeClientEdition="64" Channel="PerpetualVL2021">
+    <Product ID="VisioPro2021Volume">
+      <Language ID="en-us" />
+    </Product>
+  </Add>
+</Configuration>
+```
+
+**Project Professional 2021:** use the same file, with `Product ID="ProjectPro2021Volume"`.
+
+**2024 versions:** use `Channel="PerpetualVL2024"` with `Product ID="VisioPro2024Volume"` or `Product ID="ProjectPro2024Volume"`.
+
+## Step 4: install
+
+1. Open **Command Prompt as administrator**.
+2. Run:
+
+```
+cd C:\ODT
+setup.exe /configure configuration.xml
+```
+
+3. Wait for the installer to finish. It downloads the app directly from Microsoft.
+
+## Step 5: activate with your key
+
+1. Open **Visio** or **Project**.
+2. Go to **File → Account → Change Product Key** (or **Activate Product**).
+3. Enter your 25-character key and follow the prompts.
+4. For a **phone key**, choose phone activation and follow the steps on screen. See [online vs phone vs bind keys](/blog/online-key-vs-phone-key-vs-bind-key) if you're not sure which type you have.
+
+Check **File → Account** afterwards: it should say "Product Activated".
+
+## Common problems
+
+- **"We can't install because you have click-to-run Office products":** your Office and your Visio or Project were installed with different methods. Install Visio or Project with the same method and channel as Office.
+- **"This product key isn't valid":** make sure the Product ID matches your key's version: 2021 keys need the 2021 Product ID, 2024 keys the 2024 one.
+- **Activation fails repeatedly:** contact us with a screenshot and we'll help, or replace or refund the key under our [30-day guarantee](/refund-policy).
+
+## Frequently asked questions
+
+### Can I still activate Visio 2021 or Project 2021?
+
+Yes. Activation still works after the end of support. What stopped on October 13, 2026 is security updates.
+
+### Can I install Visio or Project without Office?
+
+Yes. Visio and Project can be installed on their own with the Office Deployment Tool.
+
+### What's the difference between Visio Standard and Professional?
+
+Professional adds more diagram types and templates, plus collaboration features. Project Professional adds team and resource management over Project Standard. Not sure which tool you need? Read [Visio vs Project](/blog/visio-vs-project).
+
+### Do Visio 2024 and Project 2024 install the same way?
+
+Yes. Use the same steps with the PerpetualVL2024 channel and the 2024 Product IDs.
