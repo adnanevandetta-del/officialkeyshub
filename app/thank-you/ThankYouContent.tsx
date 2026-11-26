@@ -110,6 +110,25 @@ export default function ThankYouContent() {
         sort it out fast.
       </p>
 
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 mb-6 flex flex-col sm:flex-row sm:items-center gap-4">
+        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-yellow-50 text-yellow-500 flex items-center justify-center text-xl mx-auto sm:mx-0">
+          <i className="fas fa-star"></i>
+        </div>
+        <div className="flex-1 text-center sm:text-left">
+          <p className="font-bold text-gray-900">Once your key is activated, tell others how it went</p>
+          <p className="text-sm text-gray-600">
+            We&apos;re a new store and only publish real reviews from real orders. An honest review, good or bad,
+            takes a minute and helps other buyers decide.
+          </p>
+        </div>
+        <Link
+          href="/reviews"
+          className="flex-shrink-0 text-center px-5 py-3 rounded-xl font-bold text-white bg-sky-700 hover:bg-sky-800 transition-colors"
+        >
+          Leave a review
+        </Link>
+      </div>
+
       <div className="flex flex-col sm:flex-row gap-3">
         <a
           href={`${WHATSAPP}?text=${encodeURIComponent(`Hi! I just paid with PayPal for ${item || "a key"}. Can you confirm my order?`)}`}

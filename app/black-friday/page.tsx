@@ -6,11 +6,15 @@ import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
 import LineIcon from "../components/LineIcon";
 import CopyCode from "./CopyCode";
+import BlackFridayBundles from "../components/BlackFridayBundles";
 import { getProductByName } from "../lib/blogAds";
 import { getProductBoxImage } from "../lib/productImage";
-import { BF_CODE, BF_PERCENT, bfPrice, blackFridayActive } from "../lib/promo";
+import { BF_CODE, BF_PERCENT, BF_ENDS_LABEL, bfPrice, blackFridayActive } from "../lib/promo";
 
-// Shows the deals while BF_ON is true, and a "sale ended" note once it is switched off.
+// Re-render every 10 minutes so the page flips to "sale ended" soon after the deadline.
+export const revalidate = 600;
+
+// Shows the deals until BF_ENDS_AT (Cyber Monday), and a "sale ended" note after.
 
 export const metadata: Metadata = {
   title: `Black Friday Windows & Office Key Deals: ${BF_PERCENT}% Off | Official Keys Hub`,
@@ -43,7 +47,7 @@ const faqs = [
   },
   {
     q: "How long does the sale last?",
-    a: `For a limited time. The code works as long as the Black Friday banner is showing on the site.`,
+    a: `Until ${BF_ENDS_LABEL}. After that the code stops working and prices go back to normal.`,
   },
   {
     q: "Does the discount work with other codes?",
@@ -99,6 +103,9 @@ export default function BlackFridayPage() {
                   <div className="mt-7 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
                     <CopyCode code={BF_CODE} />
                   </div>
+                  <p className="mt-4 text-sm text-white/60">
+                    Ends {BF_ENDS_LABEL}.
+                  </p>
                 </>
               ) : (
                 <p className="mt-5 text-white/75 text-lg">
@@ -149,6 +156,9 @@ export default function BlackFridayPage() {
             ))}
           </div>
         </section>
+
+        {/* Bundles: the best value per order */}
+        {active && <BlackFridayBundles />}
 
         {/* Deals grid */}
         <section className="max-w-7xl mx-auto px-4 py-14">

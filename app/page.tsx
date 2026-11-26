@@ -15,6 +15,7 @@ import PartnerProgramPromo from "./components/PartnerProgramPromo";
 import Footer from "./components/Footer";
 import LatestGuides from "./components/LatestGuides";
 import WhatsAppButton from "./components/WhatsAppButton";
+import BlackFridayBundles from "./components/BlackFridayBundles";
 
 // Canonical for the homepage only — set per page (not in the root layout) so it is
 // not inherited by every other page.
@@ -30,6 +31,7 @@ export default function Home() {
       <main>
       <FeatureBar />
       <Hero3D />
+      <BlackFridayBundles />
       <BestSellers3D />
       <Products />
       <MovingProductShowcase />

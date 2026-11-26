@@ -11,9 +11,11 @@ import { paypalPaymentUrl } from '../lib/payment';
 import { getProductImage } from '../lib/productImage';
 import { addOrder, getAccount } from '../lib/account';
 import UsdtPay from '../components/UsdtPay';
+import { findUpsell, volumeInfo, volumeDiscount, cartItemId, VOLUME_MIN, VOLUME_PERCENT } from '../lib/upsell';
+import { trackEvent } from '../lib/analytics';
 
 export default function CheckoutPage() {
-  const { cart, cartTotal, clearCart } = useCart();
+  const { cart, cartTotal, addToCart, removeFromCart, updateQuantity } = useCart();
   const [usdtOrderId, setUsdtOrderId] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<'paypal' | 'usdt' | 'whatsapp' | null>(null);
   const [promoInput, setPromoInput] = useState('');
@@ -40,7 +42,29 @@ export default function CheckoutPage() {
   }, []);
 
   const discountAmount = (cartTotal * appliedPercent) / 100;
-  const discountedTotal = cartTotal - discountAmount;
+  const volume = volumeInfo(cart);
+  const volumeAmount = volumeDiscount(cart, appliedPercent);
+  const discountedTotal = cartTotal - discountAmount - volumeAmount;
+  const upsell = findUpsell(cart);
+  const [upsellAdded, setUpsellAdded] = useState('');
+  const pct = appliedPercent / 100;
+
+  const acceptUpsell = () => {
+    if (!upsell) return;
+    if (upsell.kind === 'bundle') {
+      const qty = upsell.line.quantity;
+      const b = upsell.bundle;
+      removeFromCart(upsell.line.id);
+      addToCart({ id: cartItemId(b.name), name: b.name, price: b.price, originalPrice: b.originalPrice, image: getProductImage(b.name) });
+      if (qty > 1) updateQuantity(cartItemId(b.name), qty);
+      setUpsellAdded(b.name);
+    } else {
+      const p = upsell.product;
+      addToCart({ id: cartItemId(p.name), name: p.name, price: p.price, originalPrice: p.originalPrice, image: getProductImage(p.name) });
+      setUpsellAdded(p.name);
+    }
+    trackEvent('upsell_accepted', { kind: upsell.kind });
+  };
 
   const applyPromo = () => {
     const percent = validatePromoCode(promoInput);
@@ -68,6 +92,9 @@ export default function CheckoutPage() {
     const promoLine = appliedPercent > 0
       ? `%0D%0APromo Code: ${appliedCode} (-${appliedPercent}%25, -$${discountAmount.toFixed(2)})`
       : '';
+    const volumeLine = volumeAmount > 0
+      ? `%0D%0AVolume discount (${volume.units} business keys, -${VOLUME_PERCENT}%25): -$${volumeAmount.toFixed(2)}`
+      : '';
     const total = discountedTotal.toFixed(2);
 
     // Record the order in the customer's history (status: pending until delivered).
@@ -84,7 +111,7 @@ export default function CheckoutPage() {
     }
 
     if (paymentMethod === 'whatsapp') {
-      const whatsappMessage = `Hi! I want to complete my order:%0D%0A%0D%0A${orderDetails}${promoLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ADelivery Email: ${formData.email}`;
+      const whatsappMessage = `Hi! I want to complete my order:%0D%0A%0D%0A${orderDetails}${promoLine}${volumeLine}%0D%0A%0D%0ATotal: $${total}%0D%0A%0D%0ADelivery Email: ${formData.email}`;
       window.open(`https://wa.me/16019756129?text=${whatsappMessage}`, '_blank');
     } else if (paymentMethod === 'paypal') {
       // Pay the store's PayPal account (officialkeyshub@gmail.com) directly.
@@ -133,6 +160,55 @@ export default function CheckoutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column - Form */}
             <div className="lg:col-span-2 space-y-6">
+              {/* Upsell: bundle upgrade or the missing half of Windows + Office */}
+              {upsell && (
+                <div className="bg-white rounded-xl shadow-lg p-5 border-2 border-sky-600/40">
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-sky-700 mb-3">
+                    {upsell.kind === 'bundle' ? 'Better value: upgrade to the bundle' : 'Often bought together'}
+                  </p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-sky-50 mx-auto sm:mx-0">
+                      <Image
+                        src={getProductImage(upsell.kind === 'bundle' ? upsell.bundle.name : upsell.product.name)}
+                        alt="" fill unoptimized className="object-contain p-1"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0 text-center sm:text-left">
+                      {upsell.kind === 'bundle' ? (
+                        <>
+                          <p className="font-bold text-gray-900">{upsell.bundle.name}</p>
+                          <p className="text-sm text-gray-600">
+                            Only <strong className="text-gray-900">${upsell.extra.toFixed(2)} more</strong> than your {upsell.line.name}
+                            {pct > 0 && <> (${(upsell.extra * (1 - pct)).toFixed(2)} after {appliedCode})</>}.
+                            {' '}Bought separately: ${upsell.separately.toFixed(2)}. Bundle: {upsell.bundle.price}.
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <p className="font-bold text-gray-900">{upsell.product.name}</p>
+                          <p className="text-sm text-gray-600">
+                            {upsell.reason} <strong className="text-gray-900">{upsell.product.price}</strong>
+                            {pct > 0 && <> (${(parseFloat(upsell.product.price.replace(/[^0-9.]/g, '')) * (1 - pct)).toFixed(2)} after {appliedCode})</>}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                    <button
+                      onClick={acceptUpsell}
+                      className="flex-shrink-0 px-5 py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-black transition-colors"
+                    >
+                      <i className={`fas ${upsell.kind === 'bundle' ? 'fa-arrow-up' : 'fa-plus'} mr-2`}></i>
+                      {upsell.kind === 'bundle' ? 'Upgrade' : 'Add to order'}
+                    </button>
+                  </div>
+                </div>
+              )}
+              {!upsell && upsellAdded && (
+                <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl px-5 py-3 text-sm text-emerald-800 font-semibold">
+                  <i className="fas fa-check-circle mr-2"></i>{upsellAdded} added to your order.
+                </div>
+              )}
+
               {/* Delivery Email */}
               <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-gray-200">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -323,7 +399,7 @@ export default function CheckoutPage() {
                 <div className="border-t-2 border-gray-200 pt-4 mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-gray-600">Subtotal:</span>
-                    <span className="font-semibold">${cartTotal.toFixed(2)}</span>
+                    <span className="font-semibold text-gray-900">${cartTotal.toFixed(2)}</span>
                   </div>
                   {appliedPercent > 0 && (
                     <div className="flex justify-between items-center mb-2 text-sky-700">
@@ -331,7 +407,19 @@ export default function CheckoutPage() {
                       <span className="font-semibold">-${discountAmount.toFixed(2)}</span>
                     </div>
                   )}
-                  <div className="flex justify-between items-center text-xl font-black">
+                  {volumeAmount > 0 && (
+                    <div className="flex justify-between items-center mb-2 text-sky-700">
+                      <span>Volume ({volume.units} business keys, {VOLUME_PERCENT}%):</span>
+                      <span className="font-semibold">-${volumeAmount.toFixed(2)}</span>
+                    </div>
+                  )}
+                  {volume.units > 0 && !volume.qualifies && (
+                    <p className="text-xs text-gray-500 mb-2">
+                      <i className="fas fa-layer-group text-sky-700 mr-1"></i>
+                      Add {volume.needed} more business key{volume.needed > 1 ? 's' : ''} (Server, SQL, Visual Studio, Visio or Project) for an extra {VOLUME_PERCENT}% off them. {VOLUME_MIN}+ keys qualify.
+                    </p>
+                  )}
+                  <div className="flex justify-between items-center text-xl font-black text-gray-900">
                     <span>Total:</span>
                     <span className="text-sky-700">${discountedTotal.toFixed(2)}</span>
                   </div>
