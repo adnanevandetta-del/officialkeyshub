@@ -8,18 +8,17 @@ import LineIcon from "../components/LineIcon";
 import CopyCode from "./CopyCode";
 import { getProductByName } from "../lib/blogAds";
 import { getProductBoxImage } from "../lib/productImage";
-import { BF_CODE, BF_PERCENT, BF_ENDS_LABEL, bfPrice, blackFridayActive } from "../lib/promo";
+import { BF_CODE, BF_PERCENT, bfPrice, blackFridayActive } from "../lib/promo";
 
-// Re-rendered hourly so the page switches to "sale ended" on its own.
-export const revalidate = 3600;
+// Shows the deals while BF_ON is true, and a "sale ended" note once it is switched off.
 
 export const metadata: Metadata = {
   title: `Black Friday Windows & Office Key Deals: ${BF_PERCENT}% Off | Official Keys Hub`,
-  description: `Black Friday to Cyber Monday: ${BF_PERCENT}% off every genuine Windows and Office key with code ${BF_CODE}. Emailed after payment, 30-day money-back guarantee.`,
+  description: `Black Friday sale: ${BF_PERCENT}% off every genuine Windows and Office key with code ${BF_CODE}. Emailed after payment, 30-day money-back guarantee.`,
   alternates: { canonical: "/black-friday" },
   openGraph: {
     title: `Black Friday: ${BF_PERCENT}% off Windows & Office keys`,
-    description: `Code ${BF_CODE} takes ${BF_PERCENT}% off every key until ${BF_ENDS_LABEL}.`,
+    description: `Code ${BF_CODE} takes ${BF_PERCENT}% off every key in the store.`,
     url: "/black-friday",
     type: "website",
   },
@@ -43,8 +42,8 @@ const faqs = [
     a: `Add any key to your cart. At checkout, code ${BF_CODE} is applied for you; if it isn't, type it in the promo code box. It takes ${BF_PERCENT}% off your whole order.`,
   },
   {
-    q: "When does the sale end?",
-    a: `The code works until ${BF_ENDS_LABEL}. After that, prices go back to normal.`,
+    q: "How long does the sale last?",
+    a: `For a limited time. The code works as long as the Black Friday banner is showing on the site.`,
   },
   {
     q: "Does the discount work with other codes?",
@@ -86,7 +85,7 @@ export default function BlackFridayPage() {
           <div className="relative max-w-7xl mx-auto px-4 py-14 md:py-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div className="text-center lg:text-left">
               <p className="bf-gold inline-block text-xs font-extrabold uppercase tracking-[0.24em]">
-                Black Friday to Cyber Monday
+                Black Friday sale
               </p>
               <h1 className="mt-3 text-4xl md:text-6xl font-extrabold tracking-[-0.03em] leading-[1.05]">
                 <span className="bf-gold">{BF_PERCENT}% off</span> all
@@ -99,7 +98,6 @@ export default function BlackFridayPage() {
                   </p>
                   <div className="mt-7 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
                     <CopyCode code={BF_CODE} />
-                    <span className="text-sm text-white/60">Ends {BF_ENDS_LABEL}</span>
                   </div>
                 </>
               ) : (

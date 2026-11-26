@@ -52,7 +52,7 @@ export default function CheckoutPage() {
       setAppliedPercent(0);
       setAppliedCode('');
       setPromoError(blackFridayActive()
-        ? `Invalid promo code. Use ${BF_CODE} for ${BF_PERCENT}% off until Cyber Monday.`
+        ? `Invalid promo code. Use ${BF_CODE} for ${BF_PERCENT}% off during our Black Friday sale.`
         : `Invalid promo code. Log in with your email to get a valid ${PROMO_PERCENT}% code.`);
     }
   };
@@ -303,7 +303,7 @@ export default function CheckoutPage() {
                       ) : (
                         blackFridayActive() ? (
                           <p className="text-xs text-gray-500 mt-2">
-                            Black Friday: code <span className="font-mono font-bold text-gray-700">{BF_CODE}</span> gives {BF_PERCENT}% off until Cyber Monday.
+                            Black Friday: code <span className="font-mono font-bold text-gray-700">{BF_CODE}</span> gives {BF_PERCENT}% off your whole order.
                           </p>
                         ) : (
                         <p className="text-xs text-gray-500 mt-2">

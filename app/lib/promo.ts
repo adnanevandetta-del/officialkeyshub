@@ -85,18 +85,17 @@ export function validatePromoCode(code: string): number {
   return 0;
 }
 
-// ── Black Friday / Cyber Monday ──────────────────────────────────────────
-// One public code for everyone (no log-in needed), valid until Cyber Monday
-// 11:59:59 PM Eastern (Dec 1, 04:59:59 UTC). After that it stops validating
-// and the site falls back to the normal 15% offer on its own.
+// ── Black Friday sale ────────────────────────────────────────────────────
+// One public code for everyone (no log-in needed). No end date: the sale runs
+// until BF_ON is set to false. Turning it off removes the banner, the deal
+// prices and the code, and the site falls back to the normal 15% offer.
 // Only raise BF_PERCENT after checking it keeps the 60% margin floor.
+export const BF_ON = true;
 export const BF_CODE = "BF20";
 export const BF_PERCENT = 20;
-export const BF_ENDS_AT = Date.UTC(2026, 11, 1, 4, 59, 59);
-export const BF_ENDS_LABEL = "Cyber Monday, Nov 30, 11:59 PM ET";
 
-export function blackFridayActive(now: number = Date.now()): boolean {
-  return now <= BF_ENDS_AT;
+export function blackFridayActive(): boolean {
+  return BF_ON;
 }
 
 // Applies the sale percentage to a "$12.99" price string, e.g. "$10.39".
