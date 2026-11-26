@@ -65,12 +65,13 @@ function componentsOf(name: string): string[] {
 
 // --- realistic product logos (drawn centred on the origin, ~±100) ---
 
-// Microsoft Office folded-ribbon mark (orange portal + magenta fold).
+// Microsoft Office folded-ribbon mark in the classic all-orange colours
+// (light-orange portal + deep-orange fold).
 const officeRibbon = `
   <g>
     <rect x="-73" y="-142" width="200" height="285" rx="44" fill="url(#oPanel)"/>
     <rect x="-21" y="-76" width="96" height="150" rx="26" fill="#ffffff"/>
-    <path d="M-41 -128 L-29 -122 L-29 136 L-41 136 Z" fill="#7a1f33" opacity="0.32" filter="url(#foldShadow)"/>
+    <path d="M-41 -128 L-29 -122 L-29 136 L-41 136 Z" fill="#7c2d12" opacity="0.32" filter="url(#foldShadow)"/>
     <path d="M-127 -88 L-41 -128 L-41 126 Q-41 143 -58 143 L-110 143 Q-127 143 -127 126 Z" fill="url(#oFold)"/>
     <path d="M-127 -88 L-41 -128 L-41 -112 L-127 -72 Z" fill="#ffffff" opacity="0.18"/>
     <rect x="-127" y="-88" width="8" height="208" rx="4" fill="#ffffff" opacity="0.14"/>
@@ -301,7 +302,7 @@ export function GET(req: NextRequest) {
     <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${accent}"/><stop offset="1" stop-color="${accent2}"/></linearGradient>
     <linearGradient id="winGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0095f7"/><stop offset="1" stop-color="#0061bd"/></linearGradient>
     <linearGradient id="oPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1872e"/><stop offset="1" stop-color="#e14a0f"/></linearGradient>
-    <linearGradient id="oFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eb4d67"/><stop offset="0.55" stop-color="#d12f4f"/><stop offset="1" stop-color="#b51d41"/></linearGradient>
+    <linearGradient id="oFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ea5a1f"/><stop offset="0.55" stop-color="#d83b01"/><stop offset="1" stop-color="#b33103"/></linearGradient>
     <filter id="drop" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12"/></filter>
     <filter id="foldShadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6"/></filter>
     <clipPath id="card"><rect x="40" y="30" width="520" height="720" rx="${rx}"/></clipPath>
