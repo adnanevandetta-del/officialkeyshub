@@ -41,29 +41,26 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="relative -mb-px overflow-hidden bg-[linear-gradient(180deg,#dcefff_0%,#eef7ff_45%,#ffffff_100%)]">
-      {/* backdrop: soft light, Microsoft four-tile motif, fine grid */}
+    <section className="relative -mb-px overflow-hidden bg-[linear-gradient(180deg,#eef5fd_0%,#f6f9fe_55%,#ffffff_100%)]">
+      {/* backdrop: one soft light, a faint Microsoft four-tile motif */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="okh3d-drift absolute -top-40 left-[8%] h-[560px] w-[560px] rounded-full bg-[radial-gradient(closest-side,rgba(0,120,212,0.22),transparent)]" />
-        <div className="okh3d-drift absolute top-20 right-[-10%] h-[620px] w-[620px] rounded-full bg-[radial-gradient(closest-side,rgba(80,170,255,0.28),transparent)] [animation-delay:-7s]" />
+        <div className="okh3d-drift absolute top-0 right-[-6%] h-[640px] w-[640px] rounded-full bg-[radial-gradient(closest-side,rgba(0,120,212,0.16),transparent)]" />
         <div
           aria-hidden
-          className="absolute right-[-6%] top-[6%] hidden md:grid grid-cols-2 gap-5 opacity-[0.10] [transform:perspective(1200px)_rotateY(-24deg)_rotateX(8deg)]"
+          className="absolute right-[-5%] top-[10%] hidden md:grid grid-cols-2 gap-5 opacity-[0.06] [transform:perspective(1200px)_rotateY(-24deg)_rotateX(8deg)]"
         >
           <span className="h-44 w-44 lg:h-56 lg:w-56 rounded-[18px] bg-[#f25022]" />
           <span className="h-44 w-44 lg:h-56 lg:w-56 rounded-[18px] bg-[#7fba00]" />
           <span className="h-44 w-44 lg:h-56 lg:w-56 rounded-[18px] bg-[#00a4ef]" />
           <span className="h-44 w-44 lg:h-56 lg:w-56 rounded-[18px] bg-[#ffb900]" />
         </div>
-        <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(0,103,184,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(0,103,184,.07)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 pt-10 pb-20 lg:pt-16 lg:pb-24 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-12 items-center">
-        {/* 3D stage: the two boxes together (first on phones) */}
+      <div className="relative max-w-7xl mx-auto px-4 pt-10 pb-20 lg:pt-20 lg:pb-28 grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-12 items-center">
+        {/* 3D stage (first on phones) */}
         <div className="relative order-first lg:order-none h-[330px] sm:h-[420px] lg:h-[500px] flex items-center justify-center lg:col-start-2 lg:row-start-1">
-          <div className="absolute bottom-6 sm:bottom-10 h-16 w-[300px] sm:w-[460px] rounded-[50%] bg-gradient-to-b from-white to-[#e3f1ff] shadow-[0_22px_60px_-12px_rgba(0,103,184,0.45)] border border-white" />
-
+          <div className="absolute bottom-6 sm:bottom-10 h-14 w-[280px] sm:w-[420px] rounded-[50%] bg-[radial-gradient(closest-side,rgba(0,103,184,0.18),transparent)]" />
           {/* one box: Windows 11 Pro on the front, Office 2024 on the back; it half-turns to show each */}
           <div
             className="relative z-10 scale-[0.74] sm:scale-[0.88] lg:scale-100"
@@ -83,85 +80,94 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
               depth={48}
             />
           </div>
-
-          {/* bundle price */}
-          <div className="okh3d-float absolute right-[2%] sm:right-[6%] top-[6%] z-30 rounded-2xl bg-white/95 backdrop-blur border border-[#d6e9fb] px-4 py-3 shadow-[0_15px_40px_-12px_rgba(0,103,184,0.45)]">
-            <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 font-bold">Bundle price</p>
-            <p className="text-2xl font-extrabold text-[#0b1f3a] leading-tight tabular-nums">{offer.price}</p>
-            <p className="text-[11px] text-slate-500">
-              Separately <span className="line-through">{offer.separately}</span>
-            </p>
-          </div>
         </div>
 
         {/* copy */}
-        <div className="text-center lg:text-left lg:col-start-1 lg:row-start-1">
-          <h1 className="text-[2.4rem] leading-[1.06] sm:text-[3.4rem] xl:text-[4rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
-            {win.short} + {office.short}
-            <span className="block mt-1 text-[#0067b8]">together for {offer.price}.</span>
+        <div className="text-center lg:text-left lg:col-start-1 lg:row-start-1 max-w-xl mx-auto lg:mx-0">
+          <p className="inline-flex items-center gap-2.5 text-[12px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+            <span className="grid grid-cols-2 gap-[2px]" aria-hidden>
+              <i className="block h-[5px] w-[5px] bg-[#f25022]" />
+              <i className="block h-[5px] w-[5px] bg-[#7fba00]" />
+              <i className="block h-[5px] w-[5px] bg-[#00a4ef]" />
+              <i className="block h-[5px] w-[5px] bg-[#ffb900]" />
+            </span>
+            Genuine Microsoft bundle
+          </p>
+
+          <h1 className="mt-4 text-[2.6rem] leading-[1.03] sm:text-[3.5rem] xl:text-[4.1rem] font-semibold tracking-[-0.03em] text-slate-900 [text-wrap:balance]">
+            {win.short}
+            <span className="block text-emerald-600">&amp; {office.short}</span>
           </h1>
 
+          <p className="mt-5 text-[1.07rem] leading-relaxed text-slate-600">
+            Two genuine licenses for one PC. Pay once, activate on Microsoft&apos;s servers, keep them.
+          </p>
+
           {/* what's inside */}
-          <ul className="mt-6 space-y-2.5 max-w-md mx-auto lg:mx-0 text-left">
+          <ul className="mt-6 divide-y divide-slate-200/80 border-y border-slate-200/80 text-left">
             {offer.items.map((it) => (
-              <li key={it.name} className="flex items-start gap-3 rounded-2xl bg-white/75 backdrop-blur border border-white px-4 py-3 shadow-[0_8px_24px_-16px_rgba(0,103,184,0.6)]">
-                <span className="mt-0.5 h-7 w-7 shrink-0 rounded-lg flex items-center justify-center text-white" style={{ background: it.accent }}>
-                  <LineIcon name={it.name.includes("Windows") ? "windows" : "doc"} className="h-3.5 w-3.5" />
+              <li key={it.name} className="flex items-center gap-3 py-3">
+                <span className="h-6 w-6 shrink-0 rounded-md flex items-center justify-center text-white" style={{ background: it.accent }}>
+                  <LineIcon name={it.name.includes("Windows") ? "windows" : "doc"} className="h-3 w-3" />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="flex items-baseline justify-between gap-3">
-                    <span className="font-bold text-[#0b1f3a]">{it.name}</span>
-                    <span className="text-sm text-slate-500 tabular-nums">{it.price}</span>
-                  </span>
-                  <span className="block text-xs text-slate-500 mt-0.5">{it.perks}</span>
+                  <span className="block text-[15px] font-medium text-slate-900">{it.name}</span>
+                  <span className="block text-[13px] text-slate-500">{it.perks}</span>
                 </span>
+                <span className="text-[13px] text-slate-400 tabular-nums">{it.price}</span>
               </li>
             ))}
           </ul>
 
-          <div className="mt-7 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
+          {/* price */}
+          <div className="mt-7 flex items-end justify-center lg:justify-start gap-4">
+            <span className="text-[3rem] leading-none font-semibold tracking-[-0.03em] text-slate-900 tabular-nums">{offer.price}</span>
+            <span className="pb-0.5 text-left text-[13px] leading-snug text-slate-500">
+              One-time payment
+              <span className="block whitespace-nowrap">
+                Separately <span className="line-through">{offer.separately}</span>
+              </span>
+              <span className="block whitespace-nowrap font-semibold text-emerald-700">You save {offer.save}</span>
+            </span>
+          </div>
+
+          <div className="mt-7 flex flex-col sm:flex-row items-center gap-x-6 gap-y-4 justify-center lg:justify-start">
             <Link
               href={`/products/${offer.slug}`}
-              className="group inline-flex items-center gap-3 whitespace-nowrap px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold shadow-[0_14px_34px_-10px_rgba(16,185,129,0.75)] transition-all hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2.5 whitespace-nowrap rounded-full bg-emerald-600 px-8 py-4 text-[15px] font-semibold text-white shadow-[0_10px_24px_-10px_rgba(5,150,105,0.8)] transition-colors hover:bg-emerald-700"
             >
-              Get the bundle · {offer.price}
-              <LineIcon name="arrowRight" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              Get the bundle
+              <LineIcon name="arrowRight" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/#products"
               onClick={openBundleBuilder}
-              className="whitespace-nowrap px-6 py-4 rounded-2xl bg-white/80 backdrop-blur border border-[#cfe5fa] hover:border-[#0078d4] text-[#0b1f3a] font-bold shadow-sm transition-colors"
+              className="whitespace-nowrap text-[15px] font-medium text-slate-700 underline decoration-slate-300 underline-offset-[6px] hover:text-slate-900 hover:decoration-slate-500"
             >
-              Build your own bundle
+              Or build your own bundle
             </Link>
           </div>
 
-          <p className="mt-4 text-sm text-slate-600">
-            New here?{" "}
-            <Link href="/login" className="font-bold text-[#0067b8] underline decoration-[#0067b8]/30 underline-offset-4 hover:decoration-[#0067b8]">
-              Get {PROMO_PERCENT}% off your first order
-            </Link>{" "}
-            with your email.
-          </p>
-
-          <div className="mt-7 grid grid-cols-3 max-w-lg mx-auto lg:mx-0 gap-2">
+          {/* trust */}
+          <ul className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-[13px] text-slate-600">
             {(
               [
-                ["bolt", "Email delivery"],
+                ["bolt", "Emailed after payment"],
                 ["shieldCheck", "Activates on Microsoft"],
-                ["refund", "30-day refund"],
+                ["refund", "30-day money-back"],
               ] as const
             ).map(([ic, t]) => (
-              <div key={t} className="rounded-2xl bg-white/75 backdrop-blur border border-white shadow-[0_8px_24px_-14px_rgba(0,103,184,0.5)] py-3 px-2 flex flex-col items-center text-center">
-                <span className="h-8 w-8 rounded-xl bg-[#0078d4]/10 text-[#0067b8] flex items-center justify-center">
-                  <LineIcon name={ic} className="h-[18px] w-[18px]" />
-                </span>
-                <p className="mt-1.5 text-xs text-slate-700 font-semibold leading-tight">{t}</p>
-              </div>
+              <li key={t} className="inline-flex items-center gap-1.5">
+                <LineIcon name={ic} className="h-4 w-4 text-[#0067b8]" />
+                {t}
+              </li>
             ))}
-          </div>
-          <p className="mt-5 text-xs text-slate-500 font-medium">
-            <LineIcon name="lock" className="inline h-3.5 w-3.5 -mt-0.5 mr-1 text-slate-500" /> Secure checkout · PayPal · Cards via PayPal · USDT
+          </ul>
+          <p className="mt-3 text-[13px] text-slate-500">
+            New customer?{" "}
+            <Link href="/login" className="font-medium text-[#0067b8] hover:underline underline-offset-4">
+              Get {PROMO_PERCENT}% off your first order
+            </Link>
           </p>
         </div>
       </div>
