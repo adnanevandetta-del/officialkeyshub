@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Box3D from "./Box3D";
 import LineIcon from "./LineIcon";
@@ -33,19 +33,12 @@ function openBundleBuilder() {
   window.dispatchEvent(new CustomEvent("categoryChanged", { detail: { category: "bundles" } }));
 }
 
-// Homepage hero as a bundle offer: Windows + Office shown together in 3D, the
-// real saving against buying them separately (from catalog prices), one CTA.
+// Homepage hero: the Windows 11 Pro + Office 2024 bundle as one 3D box (Windows on
+// the front, Office on the back) that half-turns to show each, with the real
+// saving vs buying separately (catalog prices) and one CTA.
 export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
   const [win, office] = offer.items;
-  // Which of the two boxes is in front; they trade places every few seconds.
-  const [front, setFront] = useState(1); // start with Office in front
   const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => setFront((f) => 1 - f), 4500);
-    return () => window.clearInterval(id);
-  }, [paused]);
 
   return (
     <section className="relative -mb-px overflow-hidden bg-[linear-gradient(180deg,#dcefff_0%,#eef7ff_45%,#ffffff_100%)]">
@@ -71,72 +64,39 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
         <div className="relative order-first lg:order-none h-[330px] sm:h-[420px] lg:h-[500px] flex items-center justify-center lg:col-start-2 lg:row-start-1">
           <div className="absolute bottom-6 sm:bottom-10 h-16 w-[300px] sm:w-[460px] rounded-[50%] bg-gradient-to-b from-white to-[#e3f1ff] shadow-[0_22px_60px_-12px_rgba(0,103,184,0.45)] border border-white" />
 
-          {/* one box in front, the other waiting behind; they trade places in 3D */}
+          {/* one box: Windows 11 Pro on the front, Office 2024 on the back; it half-turns to show each */}
           <div
-            className="relative z-10 h-[340px] w-[250px] scale-[0.7] sm:scale-[0.85] lg:scale-100"
-            style={{ perspective: 1500 }}
-            onPointerEnter={() => setPaused(true)}
+            className="relative z-10 scale-[0.74] sm:scale-[0.88] lg:scale-100"
+            onPointerEnter={(e) => e.pointerType === "mouse" && setPaused(true)}
             onPointerLeave={() => setPaused(false)}
           >
-            <div className="absolute inset-0 [transform-style:preserve-3d]">
-              {offer.items.map((it, idx) => {
-                const isFront = idx === front;
-                return (
-                  <div
-                    key={it.name}
-                    className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d] transition-transform duration-[1000ms] [transition-timing-function:cubic-bezier(.65,0,.35,1)]"
-                    style={{
-                      transform: isFront
-                        ? "translate3d(0,0,0) rotateY(0deg)"
-                        : "translate3d(-150px,-34px,-280px) rotateY(16deg)",
-                    }}
-                  >
-                    <Box3D still={!isFront} front={it.image} title={it.short} accent={it.accent} width={244} height={338} depth={44} />
-                  </div>
-                );
-              })}
-            </div>
-            {/* the "+" that ties them together */}
-            <span className="okh3d-float absolute -left-6 top-[38%] z-30 h-14 w-14 rounded-full bg-white border border-[#d6e9fb] shadow-[0_12px_30px_-8px_rgba(0,103,184,0.55)] flex items-center justify-center text-[#0067b8] text-3xl font-extrabold leading-none [transform:translateZ(200px)]">
-              +
-            </span>
+            <Box3D
+              flip
+              paused={paused}
+              front={win.image}
+              back={office.image}
+              accent={win.accent}
+              backAccent={office.accent}
+              title={`${win.short} + ${office.short}`}
+              width={262}
+              height={363}
+              depth={48}
+            />
           </div>
 
-          {/* pick which box is in front */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 rounded-full bg-white/80 backdrop-blur border border-[#d6e9fb] p-1 shadow-sm" role="tablist" aria-label="Bundle items">
-            {offer.items.map((it, idx) => (
-              <button
-                key={it.name}
-                type="button"
-                role="tab"
-                aria-selected={idx === front}
-                onClick={() => setFront(idx)}
-                className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${idx === front ? "bg-[#0067b8] text-white" : "text-[#0b1f3a] hover:bg-[#0067b8]/10"}`}
-              >
-                {it.short}
-              </button>
-            ))}
-          </div>
-
-          {/* bundle price tag and the real saving */}
-          <div className="okh3d-float absolute right-[2%] sm:right-[4%] top-[4%] z-30 rounded-2xl bg-white/95 backdrop-blur border border-[#d6e9fb] px-4 py-3 shadow-[0_15px_40px_-12px_rgba(0,103,184,0.45)]">
+          {/* bundle price */}
+          <div className="okh3d-float absolute right-[2%] sm:right-[6%] top-[6%] z-30 rounded-2xl bg-white/95 backdrop-blur border border-[#d6e9fb] px-4 py-3 shadow-[0_15px_40px_-12px_rgba(0,103,184,0.45)]">
             <p className="text-[10px] uppercase tracking-[0.14em] text-slate-500 font-bold">Bundle price</p>
             <p className="text-2xl font-extrabold text-[#0b1f3a] leading-tight tabular-nums">{offer.price}</p>
             <p className="text-[11px] text-slate-500">
               Separately <span className="line-through">{offer.separately}</span>
             </p>
           </div>
-          <span className="absolute left-[4%] sm:left-[8%] top-[8%] z-30 -rotate-6 rounded-xl bg-emerald-600 px-3 py-1.5 text-white text-sm font-extrabold shadow-[0_10px_24px_-8px_rgba(5,150,105,0.7)]">
-            Save {offer.save}
-          </span>
         </div>
 
         {/* copy */}
         <div className="text-center lg:text-left lg:col-start-1 lg:row-start-1">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0067b8] text-white text-[11px] font-bold uppercase tracking-[0.14em] shadow-[0_8px_20px_-8px_rgba(0,103,184,0.8)]">
-            Bundle offer
-          </span>
-          <h1 className="mt-5 text-[2.4rem] leading-[1.06] sm:text-[3.4rem] xl:text-[4rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
+          <h1 className="text-[2.4rem] leading-[1.06] sm:text-[3.4rem] xl:text-[4rem] font-extrabold tracking-[-0.035em] text-[#0b1f3a] [text-wrap:balance]">
             {win.short} + {office.short}
             <span className="block mt-1 text-[#0067b8]">together for {offer.price}.</span>
           </h1>
@@ -162,7 +122,7 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
           <div className="mt-7 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
             <Link
               href={`/products/${offer.slug}`}
-              className="group inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold shadow-[0_14px_34px_-10px_rgba(16,185,129,0.75)] transition-all hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-3 whitespace-nowrap px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold shadow-[0_14px_34px_-10px_rgba(16,185,129,0.75)] transition-all hover:-translate-y-0.5"
             >
               Get the bundle · {offer.price}
               <LineIcon name="arrowRight" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -170,7 +130,7 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
             <Link
               href="/#products"
               onClick={openBundleBuilder}
-              className="px-6 py-4 rounded-2xl bg-white/80 backdrop-blur border border-[#cfe5fa] hover:border-[#0078d4] text-[#0b1f3a] font-bold shadow-sm transition-colors"
+              className="whitespace-nowrap px-6 py-4 rounded-2xl bg-white/80 backdrop-blur border border-[#cfe5fa] hover:border-[#0078d4] text-[#0b1f3a] font-bold shadow-sm transition-colors"
             >
               Build your own bundle
             </Link>
