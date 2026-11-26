@@ -220,9 +220,31 @@ export default async function ProductPage({
           url,
           price: numericPrice(p.price),
           priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
+          availability: p.outOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
           priceValidUntil: "2027-12-31",
+          itemCondition: "https://schema.org/NewCondition",
           seller: { "@type": "Organization", name: "Official Keys Hub" },
+          // Digital delivery by email: free, same day, to the US. Google uses
+          // these two blocks to show price, shipping and returns in results.
+          shippingDetails: {
+            "@type": "OfferShippingDetails",
+            shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "USD" },
+            shippingDestination: { "@type": "DefinedRegion", addressCountry: "US" },
+            deliveryTime: {
+              "@type": "ShippingDeliveryTime",
+              handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "DAY" },
+              transitTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "DAY" },
+            },
+          },
+          hasMerchantReturnPolicy: {
+            "@type": "MerchantReturnPolicy",
+            applicableCountry: "US",
+            returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+            merchantReturnDays: 30,
+            returnMethod: "https://schema.org/ReturnByMail",
+            returnFees: "https://schema.org/FreeReturn",
+            refundType: "https://schema.org/FullRefund",
+          },
         },
       },
       {
