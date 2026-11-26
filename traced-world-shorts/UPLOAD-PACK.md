@@ -9,7 +9,7 @@ Recheck casualty figures just before posting. Tolls in breaking stories often ch
 
 ---
 
-## 01 · Houthis hit Saudi Arabia's biggest refinery?
+## 01 · Houthis claim strike on Saudi Arabia's biggest refinery
 **Title:** Houthis Claim Strike on Saudi Arabia's Biggest Oil Refinery #shorts
 **Description:** Yemen's Houthis say they hit the Ras Tanura refinery and Riyadh's financial district. The Saudi-led coalition says it intercepted 4 drones and has not confirmed refinery damage. 11 people were wounded in Riyadh.
 Sources: Reuters, CBC, NBC News, Anadolu Agency.
