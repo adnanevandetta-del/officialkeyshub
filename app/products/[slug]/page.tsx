@@ -8,6 +8,7 @@ import ProductBuySection from "../../components/ProductBuySection";
 import ProductImageZoom from "../../components/ProductImageZoom";
 import MobileBuyBar from "../../components/MobileBuyBar";
 import { getProductImage } from "../../lib/productImage";
+import { guidesFor } from "../../lib/relatedGuides";
 import {
   allProducts,
   getProductBySlug,
@@ -198,6 +199,7 @@ export default async function ProductPage({
   const img = `${SITE}/og/${p.slug}.jpg`;
   const cat = categoryLabel[p.category];
   const faqs = faqsFor(p);
+  const guides = guidesFor(p);
   const related = allProducts
     .filter((x) => x.category === p.category && x.slug !== p.slug)
     .slice(0, 4);
@@ -364,6 +366,26 @@ export default async function ProductPage({
               ))}
             </div>
           </div>
+
+          {/* Guides: links every product page to its blog guides */}
+          {guides.length > 0 && (
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Helpful guides</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                {guides.map((g) => (
+                  <Link
+                    key={g.slug}
+                    href={`/blog/${g.slug}`}
+                    className="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-wide text-sky-700 mb-2">{g.category}</p>
+                    <p className="text-gray-900 font-semibold leading-snug group-hover:text-sky-700">{g.title}</p>
+                    <p className="text-gray-500 text-sm mt-2 line-clamp-2">{g.excerpt}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Related */}
           {related.length > 0 && (

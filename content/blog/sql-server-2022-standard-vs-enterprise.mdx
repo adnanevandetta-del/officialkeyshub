@@ -1,0 +1,72 @@
+---
+title: "SQL Server 2022 Standard vs Enterprise: Which Edition Do You Need?"
+description: "SQL Server 2022 Standard vs Enterprise: the real limits on cores and memory, high-availability differences, and a simple way to decide which edition your workload needs."
+excerpt: "Standard runs most business databases fine. Here are the hard limits that push you to Enterprise."
+category: "Comparison"
+date: "2026-11-26"
+summary: "SQL Server 2022 Standard is limited to the lesser of 4 sockets or 24 cores and 128 GB of memory for its buffer pool, and its high availability is limited to basic availability groups. Enterprise removes those limits and adds advanced Always On availability groups and online maintenance features. Most small and mid-size business databases run well on Standard."
+readTime: "7 min"
+keywords: "sql server 2022 standard vs enterprise, sql server standard limitations, sql server 2022 standard core limit, sql server enterprise features, sql server 2022 license"
+product: "SQL Server 2022 Standard"
+draft: true
+---
+
+Choosing a SQL Server edition is usually about one question: **will Standard's limits ever get in the way of my workload?** For most small and mid-size businesses, the answer is no, and Standard saves a lot of money. Here's how to tell.
+
+## The short answer
+
+- **SQL Server 2022 Standard** is a full production database engine with practical limits on compute, memory and high availability.
+- **SQL Server 2022 Enterprise** removes those limits and adds the features large, always-on systems depend on.
+
+## The limits that matter
+
+| | Standard | Enterprise |
+| --- | --- | --- |
+| Compute | Lesser of 4 sockets or 24 cores | Operating system maximum |
+| Memory for buffer pool | 128 GB | Operating system maximum |
+| High availability | Basic availability groups (2 replicas, 1 database each) | Full Always On availability groups |
+| Online index rebuilds | No | Yes |
+| Supported until (extended support) | January 11, 2033 | January 11, 2033 |
+
+Both editions share the same core engine, T-SQL language and tools. Since SQL Server 2016 SP1, features such as table partitioning, data compression and columnstore indexes are available in Standard too, so many "Enterprise-only" features in older guides no longer are.
+
+## When Standard is the right choice
+
+- Your database server has **24 cores or fewer** and **128 GB of buffer-pool memory is plenty**.
+- You can schedule maintenance (index rebuilds, upgrades) in a quiet window.
+- One standby copy of a database is enough for your failover needs.
+- You run line-of-business apps such as accounting, CRM, ERP or a website back end.
+
+That describes the vast majority of small and mid-size workloads.
+
+## When you need Enterprise
+
+- **Large servers:** you need more than 24 cores or more than 128 GB of memory for caching data.
+- **Serious high availability:** you want multiple readable secondary replicas, or groups of databases that fail over together.
+- **24/7 systems:** you can't take the database offline for index maintenance, so you need online operations.
+
+## Don't overbuy
+
+A common mistake is buying Enterprise "just in case". Standard handles a lot: 24 cores and 128 GB of cache is a powerful server. Start with Standard, monitor CPU and memory pressure, and move up only if you actually hit the limits. Upgrading the edition later is an in-place change.
+
+## Support dates
+
+Both editions of SQL Server 2022 get mainstream support until January 11, 2028 and security updates until **January 11, 2033**. If you're still on SQL Server 2016, its extended support ended on July 14, 2026. See every date on our [Microsoft end of support dates](/microsoft-end-of-support) page.
+
+## Frequently asked questions
+
+### What is the core limit for SQL Server 2022 Standard?
+
+Standard is limited to the lesser of 4 sockets or 24 cores. Extra cores on the server are simply not used by SQL Server.
+
+### How much memory can SQL Server 2022 Standard use?
+
+The buffer pool, which caches your data, can use up to 128 GB. Some other memory areas, such as columnstore, have their own separate limits on top of that.
+
+### Does SQL Server Standard support Always On?
+
+Yes, in a limited form called basic availability groups: two replicas and one database per group, with no readable secondary. Enterprise supports full availability groups.
+
+### Can I upgrade from Standard to Enterprise later?
+
+Yes. An edition upgrade is done in place with the SQL Server setup tool, and your databases stay as they are.
