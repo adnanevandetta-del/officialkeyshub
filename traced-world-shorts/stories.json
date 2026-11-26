@@ -1,0 +1,323 @@
+[
+ {
+  "id": "01-houthis-saudi-refinery",
+  "tag": "MIDDLE EAST",
+  "date": "25 NOV 2026",
+  "sources": "Sources: Reuters, CBC, NBC News, AA",
+  "scenes": [
+   {
+    "type": "hook",
+    "kicker": "BREAKING",
+    "text": "Yemen's Houthis say they hit Saudi Arabia's biggest oil refinery",
+    "media": {
+     "clip": "10386895",
+     "ss": 8
+    }
+   },
+   {
+    "type": "text",
+    "head": "Ras Tanura",
+    "body": "The group says the strike caused fires. Satellite images showed thick black smoke over the site.",
+    "media": {
+     "map": [
+      26.64,
+      50.16,
+      4,
+      12.5,
+      "RAS TANURA, SAUDI ARABIA"
+     ]
+    }
+   },
+   {
+    "type": "stat",
+    "num": "4",
+    "label": "drones intercepted",
+    "sub": "says the Saudi-led coalition, which has not confirmed damage to the refinery",
+    "media": {
+     "clip": "10396407",
+     "ss": 4
+    }
+   },
+   {
+    "type": "stat",
+    "num": "11",
+    "label": "people wounded",
+    "sub": "in a strike on a tower in Riyadh's financial district, the second hit on that tower in under a week",
+    "media": {
+     "clip": "13217151",
+     "ss": 2
+    }
+   },
+   {
+    "type": "text",
+    "head": "What's next",
+    "body": "Oil prices jumped after the claim. The coalition vows a firm response, and the Houthis threaten more attacks.",
+    "media": {
+     "clip": "12891231",
+     "ss": 10
+    }
+   },
+   {
+    "type": "outro"
+   }
+  ]
+ },
+ {
+  "id": "02-russia-barrage-ukraine",
+  "tag": "UKRAINE WAR",
+  "date": "26 NOV 2026",
+  "sources": "Sources: Euronews, Suspilne",
+  "scenes": [
+   {
+    "type": "hook",
+    "kicker": "OVERNIGHT",
+    "text": "Russia fires a wave of ballistic missiles and drones at Ukraine",
+    "media": {
+     "clip": "855396",
+     "ss": 3
+    }
+   },
+   {
+    "type": "stat",
+    "num": "87",
+    "label": "missiles and drones downed",
+    "sub": "by Ukraine's air defences overnight, officials say",
+    "media": {
+     "clip": "855396",
+     "ss": 15
+    }
+   },
+   {
+    "type": "text",
+    "head": "Kharkiv",
+    "body": "A drone hit a residential high-rise, killing two. A third person died in a strike on an educational building.",
+    "media": {
+     "map": [
+      49.99,
+      36.23,
+      4,
+      12.5,
+      "KHARKIV, UKRAINE"
+     ]
+    }
+   },
+   {
+    "type": "stat",
+    "num": "7",
+    "label": "killed across Ukraine",
+    "sub": "at least, with 58 injured during the day, according to Suspilne",
+    "media": {
+     "clip": "12734644",
+     "ss": 1
+    }
+   },
+   {
+    "type": "text",
+    "head": "The backdrop",
+    "body": "It follows Putin's vow to retaliate for Ukrainian strikes on Russian energy sites.",
+    "media": {
+     "clip": "12734538",
+     "ss": 1
+    }
+   },
+   {
+    "type": "outro"
+   }
+  ]
+ },
+ {
+  "id": "03-isis-attack-hassakeh",
+  "tag": "SYRIA",
+  "date": "25 NOV 2026",
+  "sources": "Sources: Syrian state media via The National",
+  "scenes": [
+   {
+    "type": "hook",
+    "kicker": "ATTACK",
+    "text": "ISIS attackers strike a security building in north-east Syria",
+    "media": {
+     "clip": "8012093",
+     "ss": 1
+    }
+   },
+   {
+    "type": "text",
+    "head": "Hassakeh",
+    "body": "The target was an internal security building, Syrian state media reports.",
+    "media": {
+     "map": [
+      36.5,
+      40.75,
+      4,
+      12,
+      "HASSAKEH, SYRIA"
+     ]
+    }
+   },
+   {
+    "type": "stat",
+    "num": "2",
+    "label": "security officers killed",
+    "sub": "and five more injured in the assault",
+    "media": {
+     "clip": "8944419",
+     "ss": 3
+    }
+   },
+   {
+    "type": "stat",
+    "num": "4",
+    "label": "attackers dead",
+    "sub": "two in clashes with security forces, two in suicide explosions, officials say",
+    "media": {
+     "clip": "8012093",
+     "ss": 6
+    }
+   },
+   {
+    "type": "text",
+    "head": "Why it matters",
+    "body": "ISIS cells remain active in north-east Syria, carrying out repeated attacks on security forces.",
+    "media": {
+     "clip": "15285343",
+     "ss": 20
+    }
+   },
+   {
+    "type": "outro"
+   }
+  ]
+ },
+ {
+  "id": "04-gaza-overnight-strikes",
+  "tag": "GAZA",
+  "date": "26 NOV 2026",
+  "sources": "Sources: AP, hospital officials in Gaza",
+  "scenes": [
+   {
+    "type": "hook",
+    "kicker": "OVERNIGHT",
+    "text": "Israeli strikes kill eight Palestinians in Gaza",
+    "media": {
+     "map": [
+      31.45,
+      34.4,
+      4,
+      11,
+      "GAZA STRIP"
+     ]
+    }
+   },
+   {
+    "type": "stat",
+    "num": "8",
+    "label": "killed overnight",
+    "sub": "according to hospital officials in Gaza",
+    "media": {
+     "clip": "15285343",
+     "ss": 5
+    }
+   },
+   {
+    "type": "stat",
+    "num": "9",
+    "label": "killed the day before",
+    "sub": "in separate Israeli strikes, reports say",
+    "media": {
+     "clip": "8944419",
+     "ss": 9
+    }
+   },
+   {
+    "type": "text",
+    "head": "The truce",
+    "body": "A ceasefire has been in place since October 2025, but deadly strikes keep testing it. Israel says past strikes answered militant attacks.",
+    "media": {
+     "map": [
+      31.45,
+      34.4,
+      8,
+      10.5,
+      "GAZA STRIP"
+     ]
+    }
+   },
+   {
+    "type": "text",
+    "head": "Watch for",
+    "body": "Whether mediators can stop the near-daily violence from unravelling the deal.",
+    "media": {
+     "clip": "15285343",
+     "ss": 35
+    }
+   },
+   {
+    "type": "outro"
+   }
+  ]
+ },
+ {
+  "id": "05-ebola-congo-record",
+  "tag": "GLOBAL HEALTH",
+  "date": "NOV 2026",
+  "sources": "Sources: ECDC, WHO, UNICEF, Africa CDC",
+  "scenes": [
+   {
+    "type": "hook",
+    "kicker": "OUTBREAK",
+    "text": "Congo's Ebola outbreak is now the worst it has ever recorded",
+    "media": {
+     "clip": "15322655",
+     "ss": 4
+    }
+   },
+   {
+    "type": "stat",
+    "num": "11,504",
+    "label": "confirmed cases",
+    "sub": "in DR Congo as of 17 November, says the ECDC",
+    "media": {
+     "map": [
+      -0.5,
+      29.0,
+      3,
+      7.2,
+      "EASTERN DR CONGO"
+     ]
+    }
+   },
+   {
+    "type": "stat",
+    "num": "5,630",
+    "label": "deaths",
+    "sub": "since the outbreak began in May 2026",
+    "media": {
+     "clip": "8460391",
+     "ss": 3
+    }
+   },
+   {
+    "type": "stat",
+    "num": "28%",
+    "label": "of cases are children",
+    "sub": "according to UNICEF figures from early November",
+    "media": {
+     "clip": "4260694",
+     "ss": 1
+    }
+   },
+   {
+    "type": "text",
+    "head": "Not under control",
+    "body": "Africa CDC says conflict, late detection and stretched clinics are slowing the response to the Bundibugyo strain.",
+    "media": {
+     "clip": "8533503",
+     "ss": 1
+    }
+   },
+   {
+    "type": "outro"
+   }
+  ]
+ }
+]
