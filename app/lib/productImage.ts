@@ -5,7 +5,7 @@
 //
 // Bump IMG_VERSION whenever the box design changes so browsers and the CDN
 // fetch the new images instead of a cached older version.
-const IMG_VERSION = "23";
+const IMG_VERSION = "24";
 
 // Customer-built bundles ("Custom Bundle: A + B + C") share one generic image.
 const imageName = (name: string) => (name.startsWith("Custom Bundle") ? "Custom Bundle" : name);
@@ -18,4 +18,10 @@ export function getProductImage(name: string): string {
 // billboard carousel so just the box floats in the animation.
 export function getProductBoxImage(name: string): string {
   return `/api/product-image?name=${encodeURIComponent(imageName(name))}&box=1&v=${IMG_VERSION}`;
+}
+
+// Cover only, edge to edge with a light brand tint — the front face of the
+// homepage's 3D boxes (no shadow or rounded corners to show at the edges).
+export function getProductFaceImage(name: string): string {
+  return `/api/product-image?name=${encodeURIComponent(imageName(name))}&face=1&v=${IMG_VERSION}`;
 }

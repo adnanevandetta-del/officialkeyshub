@@ -1,11 +1,11 @@
-// Site-wide promotional discount: a single 20% code that a customer
+// Site-wide promotional discount: a single 15% code that a customer
 // generates by logging in with their email. Everything is client-side
 // (this is a static/mock storefront), persisted in localStorage.
 
-export const PROMO_PERCENT = 20;
-export const PROMO_PREFIX = "KEYS20";
-// Codes issued while the offer was 30% (KEYS30-XXXX) keep working, at the current rate.
-const LEGACY_PREFIXES = ["KEYS30"];
+export const PROMO_PERCENT = 15;
+export const PROMO_PREFIX = "KEYS15";
+// Codes issued under earlier offers (KEYS30-, KEYS20-XXXX) keep working, at the current rate.
+const LEGACY_PREFIXES = ["KEYS30", "KEYS20"];
 
 const STORAGE_KEY = "okh_promo";
 
@@ -73,7 +73,7 @@ export function getStoredPromo(): StoredPromo | null {
 }
 
 // A code is valid if it matches the stored code, or matches the expected
-// KEYS20-XXXX format (so a code generated on another device still works).
+// KEYS15-XXXX format (so a code generated on another device still works).
 export function validatePromoCode(code: string): number {
   const cleaned = code.trim().toUpperCase();
   if (!cleaned) return 0;

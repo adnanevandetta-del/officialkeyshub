@@ -417,3 +417,13 @@ h1, h2, h3, h4, .font-display {
 @media (prefers-reduced-motion: reduce) {
   .okh-feat-marquee { animation: none; }
 }
+
+/* Homepage 3D hero motion (Hero3D) */
+@keyframes okh3d-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes okh3d-drift { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -20px) scale(1.06); } }
+.okh3d-float { animation: okh3d-float 6s ease-in-out infinite; }
+.okh3d-float-slow { animation: okh3d-float 8s ease-in-out infinite; }
+.okh3d-drift { animation: okh3d-drift 14s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .okh3d-float, .okh3d-float-slow, .okh3d-drift { animation: none; }
+}

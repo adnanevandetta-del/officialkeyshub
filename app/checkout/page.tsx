@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { validatePromoCode, getStoredPromo } from '../lib/promo';
+import { validatePromoCode, getStoredPromo, PROMO_PERCENT, PROMO_PREFIX } from '../lib/promo';
 import { paypalPaymentUrl } from '../lib/payment';
 import { getProductImage } from '../lib/productImage';
 import { addOrder, getAccount } from '../lib/account';
@@ -44,7 +44,7 @@ export default function CheckoutPage() {
     } else {
       setAppliedPercent(0);
       setAppliedCode('');
-      setPromoError('Invalid promo code. Log in with your email to get a valid 20% code.');
+      setPromoError(`Invalid promo code. Log in with your email to get a valid ${PROMO_PERCENT}% code.`);
     }
   };
 
@@ -279,7 +279,7 @@ export default function CheckoutPage() {
                           type="text"
                           value={promoInput}
                           onChange={(e) => setPromoInput(e.target.value)}
-                          placeholder="KEYS20-XXXX"
+                          placeholder={`${PROMO_PREFIX}-XXXX`}
                           className="flex-1 min-w-0 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-sky-600 focus:outline-none font-mono uppercase"
                         />
                         <button
@@ -297,7 +297,7 @@ export default function CheckoutPage() {
                           <Link href="/login" className="text-sky-700 font-semibold hover:underline">
                             Log in with your email
                           </Link>{' '}
-                          to get 20% off.
+                          to get {PROMO_PERCENT}% off.
                         </p>
                       )}
                     </>

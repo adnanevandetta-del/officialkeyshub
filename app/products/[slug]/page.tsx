@@ -92,7 +92,7 @@ function specsFor(p: FlatProduct): { label: string; value: string }[] {
     { label: "Price", value: p.price },
   ];
   const pct = savingsPct(p);
-  if (pct) specs.push({ label: "You save", value: `${pct}% vs ${vendorOf(p)} retail price (${p.originalPrice})` });
+  if (pct) specs.push({ label: "Retail price", value: `${p.originalPrice} (${vendorOf(p)} list price)` });
   return specs;
 }
 
