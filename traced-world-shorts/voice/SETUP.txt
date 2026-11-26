@@ -1,0 +1,6 @@
+Narrator setup (files not stored in git because they are large):
+pip install kokoro-onnx soundfile
+curl -L -o model.onnx https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model.onnx
+for v in am_michael am_onyx bm_george bm_lewis af_heart bf_emma; do curl -L -o $v.bin https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/voices/$v.bin; done
+python3 -c "import numpy as np,glob,os;np.savez('voices.npz',**{os.path.basename(f)[:-4]:np.fromfile(f,dtype=np.float32).reshape(-1,1,256) for f in glob.glob('*.bin')})"
+Channel voices: G = "am_michael:0.55,am_onyx:0.45"   H = "bm_george:0.6,bm_lewis:0.4"   (speed 0.9)
