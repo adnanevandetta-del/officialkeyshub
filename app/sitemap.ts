@@ -76,6 +76,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/black-friday`,
+      lastModified: new Date('2026-11-26'),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/key-finder`,
       lastModified: LAST_UPDATED,
       changeFrequency: 'monthly',

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { validatePromoCode, getStoredPromo, PROMO_PERCENT, PROMO_PREFIX } from '../lib/promo';
+import { validatePromoCode, getStoredPromo, PROMO_PERCENT, PROMO_PREFIX, BF_CODE, BF_PERCENT, blackFridayActive } from '../lib/promo';
 import { paypalPaymentUrl } from '../lib/payment';
 import { getProductImage } from '../lib/productImage';
 import { addOrder, getAccount } from '../lib/account';
@@ -26,8 +26,15 @@ export default function CheckoutPage() {
 
   // Pre-fill with the customer's generated code if they have one.
   useEffect(() => {
-    const stored = getStoredPromo();
-    if (stored) setPromoInput(stored.code);
+    // During the Black Friday sale the bigger public code is pre-applied.
+    if (blackFridayActive()) {
+      setPromoInput(BF_CODE);
+      setAppliedPercent(BF_PERCENT);
+      setAppliedCode(BF_CODE);
+    } else {
+      const stored = getStoredPromo();
+      if (stored) setPromoInput(stored.code);
+    }
     const account = getAccount();
     if (account) setFormData((prev) => (prev.email ? prev : { ...prev, email: account.email }));
   }, []);
@@ -44,7 +51,9 @@ export default function CheckoutPage() {
     } else {
       setAppliedPercent(0);
       setAppliedCode('');
-      setPromoError(`Invalid promo code. Log in with your email to get a valid ${PROMO_PERCENT}% code.`);
+      setPromoError(blackFridayActive()
+        ? `Invalid promo code. Use ${BF_CODE} for ${BF_PERCENT}% off until Cyber Monday.`
+        : `Invalid promo code. Log in with your email to get a valid ${PROMO_PERCENT}% code.`);
     }
   };
 
@@ -292,6 +301,11 @@ export default function CheckoutPage() {
                       {promoError ? (
                         <p className="text-xs text-red-500 mt-2">{promoError}</p>
                       ) : (
+                        blackFridayActive() ? (
+                          <p className="text-xs text-gray-500 mt-2">
+                            Black Friday: code <span className="font-mono font-bold text-gray-700">{BF_CODE}</span> gives {BF_PERCENT}% off until Cyber Monday.
+                          </p>
+                        ) : (
                         <p className="text-xs text-gray-500 mt-2">
                           No code?{' '}
                           <Link href="/login" className="text-sky-700 font-semibold hover:underline">
@@ -299,6 +313,7 @@ export default function CheckoutPage() {
                           </Link>{' '}
                           to get {PROMO_PERCENT}% off.
                         </p>
+                        )
                       )}
                     </>
                   )}

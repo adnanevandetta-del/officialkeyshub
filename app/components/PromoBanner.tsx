@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getStoredPromo, PROMO_PERCENT, type StoredPromo } from "../lib/promo";
+import { getStoredPromo, PROMO_PERCENT, blackFridayActive, type StoredPromo } from "../lib/promo";
 
 export default function PromoBanner() {
   const [promo, setPromo] = useState<StoredPromo | null>(null);
@@ -22,6 +22,9 @@ export default function PromoBanner() {
       // clipboard blocked — ignore
     }
   };
+
+  // The site-wide Black Friday bar replaces this banner while the sale is on.
+  if (blackFridayActive()) return null;
 
   return (
     <div className="relative z-[150] bg-emerald-600 text-white">

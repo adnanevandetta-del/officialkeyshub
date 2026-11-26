@@ -77,9 +77,31 @@ export function getStoredPromo(): StoredPromo | null {
 export function validatePromoCode(code: string): number {
   const cleaned = code.trim().toUpperCase();
   if (!cleaned) return 0;
+  if (cleaned === BF_CODE) return blackFridayActive() ? BF_PERCENT : 0;
   const stored = getStoredPromo();
   if (stored && cleaned === stored.code.toUpperCase()) return PROMO_PERCENT;
   const prefixes = [PROMO_PREFIX, ...LEGACY_PREFIXES].join("|");
   if (new RegExp(`^(${prefixes})-[A-Z0-9]{4}$`).test(cleaned)) return PROMO_PERCENT;
   return 0;
+}
+
+// ── Black Friday / Cyber Monday ──────────────────────────────────────────
+// One public code for everyone (no log-in needed), valid until Cyber Monday
+// 11:59:59 PM Eastern (Dec 1, 04:59:59 UTC). After that it stops validating
+// and the site falls back to the normal 15% offer on its own.
+// Only raise BF_PERCENT after checking it keeps the 60% margin floor.
+export const BF_CODE = "BF20";
+export const BF_PERCENT = 20;
+export const BF_ENDS_AT = Date.UTC(2026, 11, 1, 4, 59, 59);
+export const BF_ENDS_LABEL = "Cyber Monday, Nov 30, 11:59 PM ET";
+
+export function blackFridayActive(now: number = Date.now()): boolean {
+  return now <= BF_ENDS_AT;
+}
+
+// Applies the sale percentage to a "$12.99" price string, e.g. "$10.39".
+export function bfPrice(price: string): string {
+  const n = parseFloat(price.replace(/[^0-9.]/g, ""));
+  if (!isFinite(n)) return price;
+  return `$${(Math.round(n * (100 - BF_PERCENT)) / 100).toFixed(2)}`;
 }

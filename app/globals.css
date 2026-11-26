@@ -427,3 +427,29 @@ h1, h2, h3, h4, .font-display {
 @media (prefers-reduced-motion: reduce) {
   .okh3d-float, .okh3d-float-slow, .okh3d-drift { animation: none; }
 }
+
+/* ── Black Friday shine (Nov 26 – Nov 30, 2026) ─────────────────────────── */
+.bf-gold {
+  background: linear-gradient(100deg, #b8860b 0%, #f5d77a 22%, #fff6d5 34%, #f2c94c 46%, #b8860b 62%, #f5d77a 80%, #b8860b 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: bf-shine 5s linear infinite;
+}
+.bf-bar {
+  background:
+    linear-gradient(100deg, transparent 30%, rgba(255, 236, 170, 0.16) 45%, transparent 60%) 0 0 / 250% 100%,
+    linear-gradient(90deg, #07090f, #141821 50%, #07090f);
+  animation: bf-shine 6s linear infinite;
+}
+.bf-gold-border {
+  border-image: linear-gradient(90deg, #b8860b, #f5d77a, #fff6d5, #f2c94c, #b8860b) 1;
+}
+@keyframes bf-shine {
+  from { background-position: 100% 0; }
+  to { background-position: -150% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bf-gold, .bf-bar { animation: none; }
+}

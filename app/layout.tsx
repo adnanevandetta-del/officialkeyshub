@@ -5,6 +5,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./fa-swap.css";
 import Script from "next/script";
 import { CartProvider } from "./components/CartContext";
+import BlackFridayBar from "./components/BlackFridayBar";
+import { blackFridayActive } from "./lib/promo";
 
 // Plus Jakarta Sans — one elegant, modern sans for headings and body text,
 // bundled in the repo (OFL-1.1, variable weights) instead of fetched from
@@ -156,6 +158,7 @@ export default function RootLayout({
           }}
         />
 
+        {blackFridayActive() && <BlackFridayBar />}
         {children}
         </CartProvider>
       </body>
