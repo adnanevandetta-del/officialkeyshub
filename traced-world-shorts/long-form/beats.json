@@ -1,0 +1,326 @@
+{
+ "title": "THE WORLD THIS WEEK",
+ "date": "26 November 2026",
+ "voice": "bf_emma",
+ "speed": 0.9,
+ "segments": [
+  {
+   "tag": "",
+   "chapter": "Intro",
+   "beats": [
+    {
+     "vo": "Here's what happened this week.",
+     "clip": "10386895",
+     "ss": 2,
+     "ov": {
+      "t": "title"
+     }
+    },
+    {
+     "vo": "A strike claim in Saudi Arabia that moved oil prices.",
+     "clip": "12891231",
+     "ss": 4
+    },
+    {
+     "vo": "Another night of missiles and drones over Ukraine.",
+     "clip": "855396",
+     "ss": 3
+    },
+    {
+     "vo": "An ISIS attack in north-east Syria.",
+     "clip": "8012093",
+     "ss": 1
+    },
+    {
+     "vo": "Deadly strikes in Gaza.",
+     "clip": "15285343",
+     "ss": 12
+    },
+    {
+     "vo": "And an Ebola outbreak in Congo that has broken a grim record.",
+     "clip": "4260694",
+     "ss": 1
+    },
+    {
+     "vo": "Let's start in the Gulf.",
+     "clip": "10386895",
+     "ss": 30
+    }
+   ]
+  },
+  {
+   "tag": "SAUDI ARABIA",
+   "chapter": "Houthis claim strike on Saudi Arabia's biggest refinery",
+   "src": "Reuters, CBC, NBC News, AA",
+   "beats": [
+    {
+     "vo": "Yemen's Houthi movement says it has struck Ras Tanura, Saudi Arabia's largest oil refinery.",
+     "map": [
+      26.64,
+      50.16,
+      4,
+      12.5,
+      "RAS TANURA, SAUDI ARABIA"
+     ],
+     "ov": {
+      "t": "lower",
+      "text": "Houthis claim strike on Ras Tanura refinery"
+     }
+    },
+    {
+     "vo": "The group says the attack started fires, and satellite images showed thick black smoke rising over the site.",
+     "clip": "10396407",
+     "ss": 3,
+     "ov": {
+      "t": "lower",
+      "text": "Fires and smoke reported at the site"
+     }
+    },
+    {
+     "vo": "The Saudi-led coalition says its air defences intercepted four drones over Ras Tanura. It has not confirmed any damage to the refinery itself.",
+     "clip": "8518319",
+     "ss": 1,
+     "ov": {
+      "t": "stat",
+      "num": "4",
+      "label": "drones intercepted, coalition says"
+     }
+    },
+    {
+     "vo": "In Riyadh, a tower in the financial district was hit. Saudi civil defence says eleven people were wounded. It was the second strike on the same tower in less than a week.",
+     "clip": "13217151",
+     "ss": 1,
+     "ov": {
+      "t": "stat",
+      "num": "11",
+      "label": "wounded in Riyadh's financial district"
+     }
+    },
+    {
+     "vo": "Oil prices jumped after the claim. The coalition has promised a firm response, and the Houthis are threatening more attacks.",
+     "clip": "12891231",
+     "ss": 14,
+     "ov": {
+      "t": "lower",
+      "text": "Oil prices rise as coalition vows a firm response"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "UKRAINE",
+   "chapter": "Russia's overnight barrage on Ukraine",
+   "src": "Euronews, Suspilne",
+   "beats": [
+    {
+     "vo": "To Ukraine, where Russia launched another large overnight barrage of ballistic missiles and drones.",
+     "clip": "855396",
+     "ss": 10,
+     "ov": {
+      "t": "lower",
+      "text": "Overnight missile and drone barrage"
+     }
+    },
+    {
+     "vo": "Ukraine says its air defences shot down eighty-seven of them.",
+     "clip": "6846381",
+     "ss": 6,
+     "ov": {
+      "t": "stat",
+      "num": "87",
+      "label": "missiles and drones shot down, Ukraine says"
+     }
+    },
+    {
+     "vo": "In Kharkiv, a drone hit a residential high-rise, killing a man and a woman. A third person was killed when another strike hit an educational building in the city.",
+     "map": [
+      49.99,
+      36.23,
+      4,
+      12.5,
+      "KHARKIV, UKRAINE"
+     ],
+     "ov": {
+      "t": "lower",
+      "text": "Kharkiv: three killed in drone and missile strikes"
+     }
+    },
+    {
+     "vo": "Across the country, the public broadcaster Suspilne reports at least seven people killed and fifty-eight injured.",
+     "clip": "12734644",
+     "ss": 1,
+     "ov": {
+      "t": "stat",
+      "num": "7",
+      "label": "killed across Ukraine, at least 58 injured"
+     }
+    },
+    {
+     "vo": "The attack came after Vladimir Putin warned of retaliation for Ukrainian strikes on Russian energy facilities.",
+     "clip": "12734538",
+     "ss": 1,
+     "ov": {
+      "t": "lower",
+      "text": "Putin had vowed retaliation for strikes on Russian energy sites"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "SYRIA",
+   "chapter": "ISIS attack in Hassakeh, Syria",
+   "src": "Syrian state media via The National",
+   "beats": [
+    {
+     "vo": "In north-east Syria, the Islamic State group attacked an internal security building in the city of Hassakeh.",
+     "map": [
+      36.5,
+      40.75,
+      4,
+      12,
+      "HASSAKEH, SYRIA"
+     ],
+     "ov": {
+      "t": "lower",
+      "text": "ISIS attack on security building in Hassakeh"
+     }
+    },
+    {
+     "vo": "Syrian state media says two members of the security forces were killed, and five were injured.",
+     "clip": "8944419",
+     "ss": 3,
+     "ov": {
+      "t": "stat",
+      "num": "2",
+      "label": "security officers killed, five injured"
+     }
+    },
+    {
+     "vo": "Officials say all four attackers died. Two were killed in clashes, and two blew themselves up.",
+     "clip": "8012093",
+     "ss": 5,
+     "ov": {
+      "t": "lower",
+      "text": "Four attackers dead, officials say"
+     }
+    },
+    {
+     "vo": "It's a reminder that ISIS cells remain active in the region, years after the group lost its territory.",
+     "clip": "15285343",
+     "ss": 40,
+     "ov": {
+      "t": "lower",
+      "text": "ISIS cells remain active in north-east Syria"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "GAZA",
+   "chapter": "Overnight strikes in Gaza",
+   "src": "AP, hospital officials in Gaza",
+   "beats": [
+    {
+     "vo": "In Gaza, hospital officials say Israeli strikes overnight killed eight Palestinians.",
+     "map": [
+      31.45,
+      34.4,
+      5,
+      11,
+      "GAZA STRIP"
+     ],
+     "ov": {
+      "t": "stat",
+      "num": "8",
+      "label": "killed overnight, hospital officials say"
+     }
+    },
+    {
+     "vo": "That came a day after nine people were reported killed in separate strikes.",
+     "clip": "15285343",
+     "ss": 22,
+     "ov": {
+      "t": "lower",
+      "text": "Nine reported killed the day before"
+     }
+    },
+    {
+     "vo": "A ceasefire has been in place since October 2025, but deadly strikes have repeatedly tested it. Israel has said earlier strikes were responses to militant attacks on its troops.",
+     "map": [
+      31.45,
+      34.4,
+      9,
+      10.6,
+      "GAZA STRIP"
+     ],
+     "ov": {
+      "t": "lower",
+      "text": "Ceasefire in place since October 2025"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "DR CONGO",
+   "chapter": "Congo's record Ebola outbreak",
+   "src": "ECDC, WHO, UNICEF, Africa CDC",
+   "beats": [
+    {
+     "vo": "And finally, to the Democratic Republic of Congo, where an Ebola outbreak has become the largest the country has ever recorded.",
+     "clip": "15322655",
+     "ss": 3,
+     "ov": {
+      "t": "lower",
+      "text": "Congo's largest Ebola outbreak on record"
+     }
+    },
+    {
+     "vo": "As of November seventeenth, Europe's disease control agency counted eleven thousand, five hundred and four confirmed cases, and five thousand, six hundred and thirty deaths.",
+     "map": [
+      -0.5,
+      29.0,
+      3,
+      7.2,
+      "EASTERN DR CONGO"
+     ],
+     "ov": {
+      "t": "stat",
+      "num": "11,504",
+      "label": "confirmed cases \u00b7 5,630 deaths (ECDC)"
+     }
+    },
+    {
+     "vo": "The outbreak, caused by the Bundibugyo strain of the virus, began in May. UNICEF says children make up around twenty-eight percent of confirmed cases.",
+     "clip": "8460391",
+     "ss": 0,
+     "ov": {
+      "t": "stat",
+      "num": "28%",
+      "label": "of confirmed cases are children (UNICEF)"
+     }
+    },
+    {
+     "vo": "Africa CDC says the outbreak is still not under control, with conflict, late detection and stretched health services slowing the response.",
+     "clip": "6129932",
+     "ss": 0,
+     "ov": {
+      "t": "lower",
+      "text": "Africa CDC: outbreak not under control"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "",
+   "chapter": "Outro",
+   "beats": [
+    {
+     "vo": "That's the week. We'll keep tracing the stories that shape our world. Subscribe, so you don't miss the next one.",
+     "ov": {
+      "t": "outro"
+     }
+    }
+   ]
+  }
+ ]
+}
