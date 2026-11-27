@@ -6,7 +6,7 @@
 
 import { HEADER_THEME } from "../lib/headerTheme";
 import { getProductByName } from "../lib/blogAds";
-import { BF_CODE, BF_PERCENT, bfPrice, blackFridayActive } from "../lib/promo";
+import { BF_PERCENT, bfPrice, blackFridayActive } from "../lib/promo";
 
 const items = [
   { icon: "fas fa-bolt", title: "Instant Email Delivery" },
@@ -47,7 +47,7 @@ function BlackFridayStrip() {
 
   const bf: Item[] = [
     { icon: "fas fa-tags", title: `Black Friday: ${BF_PERCENT}% off everything` },
-    { icon: "fas fa-ticket", title: `Code ${BF_CODE} at checkout` },
+    { icon: "fas fa-ticket", title: "Code applied at checkout" },
     ...(bundle ? [{ icon: "fas fa-box-open", title: `Windows 11 Pro + Office 2024 bundle ${bundle}` }] : []),
     ...(win ? [{ icon: "fab fa-windows", title: `Windows 11 Pro ${win}` }] : []),
     ...(office ? [{ icon: "fas fa-file-word", title: `Office 2024 Pro Plus ${office}` }] : []),
