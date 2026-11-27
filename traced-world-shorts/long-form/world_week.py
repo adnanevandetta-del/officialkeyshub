@@ -25,6 +25,13 @@ def shade():
     arr[..., 3] = np.clip(arr[..., 3] + left * 255 * ramp, 0, 230).astype(np.uint8)
     return Image.fromarray(arr, "RGBA")
 SH = shade()
+_g = np.random.default_rng(9)
+def _grain():
+    n = (_g.standard_normal((H // 2, W // 2)) * 14 + 128).clip(0, 255).astype(np.uint8)
+    im = Image.fromarray(n, "L").resize((W, H), Image.BILINEAR)
+    g = Image.new("RGBA", (W, H), (128, 128, 128, 0)); g.putalpha(Image.eval(im, lambda v: abs(v - 128) // 3))
+    return Image.merge("RGBA", (im, im, im, g.getchannel("A")))
+GRAIN = [_grain() for _ in range(6)]
 
 def voice_track(d):
     """Generate VO per beat (sentence by sentence) -> beats with durations + caption cues."""
@@ -35,10 +42,10 @@ def voice_track(d):
             b["start"] = t; chunk = [np.zeros(int(sr * PRE))]; tt = t + PRE
             sents = re.split(r"(?<=[.!?])\s+", b["vo"])
             for i, s in enumerate(sents):
-                a, sr = N.K.create(s, voice=st, speed=d["speed"] * rng.uniform(0.985, 1.015), lang=lang, trim=True)
+                a, sr = N.say(s, st, d["speed"] * rng.uniform(0.985, 1.015), lang)
                 cues.append((tt, tt + len(a) / sr, s)); chunk.append(a); tt += len(a) / sr
                 if i < len(sents) - 1:
-                    p = rng.uniform(0.38, 0.5); chunk.append(np.zeros(int(sr * p))); tt += p
+                    p = rng.uniform(0.5, 0.65); chunk.append(np.zeros(int(sr * p))); tt += p
             chunk.append(np.zeros(int(sr * POST))); tt += POST
             if b is seg["beats"][-1] and seg["tag"]: chunk.append(np.zeros(int(sr * 0.5))); tt += 0.5
             a = np.concatenate(chunk); audio.append(a); b["dur"] = len(a) / sr; t += b["dur"]
@@ -80,14 +87,23 @@ def overlay(d, b, seg, t, dur, data, kind):
             txt(d, (90, 470 + (1 - e) * 30), shown, nf, WHITE, e)
             line = ov["label"]
         else: line = ov["text"]
-        if seg["tag"]:
-            tf = f("Inter-Black.otf", 26); tw = d.textlength(seg["tag"], font=tf)
+        tag = ov.get("tag", seg["tag"])
+        if tag:
+            tf = f("Inter-Black.otf", 26); tw = d.textlength(tag, font=tf)
             d.rounded_rectangle([96, y0, 96 + tw + 36, y0 + 46], 6, fill=RED + (int(255 * e),))
-            txt(d, (114, y0 + 8), seg["tag"], tf, WHITE, e)
+            txt(d, (114, y0 + 8), tag, tf, WHITE, e)
         lf = f("Inter-Bold.otf", 52)
         txt(d, (96 + (1 - e) * -30, y0 + 64), line, lf, WHITE, e)
         if seg.get("src"):
             sf_ = f("Inter-Medium.otf", 24); txt(d, (96, y0 + 140), "Source: " + seg["src"], sf_, SOFT, e * 0.9)
+    elif typ == "question":
+        e = ease((t - 0.4) / 0.9) * aout
+        qf = f("InterDisplay-Bold.otf", 78); q = ov["text"]
+        lines = R.wrap(d, q, qf, 1300)
+        for i, ln in enumerate(lines):
+            txt(d, (96, 640 + i * 96 + (1 - e) * 20), ln, qf, WHITE, e)
+        d.rectangle([96, 610, 96 + int(140 * e), 616], fill=RED + (int(255 * e),))
+        txt(d, (96, 660 + len(lines) * 96), "Tell us in the comments", f("Inter-Medium.otf", 36), SOFT, ease((t - 1.2) / 0.8) * aout)
     elif typ == "outro":
         e = ease((t - 0.4) / 0.8)
         txt(d, (W/2 - 330, 400 + (1-e)*20), "TRACED WORLD", f("InterDisplay-Black.otf", 96), WHITE, e)
@@ -113,15 +129,27 @@ def render(d, total, out):
     dark = Image.new("RGBA", (W, H), (8, 12, 22, 255)); prev_last = None
     for seg in d["segments"]:
         for b in seg["beats"]:
-            dur = b["dur"]; kind = "map" if "map" in b else ("clip" if "clip" in b else None)
-            src = R.MapZoom(b["map"], dur) if kind == "map" else (R.Clip(b["clip"], b.get("ss", 0), dur) if kind == "clip" else None)
+            dur = b["dur"]
+            if "clip" in b: b["clips"] = [[b["clip"], b.get("ss", 0)]]
+            kind = "map" if "map" in b else ("clip" if "clips" in b else None)
+            shots = b.get("clips", [None]); seg_len = dur / len(shots); si = -1
+            src = R.MapZoom(b["map"], dur) if kind == "map" else None
             n = int(round(dur * FPS)); last = None
             for i in range(n):
                 t = i / FPS
-                m = src.frame(t) if src else None
+                if kind == "clip" and min(int(t // seg_len), len(shots) - 1) != si:
+                    if src: src.close()
+                    si = min(int(t // seg_len), len(shots) - 1); s0 = si * seg_len
+                    if si > 0: prev_last, cut_t = last, t
+                    src = R.Clip(shots[si][0], shots[si][1], seg_len + 0.5)
+                tl = t - (si * seg_len if kind == "clip" else 0)
+                m = src.frame(tl) if src else None
                 base = dark.copy() if m is None else Image.alpha_composite(m.convert("RGBA"), SH)
-                if prev_last is not None and t < XF:
-                    base = Image.blend(prev_last, base, ease(t / XF))
+                lt = tl if kind == "clip" else t
+                if prev_last is not None and lt < XF:
+                    base = Image.blend(prev_last, base, ease(lt / XF))
+                if m is not None:
+                    base = Image.alpha_composite(base, GRAIN[i % len(GRAIN)])
                 ov = Image.new("RGBA", (W, H)); dd = ImageDraw.Draw(ov)
                 if kind == "map": map_pin(dd, src, t)
                 overlay(dd, b, seg, t, dur, d, kind)
@@ -133,6 +161,40 @@ def render(d, total, out):
             if src: src.close()
             print("beat", round(b["start"], 1), b["vo"][:40], flush=True)
     p.stdin.close(); p.wait()
+
+def music_bed(total, beat_starts, stat_starts, seg_starts, path):
+    sr = 48000; n = int((total + 1) * sr); t = np.arange(n) / sr; out = np.zeros(n)
+    hz = lambda m: 440 * 2 ** ((m - 69) / 12)
+    prog = [[45, 52, 57, 60, 64], [41, 48, 53, 57, 60], [48, 55, 60, 64, 67], [43, 50, 55, 59, 62]]   # Am F C G
+    CH = 8.0
+    for k in range(int(total / CH) + 2):
+        c = prog[k % 4]; a0 = int(k * CH * sr); L = int((CH + 3) * sr); a1 = min(n, a0 + L)
+        if a0 >= n: break
+        tt = np.arange(a1 - a0) / sr
+        env = np.clip(tt / 2.5, 0, 1) * np.clip((CH + 3 - tt) / 3, 0, 1)
+        for m in c:
+            for det in (-0.08, 0.08):
+                f0 = hz(m) * (1 + det / 100)
+                out[a0:a1] += 0.05 * env * (np.sin(2 * np.pi * f0 * tt) + 0.25 * np.sin(4 * np.pi * f0 * tt))
+        # plucked arpeggio, eighth notes at 75 bpm
+        step = 60 / 75 / 2; arp = [c[2], c[3], c[4], c[3]]
+        for j in range(int(CH / step)):
+            s0 = a0 + int(j * step * sr); L2 = int(1.2 * sr); s1 = min(n, s0 + L2)
+            if s0 >= n: break
+            t2 = np.arange(s1 - s0) / sr; f0 = hz(arp[j % 4] + 12)
+            out[s0:s1] += 0.035 * np.exp(-t2 * 4) * (np.sin(2 * np.pi * f0 * t2) + 0.3 * np.sin(4 * np.pi * f0 * t2) * np.exp(-t2 * 6))
+    for s in stat_starts:   # soft low bloom under stat numbers
+        a0 = int(s * sr); L = min(n - a0, int(1.6 * sr)); tt = np.arange(L) / sr
+        out[a0:a0 + L] += 0.18 * np.sin(2 * np.pi * 49 * tt) * np.clip(tt / 0.05, 0, 1) * np.exp(-tt * 2.2)
+    for s in seg_starts:    # gentle tonal swell into each new story (no noise)
+        a1 = int(s * sr); L = int(1.2 * sr); a0 = max(0, a1 - L); tt = np.arange(a1 - a0) / sr
+        sw = (tt / max(tt[-1], 1e-6)) ** 2 if len(tt) else tt
+        for m in (69, 76, 81):
+            out[a0:a1] += 0.04 * sw * np.sin(2 * np.pi * hz(m) * tt)
+    fade = int(3 * sr); out[-fade:] *= np.linspace(1, 0, fade); out[:int(1.5 * sr)] *= np.linspace(0, 1, int(1.5 * sr))
+    out /= np.max(np.abs(out)) + 1e-9
+    st = np.stack([out, np.roll(out, 300)], -1) * 0.8
+    sf.write(path, st[: int(total * sr)].astype(np.float32), sr)
 
 if __name__ == "__main__":
     out = sys.argv[1]; os.makedirs(out, exist_ok=True)
@@ -148,11 +210,14 @@ if __name__ == "__main__":
     open(os.path.join(out, "chapters.txt"), "w").write("\n".join(chap) + "\n")
     starts = [b["start"] for s in d["segments"] for b in s["beats"]]
     scenes = [{"type": "stat" if b.get("ov", {}).get("t") == "stat" else "text"} for s in d["segments"] for b in s["beats"]]
-    bed = os.path.join(out, "bed.wav"); R.sound(total, starts, scenes, bed)
+    bed = os.path.join(out, "bed.wav")
+    stat_starts = [b["start"] + 0.15 for s in d["segments"] for b in s["beats"] if b.get("ov", {}).get("t") == "stat"]
+    seg_starts = [s["beats"][0]["start"] for s in d["segments"][1:]]
+    music_bed(total, starts, stat_starts, seg_starts, bed)
     silent = os.path.join(out, "video_silent.mp4"); render(d, total, silent)
     final = os.path.join(out, "The World This Week - 26 Nov 2026" + (" - PREVIEW" if len(sys.argv) > 2 else "") + ".mp4")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", silent, "-i", vo, "-i", bed, "-filter_complex",
-        "[2:a]volume=-22dB,lowpass=f=6000[bed];[1:a]asplit[v1][v2];[bed][v2]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=600[duck];"
+        "[2:a]volume=-20dB,lowpass=f=7000[bed];[1:a]asplit[v1][v2];[bed][v2]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=600[duck];"
         "[v1][duck]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9[aout]",
         "-map", "0:v", "-map", "[aout]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", final], check=True)
     for x in (raw, silent, bed): os.remove(x)

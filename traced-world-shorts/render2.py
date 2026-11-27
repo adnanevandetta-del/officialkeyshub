@@ -297,13 +297,13 @@ def sound(total, starts, scenes, path):
         j = int((b + beat / 2) * SR)
         if j < n:
             mm = min(n - j, int(0.05 * SR)); hp = noise[j:j + mm] - lowpass(np.pad(noise[j:j + mm], (2, 2), mode='edge'), 5)[:mm]
-            out[j:j + mm] += 0.05 * hp * env_decay(mm, 0.012)
+            out[j:j + mm] += 0.015 * hp * env_decay(mm, 0.012)
     # transitions: whoosh into each scene; impact on stats; sting at start
     for s, sc in zip(starts, scenes):
-        i0 = int(max(0, s - 0.35) * SR); m = min(n - i0, int(0.7 * SR))
-        w = lowpass(np.pad(noise[i0:i0 + m], (6, 6), mode='edge'), 12)[:m]
-        envw = np.sin(np.linspace(0, np.pi, m)) ** 2
-        out[i0:i0 + m] += 0.35 * w * envw
+        i1 = int(s * SR); i0 = max(0, i1 - int(0.9 * SR)); tt = np.arange(i1 - i0) / SR   # soft tonal swell, no noise
+        if len(tt) > 1:
+            sw = (tt / tt[-1]) ** 2
+            for fq in (440.0, 659.25, 880.0): out[i0:i1] += 0.05 * sw * np.sin(2 * np.pi * fq * tt)
         if sc["type"] == "stat":
             i = int(s * SR); m = min(n - i, int(1.2 * SR)); tt = np.arange(m) / SR
             out[i:i + m] += 0.5 * np.sin(2 * np.pi * (38 + 40 * np.exp(-tt * 12)) * tt) * env_decay(m, 0.35)
