@@ -94,9 +94,9 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
             Windows + Office bundle
           </p>
 
-          <h1 className="mt-4 text-[2.6rem] leading-[1.03] sm:text-[3.5rem] xl:text-[4.1rem] font-semibold tracking-[-0.03em] text-slate-900 [text-wrap:balance]">
+          <h1 className="okh-wordmark mt-4 text-[2.7rem] leading-[1] sm:text-[3.6rem] xl:text-[4.3rem] font-extrabold tracking-[-0.04em] text-[#0b1736] [text-wrap:balance]">
             {win.short}
-            <span className="block text-emerald-600">&amp; {office.short}</span>
+            <span className="block bg-gradient-to-r from-[#e3611f] to-[#c0330f] bg-clip-text text-transparent pb-1">&amp; {office.short}</span>
           </h1>
 
           <p className="mt-5 text-[1.07rem] leading-relaxed text-slate-600">
@@ -121,7 +121,7 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
 
           {/* price */}
           <div className="mt-7 flex items-end justify-center lg:justify-start gap-4">
-            <span className="text-[3rem] leading-none font-semibold tracking-[-0.03em] text-slate-900 tabular-nums">{offer.price}</span>
+            <span className="okh-wordmark text-[3rem] leading-none font-extrabold tracking-[-0.035em] text-[#0b1736] tabular-nums">{offer.price}</span>
             <span className="pb-0.5 text-left text-[13px] leading-snug text-slate-500">
               One-time payment
               <span className="block whitespace-nowrap">
