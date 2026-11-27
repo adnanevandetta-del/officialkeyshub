@@ -33,6 +33,21 @@ def _grain():
     return Image.merge("RGBA", (im, im, im, g.getchannel("A")))
 GRAIN = [_grain() for _ in range(6)]
 
+CBM = os.environ.get("CB_MANIFEST")
+_cb = {}
+if CBM:
+    for e in json.load(open(CBM)): _cb[e["text"]] = e["file"]
+def _trim(a, sr):
+    env = np.convolve(np.abs(a), np.ones(240) / 240, mode="same"); idx = np.where(env > 0.012)[0]
+    if len(idx) == 0: return a
+    return a[max(0, idx[0] - int(0.03 * sr)): min(len(a), idx[-1] + int(0.08 * sr))]
+def cb_say(s):
+    a, sr = sf.read(_cb[s], dtype="float32")
+    if a.ndim > 1: a = a.mean(1)
+    if sr != 24000:
+        import scipy.signal as ss; a = ss.resample_poly(a, 24000, sr).astype(np.float32); sr = 24000
+    return _trim(a, sr), sr
+
 def voice_track(d):
     """Generate VO per beat (sentence by sentence) -> beats with durations + caption cues."""
     st = N.voice(d["voice"]); lang = N.lang_for(d["voice"]); rng = np.random.default_rng(5)
@@ -42,7 +57,7 @@ def voice_track(d):
             b["start"] = t; chunk = [np.zeros(int(sr * PRE))]; tt = t + PRE
             sents = re.split(r"(?<=[.!?])\s+", b["vo"])
             for i, s in enumerate(sents):
-                a, sr = N.say(s, st, d["speed"] * rng.uniform(0.985, 1.015), lang)
+                a, sr = cb_say(s) if CBM else N.say(s, st, d["speed"] * rng.uniform(0.985, 1.015), lang)
                 cues.append((tt, tt + len(a) / sr, s)); chunk.append(a); tt += len(a) / sr
                 if i < len(sents) - 1:
                     p = rng.uniform(0.5, 0.65); chunk.append(np.zeros(int(sr * p))); tt += p
@@ -202,7 +217,12 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:   # preview: only the first N segments
         d["segments"] = d["segments"][:int(sys.argv[2])]
     a, sr, cues, total = voice_track(d)
-    raw = os.path.join(out, "vo_raw.wav"); sf.write(raw, a, sr); vo = os.path.join(out, "vo.wav"); N.master(raw, vo)
+    raw = os.path.join(out, "vo_raw.wav"); sf.write(raw, a, sr); vo = os.path.join(out, "vo.wav")
+    if CBM:
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-f", "lavfi", "-i", "anoisesrc=color=pink:amplitude=0.0012:r=24000",
+            "-filter_complex", "[0:a]highpass=f=70,equalizer=f=170:t=q:w=1:g=1.5,deesser=i=0.3,acompressor=threshold=-20dB:ratio=2:attack=15:release=200:makeup=1.5,loudnorm=I=-16:TP=-1.5:LRA=7[v];[1:a]lowpass=f=5000,aresample=48000[n];[v][n]amix=inputs=2:duration=first:normalize=0[o]",
+            "-map", "[o]", "-ar", "48000", vo], check=True)
+    else: N.master(raw, vo)
     srt(cues, os.path.join(out, "The World This Week - captions.srt"))
     chap = []
     for s in d["segments"]:
