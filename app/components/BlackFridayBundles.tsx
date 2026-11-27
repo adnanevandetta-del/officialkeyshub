@@ -9,8 +9,8 @@ import { BF_CODE, BF_PERCENT, bfPrice, blackFridayActive } from "../lib/promo";
 import { toNumber } from "../lib/upsell";
 
 // The three Windows + Office bundles with their honest "bought separately"
-// price (the two keys at our own prices). Shown only while the sale is on;
-// it checks the clock in the browser so it hides itself after Cyber Monday.
+// price (the two keys at our own prices). Shown only while the sale is on
+// (BF_ON in app/lib/promo.ts).
 const BUNDLES: { name: string; parts: [string, string]; title: string; tag?: string }[] = [
   {
     name: "Windows 11 Pro + Office 2021 Pro Plus Bundle",

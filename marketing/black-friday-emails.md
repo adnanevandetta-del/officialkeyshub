@@ -9,8 +9,8 @@ Prices below are the live catalog prices with BF20 (20% off). If you change pric
 
 ## Email 1: Friday morning (Nov 27): sale is on
 
-**Subject:** 20% off every Windows & Office key, this weekend only
-**Preview text:** Code BF20 · ends Cyber Monday 11:59 PM ET
+**Subject:** 20% off every Windows & Office key: our Black Friday sale
+**Preview text:** One code, the whole store: BF20
 
 Hi,
 
@@ -26,8 +26,6 @@ Keys are emailed after payment and activate on Microsoft's own servers. Every or
 
 **[See the deals →](https://officialkeyshub.com/black-friday)**
 
-The sale ends Cyber Monday (Nov 30) at 11:59 PM ET.
-
 Official Keys Hub
 
 ---
@@ -39,7 +37,7 @@ Official Keys Hub
 
 Hi,
 
-A quick reminder that BF20 (20% off everything) runs until tomorrow night.
+A quick reminder that BF20 (20% off everything) is still on.
 
 If you're buying for an office, ordering **3 or more** Windows Server, SQL Server, Visual Studio, Visio or Project keys gives you an **extra 5% off** those keys. It's added automatically at checkout, on top of BF20.
 
@@ -51,17 +49,20 @@ Official Keys Hub
 
 ---
 
-## Email 3: Monday evening (Nov 30): last chance
+## Email 3: last chance (send ONLY once you have picked a real end date)
 
-**Subject:** Last hours: BF20 ends at midnight ET
-**Preview text:** 20% off every key until 11:59 PM tonight
+The sale has no end date right now. When you decide to stop it, pick the date, send this the day before,
+and switch BF_ON off at that time. Never send it with a date you won't keep.
+
+**Subject:** Last chance: BF20 ends [DATE]
+**Preview text:** 20% off every key until [DATE]
 
 Hi,
 
-This is the last email about the sale. **BF20 stops working tonight at 11:59 PM ET**, and prices go back to normal tomorrow.
+This is the last email about the sale. **BF20 stops working on [DATE]**, and prices go back to normal after that.
 
 If you were waiting for the right moment, the Windows 11 Pro + Office 2021 bundle is **$27.99** until then.
 
-**[Get it before midnight →](https://officialkeyshub.com/black-friday)**
+**[See the deals →](https://officialkeyshub.com/black-friday)**
 
 Official Keys Hub

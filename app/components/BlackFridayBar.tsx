@@ -1,29 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BF_CODE, BF_PERCENT, BF_ENDS_LABEL, bfTimeLeft, blackFridayActive } from "../lib/promo";
+import { BF_CODE, BF_PERCENT } from "../lib/promo";
 
 // Site-wide Black Friday bar. The root layout renders it while BF_ON is true
-// (app/lib/promo.ts); set BF_ON to false to take the sale down.
+// (app/lib/promo.ts); set BF_ON to false to take the sale down. No end date.
 export default function BlackFridayBar() {
   const pathname = usePathname();
   const [copied, setCopied] = useState(false);
-  // Countdown is computed in the browser only (avoids a server/client mismatch).
-  const [left, setLeft] = useState("");
-  const [ended, setEnded] = useState(false);
-  useEffect(() => {
-    const tick = () => {
-      setLeft(bfTimeLeft());
-      setEnded(!blackFridayActive());
-    };
-    tick();
-    const t = setInterval(tick, 30000);
-    return () => clearInterval(t);
-  }, []);
 
-  if (ended || pathname?.startsWith("/admin") || pathname === "/black-friday") return null;
+  if (pathname?.startsWith("/admin") || pathname === "/black-friday") return null;
 
   const copy = () => {
     try {
@@ -53,12 +41,6 @@ export default function BlackFridayBar() {
           {BF_CODE}
           <i className={`fas ${copied ? "fa-check" : "fa-copy"} text-[10px]`} aria-hidden="true"></i>
         </button>
-        {left && (
-          <span className="text-white/70" title={`Ends ${BF_ENDS_LABEL}`}>
-            <i className="far fa-clock mr-1 text-[10px]" aria-hidden="true"></i>
-            Ends Cyber Monday · <span className="font-semibold text-white tabular-nums">{left}</span>
-          </span>
-        )}
         <Link
           href="/black-friday"
           className="inline-flex items-center gap-1 font-bold text-emerald-400 hover:text-emerald-300"
