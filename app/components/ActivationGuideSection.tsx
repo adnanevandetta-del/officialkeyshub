@@ -158,110 +158,110 @@ export default function ActivationGuideSection() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-14 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-1.5 rounded-full mb-4">
             <i className="fas fa-graduation-cap text-emerald-700"></i>
             <span className="text-emerald-700 font-bold text-xs uppercase tracking-widest">Step-by-Step Guide</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-black tracking-[-0.025em] text-gray-900 mb-3 md:mb-4">
             How to Activate Your Software
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Complete activation guides for Windows, Office, and Server products. Follow these simple steps to activate your genuine Microsoft license key instantly.
+          <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Pick your product and follow four short steps. It takes about two minutes.
           </p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="grid grid-cols-3 sm:flex sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-6 md:mb-10">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all ${
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2 sm:px-6 py-3 sm:py-4 rounded-xl font-bold transition-all ${
                 activeTab === tab.id
-                  ? 'bg-emerald-600 text-white shadow-md scale-105'
+                  ? 'bg-emerald-600 text-white shadow-md sm:scale-105'
                   : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gray-200'
               }`}
             >
-              <i className={`${tab.icon} text-2xl`}></i>
-              <div className="text-left">
-                <div className="text-sm font-semibold">{tab.label}</div>
-                <div className="text-xs opacity-80">{tab.sub}</div>
+              <i className={`${tab.icon} text-xl sm:text-2xl`}></i>
+              <div className="text-center sm:text-left">
+                <div className="text-xs sm:text-sm font-semibold">{tab.label}</div>
+                <div className="hidden sm:block text-xs opacity-80">{tab.sub}</div>
               </div>
             </button>
           ))}
         </div>
 
         {/* Guide Content */}
-        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12">
+        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 sm:p-8 md:p-12">
           {/* Guide Title */}
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 border border-emerald-200 rounded-full mb-4">
-              <i className={`${currentGuide.icon} text-3xl text-emerald-700`}></i>
+          <div className="text-center mb-6 md:mb-10">
+            <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-emerald-100 border border-emerald-200 rounded-full mb-3 md:mb-4">
+              <i className={`${currentGuide.icon} text-2xl md:text-3xl text-emerald-700`}></i>
             </div>
-            <h3 className="text-3xl font-black text-gray-900 mb-2">{currentGuide.title}</h3>
-            <p className="text-lg text-gray-600">{currentGuide.subtitle}</p>
+            <h3 className="text-xl md:text-3xl font-black text-gray-900 mb-1 md:mb-2">{currentGuide.title}</h3>
+            <p className="text-sm md:text-lg text-gray-600">{currentGuide.subtitle}</p>
           </div>
 
           {/* Steps */}
-          <div className="space-y-5 mb-12">
+          <div className="grid md:grid-cols-2 gap-3 md:gap-5 mb-6 md:mb-10">
             {currentGuide.steps.map((step, idx) => (
               <div
                 key={idx}
-                className="flex gap-6 items-start bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-emerald-400 transition-all"
+                className="flex gap-4 md:gap-5 items-start bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm hover:border-emerald-400 transition-all"
               >
                 {/* Step Number */}
                 <div className="flex-shrink-0">
-                  <div className="w-14 h-14 bg-emerald-600 text-white rounded-full flex items-center justify-center font-black text-xl">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center font-black text-base md:text-lg">
                     {step.number}
                   </div>
                 </div>
 
                 {/* Step Content */}
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <i className={`${step.icon} text-emerald-700 text-xl`}></i>
-                    <h4 className="text-xl font-bold text-gray-900">{step.title}</h4>
+                  <div className="flex items-center gap-2 mb-1">
+                    <i className={`${step.icon} text-emerald-700 text-sm md:text-base`}></i>
+                    <h4 className="text-base md:text-lg font-bold text-gray-900">{step.title}</h4>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Alternative Method */}
-          <div className="bg-amber-50 rounded-xl p-8 border border-amber-200">
-            <div className="flex items-center gap-3 mb-4">
-              <i className="fas fa-lightbulb text-amber-500 text-2xl"></i>
-              <h4 className="text-xl font-bold text-gray-900">{currentGuide.alternativeMethod.title}</h4>
-            </div>
-            <ol className="space-y-3">
+          <details className="group bg-amber-50 rounded-xl border border-amber-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer list-none items-center gap-3 p-4 md:p-6">
+              <i className="fas fa-lightbulb text-amber-500 text-xl"></i>
+              <h4 className="flex-1 text-base md:text-lg font-bold text-gray-900">{currentGuide.alternativeMethod.title}</h4>
+              <i className="fas fa-chevron-down text-amber-600 text-sm transition-transform group-open:rotate-180" aria-hidden="true"></i>
+            </summary>
+            <ol className="space-y-3 px-4 pb-4 md:px-6 md:pb-6">
               {currentGuide.alternativeMethod.steps.map((step, idx) => (
                 <li key={idx} className="flex gap-3 items-start">
                   <span className="flex-shrink-0 w-6 h-6 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
                     {idx + 1}
                   </span>
-                  <span className="text-gray-100 font-mono text-sm bg-gray-900 px-3 py-2 rounded-lg flex-1 border border-gray-800">
+                  <span className="text-gray-100 font-mono text-xs md:text-sm bg-gray-900 px-3 py-2 rounded-lg flex-1 min-w-0 break-words border border-gray-800">
                     {step}
                   </span>
                 </li>
               ))}
             </ol>
-          </div>
+          </details>
 
           {/* Help Section */}
-          <div className="mt-10 text-center">
-            <div className="relative overflow-hidden bg-emerald-700 text-white rounded-xl p-8">
-              <i className="fas fa-headset text-4xl mb-4"></i>
-              <h4 className="text-2xl font-bold mb-2">Need Help with Activation?</h4>
-              <p className="text-white mb-6">
-                Our expert support team is available 24/7 to help you activate your Microsoft product key.
-                Get instant assistance via WhatsApp, email, or phone.
+          <div className="mt-6 md:mt-10 text-center">
+            <div className="relative overflow-hidden bg-emerald-700 text-white rounded-xl p-6 md:p-8">
+              <i className="fas fa-headset text-3xl md:text-4xl mb-3"></i>
+              <h4 className="text-xl md:text-2xl font-bold mb-2">Need Help with Activation?</h4>
+              <p className="text-white/90 text-sm md:text-base mb-5 md:mb-6 max-w-xl mx-auto">
+                Our support team is available 24/7 on WhatsApp and email.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
                 <a
                   href="https://wa.me/16019756129?text=Hi! I need help with activation"
                   target="_blank"

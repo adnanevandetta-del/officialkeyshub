@@ -54,28 +54,28 @@ export default function Navbar() {
         <div className="flex md:hidden items-center justify-between w-full relative">
           {/* Left: Hamburger + Search icon — kept compact and hugging the edge
               so the centered logo gets breathing room on narrow phones */}
-          <div className="flex items-center flex-shrink-0 -ml-1">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
             <button
               onClick={() => {
                 setIsMenuOpen((v) => !v);
                 setIsSearchOpen(false);
               }}
-              className="text-slate-800 focus:outline-none p-1"
+              className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-200 text-[#0067b8] hover:bg-[#0067b8] hover:border-[#0067b8] hover:text-white focus:outline-none flex items-center justify-center transition-colors"
               aria-label="Open menu"
               aria-expanded={isMenuOpen}
             >
-              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-base`}></i>
+              <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-sm`}></i>
             </button>
             <button
               onClick={() => {
                 setIsSearchOpen((v) => !v);
                 setIsMenuOpen(false);
               }}
-              className="text-slate-800 focus:outline-none p-1"
+              className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-200 text-[#0067b8] hover:bg-[#0067b8] hover:border-[#0067b8] hover:text-white focus:outline-none flex items-center justify-center transition-colors"
               aria-label="Search products"
               aria-expanded={isSearchOpen}
             >
-              <i className={`fas ${isSearchOpen ? "fa-times" : "fa-search"} text-base`}></i>
+              <i className={`fas ${isSearchOpen ? "fa-times" : "fa-search"} text-sm`}></i>
             </button>
           </div>
 
@@ -116,7 +116,7 @@ export default function Navbar() {
         {/* Desktop Layout — icons far left, logo centered, cart/profile far right */}
         <div className="hidden md:flex items-center justify-between relative">
           {/* Far left: menu + search icons */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             {/* Menu icon — holds Products / FAQ / Blog / Partner / Contact */}
             <div className="relative">
               <button
@@ -125,11 +125,11 @@ export default function Navbar() {
                   setIsDeskSearchOpen(false);
                 }}
                 onBlur={() => setTimeout(() => setIsDeskMenuOpen(false), 150)}
-                className="w-10 h-10 rounded-lg text-slate-800 hover:bg-slate-100 hover:text-[#005A9E] focus:outline-none flex items-center justify-center transition-colors"
+                className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-200 text-[#0067b8] hover:bg-[#0067b8] hover:border-[#0067b8] hover:text-white focus:outline-none flex items-center justify-center transition-colors"
                 aria-label="Open menu"
                 aria-expanded={isDeskMenuOpen}
               >
-                <i className={`fas ${isDeskMenuOpen ? "fa-times" : "fa-bars"} text-lg`}></i>
+                <i className={`fas ${isDeskMenuOpen ? "fa-times" : "fa-bars"} text-base`}></i>
               </button>
 
               {isDeskMenuOpen && (
@@ -230,11 +230,11 @@ export default function Navbar() {
                 setIsDeskSearchOpen((v) => !v);
                 setIsDeskMenuOpen(false);
               }}
-              className="w-10 h-10 rounded-lg text-slate-800 hover:bg-slate-100 hover:text-[#005A9E] focus:outline-none flex items-center justify-center transition-colors"
+              className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-200 text-[#0067b8] hover:bg-[#0067b8] hover:border-[#0067b8] hover:text-white focus:outline-none flex items-center justify-center transition-colors"
               aria-label="Search products"
               aria-expanded={isDeskSearchOpen}
             >
-              <i className={`fas ${isDeskSearchOpen ? "fa-times" : "fa-search"} text-lg`}></i>
+              <i className={`fas ${isDeskSearchOpen ? "fa-times" : "fa-search"} text-base`}></i>
             </button>
           </div>
 

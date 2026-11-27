@@ -4,6 +4,8 @@ import { useId } from "react";
 interface LogoProps {
   size?: "sm" | "md" | "lg";
   animated?: boolean;
+  // "dark" = white wordmark for dark backgrounds (footer).
+  tone?: "light" | "dark";
 }
 
 // Brand mark: blue shield + white key, with an orange ring orbiting the
@@ -47,8 +49,8 @@ export function LogoMark({ animated = true, className = "" }: { animated?: boole
           <stop offset="1" stopColor="#0a3592" />
         </linearGradient>
         <linearGradient id={`${u}Ring`} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#fbbf24" />
-          <stop offset="1" stopColor="#f97316" />
+          <stop offset="0" stopColor="#e3611f" />
+          <stop offset="1" stopColor="#c0330f" />
         </linearGradient>
         {/* In the ring's rotated space: top half = behind the shield, bottom half = in front. */}
         <clipPath id={`${u}Back`} clipPathUnits="userSpaceOnUse">
@@ -80,11 +82,12 @@ export function LogoMark({ animated = true, className = "" }: { animated?: boole
   );
 }
 
-export default function Logo({ size = "md", animated = true }: LogoProps) {
+export default function Logo({ size = "md", animated = true, tone = "light" }: LogoProps) {
+  const dark = tone === "dark";
   const sizes = {
     // sm (phones) scales down below 360px so it never touches the cart/profile icons
-    sm: { container: "h-11", text: "text-[14px] min-[360px]:text-[17px] min-[390px]:text-[19px]", mark: "h-[30px] w-[36px] min-[360px]:h-9 min-[360px]:w-11 min-[390px]:h-10 min-[390px]:w-12", tag: "text-[6.5px] tracking-[0.1em] min-[360px]:text-[7px] min-[360px]:tracking-[0.2em]", line: false },
-    md: { container: "h-12", text: "text-[24px]", mark: "h-11 w-[54px]", tag: "text-[8.5px] tracking-[0.12em]", line: true },
+    sm: { container: "h-10", text: "text-[14px] min-[360px]:text-[15px] min-[390px]:text-[16px]", mark: "h-7 w-[34px] min-[390px]:h-8 min-[390px]:w-[39px]", tag: "text-[6px] tracking-[0.12em] min-[390px]:text-[6.5px] min-[390px]:tracking-[0.16em]", line: false },
+    md: { container: "h-11", text: "text-[20px]", mark: "h-9 w-11", tag: "text-[7.5px] tracking-[0.05em]", line: true },
     lg: { container: "h-20", text: "text-[34px]", mark: "h-16 w-[78px]", tag: "text-[11px] tracking-[0.34em]", line: true },
   };
   const s = sizes[size];
@@ -96,16 +99,16 @@ export default function Logo({ size = "md", animated = true }: LogoProps) {
         className={`${s.mark} flex-shrink-0 transition-transform duration-300 group-hover:scale-105`}
       />
       <span className="inline-flex flex-col leading-none">
-        <span className={`okh-wordmark font-extrabold tracking-[-0.035em] text-[#0b1736] ${s.text}`}>
-          OfficialKeys<span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Hub</span>
+        <span className={`okh-wordmark font-extrabold tracking-[-0.035em] ${dark ? "text-white" : "text-[#0b1736]"} ${s.text}`}>
+          OfficialKeys<span className="bg-gradient-to-r from-[#e3611f] to-[#c0330f] bg-clip-text text-transparent">Hub</span>
         </span>
         {/* One-idea tagline, centred under the name between two hairlines. */}
         <span className="mt-1 flex items-center gap-1.5">
-          {s.line && <span className="h-px flex-1 bg-slate-300" aria-hidden="true" />}
-          <span className={`okh-wordmark whitespace-nowrap font-semibold text-slate-500 ${s.tag} ${s.line ? "" : "mx-auto"}`}>
+          {s.line && <span className={`h-px flex-1 ${dark ? "bg-slate-600" : "bg-slate-300"}`} aria-hidden="true" />}
+          <span className={`okh-wordmark whitespace-nowrap font-semibold ${dark ? "text-slate-400" : "text-slate-500"} ${s.tag} ${s.line ? "" : "mx-auto"}`}>
             GENUINE SOFTWARE KEYS
           </span>
-          {s.line && <span className="h-px flex-1 bg-slate-300" aria-hidden="true" />}
+          {s.line && <span className={`h-px flex-1 ${dark ? "bg-slate-600" : "bg-slate-300"}`} aria-hidden="true" />}
         </span>
       </span>
     </Link>

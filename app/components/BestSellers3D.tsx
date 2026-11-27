@@ -18,19 +18,20 @@ export default function BestSellers3D() {
   const cards = BEST.map((n) => getProductByName(n)).filter(Boolean) as NonNullable<ReturnType<typeof getProductByName>>[];
   return (
     <section className="relative bg-white">
-      <div className="max-w-7xl mx-auto px-4 pt-6 pb-20">
+      <div className="max-w-7xl mx-auto px-4 pt-6 pb-10 sm:pb-20">
         <div className="flex items-end justify-between mb-8">
           <div>
             <p className="text-[#0067b8] text-xs font-bold uppercase tracking-[0.14em]">Best sellers</p>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-[-0.025em] text-[#0b1f3a] mt-1">The keys people buy most</h2>
           </div>
-          <Link href="/products" className="hidden sm:inline-flex items-center gap-1.5 text-[#0067b8] font-bold hover:text-[#004e8c]">
+          <Link href="/products" className="inline-flex flex-shrink-0 items-center gap-1.5 text-sm sm:text-base text-[#0067b8] font-bold hover:text-[#004e8c]">
             See all <LineIcon name="arrowRight" className="h-4 w-4" />
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Phones: a swipeable row (next card peeks in). sm+: the grid. */}
+        <div className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:overflow-visible">
           {cards.map((p) => (
-            <TiltCard key={p.slug} className="rounded-3xl">
+            <TiltCard key={p.slug} className="rounded-3xl w-[76%] flex-shrink-0 snap-start sm:w-auto">
               <div className="h-full rounded-3xl bg-white border border-[#dcecfb] shadow-[0_18px_40px_-22px_rgba(0,103,184,0.5)] p-5 flex flex-col">
                 <Link href={`/products/${p.slug}`} className="relative h-48 rounded-2xl bg-gradient-to-b from-[#f2f8ff] to-[#e3f1ff] flex items-center justify-center overflow-hidden" aria-label={p.name}>
                   <div className="absolute bottom-3 h-5 w-28 rounded-[50%] bg-[#0b1f3a]/15 blur-md" />

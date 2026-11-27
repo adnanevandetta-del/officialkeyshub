@@ -23,32 +23,34 @@ const promises = [
 
 export default function CustomerReviews() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section className="py-14 md:py-20 bg-white">
+      <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-black text-gray-900 mb-3">Buy with Confidence</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.025em] text-gray-900 mb-3">Buy with Confidence</h2>
+          <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
             Every order is backed by real guarantees and genuine keys. Here&rsquo;s what you can count on.
           </p>
         </div>
 
         {/* Promise Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 max-w-6xl mx-auto mb-8 md:mb-10">
           {promises.map((p) => (
-            <div key={p.title} className="bg-white border border-gray-200 rounded-2xl p-7 md:p-8 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className={`w-14 h-14 ${p.color} rounded-xl flex items-center justify-center text-white text-2xl shadow-md mb-5`}>
+            <div key={p.title} className="flex items-start gap-4 md:block bg-white border border-gray-200 rounded-2xl p-5 md:p-8 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className={`flex-shrink-0 w-12 h-12 md:w-14 md:h-14 ${p.color} rounded-xl flex items-center justify-center text-white text-xl md:text-2xl shadow-md md:mb-5`}>
                 <i className={p.icon}></i>
               </div>
-              <h3 className="text-gray-900 font-bold text-xl mb-2">{p.title}</h3>
-              <p className="text-gray-600 text-base leading-relaxed">{p.text}</p>
+              <div>
+                <h3 className="text-gray-900 font-bold text-base md:text-xl mb-1 md:mb-2">{p.title}</h3>
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">{p.text}</p>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Review us badge */}
         <div className="text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-gray-50 border border-gray-200 px-8 py-5 rounded-2xl">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-gray-50 border border-gray-200 px-5 md:px-8 py-5 rounded-2xl">
             <div className="flex items-center gap-1 text-yellow-400" aria-hidden="true">
               <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>
             </div>

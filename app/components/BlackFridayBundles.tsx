@@ -57,7 +57,7 @@ export default function BlackFridayBundles({ heading = true }: { heading?: boole
       />
       <div className="relative max-w-7xl mx-auto px-4 py-12 md:py-16">
         {heading && (
-          <div className="text-center mb-10">
+          <div className="text-center mb-6 md:mb-10">
             <p className="bf-gold inline-block text-xs font-extrabold uppercase tracking-[0.24em]">Black Friday bundles</p>
             <h2 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-[-0.025em]">
               Windows + Office together, <span className="bf-gold">the best value</span>
@@ -67,11 +67,12 @@ export default function BlackFridayBundles({ heading = true }: { heading?: boole
             </p>
           </div>
         )}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Phones: swipeable row (next card peeks in). md+: three columns. */}
+        <div className="-mx-4 px-4 py-3 flex gap-4 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:py-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
           {rows.map((r) => (
             <div
               key={r.name}
-              className={`rounded-3xl bg-white text-[#0b1f3a] p-6 flex flex-col ${
+              className={`w-[84%] flex-shrink-0 snap-center md:w-auto rounded-3xl bg-white text-[#0b1f3a] p-5 md:p-6 flex flex-col ${
                 r.tag === "Most popular"
                   ? "ring-2 ring-[#f2c94c]/80 shadow-[0_30px_70px_-25px_rgba(242,201,76,0.5)]"
                   : "ring-1 ring-white/10"

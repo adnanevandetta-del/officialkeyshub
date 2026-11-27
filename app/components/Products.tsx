@@ -25,6 +25,12 @@ interface Product {
   outOfStock?: boolean;
 }
 
+// "$47" -> "$47.00", so every card shows prices the same way.
+const money = (p: string) => {
+  const n = parseFloat(p.replace(/[^0-9.]/g, ""));
+  return isFinite(n) ? "$" + n.toFixed(2) : p;
+};
+
 export default function Products() {
   const { addToCart } = useCart();
   const [activeCategory, setActiveCategory] = useState<CategoryId>("windows");
@@ -117,9 +123,15 @@ export default function Products() {
       }
       return a;
     };
+    // Legacy versions (Windows 7/8.1, 2010–2016 editions) always go last, so a
+    // category never opens on an out-of-support product.
+    const legacy = (name: string) => /Windows (7|8\.1)\b|\b201[0-6]\b/.test(name);
     const next = {} as typeof catalog;
     (Object.keys(catalog) as (keyof typeof catalog)[]).forEach((k) => {
-      next[k] = shuffle(catalog[k]);
+      const mixed = shuffle(catalog[k]);
+      // Popular picks first, then the rest shuffled, then legacy versions.
+      const rank = (p: (typeof mixed)[number]) => (p.popular ? 0 : legacy(p.name) ? 2 : 1);
+      next[k] = [...mixed].sort((a, b) => rank(a) - rank(b));
     });
     setProducts(next);
   }, []);
@@ -164,140 +176,114 @@ export default function Products() {
           />
         )}
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
-          {(activeCategory === "all" 
+        {/* Products Grid — clean white cards (same look as Best sellers):
+            two per row on phones, up to four on desktop. */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5 lg:gap-6 max-w-7xl mx-auto">
+          {(activeCategory === "all"
             ? Object.values(products).flat()
             : products[activeCategory]
-          ).map((product, index) => (
-            <div
-              key={index}
-              className={`bg-[#005A9E] border border-[#004E8C] rounded-2xl overflow-hidden transition-all duration-300 flex flex-col relative glow-hover ${
-                product.popular
-                  ? "ring-2 ring-white/60 glow-sky"
-                  : ""
-              }`}
-            >
-              {/* Product Image — transparent box floating on the card's own
-                  surface, so the image and description share one background. */}
-              <Link href={`/products/${slugify(product.name)}`} className="relative h-48 sm:h-52 w-full overflow-hidden flex-shrink-0 block">
-                <Image
-                  src={getProductBoxImage(product.name)}
-                  alt={product.name}
-                  fill
-                  unoptimized
-                  className={`object-contain p-5 hover:scale-[1.06] transition-transform duration-500 drop-shadow-[0_12px_22px_rgba(0,0,0,0.5)] ${product.outOfStock ? 'opacity-40 grayscale' : ''}`}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                {product.outOfStock && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-red-600 text-white px-6 py-3 rounded-xl font-bold text-lg shadow-2xl border-2 border-white/30 rotate-[-12deg]">
-                      OUT OF STOCK
-                    </div>
-                  </div>
+          ).map((product) => {
+            const href = `/products/${slugify(product.name)}`;
+            const spec = product.features.filter((f) => f !== "Instant Delivery").slice(0, 2).join(" · ");
+            return (
+              <div
+                key={product.name}
+                className={`group relative flex flex-col rounded-2xl sm:rounded-3xl bg-white border p-2.5 sm:p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_44px_-24px_rgba(0,103,184,0.55)] ${
+                  product.popular
+                    ? "border-[#0067b8]/40 shadow-[0_18px_40px_-24px_rgba(0,103,184,0.6)]"
+                    : "border-[#dcecfb] shadow-[0_14px_32px_-26px_rgba(0,103,184,0.45)]"
+                }`}
+              >
+                {(product.popular || product.badge) && !product.outOfStock && (
+                  <span className="absolute left-3.5 top-3.5 sm:left-5 sm:top-5 z-10 rounded-full bg-[#0067b8] px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-white">
+                    {product.popular ? "Popular" : product.badge}
+                  </span>
                 )}
-              </Link>
 
-              <div className="p-4 md:p-6 flex flex-col flex-grow">
-                <div className="mb-3 md:mb-4 flex-grow">
-                  <h3 className="text-lg font-bold text-white mb-2 md:h-14 line-clamp-2">
-                    <Link href={`/products/${slugify(product.name)}`} className="hover:underline underline-offset-2 transition-colors">
+                {/* Product box on a soft blue panel */}
+                <Link
+                  href={href}
+                  aria-label={product.name}
+                  className="relative block h-32 sm:h-44 rounded-xl sm:rounded-2xl bg-gradient-to-b from-[#f2f8ff] to-[#e3f1ff] overflow-hidden flex-shrink-0"
+                >
+                  <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 h-4 w-20 rounded-[50%] bg-[#0b1f3a]/15 blur-md" aria-hidden="true" />
+                  <Image
+                    src={getProductBoxImage(product.name)}
+                    alt={`${product.name} box`}
+                    fill
+                    unoptimized
+                    className={`object-contain p-3 sm:p-4 drop-shadow-[0_12px_16px_rgba(2,40,80,0.22)] transition-transform duration-500 group-hover:scale-[1.05] ${product.outOfStock ? "opacity-40 grayscale" : ""}`}
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                  {product.outOfStock && (
+                    <span className="absolute inset-x-0 bottom-3 mx-auto w-fit rounded-full bg-red-600 px-3 py-1 text-[11px] font-bold text-white">
+                      Out of stock
+                    </span>
+                  )}
+                </Link>
+
+                <div className="flex flex-1 flex-col px-0.5 sm:px-1 pt-3 sm:pt-4">
+                  <h3 className="text-[13px] sm:text-base font-bold leading-snug text-[#0b1f3a] line-clamp-2 min-h-[2.4em] sm:min-h-[2.6em]">
+                    <Link href={href} className="hover:text-[#0067b8] transition-colors">
                       {product.name}
                     </Link>
                   </h3>
-                  <p className="text-white text-sm md:h-10 line-clamp-2">{product.description}</p>
-                  <Link href={`/products/${slugify(product.name)}`} className="inline-flex items-center gap-1 text-white hover:underline underline-offset-2 text-xs font-semibold mt-1 py-2">
-                    View details <i className="fas fa-arrow-right text-[10px]"></i>
-                  </Link>
-                </div>
+                  {spec && (
+                    <p className="mt-1 text-[11px] sm:text-xs text-slate-500 line-clamp-1">{spec}</p>
+                  )}
 
-                <div className="mb-3 md:mb-4">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-black text-white">{product.price}</span>
-                    {product.originalPrice && <span className="text-sm text-white/60" title="Official retail price (MSRP)"><span className="mr-1 text-[0.65em] font-semibold uppercase tracking-wide">MSRP</span><span className="line-through">{product.originalPrice}</span></span>}
+                  <div className="mt-auto pt-3 flex items-baseline justify-between gap-2">
+                    <span className="text-lg sm:text-2xl font-extrabold tabular-nums text-[#0b1f3a]">{money(product.price)}</span>
+                    {product.originalPrice && (
+                      <span className="hidden sm:inline text-xs text-slate-500" title="Microsoft retail price (MSRP)">
+                        Retail <span className="line-through">{product.originalPrice}</span>
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="mt-3 flex gap-2">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (product.outOfStock) return;
+                        setSelectedProduct(product);
+                        setShowModal(true);
+                      }}
+                      disabled={product.outOfStock}
+                      className={`flex-1 min-h-[42px] sm:min-h-[46px] rounded-xl text-sm sm:text-[15px] font-extrabold inline-flex items-center justify-center gap-1.5 transition-colors ${
+                        product.outOfStock
+                          ? "bg-slate-200 text-slate-500 cursor-not-allowed"
+                          : "bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white"
+                      }`}
+                    >
+                      {product.outOfStock ? "Sold out" : "Buy now"}
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (product.outOfStock) return;
+                        addToCart({
+                          id: product.name.toLowerCase().replace(/\s+/g, "-"),
+                          name: product.name,
+                          price: product.price,
+                          originalPrice: product.originalPrice,
+                          image: getProductImage(product.name),
+                        });
+                        setShowCartPreview(true);
+                        setTimeout(() => setShowCartPreview(false), 2000);
+                      }}
+                      disabled={product.outOfStock}
+                      aria-label={`Add ${product.name} to cart`}
+                      title="Add to cart"
+                      className="flex-shrink-0 w-[42px] sm:w-[46px] min-h-[42px] sm:min-h-[46px] rounded-xl border border-emerald-500/40 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 inline-flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      <i className="fas fa-cart-plus text-[15px]" aria-hidden="true"></i>
+                    </button>
                   </div>
                 </div>
-
-                {/* Phones: three compact feature pills instead of the tall checklist */}
-                <ul className="flex md:hidden flex-wrap gap-1.5 mb-4">
-                  {product.features.slice(0, 3).map((feature, idx) => (
-                    <li key={idx} className="inline-flex items-center gap-1 rounded-full bg-[#004E8C] border border-white/20 px-2.5 py-1 text-xs text-white">
-                      <i className="fas fa-check text-white text-[10px]"></i>
-                      <span className="line-clamp-1">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <ul className="hidden md:block space-y-2 mb-6 h-32 overflow-hidden">
-                  {product.features.slice(0, 5).map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-white">
-                      <i className="fas fa-check text-white mt-1 flex-shrink-0"></i>
-                      <span className="line-clamp-1">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="space-y-2 mt-auto">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (product.outOfStock) return;
-                      setSelectedProduct(product);
-                      setShowModal(true);
-                    }}
-                    disabled={product.outOfStock}
-                    className={`press-3d w-full min-h-[48px] py-3 rounded-lg font-bold transition-all inline-flex items-center justify-center shadow-lg ${
-                      product.outOfStock 
-                        ? 'bg-gray-400 text-gray-600 cursor-not-allowed opacity-60' 
-                        : 'bg-white text-[#005A9E] hover:bg-blue-50'
-                    }`}
-                    style={{
-                      boxShadow: '0 4px 14px rgba(0, 0, 0, 0.2)'
-                    }}
-                  >
-                    <span className="flex items-center gap-2">
-                      {product.outOfStock ? (
-                        <>
-                          <i className="fas fa-ban"></i>
-                          Out of Stock
-                        </>
-                      ) : (
-                        <>
-                          Buy Now
-                          <i className="fab fa-paypal text-2xl"></i>
-                        </>
-                      )}
-                    </span>
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (product.outOfStock) return;
-                      addToCart({
-                        id: product.name.toLowerCase().replace(/\s+/g, '-'),
-                        name: product.name,
-                        price: product.price,
-                        originalPrice: product.originalPrice,
-                        image: getProductImage(product.name)
-                      });
-                      setShowCartPreview(true);
-                      setTimeout(() => setShowCartPreview(false), 2000);
-                    }}
-                    disabled={product.outOfStock}
-                    className={`press-3d w-full min-h-[44px] py-2.5 rounded-lg font-semibold transition-all inline-flex items-center justify-center shadow-md ${
-                      product.outOfStock
-                        ? 'bg-gray-500 text-gray-300 cursor-not-allowed opacity-60'
-                        : 'bg-emerald-600 text-white hover:bg-emerald-700'
-                    }`}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                    {product.outOfStock ? 'Unavailable' : 'Add to Cart'}
-                  </button>
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

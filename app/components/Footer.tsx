@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PaymentIcons from "./PaymentIcons";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
@@ -8,18 +9,20 @@ export default function Footer() {
         {/* Main Footer Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 mb-8 pb-8 border-b border-slate-800">
           {/* Company Info */}
-          <div className="col-span-2 lg:col-span-1">
-            <h3 className="text-xl font-bold text-white mb-4">Official Keys <span className="text-orange-500">Hub</span></h3>
-            <p className="text-slate-400 text-sm leading-relaxed mb-4">
+          <div className="col-span-2 lg:col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
+            <div className="mb-4">
+              <Logo size="md" tone="dark" animated={false} />
+            </div>
+            <p className="text-slate-400 text-sm leading-relaxed mb-5 max-w-xs">
               Genuine Windows, Office, and software licenses at honest prices, with fast delivery and friendly support.
             </p>
             {/* Accepted payment methods */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">We Accept</p>
-            <PaymentIcons className="gap-3" />
+            <PaymentIcons className="gap-3 justify-center lg:justify-start" />
 
             {/* Social media */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mt-5 mb-2">Follow Us</p>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center justify-center lg:justify-start gap-2.5">
               <a
                 href="https://twitter.com/officialkeyshub"
                 target="_blank"
@@ -106,6 +109,9 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Phones: My Account and Legal stack in the right column, level with the
+              longer Quick Links list. Desktop: lg:contents makes them grid columns again. */}
+          <div className="space-y-8 lg:space-y-0 lg:contents">
           {/* My Account */}
           <div>
             <h4 className="text-white font-semibold text-base mb-4">My Account</h4>
@@ -169,22 +175,12 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          </div>
 
           {/* Contact */}
           <div className="col-span-2 lg:col-span-1">
             <h4 className="text-white font-semibold text-base mb-4">Contact Us</h4>
             <ul className="space-y-1">
-              <li className="flex items-center gap-2">
-                <i className="fas fa-map-marker-alt text-sky-500 text-sm"></i>
-                <a
-                  href="https://www.google.com/maps/place/United+States"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm"
-                >
-                  United States
-                </a>
-              </li>
               <li className="flex items-center gap-2">
                 <i className="fas fa-envelope text-sky-500 text-sm"></i>
                 <a
@@ -218,42 +214,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Headquarters */}
-        <div className="mb-6 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-5 rounded-xl border border-slate-800 bg-slate-900/50 px-5 py-4 text-center md:text-left">
-          <div className="flex items-center gap-3">
-            <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-sky-600/15 flex items-center justify-center">
-              <i className="fas fa-building text-sky-500"></i>
-            </span>
-            <div>
-              <p className="text-white text-sm font-semibold">Official Keys Hub — Headquarters</p>
-              <a
-                href="https://www.google.com/maps/place/United+States"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm"
-              >
-                United States
-              </a>
-            </div>
-          </div>
-          <span className="hidden md:block h-8 w-px bg-slate-700"></span>
-          <p className="text-slate-500 text-xs max-w-xs">
-            Independent startup · Genuine software licenses · Founded 2025
-          </p>
-          <a
-            href="https://www.google.com/maps/place/United+States"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sky-500 hover:text-sky-400 text-sm font-semibold inline-flex items-center gap-1"
-          >
-            <i className="fas fa-map-marker-alt"></i> View on map
-          </a>
-        </div>
-
-        {/* Bottom Copyright */}
+        {/* Bottom bar */}
         <div className="text-center">
-          <p className="text-slate-500 text-sm">
+          <p className="text-slate-400 text-sm">
             © {new Date().getFullYear()} Official Keys Hub. All rights reserved.
+          </p>
+          <p className="text-slate-500 text-xs mt-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+            <span><i className="fas fa-location-dot text-sky-500 mr-1" aria-hidden="true"></i>United States</span>
+            <span aria-hidden="true">·</span>
+            <span>Independent store, founded 2025</span>
           </p>
           <p className="text-slate-600 text-xs mt-2">
             All product names, logos, and brands are property of their respective owners.
