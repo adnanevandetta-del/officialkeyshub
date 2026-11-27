@@ -1,343 +1,339 @@
 1
-00:00:00,250 --> 00:00:02,084
-Here's what happened this week.
+00:00:00,250 --> 00:00:02,905
+In this week's recap, we start with a mystery.
 
 2
-00:00:02,784 --> 00:00:06,134
-In Kuwait, a drone strike killed two Italian engineers.
+00:00:03,605 --> 00:00:07,697
+Two Italian engineers are dead in Kuwait, killed by a drone.
 
 3
-00:00:06,711 --> 00:00:08,268
+00:00:08,318 --> 00:00:09,878
 Italy blames Iran.
 
 4
-00:00:08,776 --> 00:00:11,870
-Tehran denies it, and suggests it was a false flag.
-
-5
-00:00:12,570 --> 00:00:16,068
-We'll also look at a strike claim in Saudi Arabia
-
-6
-00:00:16,068 --> 00:00:19,567
-that moved oil prices, and another night of missiles over Ukraine.
-
-7
-00:00:20,267 --> 00:00:23,339
-Plus an ISIS attack in Syria, deadly strikes
-
-8
-00:00:23,339 --> 00:00:26,411
-in Gaza, and a record Ebola outbreak in Congo.
-
-9
-00:00:27,111 --> 00:00:28,754
-Let's start in Kuwait.
-
-10
-00:00:29,403 --> 00:00:33,254
-A drone struck an air defence detection station, where two
-
-11
-00:00:33,254 --> 00:00:37,105
-Italian technicians working for the defence company Rheinmetall were killed.
-
-12
-00:00:37,805 --> 00:00:40,770
-Kuwait's defence ministry says two other people,
-
-13
-00:00:40,770 --> 00:00:43,735
-a Kuwaiti and a Pakistani national, were injured.
-
-14
-00:00:44,435 --> 00:00:48,254
-Italy's foreign minister, Antonio Tajani, says the drones were Iranian, and
-
-15
-00:00:48,254 --> 00:00:52,073
-that the drone used in the attack was made in Iran.
-
-16
-00:00:52,719 --> 00:00:56,143
-Kuwait says the attack violated a UN Security
-
-17
-00:00:56,143 --> 00:00:59,567
-Council resolution, and has invoked its right to self-defence.
-
-18
-00:01:00,267 --> 00:01:01,931
-Iran denies any role.
-
-19
-00:01:02,490 --> 00:01:07,279
-A military spokesman said its armed forces had carried out no operations in
-
-20
-00:01:07,279 --> 00:01:12,068
-the region, and suggested the attack was a false flag, meant to escalate tensions.
-
-21
-00:01:12,670 --> 00:01:17,043
-Foreign Minister Abbas Araghchi told his Italian counterpart that Iran
-
-22
-00:01:17,043 --> 00:01:21,417
-was not involved, and offered a joint investigation with Kuwait.
-
-23
-00:01:22,117 --> 00:01:25,551
-Who launched the drones has not been independently verified.
-
-24
-00:01:26,751 --> 00:01:30,506
-Next, to Saudi Arabia, where Yemen's Houthi movement says
-
-25
-00:01:30,506 --> 00:01:34,261
-it has struck Ras Tanura, the country's largest oil refinery.
-
-26
-00:01:34,961 --> 00:01:38,086
-The group says the attack started fires, and satellite
-
-27
-00:01:38,086 --> 00:01:41,211
-images showed thick black smoke rising over the site.
-
-28
-00:01:41,911 --> 00:01:44,802
-The Saudi-led coalition says its air
-
-29
-00:01:44,802 --> 00:01:47,693
-defences intercepted four drones over Ras Tanura.
-
-30
-00:01:48,294 --> 00:01:51,430
-It has not confirmed any damage to the refinery itself.
-
-31
-00:01:52,130 --> 00:01:55,416
-In Riyadh, a tower in the financial district was hit.
-
-32
-00:01:56,050 --> 00:01:59,186
-Saudi civil defence says eleven people were wounded.
-
-33
-00:01:59,689 --> 00:02:02,974
-It was the second strike on the same tower in less than a week.
-
-34
-00:02:03,674 --> 00:02:05,914
-Oil prices jumped after the claim.
-
-35
-00:02:06,490 --> 00:02:08,868
-The coalition has promised a firm response,
-
-36
-00:02:08,868 --> 00:02:11,247
-and the Houthis are threatening more attacks.
-
-37
-00:02:12,447 --> 00:02:15,210
-To Ukraine, where Russia launched another large
-
-38
-00:02:15,210 --> 00:02:17,972
-overnight barrage of ballistic missiles and drones.
-
-39
-00:02:18,672 --> 00:02:22,406
-Ukraine says its air defences shot down eighty-seven of them.
-
-40
-00:02:23,106 --> 00:02:27,607
-In Kharkiv, a drone hit a residential high-rise, killing a man and a woman.
-
-41
-00:02:28,154 --> 00:02:30,618
-A third person was killed when another
-
-42
-00:02:30,618 --> 00:02:33,082
-strike hit an educational building in the city.
-
-43
-00:02:33,782 --> 00:02:37,121
-Across the country, the public broadcaster Suspilne reports
-
-44
-00:02:37,121 --> 00:02:40,460
-at least seven people killed and fifty-eight injured.
-
-45
-00:02:41,160 --> 00:02:44,637
-The attack came after Vladimir Putin warned of
-
-46
-00:02:44,637 --> 00:02:48,114
-retaliation for Ukrainian strikes on Russian energy facilities.
-
-47
-00:02:49,314 --> 00:02:52,376
-In north-east Syria, the Islamic State group attacked
-
-48
-00:02:52,376 --> 00:02:55,437
-an internal security building in the city of Hassakeh.
-
-49
-00:02:56,137 --> 00:02:58,942
-Syrian state media says two members of the
-
-50
-00:02:58,942 --> 00:03:01,748
-security forces were killed, and five were injured.
-
-51
-00:03:02,448 --> 00:03:04,880
-Officials say all four attackers died.
-
-52
-00:03:05,500 --> 00:03:08,486
-Two were killed in clashes, and two blew themselves up.
-
-53
-00:03:09,186 --> 00:03:12,141
-It's a reminder that ISIS cells remain active in
-
-54
-00:03:12,141 --> 00:03:15,096
-the region, years after the group lost its territory.
-
-55
-00:03:16,296 --> 00:03:18,813
-In Gaza, hospital officials say
-
-56
-00:03:18,813 --> 00:03:21,330
-Israeli strikes overnight killed eight Palestinians.
-
-57
-00:03:22,030 --> 00:03:26,190
-That came a day after nine people were reported killed in separate strikes.
-
-58
-00:03:26,890 --> 00:03:30,005
-A ceasefire has been in place since October
-
-59
-00:03:30,005 --> 00:03:33,120
-2025, but deadly strikes have repeatedly tested it.
-
-60
-00:03:33,633 --> 00:03:35,894
-Israel has said earlier strikes were
-
-61
-00:03:35,894 --> 00:03:38,155
-responses to militant attacks on its troops.
-
-62
-00:03:39,355 --> 00:03:42,982
-And finally, to the Democratic Republic of Congo, where an
-
-63
-00:03:42,982 --> 00:03:46,609
-Ebola outbreak has become the largest the country has ever recorded.
-
-64
-00:03:47,309 --> 00:03:52,695
-As of November seventeenth, Europe's disease control agency counted eleven thousand, five
-
-65
-00:03:52,695 --> 00:03:58,082
-hundred and four confirmed cases, and five thousand, six hundred and thirty deaths.
-
-66
-00:03:58,782 --> 00:04:03,027
-The outbreak, caused by the Bundibugyo strain of the virus, began in May.
-
-67
-00:04:03,668 --> 00:04:07,913
-UNICEF says children make up around twenty-eight percent of confirmed cases.
-
-68
-00:04:08,613 --> 00:04:12,688
-Africa CDC says the outbreak is still not under control,
-
-69
-00:04:12,688 --> 00:04:16,762
-with conflict, late detection and stretched health services slowing the response.
-
-70
-00:04:17,962 --> 00:04:19,114
-That's the week.
-
-71
-00:04:19,715 --> 00:04:21,913
-But one question still hangs over it.
-
-72
-00:04:22,613 --> 00:04:26,559
-Italy and Kuwait say the drone that killed two Italians was Iranian.
-
-73
-00:04:27,093 --> 00:04:29,098
+00:00:10,499 --> 00:00:12,713
 Tehran says it was a false flag.
 
-74
-00:04:29,798 --> 00:04:31,803
+5
+00:00:13,413 --> 00:00:17,722
+We'll lay out what we know, and at the end, the question no one can answer yet.
+
+6
+00:00:18,422 --> 00:00:24,690
+Plus, a strike claim that moved oil prices, another night of missiles over Ukraine, an
+
+7
+00:00:24,690 --> 00:00:30,959
+ISIS attack in Syria, deadly strikes in Gaza, and a record Ebola outbreak in Congo.
+
+8
+00:00:31,659 --> 00:00:32,940
+Let's start in Kuwait.
+
+9
+00:00:33,517 --> 00:00:37,332
+A drone struck an air defence detection station, where two
+
+10
+00:00:37,332 --> 00:00:41,146
+Italian technicians working for the defence company Rheinmetall were killed.
+
+11
+00:00:41,846 --> 00:00:44,858
+Kuwait's defence ministry says two other people,
+
+12
+00:00:44,858 --> 00:00:47,869
+a Kuwaiti and a Pakistani national, were injured.
+
+13
+00:00:48,569 --> 00:00:52,489
+Italy's foreign minister, Antonio Tajani, says the drones were Iranian, and
+
+14
+00:00:52,489 --> 00:00:56,409
+that the drone used in the attack was made in Iran.
+
+15
+00:00:56,952 --> 00:01:01,027
+Kuwait says the attack violated a UN Security
+
+16
+00:01:01,027 --> 00:01:05,101
+Council resolution, and has invoked its right to self-defence.
+
+17
+00:01:05,801 --> 00:01:07,506
+Iran denies any role.
+
+18
+00:01:08,014 --> 00:01:12,717
+A military spokesman said its armed forces had carried out no operations in
+
+19
+00:01:12,717 --> 00:01:17,421
+the region, and suggested the attack was a false flag, meant to escalate tensions.
+
+20
+00:01:17,978 --> 00:01:21,801
+Foreign Minister Abbas Araghchi told his Italian counterpart that Iran
+
+21
+00:01:21,801 --> 00:01:25,624
+was not involved, and offered a joint investigation with Kuwait.
+
+22
+00:01:26,324 --> 00:01:29,648
+Who launched the drones has not been independently verified.
+
+23
+00:01:30,848 --> 00:01:34,900
+Next, to Saudi Arabia, where Yemen's Houthi movement says
+
+24
+00:01:34,900 --> 00:01:38,951
+it has struck Ras Tanura, the country's largest oil refinery.
+
+25
+00:01:39,651 --> 00:01:42,806
+The group says the attack started fires, and satellite
+
+26
+00:01:42,806 --> 00:01:45,960
+images showed thick black smoke rising over the site.
+
+27
+00:01:46,660 --> 00:01:49,368
+The Saudi-led coalition says its air
+
+28
+00:01:49,368 --> 00:01:52,075
+defences intercepted four drones over Ras Tanura.
+
+29
+00:01:52,636 --> 00:01:55,221
+It has not confirmed any damage to the refinery itself.
+
+30
+00:01:55,921 --> 00:01:59,380
+In Riyadh, a tower in the financial district was hit.
+
+31
+00:01:59,887 --> 00:02:02,767
+Saudi civil defence says eleven people were wounded.
+
+32
+00:02:03,274 --> 00:02:06,621
+It was the second strike on the same tower in less than a week.
+
+33
+00:02:07,321 --> 00:02:09,491
+Oil prices jumped after the claim.
+
+34
+00:02:10,141 --> 00:02:12,664
+The coalition has promised a firm response,
+
+35
+00:02:12,664 --> 00:02:15,187
+and the Houthis are threatening more attacks.
+
+36
+00:02:16,387 --> 00:02:19,279
+To Ukraine, where Russia launched another large
+
+37
+00:02:19,279 --> 00:02:22,171
+overnight barrage of ballistic missiles and drones.
+
+38
+00:02:22,871 --> 00:02:26,030
+Ukraine says its air defences shot down eighty-seven of them.
+
+39
+00:02:26,730 --> 00:02:31,938
+In Kharkiv, a drone hit a residential high-rise, killing a man and a woman.
+
+40
+00:02:32,536 --> 00:02:34,796
+A third person was killed when another
+
+41
+00:02:34,796 --> 00:02:37,055
+strike hit an educational building in the city.
+
+42
+00:02:37,755 --> 00:02:41,278
+Across the country, the public broadcaster Suspilne reports
+
+43
+00:02:41,278 --> 00:02:44,801
+at least seven people killed and fifty-eight injured.
+
+44
+00:02:45,501 --> 00:02:48,812
+The attack came after Vladimir Putin warned of
+
+45
+00:02:48,812 --> 00:02:52,123
+retaliation for Ukrainian strikes on Russian energy facilities.
+
+46
+00:02:53,323 --> 00:02:56,589
+In north-east Syria, the Islamic State group attacked
+
+47
+00:02:56,589 --> 00:02:59,854
+an internal security building in the city of Hassakeh.
+
+48
+00:03:00,554 --> 00:03:03,199
+Syrian state media says two members of the
+
+49
+00:03:03,199 --> 00:03:05,845
+security forces were killed, and five were injured.
+
+50
+00:03:06,545 --> 00:03:08,960
+Officials say all four attackers died.
+
+51
+00:03:09,495 --> 00:03:13,311
+Two of them were killed in clashes, and two blew themselves up.
+
+52
+00:03:14,011 --> 00:03:17,354
+It's a reminder that ISIS cells remain active in
+
+53
+00:03:17,354 --> 00:03:20,697
+the region, years after the group lost its territory.
+
+54
+00:03:21,897 --> 00:03:24,596
+In Gaza, hospital officials say
+
+55
+00:03:24,596 --> 00:03:27,296
+Israeli strikes overnight killed eight Palestinians.
+
+56
+00:03:27,996 --> 00:03:32,285
+That came a day after nine people were reported killed in separate strikes.
+
+57
+00:03:32,985 --> 00:03:36,064
+A ceasefire has been in place since October
+
+58
+00:03:36,064 --> 00:03:39,143
+2025, but deadly strikes have repeatedly tested it.
+
+59
+00:03:39,708 --> 00:03:41,963
+Israel has said earlier strikes were
+
+60
+00:03:41,963 --> 00:03:44,218
+responses to militant attacks on its troops.
+
+61
+00:03:45,418 --> 00:03:49,212
+And finally, to the Democratic Republic of Congo, where an
+
+62
+00:03:49,212 --> 00:03:53,006
+Ebola outbreak has become the largest the country has ever recorded.
+
+63
+00:03:53,706 --> 00:03:59,055
+As of November seventeenth, Europe's disease control agency counted eleven thousand, five
+
+64
+00:03:59,055 --> 00:04:04,403
+hundred and four confirmed cases, and five thousand, six hundred and thirty deaths.
+
+65
+00:04:05,104 --> 00:04:09,873
+The outbreak, caused by the Bundibugyo strain of the virus, began in May.
+
+66
+00:04:10,519 --> 00:04:14,833
+UNICEF says children make up around twenty-eight percent of confirmed cases.
+
+67
+00:04:15,533 --> 00:04:19,738
+Africa CDC says the outbreak is still not under control,
+
+68
+00:04:19,738 --> 00:04:23,943
+with conflict, late detection and stretched health services slowing the response.
+
+69
+00:04:25,143 --> 00:04:26,106
+That's the week.
+
+70
+00:04:26,740 --> 00:04:28,780
+But one question still hangs over it.
+
+71
+00:04:29,480 --> 00:04:33,931
+Italy and Kuwait say the drone that killed two Italians was Iranian.
+
+72
+00:04:34,558 --> 00:04:36,772
+Tehran says it was a false flag.
+
+73
+00:04:37,472 --> 00:04:39,244
 Some in Iran have gone further.
 
-75
-00:04:32,407 --> 00:04:36,397
+74
+00:04:39,803 --> 00:04:44,195
 Mohammad Marandi, a former adviser to Iran's nuclear negotiators,
 
-76
-00:04:36,397 --> 00:04:40,386
+75
+00:04:44,195 --> 00:04:48,588
 claimed Ukraine could be behind it, but offered no evidence.
 
-77
-00:04:40,942 --> 00:04:43,716
+76
+00:04:49,162 --> 00:04:51,635
 Ukraine has sent military specialists to the
 
-78
-00:04:43,716 --> 00:04:46,489
+77
+00:04:51,635 --> 00:04:54,108
 Gulf to help defend against Iranian drones.
 
-79
-00:04:47,189 --> 00:04:49,802
+78
+00:04:54,808 --> 00:04:57,276
 Italy's foreign minister points out that
 
-80
-00:04:49,802 --> 00:04:52,416
+79
+00:04:57,276 --> 00:04:59,745
 many pro-Iranian militias operate in the region.
 
-81
-00:04:53,116 --> 00:04:55,036
+80
+00:05:00,445 --> 00:05:02,689
 So who really launched that drone?
 
-82
-00:04:55,655 --> 00:04:57,938
+81
+00:05:03,290 --> 00:05:05,919
 Iran, a group it backs, or someone
 
-83
-00:04:57,938 --> 00:05:00,221
+82
+00:05:05,919 --> 00:05:08,547
 trying to drag Europe deeper into this conflict?
 
-84
-00:05:00,828 --> 00:05:04,369
+83
+00:05:09,056 --> 00:05:12,425
 Until there's an independent investigation, we may not know.
 
-85
-00:05:05,069 --> 00:05:07,010
+84
+00:05:13,125 --> 00:05:14,901
 Tell us what you think in the comments.
 
-86
-00:05:07,659 --> 00:05:10,518
+85
+00:05:15,485 --> 00:05:18,370
 And subscribe, so you don't miss next week's episode.
