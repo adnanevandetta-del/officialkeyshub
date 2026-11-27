@@ -9,16 +9,17 @@ import { getProductByName } from "../lib/blogAds";
 import { BF_PERCENT, bfPrice, blackFridayActive } from "../lib/promo";
 
 const items = [
-  { icon: "fas fa-bolt", title: "Instant Email Delivery" },
-  { icon: "fas fa-infinity", title: "Lifetime Licenses" },
-  { icon: "fas fa-lock", title: "Secure Payments" },
-  { icon: "fab fa-bitcoin", title: "Crypto Payments Accepted" },
-  { icon: "fas fa-tags", title: "Save up to 15% on Bundles" },
-  { icon: "fas fa-shield-halved", title: "30-Day Money-Back Guarantee" },
-  { icon: "fas fa-headset", title: "24/7 Support" },
+  { icon: "fas fa-bolt", title: "Instant Email Delivery", short: "Instant delivery" },
+  { icon: "fas fa-infinity", title: "Lifetime Licenses", short: "Lifetime" },
+  { icon: "fas fa-lock", title: "Secure Payments", short: "Secure pay" },
+  { icon: "fab fa-bitcoin", title: "Crypto Payments Accepted", short: "Crypto OK" },
+  { icon: "fas fa-tags", title: "Save up to 15% on Bundles", short: "Bundle savings" },
+  { icon: "fas fa-shield-halved", title: "30-Day Money-Back Guarantee", short: "30-day refund" },
+  { icon: "fas fa-headset", title: "24/7 Support", short: "24/7 support" },
 ];
 
-type Item = { icon: string; title: string };
+// short = the label shown on phones (full title from sm up).
+type Item = { icon: string; title: string; short?: string };
 
 function Item({ icon, title }: Item) {
   return (
@@ -46,12 +47,12 @@ function BlackFridayStrip() {
   const visio = price("Visio Professional 2024");
 
   const bf: Item[] = [
-    { icon: "fas fa-tags", title: `Black Friday: ${BF_PERCENT}% off everything` },
-    { icon: "fas fa-ticket", title: "Code applied at checkout" },
-    ...(bundle ? [{ icon: "fas fa-box-open", title: `Windows 11 Pro + Office 2024 bundle ${bundle}` }] : []),
-    ...(win ? [{ icon: "fab fa-windows", title: `Windows 11 Pro ${win}` }] : []),
-    ...(office ? [{ icon: "fas fa-file-word", title: `Office 2024 Pro Plus ${office}` }] : []),
-    ...(visio ? [{ icon: "fas fa-diagram-project", title: `Visio & Project 2024 ${visio}` }] : []),
+    { icon: "fas fa-tags", title: `Black Friday: ${BF_PERCENT}% off everything`, short: `Black Friday -${BF_PERCENT}%` },
+    { icon: "fas fa-ticket", title: "Code applied at checkout", short: "Code auto-applied" },
+    ...(bundle ? [{ icon: "fas fa-box-open", title: `Windows 11 Pro + Office 2024 bundle ${bundle}`, short: `Win 11 + Office ${bundle}` }] : []),
+    ...(win ? [{ icon: "fab fa-windows", title: `Windows 11 Pro ${win}`, short: `Win 11 Pro ${win}` }] : []),
+    ...(office ? [{ icon: "fas fa-file-word", title: `Office 2024 Pro Plus ${office}`, short: `Office 2024 ${office}` }] : []),
+    ...(visio ? [{ icon: "fas fa-diagram-project", title: `Visio & Project 2024 ${visio}`, short: `Visio/Project ${visio}` }] : []),
   ];
   const green: Item[] = items.filter((it) => !/Save up to/.test(it.title));
 
@@ -75,7 +76,10 @@ function BlackFridayStrip() {
               }`}
             >
               <i className={`${it.icon} text-[9px] md:text-[11px] ${it.gold ? "text-[#f5d77a]" : "text-white"}`}></i>
-              <span className={`text-[10px] md:text-[11px] font-bold ${it.gold ? "text-[#ffe9a8]" : "text-white"}`}>{it.title}</span>
+              <span className={`text-[10px] md:text-[11px] font-bold ${it.gold ? "text-[#ffe9a8]" : "text-white"}`}>
+                <span className="sm:hidden">{it.short ?? it.title}</span>
+                <span className="hidden sm:inline">{it.title}</span>
+              </span>
             </div>
           ))}
         </div>
