@@ -453,3 +453,15 @@ h1, h2, h3, h4, .font-display {
 @media (prefers-reduced-motion: reduce) {
   .bf-gold, .bf-bar { animation: none; }
 }
+
+/* ── Logo ─────────────────────────────────────────────────────────────── */
+.okh-wordmark { font-family: var(--font-logo), var(--font-sans), system-ui, sans-serif; font-style: normal; }
+/* A bright spark orbiting the shield along the orange ring (Logo.tsx). */
+.okh-orbit-spark {
+  stroke-dasharray: 9 91;
+  animation: okh-orbit 3.2s linear infinite;
+}
+@keyframes okh-orbit { to { stroke-dashoffset: -100; } }
+@media (prefers-reduced-motion: reduce) {
+  .okh-orbit-spark { animation: none; opacity: 0; }
+}

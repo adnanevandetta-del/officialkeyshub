@@ -20,6 +20,15 @@ const jakarta = localFont({
   display: "swap",
 });
 
+// Outfit (OFL-1.1, bundled) — used only for the logo wordmark.
+const outfit = localFont({
+  src: "./fonts/Outfit-latin-var.woff2",
+  weight: "100 900",
+  style: "normal",
+  variable: "--font-logo",
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -97,7 +106,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${jakarta.variable}`}>
+    <html lang="en" className={`scroll-smooth ${jakarta.variable} ${outfit.variable}`}>
       <head>
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="sG23QnRZt0jwlqElmdDi6H0SfVOqBFkGJllZlzgBFtk" />
