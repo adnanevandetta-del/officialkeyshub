@@ -48,7 +48,7 @@ export default function PopularProducts() {
           Popular products
         </h2>
         <p className="text-white text-center text-sm mb-8">
-          Genuine Microsoft &amp; security licenses — instant email delivery and lifetime activation.
+          Microsoft and security licenses, emailed after payment, with lifetime activation.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {products.map((p) => (

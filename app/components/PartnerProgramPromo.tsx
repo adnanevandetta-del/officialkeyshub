@@ -23,7 +23,7 @@ export default function PartnerProgramPromo() {
             Earn up to <span className="text-[#005A9E]">20% commission</span> on every order you refer
           </h2>
           <p className="text-lg text-gray-600 mb-6 max-w-xl mx-auto lg:mx-0">
-            Bloggers, IT consultants, PC shops and creators: recommend genuine Microsoft licenses to your audience and
+            Bloggers, IT consultants, PC shops and creators: recommend Microsoft licenses to your audience and
             earn 10–20% on every completed order. Free to join, paid monthly.
           </p>
           <ul className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm font-semibold text-gray-700 mb-8">

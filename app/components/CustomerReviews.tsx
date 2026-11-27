@@ -11,7 +11,7 @@ const promises = [
     icon: "fab fa-windows",
     color: "bg-[#005A9E]",
     title: "Activates on Microsoft's Servers",
-    text: "Every key is genuine and activates directly with Microsoft, so you can see for yourself that it works.",
+    text: "Every key activates directly with Microsoft, so you can see for yourself that it works.",
   },
   {
     icon: "fas fa-headset",
@@ -29,7 +29,7 @@ export default function CustomerReviews() {
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.025em] text-gray-900 mb-3">Buy with Confidence</h2>
           <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
-            Every order is backed by real guarantees and genuine keys. Here&rsquo;s what you can count on.
+            Every order comes with the same three promises.
           </p>
         </div>
 

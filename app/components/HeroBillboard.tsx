@@ -91,7 +91,7 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
               <i className="block h-[5px] w-[5px] bg-[#00a4ef]" />
               <i className="block h-[5px] w-[5px] bg-[#ffb900]" />
             </span>
-            Genuine Microsoft bundle
+            Windows + Office bundle
           </p>
 
           <h1 className="mt-4 text-[2.6rem] leading-[1.03] sm:text-[3.5rem] xl:text-[4.1rem] font-semibold tracking-[-0.03em] text-slate-900 [text-wrap:balance]">
@@ -100,7 +100,7 @@ export default function HeroBillboard({ offer }: { offer: BundleOffer }) {
           </h1>
 
           <p className="mt-5 text-[1.07rem] leading-relaxed text-slate-600">
-            Two genuine licenses for one PC. Pay once, activate on Microsoft&apos;s servers, keep them.
+            Two licenses for one PC. Pay once, activate on Microsoft&apos;s servers, keep them.
           </p>
 
           {/* what's inside */}

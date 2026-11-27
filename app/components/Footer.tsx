@@ -14,7 +14,7 @@ export default function Footer() {
               <Logo size="md" tone="dark" animated={false} />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-5 max-w-xs">
-              Genuine Windows, Office, and software licenses at honest prices, with fast delivery and friendly support.
+              Windows, Office and software licenses at honest prices, with fast delivery and friendly support.
             </p>
             {/* Accepted payment methods */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">We Accept</p>

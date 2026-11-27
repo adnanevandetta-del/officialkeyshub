@@ -14,7 +14,9 @@ export default function BlackFridayBar() {
   const [revealed, setRevealed] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  if (pathname?.startsWith("/admin") || pathname === "/black-friday") return null;
+  // Not on the homepage (the sale shows there once, in the bundles section),
+  // the deals page itself, or admin.
+  if (pathname === "/" || pathname?.startsWith("/admin") || pathname === "/black-friday" || pathname === "/hero-preview") return null;
 
   const reveal = () => {
     setRevealed(true);
