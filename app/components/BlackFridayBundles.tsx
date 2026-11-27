@@ -115,7 +115,7 @@ export default function BlackFridayBundles({ heading = true }: { heading?: boole
                 href={`/products/${r.p.slug}`}
                 className="mt-5 flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold transition-colors"
               >
-                Get the bundle <i className="fas fa-arrow-right text-sm" aria-hidden="true"></i>
+                Buy now <i className="fas fa-arrow-right text-sm" aria-hidden="true"></i>
               </Link>
             </div>
           ))}

@@ -52,7 +52,7 @@ export default function HeroOrbit({ offer }: { offer: BundleOffer }) {
           </div>
           <div className="mt-7 flex justify-center lg:justify-start">
             <Link href={`/products/${offer.slug}`} className="ho-btn">
-              Get the bundle <i className="fas fa-arrow-right text-sm" aria-hidden="true" />
+              Buy now <i className="fas fa-arrow-right text-sm" aria-hidden="true" />
             </Link>
           </div>
           <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 text-[13px] text-white/70">
@@ -61,8 +61,9 @@ export default function HeroOrbit({ offer }: { offer: BundleOffer }) {
           </div>
         </div>
 
-        {/* lit 3D stage (first on phones) */}
-        <div ref={stage} onPointerMove={tilt} onPointerLeave={reset} className="ho-stage order-1 lg:order-2" aria-hidden="true">
+        {/* lit 3D stage (first on phones) + what's in the bundle (desktop) */}
+        <div className="order-1 lg:order-2">
+        <div ref={stage} onPointerMove={tilt} onPointerLeave={reset} className="ho-stage" aria-hidden="true">
           <div className="ho-backlight" />
           <div className="ho-beam" />
           <div className="ho-scene">
@@ -74,6 +75,24 @@ export default function HeroOrbit({ offer }: { offer: BundleOffer }) {
           <div className="ho-shadow" />
           <div className="ho-pool" />
         </div>
+        <div className="hidden lg:block mx-auto max-w-md -mt-2">
+          <p className="mb-2 text-center text-[11px] font-bold uppercase tracking-[0.18em] text-sky-300/80">What&apos;s in the bundle</p>
+          <ul className="space-y-2">
+            {[win, office].map((it) => (
+              <li key={it.name} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-3.5 py-2.5 backdrop-blur-sm">
+                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg" style={{ backgroundColor: it.accent }}>
+                  <i className={`${it.name.startsWith("Office") ? "fas fa-file-word" : "fab fa-windows"} text-sm text-white`} aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-bold leading-tight">{it.name}</span>
+                  <span className="block truncate text-xs text-white/60">{it.perks}</span>
+                </span>
+                <span className="text-sm font-semibold tabular-nums text-white/70">{it.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
       </div>
     </section>
   );
@@ -83,7 +102,7 @@ const CSS = `
 /* The site caps every element at its parent's width (globals.css); the 3D scene
    hangs off a zero-width anchor, so lift that cap inside the stage. */
 .ho-stage *{max-width:none}
-.ho-stage{position:relative;height:440px;perspective:1200px;--rx:0deg;--ry:0deg}
+.ho-stage{position:relative;height:400px;perspective:1200px;--rx:0deg;--ry:0deg}
 .ho-scene{position:absolute;left:50%;top:48%;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(calc(var(--ry) - 14deg));transition:transform .35s ease-out}
 .ho-box{position:relative;transform-style:preserve-3d}
 .ho-front{box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 0 34px rgba(56,160,255,.35)}

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { LogoMark } from "./Logo";
 
 // KEYS — the site's help assistant. A scripted quick-answer helper (not an AI
 // model), so it's labelled "assistant": each quick question has a ready answer,
@@ -58,6 +60,25 @@ export default function WhatsAppButton() {
   const [typing, setTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // On phones, the homepage keeps the launcher out of the way until the visitor
+  // has scrolled past the billboard (the first section).
+  const pathname = usePathname();
+  const [pastHero, setPastHero] = useState(true);
+  useEffect(() => {
+    if (pathname !== "/") { setPastHero(true); return; }
+    const check = () => {
+      const mobile = window.matchMedia("(max-width: 639px)").matches;
+      const hero = document.querySelector("main section");
+      const limit = hero ? hero.getBoundingClientRect().bottom + window.scrollY : 600;
+      setPastHero(!mobile || window.scrollY + window.innerHeight * 0.35 > limit);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => { window.removeEventListener("scroll", check); window.removeEventListener("resize", check); };
+  }, [pathname]);
+  const launcherHidden = !open && !pastHero;
+
   // Deep link: any URL ending in #ask-keys opens the assistant.
   useEffect(() => {
     const check = () => window.location.hash === "#ask-keys" && setOpen(true);
@@ -96,7 +117,7 @@ export default function WhatsAppButton() {
           <div className="text-white px-4 py-3.5 flex items-center gap-3" style={{ backgroundColor: BLUE_DARK }}>
             <div className="relative">
               <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center">
-                <i className="fas fa-key text-lg" style={{ color: BLUE }}></i>
+                <LogoMark animated={false} className="h-8 w-10" />
               </div>
               <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2" style={{ borderColor: BLUE_DARK }}></span>
             </div>
@@ -119,8 +140,8 @@ export default function WhatsAppButton() {
               <div key={i}>
                 <div className={`flex items-end gap-2 ${m.from === "user" ? "justify-end" : "justify-start"}`}>
                   {m.from === "agent" && (
-                    <span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs" style={{ backgroundColor: BLUE }}>
-                      <i className="fas fa-key"></i>
+                    <span className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center bg-white ring-1 ring-slate-200">
+                      <LogoMark animated={false} className="h-5 w-6" />
                     </span>
                   )}
                   <div
@@ -166,8 +187,8 @@ export default function WhatsAppButton() {
 
             {typing && (
               <div className="flex items-end gap-2">
-                <span className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs" style={{ backgroundColor: BLUE }}>
-                  <i className="fas fa-key"></i>
+                <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-white ring-1 ring-slate-200">
+                  <LogoMark animated={false} className="h-5 w-6" />
                 </span>
                 <div className="bg-white border border-slate-200 rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-typing"></span>
@@ -192,7 +213,7 @@ export default function WhatsAppButton() {
       )}
 
       {/* Floating launcher */}
-      <div className="fixed bottom-6 right-4 sm:right-6 z-[9998] flex items-center gap-3">
+      <div className={`fixed bottom-6 right-4 sm:right-6 z-[9998] flex items-center gap-3 transition-all duration-300 ${launcherHidden ? "pointer-events-none translate-y-4 opacity-0" : "opacity-100"}`}>
         {!open && (
           <button
             onClick={() => setOpen(true)}
@@ -204,11 +225,11 @@ export default function WhatsAppButton() {
         )}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 relative ring-4 ring-white"
-          style={{ backgroundColor: BLUE }}
+          className={`rounded-full w-14 h-14 flex items-center justify-center shadow-[0_10px_28px_-8px_rgba(2,40,80,0.45)] hover:shadow-xl transition-all duration-300 hover:scale-105 relative ring-1 ring-slate-200 ${open ? "text-white" : "bg-white"}`}
+          style={open ? { backgroundColor: BLUE } : undefined}
           aria-label={open ? "Close KEYS assistant" : "Open KEYS assistant"}
         >
-          <i className={`fas ${open ? "fa-times" : "fa-key"} text-xl`}></i>
+          {open ? <i className="fas fa-times text-xl"></i> : <LogoMark className="h-10 w-12" />}
           {!open && <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white"></span>}
         </button>
       </div>

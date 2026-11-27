@@ -128,7 +128,7 @@ export default function BlackFridayPage() {
                   href={`/products/${hero.slug}`}
                   className="mt-5 flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold transition-colors"
                 >
-                  Get the bundle <LineIcon name="arrowRight" className="h-4 w-4" />
+                  Buy now <LineIcon name="arrowRight" className="h-4 w-4" />
                 </Link>
               </div>
             )}
