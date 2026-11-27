@@ -9,7 +9,7 @@
    "chapter": "Intro",
    "beats": [
     {
-     "vo": "Here's what happened this week.",
+     "vo": "In this week's recap, we start with a mystery.",
      "clip": "18338777",
      "ss": 1,
      "ov": {
@@ -17,7 +17,7 @@
      }
     },
     {
-     "vo": "In Kuwait, a drone strike killed two Italian engineers. Italy blames Iran. Tehran denies it, and suggests it was a false flag.",
+     "vo": "Two Italian engineers are dead in Kuwait, killed by a drone. Italy blames Iran. Tehran says it was a false flag.",
      "clips": [
       [
        "5266044",
@@ -35,7 +35,12 @@
      }
     },
     {
-     "vo": "We'll also look at a strike claim in Saudi Arabia that moved oil prices, and another night of missiles over Ukraine.",
+     "vo": "We'll lay out what we know, and at the end, the question no one can answer yet.",
+     "clip": "856181",
+     "ss": 1
+    },
+    {
+     "vo": "Plus, a strike claim that moved oil prices, another night of missiles over Ukraine, an ISIS attack in Syria, deadly strikes in Gaza, and a record Ebola outbreak in Congo.",
      "clips": [
       [
        "12891231",
@@ -44,12 +49,7 @@
       [
        "855396",
        3
-      ]
-     ]
-    },
-    {
-     "vo": "Plus an ISIS attack in Syria, deadly strikes in Gaza, and a record Ebola outbreak in Congo.",
-     "clips": [
+      ],
       [
        "8012093",
        1
