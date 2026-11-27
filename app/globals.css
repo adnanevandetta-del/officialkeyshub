@@ -36,6 +36,9 @@ html {
 
 html, body {
   overflow-x: hidden;
+  /* clip (where supported) hides sideways overflow WITHOUT making html/body a
+     scroll container, so position: sticky (navbar, category bars) works. */
+  overflow-x: clip;
   width: 100%;
   position: relative;
 }
@@ -465,3 +468,13 @@ h1, h2, h3, h4, .font-display {
 @media (prefers-reduced-motion: reduce) {
   .okh-orbit-spark { animation: none; opacity: 0; }
 }
+
+/* Light sweep across a 3D product box cover (ProductBox3D). */
+.okh-box-gloss {
+  position: absolute; inset: 0; border-radius: 4px;
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.45) 48%, transparent 60%);
+  background-size: 250% 100%;
+  animation: okh-box-gloss 5s ease-in-out infinite;
+}
+@keyframes okh-box-gloss { 0%,55% { background-position: 120% 0; } 100% { background-position: -120% 0; } }
+@media (prefers-reduced-motion: reduce) { .okh-box-gloss { animation: none; } }

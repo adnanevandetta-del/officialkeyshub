@@ -1,6 +1,7 @@
 import { getProductByName } from "../lib/blogAds";
 import { getProductFaceImage } from "../lib/productImage";
-import HeroBillboard, { type BundleOffer } from "./HeroBillboard";
+import { type BundleOffer } from "./HeroBillboard";
+import HeroOrbit from "./HeroOrbit";
 
 const BUNDLE = "Windows 11 Pro + Office 2024 Pro Plus Bundle";
 const ITEMS = [
@@ -36,5 +37,5 @@ export default function Hero3D() {
       perks: it.perks,
     })) as BundleOffer["items"],
   };
-  return <HeroBillboard offer={offer} />;
+  return <HeroOrbit offer={offer} />;
 }
