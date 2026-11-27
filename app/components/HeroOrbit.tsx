@@ -57,7 +57,6 @@ export default function HeroOrbit({ offer }: { offer: BundleOffer }) {
           </div>
           <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 text-[13px] text-white/70">
             <span><i className="fas fa-envelope mr-1.5 text-sky-400" aria-hidden="true" />Emailed after payment</span>
-            <span><i className="fas fa-shield-halved mr-1.5 text-sky-400" aria-hidden="true" />Activates on Microsoft</span>
             <span><i className="fas fa-rotate-left mr-1.5 text-sky-400" aria-hidden="true" />30-day money-back</span>
           </div>
         </div>
@@ -71,7 +70,6 @@ export default function HeroOrbit({ offer }: { offer: BundleOffer }) {
             <div className="ho-win"><Box item={win} w={170} /></div>
             <div className="ho-office"><Box item={office} w={170} /></div>
             <div className="ho-chip ho-chip-1"><i className="fas fa-bolt text-amber-500 mr-1.5" />Emailed in minutes</div>
-            <div className="ho-chip ho-chip-2"><i className="fas fa-shield-halved text-sky-600 mr-1.5" />Activates on Microsoft</div>
           </div>
           <div className="ho-shadow" />
           <div className="ho-pool" />
@@ -98,7 +96,6 @@ const CSS = `
 @keyframes ho-orbit{from{transform:rotateX(76deg) rotateY(-10deg) rotateZ(0)}to{transform:rotateX(76deg) rotateY(-10deg) rotateZ(360deg)}}
 .ho-chip{position:absolute;white-space:nowrap;background:rgba(255,255,255,.92);border:1px solid #dbeafe;border-radius:999px;padding:.45rem .8rem;font-size:12px;font-weight:700;color:#0b1f3a;box-shadow:0 14px 30px -14px rgba(2,40,80,.35)}
 .ho-chip-1{transform:translate3d(-150px,-150px,90px)}
-.ho-chip-2{transform:translate3d(120px,140px,110px)}
 .ho-backlight{position:absolute;left:50%;top:46%;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,165,255,.55),rgba(40,140,255,.18) 45%,transparent 72%);filter:blur(8px);animation:ho-breathe 5s ease-in-out infinite;pointer-events:none}
 @keyframes ho-breathe{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
 .ho-beam{position:absolute;left:50%;top:-40px;width:440px;height:470px;margin-left:-220px;background:linear-gradient(180deg,rgba(190,225,255,.55),rgba(190,225,255,0) 80%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);filter:blur(16px);opacity:.7;pointer-events:none}
@@ -106,14 +103,16 @@ const CSS = `
 .ho-pool{position:absolute;left:50%;bottom:22px;width:420px;height:70px;margin-left:-210px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,122,61,.4),rgba(40,140,255,.2) 55%,transparent);filter:blur(10px);pointer-events:none}
 .ho-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:.8rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#10b981,#059669);box-shadow:0 12px 26px -12px rgba(5,150,105,.8);transition:transform .2s}
 .ho-btn:hover{transform:translateY(-2px)}
+/* Phones: less turn, ring kept inside the frame, lights centred on the boxes. */
 @media (max-width:640px){
-  .ho-stage{height:330px}
-  .ho-scene{scale:.66;top:50%}
-  .ho-backlight{width:360px;height:360px;margin:-180px 0 0 -180px}
-  .ho-beam,.ho-pool{scale:.7}
-  .ho-shadow{scale:.7;bottom:30px}
-  .ho-chip-1{transform:translate3d(-130px,-165px,90px)}
-  .ho-chip-2{transform:translate3d(10px,150px,110px)}
+  .ho-stage{height:320px}
+  .ho-scene{scale:.68;top:54%;transform:rotateX(var(--rx)) rotateY(calc(var(--ry) - 6deg))}
+  .ho-orbit{scale:.84}
+  .ho-backlight{width:330px;height:330px;margin:-165px 0 0 -165px;top:54%}
+  .ho-beam{width:280px;height:330px;margin-left:-140px;top:-6px;opacity:.6}
+  .ho-shadow{width:230px;margin-left:-115px;bottom:30px}
+  .ho-pool{width:290px;height:56px;margin-left:-145px;bottom:20px}
+  .ho-chip-1{transform:translate3d(-125px,-170px,90px)}
 }
 @media (prefers-reduced-motion: reduce){
   .ho-win,.ho-office,.ho-orbit,.ho-backlight{animation:none}
