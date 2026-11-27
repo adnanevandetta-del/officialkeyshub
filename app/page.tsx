@@ -31,9 +31,9 @@ export default function Home() {
       <main>
       <FeatureBar />
       <Hero3D />
-      <BlackFridayBundles />
       <BestSellers3D />
       <Products />
+      <BlackFridayBundles />
       <MovingProductShowcase />
       <TrustBadges />
       <CustomerReviews />
