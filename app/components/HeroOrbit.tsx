@@ -65,7 +65,6 @@ export default function HeroOrbit({ offer }: { offer: BundleOffer }) {
         <div className="order-1 lg:order-2">
         <div ref={stage} onPointerMove={tilt} onPointerLeave={reset} className="ho-stage" aria-hidden="true">
           <div className="ho-backlight" />
-          <div className="ho-beam" />
           <div className="ho-scene">
             <div className="ho-orbit"><span className="ho-spark" /></div>
             <div className="ho-win"><Box item={win} w={170} /></div>
@@ -117,7 +116,6 @@ const CSS = `
 .ho-chip-1{transform:translate3d(-150px,-150px,90px)}
 .ho-backlight{position:absolute;left:50%;top:46%;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,165,255,.55),rgba(40,140,255,.18) 45%,transparent 72%);filter:blur(8px);animation:ho-breathe 5s ease-in-out infinite;pointer-events:none}
 @keyframes ho-breathe{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
-.ho-beam{position:absolute;left:50%;top:-40px;width:440px;height:470px;margin-left:-220px;background:linear-gradient(180deg,rgba(190,225,255,.55),rgba(190,225,255,0) 80%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);filter:blur(16px);opacity:.7;pointer-events:none}
 .ho-shadow{position:absolute;left:50%;bottom:34px;width:340px;height:50px;margin-left:-170px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.45),transparent);filter:blur(4px)}
 .ho-pool{position:absolute;left:50%;bottom:22px;width:420px;height:70px;margin-left:-210px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,122,61,.4),rgba(40,140,255,.2) 55%,transparent);filter:blur(10px);pointer-events:none}
 .ho-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:.8rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#10b981,#059669);box-shadow:0 12px 26px -12px rgba(5,150,105,.8);transition:transform .2s}
@@ -128,7 +126,6 @@ const CSS = `
   .ho-scene{scale:.68;top:54%;transform:rotateX(var(--rx)) rotateY(calc(var(--ry) - 6deg))}
   .ho-orbit{scale:.84}
   .ho-backlight{width:330px;height:330px;margin:-165px 0 0 -165px;top:54%}
-  .ho-beam{width:280px;height:330px;margin-left:-140px;top:-6px;opacity:.6}
   .ho-shadow{width:230px;margin-left:-115px;bottom:30px}
   .ho-pool{width:290px;height:56px;margin-left:-145px;bottom:20px}
   .ho-chip-1{transform:translate3d(-125px,-170px,90px)}

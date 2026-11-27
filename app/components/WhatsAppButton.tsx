@@ -63,7 +63,8 @@ export default function WhatsAppButton() {
   // On phones, the homepage keeps the launcher out of the way until the visitor
   // has scrolled past the billboard (the first section).
   const pathname = usePathname();
-  const [pastHero, setPastHero] = useState(true);
+  // Start hidden on the homepage so phones never see it flash before the scroll check runs.
+  const [pastHero, setPastHero] = useState(pathname !== "/");
   useEffect(() => {
     if (pathname !== "/") { setPastHero(true); return; }
     const check = () => {
