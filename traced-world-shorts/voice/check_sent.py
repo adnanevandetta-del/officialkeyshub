@@ -18,6 +18,6 @@ for e in json.load(open(sys.argv[1])):
     heard = " ".join(s.text for s in m.transcribe(a, beam_size=5)[0])
     r = difflib.SequenceMatcher(None, norm(e["text"]), norm(heard)).ratio()
     dur = len(a) / 16000; words = len(e["text"].split())
-    if r < 0.86 or dur > 0.75 * words + 2:   # garbled/missing words, or runaway audio
+    if r < float(os.environ.get("THR","0.86")) or dur > 0.75 * words + 2:   # garbled/missing words, or runaway audio
         bad.append(e["file"]); print(f"BAD {r:.2f} {dur:.1f}s | {e['text']} | HEARD: {heard}", flush=True)
 print(f"checked, {len(bad)} bad"); open(sys.argv[2], "w").write("\n".join(bad))

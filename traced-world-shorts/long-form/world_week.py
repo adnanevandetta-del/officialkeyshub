@@ -237,7 +237,7 @@ if __name__ == "__main__":
     silent = os.path.join(out, "video_silent.mp4"); render(d, total, silent)
     final = os.path.join(out, "The World This Week - 26 Nov 2026" + (" - PREVIEW" if len(sys.argv) > 2 else "") + ".mp4")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", silent, "-i", vo, "-i", bed, "-filter_complex",
-        "[2:a]volume=-20dB,lowpass=f=7000[bed];[1:a]asplit[v1][v2];[bed][v2]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=600[duck];"
+        "[2:a]volume=-22dB,lowpass=f=7000[bed];[1:a]asplit[v1][v2];[bed][v2]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=600[duck];"
         "[v1][duck]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9[aout]",
         "-map", "0:v", "-map", "[aout]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", final], check=True)
     for x in (raw, silent, bed): os.remove(x)
