@@ -1,0 +1,117 @@
+---
+title: "Windows Server 2025 ISO Download and Activation (Step by Step)"
+description: "Where to download the official Windows Server 2025 ISO, how to install it, and how to turn the evaluation into a fully activated Standard edition with a product key."
+excerpt: "Download the ISO from Microsoft, install it, then convert the evaluation to a licensed edition with one command."
+category: "Guide"
+date: "2026-11-27"
+summary: "Microsoft publishes the Windows Server 2025 ISO on its Evaluation Center. It installs as a 180-day evaluation. To keep it, convert it to a licensed edition with DISM: run DISM /online /Get-TargetEditions, then DISM /online /Set-Edition:ServerStandard /ProductKey:YOUR-KEY /AcceptEula, and restart. Domain controllers can't be converted, so do this before promoting the server."
+readTime: "7 min"
+keywords: "windows server 2025 iso, windows server 2025 iso download, windows server 2025 download, download windows server 2025, activate windows server 2025, windows server 2025 evaluation to standard"
+product: "Windows Server 2025 Standard"
+draft: true
+---
+
+Searching for a **Windows Server 2025 ISO** turns up a lot of unofficial mirrors. You don't need any of them: Microsoft publishes the installer itself, free. This guide covers where to get it, how to install it, and how to turn the evaluation into a properly activated server.
+
+## TL;DR
+
+1. Download the ISO from Microsoft's **Evaluation Center**.
+2. Install it. It runs as a **180-day evaluation**.
+3. Convert it to Standard (or Datacenter) with a product key using **DISM**, then restart.
+
+## Step 1: Download the official ISO
+
+Go to the **Microsoft Evaluation Center** and open the Windows Server 2025 page. Fill in the short form and choose the **ISO** download in your language (64-bit).
+
+Why the official ISO matters:
+
+- It's the untouched installer straight from Microsoft, so nothing has been added to it.
+- It receives updates through Windows Update like any normal install.
+- Unofficial "pre-activated" ISOs often come with activators built in. Those aren't licences, and they're a common way malware gets onto servers.
+
+## Step 2: Check the requirements
+
+Before installing, check Microsoft's current **hardware requirements** for Windows Server 2025 (64-bit processor, RAM, disk space and network adapter). Choose between:
+
+- **Desktop Experience**: the normal Windows interface. Easiest if you manage the server directly.
+- **Server Core**: no desktop, managed remotely or by command line. Lighter and with fewer updates.
+
+You choose this during setup. Most small businesses pick Desktop Experience.
+
+## Step 3: Install Windows Server 2025
+
+1. Write the ISO to a USB drive (for example with Rufus) or attach it to your virtual machine.
+2. Boot from it and choose your language.
+3. Pick **Windows Server 2025 Standard** or **Datacenter**, with or without Desktop Experience.
+4. Choose **Custom: install Windows only** and select the target drive.
+5. Set the Administrator password when setup finishes.
+
+Your server is now running as an **evaluation**. The desktop shows how many days are left.
+
+## Step 4: Convert the evaluation to a licensed edition
+
+An evaluation can't be activated with a normal key in Settings. You convert it with **DISM**, which keeps your installation, roles and files.
+
+Open **Command Prompt as Administrator** and check which editions you can convert to:
+
+```
+DISM /online /Get-CurrentEdition
+DISM /online /Get-TargetEditions
+```
+
+Then convert to Standard with your product key:
+
+```
+DISM /online /Set-Edition:ServerStandard /ProductKey:XXXXX-XXXXX-XXXXX-XXXXX-XXXXX /AcceptEula
+```
+
+For Datacenter, use `ServerDatacenter` and a Datacenter key. The command takes a few minutes and asks to restart. After the restart, check the result:
+
+```
+slmgr /dli
+```
+
+It should show your edition and a **Licensed** status.
+
+> **Important:** a server that's already a **domain controller** can't be converted. Convert first, then promote it to a domain controller.
+
+## Already installed a non-evaluation edition?
+
+If you installed from volume or retail media rather than the evaluation, you don't need DISM. Enter the key in **Settings → System → Activation → Change product key**, or by command line:
+
+```
+slmgr /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+slmgr /ato
+```
+
+## Common problems
+
+- **"The specified product key is not valid for the target edition"**: the key is for a different edition (Standard vs Datacenter) or version (2022 vs 2025). Check the product name on your order.
+- **DISM error on a domain controller**: demote it, convert, then promote it again, or convert before promoting.
+- **Activation fails after conversion**: check the server has internet access and the correct time, then run `slmgr /ato` again. If it still fails, contact your seller with the error code.
+
+## Licensing in one paragraph
+
+Windows Server Standard is licensed per **physical core** (with a 16-core minimum per server) and covers up to two virtual machines; Datacenter covers unlimited VMs. Users and devices that connect to the server also need **Client Access Licences (CALs)**. If you're unsure what your setup needs, ask before you buy. It's cheaper than buying the wrong edition.
+
+## Get a Windows Server 2025 key
+
+We sell [Windows Server 2025 Standard](/products/windows-server-2025-standard) and [Datacenter](/products/windows-server-2025-datacenter) keys, emailed after payment, with a 30-day money-back guarantee. If you're comparing versions, our guide to [cheap Windows Server 2022 keys](/blog/cheap-windows-server-2022-keys) covers what to check before buying any server licence.
+
+## FAQ
+
+### Is the Windows Server 2025 ISO free to download?
+
+Yes. Microsoft offers it free on the Evaluation Center. The evaluation runs for 180 days; after that you need a licence to keep using it.
+
+### Can I activate the evaluation with a normal product key?
+
+Not from Settings. Convert it first with `DISM /online /Set-Edition`, which takes the product key as part of the command.
+
+### Will converting the evaluation delete my data?
+
+No. DISM changes the edition in place and keeps your installed roles, settings and files. Back up anyway before changing a production server.
+
+### Can I convert Standard to Datacenter later?
+
+Yes, with the same DISM command and a Datacenter key.

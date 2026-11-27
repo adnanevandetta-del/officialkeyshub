@@ -7,12 +7,12 @@ import ArticleSchema from "../ArticleSchema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.officialkeyshub.com/blog/how-to-activate-windows-11" },
-  title: "Activate Windows 11 Pro — 2026 Guide | Official Keys Hub",
-  description: "Learn how to activate Windows 11 Pro with product key. Complete guide with screenshots, troubleshooting, and phone activation method. Works 100%.",
-  keywords: "activate windows 11, windows 11 activation, how to activate windows 11 pro, windows 11 product key activation, windows 11 activation guide",
+  title: "How to Activate Windows 11 With a Product Key (2026)",
+  description: "Activate Windows 11 Home or Pro with a product key in Settings, by command line or by phone, plus fixes for the most common activation errors.",
+  keywords: "activate windows with product key windows 11, activate windows 11, windows 11 activation, how to activate windows 11 pro, windows 11 product key activation, windows 11 activation guide",
   openGraph: {
     images: [{ url: "https://www.officialkeyshub.com/og/blog/how-to-activate-windows-11.jpg", width: 1200, height: 630, alt: "Official Keys Hub guide" }],
-    title: "How to Activate Windows 11 Pro - Complete Guide 2026",
+    title: "How to Activate Windows 11 With a Product Key (2026)",
     description: "Step-by-step guide to activate Windows 11 with product key. Includes troubleshooting and phone activation.",
     url: "https://www.officialkeyshub.com/blog/how-to-activate-windows-11",
     type: "article",
