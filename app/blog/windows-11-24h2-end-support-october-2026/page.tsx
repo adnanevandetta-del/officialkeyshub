@@ -90,6 +90,13 @@ export default function Windows1124H2EndSupport() {
                   still works, but it is now vulnerable to new security threats. The free upgrade to Windows 11 25H2 is 
                   available now through Windows Update. Enterprise and Education editions have support until October 2027.
                 </p>
+                <p className="text-gray-700 leading-relaxed mt-3">
+                  <strong>Update:</strong> Windows 11 26H2, the newest version, started rolling out on September 29, 2026.{" "}
+                  <Link href="/blog/windows-11-26h2-update" className="text-blue-600 font-semibold hover:underline">
+                    Here&apos;s how to get 26H2
+                  </Link>{" "}
+                  (no new key needed).
+                </p>
               </div>
             </div>
           </div>

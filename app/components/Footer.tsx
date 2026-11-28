@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PaymentIcons from "./PaymentIcons";
 import Logo from "./Logo";
+import { blackFridayActive } from "../lib/promo";
 
 export default function Footer() {
   return (
@@ -66,6 +67,13 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-base mb-4">Quick Links</h4>
             <ul className="space-y-0.5">
+              {blackFridayActive() && (
+                <li>
+                  <Link href="/black-friday" className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm">
+                    Black Friday Deals
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link href="/products" className="inline-block py-1.5 text-slate-400 hover:text-sky-500 transition-colors text-sm">
                   All Products

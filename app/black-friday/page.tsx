@@ -14,11 +14,23 @@ import { BF_CODE, BF_PERCENT, bfPrice, blackFridayActive } from "../lib/promo";
 // Shows the deals while BF_ON is true (no end date), and a "sale ended" note after.
 
 export const metadata: Metadata = {
-  title: `Black Friday Windows & Office Key Deals: ${BF_PERCENT}% Off | Official Keys Hub`,
-  description: `Black Friday sale: ${BF_PERCENT}% off every genuine Windows and Office key with code ${BF_CODE}. Emailed after payment, 30-day money-back guarantee.`,
+  title: `Black Friday & Cyber Monday Windows & Office Key Deals: ${BF_PERCENT}% Off | Official Keys Hub`,
+  description: `Black Friday and Cyber Monday sale: ${BF_PERCENT}% off every genuine Windows and Office key with code ${BF_CODE}. Windows 11 Pro, Office 2024 and bundles, emailed after payment, 30-day money-back guarantee.`,
+  keywords: [
+    "black friday windows 11 key",
+    "black friday windows key deal",
+    "black friday office 2024 deal",
+    "black friday microsoft office deal",
+    "cyber monday windows 11 key",
+    "cyber monday office deal",
+    "windows 11 pro black friday",
+    "office 2024 black friday",
+    "windows and office bundle black friday",
+    "black friday software deals",
+  ],
   alternates: { canonical: "/black-friday" },
   openGraph: {
-    title: `Black Friday: ${BF_PERCENT}% off Windows & Office keys`,
+    title: `Black Friday & Cyber Monday: ${BF_PERCENT}% off Windows & Office keys`,
     description: `Code ${BF_CODE} takes ${BF_PERCENT}% off every key in the store.`,
     url: "/black-friday",
     type: "website",
@@ -45,6 +57,10 @@ const faqs = [
   {
     q: "How long does the sale last?",
     a: "For a limited time. The code works as long as the Black Friday banner is showing on the site.",
+  },
+  {
+    q: "Is there a separate Cyber Monday sale?",
+    a: `No, it's the same sale. Code ${BF_CODE} keeps working through Cyber Monday and for as long as the Black Friday banner is showing on the site.`,
   },
   {
     q: "Does the discount work with other codes?",
@@ -235,6 +251,13 @@ export default function BlackFridayPage() {
           <p className="mt-6 text-center text-sm text-slate-500">
             Full terms: <Link href="/refund-policy" className="text-[#0067b8] hover:underline">refund policy</Link> ·{" "}
             <Link href="/what-you-get" className="text-[#0067b8] hover:underline">what you get</Link>
+          </p>
+          <p className="mt-3 text-center text-sm text-slate-500">
+            Not sure which key you need? Read our{" "}
+            <Link href="/blog/black-friday-windows-office-key-deals" className="text-[#0067b8] font-semibold hover:underline">
+              Black Friday buyer&apos;s guide
+            </Link>
+            .
           </p>
         </section>
       </main>

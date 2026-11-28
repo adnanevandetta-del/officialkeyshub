@@ -2,7 +2,7 @@
   "_comment": "Keyword queue for the automated blog. Add keywords to the end of the list. The generator always picks the first item with status 'queued', writes an MDX draft, and flips it to 'drafted'; merging its PR is what publishes it. Statuses: queued -> drafted -> published.",
   "keywords": [
     {
-      "keyword": "windows 10 end of support 2026",
+      "keyword": "windows 10 esu 2027",
       "title": "Windows 10 End of Support 2026: What Are Your Options?",
       "category": "Guide",
       "status": "drafted",
@@ -146,12 +146,6 @@
       "draftedAt": "2026-11-22"
     },
     {
-      "keyword": "best antivirus for windows 11 2026",
-      "title": "Best Value Antivirus for Windows 11 in 2026",
-      "category": "Buying",
-      "status": "queued"
-    },
-    {
       "keyword": "reinstall windows without losing license",
       "title": "How to Reinstall Windows Without Losing Your License",
       "category": "Guide",
@@ -225,6 +219,68 @@
       "slug": "windows-11-pro-download",
       "draftedAt": "2026-11-27",
       "note": "Bing: windows 11 pro download 36.4K, download windows 11 pro 13.4K"
+    },
+    {
+      "keyword": "black friday windows 11 key",
+      "title": "Black Friday Windows & Office Key Deals 2026: Real Prices, No Traps",
+      "category": "Buying",
+      "status": "published",
+      "slug": "black-friday-windows-office-key-deals",
+      "draftedAt": "2026-11-28"
+    },
+    {
+      "keyword": "office without subscription",
+      "title": "How to Get Microsoft Office Without a Subscription (2026)",
+      "category": "Buying",
+      "status": "published",
+      "slug": "office-without-subscription",
+      "draftedAt": "2026-11-28"
+    },
+    {
+      "keyword": "windows server 2016 end of support",
+      "title": "Windows Server 2016 End of Support (Jan 12, 2027): Upgrade Options",
+      "category": "Guide",
+      "status": "published",
+      "slug": "windows-server-2016-end-of-support",
+      "draftedAt": "2026-11-28"
+    },
+    {
+      "keyword": "windows 11 26h2",
+      "title": "Windows 11 26H2: How to Get the Update (and Do You Need a New Key?)",
+      "category": "Guide",
+      "status": "published",
+      "slug": "windows-11-26h2-update",
+      "draftedAt": "2026-11-28"
+    },
+    {
+      "keyword": "sql server 2016 end of support",
+      "title": "SQL Server 2016 End of Support: Upgrade to 2022 or 2025?",
+      "category": "Guide",
+      "status": "queued"
+    },
+    {
+      "keyword": "how to activate windows on a new pc",
+      "title": "Got a New PC? How to Activate Windows 11 and Office in 10 Minutes",
+      "category": "Guide",
+      "status": "queued"
+    },
+    {
+      "keyword": "windows server 2025 cal requirements",
+      "title": "Windows Server 2025 CALs Explained: Do You Need Them?",
+      "category": "Guide",
+      "status": "queued"
+    },
+    {
+      "keyword": "windows 11 25h2 end of support",
+      "title": "Windows 11 25H2 End of Support: When It Ends and What to Do",
+      "category": "Guide",
+      "status": "queued"
+    },
+    {
+      "keyword": "best antivirus for windows 11 2027",
+      "title": "Best Value Antivirus for Windows 11 in 2027",
+      "category": "Buying",
+      "status": "queued"
     }
   ]
 }

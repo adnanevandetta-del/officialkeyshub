@@ -65,6 +65,9 @@ export default function BlackFridayBundles({ heading = true }: { heading?: boole
             <p className="mt-3 text-white/70 max-w-2xl mx-auto">
               Both keys for one PC, emailed after payment. Cheaper than buying them one by one, and {BF_CODE} takes another {BF_PERCENT}% off.
             </p>
+            <Link href="/black-friday" className="mt-3 inline-block text-sm font-bold text-sky-500 hover:text-sky-400 hover:underline">
+              See all Black Friday &amp; Cyber Monday deals →
+            </Link>
           </div>
         )}
         {/* Phones: swipeable row (next card peeks in). md+: three columns. */}

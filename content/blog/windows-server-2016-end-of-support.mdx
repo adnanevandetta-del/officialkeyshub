@@ -1,0 +1,94 @@
+---
+title: "Windows Server 2016 End of Support (Jan 12, 2027): Upgrade Options"
+description: "Windows Server 2016 extended support ends on January 12, 2027. What happens next, whether to pay for ESU, and how to upgrade to Server 2022 or 2025 in place."
+excerpt: "Server 2016 stops getting free security updates on January 12, 2027. Here's how to choose between ESU, Server 2022 and Server 2025."
+category: "Guide"
+date: "2026-11-28"
+summary: "Windows Server 2016 extended support ends on January 12, 2027, after which it gets no free security updates. Your options are paid Extended Security Updates (up to three more years), or an upgrade to Windows Server 2022 (supported until October 14, 2031) or Windows Server 2025 (supported until November 14, 2034). Server 2025 supports an in-place upgrade directly from 2016."
+readTime: "7 min"
+keywords: "windows server 2016 end of support, windows server 2016 end of life, server 2016 extended support end date, upgrade windows server 2016 to 2025, upgrade server 2016 to 2022, windows server 2016 esu, windows server 2016 in place upgrade, server 2016 january 2027"
+product: "Windows Server 2025 Standard"
+draft: false
+---
+
+Windows Server 2016 has been a workhorse for ten years. On **January 12, 2027**, Microsoft ends extended support, so it stops getting free security updates. A server that's exposed to your network or the internet without patches is the kind of thing that ends up in an incident report.
+
+Here's what changes, and the cheapest safe way forward.
+
+## TL;DR
+
+- **Extended support ends January 12, 2027.** After that, no free security updates, bug fixes or Microsoft support.
+- **Your server keeps running.** Nothing switches off, but every new vulnerability stays open.
+- **Three ways out:** pay for Extended Security Updates (ESU), upgrade to **Server 2022**, or upgrade to **Server 2025**.
+- For most small businesses, **[Server 2025 Standard](/products/windows-server-2025-standard)** is the best value. It's supported until November 14, 2034, and you can upgrade to it in place from 2016.
+
+## Support dates side by side
+
+| Version | Extended support ends | Years left (from now) |
+|---|---|---|
+| Windows Server 2016 | January 12, 2027 | Weeks |
+| Windows Server 2019 | January 9, 2029 | About 2 |
+| [Windows Server 2022](/products/windows-server-2022-standard) | October 14, 2031 | About 5 |
+| [Windows Server 2025](/products/windows-server-2025-standard) | November 14, 2034 | About 8 |
+
+Upgrading to 2019 now means doing this again in two years, so skip it. Every date is on our [Microsoft end of support tracker](/microsoft-end-of-support).
+
+## Option 1: Pay for Extended Security Updates
+
+Microsoft sells ESU for Server 2016 for up to three more years. It keeps security patches coming, but nothing else: no new features and no regular support.
+
+**Good for:** a server running an old line-of-business app that won't run on a newer version yet.
+**Downside:** ESU is priced per core, every year, and it rises over time. Over three years it usually costs more than a new license.
+
+## Option 2: Upgrade to Windows Server 2022
+
+[Server 2022 Standard](/products/windows-server-2022-standard) is a mature, well-tested release with security updates until October 14, 2031.
+
+**Good for:** anyone whose software vendor certifies Server 2022 but not 2025 yet.
+
+## Option 3: Upgrade to Windows Server 2025 (recommended)
+
+[Server 2025 Standard](/products/windows-server-2025-standard) gives you the longest runway, until November 14, 2034. It also brings hotpatching (some security updates without a reboot, with Azure Arc), better Active Directory and SMB security, and improved Hyper-V.
+
+**Good for:** most small and mid-sized businesses. You only have to plan this once.
+
+## Standard or Datacenter?
+
+- **Standard** covers a physical server plus **two virtual machines** per license. That's enough for most small businesses.
+- **Datacenter** allows **unlimited VMs** on the licensed host. Choose it if you run many VMs on one box.
+
+Compare prices: [Server 2025 Standard](/products/windows-server-2025-standard) vs [Server 2025 Datacenter](/products/windows-server-2025-datacenter).
+
+## How to upgrade in place from Server 2016
+
+1. **Back up everything** and test that the backup restores. An in-place upgrade usually works, but don't bet the server on it.
+2. **Check your apps and roles.** Ask vendors whether your software supports the target version. Domain controllers are usually best moved by adding a new DC and retiring the old one, not upgraded in place.
+3. **Mount the Server 2025 (or 2022) ISO** and run `setup.exe`. Download links are in our [Windows Server 2025 ISO guide](/blog/windows-server-2025-iso-download).
+4. **Choose "Keep files, settings and apps"** when asked, and enter your new product key.
+5. **Check Windows Update and your roles** after the upgrade finishes.
+
+## Don't forget CALs
+
+If users or devices connect to the server (file shares, AD, RDS), they need Client Access Licenses for the **same version or newer** as the server. Server 2016 CALs don't cover a Server 2025 install. For Server 2022 we sell [5-device CAL packs](/products/windows-server-cal-2022-5-device), and our [cheap Windows Server 2022 keys guide](/blog/cheap-windows-server-2022-keys) explains CALs in more detail.
+
+## Frequently asked questions
+
+### When does Windows Server 2016 support end?
+
+Extended support for Windows Server 2016 ends on January 12, 2027. Mainstream support already ended in January 2022.
+
+### Will Windows Server 2016 stop working after January 2027?
+
+No. It keeps running, but it stops receiving security updates unless you pay for Extended Security Updates, so new vulnerabilities stay unpatched.
+
+### Can I upgrade directly from Windows Server 2016 to 2025?
+
+Yes. Windows Server 2025 supports an in-place upgrade from Windows Server 2016, as well as from 2019 and 2022. Back up first, and check that your applications support the new version.
+
+### Is it cheaper to buy ESU or a new Server license?
+
+For most small businesses, a new Server 2022 or 2025 license is cheaper than three years of ESU, and it's supported for much longer.
+
+### Do I need new CALs when I upgrade?
+
+Yes. CALs must be for the same version as the server or newer, so Server 2016 CALs don't cover a Server 2025 server.
