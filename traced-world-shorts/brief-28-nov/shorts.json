@@ -98,7 +98,8 @@
       "vo": "Follow Traced World for more.",
       "ov": {
        "t": "outro"
-      }
+      },
+      "hold": 1.6
      }
     ]
    }
@@ -191,7 +192,8 @@
       "vo": "Follow Traced World for more.",
       "ov": {
        "t": "outro"
-      }
+      },
+      "hold": 1.6
      }
     ]
    }
@@ -286,7 +288,8 @@
       "vo": "Follow Traced World for more.",
       "ov": {
        "t": "outro"
-      }
+      },
+      "hold": 1.6
      }
     ]
    }
@@ -365,7 +368,8 @@
       "vo": "Follow Traced World for more.",
       "ov": {
        "t": "outro"
-      }
+      },
+      "hold": 1.6
      }
     ]
    }

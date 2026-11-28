@@ -15,6 +15,7 @@ def shade():
     arr = np.zeros((H, W, 4), np.uint8); arr[..., :3] = (4, 7, 14); arr[..., 3] = (np.clip(a, 0, .88) * 255).astype(np.uint8)
     return Image.fromarray(np.broadcast_to(arr, (H, W, 4)).copy(), "RGBA")
 WW.SH = shade()
+ANIM = [Image.open(os.path.join("/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/anim360", f"{i:03d}.png")).convert("RGBA") for i in range(120)]
 MARK_S = Image.open("/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/mark_64.png").convert("RGBA")
 WW.GRAIN = [g.resize((W, H)) for g in WW.GRAIN[:4]]
 def overlay(d, b, seg, t, dur, data, kind):
@@ -55,11 +56,12 @@ def overlay(d, b, seg, t, dur, data, kind):
         for i, ln in enumerate(lines): txt(d, (ML, 700 + i * 112 + (1 - e) * 20), ln, qf, WHITE, e)
         txt(d, (ML, 730 + len(lines) * 112), "Tell us in the comments", f("Inter-Medium.otf", 44), SOFT, ease((t - 1.2) / 0.8) * aout)
     elif typ == "outro":
-        e = ease((t - 0.3) / 0.7)
-        txt(d, (ML, 700 + (1 - e) * 20), "TRACED", f("InterDisplay-Black.otf", 140), WHITE, e)
-        txt(d, (ML, 850 + (1 - e) * 20), "WORLD", f("InterDisplay-Black.otf", 140), RED, e)
-        e3 = ease((t - 0.9) / 0.5); bf = f("Inter-Black.otf", 52); lab = "FOLLOW FOR MORE"; bw = d.textlength(lab, font=bf)
-        d.rounded_rectangle([ML, 1060, ML + bw + 90, 1160], 50, fill=RED + (int(255 * e3),)); txt(d, (ML + 45, 1080), lab, bf, WHITE, e3)
+        gi = min(len(ANIM) - 1, int(t * 30)); g = ANIM[gi]; d._image.paste(g, (int(W / 2 - g.width / 2), 430), g)
+        e = ease((t - 1.6) / 0.7)
+        for word, col, yy in (("TRACED", WHITE, 830), ("WORLD", RED, 970)):
+            ff = f("InterDisplay-Black.otf", 140); txt(d, (W / 2 - d.textlength(word, font=ff) / 2, yy + (1 - e) * 20), word, ff, col, e)
+        e3 = ease((t - 2.3) / 0.5); bf = f("Inter-Black.otf", 52); lab = "FOLLOW FOR MORE"; bw = d.textlength(lab, font=bf)
+        d.rounded_rectangle([W / 2 - bw / 2 - 45, 1170, W / 2 + bw / 2 + 45, 1270], 50, fill=RED + (int(255 * e3),)); txt(d, (W / 2 - bw / 2, 1190), lab, bf, WHITE, e3)
     # progress bar (Shorts identity)
     T = b["start"] + t; d.rounded_rectangle([ML, 1515, W - ML, 1523], 4, fill=(255, 255, 255, 40))
     d.rounded_rectangle([ML, 1515, ML + int((W - 2 * ML) * min(1, T / data["_total"])), 1523], 4, fill=RED + (255,))

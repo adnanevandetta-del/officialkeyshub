@@ -24,7 +24,19 @@ def ortho_fwd(lat, lon, lat0, lon0):
     x = np.cos(p)*np.sin(l - l0); y = np.cos(p0)*np.sin(p) - np.sin(p0)*np.cos(p)*np.cos(l - l0)
     vis = np.sin(p0)*np.sin(p) + np.cos(p0)*np.cos(p)*np.cos(l - l0) > 0
     return x, y, vis
-def globe(size, lat0=24, lon0=30, route=((40.4, -3.7), (45.4, 9.2), (37.9, 23.7), (36.2, 37.2), (29.4, 47.9)), bg=None, ring=WHITE):
+def anim_frames(size, seconds=4.0, fps=30):
+    """Globe rotates in from the west, route draws itself, pin pops."""
+    import math
+    out = []
+    for i in range(int(seconds * fps)):
+        t = i / fps
+        rot = 1 - (1 - min(1, t / 1.6)) ** 3                     # ease-out spin
+        lon0 = -40 + 70 * rot
+        prog = max(0.0, min(1.0, (t - 1.0) / 1.2)); prog = 1 - (1 - prog) ** 2
+        p = max(0.0, (t - 2.2) / 0.35); pin = 0 if p <= 0 else (min(1.0, p) * (1 + 0.25 * math.sin(min(1.0, p) * math.pi)))
+        out.append(globe(size, lon0=lon0, progress=prog if t >= 1.0 else 0.0, pin=pin))
+    return out
+def globe(size, lat0=24, lon0=30, route=((40.4, -3.7), (45.4, 9.2), (37.9, 23.7), (36.2, 37.2), (29.4, 47.9)), bg=None, ring=WHITE, progress=1.0, pin=1.0):
     SS = 3; S = size * SS; c = S / 2; R = S * 0.42
     yy, xx = np.mgrid[0:S, 0:S].astype(np.float32)
     X = (xx - c) / R; Y = -(yy - c) / R; inside = X*X + Y*Y <= 1
@@ -67,13 +79,17 @@ def globe(size, lat0=24, lon0=30, route=((40.4, -3.7), (45.4, 9.2), (37.9, 23.7)
             la = a1 + (a2 - a1) * t; lo = b1 + (b2 - b1) * t
             x, y, v = ortho_fwd(la, lo, lat0, lon0); pts.append((c + x * R, c - y * R))
     tw = int(S * 0.042)
+    n = max(2, int(len(pts) * max(0.0, min(1.0, progress))))
+    pts = pts[:n]
     def stroke(pp, width, col):
         d.line(pp, fill=col, width=width)
         for x, y in pp[::2] + [pp[-1]]: d.ellipse([x - width/2, y - width/2, x + width/2, y + width/2], fill=col)
+    if len(pts) < 2 or progress <= 0: return im.resize((size, size), Image.LANCZOS)
     stroke(pts, int(tw * 1.7), NAVY + (255,))
     stroke(pts, tw, RED + (255,))
-    px, py = pts[-1]; pr = tw * 1.6
-    d.ellipse([px - pr - tw*0.5, py - pr - tw*0.5, px + pr + tw*0.5, py + pr + tw*0.5], fill=NAVY + (255,))
+    if pin <= 0: return im.resize((size, size), Image.LANCZOS)
+    px, py = pts[-1]; pr = tw * 1.6 * pin
+    d.ellipse([px - pr - tw*0.5*pin, py - pr - tw*0.5*pin, px + pr + tw*0.5*pin, py + pr + tw*0.5*pin], fill=NAVY + (255,))
     d.ellipse([px - pr, py - pr, px + pr, py + pr], fill=RED + (255,), outline=WHITE + (255,), width=int(tw * 0.55))
     return im.resize((size, size), Image.LANCZOS)
 if __name__ == "__main__":

@@ -25,6 +25,8 @@ def shade():
     arr[..., 3] = np.clip(arr[..., 3] + left * 255 * ramp, 0, 230).astype(np.uint8)
     return Image.fromarray(arr, "RGBA")
 SH = shade()
+sys.path.insert(0, "/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo"); import sting as _sting
+STING = _sting.frames(scale=1.3)
 MARK = Image.open("/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/mark_48.png").convert("RGBA")
 _g = np.random.default_rng(9)
 def _grain():
@@ -55,6 +57,10 @@ def voice_track(d):
     audio, cues, t = [], [], 0.0; sr = 24000
     for seg in d["segments"]:
         for b in seg["beats"]:
+            if b.get("sting"):
+                b["start"] = t; n = int(sr * 2.0); a = np.zeros(n, np.float32); k = int(sr * 0.8); tt_ = np.arange(n - k) / sr
+                for fq, g in ((880.0, 0.10), (1318.5, 0.05)): a[k:] += (g * np.sin(2 * np.pi * fq * tt_) * np.exp(-tt_ * 3)).astype(np.float32)
+                audio.append(a); b["dur"] = 2.0; t += 2.0; continue
             b["start"] = t; chunk = [np.zeros(int(sr * PRE))]; tt = t + PRE
             sents = re.split(r"(?<=[.!?])\s+", b["vo"])
             for i, s in enumerate(sents):
@@ -146,6 +152,12 @@ def render(d, total, out):
     for seg in d["segments"]:
         for b in seg["beats"]:
             dur = b["dur"]
+            if b.get("sting"):
+                for i in range(int(round(dur * FPS))):
+                    fr = STING[min(i, len(STING) - 1)]
+                    if prev_last is not None and i < int(XF * FPS): fr = Image.blend(prev_last, fr, ease(i / (XF * FPS)))
+                    p.stdin.write(fr.convert("RGB").tobytes())
+                prev_last = STING[-1]; continue
             if "clip" in b: b["clips"] = [[b["clip"], b.get("ss", 0)]]
             kind = "map" if "map" in b else ("clip" if "clips" in b else None)
             shots = b.get("clips", [None]); seg_len = dur / len(shots); si = -1
@@ -242,4 +254,8 @@ if __name__ == "__main__":
         "[v1][duck]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=9[aout]",
         "-map", "0:v", "-map", "[aout]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", final], check=True)
     for x in (raw, silent, bed): os.remove(x)
+    lst = final + ".txt"; open(lst, "w").write(f"file '{os.path.abspath(final)}'\nfile '/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/endcard.mp4'\n")
+    tmp = final + ".tmp.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", tmp], check=True)
+    os.replace(tmp, final); os.remove(lst)
     print("DONE", final, round(total, 1))

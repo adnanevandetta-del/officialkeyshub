@@ -110,12 +110,12 @@ def draw_scene(d, sc, t, dur, story):
         d.rounded_rectangle([ML, top + 600, ML + bw + 80, top + 700], 50, fill=RED + (int(255 * e3),))
         text_layer(d, (ML + 40, top + 620), label, bf, WHITE, e3)
 
+_MARK = Image.open('/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/mark_64.png').convert('RGBA')
 def chrome(d, story, T, total):
     # top brand bar
     lf = font("InterDisplay-Black.otf", 46)
-    pulse = 0.55 + 0.45 * (0.5 + 0.5 * math.sin(T * 5))
-    d.ellipse([ML, 168, ML + 26, 194], fill=RED + (int(255 * pulse),))
-    d.text((ML + 44, 152), "TRACED WORLD", font=lf, fill=WHITE + (255,))
+    d._image.paste(_MARK, (ML - 6, 140), _MARK)
+    d.text((ML + 68, 152), "TRACED WORLD", font=lf, fill=WHITE + (255,))
     df = font("Inter-SemiBold.otf", 36)
     dw = d.textlength(story["date"], font=df)
     d.text((W - ML - dw, 160), story["date"], font=df, fill=MUTED + (255,))
