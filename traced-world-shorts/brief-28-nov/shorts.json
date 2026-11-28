@@ -1,0 +1,374 @@
+[
+ {
+  "id": "06-us-air-force-cloud-one-hack",
+  "title": "TRACED WORLD",
+  "date": "28 November 2026",
+  "outname": "06-us-air-force-cloud-one-hack",
+  "voice": "bf_emma",
+  "speed": 0.93,
+  "thumb": {
+   "kicker": "REPORTED BREACH",
+   "l1": "HACKERS INSIDE",
+   "l2": "US AIR FORCE?",
+   "sub": "Who did it, and what did they take?",
+   "img": [
+    "6963749",
+    6
+   ]
+  },
+  "segments": [
+   {
+    "tag": "US AIR FORCE",
+    "chapter": "US AIR FORCE",
+    "src": "Reuters, via CBS News, The Hill, Military Times",
+    "beats": [
+     {
+      "clips": [
+       [
+        "6330778",
+        0
+       ],
+       [
+        "18855223",
+        0
+       ]
+      ],
+      "vo": "Hackers have reportedly broken into one of the US Air Force's most important computer systems. Nobody knows yet who they are, or what they took.",
+      "ov": {
+       "t": "hook",
+       "kicker": "REPORTED BREACH",
+       "l1": "HACKERS INSIDE",
+       "l2": "US AIR FORCE?"
+      }
+     },
+     {
+      "vo": "According to sources cited by Reuters, the attackers exploited a software flaw to reach the system's control plane, the layer administrators use to manage it. The intrusion was reportedly discovered within the past month, during an upgrade.",
+      "clips": [
+       [
+        "6330778",
+        2
+       ],
+       [
+        "6963749",
+        9
+       ]
+      ],
+      "ov": {
+       "t": "lower",
+       "text": "Attackers reportedly exploited a software flaw"
+      }
+     },
+     {
+      "vo": "Cloud One reportedly hosts systems for command and control, and for tracking munitions across more than two hundred Air Force locations worldwide. Sources say tactical, personnel and logistics data could be at risk.",
+      "clips": [
+       [
+        "18855223",
+        0
+       ],
+       [
+        "6963749",
+        4
+       ]
+      ],
+      "ov": {
+       "t": "stat",
+       "num": "200+",
+       "label": "locations tracked by a munitions system on Cloud One"
+      }
+     },
+     {
+      "vo": "US Cyber Command has reportedly been brought in. The Air Force would not confirm or deny the breach. And it's still not known who the hackers are, or whether any data was taken.",
+      "clip": "6330778",
+      "ss": 1,
+      "ov": {
+       "t": "lower",
+       "text": "Air Force won't confirm or deny; attackers unknown"
+      }
+     },
+     {
+      "vo": "Who do you think is behind it? Tell us in the comments.",
+      "clip": "6963749",
+      "ss": 14,
+      "ov": {
+       "t": "question",
+       "text": "Who is behind the Air Force hack?"
+      }
+     },
+     {
+      "vo": "Follow Traced World for more.",
+      "ov": {
+       "t": "outro"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "07-kuwait-drone-murder-probe",
+  "title": "TRACED WORLD",
+  "date": "28 November 2026",
+  "outname": "07-kuwait-drone-murder-probe",
+  "voice": "bf_emma",
+  "speed": 0.93,
+  "thumb": {
+   "kicker": "KUWAIT",
+   "l1": "MURDER PROBE",
+   "l2": "OPENED",
+   "sub": "Rome investigates the drone strike that killed 2 Italians",
+   "img": [
+    "5266044",
+    6
+   ]
+  },
+  "segments": [
+   {
+    "tag": "KUWAIT",
+    "chapter": "KUWAIT",
+    "src": "Euronews, Al Jazeera, Arab Times, CNBC",
+    "beats": [
+     {
+      "clip": "18338777",
+      "ss": 4,
+      "vo": "Two Italians were killed by a drone in Kuwait, and now Rome has opened a murder investigation.",
+      "ov": {
+       "t": "hook",
+       "kicker": "KUWAIT",
+       "l1": "MURDER PROBE",
+       "l2": "OPENED"
+      }
+     },
+     {
+      "vo": "Kuwait's military now says its forces engaged hostile drones, and that the two Italians were killed by falling debris.",
+      "clip": "5266044",
+      "ss": 5,
+      "ov": {
+       "t": "lower",
+       "text": "Kuwait: Italians killed by falling debris"
+      }
+     },
+     {
+      "vo": "On Friday, Kuwait summoned Iran's ambassador. Iran's foreign minister, Abbas Araghchi, called the accusations baseless, and again proposed a joint investigation.",
+      "clips": [
+       [
+        "18338777",
+        11
+       ],
+       [
+        "856181",
+        1
+       ]
+      ],
+      "ov": {
+       "t": "lower",
+       "text": "Kuwait summons Iran's ambassador"
+      }
+     },
+     {
+      "vo": "Gulf states have closed ranks. The Gulf Cooperation Council called the attack brutal, and Saudi Arabia, Bahrain, Qatar and the UAE all condemned it.",
+      "map": [
+       29.3,
+       47.8,
+       3,
+       6.5,
+       "KUWAIT"
+      ],
+      "ov": {
+       "t": "lower",
+       "text": "Gulf states condemn the attack"
+      }
+     },
+     {
+      "vo": "Who do you think launched that drone? Tell us in the comments.",
+      "clip": "856181",
+      "ss": 4,
+      "ov": {
+       "t": "question",
+       "text": "Who launched the drone?"
+      }
+     },
+     {
+      "vo": "Follow Traced World for more.",
+      "ov": {
+       "t": "outro"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "08-strait-of-hormuz-standstill",
+  "title": "TRACED WORLD",
+  "date": "28 November 2026",
+  "outname": "08-strait-of-hormuz-standstill",
+  "voice": "bf_emma",
+  "speed": 0.93,
+  "thumb": {
+   "kicker": "STRAIT OF HORMUZ",
+   "l1": "85 SHIPS A DAY.",
+   "l2": "LAST WEEK: 1",
+   "sub": "17 tankers struck since November 1",
+   "img": [
+    "4911815",
+    8
+   ]
+  },
+  "segments": [
+   {
+    "tag": "STRAIT OF HORMUZ",
+    "chapter": "STRAIT OF HORMUZ",
+    "src": "IMF PortWatch, JMIC, CNBC, gCaptain",
+    "beats": [
+     {
+      "map": [
+       26.57,
+       56.25,
+       3.5,
+       9,
+       "STRAIT OF HORMUZ"
+      ],
+      "vo": "In the Strait of Hormuz, one of the world's most important oil routes has almost stopped moving.",
+      "ov": {
+       "t": "hook",
+       "kicker": "STRAIT OF HORMUZ",
+       "l1": "85 SHIPS A DAY.",
+       "l2": "LAST WEEK: 1"
+      }
+     },
+     {
+      "vo": "Before the crisis, around eighty-five ships passed through every day. On November twenty-second, the IMF's PortWatch tracker recorded just one.",
+      "clip": "4911815",
+      "ss": 2,
+      "ov": {
+       "t": "stat",
+       "num": "1",
+       "label": "ship through Hormuz on 22 Nov \u00b7 about 85 a day before"
+      }
+     },
+     {
+      "vo": "The Joint Maritime Information Centre says seventeen tankers have been struck in the strait since the start of November, and more than two hundred commercial ships are waiting to pass.",
+      "clip": "11113298",
+      "ss": 1,
+      "ov": {
+       "t": "stat",
+       "num": "17",
+       "label": "tankers struck since 1 November (JMIC)"
+      }
+     },
+     {
+      "vo": "Iran's Revolutionary Guards say the tankers hit naval mines while using what they call unauthorised routes, including ships they say were under US escort. Those claims have not been independently verified.",
+      "clips": [
+       [
+        "4911815",
+        14
+       ],
+       [
+        "11113298",
+        10
+       ]
+      ],
+      "ov": {
+       "t": "lower",
+       "text": "Iran blames mines; claims not independently verified"
+      }
+     },
+     {
+      "vo": "What do you think happens next? Tell us in the comments.",
+      "clip": "4911815",
+      "ss": 22,
+      "ov": {
+       "t": "question",
+       "text": "What happens next?"
+      }
+     },
+     {
+      "vo": "Follow Traced World for more.",
+      "ov": {
+       "t": "outro"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "09-pakistan-turkey-back-saudi",
+  "title": "TRACED WORLD",
+  "date": "28 November 2026",
+  "outname": "09-pakistan-turkey-back-saudi",
+  "voice": "bf_emma",
+  "speed": 0.93,
+  "thumb": {
+   "kicker": "DEFENCE PACT",
+   "l1": "PAKISTAN & TURKEY",
+   "l2": "BACK SAUDI",
+   "sub": "An attack on one is an attack on all",
+   "img": [
+    "7455617",
+    10
+   ]
+  },
+  "segments": [
+   {
+    "tag": "PAKISTAN \u00b7 TURKEY \u00b7 SAUDI",
+    "chapter": "PAKISTAN \u00b7 TURKEY \u00b7 SAUDI",
+    "src": "AP",
+    "beats": [
+     {
+      "clip": "4985583",
+      "ss": 1,
+      "vo": "Pakistan and Turkey have pledged to stand with Saudi Arabia against the Houthis.",
+      "ov": {
+       "t": "hook",
+       "kicker": "DEFENCE PACT",
+       "l1": "PAKISTAN & TURKEY",
+       "l2": "BACK SAUDI"
+      }
+     },
+     {
+      "vo": "Defence officials from the three countries met on Friday, under a pact signed in Mecca in August, which treats an attack on one member as an attack on all.",
+      "clip": "7455617",
+      "ss": 2,
+      "ov": {
+       "t": "lower",
+       "text": "Pact treats an attack on one as an attack on all"
+      }
+     },
+     {
+      "vo": "Pakistan and Turkey say the pact is purely defensive. Pakistan is also urging the United States and Iran to return to negotiations, after brokering an interim deal between them in June.",
+      "clips": [
+       [
+        "7455617",
+        18
+       ],
+       [
+        "4985583",
+        9
+       ]
+      ],
+      "ov": {
+       "t": "lower",
+       "text": "Pakistan urges US and Iran back to talks"
+      }
+     },
+     {
+      "vo": "Could this pact pull more countries into the conflict? Tell us in the comments.",
+      "clip": "7455617",
+      "ss": 28,
+      "ov": {
+       "t": "question",
+       "text": "Will this pact pull more countries in?"
+      }
+     },
+     {
+      "vo": "Follow Traced World for more.",
+      "ov": {
+       "t": "outro"
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

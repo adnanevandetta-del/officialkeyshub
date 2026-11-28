@@ -26,5 +26,5 @@ for si, seg in enumerate(d["segments"]):
                 ta.save(p, w, m.sr)
             man.append({"seg": si, "beat": bi, "k": k, "text": s, "said": prep(s), "file": p})
             print(len(man), s[:50], flush=True)
-json.dump(man, open(os.path.join(outdir, "manifest.json"), "w"), indent=1)
+json.dump(man, open(os.path.join(outdir, os.environ.get("MANIFEST_NAME", "manifest.json")), "w"), indent=1)
 print("CB DONE")
