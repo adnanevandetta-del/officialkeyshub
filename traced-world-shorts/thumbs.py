@@ -23,7 +23,7 @@ def fit_font(d, text, maxw, start, name="InterDisplay-Black.otf"):
     while d.textlength(text, font=f(name, s)) > maxw: s -= 4
     return f(name, s)
 
-def make(bg, kicker, lines, sub, out, pin=None, note="Illustrative image"):
+def make(bg, kicker, lines, sub, out, pin=None, note=""):
     im = shade(cover(bg)); W2 = W - 2 * 70
     txt = Image.new("RGBA", (W, H)); d = ImageDraw.Draw(txt)
     if pin:
@@ -58,5 +58,5 @@ make(Image.open(S+"10386895.png"), "HOUTHIS CLAIM", [("SAUDI OIL", WHITE), ("GIA
 make(Image.open(S+"12734644.png"), "ONE NIGHT", [("87 MISSILES", YEL), ("& DRONES", WHITE)], "shot down in Russia's overnight barrage on Ukraine", o+"/02-russia-barrage-ukraine - THUMBNAIL.jpg")
 make(Image.open(S+"8012093.png"), "NORTH-EAST SYRIA", [("ISIS STRIKES", WHITE), ("AGAIN", YEL)], "Deadly attack on a security building in Hassakeh", o+"/03-isis-attack-hassakeh - THUMBNAIL.jpg")
 mz = R.MapZoom([31.45, 34.40, 10.5, 10.5, "GAZA"], 1.0)
-make(mz.frame(5).convert("RGB"), "GAZA", [("8 KILLED", YEL), ("OVERNIGHT", WHITE)], "Is the ceasefire falling apart?", o+"/04-gaza-overnight-strikes - THUMBNAIL.jpg", note="Satellite: Sentinel-2 cloudless by EOX (CC BY 4.0)")
+make(mz.frame(5).convert("RGB"), "GAZA", [("8 KILLED", YEL), ("OVERNIGHT", WHITE)], "Is the ceasefire falling apart?", o+"/04-gaza-overnight-strikes - THUMBNAIL.jpg", note="")
 make(Image.open(S+"4260694.png"), "DR CONGO", [("WORST EBOLA", WHITE), ("OUTBREAK", YEL)], "11,504 cases, the most Congo has ever recorded", o+"/05-ebola-congo-record - THUMBNAIL.jpg")

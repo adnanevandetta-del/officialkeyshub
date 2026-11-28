@@ -207,8 +207,8 @@
   "thumb": {
    "kicker": "STRAIT OF HORMUZ",
    "l1": "FROM 85 SHIPS A DAY",
-   "l2": "TO JUST 1 ON NOV 22",
-   "sub": "17 tankers struck in the Strait of Hormuz since November 1",
+   "l2": "TO JUST 1",
+   "sub": "Ships through the Strait of Hormuz on Nov 22 \u00b7 17 tankers struck since Nov 1",
    "img": [
     "4911815",
     8
@@ -233,7 +233,7 @@
        "t": "hook",
        "kicker": "STRAIT OF HORMUZ",
        "l1": "FROM 85 SHIPS A DAY",
-       "l2": "TO JUST 1 ON NOV 22"
+       "l2": "TO JUST 1"
       }
      },
      {
