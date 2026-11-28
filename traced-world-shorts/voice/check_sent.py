@@ -3,7 +3,7 @@ import soundfile as sf
 from faster_whisper import WhisperModel
 m = WhisperModel("small.en", device="cpu", compute_type="int8", cpu_threads=4)
 NUM = {"eleven thousand, five hundred and four":"11504","five thousand, six hundred and thirty":"5630","eighty-seven":"87","fifty-eight":"58",
-       "twenty-eight":"28","eleven":"11","seventeenth":"17","twenty twenty-five":"2025","2025":"2025"}
+       "twenty-eight":"28","eleven":"11","seventeenth":"17","twenty twenty-five":"2025","2025":"2025","eighty-five":"85","seventeen":"17","two hundred":"200","twenty-second":"22nd"}
 SP = {"defence":"defense","defences":"defenses","adviser":"advisor","north-east":"northeast","mohammad":"mohammed"}
 def norm(x):
     x = x.lower()

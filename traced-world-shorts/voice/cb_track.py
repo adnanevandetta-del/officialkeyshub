@@ -7,7 +7,7 @@ SAY = {  # phonetic spellings so the model says names the way newsreaders do
  r"\bHouthis\b": "Hoo-theez", r"\bHouthi\b": "Hoo-thee", r"\bRas Tanura\b": "Rass Tanoora",
  r"\bRiyadh's\b": "Ree-yahd's", r"\bRiyadh\b": "Ree-yahd", r"\bKharkiv\b": "Kharkiv",
  r"\bSuspilne\b": "Soos-peel-neh", r"\bHassakeh\b": "Hassaka", r"\bBundibugyo\b": "Boondee-boog-yo",
- r"\bPutin\b": "Pootin", r"\bTajani\b": "Tah-yah-nee", r"\bAraghchi\b": "Ah-rahg-chee",
+ r"\bPutin\b": "Pootin", r"\bTajani\b": "Tah-yah-nee", r"\bAraghchi\b": "Arak-chee",
  r"\bRheinmetall\b": "Rine-metal", r"\bMarandi\b": "Mah-rahn-dee", r"\bISIS\b": "Eye-sis",
  r"\bAfrica CDC\b": "Africa C.D.C.", r"\bUN\b": "U.N.", r"\b2025\b": "twenty twenty-five",
 }
