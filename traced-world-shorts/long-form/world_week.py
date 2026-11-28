@@ -25,6 +25,7 @@ def shade():
     arr[..., 3] = np.clip(arr[..., 3] + left * 255 * ramp, 0, 230).astype(np.uint8)
     return Image.fromarray(arr, "RGBA")
 SH = shade()
+MARK = Image.open("/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/mark_48.png").convert("RGBA")
 _g = np.random.default_rng(9)
 def _grain():
     n = (_g.standard_normal((H // 2, W // 2)) * 14 + 128).clip(0, 255).astype(np.uint8)
@@ -81,8 +82,8 @@ def txt(d, xy, s, fnt, rgb, a): d.text(xy, s, font=fnt, fill=rgb + (int(255 * ma
 def overlay(d, b, seg, t, dur, data, kind):
     aout = 1 - ease((t - (dur - 0.3)) / 0.3)
     # brand (always, small)
-    d.ellipse([72, 64, 92, 84], fill=RED + (235,))
-    txt(d, (104, 54), "TRACED WORLD", f("InterDisplay-Black.otf", 32), WHITE, 0.95)
+    d._image.paste(MARK, (64, 44), MARK)
+    txt(d, (124, 54), "TRACED WORLD", f("InterDisplay-Black.otf", 32), WHITE, 0.95)
     if kind:
         lab = "SATELLITE VIEW" if kind == "map" else "ILLUSTRATIVE FOOTAGE"
         ff = f("Inter-SemiBold.otf", 22); txt(d, (W - 72 - d.textlength(lab, font=ff), 62), lab, ff, SOFT, 0.85)

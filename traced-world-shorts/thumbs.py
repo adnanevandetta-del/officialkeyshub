@@ -31,8 +31,8 @@ def make(bg, kicker, lines, sub, out, pin=None, note=""):
         for r, a in [(70, 90), (46, 160)]: d.ellipse([cx-r, cy-r, cx+r, cy+r], outline=RED + (a,), width=8)
         d.ellipse([cx-22, cy-22, cx+22, cy+22], fill=RED + (255,), outline=WHITE + (255,), width=6)
     # brand
-    d.ellipse([70, 112, 100, 142], fill=RED + (255,))
-    d.text((118, 96), "TRACED WORLD", font=f("InterDisplay-Black.otf", 52), fill=WHITE + (255,))
+    _m = Image.open("/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/mark_72.png").convert("RGBA"); txt.paste(_m, (62, 90), _m)
+    d.text((146, 96), "TRACED WORLD", font=f("InterDisplay-Black.otf", 52), fill=WHITE + (255,))
     # hook block, bottom-centre-ish (above Shorts UI)
     y = 860
     kf = f("Inter-Black.otf", 54); kw = d.textlength(kicker, font=kf)

@@ -15,11 +15,12 @@ def shade():
     arr = np.zeros((H, W, 4), np.uint8); arr[..., :3] = (4, 7, 14); arr[..., 3] = (np.clip(a, 0, .88) * 255).astype(np.uint8)
     return Image.fromarray(np.broadcast_to(arr, (H, W, 4)).copy(), "RGBA")
 WW.SH = shade()
+MARK_S = Image.open("/tmp/claude-0/-home-user-officialkeyshub/39654c7a-130c-5f84-a31f-97fde0cd2dfe/scratchpad/logo/mark_64.png").convert("RGBA")
 WW.GRAIN = [g.resize((W, H)) for g in WW.GRAIN[:4]]
 def overlay(d, b, seg, t, dur, data, kind):
     aout = 1 - ease((t - (dur - 0.3)) / 0.3)
-    d.ellipse([ML, 160, ML + 26, 186], fill=RED + (235,))
-    txt(d, (ML + 42, 144), "TRACED WORLD", f("InterDisplay-Black.otf", 46), WHITE, 0.95)
+    d._image.paste(MARK_S, (ML - 4, 130), MARK_S)
+    txt(d, (ML + 72, 144), "TRACED WORLD", f("InterDisplay-Black.otf", 46), WHITE, 0.95)
     if kind:
         lab = "SATELLITE VIEW" if kind == "map" else "ILLUSTRATIVE FOOTAGE"; ff = f("Inter-SemiBold.otf", 26)
         txt(d, (W - ML - d.textlength(lab, font=ff), 156), lab, ff, SOFT, 0.85)
